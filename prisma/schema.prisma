@@ -17,7 +17,8 @@ model Users {
   country      String
   birthdate    DateTime
   phone_number String
-  avatar String
+  avatar String?
+  refferal_code String?
   created_at   DateTime @default(now())
   updated_at   DateTime @updatedAt
 
@@ -28,7 +29,7 @@ model Organizer {
   id      String @id @default(uuid())
   user_id String
 
-  user Users @relation(fields: [user_id], references: [id])
+  user Users @relation(fields: [user_id], references: [id],onDelete: Cascade)
 
   event Events[]
 }
@@ -46,7 +47,7 @@ model Events {
   created_at        DateTime @default(now())
   updated_at        DateTime @updatedAt
 
-  organizer Organizer @relation(fields: [organizer_id], references: [id])
+  organizer Organizer @relation(fields: [organizer_id], references: [id],onDelete: Cascade)
 }
 
 model Event_Category {
