@@ -129,6 +129,7 @@ exports.Prisma.UsersScalarFieldEnum = {
   birthdate: 'birthdate',
   phone_number: 'phone_number',
   avatar: 'avatar',
+  refferal_code: 'refferal_code',
   created_at: 'created_at',
   updated_at: 'updated_at'
 };
@@ -165,6 +166,11 @@ exports.Prisma.SortOrder = {
 exports.Prisma.QueryMode = {
   default: 'default',
   insensitive: 'insensitive'
+};
+
+exports.Prisma.NullsOrder = {
+  first: 'first',
+  last: 'last'
 };
 
 

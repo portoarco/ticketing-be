@@ -1222,6 +1222,7 @@ export namespace Prisma {
     birthdate: Date | null
     phone_number: string | null
     avatar: string | null
+    refferal_code: string | null
     created_at: Date | null
     updated_at: Date | null
   }
@@ -1235,6 +1236,7 @@ export namespace Prisma {
     birthdate: Date | null
     phone_number: string | null
     avatar: string | null
+    refferal_code: string | null
     created_at: Date | null
     updated_at: Date | null
   }
@@ -1248,6 +1250,7 @@ export namespace Prisma {
     birthdate: number
     phone_number: number
     avatar: number
+    refferal_code: number
     created_at: number
     updated_at: number
     _all: number
@@ -1263,6 +1266,7 @@ export namespace Prisma {
     birthdate?: true
     phone_number?: true
     avatar?: true
+    refferal_code?: true
     created_at?: true
     updated_at?: true
   }
@@ -1276,6 +1280,7 @@ export namespace Prisma {
     birthdate?: true
     phone_number?: true
     avatar?: true
+    refferal_code?: true
     created_at?: true
     updated_at?: true
   }
@@ -1289,6 +1294,7 @@ export namespace Prisma {
     birthdate?: true
     phone_number?: true
     avatar?: true
+    refferal_code?: true
     created_at?: true
     updated_at?: true
     _all?: true
@@ -1374,7 +1380,8 @@ export namespace Prisma {
     country: string
     birthdate: Date
     phone_number: string
-    avatar: string
+    avatar: string | null
+    refferal_code: string | null
     created_at: Date
     updated_at: Date
     _count: UsersCountAggregateOutputType | null
@@ -1405,6 +1412,7 @@ export namespace Prisma {
     birthdate?: boolean
     phone_number?: boolean
     avatar?: boolean
+    refferal_code?: boolean
     created_at?: boolean
     updated_at?: boolean
     organizer?: boolean | Users$organizerArgs<ExtArgs>
@@ -1420,6 +1428,7 @@ export namespace Prisma {
     birthdate?: boolean
     phone_number?: boolean
     avatar?: boolean
+    refferal_code?: boolean
     created_at?: boolean
     updated_at?: boolean
   }, ExtArgs["result"]["users"]>
@@ -1433,6 +1442,7 @@ export namespace Prisma {
     birthdate?: boolean
     phone_number?: boolean
     avatar?: boolean
+    refferal_code?: boolean
     created_at?: boolean
     updated_at?: boolean
   }, ExtArgs["result"]["users"]>
@@ -1446,11 +1456,12 @@ export namespace Prisma {
     birthdate?: boolean
     phone_number?: boolean
     avatar?: boolean
+    refferal_code?: boolean
     created_at?: boolean
     updated_at?: boolean
   }
 
-  export type UsersOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "name" | "email" | "password" | "country" | "birthdate" | "phone_number" | "avatar" | "created_at" | "updated_at", ExtArgs["result"]["users"]>
+  export type UsersOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "name" | "email" | "password" | "country" | "birthdate" | "phone_number" | "avatar" | "refferal_code" | "created_at" | "updated_at", ExtArgs["result"]["users"]>
   export type UsersInclude<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     organizer?: boolean | Users$organizerArgs<ExtArgs>
     _count?: boolean | UsersCountOutputTypeDefaultArgs<ExtArgs>
@@ -1471,7 +1482,8 @@ export namespace Prisma {
       country: string
       birthdate: Date
       phone_number: string
-      avatar: string
+      avatar: string | null
+      refferal_code: string | null
       created_at: Date
       updated_at: Date
     }, ExtArgs["result"]["users"]>
@@ -1906,6 +1918,7 @@ export namespace Prisma {
     readonly birthdate: FieldRef<"Users", 'DateTime'>
     readonly phone_number: FieldRef<"Users", 'String'>
     readonly avatar: FieldRef<"Users", 'String'>
+    readonly refferal_code: FieldRef<"Users", 'String'>
     readonly created_at: FieldRef<"Users", 'DateTime'>
     readonly updated_at: FieldRef<"Users", 'DateTime'>
   }
@@ -5544,6 +5557,7 @@ export namespace Prisma {
     birthdate: 'birthdate',
     phone_number: 'phone_number',
     avatar: 'avatar',
+    refferal_code: 'refferal_code',
     created_at: 'created_at',
     updated_at: 'updated_at'
   };
@@ -5598,6 +5612,14 @@ export namespace Prisma {
   };
 
   export type QueryMode = (typeof QueryMode)[keyof typeof QueryMode]
+
+
+  export const NullsOrder: {
+    first: 'first',
+    last: 'last'
+  };
+
+  export type NullsOrder = (typeof NullsOrder)[keyof typeof NullsOrder]
 
 
   /**
@@ -5675,7 +5697,8 @@ export namespace Prisma {
     country?: StringFilter<"Users"> | string
     birthdate?: DateTimeFilter<"Users"> | Date | string
     phone_number?: StringFilter<"Users"> | string
-    avatar?: StringFilter<"Users"> | string
+    avatar?: StringNullableFilter<"Users"> | string | null
+    refferal_code?: StringNullableFilter<"Users"> | string | null
     created_at?: DateTimeFilter<"Users"> | Date | string
     updated_at?: DateTimeFilter<"Users"> | Date | string
     organizer?: OrganizerListRelationFilter
@@ -5689,7 +5712,8 @@ export namespace Prisma {
     country?: SortOrder
     birthdate?: SortOrder
     phone_number?: SortOrder
-    avatar?: SortOrder
+    avatar?: SortOrderInput | SortOrder
+    refferal_code?: SortOrderInput | SortOrder
     created_at?: SortOrder
     updated_at?: SortOrder
     organizer?: OrganizerOrderByRelationAggregateInput
@@ -5706,7 +5730,8 @@ export namespace Prisma {
     country?: StringFilter<"Users"> | string
     birthdate?: DateTimeFilter<"Users"> | Date | string
     phone_number?: StringFilter<"Users"> | string
-    avatar?: StringFilter<"Users"> | string
+    avatar?: StringNullableFilter<"Users"> | string | null
+    refferal_code?: StringNullableFilter<"Users"> | string | null
     created_at?: DateTimeFilter<"Users"> | Date | string
     updated_at?: DateTimeFilter<"Users"> | Date | string
     organizer?: OrganizerListRelationFilter
@@ -5720,7 +5745,8 @@ export namespace Prisma {
     country?: SortOrder
     birthdate?: SortOrder
     phone_number?: SortOrder
-    avatar?: SortOrder
+    avatar?: SortOrderInput | SortOrder
+    refferal_code?: SortOrderInput | SortOrder
     created_at?: SortOrder
     updated_at?: SortOrder
     _count?: UsersCountOrderByAggregateInput
@@ -5739,7 +5765,8 @@ export namespace Prisma {
     country?: StringWithAggregatesFilter<"Users"> | string
     birthdate?: DateTimeWithAggregatesFilter<"Users"> | Date | string
     phone_number?: StringWithAggregatesFilter<"Users"> | string
-    avatar?: StringWithAggregatesFilter<"Users"> | string
+    avatar?: StringNullableWithAggregatesFilter<"Users"> | string | null
+    refferal_code?: StringNullableWithAggregatesFilter<"Users"> | string | null
     created_at?: DateTimeWithAggregatesFilter<"Users"> | Date | string
     updated_at?: DateTimeWithAggregatesFilter<"Users"> | Date | string
   }
@@ -5919,7 +5946,8 @@ export namespace Prisma {
     country: string
     birthdate: Date | string
     phone_number: string
-    avatar: string
+    avatar?: string | null
+    refferal_code?: string | null
     created_at?: Date | string
     updated_at?: Date | string
     organizer?: OrganizerCreateNestedManyWithoutUserInput
@@ -5933,7 +5961,8 @@ export namespace Prisma {
     country: string
     birthdate: Date | string
     phone_number: string
-    avatar: string
+    avatar?: string | null
+    refferal_code?: string | null
     created_at?: Date | string
     updated_at?: Date | string
     organizer?: OrganizerUncheckedCreateNestedManyWithoutUserInput
@@ -5947,7 +5976,8 @@ export namespace Prisma {
     country?: StringFieldUpdateOperationsInput | string
     birthdate?: DateTimeFieldUpdateOperationsInput | Date | string
     phone_number?: StringFieldUpdateOperationsInput | string
-    avatar?: StringFieldUpdateOperationsInput | string
+    avatar?: NullableStringFieldUpdateOperationsInput | string | null
+    refferal_code?: NullableStringFieldUpdateOperationsInput | string | null
     created_at?: DateTimeFieldUpdateOperationsInput | Date | string
     updated_at?: DateTimeFieldUpdateOperationsInput | Date | string
     organizer?: OrganizerUpdateManyWithoutUserNestedInput
@@ -5961,7 +5991,8 @@ export namespace Prisma {
     country?: StringFieldUpdateOperationsInput | string
     birthdate?: DateTimeFieldUpdateOperationsInput | Date | string
     phone_number?: StringFieldUpdateOperationsInput | string
-    avatar?: StringFieldUpdateOperationsInput | string
+    avatar?: NullableStringFieldUpdateOperationsInput | string | null
+    refferal_code?: NullableStringFieldUpdateOperationsInput | string | null
     created_at?: DateTimeFieldUpdateOperationsInput | Date | string
     updated_at?: DateTimeFieldUpdateOperationsInput | Date | string
     organizer?: OrganizerUncheckedUpdateManyWithoutUserNestedInput
@@ -5975,7 +6006,8 @@ export namespace Prisma {
     country: string
     birthdate: Date | string
     phone_number: string
-    avatar: string
+    avatar?: string | null
+    refferal_code?: string | null
     created_at?: Date | string
     updated_at?: Date | string
   }
@@ -5988,7 +6020,8 @@ export namespace Prisma {
     country?: StringFieldUpdateOperationsInput | string
     birthdate?: DateTimeFieldUpdateOperationsInput | Date | string
     phone_number?: StringFieldUpdateOperationsInput | string
-    avatar?: StringFieldUpdateOperationsInput | string
+    avatar?: NullableStringFieldUpdateOperationsInput | string | null
+    refferal_code?: NullableStringFieldUpdateOperationsInput | string | null
     created_at?: DateTimeFieldUpdateOperationsInput | Date | string
     updated_at?: DateTimeFieldUpdateOperationsInput | Date | string
   }
@@ -6001,7 +6034,8 @@ export namespace Prisma {
     country?: StringFieldUpdateOperationsInput | string
     birthdate?: DateTimeFieldUpdateOperationsInput | Date | string
     phone_number?: StringFieldUpdateOperationsInput | string
-    avatar?: StringFieldUpdateOperationsInput | string
+    avatar?: NullableStringFieldUpdateOperationsInput | string | null
+    refferal_code?: NullableStringFieldUpdateOperationsInput | string | null
     created_at?: DateTimeFieldUpdateOperationsInput | Date | string
     updated_at?: DateTimeFieldUpdateOperationsInput | Date | string
   }
@@ -6202,10 +6236,30 @@ export namespace Prisma {
     not?: NestedDateTimeFilter<$PrismaModel> | Date | string
   }
 
+  export type StringNullableFilter<$PrismaModel = never> = {
+    equals?: string | StringFieldRefInput<$PrismaModel> | null
+    in?: string[] | ListStringFieldRefInput<$PrismaModel> | null
+    notIn?: string[] | ListStringFieldRefInput<$PrismaModel> | null
+    lt?: string | StringFieldRefInput<$PrismaModel>
+    lte?: string | StringFieldRefInput<$PrismaModel>
+    gt?: string | StringFieldRefInput<$PrismaModel>
+    gte?: string | StringFieldRefInput<$PrismaModel>
+    contains?: string | StringFieldRefInput<$PrismaModel>
+    startsWith?: string | StringFieldRefInput<$PrismaModel>
+    endsWith?: string | StringFieldRefInput<$PrismaModel>
+    mode?: QueryMode
+    not?: NestedStringNullableFilter<$PrismaModel> | string | null
+  }
+
   export type OrganizerListRelationFilter = {
     every?: OrganizerWhereInput
     some?: OrganizerWhereInput
     none?: OrganizerWhereInput
+  }
+
+  export type SortOrderInput = {
+    sort: SortOrder
+    nulls?: NullsOrder
   }
 
   export type OrganizerOrderByRelationAggregateInput = {
@@ -6221,6 +6275,7 @@ export namespace Prisma {
     birthdate?: SortOrder
     phone_number?: SortOrder
     avatar?: SortOrder
+    refferal_code?: SortOrder
     created_at?: SortOrder
     updated_at?: SortOrder
   }
@@ -6234,6 +6289,7 @@ export namespace Prisma {
     birthdate?: SortOrder
     phone_number?: SortOrder
     avatar?: SortOrder
+    refferal_code?: SortOrder
     created_at?: SortOrder
     updated_at?: SortOrder
   }
@@ -6247,6 +6303,7 @@ export namespace Prisma {
     birthdate?: SortOrder
     phone_number?: SortOrder
     avatar?: SortOrder
+    refferal_code?: SortOrder
     created_at?: SortOrder
     updated_at?: SortOrder
   }
@@ -6281,6 +6338,24 @@ export namespace Prisma {
     _count?: NestedIntFilter<$PrismaModel>
     _min?: NestedDateTimeFilter<$PrismaModel>
     _max?: NestedDateTimeFilter<$PrismaModel>
+  }
+
+  export type StringNullableWithAggregatesFilter<$PrismaModel = never> = {
+    equals?: string | StringFieldRefInput<$PrismaModel> | null
+    in?: string[] | ListStringFieldRefInput<$PrismaModel> | null
+    notIn?: string[] | ListStringFieldRefInput<$PrismaModel> | null
+    lt?: string | StringFieldRefInput<$PrismaModel>
+    lte?: string | StringFieldRefInput<$PrismaModel>
+    gt?: string | StringFieldRefInput<$PrismaModel>
+    gte?: string | StringFieldRefInput<$PrismaModel>
+    contains?: string | StringFieldRefInput<$PrismaModel>
+    startsWith?: string | StringFieldRefInput<$PrismaModel>
+    endsWith?: string | StringFieldRefInput<$PrismaModel>
+    mode?: QueryMode
+    not?: NestedStringNullableWithAggregatesFilter<$PrismaModel> | string | null
+    _count?: NestedIntNullableFilter<$PrismaModel>
+    _min?: NestedStringNullableFilter<$PrismaModel>
+    _max?: NestedStringNullableFilter<$PrismaModel>
   }
 
   export type UsersScalarRelationFilter = {
@@ -6436,6 +6511,10 @@ export namespace Prisma {
     set?: Date | string
   }
 
+  export type NullableStringFieldUpdateOperationsInput = {
+    set?: string | null
+  }
+
   export type OrganizerUpdateManyWithoutUserNestedInput = {
     create?: XOR<OrganizerCreateWithoutUserInput, OrganizerUncheckedCreateWithoutUserInput> | OrganizerCreateWithoutUserInput[] | OrganizerUncheckedCreateWithoutUserInput[]
     connectOrCreate?: OrganizerCreateOrConnectWithoutUserInput | OrganizerCreateOrConnectWithoutUserInput[]
@@ -6567,6 +6646,20 @@ export namespace Prisma {
     not?: NestedDateTimeFilter<$PrismaModel> | Date | string
   }
 
+  export type NestedStringNullableFilter<$PrismaModel = never> = {
+    equals?: string | StringFieldRefInput<$PrismaModel> | null
+    in?: string[] | ListStringFieldRefInput<$PrismaModel> | null
+    notIn?: string[] | ListStringFieldRefInput<$PrismaModel> | null
+    lt?: string | StringFieldRefInput<$PrismaModel>
+    lte?: string | StringFieldRefInput<$PrismaModel>
+    gt?: string | StringFieldRefInput<$PrismaModel>
+    gte?: string | StringFieldRefInput<$PrismaModel>
+    contains?: string | StringFieldRefInput<$PrismaModel>
+    startsWith?: string | StringFieldRefInput<$PrismaModel>
+    endsWith?: string | StringFieldRefInput<$PrismaModel>
+    not?: NestedStringNullableFilter<$PrismaModel> | string | null
+  }
+
   export type NestedStringWithAggregatesFilter<$PrismaModel = never> = {
     equals?: string | StringFieldRefInput<$PrismaModel>
     in?: string[] | ListStringFieldRefInput<$PrismaModel>
@@ -6607,6 +6700,34 @@ export namespace Prisma {
     _count?: NestedIntFilter<$PrismaModel>
     _min?: NestedDateTimeFilter<$PrismaModel>
     _max?: NestedDateTimeFilter<$PrismaModel>
+  }
+
+  export type NestedStringNullableWithAggregatesFilter<$PrismaModel = never> = {
+    equals?: string | StringFieldRefInput<$PrismaModel> | null
+    in?: string[] | ListStringFieldRefInput<$PrismaModel> | null
+    notIn?: string[] | ListStringFieldRefInput<$PrismaModel> | null
+    lt?: string | StringFieldRefInput<$PrismaModel>
+    lte?: string | StringFieldRefInput<$PrismaModel>
+    gt?: string | StringFieldRefInput<$PrismaModel>
+    gte?: string | StringFieldRefInput<$PrismaModel>
+    contains?: string | StringFieldRefInput<$PrismaModel>
+    startsWith?: string | StringFieldRefInput<$PrismaModel>
+    endsWith?: string | StringFieldRefInput<$PrismaModel>
+    not?: NestedStringNullableWithAggregatesFilter<$PrismaModel> | string | null
+    _count?: NestedIntNullableFilter<$PrismaModel>
+    _min?: NestedStringNullableFilter<$PrismaModel>
+    _max?: NestedStringNullableFilter<$PrismaModel>
+  }
+
+  export type NestedIntNullableFilter<$PrismaModel = never> = {
+    equals?: number | IntFieldRefInput<$PrismaModel> | null
+    in?: number[] | ListIntFieldRefInput<$PrismaModel> | null
+    notIn?: number[] | ListIntFieldRefInput<$PrismaModel> | null
+    lt?: number | IntFieldRefInput<$PrismaModel>
+    lte?: number | IntFieldRefInput<$PrismaModel>
+    gt?: number | IntFieldRefInput<$PrismaModel>
+    gte?: number | IntFieldRefInput<$PrismaModel>
+    not?: NestedIntNullableFilter<$PrismaModel> | number | null
   }
 
   export type NestedIntWithAggregatesFilter<$PrismaModel = never> = {
@@ -6688,7 +6809,8 @@ export namespace Prisma {
     country: string
     birthdate: Date | string
     phone_number: string
-    avatar: string
+    avatar?: string | null
+    refferal_code?: string | null
     created_at?: Date | string
     updated_at?: Date | string
   }
@@ -6701,7 +6823,8 @@ export namespace Prisma {
     country: string
     birthdate: Date | string
     phone_number: string
-    avatar: string
+    avatar?: string | null
+    refferal_code?: string | null
     created_at?: Date | string
     updated_at?: Date | string
   }
@@ -6766,7 +6889,8 @@ export namespace Prisma {
     country?: StringFieldUpdateOperationsInput | string
     birthdate?: DateTimeFieldUpdateOperationsInput | Date | string
     phone_number?: StringFieldUpdateOperationsInput | string
-    avatar?: StringFieldUpdateOperationsInput | string
+    avatar?: NullableStringFieldUpdateOperationsInput | string | null
+    refferal_code?: NullableStringFieldUpdateOperationsInput | string | null
     created_at?: DateTimeFieldUpdateOperationsInput | Date | string
     updated_at?: DateTimeFieldUpdateOperationsInput | Date | string
   }
@@ -6779,7 +6903,8 @@ export namespace Prisma {
     country?: StringFieldUpdateOperationsInput | string
     birthdate?: DateTimeFieldUpdateOperationsInput | Date | string
     phone_number?: StringFieldUpdateOperationsInput | string
-    avatar?: StringFieldUpdateOperationsInput | string
+    avatar?: NullableStringFieldUpdateOperationsInput | string | null
+    refferal_code?: NullableStringFieldUpdateOperationsInput | string | null
     created_at?: DateTimeFieldUpdateOperationsInput | Date | string
     updated_at?: DateTimeFieldUpdateOperationsInput | Date | string
   }
