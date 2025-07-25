@@ -133,6 +133,25 @@ exports.Prisma.UsersScalarFieldEnum = {
   updated_at: 'updated_at'
 };
 
+exports.Prisma.OrganizerScalarFieldEnum = {
+  id: 'id',
+  user_id: 'user_id'
+};
+
+exports.Prisma.EventsScalarFieldEnum = {
+  id: 'id',
+  organizer_id: 'organizer_id',
+  event_category_id: 'event_category_id',
+  event_location_id: 'event_location_id',
+  name: 'name',
+  description: 'description',
+  price: 'price',
+  start_date: 'start_date',
+  end_date: 'end_date',
+  created_at: 'created_at',
+  updated_at: 'updated_at'
+};
+
 exports.Prisma.SortOrder = {
   asc: 'asc',
   desc: 'desc'
@@ -145,7 +164,9 @@ exports.Prisma.QueryMode = {
 
 
 exports.Prisma.ModelName = {
-  Users: 'Users'
+  Users: 'Users',
+  Organizer: 'Organizer',
+  Events: 'Events'
 };
 
 /**

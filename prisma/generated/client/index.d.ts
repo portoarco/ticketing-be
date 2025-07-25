@@ -18,6 +18,16 @@ export type PrismaPromise<T> = $Public.PrismaPromise<T>
  * 
  */
 export type Users = $Result.DefaultSelection<Prisma.$UsersPayload>
+/**
+ * Model Organizer
+ * 
+ */
+export type Organizer = $Result.DefaultSelection<Prisma.$OrganizerPayload>
+/**
+ * Model Events
+ * 
+ */
+export type Events = $Result.DefaultSelection<Prisma.$EventsPayload>
 
 /**
  * ##  Prisma Client ʲˢ
@@ -153,6 +163,26 @@ export class PrismaClient<
     * ```
     */
   get users(): Prisma.UsersDelegate<ExtArgs, ClientOptions>;
+
+  /**
+   * `prisma.organizer`: Exposes CRUD operations for the **Organizer** model.
+    * Example usage:
+    * ```ts
+    * // Fetch zero or more Organizers
+    * const organizers = await prisma.organizer.findMany()
+    * ```
+    */
+  get organizer(): Prisma.OrganizerDelegate<ExtArgs, ClientOptions>;
+
+  /**
+   * `prisma.events`: Exposes CRUD operations for the **Events** model.
+    * Example usage:
+    * ```ts
+    * // Fetch zero or more Events
+    * const events = await prisma.events.findMany()
+    * ```
+    */
+  get events(): Prisma.EventsDelegate<ExtArgs, ClientOptions>;
 }
 
 export namespace Prisma {
@@ -593,7 +623,9 @@ export namespace Prisma {
 
 
   export const ModelName: {
-    Users: 'Users'
+    Users: 'Users',
+    Organizer: 'Organizer',
+    Events: 'Events'
   };
 
   export type ModelName = (typeof ModelName)[keyof typeof ModelName]
@@ -612,7 +644,7 @@ export namespace Prisma {
       omit: GlobalOmitOptions
     }
     meta: {
-      modelProps: "users"
+      modelProps: "users" | "organizer" | "events"
       txIsolationLevel: Prisma.TransactionIsolationLevel
     }
     model: {
@@ -687,6 +719,154 @@ export namespace Prisma {
           count: {
             args: Prisma.UsersCountArgs<ExtArgs>
             result: $Utils.Optional<UsersCountAggregateOutputType> | number
+          }
+        }
+      }
+      Organizer: {
+        payload: Prisma.$OrganizerPayload<ExtArgs>
+        fields: Prisma.OrganizerFieldRefs
+        operations: {
+          findUnique: {
+            args: Prisma.OrganizerFindUniqueArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$OrganizerPayload> | null
+          }
+          findUniqueOrThrow: {
+            args: Prisma.OrganizerFindUniqueOrThrowArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$OrganizerPayload>
+          }
+          findFirst: {
+            args: Prisma.OrganizerFindFirstArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$OrganizerPayload> | null
+          }
+          findFirstOrThrow: {
+            args: Prisma.OrganizerFindFirstOrThrowArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$OrganizerPayload>
+          }
+          findMany: {
+            args: Prisma.OrganizerFindManyArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$OrganizerPayload>[]
+          }
+          create: {
+            args: Prisma.OrganizerCreateArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$OrganizerPayload>
+          }
+          createMany: {
+            args: Prisma.OrganizerCreateManyArgs<ExtArgs>
+            result: BatchPayload
+          }
+          createManyAndReturn: {
+            args: Prisma.OrganizerCreateManyAndReturnArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$OrganizerPayload>[]
+          }
+          delete: {
+            args: Prisma.OrganizerDeleteArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$OrganizerPayload>
+          }
+          update: {
+            args: Prisma.OrganizerUpdateArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$OrganizerPayload>
+          }
+          deleteMany: {
+            args: Prisma.OrganizerDeleteManyArgs<ExtArgs>
+            result: BatchPayload
+          }
+          updateMany: {
+            args: Prisma.OrganizerUpdateManyArgs<ExtArgs>
+            result: BatchPayload
+          }
+          updateManyAndReturn: {
+            args: Prisma.OrganizerUpdateManyAndReturnArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$OrganizerPayload>[]
+          }
+          upsert: {
+            args: Prisma.OrganizerUpsertArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$OrganizerPayload>
+          }
+          aggregate: {
+            args: Prisma.OrganizerAggregateArgs<ExtArgs>
+            result: $Utils.Optional<AggregateOrganizer>
+          }
+          groupBy: {
+            args: Prisma.OrganizerGroupByArgs<ExtArgs>
+            result: $Utils.Optional<OrganizerGroupByOutputType>[]
+          }
+          count: {
+            args: Prisma.OrganizerCountArgs<ExtArgs>
+            result: $Utils.Optional<OrganizerCountAggregateOutputType> | number
+          }
+        }
+      }
+      Events: {
+        payload: Prisma.$EventsPayload<ExtArgs>
+        fields: Prisma.EventsFieldRefs
+        operations: {
+          findUnique: {
+            args: Prisma.EventsFindUniqueArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$EventsPayload> | null
+          }
+          findUniqueOrThrow: {
+            args: Prisma.EventsFindUniqueOrThrowArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$EventsPayload>
+          }
+          findFirst: {
+            args: Prisma.EventsFindFirstArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$EventsPayload> | null
+          }
+          findFirstOrThrow: {
+            args: Prisma.EventsFindFirstOrThrowArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$EventsPayload>
+          }
+          findMany: {
+            args: Prisma.EventsFindManyArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$EventsPayload>[]
+          }
+          create: {
+            args: Prisma.EventsCreateArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$EventsPayload>
+          }
+          createMany: {
+            args: Prisma.EventsCreateManyArgs<ExtArgs>
+            result: BatchPayload
+          }
+          createManyAndReturn: {
+            args: Prisma.EventsCreateManyAndReturnArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$EventsPayload>[]
+          }
+          delete: {
+            args: Prisma.EventsDeleteArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$EventsPayload>
+          }
+          update: {
+            args: Prisma.EventsUpdateArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$EventsPayload>
+          }
+          deleteMany: {
+            args: Prisma.EventsDeleteManyArgs<ExtArgs>
+            result: BatchPayload
+          }
+          updateMany: {
+            args: Prisma.EventsUpdateManyArgs<ExtArgs>
+            result: BatchPayload
+          }
+          updateManyAndReturn: {
+            args: Prisma.EventsUpdateManyAndReturnArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$EventsPayload>[]
+          }
+          upsert: {
+            args: Prisma.EventsUpsertArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$EventsPayload>
+          }
+          aggregate: {
+            args: Prisma.EventsAggregateArgs<ExtArgs>
+            result: $Utils.Optional<AggregateEvents>
+          }
+          groupBy: {
+            args: Prisma.EventsGroupByArgs<ExtArgs>
+            result: $Utils.Optional<EventsGroupByOutputType>[]
+          }
+          count: {
+            args: Prisma.EventsCountArgs<ExtArgs>
+            result: $Utils.Optional<EventsCountAggregateOutputType> | number
           }
         }
       }
@@ -775,6 +955,8 @@ export namespace Prisma {
   }
   export type GlobalOmitConfig = {
     users?: UsersOmit
+    organizer?: OrganizerOmit
+    events?: EventsOmit
   }
 
   /* Types for Logging */
@@ -863,6 +1045,67 @@ export namespace Prisma {
    * Count Types
    */
 
+
+  /**
+   * Count Type UsersCountOutputType
+   */
+
+  export type UsersCountOutputType = {
+    organizer: number
+  }
+
+  export type UsersCountOutputTypeSelect<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    organizer?: boolean | UsersCountOutputTypeCountOrganizerArgs
+  }
+
+  // Custom InputTypes
+  /**
+   * UsersCountOutputType without action
+   */
+  export type UsersCountOutputTypeDefaultArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the UsersCountOutputType
+     */
+    select?: UsersCountOutputTypeSelect<ExtArgs> | null
+  }
+
+  /**
+   * UsersCountOutputType without action
+   */
+  export type UsersCountOutputTypeCountOrganizerArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    where?: OrganizerWhereInput
+  }
+
+
+  /**
+   * Count Type OrganizerCountOutputType
+   */
+
+  export type OrganizerCountOutputType = {
+    event: number
+  }
+
+  export type OrganizerCountOutputTypeSelect<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    event?: boolean | OrganizerCountOutputTypeCountEventArgs
+  }
+
+  // Custom InputTypes
+  /**
+   * OrganizerCountOutputType without action
+   */
+  export type OrganizerCountOutputTypeDefaultArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the OrganizerCountOutputType
+     */
+    select?: OrganizerCountOutputTypeSelect<ExtArgs> | null
+  }
+
+  /**
+   * OrganizerCountOutputType without action
+   */
+  export type OrganizerCountOutputTypeCountEventArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    where?: EventsWhereInput
+  }
 
 
   /**
@@ -1107,6 +1350,8 @@ export namespace Prisma {
     phone_number?: boolean
     created_at?: boolean
     updated_at?: boolean
+    organizer?: boolean | Users$organizerArgs<ExtArgs>
+    _count?: boolean | UsersCountOutputTypeDefaultArgs<ExtArgs>
   }, ExtArgs["result"]["users"]>
 
   export type UsersSelectCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
@@ -1149,10 +1394,18 @@ export namespace Prisma {
   }
 
   export type UsersOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "nik" | "name" | "email" | "password" | "address" | "birthdate" | "phone_number" | "created_at" | "updated_at", ExtArgs["result"]["users"]>
+  export type UsersInclude<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    organizer?: boolean | Users$organizerArgs<ExtArgs>
+    _count?: boolean | UsersCountOutputTypeDefaultArgs<ExtArgs>
+  }
+  export type UsersIncludeCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {}
+  export type UsersIncludeUpdateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {}
 
   export type $UsersPayload<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     name: "Users"
-    objects: {}
+    objects: {
+      organizer: Prisma.$OrganizerPayload<ExtArgs>[]
+    }
     scalars: $Extensions.GetPayloadResult<{
       id: string
       nik: number
@@ -1558,6 +1811,7 @@ export namespace Prisma {
    */
   export interface Prisma__UsersClient<T, Null = never, ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs, GlobalOmitOptions = {}> extends Prisma.PrismaPromise<T> {
     readonly [Symbol.toStringTag]: "PrismaPromise"
+    organizer<T extends Users$organizerArgs<ExtArgs> = {}>(args?: Subset<T, Users$organizerArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$OrganizerPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
     /**
      * Attaches callbacks for the resolution and/or rejection of the Promise.
      * @param onfulfilled The callback to execute when the Promise is resolved.
@@ -1614,6 +1868,10 @@ export namespace Prisma {
      */
     omit?: UsersOmit<ExtArgs> | null
     /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: UsersInclude<ExtArgs> | null
+    /**
      * Filter, which Users to fetch.
      */
     where: UsersWhereUniqueInput
@@ -1632,6 +1890,10 @@ export namespace Prisma {
      */
     omit?: UsersOmit<ExtArgs> | null
     /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: UsersInclude<ExtArgs> | null
+    /**
      * Filter, which Users to fetch.
      */
     where: UsersWhereUniqueInput
@@ -1649,6 +1911,10 @@ export namespace Prisma {
      * Omit specific fields from the Users
      */
     omit?: UsersOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: UsersInclude<ExtArgs> | null
     /**
      * Filter, which Users to fetch.
      */
@@ -1698,6 +1964,10 @@ export namespace Prisma {
      */
     omit?: UsersOmit<ExtArgs> | null
     /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: UsersInclude<ExtArgs> | null
+    /**
      * Filter, which Users to fetch.
      */
     where?: UsersWhereInput
@@ -1746,6 +2016,10 @@ export namespace Prisma {
      */
     omit?: UsersOmit<ExtArgs> | null
     /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: UsersInclude<ExtArgs> | null
+    /**
      * Filter, which Users to fetch.
      */
     where?: UsersWhereInput
@@ -1788,6 +2062,10 @@ export namespace Prisma {
      * Omit specific fields from the Users
      */
     omit?: UsersOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: UsersInclude<ExtArgs> | null
     /**
      * The data needed to create a Users.
      */
@@ -1836,6 +2114,10 @@ export namespace Prisma {
      * Omit specific fields from the Users
      */
     omit?: UsersOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: UsersInclude<ExtArgs> | null
     /**
      * The data needed to update a Users.
      */
@@ -1903,6 +2185,10 @@ export namespace Prisma {
      */
     omit?: UsersOmit<ExtArgs> | null
     /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: UsersInclude<ExtArgs> | null
+    /**
      * The filter to search for the Users to update in case it exists.
      */
     where: UsersWhereUniqueInput
@@ -1929,6 +2215,10 @@ export namespace Prisma {
      */
     omit?: UsersOmit<ExtArgs> | null
     /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: UsersInclude<ExtArgs> | null
+    /**
      * Filter which Users to delete.
      */
     where: UsersWhereUniqueInput
@@ -1949,6 +2239,30 @@ export namespace Prisma {
   }
 
   /**
+   * Users.organizer
+   */
+  export type Users$organizerArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Organizer
+     */
+    select?: OrganizerSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the Organizer
+     */
+    omit?: OrganizerOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: OrganizerInclude<ExtArgs> | null
+    where?: OrganizerWhereInput
+    orderBy?: OrganizerOrderByWithRelationInput | OrganizerOrderByWithRelationInput[]
+    cursor?: OrganizerWhereUniqueInput
+    take?: number
+    skip?: number
+    distinct?: OrganizerScalarFieldEnum | OrganizerScalarFieldEnum[]
+  }
+
+  /**
    * Users without action
    */
   export type UsersDefaultArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
@@ -1960,6 +2274,2237 @@ export namespace Prisma {
      * Omit specific fields from the Users
      */
     omit?: UsersOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: UsersInclude<ExtArgs> | null
+  }
+
+
+  /**
+   * Model Organizer
+   */
+
+  export type AggregateOrganizer = {
+    _count: OrganizerCountAggregateOutputType | null
+    _min: OrganizerMinAggregateOutputType | null
+    _max: OrganizerMaxAggregateOutputType | null
+  }
+
+  export type OrganizerMinAggregateOutputType = {
+    id: string | null
+    user_id: string | null
+  }
+
+  export type OrganizerMaxAggregateOutputType = {
+    id: string | null
+    user_id: string | null
+  }
+
+  export type OrganizerCountAggregateOutputType = {
+    id: number
+    user_id: number
+    _all: number
+  }
+
+
+  export type OrganizerMinAggregateInputType = {
+    id?: true
+    user_id?: true
+  }
+
+  export type OrganizerMaxAggregateInputType = {
+    id?: true
+    user_id?: true
+  }
+
+  export type OrganizerCountAggregateInputType = {
+    id?: true
+    user_id?: true
+    _all?: true
+  }
+
+  export type OrganizerAggregateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Filter which Organizer to aggregate.
+     */
+    where?: OrganizerWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of Organizers to fetch.
+     */
+    orderBy?: OrganizerOrderByWithRelationInput | OrganizerOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the start position
+     */
+    cursor?: OrganizerWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` Organizers from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` Organizers.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Count returned Organizers
+    **/
+    _count?: true | OrganizerCountAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to find the minimum value
+    **/
+    _min?: OrganizerMinAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to find the maximum value
+    **/
+    _max?: OrganizerMaxAggregateInputType
+  }
+
+  export type GetOrganizerAggregateType<T extends OrganizerAggregateArgs> = {
+        [P in keyof T & keyof AggregateOrganizer]: P extends '_count' | 'count'
+      ? T[P] extends true
+        ? number
+        : GetScalarType<T[P], AggregateOrganizer[P]>
+      : GetScalarType<T[P], AggregateOrganizer[P]>
+  }
+
+
+
+
+  export type OrganizerGroupByArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    where?: OrganizerWhereInput
+    orderBy?: OrganizerOrderByWithAggregationInput | OrganizerOrderByWithAggregationInput[]
+    by: OrganizerScalarFieldEnum[] | OrganizerScalarFieldEnum
+    having?: OrganizerScalarWhereWithAggregatesInput
+    take?: number
+    skip?: number
+    _count?: OrganizerCountAggregateInputType | true
+    _min?: OrganizerMinAggregateInputType
+    _max?: OrganizerMaxAggregateInputType
+  }
+
+  export type OrganizerGroupByOutputType = {
+    id: string
+    user_id: string
+    _count: OrganizerCountAggregateOutputType | null
+    _min: OrganizerMinAggregateOutputType | null
+    _max: OrganizerMaxAggregateOutputType | null
+  }
+
+  type GetOrganizerGroupByPayload<T extends OrganizerGroupByArgs> = Prisma.PrismaPromise<
+    Array<
+      PickEnumerable<OrganizerGroupByOutputType, T['by']> &
+        {
+          [P in ((keyof T) & (keyof OrganizerGroupByOutputType))]: P extends '_count'
+            ? T[P] extends boolean
+              ? number
+              : GetScalarType<T[P], OrganizerGroupByOutputType[P]>
+            : GetScalarType<T[P], OrganizerGroupByOutputType[P]>
+        }
+      >
+    >
+
+
+  export type OrganizerSelect<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
+    id?: boolean
+    user_id?: boolean
+    user?: boolean | UsersDefaultArgs<ExtArgs>
+    event?: boolean | Organizer$eventArgs<ExtArgs>
+    _count?: boolean | OrganizerCountOutputTypeDefaultArgs<ExtArgs>
+  }, ExtArgs["result"]["organizer"]>
+
+  export type OrganizerSelectCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
+    id?: boolean
+    user_id?: boolean
+    user?: boolean | UsersDefaultArgs<ExtArgs>
+  }, ExtArgs["result"]["organizer"]>
+
+  export type OrganizerSelectUpdateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
+    id?: boolean
+    user_id?: boolean
+    user?: boolean | UsersDefaultArgs<ExtArgs>
+  }, ExtArgs["result"]["organizer"]>
+
+  export type OrganizerSelectScalar = {
+    id?: boolean
+    user_id?: boolean
+  }
+
+  export type OrganizerOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "user_id", ExtArgs["result"]["organizer"]>
+  export type OrganizerInclude<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    user?: boolean | UsersDefaultArgs<ExtArgs>
+    event?: boolean | Organizer$eventArgs<ExtArgs>
+    _count?: boolean | OrganizerCountOutputTypeDefaultArgs<ExtArgs>
+  }
+  export type OrganizerIncludeCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    user?: boolean | UsersDefaultArgs<ExtArgs>
+  }
+  export type OrganizerIncludeUpdateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    user?: boolean | UsersDefaultArgs<ExtArgs>
+  }
+
+  export type $OrganizerPayload<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    name: "Organizer"
+    objects: {
+      user: Prisma.$UsersPayload<ExtArgs>
+      event: Prisma.$EventsPayload<ExtArgs>[]
+    }
+    scalars: $Extensions.GetPayloadResult<{
+      id: string
+      user_id: string
+    }, ExtArgs["result"]["organizer"]>
+    composites: {}
+  }
+
+  type OrganizerGetPayload<S extends boolean | null | undefined | OrganizerDefaultArgs> = $Result.GetResult<Prisma.$OrganizerPayload, S>
+
+  type OrganizerCountArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> =
+    Omit<OrganizerFindManyArgs, 'select' | 'include' | 'distinct' | 'omit'> & {
+      select?: OrganizerCountAggregateInputType | true
+    }
+
+  export interface OrganizerDelegate<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs, GlobalOmitOptions = {}> {
+    [K: symbol]: { types: Prisma.TypeMap<ExtArgs>['model']['Organizer'], meta: { name: 'Organizer' } }
+    /**
+     * Find zero or one Organizer that matches the filter.
+     * @param {OrganizerFindUniqueArgs} args - Arguments to find a Organizer
+     * @example
+     * // Get one Organizer
+     * const organizer = await prisma.organizer.findUnique({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findUnique<T extends OrganizerFindUniqueArgs>(args: SelectSubset<T, OrganizerFindUniqueArgs<ExtArgs>>): Prisma__OrganizerClient<$Result.GetResult<Prisma.$OrganizerPayload<ExtArgs>, T, "findUnique", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find one Organizer that matches the filter or throw an error with `error.code='P2025'`
+     * if no matches were found.
+     * @param {OrganizerFindUniqueOrThrowArgs} args - Arguments to find a Organizer
+     * @example
+     * // Get one Organizer
+     * const organizer = await prisma.organizer.findUniqueOrThrow({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findUniqueOrThrow<T extends OrganizerFindUniqueOrThrowArgs>(args: SelectSubset<T, OrganizerFindUniqueOrThrowArgs<ExtArgs>>): Prisma__OrganizerClient<$Result.GetResult<Prisma.$OrganizerPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find the first Organizer that matches the filter.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {OrganizerFindFirstArgs} args - Arguments to find a Organizer
+     * @example
+     * // Get one Organizer
+     * const organizer = await prisma.organizer.findFirst({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findFirst<T extends OrganizerFindFirstArgs>(args?: SelectSubset<T, OrganizerFindFirstArgs<ExtArgs>>): Prisma__OrganizerClient<$Result.GetResult<Prisma.$OrganizerPayload<ExtArgs>, T, "findFirst", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find the first Organizer that matches the filter or
+     * throw `PrismaKnownClientError` with `P2025` code if no matches were found.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {OrganizerFindFirstOrThrowArgs} args - Arguments to find a Organizer
+     * @example
+     * // Get one Organizer
+     * const organizer = await prisma.organizer.findFirstOrThrow({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findFirstOrThrow<T extends OrganizerFindFirstOrThrowArgs>(args?: SelectSubset<T, OrganizerFindFirstOrThrowArgs<ExtArgs>>): Prisma__OrganizerClient<$Result.GetResult<Prisma.$OrganizerPayload<ExtArgs>, T, "findFirstOrThrow", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find zero or more Organizers that matches the filter.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {OrganizerFindManyArgs} args - Arguments to filter and select certain fields only.
+     * @example
+     * // Get all Organizers
+     * const organizers = await prisma.organizer.findMany()
+     * 
+     * // Get first 10 Organizers
+     * const organizers = await prisma.organizer.findMany({ take: 10 })
+     * 
+     * // Only select the `id`
+     * const organizerWithIdOnly = await prisma.organizer.findMany({ select: { id: true } })
+     * 
+     */
+    findMany<T extends OrganizerFindManyArgs>(args?: SelectSubset<T, OrganizerFindManyArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$OrganizerPayload<ExtArgs>, T, "findMany", GlobalOmitOptions>>
+
+    /**
+     * Create a Organizer.
+     * @param {OrganizerCreateArgs} args - Arguments to create a Organizer.
+     * @example
+     * // Create one Organizer
+     * const Organizer = await prisma.organizer.create({
+     *   data: {
+     *     // ... data to create a Organizer
+     *   }
+     * })
+     * 
+     */
+    create<T extends OrganizerCreateArgs>(args: SelectSubset<T, OrganizerCreateArgs<ExtArgs>>): Prisma__OrganizerClient<$Result.GetResult<Prisma.$OrganizerPayload<ExtArgs>, T, "create", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Create many Organizers.
+     * @param {OrganizerCreateManyArgs} args - Arguments to create many Organizers.
+     * @example
+     * // Create many Organizers
+     * const organizer = await prisma.organizer.createMany({
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     *     
+     */
+    createMany<T extends OrganizerCreateManyArgs>(args?: SelectSubset<T, OrganizerCreateManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Create many Organizers and returns the data saved in the database.
+     * @param {OrganizerCreateManyAndReturnArgs} args - Arguments to create many Organizers.
+     * @example
+     * // Create many Organizers
+     * const organizer = await prisma.organizer.createManyAndReturn({
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * 
+     * // Create many Organizers and only return the `id`
+     * const organizerWithIdOnly = await prisma.organizer.createManyAndReturn({
+     *   select: { id: true },
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * 
+     */
+    createManyAndReturn<T extends OrganizerCreateManyAndReturnArgs>(args?: SelectSubset<T, OrganizerCreateManyAndReturnArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$OrganizerPayload<ExtArgs>, T, "createManyAndReturn", GlobalOmitOptions>>
+
+    /**
+     * Delete a Organizer.
+     * @param {OrganizerDeleteArgs} args - Arguments to delete one Organizer.
+     * @example
+     * // Delete one Organizer
+     * const Organizer = await prisma.organizer.delete({
+     *   where: {
+     *     // ... filter to delete one Organizer
+     *   }
+     * })
+     * 
+     */
+    delete<T extends OrganizerDeleteArgs>(args: SelectSubset<T, OrganizerDeleteArgs<ExtArgs>>): Prisma__OrganizerClient<$Result.GetResult<Prisma.$OrganizerPayload<ExtArgs>, T, "delete", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Update one Organizer.
+     * @param {OrganizerUpdateArgs} args - Arguments to update one Organizer.
+     * @example
+     * // Update one Organizer
+     * const organizer = await prisma.organizer.update({
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: {
+     *     // ... provide data here
+     *   }
+     * })
+     * 
+     */
+    update<T extends OrganizerUpdateArgs>(args: SelectSubset<T, OrganizerUpdateArgs<ExtArgs>>): Prisma__OrganizerClient<$Result.GetResult<Prisma.$OrganizerPayload<ExtArgs>, T, "update", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Delete zero or more Organizers.
+     * @param {OrganizerDeleteManyArgs} args - Arguments to filter Organizers to delete.
+     * @example
+     * // Delete a few Organizers
+     * const { count } = await prisma.organizer.deleteMany({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     * 
+     */
+    deleteMany<T extends OrganizerDeleteManyArgs>(args?: SelectSubset<T, OrganizerDeleteManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Update zero or more Organizers.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {OrganizerUpdateManyArgs} args - Arguments to update one or more rows.
+     * @example
+     * // Update many Organizers
+     * const organizer = await prisma.organizer.updateMany({
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: {
+     *     // ... provide data here
+     *   }
+     * })
+     * 
+     */
+    updateMany<T extends OrganizerUpdateManyArgs>(args: SelectSubset<T, OrganizerUpdateManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Update zero or more Organizers and returns the data updated in the database.
+     * @param {OrganizerUpdateManyAndReturnArgs} args - Arguments to update many Organizers.
+     * @example
+     * // Update many Organizers
+     * const organizer = await prisma.organizer.updateManyAndReturn({
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * 
+     * // Update zero or more Organizers and only return the `id`
+     * const organizerWithIdOnly = await prisma.organizer.updateManyAndReturn({
+     *   select: { id: true },
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * 
+     */
+    updateManyAndReturn<T extends OrganizerUpdateManyAndReturnArgs>(args: SelectSubset<T, OrganizerUpdateManyAndReturnArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$OrganizerPayload<ExtArgs>, T, "updateManyAndReturn", GlobalOmitOptions>>
+
+    /**
+     * Create or update one Organizer.
+     * @param {OrganizerUpsertArgs} args - Arguments to update or create a Organizer.
+     * @example
+     * // Update or create a Organizer
+     * const organizer = await prisma.organizer.upsert({
+     *   create: {
+     *     // ... data to create a Organizer
+     *   },
+     *   update: {
+     *     // ... in case it already exists, update
+     *   },
+     *   where: {
+     *     // ... the filter for the Organizer we want to update
+     *   }
+     * })
+     */
+    upsert<T extends OrganizerUpsertArgs>(args: SelectSubset<T, OrganizerUpsertArgs<ExtArgs>>): Prisma__OrganizerClient<$Result.GetResult<Prisma.$OrganizerPayload<ExtArgs>, T, "upsert", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+
+    /**
+     * Count the number of Organizers.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {OrganizerCountArgs} args - Arguments to filter Organizers to count.
+     * @example
+     * // Count the number of Organizers
+     * const count = await prisma.organizer.count({
+     *   where: {
+     *     // ... the filter for the Organizers we want to count
+     *   }
+     * })
+    **/
+    count<T extends OrganizerCountArgs>(
+      args?: Subset<T, OrganizerCountArgs>,
+    ): Prisma.PrismaPromise<
+      T extends $Utils.Record<'select', any>
+        ? T['select'] extends true
+          ? number
+          : GetScalarType<T['select'], OrganizerCountAggregateOutputType>
+        : number
+    >
+
+    /**
+     * Allows you to perform aggregations operations on a Organizer.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {OrganizerAggregateArgs} args - Select which aggregations you would like to apply and on what fields.
+     * @example
+     * // Ordered by age ascending
+     * // Where email contains prisma.io
+     * // Limited to the 10 users
+     * const aggregations = await prisma.user.aggregate({
+     *   _avg: {
+     *     age: true,
+     *   },
+     *   where: {
+     *     email: {
+     *       contains: "prisma.io",
+     *     },
+     *   },
+     *   orderBy: {
+     *     age: "asc",
+     *   },
+     *   take: 10,
+     * })
+    **/
+    aggregate<T extends OrganizerAggregateArgs>(args: Subset<T, OrganizerAggregateArgs>): Prisma.PrismaPromise<GetOrganizerAggregateType<T>>
+
+    /**
+     * Group by Organizer.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {OrganizerGroupByArgs} args - Group by arguments.
+     * @example
+     * // Group by city, order by createdAt, get count
+     * const result = await prisma.user.groupBy({
+     *   by: ['city', 'createdAt'],
+     *   orderBy: {
+     *     createdAt: true
+     *   },
+     *   _count: {
+     *     _all: true
+     *   },
+     * })
+     * 
+    **/
+    groupBy<
+      T extends OrganizerGroupByArgs,
+      HasSelectOrTake extends Or<
+        Extends<'skip', Keys<T>>,
+        Extends<'take', Keys<T>>
+      >,
+      OrderByArg extends True extends HasSelectOrTake
+        ? { orderBy: OrganizerGroupByArgs['orderBy'] }
+        : { orderBy?: OrganizerGroupByArgs['orderBy'] },
+      OrderFields extends ExcludeUnderscoreKeys<Keys<MaybeTupleToUnion<T['orderBy']>>>,
+      ByFields extends MaybeTupleToUnion<T['by']>,
+      ByValid extends Has<ByFields, OrderFields>,
+      HavingFields extends GetHavingFields<T['having']>,
+      HavingValid extends Has<ByFields, HavingFields>,
+      ByEmpty extends T['by'] extends never[] ? True : False,
+      InputErrors extends ByEmpty extends True
+      ? `Error: "by" must not be empty.`
+      : HavingValid extends False
+      ? {
+          [P in HavingFields]: P extends ByFields
+            ? never
+            : P extends string
+            ? `Error: Field "${P}" used in "having" needs to be provided in "by".`
+            : [
+                Error,
+                'Field ',
+                P,
+                ` in "having" needs to be provided in "by"`,
+              ]
+        }[HavingFields]
+      : 'take' extends Keys<T>
+      ? 'orderBy' extends Keys<T>
+        ? ByValid extends True
+          ? {}
+          : {
+              [P in OrderFields]: P extends ByFields
+                ? never
+                : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+            }[OrderFields]
+        : 'Error: If you provide "take", you also need to provide "orderBy"'
+      : 'skip' extends Keys<T>
+      ? 'orderBy' extends Keys<T>
+        ? ByValid extends True
+          ? {}
+          : {
+              [P in OrderFields]: P extends ByFields
+                ? never
+                : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+            }[OrderFields]
+        : 'Error: If you provide "skip", you also need to provide "orderBy"'
+      : ByValid extends True
+      ? {}
+      : {
+          [P in OrderFields]: P extends ByFields
+            ? never
+            : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+        }[OrderFields]
+    >(args: SubsetIntersection<T, OrganizerGroupByArgs, OrderByArg> & InputErrors): {} extends InputErrors ? GetOrganizerGroupByPayload<T> : Prisma.PrismaPromise<InputErrors>
+  /**
+   * Fields of the Organizer model
+   */
+  readonly fields: OrganizerFieldRefs;
+  }
+
+  /**
+   * The delegate class that acts as a "Promise-like" for Organizer.
+   * Why is this prefixed with `Prisma__`?
+   * Because we want to prevent naming conflicts as mentioned in
+   * https://github.com/prisma/prisma-client-js/issues/707
+   */
+  export interface Prisma__OrganizerClient<T, Null = never, ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs, GlobalOmitOptions = {}> extends Prisma.PrismaPromise<T> {
+    readonly [Symbol.toStringTag]: "PrismaPromise"
+    user<T extends UsersDefaultArgs<ExtArgs> = {}>(args?: Subset<T, UsersDefaultArgs<ExtArgs>>): Prisma__UsersClient<$Result.GetResult<Prisma.$UsersPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | Null, Null, ExtArgs, GlobalOmitOptions>
+    event<T extends Organizer$eventArgs<ExtArgs> = {}>(args?: Subset<T, Organizer$eventArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$EventsPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
+    /**
+     * Attaches callbacks for the resolution and/or rejection of the Promise.
+     * @param onfulfilled The callback to execute when the Promise is resolved.
+     * @param onrejected The callback to execute when the Promise is rejected.
+     * @returns A Promise for the completion of which ever callback is executed.
+     */
+    then<TResult1 = T, TResult2 = never>(onfulfilled?: ((value: T) => TResult1 | PromiseLike<TResult1>) | undefined | null, onrejected?: ((reason: any) => TResult2 | PromiseLike<TResult2>) | undefined | null): $Utils.JsPromise<TResult1 | TResult2>
+    /**
+     * Attaches a callback for only the rejection of the Promise.
+     * @param onrejected The callback to execute when the Promise is rejected.
+     * @returns A Promise for the completion of the callback.
+     */
+    catch<TResult = never>(onrejected?: ((reason: any) => TResult | PromiseLike<TResult>) | undefined | null): $Utils.JsPromise<T | TResult>
+    /**
+     * Attaches a callback that is invoked when the Promise is settled (fulfilled or rejected). The
+     * resolved value cannot be modified from the callback.
+     * @param onfinally The callback to execute when the Promise is settled (fulfilled or rejected).
+     * @returns A Promise for the completion of the callback.
+     */
+    finally(onfinally?: (() => void) | undefined | null): $Utils.JsPromise<T>
+  }
+
+
+
+
+  /**
+   * Fields of the Organizer model
+   */
+  interface OrganizerFieldRefs {
+    readonly id: FieldRef<"Organizer", 'String'>
+    readonly user_id: FieldRef<"Organizer", 'String'>
+  }
+    
+
+  // Custom InputTypes
+  /**
+   * Organizer findUnique
+   */
+  export type OrganizerFindUniqueArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Organizer
+     */
+    select?: OrganizerSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the Organizer
+     */
+    omit?: OrganizerOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: OrganizerInclude<ExtArgs> | null
+    /**
+     * Filter, which Organizer to fetch.
+     */
+    where: OrganizerWhereUniqueInput
+  }
+
+  /**
+   * Organizer findUniqueOrThrow
+   */
+  export type OrganizerFindUniqueOrThrowArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Organizer
+     */
+    select?: OrganizerSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the Organizer
+     */
+    omit?: OrganizerOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: OrganizerInclude<ExtArgs> | null
+    /**
+     * Filter, which Organizer to fetch.
+     */
+    where: OrganizerWhereUniqueInput
+  }
+
+  /**
+   * Organizer findFirst
+   */
+  export type OrganizerFindFirstArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Organizer
+     */
+    select?: OrganizerSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the Organizer
+     */
+    omit?: OrganizerOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: OrganizerInclude<ExtArgs> | null
+    /**
+     * Filter, which Organizer to fetch.
+     */
+    where?: OrganizerWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of Organizers to fetch.
+     */
+    orderBy?: OrganizerOrderByWithRelationInput | OrganizerOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for searching for Organizers.
+     */
+    cursor?: OrganizerWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` Organizers from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` Organizers.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
+     * 
+     * Filter by unique combinations of Organizers.
+     */
+    distinct?: OrganizerScalarFieldEnum | OrganizerScalarFieldEnum[]
+  }
+
+  /**
+   * Organizer findFirstOrThrow
+   */
+  export type OrganizerFindFirstOrThrowArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Organizer
+     */
+    select?: OrganizerSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the Organizer
+     */
+    omit?: OrganizerOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: OrganizerInclude<ExtArgs> | null
+    /**
+     * Filter, which Organizer to fetch.
+     */
+    where?: OrganizerWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of Organizers to fetch.
+     */
+    orderBy?: OrganizerOrderByWithRelationInput | OrganizerOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for searching for Organizers.
+     */
+    cursor?: OrganizerWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` Organizers from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` Organizers.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
+     * 
+     * Filter by unique combinations of Organizers.
+     */
+    distinct?: OrganizerScalarFieldEnum | OrganizerScalarFieldEnum[]
+  }
+
+  /**
+   * Organizer findMany
+   */
+  export type OrganizerFindManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Organizer
+     */
+    select?: OrganizerSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the Organizer
+     */
+    omit?: OrganizerOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: OrganizerInclude<ExtArgs> | null
+    /**
+     * Filter, which Organizers to fetch.
+     */
+    where?: OrganizerWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of Organizers to fetch.
+     */
+    orderBy?: OrganizerOrderByWithRelationInput | OrganizerOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for listing Organizers.
+     */
+    cursor?: OrganizerWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` Organizers from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` Organizers.
+     */
+    skip?: number
+    distinct?: OrganizerScalarFieldEnum | OrganizerScalarFieldEnum[]
+  }
+
+  /**
+   * Organizer create
+   */
+  export type OrganizerCreateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Organizer
+     */
+    select?: OrganizerSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the Organizer
+     */
+    omit?: OrganizerOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: OrganizerInclude<ExtArgs> | null
+    /**
+     * The data needed to create a Organizer.
+     */
+    data: XOR<OrganizerCreateInput, OrganizerUncheckedCreateInput>
+  }
+
+  /**
+   * Organizer createMany
+   */
+  export type OrganizerCreateManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * The data used to create many Organizers.
+     */
+    data: OrganizerCreateManyInput | OrganizerCreateManyInput[]
+    skipDuplicates?: boolean
+  }
+
+  /**
+   * Organizer createManyAndReturn
+   */
+  export type OrganizerCreateManyAndReturnArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Organizer
+     */
+    select?: OrganizerSelectCreateManyAndReturn<ExtArgs> | null
+    /**
+     * Omit specific fields from the Organizer
+     */
+    omit?: OrganizerOmit<ExtArgs> | null
+    /**
+     * The data used to create many Organizers.
+     */
+    data: OrganizerCreateManyInput | OrganizerCreateManyInput[]
+    skipDuplicates?: boolean
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: OrganizerIncludeCreateManyAndReturn<ExtArgs> | null
+  }
+
+  /**
+   * Organizer update
+   */
+  export type OrganizerUpdateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Organizer
+     */
+    select?: OrganizerSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the Organizer
+     */
+    omit?: OrganizerOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: OrganizerInclude<ExtArgs> | null
+    /**
+     * The data needed to update a Organizer.
+     */
+    data: XOR<OrganizerUpdateInput, OrganizerUncheckedUpdateInput>
+    /**
+     * Choose, which Organizer to update.
+     */
+    where: OrganizerWhereUniqueInput
+  }
+
+  /**
+   * Organizer updateMany
+   */
+  export type OrganizerUpdateManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * The data used to update Organizers.
+     */
+    data: XOR<OrganizerUpdateManyMutationInput, OrganizerUncheckedUpdateManyInput>
+    /**
+     * Filter which Organizers to update
+     */
+    where?: OrganizerWhereInput
+    /**
+     * Limit how many Organizers to update.
+     */
+    limit?: number
+  }
+
+  /**
+   * Organizer updateManyAndReturn
+   */
+  export type OrganizerUpdateManyAndReturnArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Organizer
+     */
+    select?: OrganizerSelectUpdateManyAndReturn<ExtArgs> | null
+    /**
+     * Omit specific fields from the Organizer
+     */
+    omit?: OrganizerOmit<ExtArgs> | null
+    /**
+     * The data used to update Organizers.
+     */
+    data: XOR<OrganizerUpdateManyMutationInput, OrganizerUncheckedUpdateManyInput>
+    /**
+     * Filter which Organizers to update
+     */
+    where?: OrganizerWhereInput
+    /**
+     * Limit how many Organizers to update.
+     */
+    limit?: number
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: OrganizerIncludeUpdateManyAndReturn<ExtArgs> | null
+  }
+
+  /**
+   * Organizer upsert
+   */
+  export type OrganizerUpsertArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Organizer
+     */
+    select?: OrganizerSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the Organizer
+     */
+    omit?: OrganizerOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: OrganizerInclude<ExtArgs> | null
+    /**
+     * The filter to search for the Organizer to update in case it exists.
+     */
+    where: OrganizerWhereUniqueInput
+    /**
+     * In case the Organizer found by the `where` argument doesn't exist, create a new Organizer with this data.
+     */
+    create: XOR<OrganizerCreateInput, OrganizerUncheckedCreateInput>
+    /**
+     * In case the Organizer was found with the provided `where` argument, update it with this data.
+     */
+    update: XOR<OrganizerUpdateInput, OrganizerUncheckedUpdateInput>
+  }
+
+  /**
+   * Organizer delete
+   */
+  export type OrganizerDeleteArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Organizer
+     */
+    select?: OrganizerSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the Organizer
+     */
+    omit?: OrganizerOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: OrganizerInclude<ExtArgs> | null
+    /**
+     * Filter which Organizer to delete.
+     */
+    where: OrganizerWhereUniqueInput
+  }
+
+  /**
+   * Organizer deleteMany
+   */
+  export type OrganizerDeleteManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Filter which Organizers to delete
+     */
+    where?: OrganizerWhereInput
+    /**
+     * Limit how many Organizers to delete.
+     */
+    limit?: number
+  }
+
+  /**
+   * Organizer.event
+   */
+  export type Organizer$eventArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Events
+     */
+    select?: EventsSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the Events
+     */
+    omit?: EventsOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: EventsInclude<ExtArgs> | null
+    where?: EventsWhereInput
+    orderBy?: EventsOrderByWithRelationInput | EventsOrderByWithRelationInput[]
+    cursor?: EventsWhereUniqueInput
+    take?: number
+    skip?: number
+    distinct?: EventsScalarFieldEnum | EventsScalarFieldEnum[]
+  }
+
+  /**
+   * Organizer without action
+   */
+  export type OrganizerDefaultArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Organizer
+     */
+    select?: OrganizerSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the Organizer
+     */
+    omit?: OrganizerOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: OrganizerInclude<ExtArgs> | null
+  }
+
+
+  /**
+   * Model Events
+   */
+
+  export type AggregateEvents = {
+    _count: EventsCountAggregateOutputType | null
+    _avg: EventsAvgAggregateOutputType | null
+    _sum: EventsSumAggregateOutputType | null
+    _min: EventsMinAggregateOutputType | null
+    _max: EventsMaxAggregateOutputType | null
+  }
+
+  export type EventsAvgAggregateOutputType = {
+    event_category_id: number | null
+    event_location_id: number | null
+    price: number | null
+  }
+
+  export type EventsSumAggregateOutputType = {
+    event_category_id: number | null
+    event_location_id: number | null
+    price: number | null
+  }
+
+  export type EventsMinAggregateOutputType = {
+    id: string | null
+    organizer_id: string | null
+    event_category_id: number | null
+    event_location_id: number | null
+    name: string | null
+    description: string | null
+    price: number | null
+    start_date: Date | null
+    end_date: Date | null
+    created_at: Date | null
+    updated_at: Date | null
+  }
+
+  export type EventsMaxAggregateOutputType = {
+    id: string | null
+    organizer_id: string | null
+    event_category_id: number | null
+    event_location_id: number | null
+    name: string | null
+    description: string | null
+    price: number | null
+    start_date: Date | null
+    end_date: Date | null
+    created_at: Date | null
+    updated_at: Date | null
+  }
+
+  export type EventsCountAggregateOutputType = {
+    id: number
+    organizer_id: number
+    event_category_id: number
+    event_location_id: number
+    name: number
+    description: number
+    price: number
+    start_date: number
+    end_date: number
+    created_at: number
+    updated_at: number
+    _all: number
+  }
+
+
+  export type EventsAvgAggregateInputType = {
+    event_category_id?: true
+    event_location_id?: true
+    price?: true
+  }
+
+  export type EventsSumAggregateInputType = {
+    event_category_id?: true
+    event_location_id?: true
+    price?: true
+  }
+
+  export type EventsMinAggregateInputType = {
+    id?: true
+    organizer_id?: true
+    event_category_id?: true
+    event_location_id?: true
+    name?: true
+    description?: true
+    price?: true
+    start_date?: true
+    end_date?: true
+    created_at?: true
+    updated_at?: true
+  }
+
+  export type EventsMaxAggregateInputType = {
+    id?: true
+    organizer_id?: true
+    event_category_id?: true
+    event_location_id?: true
+    name?: true
+    description?: true
+    price?: true
+    start_date?: true
+    end_date?: true
+    created_at?: true
+    updated_at?: true
+  }
+
+  export type EventsCountAggregateInputType = {
+    id?: true
+    organizer_id?: true
+    event_category_id?: true
+    event_location_id?: true
+    name?: true
+    description?: true
+    price?: true
+    start_date?: true
+    end_date?: true
+    created_at?: true
+    updated_at?: true
+    _all?: true
+  }
+
+  export type EventsAggregateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Filter which Events to aggregate.
+     */
+    where?: EventsWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of Events to fetch.
+     */
+    orderBy?: EventsOrderByWithRelationInput | EventsOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the start position
+     */
+    cursor?: EventsWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` Events from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` Events.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Count returned Events
+    **/
+    _count?: true | EventsCountAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to average
+    **/
+    _avg?: EventsAvgAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to sum
+    **/
+    _sum?: EventsSumAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to find the minimum value
+    **/
+    _min?: EventsMinAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to find the maximum value
+    **/
+    _max?: EventsMaxAggregateInputType
+  }
+
+  export type GetEventsAggregateType<T extends EventsAggregateArgs> = {
+        [P in keyof T & keyof AggregateEvents]: P extends '_count' | 'count'
+      ? T[P] extends true
+        ? number
+        : GetScalarType<T[P], AggregateEvents[P]>
+      : GetScalarType<T[P], AggregateEvents[P]>
+  }
+
+
+
+
+  export type EventsGroupByArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    where?: EventsWhereInput
+    orderBy?: EventsOrderByWithAggregationInput | EventsOrderByWithAggregationInput[]
+    by: EventsScalarFieldEnum[] | EventsScalarFieldEnum
+    having?: EventsScalarWhereWithAggregatesInput
+    take?: number
+    skip?: number
+    _count?: EventsCountAggregateInputType | true
+    _avg?: EventsAvgAggregateInputType
+    _sum?: EventsSumAggregateInputType
+    _min?: EventsMinAggregateInputType
+    _max?: EventsMaxAggregateInputType
+  }
+
+  export type EventsGroupByOutputType = {
+    id: string
+    organizer_id: string
+    event_category_id: number
+    event_location_id: number
+    name: string
+    description: string
+    price: number
+    start_date: Date
+    end_date: Date
+    created_at: Date
+    updated_at: Date
+    _count: EventsCountAggregateOutputType | null
+    _avg: EventsAvgAggregateOutputType | null
+    _sum: EventsSumAggregateOutputType | null
+    _min: EventsMinAggregateOutputType | null
+    _max: EventsMaxAggregateOutputType | null
+  }
+
+  type GetEventsGroupByPayload<T extends EventsGroupByArgs> = Prisma.PrismaPromise<
+    Array<
+      PickEnumerable<EventsGroupByOutputType, T['by']> &
+        {
+          [P in ((keyof T) & (keyof EventsGroupByOutputType))]: P extends '_count'
+            ? T[P] extends boolean
+              ? number
+              : GetScalarType<T[P], EventsGroupByOutputType[P]>
+            : GetScalarType<T[P], EventsGroupByOutputType[P]>
+        }
+      >
+    >
+
+
+  export type EventsSelect<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
+    id?: boolean
+    organizer_id?: boolean
+    event_category_id?: boolean
+    event_location_id?: boolean
+    name?: boolean
+    description?: boolean
+    price?: boolean
+    start_date?: boolean
+    end_date?: boolean
+    created_at?: boolean
+    updated_at?: boolean
+    organizer?: boolean | OrganizerDefaultArgs<ExtArgs>
+  }, ExtArgs["result"]["events"]>
+
+  export type EventsSelectCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
+    id?: boolean
+    organizer_id?: boolean
+    event_category_id?: boolean
+    event_location_id?: boolean
+    name?: boolean
+    description?: boolean
+    price?: boolean
+    start_date?: boolean
+    end_date?: boolean
+    created_at?: boolean
+    updated_at?: boolean
+    organizer?: boolean | OrganizerDefaultArgs<ExtArgs>
+  }, ExtArgs["result"]["events"]>
+
+  export type EventsSelectUpdateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
+    id?: boolean
+    organizer_id?: boolean
+    event_category_id?: boolean
+    event_location_id?: boolean
+    name?: boolean
+    description?: boolean
+    price?: boolean
+    start_date?: boolean
+    end_date?: boolean
+    created_at?: boolean
+    updated_at?: boolean
+    organizer?: boolean | OrganizerDefaultArgs<ExtArgs>
+  }, ExtArgs["result"]["events"]>
+
+  export type EventsSelectScalar = {
+    id?: boolean
+    organizer_id?: boolean
+    event_category_id?: boolean
+    event_location_id?: boolean
+    name?: boolean
+    description?: boolean
+    price?: boolean
+    start_date?: boolean
+    end_date?: boolean
+    created_at?: boolean
+    updated_at?: boolean
+  }
+
+  export type EventsOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "organizer_id" | "event_category_id" | "event_location_id" | "name" | "description" | "price" | "start_date" | "end_date" | "created_at" | "updated_at", ExtArgs["result"]["events"]>
+  export type EventsInclude<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    organizer?: boolean | OrganizerDefaultArgs<ExtArgs>
+  }
+  export type EventsIncludeCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    organizer?: boolean | OrganizerDefaultArgs<ExtArgs>
+  }
+  export type EventsIncludeUpdateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    organizer?: boolean | OrganizerDefaultArgs<ExtArgs>
+  }
+
+  export type $EventsPayload<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    name: "Events"
+    objects: {
+      organizer: Prisma.$OrganizerPayload<ExtArgs>
+    }
+    scalars: $Extensions.GetPayloadResult<{
+      id: string
+      organizer_id: string
+      event_category_id: number
+      event_location_id: number
+      name: string
+      description: string
+      price: number
+      start_date: Date
+      end_date: Date
+      created_at: Date
+      updated_at: Date
+    }, ExtArgs["result"]["events"]>
+    composites: {}
+  }
+
+  type EventsGetPayload<S extends boolean | null | undefined | EventsDefaultArgs> = $Result.GetResult<Prisma.$EventsPayload, S>
+
+  type EventsCountArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> =
+    Omit<EventsFindManyArgs, 'select' | 'include' | 'distinct' | 'omit'> & {
+      select?: EventsCountAggregateInputType | true
+    }
+
+  export interface EventsDelegate<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs, GlobalOmitOptions = {}> {
+    [K: symbol]: { types: Prisma.TypeMap<ExtArgs>['model']['Events'], meta: { name: 'Events' } }
+    /**
+     * Find zero or one Events that matches the filter.
+     * @param {EventsFindUniqueArgs} args - Arguments to find a Events
+     * @example
+     * // Get one Events
+     * const events = await prisma.events.findUnique({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findUnique<T extends EventsFindUniqueArgs>(args: SelectSubset<T, EventsFindUniqueArgs<ExtArgs>>): Prisma__EventsClient<$Result.GetResult<Prisma.$EventsPayload<ExtArgs>, T, "findUnique", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find one Events that matches the filter or throw an error with `error.code='P2025'`
+     * if no matches were found.
+     * @param {EventsFindUniqueOrThrowArgs} args - Arguments to find a Events
+     * @example
+     * // Get one Events
+     * const events = await prisma.events.findUniqueOrThrow({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findUniqueOrThrow<T extends EventsFindUniqueOrThrowArgs>(args: SelectSubset<T, EventsFindUniqueOrThrowArgs<ExtArgs>>): Prisma__EventsClient<$Result.GetResult<Prisma.$EventsPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find the first Events that matches the filter.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {EventsFindFirstArgs} args - Arguments to find a Events
+     * @example
+     * // Get one Events
+     * const events = await prisma.events.findFirst({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findFirst<T extends EventsFindFirstArgs>(args?: SelectSubset<T, EventsFindFirstArgs<ExtArgs>>): Prisma__EventsClient<$Result.GetResult<Prisma.$EventsPayload<ExtArgs>, T, "findFirst", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find the first Events that matches the filter or
+     * throw `PrismaKnownClientError` with `P2025` code if no matches were found.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {EventsFindFirstOrThrowArgs} args - Arguments to find a Events
+     * @example
+     * // Get one Events
+     * const events = await prisma.events.findFirstOrThrow({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findFirstOrThrow<T extends EventsFindFirstOrThrowArgs>(args?: SelectSubset<T, EventsFindFirstOrThrowArgs<ExtArgs>>): Prisma__EventsClient<$Result.GetResult<Prisma.$EventsPayload<ExtArgs>, T, "findFirstOrThrow", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find zero or more Events that matches the filter.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {EventsFindManyArgs} args - Arguments to filter and select certain fields only.
+     * @example
+     * // Get all Events
+     * const events = await prisma.events.findMany()
+     * 
+     * // Get first 10 Events
+     * const events = await prisma.events.findMany({ take: 10 })
+     * 
+     * // Only select the `id`
+     * const eventsWithIdOnly = await prisma.events.findMany({ select: { id: true } })
+     * 
+     */
+    findMany<T extends EventsFindManyArgs>(args?: SelectSubset<T, EventsFindManyArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$EventsPayload<ExtArgs>, T, "findMany", GlobalOmitOptions>>
+
+    /**
+     * Create a Events.
+     * @param {EventsCreateArgs} args - Arguments to create a Events.
+     * @example
+     * // Create one Events
+     * const Events = await prisma.events.create({
+     *   data: {
+     *     // ... data to create a Events
+     *   }
+     * })
+     * 
+     */
+    create<T extends EventsCreateArgs>(args: SelectSubset<T, EventsCreateArgs<ExtArgs>>): Prisma__EventsClient<$Result.GetResult<Prisma.$EventsPayload<ExtArgs>, T, "create", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Create many Events.
+     * @param {EventsCreateManyArgs} args - Arguments to create many Events.
+     * @example
+     * // Create many Events
+     * const events = await prisma.events.createMany({
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     *     
+     */
+    createMany<T extends EventsCreateManyArgs>(args?: SelectSubset<T, EventsCreateManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Create many Events and returns the data saved in the database.
+     * @param {EventsCreateManyAndReturnArgs} args - Arguments to create many Events.
+     * @example
+     * // Create many Events
+     * const events = await prisma.events.createManyAndReturn({
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * 
+     * // Create many Events and only return the `id`
+     * const eventsWithIdOnly = await prisma.events.createManyAndReturn({
+     *   select: { id: true },
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * 
+     */
+    createManyAndReturn<T extends EventsCreateManyAndReturnArgs>(args?: SelectSubset<T, EventsCreateManyAndReturnArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$EventsPayload<ExtArgs>, T, "createManyAndReturn", GlobalOmitOptions>>
+
+    /**
+     * Delete a Events.
+     * @param {EventsDeleteArgs} args - Arguments to delete one Events.
+     * @example
+     * // Delete one Events
+     * const Events = await prisma.events.delete({
+     *   where: {
+     *     // ... filter to delete one Events
+     *   }
+     * })
+     * 
+     */
+    delete<T extends EventsDeleteArgs>(args: SelectSubset<T, EventsDeleteArgs<ExtArgs>>): Prisma__EventsClient<$Result.GetResult<Prisma.$EventsPayload<ExtArgs>, T, "delete", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Update one Events.
+     * @param {EventsUpdateArgs} args - Arguments to update one Events.
+     * @example
+     * // Update one Events
+     * const events = await prisma.events.update({
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: {
+     *     // ... provide data here
+     *   }
+     * })
+     * 
+     */
+    update<T extends EventsUpdateArgs>(args: SelectSubset<T, EventsUpdateArgs<ExtArgs>>): Prisma__EventsClient<$Result.GetResult<Prisma.$EventsPayload<ExtArgs>, T, "update", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Delete zero or more Events.
+     * @param {EventsDeleteManyArgs} args - Arguments to filter Events to delete.
+     * @example
+     * // Delete a few Events
+     * const { count } = await prisma.events.deleteMany({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     * 
+     */
+    deleteMany<T extends EventsDeleteManyArgs>(args?: SelectSubset<T, EventsDeleteManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Update zero or more Events.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {EventsUpdateManyArgs} args - Arguments to update one or more rows.
+     * @example
+     * // Update many Events
+     * const events = await prisma.events.updateMany({
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: {
+     *     // ... provide data here
+     *   }
+     * })
+     * 
+     */
+    updateMany<T extends EventsUpdateManyArgs>(args: SelectSubset<T, EventsUpdateManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Update zero or more Events and returns the data updated in the database.
+     * @param {EventsUpdateManyAndReturnArgs} args - Arguments to update many Events.
+     * @example
+     * // Update many Events
+     * const events = await prisma.events.updateManyAndReturn({
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * 
+     * // Update zero or more Events and only return the `id`
+     * const eventsWithIdOnly = await prisma.events.updateManyAndReturn({
+     *   select: { id: true },
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * 
+     */
+    updateManyAndReturn<T extends EventsUpdateManyAndReturnArgs>(args: SelectSubset<T, EventsUpdateManyAndReturnArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$EventsPayload<ExtArgs>, T, "updateManyAndReturn", GlobalOmitOptions>>
+
+    /**
+     * Create or update one Events.
+     * @param {EventsUpsertArgs} args - Arguments to update or create a Events.
+     * @example
+     * // Update or create a Events
+     * const events = await prisma.events.upsert({
+     *   create: {
+     *     // ... data to create a Events
+     *   },
+     *   update: {
+     *     // ... in case it already exists, update
+     *   },
+     *   where: {
+     *     // ... the filter for the Events we want to update
+     *   }
+     * })
+     */
+    upsert<T extends EventsUpsertArgs>(args: SelectSubset<T, EventsUpsertArgs<ExtArgs>>): Prisma__EventsClient<$Result.GetResult<Prisma.$EventsPayload<ExtArgs>, T, "upsert", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+
+    /**
+     * Count the number of Events.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {EventsCountArgs} args - Arguments to filter Events to count.
+     * @example
+     * // Count the number of Events
+     * const count = await prisma.events.count({
+     *   where: {
+     *     // ... the filter for the Events we want to count
+     *   }
+     * })
+    **/
+    count<T extends EventsCountArgs>(
+      args?: Subset<T, EventsCountArgs>,
+    ): Prisma.PrismaPromise<
+      T extends $Utils.Record<'select', any>
+        ? T['select'] extends true
+          ? number
+          : GetScalarType<T['select'], EventsCountAggregateOutputType>
+        : number
+    >
+
+    /**
+     * Allows you to perform aggregations operations on a Events.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {EventsAggregateArgs} args - Select which aggregations you would like to apply and on what fields.
+     * @example
+     * // Ordered by age ascending
+     * // Where email contains prisma.io
+     * // Limited to the 10 users
+     * const aggregations = await prisma.user.aggregate({
+     *   _avg: {
+     *     age: true,
+     *   },
+     *   where: {
+     *     email: {
+     *       contains: "prisma.io",
+     *     },
+     *   },
+     *   orderBy: {
+     *     age: "asc",
+     *   },
+     *   take: 10,
+     * })
+    **/
+    aggregate<T extends EventsAggregateArgs>(args: Subset<T, EventsAggregateArgs>): Prisma.PrismaPromise<GetEventsAggregateType<T>>
+
+    /**
+     * Group by Events.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {EventsGroupByArgs} args - Group by arguments.
+     * @example
+     * // Group by city, order by createdAt, get count
+     * const result = await prisma.user.groupBy({
+     *   by: ['city', 'createdAt'],
+     *   orderBy: {
+     *     createdAt: true
+     *   },
+     *   _count: {
+     *     _all: true
+     *   },
+     * })
+     * 
+    **/
+    groupBy<
+      T extends EventsGroupByArgs,
+      HasSelectOrTake extends Or<
+        Extends<'skip', Keys<T>>,
+        Extends<'take', Keys<T>>
+      >,
+      OrderByArg extends True extends HasSelectOrTake
+        ? { orderBy: EventsGroupByArgs['orderBy'] }
+        : { orderBy?: EventsGroupByArgs['orderBy'] },
+      OrderFields extends ExcludeUnderscoreKeys<Keys<MaybeTupleToUnion<T['orderBy']>>>,
+      ByFields extends MaybeTupleToUnion<T['by']>,
+      ByValid extends Has<ByFields, OrderFields>,
+      HavingFields extends GetHavingFields<T['having']>,
+      HavingValid extends Has<ByFields, HavingFields>,
+      ByEmpty extends T['by'] extends never[] ? True : False,
+      InputErrors extends ByEmpty extends True
+      ? `Error: "by" must not be empty.`
+      : HavingValid extends False
+      ? {
+          [P in HavingFields]: P extends ByFields
+            ? never
+            : P extends string
+            ? `Error: Field "${P}" used in "having" needs to be provided in "by".`
+            : [
+                Error,
+                'Field ',
+                P,
+                ` in "having" needs to be provided in "by"`,
+              ]
+        }[HavingFields]
+      : 'take' extends Keys<T>
+      ? 'orderBy' extends Keys<T>
+        ? ByValid extends True
+          ? {}
+          : {
+              [P in OrderFields]: P extends ByFields
+                ? never
+                : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+            }[OrderFields]
+        : 'Error: If you provide "take", you also need to provide "orderBy"'
+      : 'skip' extends Keys<T>
+      ? 'orderBy' extends Keys<T>
+        ? ByValid extends True
+          ? {}
+          : {
+              [P in OrderFields]: P extends ByFields
+                ? never
+                : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+            }[OrderFields]
+        : 'Error: If you provide "skip", you also need to provide "orderBy"'
+      : ByValid extends True
+      ? {}
+      : {
+          [P in OrderFields]: P extends ByFields
+            ? never
+            : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+        }[OrderFields]
+    >(args: SubsetIntersection<T, EventsGroupByArgs, OrderByArg> & InputErrors): {} extends InputErrors ? GetEventsGroupByPayload<T> : Prisma.PrismaPromise<InputErrors>
+  /**
+   * Fields of the Events model
+   */
+  readonly fields: EventsFieldRefs;
+  }
+
+  /**
+   * The delegate class that acts as a "Promise-like" for Events.
+   * Why is this prefixed with `Prisma__`?
+   * Because we want to prevent naming conflicts as mentioned in
+   * https://github.com/prisma/prisma-client-js/issues/707
+   */
+  export interface Prisma__EventsClient<T, Null = never, ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs, GlobalOmitOptions = {}> extends Prisma.PrismaPromise<T> {
+    readonly [Symbol.toStringTag]: "PrismaPromise"
+    organizer<T extends OrganizerDefaultArgs<ExtArgs> = {}>(args?: Subset<T, OrganizerDefaultArgs<ExtArgs>>): Prisma__OrganizerClient<$Result.GetResult<Prisma.$OrganizerPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | Null, Null, ExtArgs, GlobalOmitOptions>
+    /**
+     * Attaches callbacks for the resolution and/or rejection of the Promise.
+     * @param onfulfilled The callback to execute when the Promise is resolved.
+     * @param onrejected The callback to execute when the Promise is rejected.
+     * @returns A Promise for the completion of which ever callback is executed.
+     */
+    then<TResult1 = T, TResult2 = never>(onfulfilled?: ((value: T) => TResult1 | PromiseLike<TResult1>) | undefined | null, onrejected?: ((reason: any) => TResult2 | PromiseLike<TResult2>) | undefined | null): $Utils.JsPromise<TResult1 | TResult2>
+    /**
+     * Attaches a callback for only the rejection of the Promise.
+     * @param onrejected The callback to execute when the Promise is rejected.
+     * @returns A Promise for the completion of the callback.
+     */
+    catch<TResult = never>(onrejected?: ((reason: any) => TResult | PromiseLike<TResult>) | undefined | null): $Utils.JsPromise<T | TResult>
+    /**
+     * Attaches a callback that is invoked when the Promise is settled (fulfilled or rejected). The
+     * resolved value cannot be modified from the callback.
+     * @param onfinally The callback to execute when the Promise is settled (fulfilled or rejected).
+     * @returns A Promise for the completion of the callback.
+     */
+    finally(onfinally?: (() => void) | undefined | null): $Utils.JsPromise<T>
+  }
+
+
+
+
+  /**
+   * Fields of the Events model
+   */
+  interface EventsFieldRefs {
+    readonly id: FieldRef<"Events", 'String'>
+    readonly organizer_id: FieldRef<"Events", 'String'>
+    readonly event_category_id: FieldRef<"Events", 'Int'>
+    readonly event_location_id: FieldRef<"Events", 'Int'>
+    readonly name: FieldRef<"Events", 'String'>
+    readonly description: FieldRef<"Events", 'String'>
+    readonly price: FieldRef<"Events", 'Int'>
+    readonly start_date: FieldRef<"Events", 'DateTime'>
+    readonly end_date: FieldRef<"Events", 'DateTime'>
+    readonly created_at: FieldRef<"Events", 'DateTime'>
+    readonly updated_at: FieldRef<"Events", 'DateTime'>
+  }
+    
+
+  // Custom InputTypes
+  /**
+   * Events findUnique
+   */
+  export type EventsFindUniqueArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Events
+     */
+    select?: EventsSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the Events
+     */
+    omit?: EventsOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: EventsInclude<ExtArgs> | null
+    /**
+     * Filter, which Events to fetch.
+     */
+    where: EventsWhereUniqueInput
+  }
+
+  /**
+   * Events findUniqueOrThrow
+   */
+  export type EventsFindUniqueOrThrowArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Events
+     */
+    select?: EventsSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the Events
+     */
+    omit?: EventsOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: EventsInclude<ExtArgs> | null
+    /**
+     * Filter, which Events to fetch.
+     */
+    where: EventsWhereUniqueInput
+  }
+
+  /**
+   * Events findFirst
+   */
+  export type EventsFindFirstArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Events
+     */
+    select?: EventsSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the Events
+     */
+    omit?: EventsOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: EventsInclude<ExtArgs> | null
+    /**
+     * Filter, which Events to fetch.
+     */
+    where?: EventsWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of Events to fetch.
+     */
+    orderBy?: EventsOrderByWithRelationInput | EventsOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for searching for Events.
+     */
+    cursor?: EventsWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` Events from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` Events.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
+     * 
+     * Filter by unique combinations of Events.
+     */
+    distinct?: EventsScalarFieldEnum | EventsScalarFieldEnum[]
+  }
+
+  /**
+   * Events findFirstOrThrow
+   */
+  export type EventsFindFirstOrThrowArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Events
+     */
+    select?: EventsSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the Events
+     */
+    omit?: EventsOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: EventsInclude<ExtArgs> | null
+    /**
+     * Filter, which Events to fetch.
+     */
+    where?: EventsWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of Events to fetch.
+     */
+    orderBy?: EventsOrderByWithRelationInput | EventsOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for searching for Events.
+     */
+    cursor?: EventsWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` Events from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` Events.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
+     * 
+     * Filter by unique combinations of Events.
+     */
+    distinct?: EventsScalarFieldEnum | EventsScalarFieldEnum[]
+  }
+
+  /**
+   * Events findMany
+   */
+  export type EventsFindManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Events
+     */
+    select?: EventsSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the Events
+     */
+    omit?: EventsOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: EventsInclude<ExtArgs> | null
+    /**
+     * Filter, which Events to fetch.
+     */
+    where?: EventsWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of Events to fetch.
+     */
+    orderBy?: EventsOrderByWithRelationInput | EventsOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for listing Events.
+     */
+    cursor?: EventsWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` Events from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` Events.
+     */
+    skip?: number
+    distinct?: EventsScalarFieldEnum | EventsScalarFieldEnum[]
+  }
+
+  /**
+   * Events create
+   */
+  export type EventsCreateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Events
+     */
+    select?: EventsSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the Events
+     */
+    omit?: EventsOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: EventsInclude<ExtArgs> | null
+    /**
+     * The data needed to create a Events.
+     */
+    data: XOR<EventsCreateInput, EventsUncheckedCreateInput>
+  }
+
+  /**
+   * Events createMany
+   */
+  export type EventsCreateManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * The data used to create many Events.
+     */
+    data: EventsCreateManyInput | EventsCreateManyInput[]
+    skipDuplicates?: boolean
+  }
+
+  /**
+   * Events createManyAndReturn
+   */
+  export type EventsCreateManyAndReturnArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Events
+     */
+    select?: EventsSelectCreateManyAndReturn<ExtArgs> | null
+    /**
+     * Omit specific fields from the Events
+     */
+    omit?: EventsOmit<ExtArgs> | null
+    /**
+     * The data used to create many Events.
+     */
+    data: EventsCreateManyInput | EventsCreateManyInput[]
+    skipDuplicates?: boolean
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: EventsIncludeCreateManyAndReturn<ExtArgs> | null
+  }
+
+  /**
+   * Events update
+   */
+  export type EventsUpdateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Events
+     */
+    select?: EventsSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the Events
+     */
+    omit?: EventsOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: EventsInclude<ExtArgs> | null
+    /**
+     * The data needed to update a Events.
+     */
+    data: XOR<EventsUpdateInput, EventsUncheckedUpdateInput>
+    /**
+     * Choose, which Events to update.
+     */
+    where: EventsWhereUniqueInput
+  }
+
+  /**
+   * Events updateMany
+   */
+  export type EventsUpdateManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * The data used to update Events.
+     */
+    data: XOR<EventsUpdateManyMutationInput, EventsUncheckedUpdateManyInput>
+    /**
+     * Filter which Events to update
+     */
+    where?: EventsWhereInput
+    /**
+     * Limit how many Events to update.
+     */
+    limit?: number
+  }
+
+  /**
+   * Events updateManyAndReturn
+   */
+  export type EventsUpdateManyAndReturnArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Events
+     */
+    select?: EventsSelectUpdateManyAndReturn<ExtArgs> | null
+    /**
+     * Omit specific fields from the Events
+     */
+    omit?: EventsOmit<ExtArgs> | null
+    /**
+     * The data used to update Events.
+     */
+    data: XOR<EventsUpdateManyMutationInput, EventsUncheckedUpdateManyInput>
+    /**
+     * Filter which Events to update
+     */
+    where?: EventsWhereInput
+    /**
+     * Limit how many Events to update.
+     */
+    limit?: number
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: EventsIncludeUpdateManyAndReturn<ExtArgs> | null
+  }
+
+  /**
+   * Events upsert
+   */
+  export type EventsUpsertArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Events
+     */
+    select?: EventsSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the Events
+     */
+    omit?: EventsOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: EventsInclude<ExtArgs> | null
+    /**
+     * The filter to search for the Events to update in case it exists.
+     */
+    where: EventsWhereUniqueInput
+    /**
+     * In case the Events found by the `where` argument doesn't exist, create a new Events with this data.
+     */
+    create: XOR<EventsCreateInput, EventsUncheckedCreateInput>
+    /**
+     * In case the Events was found with the provided `where` argument, update it with this data.
+     */
+    update: XOR<EventsUpdateInput, EventsUncheckedUpdateInput>
+  }
+
+  /**
+   * Events delete
+   */
+  export type EventsDeleteArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Events
+     */
+    select?: EventsSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the Events
+     */
+    omit?: EventsOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: EventsInclude<ExtArgs> | null
+    /**
+     * Filter which Events to delete.
+     */
+    where: EventsWhereUniqueInput
+  }
+
+  /**
+   * Events deleteMany
+   */
+  export type EventsDeleteManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Filter which Events to delete
+     */
+    where?: EventsWhereInput
+    /**
+     * Limit how many Events to delete.
+     */
+    limit?: number
+  }
+
+  /**
+   * Events without action
+   */
+  export type EventsDefaultArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Events
+     */
+    select?: EventsSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the Events
+     */
+    omit?: EventsOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: EventsInclude<ExtArgs> | null
   }
 
 
@@ -1991,6 +4536,31 @@ export namespace Prisma {
   };
 
   export type UsersScalarFieldEnum = (typeof UsersScalarFieldEnum)[keyof typeof UsersScalarFieldEnum]
+
+
+  export const OrganizerScalarFieldEnum: {
+    id: 'id',
+    user_id: 'user_id'
+  };
+
+  export type OrganizerScalarFieldEnum = (typeof OrganizerScalarFieldEnum)[keyof typeof OrganizerScalarFieldEnum]
+
+
+  export const EventsScalarFieldEnum: {
+    id: 'id',
+    organizer_id: 'organizer_id',
+    event_category_id: 'event_category_id',
+    event_location_id: 'event_location_id',
+    name: 'name',
+    description: 'description',
+    price: 'price',
+    start_date: 'start_date',
+    end_date: 'end_date',
+    created_at: 'created_at',
+    updated_at: 'updated_at'
+  };
+
+  export type EventsScalarFieldEnum = (typeof EventsScalarFieldEnum)[keyof typeof EventsScalarFieldEnum]
 
 
   export const SortOrder: {
@@ -2087,6 +4657,7 @@ export namespace Prisma {
     phone_number?: StringFilter<"Users"> | string
     created_at?: DateTimeFilter<"Users"> | Date | string
     updated_at?: DateTimeFilter<"Users"> | Date | string
+    organizer?: OrganizerListRelationFilter
   }
 
   export type UsersOrderByWithRelationInput = {
@@ -2100,6 +4671,7 @@ export namespace Prisma {
     phone_number?: SortOrder
     created_at?: SortOrder
     updated_at?: SortOrder
+    organizer?: OrganizerOrderByRelationAggregateInput
   }
 
   export type UsersWhereUniqueInput = Prisma.AtLeast<{
@@ -2116,6 +4688,7 @@ export namespace Prisma {
     phone_number?: StringFilter<"Users"> | string
     created_at?: DateTimeFilter<"Users"> | Date | string
     updated_at?: DateTimeFilter<"Users"> | Date | string
+    organizer?: OrganizerListRelationFilter
   }, "id" | "nik" | "email">
 
   export type UsersOrderByWithAggregationInput = {
@@ -2152,6 +4725,136 @@ export namespace Prisma {
     updated_at?: DateTimeWithAggregatesFilter<"Users"> | Date | string
   }
 
+  export type OrganizerWhereInput = {
+    AND?: OrganizerWhereInput | OrganizerWhereInput[]
+    OR?: OrganizerWhereInput[]
+    NOT?: OrganizerWhereInput | OrganizerWhereInput[]
+    id?: StringFilter<"Organizer"> | string
+    user_id?: StringFilter<"Organizer"> | string
+    user?: XOR<UsersScalarRelationFilter, UsersWhereInput>
+    event?: EventsListRelationFilter
+  }
+
+  export type OrganizerOrderByWithRelationInput = {
+    id?: SortOrder
+    user_id?: SortOrder
+    user?: UsersOrderByWithRelationInput
+    event?: EventsOrderByRelationAggregateInput
+  }
+
+  export type OrganizerWhereUniqueInput = Prisma.AtLeast<{
+    id?: string
+    AND?: OrganizerWhereInput | OrganizerWhereInput[]
+    OR?: OrganizerWhereInput[]
+    NOT?: OrganizerWhereInput | OrganizerWhereInput[]
+    user_id?: StringFilter<"Organizer"> | string
+    user?: XOR<UsersScalarRelationFilter, UsersWhereInput>
+    event?: EventsListRelationFilter
+  }, "id">
+
+  export type OrganizerOrderByWithAggregationInput = {
+    id?: SortOrder
+    user_id?: SortOrder
+    _count?: OrganizerCountOrderByAggregateInput
+    _max?: OrganizerMaxOrderByAggregateInput
+    _min?: OrganizerMinOrderByAggregateInput
+  }
+
+  export type OrganizerScalarWhereWithAggregatesInput = {
+    AND?: OrganizerScalarWhereWithAggregatesInput | OrganizerScalarWhereWithAggregatesInput[]
+    OR?: OrganizerScalarWhereWithAggregatesInput[]
+    NOT?: OrganizerScalarWhereWithAggregatesInput | OrganizerScalarWhereWithAggregatesInput[]
+    id?: StringWithAggregatesFilter<"Organizer"> | string
+    user_id?: StringWithAggregatesFilter<"Organizer"> | string
+  }
+
+  export type EventsWhereInput = {
+    AND?: EventsWhereInput | EventsWhereInput[]
+    OR?: EventsWhereInput[]
+    NOT?: EventsWhereInput | EventsWhereInput[]
+    id?: StringFilter<"Events"> | string
+    organizer_id?: StringFilter<"Events"> | string
+    event_category_id?: IntFilter<"Events"> | number
+    event_location_id?: IntFilter<"Events"> | number
+    name?: StringFilter<"Events"> | string
+    description?: StringFilter<"Events"> | string
+    price?: IntFilter<"Events"> | number
+    start_date?: DateTimeFilter<"Events"> | Date | string
+    end_date?: DateTimeFilter<"Events"> | Date | string
+    created_at?: DateTimeFilter<"Events"> | Date | string
+    updated_at?: DateTimeFilter<"Events"> | Date | string
+    organizer?: XOR<OrganizerScalarRelationFilter, OrganizerWhereInput>
+  }
+
+  export type EventsOrderByWithRelationInput = {
+    id?: SortOrder
+    organizer_id?: SortOrder
+    event_category_id?: SortOrder
+    event_location_id?: SortOrder
+    name?: SortOrder
+    description?: SortOrder
+    price?: SortOrder
+    start_date?: SortOrder
+    end_date?: SortOrder
+    created_at?: SortOrder
+    updated_at?: SortOrder
+    organizer?: OrganizerOrderByWithRelationInput
+  }
+
+  export type EventsWhereUniqueInput = Prisma.AtLeast<{
+    id?: string
+    AND?: EventsWhereInput | EventsWhereInput[]
+    OR?: EventsWhereInput[]
+    NOT?: EventsWhereInput | EventsWhereInput[]
+    organizer_id?: StringFilter<"Events"> | string
+    event_category_id?: IntFilter<"Events"> | number
+    event_location_id?: IntFilter<"Events"> | number
+    name?: StringFilter<"Events"> | string
+    description?: StringFilter<"Events"> | string
+    price?: IntFilter<"Events"> | number
+    start_date?: DateTimeFilter<"Events"> | Date | string
+    end_date?: DateTimeFilter<"Events"> | Date | string
+    created_at?: DateTimeFilter<"Events"> | Date | string
+    updated_at?: DateTimeFilter<"Events"> | Date | string
+    organizer?: XOR<OrganizerScalarRelationFilter, OrganizerWhereInput>
+  }, "id">
+
+  export type EventsOrderByWithAggregationInput = {
+    id?: SortOrder
+    organizer_id?: SortOrder
+    event_category_id?: SortOrder
+    event_location_id?: SortOrder
+    name?: SortOrder
+    description?: SortOrder
+    price?: SortOrder
+    start_date?: SortOrder
+    end_date?: SortOrder
+    created_at?: SortOrder
+    updated_at?: SortOrder
+    _count?: EventsCountOrderByAggregateInput
+    _avg?: EventsAvgOrderByAggregateInput
+    _max?: EventsMaxOrderByAggregateInput
+    _min?: EventsMinOrderByAggregateInput
+    _sum?: EventsSumOrderByAggregateInput
+  }
+
+  export type EventsScalarWhereWithAggregatesInput = {
+    AND?: EventsScalarWhereWithAggregatesInput | EventsScalarWhereWithAggregatesInput[]
+    OR?: EventsScalarWhereWithAggregatesInput[]
+    NOT?: EventsScalarWhereWithAggregatesInput | EventsScalarWhereWithAggregatesInput[]
+    id?: StringWithAggregatesFilter<"Events"> | string
+    organizer_id?: StringWithAggregatesFilter<"Events"> | string
+    event_category_id?: IntWithAggregatesFilter<"Events"> | number
+    event_location_id?: IntWithAggregatesFilter<"Events"> | number
+    name?: StringWithAggregatesFilter<"Events"> | string
+    description?: StringWithAggregatesFilter<"Events"> | string
+    price?: IntWithAggregatesFilter<"Events"> | number
+    start_date?: DateTimeWithAggregatesFilter<"Events"> | Date | string
+    end_date?: DateTimeWithAggregatesFilter<"Events"> | Date | string
+    created_at?: DateTimeWithAggregatesFilter<"Events"> | Date | string
+    updated_at?: DateTimeWithAggregatesFilter<"Events"> | Date | string
+  }
+
   export type UsersCreateInput = {
     id?: string
     nik: number
@@ -2163,6 +4866,7 @@ export namespace Prisma {
     phone_number: string
     created_at?: Date | string
     updated_at?: Date | string
+    organizer?: OrganizerCreateNestedManyWithoutUserInput
   }
 
   export type UsersUncheckedCreateInput = {
@@ -2176,6 +4880,7 @@ export namespace Prisma {
     phone_number: string
     created_at?: Date | string
     updated_at?: Date | string
+    organizer?: OrganizerUncheckedCreateNestedManyWithoutUserInput
   }
 
   export type UsersUpdateInput = {
@@ -2189,6 +4894,7 @@ export namespace Prisma {
     phone_number?: StringFieldUpdateOperationsInput | string
     created_at?: DateTimeFieldUpdateOperationsInput | Date | string
     updated_at?: DateTimeFieldUpdateOperationsInput | Date | string
+    organizer?: OrganizerUpdateManyWithoutUserNestedInput
   }
 
   export type UsersUncheckedUpdateInput = {
@@ -2202,6 +4908,7 @@ export namespace Prisma {
     phone_number?: StringFieldUpdateOperationsInput | string
     created_at?: DateTimeFieldUpdateOperationsInput | Date | string
     updated_at?: DateTimeFieldUpdateOperationsInput | Date | string
+    organizer?: OrganizerUncheckedUpdateManyWithoutUserNestedInput
   }
 
   export type UsersCreateManyInput = {
@@ -2243,6 +4950,141 @@ export namespace Prisma {
     updated_at?: DateTimeFieldUpdateOperationsInput | Date | string
   }
 
+  export type OrganizerCreateInput = {
+    id?: string
+    user: UsersCreateNestedOneWithoutOrganizerInput
+    event?: EventsCreateNestedManyWithoutOrganizerInput
+  }
+
+  export type OrganizerUncheckedCreateInput = {
+    id?: string
+    user_id: string
+    event?: EventsUncheckedCreateNestedManyWithoutOrganizerInput
+  }
+
+  export type OrganizerUpdateInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    user?: UsersUpdateOneRequiredWithoutOrganizerNestedInput
+    event?: EventsUpdateManyWithoutOrganizerNestedInput
+  }
+
+  export type OrganizerUncheckedUpdateInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    user_id?: StringFieldUpdateOperationsInput | string
+    event?: EventsUncheckedUpdateManyWithoutOrganizerNestedInput
+  }
+
+  export type OrganizerCreateManyInput = {
+    id?: string
+    user_id: string
+  }
+
+  export type OrganizerUpdateManyMutationInput = {
+    id?: StringFieldUpdateOperationsInput | string
+  }
+
+  export type OrganizerUncheckedUpdateManyInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    user_id?: StringFieldUpdateOperationsInput | string
+  }
+
+  export type EventsCreateInput = {
+    id?: string
+    event_category_id: number
+    event_location_id: number
+    name: string
+    description: string
+    price: number
+    start_date: Date | string
+    end_date: Date | string
+    created_at?: Date | string
+    updated_at?: Date | string
+    organizer: OrganizerCreateNestedOneWithoutEventInput
+  }
+
+  export type EventsUncheckedCreateInput = {
+    id?: string
+    organizer_id: string
+    event_category_id: number
+    event_location_id: number
+    name: string
+    description: string
+    price: number
+    start_date: Date | string
+    end_date: Date | string
+    created_at?: Date | string
+    updated_at?: Date | string
+  }
+
+  export type EventsUpdateInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    event_category_id?: IntFieldUpdateOperationsInput | number
+    event_location_id?: IntFieldUpdateOperationsInput | number
+    name?: StringFieldUpdateOperationsInput | string
+    description?: StringFieldUpdateOperationsInput | string
+    price?: IntFieldUpdateOperationsInput | number
+    start_date?: DateTimeFieldUpdateOperationsInput | Date | string
+    end_date?: DateTimeFieldUpdateOperationsInput | Date | string
+    created_at?: DateTimeFieldUpdateOperationsInput | Date | string
+    updated_at?: DateTimeFieldUpdateOperationsInput | Date | string
+    organizer?: OrganizerUpdateOneRequiredWithoutEventNestedInput
+  }
+
+  export type EventsUncheckedUpdateInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    organizer_id?: StringFieldUpdateOperationsInput | string
+    event_category_id?: IntFieldUpdateOperationsInput | number
+    event_location_id?: IntFieldUpdateOperationsInput | number
+    name?: StringFieldUpdateOperationsInput | string
+    description?: StringFieldUpdateOperationsInput | string
+    price?: IntFieldUpdateOperationsInput | number
+    start_date?: DateTimeFieldUpdateOperationsInput | Date | string
+    end_date?: DateTimeFieldUpdateOperationsInput | Date | string
+    created_at?: DateTimeFieldUpdateOperationsInput | Date | string
+    updated_at?: DateTimeFieldUpdateOperationsInput | Date | string
+  }
+
+  export type EventsCreateManyInput = {
+    id?: string
+    organizer_id: string
+    event_category_id: number
+    event_location_id: number
+    name: string
+    description: string
+    price: number
+    start_date: Date | string
+    end_date: Date | string
+    created_at?: Date | string
+    updated_at?: Date | string
+  }
+
+  export type EventsUpdateManyMutationInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    event_category_id?: IntFieldUpdateOperationsInput | number
+    event_location_id?: IntFieldUpdateOperationsInput | number
+    name?: StringFieldUpdateOperationsInput | string
+    description?: StringFieldUpdateOperationsInput | string
+    price?: IntFieldUpdateOperationsInput | number
+    start_date?: DateTimeFieldUpdateOperationsInput | Date | string
+    end_date?: DateTimeFieldUpdateOperationsInput | Date | string
+    created_at?: DateTimeFieldUpdateOperationsInput | Date | string
+    updated_at?: DateTimeFieldUpdateOperationsInput | Date | string
+  }
+
+  export type EventsUncheckedUpdateManyInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    organizer_id?: StringFieldUpdateOperationsInput | string
+    event_category_id?: IntFieldUpdateOperationsInput | number
+    event_location_id?: IntFieldUpdateOperationsInput | number
+    name?: StringFieldUpdateOperationsInput | string
+    description?: StringFieldUpdateOperationsInput | string
+    price?: IntFieldUpdateOperationsInput | number
+    start_date?: DateTimeFieldUpdateOperationsInput | Date | string
+    end_date?: DateTimeFieldUpdateOperationsInput | Date | string
+    created_at?: DateTimeFieldUpdateOperationsInput | Date | string
+    updated_at?: DateTimeFieldUpdateOperationsInput | Date | string
+  }
+
   export type StringFilter<$PrismaModel = never> = {
     equals?: string | StringFieldRefInput<$PrismaModel>
     in?: string[] | ListStringFieldRefInput<$PrismaModel>
@@ -2278,6 +5120,16 @@ export namespace Prisma {
     gt?: Date | string | DateTimeFieldRefInput<$PrismaModel>
     gte?: Date | string | DateTimeFieldRefInput<$PrismaModel>
     not?: NestedDateTimeFilter<$PrismaModel> | Date | string
+  }
+
+  export type OrganizerListRelationFilter = {
+    every?: OrganizerWhereInput
+    some?: OrganizerWhereInput
+    none?: OrganizerWhereInput
+  }
+
+  export type OrganizerOrderByRelationAggregateInput = {
+    _count?: SortOrder
   }
 
   export type UsersCountOrderByAggregateInput = {
@@ -2375,6 +5227,109 @@ export namespace Prisma {
     _max?: NestedDateTimeFilter<$PrismaModel>
   }
 
+  export type UsersScalarRelationFilter = {
+    is?: UsersWhereInput
+    isNot?: UsersWhereInput
+  }
+
+  export type EventsListRelationFilter = {
+    every?: EventsWhereInput
+    some?: EventsWhereInput
+    none?: EventsWhereInput
+  }
+
+  export type EventsOrderByRelationAggregateInput = {
+    _count?: SortOrder
+  }
+
+  export type OrganizerCountOrderByAggregateInput = {
+    id?: SortOrder
+    user_id?: SortOrder
+  }
+
+  export type OrganizerMaxOrderByAggregateInput = {
+    id?: SortOrder
+    user_id?: SortOrder
+  }
+
+  export type OrganizerMinOrderByAggregateInput = {
+    id?: SortOrder
+    user_id?: SortOrder
+  }
+
+  export type OrganizerScalarRelationFilter = {
+    is?: OrganizerWhereInput
+    isNot?: OrganizerWhereInput
+  }
+
+  export type EventsCountOrderByAggregateInput = {
+    id?: SortOrder
+    organizer_id?: SortOrder
+    event_category_id?: SortOrder
+    event_location_id?: SortOrder
+    name?: SortOrder
+    description?: SortOrder
+    price?: SortOrder
+    start_date?: SortOrder
+    end_date?: SortOrder
+    created_at?: SortOrder
+    updated_at?: SortOrder
+  }
+
+  export type EventsAvgOrderByAggregateInput = {
+    event_category_id?: SortOrder
+    event_location_id?: SortOrder
+    price?: SortOrder
+  }
+
+  export type EventsMaxOrderByAggregateInput = {
+    id?: SortOrder
+    organizer_id?: SortOrder
+    event_category_id?: SortOrder
+    event_location_id?: SortOrder
+    name?: SortOrder
+    description?: SortOrder
+    price?: SortOrder
+    start_date?: SortOrder
+    end_date?: SortOrder
+    created_at?: SortOrder
+    updated_at?: SortOrder
+  }
+
+  export type EventsMinOrderByAggregateInput = {
+    id?: SortOrder
+    organizer_id?: SortOrder
+    event_category_id?: SortOrder
+    event_location_id?: SortOrder
+    name?: SortOrder
+    description?: SortOrder
+    price?: SortOrder
+    start_date?: SortOrder
+    end_date?: SortOrder
+    created_at?: SortOrder
+    updated_at?: SortOrder
+  }
+
+  export type EventsSumOrderByAggregateInput = {
+    event_category_id?: SortOrder
+    event_location_id?: SortOrder
+    price?: SortOrder
+  }
+
+  export type OrganizerCreateNestedManyWithoutUserInput = {
+    create?: XOR<OrganizerCreateWithoutUserInput, OrganizerUncheckedCreateWithoutUserInput> | OrganizerCreateWithoutUserInput[] | OrganizerUncheckedCreateWithoutUserInput[]
+    connectOrCreate?: OrganizerCreateOrConnectWithoutUserInput | OrganizerCreateOrConnectWithoutUserInput[]
+    createMany?: OrganizerCreateManyUserInputEnvelope
+    connect?: OrganizerWhereUniqueInput | OrganizerWhereUniqueInput[]
+  }
+
+  export type OrganizerUncheckedCreateNestedManyWithoutUserInput = {
+    create?: XOR<OrganizerCreateWithoutUserInput, OrganizerUncheckedCreateWithoutUserInput> | OrganizerCreateWithoutUserInput[] | OrganizerUncheckedCreateWithoutUserInput[]
+    connectOrCreate?: OrganizerCreateOrConnectWithoutUserInput | OrganizerCreateOrConnectWithoutUserInput[]
+    createMany?: OrganizerCreateManyUserInputEnvelope
+    connect?: OrganizerWhereUniqueInput | OrganizerWhereUniqueInput[]
+  }
+
   export type StringFieldUpdateOperationsInput = {
     set?: string
   }
@@ -2389,6 +5344,104 @@ export namespace Prisma {
 
   export type DateTimeFieldUpdateOperationsInput = {
     set?: Date | string
+  }
+
+  export type OrganizerUpdateManyWithoutUserNestedInput = {
+    create?: XOR<OrganizerCreateWithoutUserInput, OrganizerUncheckedCreateWithoutUserInput> | OrganizerCreateWithoutUserInput[] | OrganizerUncheckedCreateWithoutUserInput[]
+    connectOrCreate?: OrganizerCreateOrConnectWithoutUserInput | OrganizerCreateOrConnectWithoutUserInput[]
+    upsert?: OrganizerUpsertWithWhereUniqueWithoutUserInput | OrganizerUpsertWithWhereUniqueWithoutUserInput[]
+    createMany?: OrganizerCreateManyUserInputEnvelope
+    set?: OrganizerWhereUniqueInput | OrganizerWhereUniqueInput[]
+    disconnect?: OrganizerWhereUniqueInput | OrganizerWhereUniqueInput[]
+    delete?: OrganizerWhereUniqueInput | OrganizerWhereUniqueInput[]
+    connect?: OrganizerWhereUniqueInput | OrganizerWhereUniqueInput[]
+    update?: OrganizerUpdateWithWhereUniqueWithoutUserInput | OrganizerUpdateWithWhereUniqueWithoutUserInput[]
+    updateMany?: OrganizerUpdateManyWithWhereWithoutUserInput | OrganizerUpdateManyWithWhereWithoutUserInput[]
+    deleteMany?: OrganizerScalarWhereInput | OrganizerScalarWhereInput[]
+  }
+
+  export type OrganizerUncheckedUpdateManyWithoutUserNestedInput = {
+    create?: XOR<OrganizerCreateWithoutUserInput, OrganizerUncheckedCreateWithoutUserInput> | OrganizerCreateWithoutUserInput[] | OrganizerUncheckedCreateWithoutUserInput[]
+    connectOrCreate?: OrganizerCreateOrConnectWithoutUserInput | OrganizerCreateOrConnectWithoutUserInput[]
+    upsert?: OrganizerUpsertWithWhereUniqueWithoutUserInput | OrganizerUpsertWithWhereUniqueWithoutUserInput[]
+    createMany?: OrganizerCreateManyUserInputEnvelope
+    set?: OrganizerWhereUniqueInput | OrganizerWhereUniqueInput[]
+    disconnect?: OrganizerWhereUniqueInput | OrganizerWhereUniqueInput[]
+    delete?: OrganizerWhereUniqueInput | OrganizerWhereUniqueInput[]
+    connect?: OrganizerWhereUniqueInput | OrganizerWhereUniqueInput[]
+    update?: OrganizerUpdateWithWhereUniqueWithoutUserInput | OrganizerUpdateWithWhereUniqueWithoutUserInput[]
+    updateMany?: OrganizerUpdateManyWithWhereWithoutUserInput | OrganizerUpdateManyWithWhereWithoutUserInput[]
+    deleteMany?: OrganizerScalarWhereInput | OrganizerScalarWhereInput[]
+  }
+
+  export type UsersCreateNestedOneWithoutOrganizerInput = {
+    create?: XOR<UsersCreateWithoutOrganizerInput, UsersUncheckedCreateWithoutOrganizerInput>
+    connectOrCreate?: UsersCreateOrConnectWithoutOrganizerInput
+    connect?: UsersWhereUniqueInput
+  }
+
+  export type EventsCreateNestedManyWithoutOrganizerInput = {
+    create?: XOR<EventsCreateWithoutOrganizerInput, EventsUncheckedCreateWithoutOrganizerInput> | EventsCreateWithoutOrganizerInput[] | EventsUncheckedCreateWithoutOrganizerInput[]
+    connectOrCreate?: EventsCreateOrConnectWithoutOrganizerInput | EventsCreateOrConnectWithoutOrganizerInput[]
+    createMany?: EventsCreateManyOrganizerInputEnvelope
+    connect?: EventsWhereUniqueInput | EventsWhereUniqueInput[]
+  }
+
+  export type EventsUncheckedCreateNestedManyWithoutOrganizerInput = {
+    create?: XOR<EventsCreateWithoutOrganizerInput, EventsUncheckedCreateWithoutOrganizerInput> | EventsCreateWithoutOrganizerInput[] | EventsUncheckedCreateWithoutOrganizerInput[]
+    connectOrCreate?: EventsCreateOrConnectWithoutOrganizerInput | EventsCreateOrConnectWithoutOrganizerInput[]
+    createMany?: EventsCreateManyOrganizerInputEnvelope
+    connect?: EventsWhereUniqueInput | EventsWhereUniqueInput[]
+  }
+
+  export type UsersUpdateOneRequiredWithoutOrganizerNestedInput = {
+    create?: XOR<UsersCreateWithoutOrganizerInput, UsersUncheckedCreateWithoutOrganizerInput>
+    connectOrCreate?: UsersCreateOrConnectWithoutOrganizerInput
+    upsert?: UsersUpsertWithoutOrganizerInput
+    connect?: UsersWhereUniqueInput
+    update?: XOR<XOR<UsersUpdateToOneWithWhereWithoutOrganizerInput, UsersUpdateWithoutOrganizerInput>, UsersUncheckedUpdateWithoutOrganizerInput>
+  }
+
+  export type EventsUpdateManyWithoutOrganizerNestedInput = {
+    create?: XOR<EventsCreateWithoutOrganizerInput, EventsUncheckedCreateWithoutOrganizerInput> | EventsCreateWithoutOrganizerInput[] | EventsUncheckedCreateWithoutOrganizerInput[]
+    connectOrCreate?: EventsCreateOrConnectWithoutOrganizerInput | EventsCreateOrConnectWithoutOrganizerInput[]
+    upsert?: EventsUpsertWithWhereUniqueWithoutOrganizerInput | EventsUpsertWithWhereUniqueWithoutOrganizerInput[]
+    createMany?: EventsCreateManyOrganizerInputEnvelope
+    set?: EventsWhereUniqueInput | EventsWhereUniqueInput[]
+    disconnect?: EventsWhereUniqueInput | EventsWhereUniqueInput[]
+    delete?: EventsWhereUniqueInput | EventsWhereUniqueInput[]
+    connect?: EventsWhereUniqueInput | EventsWhereUniqueInput[]
+    update?: EventsUpdateWithWhereUniqueWithoutOrganizerInput | EventsUpdateWithWhereUniqueWithoutOrganizerInput[]
+    updateMany?: EventsUpdateManyWithWhereWithoutOrganizerInput | EventsUpdateManyWithWhereWithoutOrganizerInput[]
+    deleteMany?: EventsScalarWhereInput | EventsScalarWhereInput[]
+  }
+
+  export type EventsUncheckedUpdateManyWithoutOrganizerNestedInput = {
+    create?: XOR<EventsCreateWithoutOrganizerInput, EventsUncheckedCreateWithoutOrganizerInput> | EventsCreateWithoutOrganizerInput[] | EventsUncheckedCreateWithoutOrganizerInput[]
+    connectOrCreate?: EventsCreateOrConnectWithoutOrganizerInput | EventsCreateOrConnectWithoutOrganizerInput[]
+    upsert?: EventsUpsertWithWhereUniqueWithoutOrganizerInput | EventsUpsertWithWhereUniqueWithoutOrganizerInput[]
+    createMany?: EventsCreateManyOrganizerInputEnvelope
+    set?: EventsWhereUniqueInput | EventsWhereUniqueInput[]
+    disconnect?: EventsWhereUniqueInput | EventsWhereUniqueInput[]
+    delete?: EventsWhereUniqueInput | EventsWhereUniqueInput[]
+    connect?: EventsWhereUniqueInput | EventsWhereUniqueInput[]
+    update?: EventsUpdateWithWhereUniqueWithoutOrganizerInput | EventsUpdateWithWhereUniqueWithoutOrganizerInput[]
+    updateMany?: EventsUpdateManyWithWhereWithoutOrganizerInput | EventsUpdateManyWithWhereWithoutOrganizerInput[]
+    deleteMany?: EventsScalarWhereInput | EventsScalarWhereInput[]
+  }
+
+  export type OrganizerCreateNestedOneWithoutEventInput = {
+    create?: XOR<OrganizerCreateWithoutEventInput, OrganizerUncheckedCreateWithoutEventInput>
+    connectOrCreate?: OrganizerCreateOrConnectWithoutEventInput
+    connect?: OrganizerWhereUniqueInput
+  }
+
+  export type OrganizerUpdateOneRequiredWithoutEventNestedInput = {
+    create?: XOR<OrganizerCreateWithoutEventInput, OrganizerUncheckedCreateWithoutEventInput>
+    connectOrCreate?: OrganizerCreateOrConnectWithoutEventInput
+    upsert?: OrganizerUpsertWithoutEventInput
+    connect?: OrganizerWhereUniqueInput
+    update?: XOR<XOR<OrganizerUpdateToOneWithWhereWithoutEventInput, OrganizerUpdateWithoutEventInput>, OrganizerUncheckedUpdateWithoutEventInput>
   }
 
   export type NestedStringFilter<$PrismaModel = never> = {
@@ -2483,6 +5536,293 @@ export namespace Prisma {
     _count?: NestedIntFilter<$PrismaModel>
     _min?: NestedDateTimeFilter<$PrismaModel>
     _max?: NestedDateTimeFilter<$PrismaModel>
+  }
+
+  export type OrganizerCreateWithoutUserInput = {
+    id?: string
+    event?: EventsCreateNestedManyWithoutOrganizerInput
+  }
+
+  export type OrganizerUncheckedCreateWithoutUserInput = {
+    id?: string
+    event?: EventsUncheckedCreateNestedManyWithoutOrganizerInput
+  }
+
+  export type OrganizerCreateOrConnectWithoutUserInput = {
+    where: OrganizerWhereUniqueInput
+    create: XOR<OrganizerCreateWithoutUserInput, OrganizerUncheckedCreateWithoutUserInput>
+  }
+
+  export type OrganizerCreateManyUserInputEnvelope = {
+    data: OrganizerCreateManyUserInput | OrganizerCreateManyUserInput[]
+    skipDuplicates?: boolean
+  }
+
+  export type OrganizerUpsertWithWhereUniqueWithoutUserInput = {
+    where: OrganizerWhereUniqueInput
+    update: XOR<OrganizerUpdateWithoutUserInput, OrganizerUncheckedUpdateWithoutUserInput>
+    create: XOR<OrganizerCreateWithoutUserInput, OrganizerUncheckedCreateWithoutUserInput>
+  }
+
+  export type OrganizerUpdateWithWhereUniqueWithoutUserInput = {
+    where: OrganizerWhereUniqueInput
+    data: XOR<OrganizerUpdateWithoutUserInput, OrganizerUncheckedUpdateWithoutUserInput>
+  }
+
+  export type OrganizerUpdateManyWithWhereWithoutUserInput = {
+    where: OrganizerScalarWhereInput
+    data: XOR<OrganizerUpdateManyMutationInput, OrganizerUncheckedUpdateManyWithoutUserInput>
+  }
+
+  export type OrganizerScalarWhereInput = {
+    AND?: OrganizerScalarWhereInput | OrganizerScalarWhereInput[]
+    OR?: OrganizerScalarWhereInput[]
+    NOT?: OrganizerScalarWhereInput | OrganizerScalarWhereInput[]
+    id?: StringFilter<"Organizer"> | string
+    user_id?: StringFilter<"Organizer"> | string
+  }
+
+  export type UsersCreateWithoutOrganizerInput = {
+    id?: string
+    nik: number
+    name: string
+    email: string
+    password: string
+    address: string
+    birthdate: Date | string
+    phone_number: string
+    created_at?: Date | string
+    updated_at?: Date | string
+  }
+
+  export type UsersUncheckedCreateWithoutOrganizerInput = {
+    id?: string
+    nik: number
+    name: string
+    email: string
+    password: string
+    address: string
+    birthdate: Date | string
+    phone_number: string
+    created_at?: Date | string
+    updated_at?: Date | string
+  }
+
+  export type UsersCreateOrConnectWithoutOrganizerInput = {
+    where: UsersWhereUniqueInput
+    create: XOR<UsersCreateWithoutOrganizerInput, UsersUncheckedCreateWithoutOrganizerInput>
+  }
+
+  export type EventsCreateWithoutOrganizerInput = {
+    id?: string
+    event_category_id: number
+    event_location_id: number
+    name: string
+    description: string
+    price: number
+    start_date: Date | string
+    end_date: Date | string
+    created_at?: Date | string
+    updated_at?: Date | string
+  }
+
+  export type EventsUncheckedCreateWithoutOrganizerInput = {
+    id?: string
+    event_category_id: number
+    event_location_id: number
+    name: string
+    description: string
+    price: number
+    start_date: Date | string
+    end_date: Date | string
+    created_at?: Date | string
+    updated_at?: Date | string
+  }
+
+  export type EventsCreateOrConnectWithoutOrganizerInput = {
+    where: EventsWhereUniqueInput
+    create: XOR<EventsCreateWithoutOrganizerInput, EventsUncheckedCreateWithoutOrganizerInput>
+  }
+
+  export type EventsCreateManyOrganizerInputEnvelope = {
+    data: EventsCreateManyOrganizerInput | EventsCreateManyOrganizerInput[]
+    skipDuplicates?: boolean
+  }
+
+  export type UsersUpsertWithoutOrganizerInput = {
+    update: XOR<UsersUpdateWithoutOrganizerInput, UsersUncheckedUpdateWithoutOrganizerInput>
+    create: XOR<UsersCreateWithoutOrganizerInput, UsersUncheckedCreateWithoutOrganizerInput>
+    where?: UsersWhereInput
+  }
+
+  export type UsersUpdateToOneWithWhereWithoutOrganizerInput = {
+    where?: UsersWhereInput
+    data: XOR<UsersUpdateWithoutOrganizerInput, UsersUncheckedUpdateWithoutOrganizerInput>
+  }
+
+  export type UsersUpdateWithoutOrganizerInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    nik?: IntFieldUpdateOperationsInput | number
+    name?: StringFieldUpdateOperationsInput | string
+    email?: StringFieldUpdateOperationsInput | string
+    password?: StringFieldUpdateOperationsInput | string
+    address?: StringFieldUpdateOperationsInput | string
+    birthdate?: DateTimeFieldUpdateOperationsInput | Date | string
+    phone_number?: StringFieldUpdateOperationsInput | string
+    created_at?: DateTimeFieldUpdateOperationsInput | Date | string
+    updated_at?: DateTimeFieldUpdateOperationsInput | Date | string
+  }
+
+  export type UsersUncheckedUpdateWithoutOrganizerInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    nik?: IntFieldUpdateOperationsInput | number
+    name?: StringFieldUpdateOperationsInput | string
+    email?: StringFieldUpdateOperationsInput | string
+    password?: StringFieldUpdateOperationsInput | string
+    address?: StringFieldUpdateOperationsInput | string
+    birthdate?: DateTimeFieldUpdateOperationsInput | Date | string
+    phone_number?: StringFieldUpdateOperationsInput | string
+    created_at?: DateTimeFieldUpdateOperationsInput | Date | string
+    updated_at?: DateTimeFieldUpdateOperationsInput | Date | string
+  }
+
+  export type EventsUpsertWithWhereUniqueWithoutOrganizerInput = {
+    where: EventsWhereUniqueInput
+    update: XOR<EventsUpdateWithoutOrganizerInput, EventsUncheckedUpdateWithoutOrganizerInput>
+    create: XOR<EventsCreateWithoutOrganizerInput, EventsUncheckedCreateWithoutOrganizerInput>
+  }
+
+  export type EventsUpdateWithWhereUniqueWithoutOrganizerInput = {
+    where: EventsWhereUniqueInput
+    data: XOR<EventsUpdateWithoutOrganizerInput, EventsUncheckedUpdateWithoutOrganizerInput>
+  }
+
+  export type EventsUpdateManyWithWhereWithoutOrganizerInput = {
+    where: EventsScalarWhereInput
+    data: XOR<EventsUpdateManyMutationInput, EventsUncheckedUpdateManyWithoutOrganizerInput>
+  }
+
+  export type EventsScalarWhereInput = {
+    AND?: EventsScalarWhereInput | EventsScalarWhereInput[]
+    OR?: EventsScalarWhereInput[]
+    NOT?: EventsScalarWhereInput | EventsScalarWhereInput[]
+    id?: StringFilter<"Events"> | string
+    organizer_id?: StringFilter<"Events"> | string
+    event_category_id?: IntFilter<"Events"> | number
+    event_location_id?: IntFilter<"Events"> | number
+    name?: StringFilter<"Events"> | string
+    description?: StringFilter<"Events"> | string
+    price?: IntFilter<"Events"> | number
+    start_date?: DateTimeFilter<"Events"> | Date | string
+    end_date?: DateTimeFilter<"Events"> | Date | string
+    created_at?: DateTimeFilter<"Events"> | Date | string
+    updated_at?: DateTimeFilter<"Events"> | Date | string
+  }
+
+  export type OrganizerCreateWithoutEventInput = {
+    id?: string
+    user: UsersCreateNestedOneWithoutOrganizerInput
+  }
+
+  export type OrganizerUncheckedCreateWithoutEventInput = {
+    id?: string
+    user_id: string
+  }
+
+  export type OrganizerCreateOrConnectWithoutEventInput = {
+    where: OrganizerWhereUniqueInput
+    create: XOR<OrganizerCreateWithoutEventInput, OrganizerUncheckedCreateWithoutEventInput>
+  }
+
+  export type OrganizerUpsertWithoutEventInput = {
+    update: XOR<OrganizerUpdateWithoutEventInput, OrganizerUncheckedUpdateWithoutEventInput>
+    create: XOR<OrganizerCreateWithoutEventInput, OrganizerUncheckedCreateWithoutEventInput>
+    where?: OrganizerWhereInput
+  }
+
+  export type OrganizerUpdateToOneWithWhereWithoutEventInput = {
+    where?: OrganizerWhereInput
+    data: XOR<OrganizerUpdateWithoutEventInput, OrganizerUncheckedUpdateWithoutEventInput>
+  }
+
+  export type OrganizerUpdateWithoutEventInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    user?: UsersUpdateOneRequiredWithoutOrganizerNestedInput
+  }
+
+  export type OrganizerUncheckedUpdateWithoutEventInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    user_id?: StringFieldUpdateOperationsInput | string
+  }
+
+  export type OrganizerCreateManyUserInput = {
+    id?: string
+  }
+
+  export type OrganizerUpdateWithoutUserInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    event?: EventsUpdateManyWithoutOrganizerNestedInput
+  }
+
+  export type OrganizerUncheckedUpdateWithoutUserInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    event?: EventsUncheckedUpdateManyWithoutOrganizerNestedInput
+  }
+
+  export type OrganizerUncheckedUpdateManyWithoutUserInput = {
+    id?: StringFieldUpdateOperationsInput | string
+  }
+
+  export type EventsCreateManyOrganizerInput = {
+    id?: string
+    event_category_id: number
+    event_location_id: number
+    name: string
+    description: string
+    price: number
+    start_date: Date | string
+    end_date: Date | string
+    created_at?: Date | string
+    updated_at?: Date | string
+  }
+
+  export type EventsUpdateWithoutOrganizerInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    event_category_id?: IntFieldUpdateOperationsInput | number
+    event_location_id?: IntFieldUpdateOperationsInput | number
+    name?: StringFieldUpdateOperationsInput | string
+    description?: StringFieldUpdateOperationsInput | string
+    price?: IntFieldUpdateOperationsInput | number
+    start_date?: DateTimeFieldUpdateOperationsInput | Date | string
+    end_date?: DateTimeFieldUpdateOperationsInput | Date | string
+    created_at?: DateTimeFieldUpdateOperationsInput | Date | string
+    updated_at?: DateTimeFieldUpdateOperationsInput | Date | string
+  }
+
+  export type EventsUncheckedUpdateWithoutOrganizerInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    event_category_id?: IntFieldUpdateOperationsInput | number
+    event_location_id?: IntFieldUpdateOperationsInput | number
+    name?: StringFieldUpdateOperationsInput | string
+    description?: StringFieldUpdateOperationsInput | string
+    price?: IntFieldUpdateOperationsInput | number
+    start_date?: DateTimeFieldUpdateOperationsInput | Date | string
+    end_date?: DateTimeFieldUpdateOperationsInput | Date | string
+    created_at?: DateTimeFieldUpdateOperationsInput | Date | string
+    updated_at?: DateTimeFieldUpdateOperationsInput | Date | string
+  }
+
+  export type EventsUncheckedUpdateManyWithoutOrganizerInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    event_category_id?: IntFieldUpdateOperationsInput | number
+    event_location_id?: IntFieldUpdateOperationsInput | number
+    name?: StringFieldUpdateOperationsInput | string
+    description?: StringFieldUpdateOperationsInput | string
+    price?: IntFieldUpdateOperationsInput | number
+    start_date?: DateTimeFieldUpdateOperationsInput | Date | string
+    end_date?: DateTimeFieldUpdateOperationsInput | Date | string
+    created_at?: DateTimeFieldUpdateOperationsInput | Date | string
+    updated_at?: DateTimeFieldUpdateOperationsInput | Date | string
   }
 
 
