@@ -122,13 +122,13 @@ exports.Prisma.TransactionIsolationLevel = makeStrictEnum({
 
 exports.Prisma.UsersScalarFieldEnum = {
   id: 'id',
-  nik: 'nik',
   name: 'name',
   email: 'email',
   password: 'password',
-  address: 'address',
+  country: 'country',
   birthdate: 'birthdate',
   phone_number: 'phone_number',
+  avatar: 'avatar',
   created_at: 'created_at',
   updated_at: 'updated_at'
 };
@@ -152,6 +152,11 @@ exports.Prisma.EventsScalarFieldEnum = {
   updated_at: 'updated_at'
 };
 
+exports.Prisma.Event_CategoryScalarFieldEnum = {
+  id: 'id',
+  name: 'name'
+};
+
 exports.Prisma.SortOrder = {
   asc: 'asc',
   desc: 'desc'
@@ -166,7 +171,8 @@ exports.Prisma.QueryMode = {
 exports.Prisma.ModelName = {
   Users: 'Users',
   Organizer: 'Organizer',
-  Events: 'Events'
+  Events: 'Events',
+  Event_Category: 'Event_Category'
 };
 
 /**
