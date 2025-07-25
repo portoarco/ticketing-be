@@ -48,8 +48,3 @@ model Events {
 
   organizer Organizer @relation(fields: [organizer_id], references: [id])
 }
-
-model Event_Category {
-  id   String @id @default(uuid())
-  name String @unique
-}
