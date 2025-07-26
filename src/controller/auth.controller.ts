@@ -5,14 +5,22 @@ import { hashPassword } from "../../utils/hash";
 
 class AuthController {
   public async register(req: Request, res: Response, next: NextFunction) {
-    const { name, email, password, country, birthdate, phone_number } =
-      req.body;
+    const {
+      first_name,
+      last_name,
+      email,
+      password,
+      country,
+      birthdate,
+      phone_number,
+    } = req.body;
     const hashedPassword = await hashPassword(password);
 
     try {
       const newUser = await prisma.users.create({
         data: {
-          name,
+          first_name,
+          last_name,
           email,
           password: hashedPassword,
           country,
@@ -20,7 +28,6 @@ class AuthController {
           phone_number,
         },
       });
-
       res.status(201).send({ success: true, data: newUser });
     } catch (error) {
       throw new AppError("Something went wrong", 500);

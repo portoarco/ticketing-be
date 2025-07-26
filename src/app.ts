@@ -1,7 +1,7 @@
 import dotenv from "dotenv";
 dotenv.config();
 import cors from "cors";
-import express, { Application, Request, Response } from "express";
+import express, { Application, NextFunction, Request, Response } from "express";
 import AuthRouter from "./router/auth.router";
 
 const PORT: string = process.env.PORT || "8000";
@@ -12,6 +12,7 @@ class App {
     this.app = express();
     this.configure();
     this.route();
+    this.errorMiddleware();
   }
 
   private configure(): void {
@@ -28,6 +29,17 @@ class App {
 
     this.app.use("/auth", authRouter.getRouter());
   }
+
+  // error handler
+  private errorMiddleware(): void {
+    this.app.use(
+      (error: any, req: Request, res: Response, next: NextFunction) => {
+        console.log(error);
+        res.status(500).send(error);
+      }
+    );
+  }
+
   public start(): void {
     this.app.listen(PORT, () => {
       console.log(`API is Running at http://localhost:${PORT}`);
