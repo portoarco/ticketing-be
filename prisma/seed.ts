@@ -11,7 +11,8 @@ async function seed() {
 
     // Create Users Data
     for (let i = 0; i < 10; i++) {
-      const name = faker.person.fullName();
+      const first_name = faker.person.firstName();
+      const last_name = faker.person.lastName();
       const email = faker.internet.email();
       const password = faker.internet.password();
       const country = faker.location.country();
@@ -21,7 +22,8 @@ async function seed() {
 
       const users = await prisma.users.create({
         data: {
-          name,
+          first_name,
+          last_name,
           email,
           password,
           country,
@@ -31,7 +33,7 @@ async function seed() {
         },
       });
 
-      console.info(`Create Data ${users.name}`);
+      console.info(`Create Data ${users.first_name} ${users.last_name}`);
     }
 
     // Create Organizer
