@@ -131,6 +131,7 @@ exports.Prisma.UsersScalarFieldEnum = {
   phone_number: 'phone_number',
   avatar: 'avatar',
   refferal_code: 'refferal_code',
+  isVerified: 'isVerified',
   created_at: 'created_at',
   updated_at: 'updated_at'
 };

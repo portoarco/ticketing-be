@@ -1,6 +1,7 @@
 import { body, validationResult } from "express-validator";
 import AppError from "../../errors/AppError";
 import { Request, Response, NextFunction } from "express";
+import { prisma } from "../../config/prisma";
 
 // response error handler
 const resValidationHandler = (
@@ -28,14 +29,17 @@ export const regisValidator = [
     .notEmpty()
     .withMessage("Email is required")
     .isEmail()
-    .withMessage("Invalid Email"),
-  body("password").notEmpty().isStrongPassword({
-    minLength: 6,
-    minLowercase: 1,
-    minUppercase: 1,
-    minNumbers: 1,
-    minSymbols: 1,
-  }),
+    .withMessage("Invalid Format Email"),
+  body("password")
+    .notEmpty()
+    .isStrongPassword({
+      minLength: 6,
+      minLowercase: 1,
+      minUppercase: 1,
+      minNumbers: 1,
+      minSymbols: 1,
+    })
+    .withMessage("Invalid Format Password"),
   body("birthdate").notEmpty(),
   body("phone_number").notEmpty(),
   resValidationHandler,
