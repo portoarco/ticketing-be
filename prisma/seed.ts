@@ -9,6 +9,23 @@ async function seed() {
     // await prisma.events.deleteMany();
     await prisma.organizer.deleteMany();
 
+    // Eky --start
+    const categories = [
+      "Music",
+      "Art & Culture",
+      "Food & Drink",
+      "Tech",
+      "Health",
+      "Sports",
+    ];
+
+    const createCategories = categories.map((name) =>
+      prisma.event_Category.create({ data: { name } })
+    );
+
+    const createdPromises = await Promise.all(createCategories);
+    //Eky --end
+
     // Create Users Data
     for (let i = 0; i < 10; i++) {
       const first_name = faker.person.firstName();
@@ -49,6 +66,26 @@ async function seed() {
         data: { user_id: users.id },
       });
     }
+
+    // Create Events - Eky - start
+
+    const event_name = faker.lorem.sentence();
+    const event_description = faker.lorem.text();
+    const event_price = faker.number.int({ min: 10, max: 300 });
+    const event_startDate = faker.date.between({
+      from: new Date("2025-01-01"),
+      to: new Date("2026-01-01"),
+    });
+    const oneDayInMilis = 86400000;
+    let event_endDate;
+    if (Math.floor(Math.random() * 2) == 1 && event_startDate) {
+      event_endDate = new Date(
+        event_startDate.getTime() +
+          oneDayInMilis * Math.floor(Math.random() * 3 + 1)
+      );
+    }
+
+    // Eky - end
 
     console.info(`\n Create All Dummy Data Success ✅`);
   } catch (error) {

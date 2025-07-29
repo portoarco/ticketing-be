@@ -160,6 +160,11 @@ exports.Prisma.Event_CategoryScalarFieldEnum = {
   name: 'name'
 };
 
+exports.Prisma.Event_LocationScalarFieldEnum = {
+  id: 'id',
+  name: 'name'
+};
+
 exports.Prisma.SortOrder = {
   asc: 'asc',
   desc: 'desc'
@@ -180,7 +185,8 @@ exports.Prisma.ModelName = {
   Users: 'Users',
   Organizer: 'Organizer',
   Events: 'Events',
-  Event_Category: 'Event_Category'
+  Event_Category: 'Event_Category',
+  Event_Location: 'Event_Location'
 };
 
 /**
