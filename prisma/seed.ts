@@ -87,6 +87,19 @@ async function seed() {
 
     // Eky - end
 
+    // Create Event Locations
+    // const city = faker.location.city();
+    // const address = faker.location.streetAddress();
+
+    // for(let i = 0; i<users.length;i++){
+    //   await prisma.events.create({
+    //     data:{
+    //       user
+    //     }
+    //   })
+
+    // }
+
     console.info(`\n Create All Dummy Data Success ✅`);
   } catch (error) {
     console.info(`Create Dummy Data Failed: ${error}`);
