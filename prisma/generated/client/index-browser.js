@@ -162,7 +162,9 @@ exports.Prisma.Event_CategoryScalarFieldEnum = {
 
 exports.Prisma.Event_LocationScalarFieldEnum = {
   id: 'id',
-  name: 'name'
+  event_id: 'event_id',
+  city: 'city',
+  address: 'address'
 };
 
 exports.Prisma.SortOrder = {

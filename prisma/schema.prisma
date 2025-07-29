@@ -63,7 +63,9 @@ model Event_Category {
 
 model Event_Location {
   id   String @id @default(uuid())
-  name String @unique
+  event_id String
+  city String 
+  address String
 
   event Events[]
 }

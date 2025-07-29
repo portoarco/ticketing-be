@@ -5808,34 +5808,46 @@ export namespace Prisma {
 
   export type Event_LocationMinAggregateOutputType = {
     id: string | null
-    name: string | null
+    event_id: string | null
+    city: string | null
+    address: string | null
   }
 
   export type Event_LocationMaxAggregateOutputType = {
     id: string | null
-    name: string | null
+    event_id: string | null
+    city: string | null
+    address: string | null
   }
 
   export type Event_LocationCountAggregateOutputType = {
     id: number
-    name: number
+    event_id: number
+    city: number
+    address: number
     _all: number
   }
 
 
   export type Event_LocationMinAggregateInputType = {
     id?: true
-    name?: true
+    event_id?: true
+    city?: true
+    address?: true
   }
 
   export type Event_LocationMaxAggregateInputType = {
     id?: true
-    name?: true
+    event_id?: true
+    city?: true
+    address?: true
   }
 
   export type Event_LocationCountAggregateInputType = {
     id?: true
-    name?: true
+    event_id?: true
+    city?: true
+    address?: true
     _all?: true
   }
 
@@ -5913,7 +5925,9 @@ export namespace Prisma {
 
   export type Event_LocationGroupByOutputType = {
     id: string
-    name: string
+    event_id: string
+    city: string
+    address: string
     _count: Event_LocationCountAggregateOutputType | null
     _min: Event_LocationMinAggregateOutputType | null
     _max: Event_LocationMaxAggregateOutputType | null
@@ -5935,27 +5949,35 @@ export namespace Prisma {
 
   export type Event_LocationSelect<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
     id?: boolean
-    name?: boolean
+    event_id?: boolean
+    city?: boolean
+    address?: boolean
     event?: boolean | Event_Location$eventArgs<ExtArgs>
     _count?: boolean | Event_LocationCountOutputTypeDefaultArgs<ExtArgs>
   }, ExtArgs["result"]["event_Location"]>
 
   export type Event_LocationSelectCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
     id?: boolean
-    name?: boolean
+    event_id?: boolean
+    city?: boolean
+    address?: boolean
   }, ExtArgs["result"]["event_Location"]>
 
   export type Event_LocationSelectUpdateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
     id?: boolean
-    name?: boolean
+    event_id?: boolean
+    city?: boolean
+    address?: boolean
   }, ExtArgs["result"]["event_Location"]>
 
   export type Event_LocationSelectScalar = {
     id?: boolean
-    name?: boolean
+    event_id?: boolean
+    city?: boolean
+    address?: boolean
   }
 
-  export type Event_LocationOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "name", ExtArgs["result"]["event_Location"]>
+  export type Event_LocationOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "event_id" | "city" | "address", ExtArgs["result"]["event_Location"]>
   export type Event_LocationInclude<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     event?: boolean | Event_Location$eventArgs<ExtArgs>
     _count?: boolean | Event_LocationCountOutputTypeDefaultArgs<ExtArgs>
@@ -5970,7 +5992,9 @@ export namespace Prisma {
     }
     scalars: $Extensions.GetPayloadResult<{
       id: string
-      name: string
+      event_id: string
+      city: string
+      address: string
     }, ExtArgs["result"]["event_Location"]>
     composites: {}
   }
@@ -6396,7 +6420,9 @@ export namespace Prisma {
    */
   interface Event_LocationFieldRefs {
     readonly id: FieldRef<"Event_Location", 'String'>
-    readonly name: FieldRef<"Event_Location", 'String'>
+    readonly event_id: FieldRef<"Event_Location", 'String'>
+    readonly city: FieldRef<"Event_Location", 'String'>
+    readonly address: FieldRef<"Event_Location", 'String'>
   }
     
 
@@ -6895,7 +6921,9 @@ export namespace Prisma {
 
   export const Event_LocationScalarFieldEnum: {
     id: 'id',
-    name: 'name'
+    event_id: 'event_id',
+    city: 'city',
+    address: 'address'
   };
 
   export type Event_LocationScalarFieldEnum = (typeof Event_LocationScalarFieldEnum)[keyof typeof Event_LocationScalarFieldEnum]
@@ -7272,28 +7300,36 @@ export namespace Prisma {
     OR?: Event_LocationWhereInput[]
     NOT?: Event_LocationWhereInput | Event_LocationWhereInput[]
     id?: StringFilter<"Event_Location"> | string
-    name?: StringFilter<"Event_Location"> | string
+    event_id?: StringFilter<"Event_Location"> | string
+    city?: StringFilter<"Event_Location"> | string
+    address?: StringFilter<"Event_Location"> | string
     event?: EventsListRelationFilter
   }
 
   export type Event_LocationOrderByWithRelationInput = {
     id?: SortOrder
-    name?: SortOrder
+    event_id?: SortOrder
+    city?: SortOrder
+    address?: SortOrder
     event?: EventsOrderByRelationAggregateInput
   }
 
   export type Event_LocationWhereUniqueInput = Prisma.AtLeast<{
     id?: string
-    name?: string
     AND?: Event_LocationWhereInput | Event_LocationWhereInput[]
     OR?: Event_LocationWhereInput[]
     NOT?: Event_LocationWhereInput | Event_LocationWhereInput[]
+    event_id?: StringFilter<"Event_Location"> | string
+    city?: StringFilter<"Event_Location"> | string
+    address?: StringFilter<"Event_Location"> | string
     event?: EventsListRelationFilter
-  }, "id" | "name">
+  }, "id">
 
   export type Event_LocationOrderByWithAggregationInput = {
     id?: SortOrder
-    name?: SortOrder
+    event_id?: SortOrder
+    city?: SortOrder
+    address?: SortOrder
     _count?: Event_LocationCountOrderByAggregateInput
     _max?: Event_LocationMaxOrderByAggregateInput
     _min?: Event_LocationMinOrderByAggregateInput
@@ -7304,7 +7340,9 @@ export namespace Prisma {
     OR?: Event_LocationScalarWhereWithAggregatesInput[]
     NOT?: Event_LocationScalarWhereWithAggregatesInput | Event_LocationScalarWhereWithAggregatesInput[]
     id?: StringWithAggregatesFilter<"Event_Location"> | string
-    name?: StringWithAggregatesFilter<"Event_Location"> | string
+    event_id?: StringWithAggregatesFilter<"Event_Location"> | string
+    city?: StringWithAggregatesFilter<"Event_Location"> | string
+    address?: StringWithAggregatesFilter<"Event_Location"> | string
   }
 
   export type UsersCreateInput = {
@@ -7597,41 +7635,55 @@ export namespace Prisma {
 
   export type Event_LocationCreateInput = {
     id?: string
-    name: string
+    event_id: string
+    city: string
+    address: string
     event?: EventsCreateNestedManyWithoutEvent_locationInput
   }
 
   export type Event_LocationUncheckedCreateInput = {
     id?: string
-    name: string
+    event_id: string
+    city: string
+    address: string
     event?: EventsUncheckedCreateNestedManyWithoutEvent_locationInput
   }
 
   export type Event_LocationUpdateInput = {
     id?: StringFieldUpdateOperationsInput | string
-    name?: StringFieldUpdateOperationsInput | string
+    event_id?: StringFieldUpdateOperationsInput | string
+    city?: StringFieldUpdateOperationsInput | string
+    address?: StringFieldUpdateOperationsInput | string
     event?: EventsUpdateManyWithoutEvent_locationNestedInput
   }
 
   export type Event_LocationUncheckedUpdateInput = {
     id?: StringFieldUpdateOperationsInput | string
-    name?: StringFieldUpdateOperationsInput | string
+    event_id?: StringFieldUpdateOperationsInput | string
+    city?: StringFieldUpdateOperationsInput | string
+    address?: StringFieldUpdateOperationsInput | string
     event?: EventsUncheckedUpdateManyWithoutEvent_locationNestedInput
   }
 
   export type Event_LocationCreateManyInput = {
     id?: string
-    name: string
+    event_id: string
+    city: string
+    address: string
   }
 
   export type Event_LocationUpdateManyMutationInput = {
     id?: StringFieldUpdateOperationsInput | string
-    name?: StringFieldUpdateOperationsInput | string
+    event_id?: StringFieldUpdateOperationsInput | string
+    city?: StringFieldUpdateOperationsInput | string
+    address?: StringFieldUpdateOperationsInput | string
   }
 
   export type Event_LocationUncheckedUpdateManyInput = {
     id?: StringFieldUpdateOperationsInput | string
-    name?: StringFieldUpdateOperationsInput | string
+    event_id?: StringFieldUpdateOperationsInput | string
+    city?: StringFieldUpdateOperationsInput | string
+    address?: StringFieldUpdateOperationsInput | string
   }
 
   export type StringFilter<$PrismaModel = never> = {
@@ -7965,17 +8017,23 @@ export namespace Prisma {
 
   export type Event_LocationCountOrderByAggregateInput = {
     id?: SortOrder
-    name?: SortOrder
+    event_id?: SortOrder
+    city?: SortOrder
+    address?: SortOrder
   }
 
   export type Event_LocationMaxOrderByAggregateInput = {
     id?: SortOrder
-    name?: SortOrder
+    event_id?: SortOrder
+    city?: SortOrder
+    address?: SortOrder
   }
 
   export type Event_LocationMinOrderByAggregateInput = {
     id?: SortOrder
-    name?: SortOrder
+    event_id?: SortOrder
+    city?: SortOrder
+    address?: SortOrder
   }
 
   export type OrganizerCreateNestedManyWithoutUserInput = {
@@ -8629,12 +8687,16 @@ export namespace Prisma {
 
   export type Event_LocationCreateWithoutEventInput = {
     id?: string
-    name: string
+    event_id: string
+    city: string
+    address: string
   }
 
   export type Event_LocationUncheckedCreateWithoutEventInput = {
     id?: string
-    name: string
+    event_id: string
+    city: string
+    address: string
   }
 
   export type Event_LocationCreateOrConnectWithoutEventInput = {
@@ -8697,12 +8759,16 @@ export namespace Prisma {
 
   export type Event_LocationUpdateWithoutEventInput = {
     id?: StringFieldUpdateOperationsInput | string
-    name?: StringFieldUpdateOperationsInput | string
+    event_id?: StringFieldUpdateOperationsInput | string
+    city?: StringFieldUpdateOperationsInput | string
+    address?: StringFieldUpdateOperationsInput | string
   }
 
   export type Event_LocationUncheckedUpdateWithoutEventInput = {
     id?: StringFieldUpdateOperationsInput | string
-    name?: StringFieldUpdateOperationsInput | string
+    event_id?: StringFieldUpdateOperationsInput | string
+    city?: StringFieldUpdateOperationsInput | string
+    address?: StringFieldUpdateOperationsInput | string
   }
 
   export type EventsCreateWithoutEvent_categoryInput = {
