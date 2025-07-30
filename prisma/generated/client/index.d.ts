@@ -24,6 +24,11 @@ export type Users = $Result.DefaultSelection<Prisma.$UsersPayload>
  */
 export type Organizer = $Result.DefaultSelection<Prisma.$OrganizerPayload>
 /**
+ * Model Articles
+ * 
+ */
+export type Articles = $Result.DefaultSelection<Prisma.$ArticlesPayload>
+/**
  * Model Events
  * 
  */
@@ -38,6 +43,79 @@ export type Event_Category = $Result.DefaultSelection<Prisma.$Event_CategoryPayl
  * 
  */
 export type Event_Location = $Result.DefaultSelection<Prisma.$Event_LocationPayload>
+/**
+ * Model Event_Seat
+ * 
+ */
+export type Event_Seat = $Result.DefaultSelection<Prisma.$Event_SeatPayload>
+/**
+ * Model Event_Reviews
+ * 
+ */
+export type Event_Reviews = $Result.DefaultSelection<Prisma.$Event_ReviewsPayload>
+/**
+ * Model Event_Attendees
+ * 
+ */
+export type Event_Attendees = $Result.DefaultSelection<Prisma.$Event_AttendeesPayload>
+/**
+ * Model Referral_Code
+ * 
+ */
+export type Referral_Code = $Result.DefaultSelection<Prisma.$Referral_CodePayload>
+/**
+ * Model Referral_Usage
+ * 
+ */
+export type Referral_Usage = $Result.DefaultSelection<Prisma.$Referral_UsagePayload>
+/**
+ * Model Voucher
+ * 
+ */
+export type Voucher = $Result.DefaultSelection<Prisma.$VoucherPayload>
+/**
+ * Model Transactions
+ * 
+ */
+export type Transactions = $Result.DefaultSelection<Prisma.$TransactionsPayload>
+/**
+ * Model Transactions_detail
+ * 
+ */
+export type Transactions_detail = $Result.DefaultSelection<Prisma.$Transactions_detailPayload>
+
+/**
+ * Enums
+ */
+export namespace $Enums {
+  export const Status: {
+  PENDING: 'PENDING',
+  CONFIRMED: 'CONFIRMED',
+  COMPLETED: 'COMPLETED',
+  CANCELED: 'CANCELED'
+};
+
+export type Status = (typeof Status)[keyof typeof Status]
+
+
+export const TransactionStatus: {
+  PENDING: 'PENDING',
+  PAID: 'PAID',
+  REJECTED: 'REJECTED',
+  CANCELED: 'CANCELED'
+};
+
+export type TransactionStatus = (typeof TransactionStatus)[keyof typeof TransactionStatus]
+
+}
+
+export type Status = $Enums.Status
+
+export const Status: typeof $Enums.Status
+
+export type TransactionStatus = $Enums.TransactionStatus
+
+export const TransactionStatus: typeof $Enums.TransactionStatus
 
 /**
  * ##  Prisma Client ʲˢ
@@ -55,7 +133,7 @@ export type Event_Location = $Result.DefaultSelection<Prisma.$Event_LocationPayl
  */
 export class PrismaClient<
   ClientOptions extends Prisma.PrismaClientOptions = Prisma.PrismaClientOptions,
-  U = 'log' extends keyof ClientOptions ? ClientOptions['log'] extends Array<Prisma.LogLevel | Prisma.LogDefinition> ? Prisma.GetEvents<ClientOptions['log']> : never : never,
+  const U = 'log' extends keyof ClientOptions ? ClientOptions['log'] extends Array<Prisma.LogLevel | Prisma.LogDefinition> ? Prisma.GetEvents<ClientOptions['log']> : never : never,
   ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs
 > {
   [K: symbol]: { types: Prisma.TypeMap<ExtArgs>['other'] }
@@ -185,6 +263,16 @@ export class PrismaClient<
   get organizer(): Prisma.OrganizerDelegate<ExtArgs, ClientOptions>;
 
   /**
+   * `prisma.articles`: Exposes CRUD operations for the **Articles** model.
+    * Example usage:
+    * ```ts
+    * // Fetch zero or more Articles
+    * const articles = await prisma.articles.findMany()
+    * ```
+    */
+  get articles(): Prisma.ArticlesDelegate<ExtArgs, ClientOptions>;
+
+  /**
    * `prisma.events`: Exposes CRUD operations for the **Events** model.
     * Example usage:
     * ```ts
@@ -213,6 +301,86 @@ export class PrismaClient<
     * ```
     */
   get event_Location(): Prisma.Event_LocationDelegate<ExtArgs, ClientOptions>;
+
+  /**
+   * `prisma.event_Seat`: Exposes CRUD operations for the **Event_Seat** model.
+    * Example usage:
+    * ```ts
+    * // Fetch zero or more Event_Seats
+    * const event_Seats = await prisma.event_Seat.findMany()
+    * ```
+    */
+  get event_Seat(): Prisma.Event_SeatDelegate<ExtArgs, ClientOptions>;
+
+  /**
+   * `prisma.event_Reviews`: Exposes CRUD operations for the **Event_Reviews** model.
+    * Example usage:
+    * ```ts
+    * // Fetch zero or more Event_Reviews
+    * const event_Reviews = await prisma.event_Reviews.findMany()
+    * ```
+    */
+  get event_Reviews(): Prisma.Event_ReviewsDelegate<ExtArgs, ClientOptions>;
+
+  /**
+   * `prisma.event_Attendees`: Exposes CRUD operations for the **Event_Attendees** model.
+    * Example usage:
+    * ```ts
+    * // Fetch zero or more Event_Attendees
+    * const event_Attendees = await prisma.event_Attendees.findMany()
+    * ```
+    */
+  get event_Attendees(): Prisma.Event_AttendeesDelegate<ExtArgs, ClientOptions>;
+
+  /**
+   * `prisma.referral_Code`: Exposes CRUD operations for the **Referral_Code** model.
+    * Example usage:
+    * ```ts
+    * // Fetch zero or more Referral_Codes
+    * const referral_Codes = await prisma.referral_Code.findMany()
+    * ```
+    */
+  get referral_Code(): Prisma.Referral_CodeDelegate<ExtArgs, ClientOptions>;
+
+  /**
+   * `prisma.referral_Usage`: Exposes CRUD operations for the **Referral_Usage** model.
+    * Example usage:
+    * ```ts
+    * // Fetch zero or more Referral_Usages
+    * const referral_Usages = await prisma.referral_Usage.findMany()
+    * ```
+    */
+  get referral_Usage(): Prisma.Referral_UsageDelegate<ExtArgs, ClientOptions>;
+
+  /**
+   * `prisma.voucher`: Exposes CRUD operations for the **Voucher** model.
+    * Example usage:
+    * ```ts
+    * // Fetch zero or more Vouchers
+    * const vouchers = await prisma.voucher.findMany()
+    * ```
+    */
+  get voucher(): Prisma.VoucherDelegate<ExtArgs, ClientOptions>;
+
+  /**
+   * `prisma.transactions`: Exposes CRUD operations for the **Transactions** model.
+    * Example usage:
+    * ```ts
+    * // Fetch zero or more Transactions
+    * const transactions = await prisma.transactions.findMany()
+    * ```
+    */
+  get transactions(): Prisma.TransactionsDelegate<ExtArgs, ClientOptions>;
+
+  /**
+   * `prisma.transactions_detail`: Exposes CRUD operations for the **Transactions_detail** model.
+    * Example usage:
+    * ```ts
+    * // Fetch zero or more Transactions_details
+    * const transactions_details = await prisma.transactions_detail.findMany()
+    * ```
+    */
+  get transactions_detail(): Prisma.Transactions_detailDelegate<ExtArgs, ClientOptions>;
 }
 
 export namespace Prisma {
@@ -271,8 +439,8 @@ export namespace Prisma {
   export import Exact = $Public.Exact
 
   /**
-   * Prisma Client JS version: 6.12.0
-   * Query Engine version: 8047c96bbd92db98a2abc7c9323ce77c02c89dbc
+   * Prisma Client JS version: 6.13.0
+   * Query Engine version: 361e86d0ea4987e9f53a565309b3eed797a6bcbd
    */
   export type PrismaVersion = {
     client: string
@@ -655,9 +823,18 @@ export namespace Prisma {
   export const ModelName: {
     Users: 'Users',
     Organizer: 'Organizer',
+    Articles: 'Articles',
     Events: 'Events',
     Event_Category: 'Event_Category',
-    Event_Location: 'Event_Location'
+    Event_Location: 'Event_Location',
+    Event_Seat: 'Event_Seat',
+    Event_Reviews: 'Event_Reviews',
+    Event_Attendees: 'Event_Attendees',
+    Referral_Code: 'Referral_Code',
+    Referral_Usage: 'Referral_Usage',
+    Voucher: 'Voucher',
+    Transactions: 'Transactions',
+    Transactions_detail: 'Transactions_detail'
   };
 
   export type ModelName = (typeof ModelName)[keyof typeof ModelName]
@@ -676,7 +853,7 @@ export namespace Prisma {
       omit: GlobalOmitOptions
     }
     meta: {
-      modelProps: "users" | "organizer" | "events" | "event_Category" | "event_Location"
+      modelProps: "users" | "organizer" | "articles" | "events" | "event_Category" | "event_Location" | "event_Seat" | "event_Reviews" | "event_Attendees" | "referral_Code" | "referral_Usage" | "voucher" | "transactions" | "transactions_detail"
       txIsolationLevel: Prisma.TransactionIsolationLevel
     }
     model: {
@@ -825,6 +1002,80 @@ export namespace Prisma {
           count: {
             args: Prisma.OrganizerCountArgs<ExtArgs>
             result: $Utils.Optional<OrganizerCountAggregateOutputType> | number
+          }
+        }
+      }
+      Articles: {
+        payload: Prisma.$ArticlesPayload<ExtArgs>
+        fields: Prisma.ArticlesFieldRefs
+        operations: {
+          findUnique: {
+            args: Prisma.ArticlesFindUniqueArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$ArticlesPayload> | null
+          }
+          findUniqueOrThrow: {
+            args: Prisma.ArticlesFindUniqueOrThrowArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$ArticlesPayload>
+          }
+          findFirst: {
+            args: Prisma.ArticlesFindFirstArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$ArticlesPayload> | null
+          }
+          findFirstOrThrow: {
+            args: Prisma.ArticlesFindFirstOrThrowArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$ArticlesPayload>
+          }
+          findMany: {
+            args: Prisma.ArticlesFindManyArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$ArticlesPayload>[]
+          }
+          create: {
+            args: Prisma.ArticlesCreateArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$ArticlesPayload>
+          }
+          createMany: {
+            args: Prisma.ArticlesCreateManyArgs<ExtArgs>
+            result: BatchPayload
+          }
+          createManyAndReturn: {
+            args: Prisma.ArticlesCreateManyAndReturnArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$ArticlesPayload>[]
+          }
+          delete: {
+            args: Prisma.ArticlesDeleteArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$ArticlesPayload>
+          }
+          update: {
+            args: Prisma.ArticlesUpdateArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$ArticlesPayload>
+          }
+          deleteMany: {
+            args: Prisma.ArticlesDeleteManyArgs<ExtArgs>
+            result: BatchPayload
+          }
+          updateMany: {
+            args: Prisma.ArticlesUpdateManyArgs<ExtArgs>
+            result: BatchPayload
+          }
+          updateManyAndReturn: {
+            args: Prisma.ArticlesUpdateManyAndReturnArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$ArticlesPayload>[]
+          }
+          upsert: {
+            args: Prisma.ArticlesUpsertArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$ArticlesPayload>
+          }
+          aggregate: {
+            args: Prisma.ArticlesAggregateArgs<ExtArgs>
+            result: $Utils.Optional<AggregateArticles>
+          }
+          groupBy: {
+            args: Prisma.ArticlesGroupByArgs<ExtArgs>
+            result: $Utils.Optional<ArticlesGroupByOutputType>[]
+          }
+          count: {
+            args: Prisma.ArticlesCountArgs<ExtArgs>
+            result: $Utils.Optional<ArticlesCountAggregateOutputType> | number
           }
         }
       }
@@ -1050,6 +1301,598 @@ export namespace Prisma {
           }
         }
       }
+      Event_Seat: {
+        payload: Prisma.$Event_SeatPayload<ExtArgs>
+        fields: Prisma.Event_SeatFieldRefs
+        operations: {
+          findUnique: {
+            args: Prisma.Event_SeatFindUniqueArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$Event_SeatPayload> | null
+          }
+          findUniqueOrThrow: {
+            args: Prisma.Event_SeatFindUniqueOrThrowArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$Event_SeatPayload>
+          }
+          findFirst: {
+            args: Prisma.Event_SeatFindFirstArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$Event_SeatPayload> | null
+          }
+          findFirstOrThrow: {
+            args: Prisma.Event_SeatFindFirstOrThrowArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$Event_SeatPayload>
+          }
+          findMany: {
+            args: Prisma.Event_SeatFindManyArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$Event_SeatPayload>[]
+          }
+          create: {
+            args: Prisma.Event_SeatCreateArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$Event_SeatPayload>
+          }
+          createMany: {
+            args: Prisma.Event_SeatCreateManyArgs<ExtArgs>
+            result: BatchPayload
+          }
+          createManyAndReturn: {
+            args: Prisma.Event_SeatCreateManyAndReturnArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$Event_SeatPayload>[]
+          }
+          delete: {
+            args: Prisma.Event_SeatDeleteArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$Event_SeatPayload>
+          }
+          update: {
+            args: Prisma.Event_SeatUpdateArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$Event_SeatPayload>
+          }
+          deleteMany: {
+            args: Prisma.Event_SeatDeleteManyArgs<ExtArgs>
+            result: BatchPayload
+          }
+          updateMany: {
+            args: Prisma.Event_SeatUpdateManyArgs<ExtArgs>
+            result: BatchPayload
+          }
+          updateManyAndReturn: {
+            args: Prisma.Event_SeatUpdateManyAndReturnArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$Event_SeatPayload>[]
+          }
+          upsert: {
+            args: Prisma.Event_SeatUpsertArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$Event_SeatPayload>
+          }
+          aggregate: {
+            args: Prisma.Event_SeatAggregateArgs<ExtArgs>
+            result: $Utils.Optional<AggregateEvent_Seat>
+          }
+          groupBy: {
+            args: Prisma.Event_SeatGroupByArgs<ExtArgs>
+            result: $Utils.Optional<Event_SeatGroupByOutputType>[]
+          }
+          count: {
+            args: Prisma.Event_SeatCountArgs<ExtArgs>
+            result: $Utils.Optional<Event_SeatCountAggregateOutputType> | number
+          }
+        }
+      }
+      Event_Reviews: {
+        payload: Prisma.$Event_ReviewsPayload<ExtArgs>
+        fields: Prisma.Event_ReviewsFieldRefs
+        operations: {
+          findUnique: {
+            args: Prisma.Event_ReviewsFindUniqueArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$Event_ReviewsPayload> | null
+          }
+          findUniqueOrThrow: {
+            args: Prisma.Event_ReviewsFindUniqueOrThrowArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$Event_ReviewsPayload>
+          }
+          findFirst: {
+            args: Prisma.Event_ReviewsFindFirstArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$Event_ReviewsPayload> | null
+          }
+          findFirstOrThrow: {
+            args: Prisma.Event_ReviewsFindFirstOrThrowArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$Event_ReviewsPayload>
+          }
+          findMany: {
+            args: Prisma.Event_ReviewsFindManyArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$Event_ReviewsPayload>[]
+          }
+          create: {
+            args: Prisma.Event_ReviewsCreateArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$Event_ReviewsPayload>
+          }
+          createMany: {
+            args: Prisma.Event_ReviewsCreateManyArgs<ExtArgs>
+            result: BatchPayload
+          }
+          createManyAndReturn: {
+            args: Prisma.Event_ReviewsCreateManyAndReturnArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$Event_ReviewsPayload>[]
+          }
+          delete: {
+            args: Prisma.Event_ReviewsDeleteArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$Event_ReviewsPayload>
+          }
+          update: {
+            args: Prisma.Event_ReviewsUpdateArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$Event_ReviewsPayload>
+          }
+          deleteMany: {
+            args: Prisma.Event_ReviewsDeleteManyArgs<ExtArgs>
+            result: BatchPayload
+          }
+          updateMany: {
+            args: Prisma.Event_ReviewsUpdateManyArgs<ExtArgs>
+            result: BatchPayload
+          }
+          updateManyAndReturn: {
+            args: Prisma.Event_ReviewsUpdateManyAndReturnArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$Event_ReviewsPayload>[]
+          }
+          upsert: {
+            args: Prisma.Event_ReviewsUpsertArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$Event_ReviewsPayload>
+          }
+          aggregate: {
+            args: Prisma.Event_ReviewsAggregateArgs<ExtArgs>
+            result: $Utils.Optional<AggregateEvent_Reviews>
+          }
+          groupBy: {
+            args: Prisma.Event_ReviewsGroupByArgs<ExtArgs>
+            result: $Utils.Optional<Event_ReviewsGroupByOutputType>[]
+          }
+          count: {
+            args: Prisma.Event_ReviewsCountArgs<ExtArgs>
+            result: $Utils.Optional<Event_ReviewsCountAggregateOutputType> | number
+          }
+        }
+      }
+      Event_Attendees: {
+        payload: Prisma.$Event_AttendeesPayload<ExtArgs>
+        fields: Prisma.Event_AttendeesFieldRefs
+        operations: {
+          findUnique: {
+            args: Prisma.Event_AttendeesFindUniqueArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$Event_AttendeesPayload> | null
+          }
+          findUniqueOrThrow: {
+            args: Prisma.Event_AttendeesFindUniqueOrThrowArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$Event_AttendeesPayload>
+          }
+          findFirst: {
+            args: Prisma.Event_AttendeesFindFirstArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$Event_AttendeesPayload> | null
+          }
+          findFirstOrThrow: {
+            args: Prisma.Event_AttendeesFindFirstOrThrowArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$Event_AttendeesPayload>
+          }
+          findMany: {
+            args: Prisma.Event_AttendeesFindManyArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$Event_AttendeesPayload>[]
+          }
+          create: {
+            args: Prisma.Event_AttendeesCreateArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$Event_AttendeesPayload>
+          }
+          createMany: {
+            args: Prisma.Event_AttendeesCreateManyArgs<ExtArgs>
+            result: BatchPayload
+          }
+          createManyAndReturn: {
+            args: Prisma.Event_AttendeesCreateManyAndReturnArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$Event_AttendeesPayload>[]
+          }
+          delete: {
+            args: Prisma.Event_AttendeesDeleteArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$Event_AttendeesPayload>
+          }
+          update: {
+            args: Prisma.Event_AttendeesUpdateArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$Event_AttendeesPayload>
+          }
+          deleteMany: {
+            args: Prisma.Event_AttendeesDeleteManyArgs<ExtArgs>
+            result: BatchPayload
+          }
+          updateMany: {
+            args: Prisma.Event_AttendeesUpdateManyArgs<ExtArgs>
+            result: BatchPayload
+          }
+          updateManyAndReturn: {
+            args: Prisma.Event_AttendeesUpdateManyAndReturnArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$Event_AttendeesPayload>[]
+          }
+          upsert: {
+            args: Prisma.Event_AttendeesUpsertArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$Event_AttendeesPayload>
+          }
+          aggregate: {
+            args: Prisma.Event_AttendeesAggregateArgs<ExtArgs>
+            result: $Utils.Optional<AggregateEvent_Attendees>
+          }
+          groupBy: {
+            args: Prisma.Event_AttendeesGroupByArgs<ExtArgs>
+            result: $Utils.Optional<Event_AttendeesGroupByOutputType>[]
+          }
+          count: {
+            args: Prisma.Event_AttendeesCountArgs<ExtArgs>
+            result: $Utils.Optional<Event_AttendeesCountAggregateOutputType> | number
+          }
+        }
+      }
+      Referral_Code: {
+        payload: Prisma.$Referral_CodePayload<ExtArgs>
+        fields: Prisma.Referral_CodeFieldRefs
+        operations: {
+          findUnique: {
+            args: Prisma.Referral_CodeFindUniqueArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$Referral_CodePayload> | null
+          }
+          findUniqueOrThrow: {
+            args: Prisma.Referral_CodeFindUniqueOrThrowArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$Referral_CodePayload>
+          }
+          findFirst: {
+            args: Prisma.Referral_CodeFindFirstArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$Referral_CodePayload> | null
+          }
+          findFirstOrThrow: {
+            args: Prisma.Referral_CodeFindFirstOrThrowArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$Referral_CodePayload>
+          }
+          findMany: {
+            args: Prisma.Referral_CodeFindManyArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$Referral_CodePayload>[]
+          }
+          create: {
+            args: Prisma.Referral_CodeCreateArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$Referral_CodePayload>
+          }
+          createMany: {
+            args: Prisma.Referral_CodeCreateManyArgs<ExtArgs>
+            result: BatchPayload
+          }
+          createManyAndReturn: {
+            args: Prisma.Referral_CodeCreateManyAndReturnArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$Referral_CodePayload>[]
+          }
+          delete: {
+            args: Prisma.Referral_CodeDeleteArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$Referral_CodePayload>
+          }
+          update: {
+            args: Prisma.Referral_CodeUpdateArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$Referral_CodePayload>
+          }
+          deleteMany: {
+            args: Prisma.Referral_CodeDeleteManyArgs<ExtArgs>
+            result: BatchPayload
+          }
+          updateMany: {
+            args: Prisma.Referral_CodeUpdateManyArgs<ExtArgs>
+            result: BatchPayload
+          }
+          updateManyAndReturn: {
+            args: Prisma.Referral_CodeUpdateManyAndReturnArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$Referral_CodePayload>[]
+          }
+          upsert: {
+            args: Prisma.Referral_CodeUpsertArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$Referral_CodePayload>
+          }
+          aggregate: {
+            args: Prisma.Referral_CodeAggregateArgs<ExtArgs>
+            result: $Utils.Optional<AggregateReferral_Code>
+          }
+          groupBy: {
+            args: Prisma.Referral_CodeGroupByArgs<ExtArgs>
+            result: $Utils.Optional<Referral_CodeGroupByOutputType>[]
+          }
+          count: {
+            args: Prisma.Referral_CodeCountArgs<ExtArgs>
+            result: $Utils.Optional<Referral_CodeCountAggregateOutputType> | number
+          }
+        }
+      }
+      Referral_Usage: {
+        payload: Prisma.$Referral_UsagePayload<ExtArgs>
+        fields: Prisma.Referral_UsageFieldRefs
+        operations: {
+          findUnique: {
+            args: Prisma.Referral_UsageFindUniqueArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$Referral_UsagePayload> | null
+          }
+          findUniqueOrThrow: {
+            args: Prisma.Referral_UsageFindUniqueOrThrowArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$Referral_UsagePayload>
+          }
+          findFirst: {
+            args: Prisma.Referral_UsageFindFirstArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$Referral_UsagePayload> | null
+          }
+          findFirstOrThrow: {
+            args: Prisma.Referral_UsageFindFirstOrThrowArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$Referral_UsagePayload>
+          }
+          findMany: {
+            args: Prisma.Referral_UsageFindManyArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$Referral_UsagePayload>[]
+          }
+          create: {
+            args: Prisma.Referral_UsageCreateArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$Referral_UsagePayload>
+          }
+          createMany: {
+            args: Prisma.Referral_UsageCreateManyArgs<ExtArgs>
+            result: BatchPayload
+          }
+          createManyAndReturn: {
+            args: Prisma.Referral_UsageCreateManyAndReturnArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$Referral_UsagePayload>[]
+          }
+          delete: {
+            args: Prisma.Referral_UsageDeleteArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$Referral_UsagePayload>
+          }
+          update: {
+            args: Prisma.Referral_UsageUpdateArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$Referral_UsagePayload>
+          }
+          deleteMany: {
+            args: Prisma.Referral_UsageDeleteManyArgs<ExtArgs>
+            result: BatchPayload
+          }
+          updateMany: {
+            args: Prisma.Referral_UsageUpdateManyArgs<ExtArgs>
+            result: BatchPayload
+          }
+          updateManyAndReturn: {
+            args: Prisma.Referral_UsageUpdateManyAndReturnArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$Referral_UsagePayload>[]
+          }
+          upsert: {
+            args: Prisma.Referral_UsageUpsertArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$Referral_UsagePayload>
+          }
+          aggregate: {
+            args: Prisma.Referral_UsageAggregateArgs<ExtArgs>
+            result: $Utils.Optional<AggregateReferral_Usage>
+          }
+          groupBy: {
+            args: Prisma.Referral_UsageGroupByArgs<ExtArgs>
+            result: $Utils.Optional<Referral_UsageGroupByOutputType>[]
+          }
+          count: {
+            args: Prisma.Referral_UsageCountArgs<ExtArgs>
+            result: $Utils.Optional<Referral_UsageCountAggregateOutputType> | number
+          }
+        }
+      }
+      Voucher: {
+        payload: Prisma.$VoucherPayload<ExtArgs>
+        fields: Prisma.VoucherFieldRefs
+        operations: {
+          findUnique: {
+            args: Prisma.VoucherFindUniqueArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$VoucherPayload> | null
+          }
+          findUniqueOrThrow: {
+            args: Prisma.VoucherFindUniqueOrThrowArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$VoucherPayload>
+          }
+          findFirst: {
+            args: Prisma.VoucherFindFirstArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$VoucherPayload> | null
+          }
+          findFirstOrThrow: {
+            args: Prisma.VoucherFindFirstOrThrowArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$VoucherPayload>
+          }
+          findMany: {
+            args: Prisma.VoucherFindManyArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$VoucherPayload>[]
+          }
+          create: {
+            args: Prisma.VoucherCreateArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$VoucherPayload>
+          }
+          createMany: {
+            args: Prisma.VoucherCreateManyArgs<ExtArgs>
+            result: BatchPayload
+          }
+          createManyAndReturn: {
+            args: Prisma.VoucherCreateManyAndReturnArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$VoucherPayload>[]
+          }
+          delete: {
+            args: Prisma.VoucherDeleteArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$VoucherPayload>
+          }
+          update: {
+            args: Prisma.VoucherUpdateArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$VoucherPayload>
+          }
+          deleteMany: {
+            args: Prisma.VoucherDeleteManyArgs<ExtArgs>
+            result: BatchPayload
+          }
+          updateMany: {
+            args: Prisma.VoucherUpdateManyArgs<ExtArgs>
+            result: BatchPayload
+          }
+          updateManyAndReturn: {
+            args: Prisma.VoucherUpdateManyAndReturnArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$VoucherPayload>[]
+          }
+          upsert: {
+            args: Prisma.VoucherUpsertArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$VoucherPayload>
+          }
+          aggregate: {
+            args: Prisma.VoucherAggregateArgs<ExtArgs>
+            result: $Utils.Optional<AggregateVoucher>
+          }
+          groupBy: {
+            args: Prisma.VoucherGroupByArgs<ExtArgs>
+            result: $Utils.Optional<VoucherGroupByOutputType>[]
+          }
+          count: {
+            args: Prisma.VoucherCountArgs<ExtArgs>
+            result: $Utils.Optional<VoucherCountAggregateOutputType> | number
+          }
+        }
+      }
+      Transactions: {
+        payload: Prisma.$TransactionsPayload<ExtArgs>
+        fields: Prisma.TransactionsFieldRefs
+        operations: {
+          findUnique: {
+            args: Prisma.TransactionsFindUniqueArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$TransactionsPayload> | null
+          }
+          findUniqueOrThrow: {
+            args: Prisma.TransactionsFindUniqueOrThrowArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$TransactionsPayload>
+          }
+          findFirst: {
+            args: Prisma.TransactionsFindFirstArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$TransactionsPayload> | null
+          }
+          findFirstOrThrow: {
+            args: Prisma.TransactionsFindFirstOrThrowArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$TransactionsPayload>
+          }
+          findMany: {
+            args: Prisma.TransactionsFindManyArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$TransactionsPayload>[]
+          }
+          create: {
+            args: Prisma.TransactionsCreateArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$TransactionsPayload>
+          }
+          createMany: {
+            args: Prisma.TransactionsCreateManyArgs<ExtArgs>
+            result: BatchPayload
+          }
+          createManyAndReturn: {
+            args: Prisma.TransactionsCreateManyAndReturnArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$TransactionsPayload>[]
+          }
+          delete: {
+            args: Prisma.TransactionsDeleteArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$TransactionsPayload>
+          }
+          update: {
+            args: Prisma.TransactionsUpdateArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$TransactionsPayload>
+          }
+          deleteMany: {
+            args: Prisma.TransactionsDeleteManyArgs<ExtArgs>
+            result: BatchPayload
+          }
+          updateMany: {
+            args: Prisma.TransactionsUpdateManyArgs<ExtArgs>
+            result: BatchPayload
+          }
+          updateManyAndReturn: {
+            args: Prisma.TransactionsUpdateManyAndReturnArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$TransactionsPayload>[]
+          }
+          upsert: {
+            args: Prisma.TransactionsUpsertArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$TransactionsPayload>
+          }
+          aggregate: {
+            args: Prisma.TransactionsAggregateArgs<ExtArgs>
+            result: $Utils.Optional<AggregateTransactions>
+          }
+          groupBy: {
+            args: Prisma.TransactionsGroupByArgs<ExtArgs>
+            result: $Utils.Optional<TransactionsGroupByOutputType>[]
+          }
+          count: {
+            args: Prisma.TransactionsCountArgs<ExtArgs>
+            result: $Utils.Optional<TransactionsCountAggregateOutputType> | number
+          }
+        }
+      }
+      Transactions_detail: {
+        payload: Prisma.$Transactions_detailPayload<ExtArgs>
+        fields: Prisma.Transactions_detailFieldRefs
+        operations: {
+          findUnique: {
+            args: Prisma.Transactions_detailFindUniqueArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$Transactions_detailPayload> | null
+          }
+          findUniqueOrThrow: {
+            args: Prisma.Transactions_detailFindUniqueOrThrowArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$Transactions_detailPayload>
+          }
+          findFirst: {
+            args: Prisma.Transactions_detailFindFirstArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$Transactions_detailPayload> | null
+          }
+          findFirstOrThrow: {
+            args: Prisma.Transactions_detailFindFirstOrThrowArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$Transactions_detailPayload>
+          }
+          findMany: {
+            args: Prisma.Transactions_detailFindManyArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$Transactions_detailPayload>[]
+          }
+          create: {
+            args: Prisma.Transactions_detailCreateArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$Transactions_detailPayload>
+          }
+          createMany: {
+            args: Prisma.Transactions_detailCreateManyArgs<ExtArgs>
+            result: BatchPayload
+          }
+          createManyAndReturn: {
+            args: Prisma.Transactions_detailCreateManyAndReturnArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$Transactions_detailPayload>[]
+          }
+          delete: {
+            args: Prisma.Transactions_detailDeleteArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$Transactions_detailPayload>
+          }
+          update: {
+            args: Prisma.Transactions_detailUpdateArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$Transactions_detailPayload>
+          }
+          deleteMany: {
+            args: Prisma.Transactions_detailDeleteManyArgs<ExtArgs>
+            result: BatchPayload
+          }
+          updateMany: {
+            args: Prisma.Transactions_detailUpdateManyArgs<ExtArgs>
+            result: BatchPayload
+          }
+          updateManyAndReturn: {
+            args: Prisma.Transactions_detailUpdateManyAndReturnArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$Transactions_detailPayload>[]
+          }
+          upsert: {
+            args: Prisma.Transactions_detailUpsertArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$Transactions_detailPayload>
+          }
+          aggregate: {
+            args: Prisma.Transactions_detailAggregateArgs<ExtArgs>
+            result: $Utils.Optional<AggregateTransactions_detail>
+          }
+          groupBy: {
+            args: Prisma.Transactions_detailGroupByArgs<ExtArgs>
+            result: $Utils.Optional<Transactions_detailGroupByOutputType>[]
+          }
+          count: {
+            args: Prisma.Transactions_detailCountArgs<ExtArgs>
+            result: $Utils.Optional<Transactions_detailCountAggregateOutputType> | number
+          }
+        }
+      }
     }
   } & {
     other: {
@@ -1093,16 +1936,24 @@ export namespace Prisma {
     /**
      * @example
      * ```
-     * // Defaults to stdout
+     * // Shorthand for `emit: 'stdout'`
      * log: ['query', 'info', 'warn', 'error']
      * 
-     * // Emit as events
+     * // Emit as events only
      * log: [
-     *   { emit: 'stdout', level: 'query' },
-     *   { emit: 'stdout', level: 'info' },
-     *   { emit: 'stdout', level: 'warn' }
-     *   { emit: 'stdout', level: 'error' }
+     *   { emit: 'event', level: 'query' },
+     *   { emit: 'event', level: 'info' },
+     *   { emit: 'event', level: 'warn' }
+     *   { emit: 'event', level: 'error' }
      * ]
+     * 
+     * / Emit as events and log to stdout
+     * og: [
+     *  { emit: 'stdout', level: 'query' },
+     *  { emit: 'stdout', level: 'info' },
+     *  { emit: 'stdout', level: 'warn' }
+     *  { emit: 'stdout', level: 'error' }
+     * 
      * ```
      * Read more in our [docs](https://www.prisma.io/docs/reference/tools-and-interfaces/prisma-client/logging#the-log-option).
      */
@@ -1136,9 +1987,18 @@ export namespace Prisma {
   export type GlobalOmitConfig = {
     users?: UsersOmit
     organizer?: OrganizerOmit
+    articles?: ArticlesOmit
     events?: EventsOmit
     event_Category?: Event_CategoryOmit
     event_Location?: Event_LocationOmit
+    event_Seat?: Event_SeatOmit
+    event_Reviews?: Event_ReviewsOmit
+    event_Attendees?: Event_AttendeesOmit
+    referral_Code?: Referral_CodeOmit
+    referral_Usage?: Referral_UsageOmit
+    voucher?: VoucherOmit
+    transactions?: TransactionsOmit
+    transactions_detail?: Transactions_detailOmit
   }
 
   /* Types for Logging */
@@ -1148,10 +2008,15 @@ export namespace Prisma {
     emit: 'stdout' | 'event'
   }
 
-  export type GetLogType<T extends LogLevel | LogDefinition> = T extends LogDefinition ? T['emit'] extends 'event' ? T['level'] : never : never
-  export type GetEvents<T extends any> = T extends Array<LogLevel | LogDefinition> ?
-    GetLogType<T[0]> | GetLogType<T[1]> | GetLogType<T[2]> | GetLogType<T[3]>
-    : never
+  export type CheckIsLogLevel<T> = T extends LogLevel ? T : never;
+
+  export type GetLogType<T> = CheckIsLogLevel<
+    T extends LogDefinition ? T['level'] : T
+  >;
+
+  export type GetEvents<T extends any[]> = T extends Array<LogLevel | LogDefinition>
+    ? GetLogType<T[number]>
+    : never;
 
   export type QueryEvent = {
     timestamp: Date
@@ -1234,10 +2099,18 @@ export namespace Prisma {
 
   export type UsersCountOutputType = {
     organizer: number
+    reviews_user: number
+    attendees_user: number
+    usageReferral_user: number
+    transactions: number
   }
 
   export type UsersCountOutputTypeSelect<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     organizer?: boolean | UsersCountOutputTypeCountOrganizerArgs
+    reviews_user?: boolean | UsersCountOutputTypeCountReviews_userArgs
+    attendees_user?: boolean | UsersCountOutputTypeCountAttendees_userArgs
+    usageReferral_user?: boolean | UsersCountOutputTypeCountUsageReferral_userArgs
+    transactions?: boolean | UsersCountOutputTypeCountTransactionsArgs
   }
 
   // Custom InputTypes
@@ -1258,6 +2131,34 @@ export namespace Prisma {
     where?: OrganizerWhereInput
   }
 
+  /**
+   * UsersCountOutputType without action
+   */
+  export type UsersCountOutputTypeCountReviews_userArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    where?: Event_ReviewsWhereInput
+  }
+
+  /**
+   * UsersCountOutputType without action
+   */
+  export type UsersCountOutputTypeCountAttendees_userArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    where?: Event_AttendeesWhereInput
+  }
+
+  /**
+   * UsersCountOutputType without action
+   */
+  export type UsersCountOutputTypeCountUsageReferral_userArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    where?: Referral_UsageWhereInput
+  }
+
+  /**
+   * UsersCountOutputType without action
+   */
+  export type UsersCountOutputTypeCountTransactionsArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    where?: Transactions_detailWhereInput
+  }
+
 
   /**
    * Count Type OrganizerCountOutputType
@@ -1265,10 +2166,14 @@ export namespace Prisma {
 
   export type OrganizerCountOutputType = {
     event: number
+    organizer_voucher: number
+    organizer_transactionDetails: number
   }
 
   export type OrganizerCountOutputTypeSelect<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     event?: boolean | OrganizerCountOutputTypeCountEventArgs
+    organizer_voucher?: boolean | OrganizerCountOutputTypeCountOrganizer_voucherArgs
+    organizer_transactionDetails?: boolean | OrganizerCountOutputTypeCountOrganizer_transactionDetailsArgs
   }
 
   // Custom InputTypes
@@ -1287,6 +2192,69 @@ export namespace Prisma {
    */
   export type OrganizerCountOutputTypeCountEventArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     where?: EventsWhereInput
+  }
+
+  /**
+   * OrganizerCountOutputType without action
+   */
+  export type OrganizerCountOutputTypeCountOrganizer_voucherArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    where?: VoucherWhereInput
+  }
+
+  /**
+   * OrganizerCountOutputType without action
+   */
+  export type OrganizerCountOutputTypeCountOrganizer_transactionDetailsArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    where?: Transactions_detailWhereInput
+  }
+
+
+  /**
+   * Count Type EventsCountOutputType
+   */
+
+  export type EventsCountOutputType = {
+    reviews_event: number
+    attendees_event: number
+    event_transactionDetail: number
+  }
+
+  export type EventsCountOutputTypeSelect<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    reviews_event?: boolean | EventsCountOutputTypeCountReviews_eventArgs
+    attendees_event?: boolean | EventsCountOutputTypeCountAttendees_eventArgs
+    event_transactionDetail?: boolean | EventsCountOutputTypeCountEvent_transactionDetailArgs
+  }
+
+  // Custom InputTypes
+  /**
+   * EventsCountOutputType without action
+   */
+  export type EventsCountOutputTypeDefaultArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the EventsCountOutputType
+     */
+    select?: EventsCountOutputTypeSelect<ExtArgs> | null
+  }
+
+  /**
+   * EventsCountOutputType without action
+   */
+  export type EventsCountOutputTypeCountReviews_eventArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    where?: Event_ReviewsWhereInput
+  }
+
+  /**
+   * EventsCountOutputType without action
+   */
+  export type EventsCountOutputTypeCountAttendees_eventArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    where?: Event_AttendeesWhereInput
+  }
+
+  /**
+   * EventsCountOutputType without action
+   */
+  export type EventsCountOutputTypeCountEvent_transactionDetailArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    where?: Transactions_detailWhereInput
   }
 
 
@@ -1353,6 +2321,99 @@ export namespace Prisma {
 
 
   /**
+   * Count Type Referral_CodeCountOutputType
+   */
+
+  export type Referral_CodeCountOutputType = {
+    user_referralUsage: number
+  }
+
+  export type Referral_CodeCountOutputTypeSelect<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    user_referralUsage?: boolean | Referral_CodeCountOutputTypeCountUser_referralUsageArgs
+  }
+
+  // Custom InputTypes
+  /**
+   * Referral_CodeCountOutputType without action
+   */
+  export type Referral_CodeCountOutputTypeDefaultArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Referral_CodeCountOutputType
+     */
+    select?: Referral_CodeCountOutputTypeSelect<ExtArgs> | null
+  }
+
+  /**
+   * Referral_CodeCountOutputType without action
+   */
+  export type Referral_CodeCountOutputTypeCountUser_referralUsageArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    where?: Referral_UsageWhereInput
+  }
+
+
+  /**
+   * Count Type VoucherCountOutputType
+   */
+
+  export type VoucherCountOutputType = {
+    voucher_transaction: number
+  }
+
+  export type VoucherCountOutputTypeSelect<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    voucher_transaction?: boolean | VoucherCountOutputTypeCountVoucher_transactionArgs
+  }
+
+  // Custom InputTypes
+  /**
+   * VoucherCountOutputType without action
+   */
+  export type VoucherCountOutputTypeDefaultArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the VoucherCountOutputType
+     */
+    select?: VoucherCountOutputTypeSelect<ExtArgs> | null
+  }
+
+  /**
+   * VoucherCountOutputType without action
+   */
+  export type VoucherCountOutputTypeCountVoucher_transactionArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    where?: TransactionsWhereInput
+  }
+
+
+  /**
+   * Count Type TransactionsCountOutputType
+   */
+
+  export type TransactionsCountOutputType = {
+    transaction_details: number
+  }
+
+  export type TransactionsCountOutputTypeSelect<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    transaction_details?: boolean | TransactionsCountOutputTypeCountTransaction_detailsArgs
+  }
+
+  // Custom InputTypes
+  /**
+   * TransactionsCountOutputType without action
+   */
+  export type TransactionsCountOutputTypeDefaultArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the TransactionsCountOutputType
+     */
+    select?: TransactionsCountOutputTypeSelect<ExtArgs> | null
+  }
+
+  /**
+   * TransactionsCountOutputType without action
+   */
+  export type TransactionsCountOutputTypeCountTransaction_detailsArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    where?: Transactions_detailWhereInput
+  }
+
+
+  /**
    * Models
    */
 
@@ -1376,7 +2437,7 @@ export namespace Prisma {
     birthdate: Date | null
     phone_number: string | null
     avatar: string | null
-    refferal_code: string | null
+    referral_code: string | null
     isVerified: boolean | null
     created_at: Date | null
     updated_at: Date | null
@@ -1392,7 +2453,7 @@ export namespace Prisma {
     birthdate: Date | null
     phone_number: string | null
     avatar: string | null
-    refferal_code: string | null
+    referral_code: string | null
     isVerified: boolean | null
     created_at: Date | null
     updated_at: Date | null
@@ -1408,7 +2469,7 @@ export namespace Prisma {
     birthdate: number
     phone_number: number
     avatar: number
-    refferal_code: number
+    referral_code: number
     isVerified: number
     created_at: number
     updated_at: number
@@ -1426,7 +2487,7 @@ export namespace Prisma {
     birthdate?: true
     phone_number?: true
     avatar?: true
-    refferal_code?: true
+    referral_code?: true
     isVerified?: true
     created_at?: true
     updated_at?: true
@@ -1442,7 +2503,7 @@ export namespace Prisma {
     birthdate?: true
     phone_number?: true
     avatar?: true
-    refferal_code?: true
+    referral_code?: true
     isVerified?: true
     created_at?: true
     updated_at?: true
@@ -1458,7 +2519,7 @@ export namespace Prisma {
     birthdate?: true
     phone_number?: true
     avatar?: true
-    refferal_code?: true
+    referral_code?: true
     isVerified?: true
     created_at?: true
     updated_at?: true
@@ -1547,7 +2608,7 @@ export namespace Prisma {
     birthdate: Date
     phone_number: string
     avatar: string | null
-    refferal_code: string | null
+    referral_code: string | null
     isVerified: boolean
     created_at: Date
     updated_at: Date
@@ -1580,11 +2641,16 @@ export namespace Prisma {
     birthdate?: boolean
     phone_number?: boolean
     avatar?: boolean
-    refferal_code?: boolean
+    referral_code?: boolean
     isVerified?: boolean
     created_at?: boolean
     updated_at?: boolean
     organizer?: boolean | Users$organizerArgs<ExtArgs>
+    reviews_user?: boolean | Users$reviews_userArgs<ExtArgs>
+    attendees_user?: boolean | Users$attendees_userArgs<ExtArgs>
+    referral_user?: boolean | Users$referral_userArgs<ExtArgs>
+    usageReferral_user?: boolean | Users$usageReferral_userArgs<ExtArgs>
+    transactions?: boolean | Users$transactionsArgs<ExtArgs>
     _count?: boolean | UsersCountOutputTypeDefaultArgs<ExtArgs>
   }, ExtArgs["result"]["users"]>
 
@@ -1598,7 +2664,7 @@ export namespace Prisma {
     birthdate?: boolean
     phone_number?: boolean
     avatar?: boolean
-    refferal_code?: boolean
+    referral_code?: boolean
     isVerified?: boolean
     created_at?: boolean
     updated_at?: boolean
@@ -1614,7 +2680,7 @@ export namespace Prisma {
     birthdate?: boolean
     phone_number?: boolean
     avatar?: boolean
-    refferal_code?: boolean
+    referral_code?: boolean
     isVerified?: boolean
     created_at?: boolean
     updated_at?: boolean
@@ -1630,15 +2696,20 @@ export namespace Prisma {
     birthdate?: boolean
     phone_number?: boolean
     avatar?: boolean
-    refferal_code?: boolean
+    referral_code?: boolean
     isVerified?: boolean
     created_at?: boolean
     updated_at?: boolean
   }
 
-  export type UsersOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "first_name" | "last_name" | "email" | "password" | "country" | "birthdate" | "phone_number" | "avatar" | "refferal_code" | "isVerified" | "created_at" | "updated_at", ExtArgs["result"]["users"]>
+  export type UsersOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "first_name" | "last_name" | "email" | "password" | "country" | "birthdate" | "phone_number" | "avatar" | "referral_code" | "isVerified" | "created_at" | "updated_at", ExtArgs["result"]["users"]>
   export type UsersInclude<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     organizer?: boolean | Users$organizerArgs<ExtArgs>
+    reviews_user?: boolean | Users$reviews_userArgs<ExtArgs>
+    attendees_user?: boolean | Users$attendees_userArgs<ExtArgs>
+    referral_user?: boolean | Users$referral_userArgs<ExtArgs>
+    usageReferral_user?: boolean | Users$usageReferral_userArgs<ExtArgs>
+    transactions?: boolean | Users$transactionsArgs<ExtArgs>
     _count?: boolean | UsersCountOutputTypeDefaultArgs<ExtArgs>
   }
   export type UsersIncludeCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {}
@@ -1648,6 +2719,11 @@ export namespace Prisma {
     name: "Users"
     objects: {
       organizer: Prisma.$OrganizerPayload<ExtArgs>[]
+      reviews_user: Prisma.$Event_ReviewsPayload<ExtArgs>[]
+      attendees_user: Prisma.$Event_AttendeesPayload<ExtArgs>[]
+      referral_user: Prisma.$Referral_CodePayload<ExtArgs> | null
+      usageReferral_user: Prisma.$Referral_UsagePayload<ExtArgs>[]
+      transactions: Prisma.$Transactions_detailPayload<ExtArgs>[]
     }
     scalars: $Extensions.GetPayloadResult<{
       id: string
@@ -1659,7 +2735,7 @@ export namespace Prisma {
       birthdate: Date
       phone_number: string
       avatar: string | null
-      refferal_code: string | null
+      referral_code: string | null
       isVerified: boolean
       created_at: Date
       updated_at: Date
@@ -2058,6 +3134,11 @@ export namespace Prisma {
   export interface Prisma__UsersClient<T, Null = never, ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs, GlobalOmitOptions = {}> extends Prisma.PrismaPromise<T> {
     readonly [Symbol.toStringTag]: "PrismaPromise"
     organizer<T extends Users$organizerArgs<ExtArgs> = {}>(args?: Subset<T, Users$organizerArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$OrganizerPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
+    reviews_user<T extends Users$reviews_userArgs<ExtArgs> = {}>(args?: Subset<T, Users$reviews_userArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$Event_ReviewsPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
+    attendees_user<T extends Users$attendees_userArgs<ExtArgs> = {}>(args?: Subset<T, Users$attendees_userArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$Event_AttendeesPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
+    referral_user<T extends Users$referral_userArgs<ExtArgs> = {}>(args?: Subset<T, Users$referral_userArgs<ExtArgs>>): Prisma__Referral_CodeClient<$Result.GetResult<Prisma.$Referral_CodePayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
+    usageReferral_user<T extends Users$usageReferral_userArgs<ExtArgs> = {}>(args?: Subset<T, Users$usageReferral_userArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$Referral_UsagePayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
+    transactions<T extends Users$transactionsArgs<ExtArgs> = {}>(args?: Subset<T, Users$transactionsArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$Transactions_detailPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
     /**
      * Attaches callbacks for the resolution and/or rejection of the Promise.
      * @param onfulfilled The callback to execute when the Promise is resolved.
@@ -2096,7 +3177,7 @@ export namespace Prisma {
     readonly birthdate: FieldRef<"Users", 'DateTime'>
     readonly phone_number: FieldRef<"Users", 'String'>
     readonly avatar: FieldRef<"Users", 'String'>
-    readonly refferal_code: FieldRef<"Users", 'String'>
+    readonly referral_code: FieldRef<"Users", 'String'>
     readonly isVerified: FieldRef<"Users", 'Boolean'>
     readonly created_at: FieldRef<"Users", 'DateTime'>
     readonly updated_at: FieldRef<"Users", 'DateTime'>
@@ -2512,6 +3593,121 @@ export namespace Prisma {
   }
 
   /**
+   * Users.reviews_user
+   */
+  export type Users$reviews_userArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Event_Reviews
+     */
+    select?: Event_ReviewsSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the Event_Reviews
+     */
+    omit?: Event_ReviewsOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: Event_ReviewsInclude<ExtArgs> | null
+    where?: Event_ReviewsWhereInput
+    orderBy?: Event_ReviewsOrderByWithRelationInput | Event_ReviewsOrderByWithRelationInput[]
+    cursor?: Event_ReviewsWhereUniqueInput
+    take?: number
+    skip?: number
+    distinct?: Event_ReviewsScalarFieldEnum | Event_ReviewsScalarFieldEnum[]
+  }
+
+  /**
+   * Users.attendees_user
+   */
+  export type Users$attendees_userArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Event_Attendees
+     */
+    select?: Event_AttendeesSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the Event_Attendees
+     */
+    omit?: Event_AttendeesOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: Event_AttendeesInclude<ExtArgs> | null
+    where?: Event_AttendeesWhereInput
+    orderBy?: Event_AttendeesOrderByWithRelationInput | Event_AttendeesOrderByWithRelationInput[]
+    cursor?: Event_AttendeesWhereUniqueInput
+    take?: number
+    skip?: number
+    distinct?: Event_AttendeesScalarFieldEnum | Event_AttendeesScalarFieldEnum[]
+  }
+
+  /**
+   * Users.referral_user
+   */
+  export type Users$referral_userArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Referral_Code
+     */
+    select?: Referral_CodeSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the Referral_Code
+     */
+    omit?: Referral_CodeOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: Referral_CodeInclude<ExtArgs> | null
+    where?: Referral_CodeWhereInput
+  }
+
+  /**
+   * Users.usageReferral_user
+   */
+  export type Users$usageReferral_userArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Referral_Usage
+     */
+    select?: Referral_UsageSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the Referral_Usage
+     */
+    omit?: Referral_UsageOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: Referral_UsageInclude<ExtArgs> | null
+    where?: Referral_UsageWhereInput
+    orderBy?: Referral_UsageOrderByWithRelationInput | Referral_UsageOrderByWithRelationInput[]
+    cursor?: Referral_UsageWhereUniqueInput
+    take?: number
+    skip?: number
+    distinct?: Referral_UsageScalarFieldEnum | Referral_UsageScalarFieldEnum[]
+  }
+
+  /**
+   * Users.transactions
+   */
+  export type Users$transactionsArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Transactions_detail
+     */
+    select?: Transactions_detailSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the Transactions_detail
+     */
+    omit?: Transactions_detailOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: Transactions_detailInclude<ExtArgs> | null
+    where?: Transactions_detailWhereInput
+    orderBy?: Transactions_detailOrderByWithRelationInput | Transactions_detailOrderByWithRelationInput[]
+    cursor?: Transactions_detailWhereUniqueInput
+    take?: number
+    skip?: number
+    distinct?: Transactions_detailScalarFieldEnum | Transactions_detailScalarFieldEnum[]
+  }
+
+  /**
    * Users without action
    */
   export type UsersDefaultArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
@@ -2672,6 +3868,8 @@ export namespace Prisma {
     user_id?: boolean
     user?: boolean | UsersDefaultArgs<ExtArgs>
     event?: boolean | Organizer$eventArgs<ExtArgs>
+    organizer_voucher?: boolean | Organizer$organizer_voucherArgs<ExtArgs>
+    organizer_transactionDetails?: boolean | Organizer$organizer_transactionDetailsArgs<ExtArgs>
     _count?: boolean | OrganizerCountOutputTypeDefaultArgs<ExtArgs>
   }, ExtArgs["result"]["organizer"]>
 
@@ -2696,6 +3894,8 @@ export namespace Prisma {
   export type OrganizerInclude<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     user?: boolean | UsersDefaultArgs<ExtArgs>
     event?: boolean | Organizer$eventArgs<ExtArgs>
+    organizer_voucher?: boolean | Organizer$organizer_voucherArgs<ExtArgs>
+    organizer_transactionDetails?: boolean | Organizer$organizer_transactionDetailsArgs<ExtArgs>
     _count?: boolean | OrganizerCountOutputTypeDefaultArgs<ExtArgs>
   }
   export type OrganizerIncludeCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
@@ -2710,6 +3910,8 @@ export namespace Prisma {
     objects: {
       user: Prisma.$UsersPayload<ExtArgs>
       event: Prisma.$EventsPayload<ExtArgs>[]
+      organizer_voucher: Prisma.$VoucherPayload<ExtArgs>[]
+      organizer_transactionDetails: Prisma.$Transactions_detailPayload<ExtArgs>[]
     }
     scalars: $Extensions.GetPayloadResult<{
       id: string
@@ -3110,6 +4312,8 @@ export namespace Prisma {
     readonly [Symbol.toStringTag]: "PrismaPromise"
     user<T extends UsersDefaultArgs<ExtArgs> = {}>(args?: Subset<T, UsersDefaultArgs<ExtArgs>>): Prisma__UsersClient<$Result.GetResult<Prisma.$UsersPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | Null, Null, ExtArgs, GlobalOmitOptions>
     event<T extends Organizer$eventArgs<ExtArgs> = {}>(args?: Subset<T, Organizer$eventArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$EventsPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
+    organizer_voucher<T extends Organizer$organizer_voucherArgs<ExtArgs> = {}>(args?: Subset<T, Organizer$organizer_voucherArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$VoucherPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
+    organizer_transactionDetails<T extends Organizer$organizer_transactionDetailsArgs<ExtArgs> = {}>(args?: Subset<T, Organizer$organizer_transactionDetailsArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$Transactions_detailPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
     /**
      * Attaches callbacks for the resolution and/or rejection of the Promise.
      * @param onfulfilled The callback to execute when the Promise is resolved.
@@ -3561,6 +4765,54 @@ export namespace Prisma {
   }
 
   /**
+   * Organizer.organizer_voucher
+   */
+  export type Organizer$organizer_voucherArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Voucher
+     */
+    select?: VoucherSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the Voucher
+     */
+    omit?: VoucherOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: VoucherInclude<ExtArgs> | null
+    where?: VoucherWhereInput
+    orderBy?: VoucherOrderByWithRelationInput | VoucherOrderByWithRelationInput[]
+    cursor?: VoucherWhereUniqueInput
+    take?: number
+    skip?: number
+    distinct?: VoucherScalarFieldEnum | VoucherScalarFieldEnum[]
+  }
+
+  /**
+   * Organizer.organizer_transactionDetails
+   */
+  export type Organizer$organizer_transactionDetailsArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Transactions_detail
+     */
+    select?: Transactions_detailSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the Transactions_detail
+     */
+    omit?: Transactions_detailOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: Transactions_detailInclude<ExtArgs> | null
+    where?: Transactions_detailWhereInput
+    orderBy?: Transactions_detailOrderByWithRelationInput | Transactions_detailOrderByWithRelationInput[]
+    cursor?: Transactions_detailWhereUniqueInput
+    take?: number
+    skip?: number
+    distinct?: Transactions_detailScalarFieldEnum | Transactions_detailScalarFieldEnum[]
+  }
+
+  /**
    * Organizer without action
    */
   export type OrganizerDefaultArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
@@ -3576,6 +4828,988 @@ export namespace Prisma {
      * Choose, which related nodes to fetch as well
      */
     include?: OrganizerInclude<ExtArgs> | null
+  }
+
+
+  /**
+   * Model Articles
+   */
+
+  export type AggregateArticles = {
+    _count: ArticlesCountAggregateOutputType | null
+    _min: ArticlesMinAggregateOutputType | null
+    _max: ArticlesMaxAggregateOutputType | null
+  }
+
+  export type ArticlesMinAggregateOutputType = {
+    id: string | null
+    organizer_id: string | null
+    title: string | null
+    created_at: Date | null
+  }
+
+  export type ArticlesMaxAggregateOutputType = {
+    id: string | null
+    organizer_id: string | null
+    title: string | null
+    created_at: Date | null
+  }
+
+  export type ArticlesCountAggregateOutputType = {
+    id: number
+    organizer_id: number
+    title: number
+    created_at: number
+    _all: number
+  }
+
+
+  export type ArticlesMinAggregateInputType = {
+    id?: true
+    organizer_id?: true
+    title?: true
+    created_at?: true
+  }
+
+  export type ArticlesMaxAggregateInputType = {
+    id?: true
+    organizer_id?: true
+    title?: true
+    created_at?: true
+  }
+
+  export type ArticlesCountAggregateInputType = {
+    id?: true
+    organizer_id?: true
+    title?: true
+    created_at?: true
+    _all?: true
+  }
+
+  export type ArticlesAggregateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Filter which Articles to aggregate.
+     */
+    where?: ArticlesWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of Articles to fetch.
+     */
+    orderBy?: ArticlesOrderByWithRelationInput | ArticlesOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the start position
+     */
+    cursor?: ArticlesWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` Articles from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` Articles.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Count returned Articles
+    **/
+    _count?: true | ArticlesCountAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to find the minimum value
+    **/
+    _min?: ArticlesMinAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to find the maximum value
+    **/
+    _max?: ArticlesMaxAggregateInputType
+  }
+
+  export type GetArticlesAggregateType<T extends ArticlesAggregateArgs> = {
+        [P in keyof T & keyof AggregateArticles]: P extends '_count' | 'count'
+      ? T[P] extends true
+        ? number
+        : GetScalarType<T[P], AggregateArticles[P]>
+      : GetScalarType<T[P], AggregateArticles[P]>
+  }
+
+
+
+
+  export type ArticlesGroupByArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    where?: ArticlesWhereInput
+    orderBy?: ArticlesOrderByWithAggregationInput | ArticlesOrderByWithAggregationInput[]
+    by: ArticlesScalarFieldEnum[] | ArticlesScalarFieldEnum
+    having?: ArticlesScalarWhereWithAggregatesInput
+    take?: number
+    skip?: number
+    _count?: ArticlesCountAggregateInputType | true
+    _min?: ArticlesMinAggregateInputType
+    _max?: ArticlesMaxAggregateInputType
+  }
+
+  export type ArticlesGroupByOutputType = {
+    id: string
+    organizer_id: string
+    title: string
+    created_at: Date
+    _count: ArticlesCountAggregateOutputType | null
+    _min: ArticlesMinAggregateOutputType | null
+    _max: ArticlesMaxAggregateOutputType | null
+  }
+
+  type GetArticlesGroupByPayload<T extends ArticlesGroupByArgs> = Prisma.PrismaPromise<
+    Array<
+      PickEnumerable<ArticlesGroupByOutputType, T['by']> &
+        {
+          [P in ((keyof T) & (keyof ArticlesGroupByOutputType))]: P extends '_count'
+            ? T[P] extends boolean
+              ? number
+              : GetScalarType<T[P], ArticlesGroupByOutputType[P]>
+            : GetScalarType<T[P], ArticlesGroupByOutputType[P]>
+        }
+      >
+    >
+
+
+  export type ArticlesSelect<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
+    id?: boolean
+    organizer_id?: boolean
+    title?: boolean
+    created_at?: boolean
+  }, ExtArgs["result"]["articles"]>
+
+  export type ArticlesSelectCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
+    id?: boolean
+    organizer_id?: boolean
+    title?: boolean
+    created_at?: boolean
+  }, ExtArgs["result"]["articles"]>
+
+  export type ArticlesSelectUpdateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
+    id?: boolean
+    organizer_id?: boolean
+    title?: boolean
+    created_at?: boolean
+  }, ExtArgs["result"]["articles"]>
+
+  export type ArticlesSelectScalar = {
+    id?: boolean
+    organizer_id?: boolean
+    title?: boolean
+    created_at?: boolean
+  }
+
+  export type ArticlesOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "organizer_id" | "title" | "created_at", ExtArgs["result"]["articles"]>
+
+  export type $ArticlesPayload<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    name: "Articles"
+    objects: {}
+    scalars: $Extensions.GetPayloadResult<{
+      id: string
+      organizer_id: string
+      title: string
+      created_at: Date
+    }, ExtArgs["result"]["articles"]>
+    composites: {}
+  }
+
+  type ArticlesGetPayload<S extends boolean | null | undefined | ArticlesDefaultArgs> = $Result.GetResult<Prisma.$ArticlesPayload, S>
+
+  type ArticlesCountArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> =
+    Omit<ArticlesFindManyArgs, 'select' | 'include' | 'distinct' | 'omit'> & {
+      select?: ArticlesCountAggregateInputType | true
+    }
+
+  export interface ArticlesDelegate<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs, GlobalOmitOptions = {}> {
+    [K: symbol]: { types: Prisma.TypeMap<ExtArgs>['model']['Articles'], meta: { name: 'Articles' } }
+    /**
+     * Find zero or one Articles that matches the filter.
+     * @param {ArticlesFindUniqueArgs} args - Arguments to find a Articles
+     * @example
+     * // Get one Articles
+     * const articles = await prisma.articles.findUnique({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findUnique<T extends ArticlesFindUniqueArgs>(args: SelectSubset<T, ArticlesFindUniqueArgs<ExtArgs>>): Prisma__ArticlesClient<$Result.GetResult<Prisma.$ArticlesPayload<ExtArgs>, T, "findUnique", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find one Articles that matches the filter or throw an error with `error.code='P2025'`
+     * if no matches were found.
+     * @param {ArticlesFindUniqueOrThrowArgs} args - Arguments to find a Articles
+     * @example
+     * // Get one Articles
+     * const articles = await prisma.articles.findUniqueOrThrow({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findUniqueOrThrow<T extends ArticlesFindUniqueOrThrowArgs>(args: SelectSubset<T, ArticlesFindUniqueOrThrowArgs<ExtArgs>>): Prisma__ArticlesClient<$Result.GetResult<Prisma.$ArticlesPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find the first Articles that matches the filter.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {ArticlesFindFirstArgs} args - Arguments to find a Articles
+     * @example
+     * // Get one Articles
+     * const articles = await prisma.articles.findFirst({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findFirst<T extends ArticlesFindFirstArgs>(args?: SelectSubset<T, ArticlesFindFirstArgs<ExtArgs>>): Prisma__ArticlesClient<$Result.GetResult<Prisma.$ArticlesPayload<ExtArgs>, T, "findFirst", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find the first Articles that matches the filter or
+     * throw `PrismaKnownClientError` with `P2025` code if no matches were found.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {ArticlesFindFirstOrThrowArgs} args - Arguments to find a Articles
+     * @example
+     * // Get one Articles
+     * const articles = await prisma.articles.findFirstOrThrow({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findFirstOrThrow<T extends ArticlesFindFirstOrThrowArgs>(args?: SelectSubset<T, ArticlesFindFirstOrThrowArgs<ExtArgs>>): Prisma__ArticlesClient<$Result.GetResult<Prisma.$ArticlesPayload<ExtArgs>, T, "findFirstOrThrow", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find zero or more Articles that matches the filter.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {ArticlesFindManyArgs} args - Arguments to filter and select certain fields only.
+     * @example
+     * // Get all Articles
+     * const articles = await prisma.articles.findMany()
+     * 
+     * // Get first 10 Articles
+     * const articles = await prisma.articles.findMany({ take: 10 })
+     * 
+     * // Only select the `id`
+     * const articlesWithIdOnly = await prisma.articles.findMany({ select: { id: true } })
+     * 
+     */
+    findMany<T extends ArticlesFindManyArgs>(args?: SelectSubset<T, ArticlesFindManyArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$ArticlesPayload<ExtArgs>, T, "findMany", GlobalOmitOptions>>
+
+    /**
+     * Create a Articles.
+     * @param {ArticlesCreateArgs} args - Arguments to create a Articles.
+     * @example
+     * // Create one Articles
+     * const Articles = await prisma.articles.create({
+     *   data: {
+     *     // ... data to create a Articles
+     *   }
+     * })
+     * 
+     */
+    create<T extends ArticlesCreateArgs>(args: SelectSubset<T, ArticlesCreateArgs<ExtArgs>>): Prisma__ArticlesClient<$Result.GetResult<Prisma.$ArticlesPayload<ExtArgs>, T, "create", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Create many Articles.
+     * @param {ArticlesCreateManyArgs} args - Arguments to create many Articles.
+     * @example
+     * // Create many Articles
+     * const articles = await prisma.articles.createMany({
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     *     
+     */
+    createMany<T extends ArticlesCreateManyArgs>(args?: SelectSubset<T, ArticlesCreateManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Create many Articles and returns the data saved in the database.
+     * @param {ArticlesCreateManyAndReturnArgs} args - Arguments to create many Articles.
+     * @example
+     * // Create many Articles
+     * const articles = await prisma.articles.createManyAndReturn({
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * 
+     * // Create many Articles and only return the `id`
+     * const articlesWithIdOnly = await prisma.articles.createManyAndReturn({
+     *   select: { id: true },
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * 
+     */
+    createManyAndReturn<T extends ArticlesCreateManyAndReturnArgs>(args?: SelectSubset<T, ArticlesCreateManyAndReturnArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$ArticlesPayload<ExtArgs>, T, "createManyAndReturn", GlobalOmitOptions>>
+
+    /**
+     * Delete a Articles.
+     * @param {ArticlesDeleteArgs} args - Arguments to delete one Articles.
+     * @example
+     * // Delete one Articles
+     * const Articles = await prisma.articles.delete({
+     *   where: {
+     *     // ... filter to delete one Articles
+     *   }
+     * })
+     * 
+     */
+    delete<T extends ArticlesDeleteArgs>(args: SelectSubset<T, ArticlesDeleteArgs<ExtArgs>>): Prisma__ArticlesClient<$Result.GetResult<Prisma.$ArticlesPayload<ExtArgs>, T, "delete", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Update one Articles.
+     * @param {ArticlesUpdateArgs} args - Arguments to update one Articles.
+     * @example
+     * // Update one Articles
+     * const articles = await prisma.articles.update({
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: {
+     *     // ... provide data here
+     *   }
+     * })
+     * 
+     */
+    update<T extends ArticlesUpdateArgs>(args: SelectSubset<T, ArticlesUpdateArgs<ExtArgs>>): Prisma__ArticlesClient<$Result.GetResult<Prisma.$ArticlesPayload<ExtArgs>, T, "update", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Delete zero or more Articles.
+     * @param {ArticlesDeleteManyArgs} args - Arguments to filter Articles to delete.
+     * @example
+     * // Delete a few Articles
+     * const { count } = await prisma.articles.deleteMany({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     * 
+     */
+    deleteMany<T extends ArticlesDeleteManyArgs>(args?: SelectSubset<T, ArticlesDeleteManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Update zero or more Articles.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {ArticlesUpdateManyArgs} args - Arguments to update one or more rows.
+     * @example
+     * // Update many Articles
+     * const articles = await prisma.articles.updateMany({
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: {
+     *     // ... provide data here
+     *   }
+     * })
+     * 
+     */
+    updateMany<T extends ArticlesUpdateManyArgs>(args: SelectSubset<T, ArticlesUpdateManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Update zero or more Articles and returns the data updated in the database.
+     * @param {ArticlesUpdateManyAndReturnArgs} args - Arguments to update many Articles.
+     * @example
+     * // Update many Articles
+     * const articles = await prisma.articles.updateManyAndReturn({
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * 
+     * // Update zero or more Articles and only return the `id`
+     * const articlesWithIdOnly = await prisma.articles.updateManyAndReturn({
+     *   select: { id: true },
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * 
+     */
+    updateManyAndReturn<T extends ArticlesUpdateManyAndReturnArgs>(args: SelectSubset<T, ArticlesUpdateManyAndReturnArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$ArticlesPayload<ExtArgs>, T, "updateManyAndReturn", GlobalOmitOptions>>
+
+    /**
+     * Create or update one Articles.
+     * @param {ArticlesUpsertArgs} args - Arguments to update or create a Articles.
+     * @example
+     * // Update or create a Articles
+     * const articles = await prisma.articles.upsert({
+     *   create: {
+     *     // ... data to create a Articles
+     *   },
+     *   update: {
+     *     // ... in case it already exists, update
+     *   },
+     *   where: {
+     *     // ... the filter for the Articles we want to update
+     *   }
+     * })
+     */
+    upsert<T extends ArticlesUpsertArgs>(args: SelectSubset<T, ArticlesUpsertArgs<ExtArgs>>): Prisma__ArticlesClient<$Result.GetResult<Prisma.$ArticlesPayload<ExtArgs>, T, "upsert", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+
+    /**
+     * Count the number of Articles.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {ArticlesCountArgs} args - Arguments to filter Articles to count.
+     * @example
+     * // Count the number of Articles
+     * const count = await prisma.articles.count({
+     *   where: {
+     *     // ... the filter for the Articles we want to count
+     *   }
+     * })
+    **/
+    count<T extends ArticlesCountArgs>(
+      args?: Subset<T, ArticlesCountArgs>,
+    ): Prisma.PrismaPromise<
+      T extends $Utils.Record<'select', any>
+        ? T['select'] extends true
+          ? number
+          : GetScalarType<T['select'], ArticlesCountAggregateOutputType>
+        : number
+    >
+
+    /**
+     * Allows you to perform aggregations operations on a Articles.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {ArticlesAggregateArgs} args - Select which aggregations you would like to apply and on what fields.
+     * @example
+     * // Ordered by age ascending
+     * // Where email contains prisma.io
+     * // Limited to the 10 users
+     * const aggregations = await prisma.user.aggregate({
+     *   _avg: {
+     *     age: true,
+     *   },
+     *   where: {
+     *     email: {
+     *       contains: "prisma.io",
+     *     },
+     *   },
+     *   orderBy: {
+     *     age: "asc",
+     *   },
+     *   take: 10,
+     * })
+    **/
+    aggregate<T extends ArticlesAggregateArgs>(args: Subset<T, ArticlesAggregateArgs>): Prisma.PrismaPromise<GetArticlesAggregateType<T>>
+
+    /**
+     * Group by Articles.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {ArticlesGroupByArgs} args - Group by arguments.
+     * @example
+     * // Group by city, order by createdAt, get count
+     * const result = await prisma.user.groupBy({
+     *   by: ['city', 'createdAt'],
+     *   orderBy: {
+     *     createdAt: true
+     *   },
+     *   _count: {
+     *     _all: true
+     *   },
+     * })
+     * 
+    **/
+    groupBy<
+      T extends ArticlesGroupByArgs,
+      HasSelectOrTake extends Or<
+        Extends<'skip', Keys<T>>,
+        Extends<'take', Keys<T>>
+      >,
+      OrderByArg extends True extends HasSelectOrTake
+        ? { orderBy: ArticlesGroupByArgs['orderBy'] }
+        : { orderBy?: ArticlesGroupByArgs['orderBy'] },
+      OrderFields extends ExcludeUnderscoreKeys<Keys<MaybeTupleToUnion<T['orderBy']>>>,
+      ByFields extends MaybeTupleToUnion<T['by']>,
+      ByValid extends Has<ByFields, OrderFields>,
+      HavingFields extends GetHavingFields<T['having']>,
+      HavingValid extends Has<ByFields, HavingFields>,
+      ByEmpty extends T['by'] extends never[] ? True : False,
+      InputErrors extends ByEmpty extends True
+      ? `Error: "by" must not be empty.`
+      : HavingValid extends False
+      ? {
+          [P in HavingFields]: P extends ByFields
+            ? never
+            : P extends string
+            ? `Error: Field "${P}" used in "having" needs to be provided in "by".`
+            : [
+                Error,
+                'Field ',
+                P,
+                ` in "having" needs to be provided in "by"`,
+              ]
+        }[HavingFields]
+      : 'take' extends Keys<T>
+      ? 'orderBy' extends Keys<T>
+        ? ByValid extends True
+          ? {}
+          : {
+              [P in OrderFields]: P extends ByFields
+                ? never
+                : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+            }[OrderFields]
+        : 'Error: If you provide "take", you also need to provide "orderBy"'
+      : 'skip' extends Keys<T>
+      ? 'orderBy' extends Keys<T>
+        ? ByValid extends True
+          ? {}
+          : {
+              [P in OrderFields]: P extends ByFields
+                ? never
+                : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+            }[OrderFields]
+        : 'Error: If you provide "skip", you also need to provide "orderBy"'
+      : ByValid extends True
+      ? {}
+      : {
+          [P in OrderFields]: P extends ByFields
+            ? never
+            : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+        }[OrderFields]
+    >(args: SubsetIntersection<T, ArticlesGroupByArgs, OrderByArg> & InputErrors): {} extends InputErrors ? GetArticlesGroupByPayload<T> : Prisma.PrismaPromise<InputErrors>
+  /**
+   * Fields of the Articles model
+   */
+  readonly fields: ArticlesFieldRefs;
+  }
+
+  /**
+   * The delegate class that acts as a "Promise-like" for Articles.
+   * Why is this prefixed with `Prisma__`?
+   * Because we want to prevent naming conflicts as mentioned in
+   * https://github.com/prisma/prisma-client-js/issues/707
+   */
+  export interface Prisma__ArticlesClient<T, Null = never, ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs, GlobalOmitOptions = {}> extends Prisma.PrismaPromise<T> {
+    readonly [Symbol.toStringTag]: "PrismaPromise"
+    /**
+     * Attaches callbacks for the resolution and/or rejection of the Promise.
+     * @param onfulfilled The callback to execute when the Promise is resolved.
+     * @param onrejected The callback to execute when the Promise is rejected.
+     * @returns A Promise for the completion of which ever callback is executed.
+     */
+    then<TResult1 = T, TResult2 = never>(onfulfilled?: ((value: T) => TResult1 | PromiseLike<TResult1>) | undefined | null, onrejected?: ((reason: any) => TResult2 | PromiseLike<TResult2>) | undefined | null): $Utils.JsPromise<TResult1 | TResult2>
+    /**
+     * Attaches a callback for only the rejection of the Promise.
+     * @param onrejected The callback to execute when the Promise is rejected.
+     * @returns A Promise for the completion of the callback.
+     */
+    catch<TResult = never>(onrejected?: ((reason: any) => TResult | PromiseLike<TResult>) | undefined | null): $Utils.JsPromise<T | TResult>
+    /**
+     * Attaches a callback that is invoked when the Promise is settled (fulfilled or rejected). The
+     * resolved value cannot be modified from the callback.
+     * @param onfinally The callback to execute when the Promise is settled (fulfilled or rejected).
+     * @returns A Promise for the completion of the callback.
+     */
+    finally(onfinally?: (() => void) | undefined | null): $Utils.JsPromise<T>
+  }
+
+
+
+
+  /**
+   * Fields of the Articles model
+   */
+  interface ArticlesFieldRefs {
+    readonly id: FieldRef<"Articles", 'String'>
+    readonly organizer_id: FieldRef<"Articles", 'String'>
+    readonly title: FieldRef<"Articles", 'String'>
+    readonly created_at: FieldRef<"Articles", 'DateTime'>
+  }
+    
+
+  // Custom InputTypes
+  /**
+   * Articles findUnique
+   */
+  export type ArticlesFindUniqueArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Articles
+     */
+    select?: ArticlesSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the Articles
+     */
+    omit?: ArticlesOmit<ExtArgs> | null
+    /**
+     * Filter, which Articles to fetch.
+     */
+    where: ArticlesWhereUniqueInput
+  }
+
+  /**
+   * Articles findUniqueOrThrow
+   */
+  export type ArticlesFindUniqueOrThrowArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Articles
+     */
+    select?: ArticlesSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the Articles
+     */
+    omit?: ArticlesOmit<ExtArgs> | null
+    /**
+     * Filter, which Articles to fetch.
+     */
+    where: ArticlesWhereUniqueInput
+  }
+
+  /**
+   * Articles findFirst
+   */
+  export type ArticlesFindFirstArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Articles
+     */
+    select?: ArticlesSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the Articles
+     */
+    omit?: ArticlesOmit<ExtArgs> | null
+    /**
+     * Filter, which Articles to fetch.
+     */
+    where?: ArticlesWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of Articles to fetch.
+     */
+    orderBy?: ArticlesOrderByWithRelationInput | ArticlesOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for searching for Articles.
+     */
+    cursor?: ArticlesWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` Articles from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` Articles.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
+     * 
+     * Filter by unique combinations of Articles.
+     */
+    distinct?: ArticlesScalarFieldEnum | ArticlesScalarFieldEnum[]
+  }
+
+  /**
+   * Articles findFirstOrThrow
+   */
+  export type ArticlesFindFirstOrThrowArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Articles
+     */
+    select?: ArticlesSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the Articles
+     */
+    omit?: ArticlesOmit<ExtArgs> | null
+    /**
+     * Filter, which Articles to fetch.
+     */
+    where?: ArticlesWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of Articles to fetch.
+     */
+    orderBy?: ArticlesOrderByWithRelationInput | ArticlesOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for searching for Articles.
+     */
+    cursor?: ArticlesWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` Articles from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` Articles.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
+     * 
+     * Filter by unique combinations of Articles.
+     */
+    distinct?: ArticlesScalarFieldEnum | ArticlesScalarFieldEnum[]
+  }
+
+  /**
+   * Articles findMany
+   */
+  export type ArticlesFindManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Articles
+     */
+    select?: ArticlesSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the Articles
+     */
+    omit?: ArticlesOmit<ExtArgs> | null
+    /**
+     * Filter, which Articles to fetch.
+     */
+    where?: ArticlesWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of Articles to fetch.
+     */
+    orderBy?: ArticlesOrderByWithRelationInput | ArticlesOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for listing Articles.
+     */
+    cursor?: ArticlesWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` Articles from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` Articles.
+     */
+    skip?: number
+    distinct?: ArticlesScalarFieldEnum | ArticlesScalarFieldEnum[]
+  }
+
+  /**
+   * Articles create
+   */
+  export type ArticlesCreateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Articles
+     */
+    select?: ArticlesSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the Articles
+     */
+    omit?: ArticlesOmit<ExtArgs> | null
+    /**
+     * The data needed to create a Articles.
+     */
+    data: XOR<ArticlesCreateInput, ArticlesUncheckedCreateInput>
+  }
+
+  /**
+   * Articles createMany
+   */
+  export type ArticlesCreateManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * The data used to create many Articles.
+     */
+    data: ArticlesCreateManyInput | ArticlesCreateManyInput[]
+    skipDuplicates?: boolean
+  }
+
+  /**
+   * Articles createManyAndReturn
+   */
+  export type ArticlesCreateManyAndReturnArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Articles
+     */
+    select?: ArticlesSelectCreateManyAndReturn<ExtArgs> | null
+    /**
+     * Omit specific fields from the Articles
+     */
+    omit?: ArticlesOmit<ExtArgs> | null
+    /**
+     * The data used to create many Articles.
+     */
+    data: ArticlesCreateManyInput | ArticlesCreateManyInput[]
+    skipDuplicates?: boolean
+  }
+
+  /**
+   * Articles update
+   */
+  export type ArticlesUpdateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Articles
+     */
+    select?: ArticlesSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the Articles
+     */
+    omit?: ArticlesOmit<ExtArgs> | null
+    /**
+     * The data needed to update a Articles.
+     */
+    data: XOR<ArticlesUpdateInput, ArticlesUncheckedUpdateInput>
+    /**
+     * Choose, which Articles to update.
+     */
+    where: ArticlesWhereUniqueInput
+  }
+
+  /**
+   * Articles updateMany
+   */
+  export type ArticlesUpdateManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * The data used to update Articles.
+     */
+    data: XOR<ArticlesUpdateManyMutationInput, ArticlesUncheckedUpdateManyInput>
+    /**
+     * Filter which Articles to update
+     */
+    where?: ArticlesWhereInput
+    /**
+     * Limit how many Articles to update.
+     */
+    limit?: number
+  }
+
+  /**
+   * Articles updateManyAndReturn
+   */
+  export type ArticlesUpdateManyAndReturnArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Articles
+     */
+    select?: ArticlesSelectUpdateManyAndReturn<ExtArgs> | null
+    /**
+     * Omit specific fields from the Articles
+     */
+    omit?: ArticlesOmit<ExtArgs> | null
+    /**
+     * The data used to update Articles.
+     */
+    data: XOR<ArticlesUpdateManyMutationInput, ArticlesUncheckedUpdateManyInput>
+    /**
+     * Filter which Articles to update
+     */
+    where?: ArticlesWhereInput
+    /**
+     * Limit how many Articles to update.
+     */
+    limit?: number
+  }
+
+  /**
+   * Articles upsert
+   */
+  export type ArticlesUpsertArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Articles
+     */
+    select?: ArticlesSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the Articles
+     */
+    omit?: ArticlesOmit<ExtArgs> | null
+    /**
+     * The filter to search for the Articles to update in case it exists.
+     */
+    where: ArticlesWhereUniqueInput
+    /**
+     * In case the Articles found by the `where` argument doesn't exist, create a new Articles with this data.
+     */
+    create: XOR<ArticlesCreateInput, ArticlesUncheckedCreateInput>
+    /**
+     * In case the Articles was found with the provided `where` argument, update it with this data.
+     */
+    update: XOR<ArticlesUpdateInput, ArticlesUncheckedUpdateInput>
+  }
+
+  /**
+   * Articles delete
+   */
+  export type ArticlesDeleteArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Articles
+     */
+    select?: ArticlesSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the Articles
+     */
+    omit?: ArticlesOmit<ExtArgs> | null
+    /**
+     * Filter which Articles to delete.
+     */
+    where: ArticlesWhereUniqueInput
+  }
+
+  /**
+   * Articles deleteMany
+   */
+  export type ArticlesDeleteManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Filter which Articles to delete
+     */
+    where?: ArticlesWhereInput
+    /**
+     * Limit how many Articles to delete.
+     */
+    limit?: number
+  }
+
+  /**
+   * Articles without action
+   */
+  export type ArticlesDefaultArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Articles
+     */
+    select?: ArticlesSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the Articles
+     */
+    omit?: ArticlesOmit<ExtArgs> | null
   }
 
 
@@ -3606,6 +5840,7 @@ export namespace Prisma {
     event_location_id: string | null
     name: string | null
     description: string | null
+    image: string | null
     price: number | null
     start_date: Date | null
     end_date: Date | null
@@ -3620,6 +5855,7 @@ export namespace Prisma {
     event_location_id: string | null
     name: string | null
     description: string | null
+    image: string | null
     price: number | null
     start_date: Date | null
     end_date: Date | null
@@ -3634,6 +5870,7 @@ export namespace Prisma {
     event_location_id: number
     name: number
     description: number
+    image: number
     price: number
     start_date: number
     end_date: number
@@ -3658,6 +5895,7 @@ export namespace Prisma {
     event_location_id?: true
     name?: true
     description?: true
+    image?: true
     price?: true
     start_date?: true
     end_date?: true
@@ -3672,6 +5910,7 @@ export namespace Prisma {
     event_location_id?: true
     name?: true
     description?: true
+    image?: true
     price?: true
     start_date?: true
     end_date?: true
@@ -3686,6 +5925,7 @@ export namespace Prisma {
     event_location_id?: true
     name?: true
     description?: true
+    image?: true
     price?: true
     start_date?: true
     end_date?: true
@@ -3787,6 +6027,7 @@ export namespace Prisma {
     event_location_id: string
     name: string
     description: string
+    image: string
     price: number
     start_date: Date
     end_date: Date | null
@@ -3820,14 +6061,20 @@ export namespace Prisma {
     event_location_id?: boolean
     name?: boolean
     description?: boolean
+    image?: boolean
     price?: boolean
     start_date?: boolean
     end_date?: boolean
     created_at?: boolean
     updated_at?: boolean
     organizer?: boolean | OrganizerDefaultArgs<ExtArgs>
-    event_category?: boolean | Event_CategoryDefaultArgs<ExtArgs>
-    event_location?: boolean | Event_LocationDefaultArgs<ExtArgs>
+    category_event?: boolean | Event_CategoryDefaultArgs<ExtArgs>
+    location_Event?: boolean | Event_LocationDefaultArgs<ExtArgs>
+    seat_event?: boolean | Events$seat_eventArgs<ExtArgs>
+    reviews_event?: boolean | Events$reviews_eventArgs<ExtArgs>
+    attendees_event?: boolean | Events$attendees_eventArgs<ExtArgs>
+    event_transactionDetail?: boolean | Events$event_transactionDetailArgs<ExtArgs>
+    _count?: boolean | EventsCountOutputTypeDefaultArgs<ExtArgs>
   }, ExtArgs["result"]["events"]>
 
   export type EventsSelectCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
@@ -3837,14 +6084,15 @@ export namespace Prisma {
     event_location_id?: boolean
     name?: boolean
     description?: boolean
+    image?: boolean
     price?: boolean
     start_date?: boolean
     end_date?: boolean
     created_at?: boolean
     updated_at?: boolean
     organizer?: boolean | OrganizerDefaultArgs<ExtArgs>
-    event_category?: boolean | Event_CategoryDefaultArgs<ExtArgs>
-    event_location?: boolean | Event_LocationDefaultArgs<ExtArgs>
+    category_event?: boolean | Event_CategoryDefaultArgs<ExtArgs>
+    location_Event?: boolean | Event_LocationDefaultArgs<ExtArgs>
   }, ExtArgs["result"]["events"]>
 
   export type EventsSelectUpdateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
@@ -3854,14 +6102,15 @@ export namespace Prisma {
     event_location_id?: boolean
     name?: boolean
     description?: boolean
+    image?: boolean
     price?: boolean
     start_date?: boolean
     end_date?: boolean
     created_at?: boolean
     updated_at?: boolean
     organizer?: boolean | OrganizerDefaultArgs<ExtArgs>
-    event_category?: boolean | Event_CategoryDefaultArgs<ExtArgs>
-    event_location?: boolean | Event_LocationDefaultArgs<ExtArgs>
+    category_event?: boolean | Event_CategoryDefaultArgs<ExtArgs>
+    location_Event?: boolean | Event_LocationDefaultArgs<ExtArgs>
   }, ExtArgs["result"]["events"]>
 
   export type EventsSelectScalar = {
@@ -3871,6 +6120,7 @@ export namespace Prisma {
     event_location_id?: boolean
     name?: boolean
     description?: boolean
+    image?: boolean
     price?: boolean
     start_date?: boolean
     end_date?: boolean
@@ -3878,29 +6128,38 @@ export namespace Prisma {
     updated_at?: boolean
   }
 
-  export type EventsOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "organizer_id" | "event_category_id" | "event_location_id" | "name" | "description" | "price" | "start_date" | "end_date" | "created_at" | "updated_at", ExtArgs["result"]["events"]>
+  export type EventsOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "organizer_id" | "event_category_id" | "event_location_id" | "name" | "description" | "image" | "price" | "start_date" | "end_date" | "created_at" | "updated_at", ExtArgs["result"]["events"]>
   export type EventsInclude<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     organizer?: boolean | OrganizerDefaultArgs<ExtArgs>
-    event_category?: boolean | Event_CategoryDefaultArgs<ExtArgs>
-    event_location?: boolean | Event_LocationDefaultArgs<ExtArgs>
+    category_event?: boolean | Event_CategoryDefaultArgs<ExtArgs>
+    location_Event?: boolean | Event_LocationDefaultArgs<ExtArgs>
+    seat_event?: boolean | Events$seat_eventArgs<ExtArgs>
+    reviews_event?: boolean | Events$reviews_eventArgs<ExtArgs>
+    attendees_event?: boolean | Events$attendees_eventArgs<ExtArgs>
+    event_transactionDetail?: boolean | Events$event_transactionDetailArgs<ExtArgs>
+    _count?: boolean | EventsCountOutputTypeDefaultArgs<ExtArgs>
   }
   export type EventsIncludeCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     organizer?: boolean | OrganizerDefaultArgs<ExtArgs>
-    event_category?: boolean | Event_CategoryDefaultArgs<ExtArgs>
-    event_location?: boolean | Event_LocationDefaultArgs<ExtArgs>
+    category_event?: boolean | Event_CategoryDefaultArgs<ExtArgs>
+    location_Event?: boolean | Event_LocationDefaultArgs<ExtArgs>
   }
   export type EventsIncludeUpdateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     organizer?: boolean | OrganizerDefaultArgs<ExtArgs>
-    event_category?: boolean | Event_CategoryDefaultArgs<ExtArgs>
-    event_location?: boolean | Event_LocationDefaultArgs<ExtArgs>
+    category_event?: boolean | Event_CategoryDefaultArgs<ExtArgs>
+    location_Event?: boolean | Event_LocationDefaultArgs<ExtArgs>
   }
 
   export type $EventsPayload<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     name: "Events"
     objects: {
       organizer: Prisma.$OrganizerPayload<ExtArgs>
-      event_category: Prisma.$Event_CategoryPayload<ExtArgs>
-      event_location: Prisma.$Event_LocationPayload<ExtArgs>
+      category_event: Prisma.$Event_CategoryPayload<ExtArgs>
+      location_Event: Prisma.$Event_LocationPayload<ExtArgs>
+      seat_event: Prisma.$Event_SeatPayload<ExtArgs> | null
+      reviews_event: Prisma.$Event_ReviewsPayload<ExtArgs>[]
+      attendees_event: Prisma.$Event_AttendeesPayload<ExtArgs>[]
+      event_transactionDetail: Prisma.$Transactions_detailPayload<ExtArgs>[]
     }
     scalars: $Extensions.GetPayloadResult<{
       id: string
@@ -3909,6 +6168,7 @@ export namespace Prisma {
       event_location_id: string
       name: string
       description: string
+      image: string
       price: number
       start_date: Date
       end_date: Date | null
@@ -4309,8 +6569,12 @@ export namespace Prisma {
   export interface Prisma__EventsClient<T, Null = never, ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs, GlobalOmitOptions = {}> extends Prisma.PrismaPromise<T> {
     readonly [Symbol.toStringTag]: "PrismaPromise"
     organizer<T extends OrganizerDefaultArgs<ExtArgs> = {}>(args?: Subset<T, OrganizerDefaultArgs<ExtArgs>>): Prisma__OrganizerClient<$Result.GetResult<Prisma.$OrganizerPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | Null, Null, ExtArgs, GlobalOmitOptions>
-    event_category<T extends Event_CategoryDefaultArgs<ExtArgs> = {}>(args?: Subset<T, Event_CategoryDefaultArgs<ExtArgs>>): Prisma__Event_CategoryClient<$Result.GetResult<Prisma.$Event_CategoryPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | Null, Null, ExtArgs, GlobalOmitOptions>
-    event_location<T extends Event_LocationDefaultArgs<ExtArgs> = {}>(args?: Subset<T, Event_LocationDefaultArgs<ExtArgs>>): Prisma__Event_LocationClient<$Result.GetResult<Prisma.$Event_LocationPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | Null, Null, ExtArgs, GlobalOmitOptions>
+    category_event<T extends Event_CategoryDefaultArgs<ExtArgs> = {}>(args?: Subset<T, Event_CategoryDefaultArgs<ExtArgs>>): Prisma__Event_CategoryClient<$Result.GetResult<Prisma.$Event_CategoryPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | Null, Null, ExtArgs, GlobalOmitOptions>
+    location_Event<T extends Event_LocationDefaultArgs<ExtArgs> = {}>(args?: Subset<T, Event_LocationDefaultArgs<ExtArgs>>): Prisma__Event_LocationClient<$Result.GetResult<Prisma.$Event_LocationPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | Null, Null, ExtArgs, GlobalOmitOptions>
+    seat_event<T extends Events$seat_eventArgs<ExtArgs> = {}>(args?: Subset<T, Events$seat_eventArgs<ExtArgs>>): Prisma__Event_SeatClient<$Result.GetResult<Prisma.$Event_SeatPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
+    reviews_event<T extends Events$reviews_eventArgs<ExtArgs> = {}>(args?: Subset<T, Events$reviews_eventArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$Event_ReviewsPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
+    attendees_event<T extends Events$attendees_eventArgs<ExtArgs> = {}>(args?: Subset<T, Events$attendees_eventArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$Event_AttendeesPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
+    event_transactionDetail<T extends Events$event_transactionDetailArgs<ExtArgs> = {}>(args?: Subset<T, Events$event_transactionDetailArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$Transactions_detailPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
     /**
      * Attaches callbacks for the resolution and/or rejection of the Promise.
      * @param onfulfilled The callback to execute when the Promise is resolved.
@@ -4346,6 +6610,7 @@ export namespace Prisma {
     readonly event_location_id: FieldRef<"Events", 'String'>
     readonly name: FieldRef<"Events", 'String'>
     readonly description: FieldRef<"Events", 'String'>
+    readonly image: FieldRef<"Events", 'String'>
     readonly price: FieldRef<"Events", 'Int'>
     readonly start_date: FieldRef<"Events", 'DateTime'>
     readonly end_date: FieldRef<"Events", 'DateTime'>
@@ -4744,6 +7009,97 @@ export namespace Prisma {
      * Limit how many Events to delete.
      */
     limit?: number
+  }
+
+  /**
+   * Events.seat_event
+   */
+  export type Events$seat_eventArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Event_Seat
+     */
+    select?: Event_SeatSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the Event_Seat
+     */
+    omit?: Event_SeatOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: Event_SeatInclude<ExtArgs> | null
+    where?: Event_SeatWhereInput
+  }
+
+  /**
+   * Events.reviews_event
+   */
+  export type Events$reviews_eventArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Event_Reviews
+     */
+    select?: Event_ReviewsSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the Event_Reviews
+     */
+    omit?: Event_ReviewsOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: Event_ReviewsInclude<ExtArgs> | null
+    where?: Event_ReviewsWhereInput
+    orderBy?: Event_ReviewsOrderByWithRelationInput | Event_ReviewsOrderByWithRelationInput[]
+    cursor?: Event_ReviewsWhereUniqueInput
+    take?: number
+    skip?: number
+    distinct?: Event_ReviewsScalarFieldEnum | Event_ReviewsScalarFieldEnum[]
+  }
+
+  /**
+   * Events.attendees_event
+   */
+  export type Events$attendees_eventArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Event_Attendees
+     */
+    select?: Event_AttendeesSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the Event_Attendees
+     */
+    omit?: Event_AttendeesOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: Event_AttendeesInclude<ExtArgs> | null
+    where?: Event_AttendeesWhereInput
+    orderBy?: Event_AttendeesOrderByWithRelationInput | Event_AttendeesOrderByWithRelationInput[]
+    cursor?: Event_AttendeesWhereUniqueInput
+    take?: number
+    skip?: number
+    distinct?: Event_AttendeesScalarFieldEnum | Event_AttendeesScalarFieldEnum[]
+  }
+
+  /**
+   * Events.event_transactionDetail
+   */
+  export type Events$event_transactionDetailArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Transactions_detail
+     */
+    select?: Transactions_detailSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the Transactions_detail
+     */
+    omit?: Transactions_detailOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: Transactions_detailInclude<ExtArgs> | null
+    where?: Transactions_detailWhereInput
+    orderBy?: Transactions_detailOrderByWithRelationInput | Transactions_detailOrderByWithRelationInput[]
+    cursor?: Transactions_detailWhereUniqueInput
+    take?: number
+    skip?: number
+    distinct?: Transactions_detailScalarFieldEnum | Transactions_detailScalarFieldEnum[]
   }
 
   /**
@@ -5808,21 +8164,18 @@ export namespace Prisma {
 
   export type Event_LocationMinAggregateOutputType = {
     id: string | null
-    event_id: string | null
     city: string | null
     address: string | null
   }
 
   export type Event_LocationMaxAggregateOutputType = {
     id: string | null
-    event_id: string | null
     city: string | null
     address: string | null
   }
 
   export type Event_LocationCountAggregateOutputType = {
     id: number
-    event_id: number
     city: number
     address: number
     _all: number
@@ -5831,21 +8184,18 @@ export namespace Prisma {
 
   export type Event_LocationMinAggregateInputType = {
     id?: true
-    event_id?: true
     city?: true
     address?: true
   }
 
   export type Event_LocationMaxAggregateInputType = {
     id?: true
-    event_id?: true
     city?: true
     address?: true
   }
 
   export type Event_LocationCountAggregateInputType = {
     id?: true
-    event_id?: true
     city?: true
     address?: true
     _all?: true
@@ -5925,7 +8275,6 @@ export namespace Prisma {
 
   export type Event_LocationGroupByOutputType = {
     id: string
-    event_id: string
     city: string
     address: string
     _count: Event_LocationCountAggregateOutputType | null
@@ -5949,7 +8298,6 @@ export namespace Prisma {
 
   export type Event_LocationSelect<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
     id?: boolean
-    event_id?: boolean
     city?: boolean
     address?: boolean
     event?: boolean | Event_Location$eventArgs<ExtArgs>
@@ -5958,26 +8306,23 @@ export namespace Prisma {
 
   export type Event_LocationSelectCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
     id?: boolean
-    event_id?: boolean
     city?: boolean
     address?: boolean
   }, ExtArgs["result"]["event_Location"]>
 
   export type Event_LocationSelectUpdateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
     id?: boolean
-    event_id?: boolean
     city?: boolean
     address?: boolean
   }, ExtArgs["result"]["event_Location"]>
 
   export type Event_LocationSelectScalar = {
     id?: boolean
-    event_id?: boolean
     city?: boolean
     address?: boolean
   }
 
-  export type Event_LocationOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "event_id" | "city" | "address", ExtArgs["result"]["event_Location"]>
+  export type Event_LocationOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "city" | "address", ExtArgs["result"]["event_Location"]>
   export type Event_LocationInclude<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     event?: boolean | Event_Location$eventArgs<ExtArgs>
     _count?: boolean | Event_LocationCountOutputTypeDefaultArgs<ExtArgs>
@@ -5992,7 +8337,6 @@ export namespace Prisma {
     }
     scalars: $Extensions.GetPayloadResult<{
       id: string
-      event_id: string
       city: string
       address: string
     }, ExtArgs["result"]["event_Location"]>
@@ -6420,7 +8764,6 @@ export namespace Prisma {
    */
   interface Event_LocationFieldRefs {
     readonly id: FieldRef<"Event_Location", 'String'>
-    readonly event_id: FieldRef<"Event_Location", 'String'>
     readonly city: FieldRef<"Event_Location", 'String'>
     readonly address: FieldRef<"Event_Location", 'String'>
   }
@@ -6854,6 +9197,8820 @@ export namespace Prisma {
 
 
   /**
+   * Model Event_Seat
+   */
+
+  export type AggregateEvent_Seat = {
+    _count: Event_SeatCountAggregateOutputType | null
+    _avg: Event_SeatAvgAggregateOutputType | null
+    _sum: Event_SeatSumAggregateOutputType | null
+    _min: Event_SeatMinAggregateOutputType | null
+    _max: Event_SeatMaxAggregateOutputType | null
+  }
+
+  export type Event_SeatAvgAggregateOutputType = {
+    total: number | null
+  }
+
+  export type Event_SeatSumAggregateOutputType = {
+    total: number | null
+  }
+
+  export type Event_SeatMinAggregateOutputType = {
+    id: string | null
+    events_id: string | null
+    total: number | null
+  }
+
+  export type Event_SeatMaxAggregateOutputType = {
+    id: string | null
+    events_id: string | null
+    total: number | null
+  }
+
+  export type Event_SeatCountAggregateOutputType = {
+    id: number
+    events_id: number
+    total: number
+    _all: number
+  }
+
+
+  export type Event_SeatAvgAggregateInputType = {
+    total?: true
+  }
+
+  export type Event_SeatSumAggregateInputType = {
+    total?: true
+  }
+
+  export type Event_SeatMinAggregateInputType = {
+    id?: true
+    events_id?: true
+    total?: true
+  }
+
+  export type Event_SeatMaxAggregateInputType = {
+    id?: true
+    events_id?: true
+    total?: true
+  }
+
+  export type Event_SeatCountAggregateInputType = {
+    id?: true
+    events_id?: true
+    total?: true
+    _all?: true
+  }
+
+  export type Event_SeatAggregateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Filter which Event_Seat to aggregate.
+     */
+    where?: Event_SeatWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of Event_Seats to fetch.
+     */
+    orderBy?: Event_SeatOrderByWithRelationInput | Event_SeatOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the start position
+     */
+    cursor?: Event_SeatWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` Event_Seats from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` Event_Seats.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Count returned Event_Seats
+    **/
+    _count?: true | Event_SeatCountAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to average
+    **/
+    _avg?: Event_SeatAvgAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to sum
+    **/
+    _sum?: Event_SeatSumAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to find the minimum value
+    **/
+    _min?: Event_SeatMinAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to find the maximum value
+    **/
+    _max?: Event_SeatMaxAggregateInputType
+  }
+
+  export type GetEvent_SeatAggregateType<T extends Event_SeatAggregateArgs> = {
+        [P in keyof T & keyof AggregateEvent_Seat]: P extends '_count' | 'count'
+      ? T[P] extends true
+        ? number
+        : GetScalarType<T[P], AggregateEvent_Seat[P]>
+      : GetScalarType<T[P], AggregateEvent_Seat[P]>
+  }
+
+
+
+
+  export type Event_SeatGroupByArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    where?: Event_SeatWhereInput
+    orderBy?: Event_SeatOrderByWithAggregationInput | Event_SeatOrderByWithAggregationInput[]
+    by: Event_SeatScalarFieldEnum[] | Event_SeatScalarFieldEnum
+    having?: Event_SeatScalarWhereWithAggregatesInput
+    take?: number
+    skip?: number
+    _count?: Event_SeatCountAggregateInputType | true
+    _avg?: Event_SeatAvgAggregateInputType
+    _sum?: Event_SeatSumAggregateInputType
+    _min?: Event_SeatMinAggregateInputType
+    _max?: Event_SeatMaxAggregateInputType
+  }
+
+  export type Event_SeatGroupByOutputType = {
+    id: string
+    events_id: string
+    total: number
+    _count: Event_SeatCountAggregateOutputType | null
+    _avg: Event_SeatAvgAggregateOutputType | null
+    _sum: Event_SeatSumAggregateOutputType | null
+    _min: Event_SeatMinAggregateOutputType | null
+    _max: Event_SeatMaxAggregateOutputType | null
+  }
+
+  type GetEvent_SeatGroupByPayload<T extends Event_SeatGroupByArgs> = Prisma.PrismaPromise<
+    Array<
+      PickEnumerable<Event_SeatGroupByOutputType, T['by']> &
+        {
+          [P in ((keyof T) & (keyof Event_SeatGroupByOutputType))]: P extends '_count'
+            ? T[P] extends boolean
+              ? number
+              : GetScalarType<T[P], Event_SeatGroupByOutputType[P]>
+            : GetScalarType<T[P], Event_SeatGroupByOutputType[P]>
+        }
+      >
+    >
+
+
+  export type Event_SeatSelect<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
+    id?: boolean
+    events_id?: boolean
+    total?: boolean
+    event?: boolean | EventsDefaultArgs<ExtArgs>
+  }, ExtArgs["result"]["event_Seat"]>
+
+  export type Event_SeatSelectCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
+    id?: boolean
+    events_id?: boolean
+    total?: boolean
+    event?: boolean | EventsDefaultArgs<ExtArgs>
+  }, ExtArgs["result"]["event_Seat"]>
+
+  export type Event_SeatSelectUpdateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
+    id?: boolean
+    events_id?: boolean
+    total?: boolean
+    event?: boolean | EventsDefaultArgs<ExtArgs>
+  }, ExtArgs["result"]["event_Seat"]>
+
+  export type Event_SeatSelectScalar = {
+    id?: boolean
+    events_id?: boolean
+    total?: boolean
+  }
+
+  export type Event_SeatOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "events_id" | "total", ExtArgs["result"]["event_Seat"]>
+  export type Event_SeatInclude<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    event?: boolean | EventsDefaultArgs<ExtArgs>
+  }
+  export type Event_SeatIncludeCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    event?: boolean | EventsDefaultArgs<ExtArgs>
+  }
+  export type Event_SeatIncludeUpdateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    event?: boolean | EventsDefaultArgs<ExtArgs>
+  }
+
+  export type $Event_SeatPayload<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    name: "Event_Seat"
+    objects: {
+      event: Prisma.$EventsPayload<ExtArgs>
+    }
+    scalars: $Extensions.GetPayloadResult<{
+      id: string
+      events_id: string
+      total: number
+    }, ExtArgs["result"]["event_Seat"]>
+    composites: {}
+  }
+
+  type Event_SeatGetPayload<S extends boolean | null | undefined | Event_SeatDefaultArgs> = $Result.GetResult<Prisma.$Event_SeatPayload, S>
+
+  type Event_SeatCountArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> =
+    Omit<Event_SeatFindManyArgs, 'select' | 'include' | 'distinct' | 'omit'> & {
+      select?: Event_SeatCountAggregateInputType | true
+    }
+
+  export interface Event_SeatDelegate<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs, GlobalOmitOptions = {}> {
+    [K: symbol]: { types: Prisma.TypeMap<ExtArgs>['model']['Event_Seat'], meta: { name: 'Event_Seat' } }
+    /**
+     * Find zero or one Event_Seat that matches the filter.
+     * @param {Event_SeatFindUniqueArgs} args - Arguments to find a Event_Seat
+     * @example
+     * // Get one Event_Seat
+     * const event_Seat = await prisma.event_Seat.findUnique({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findUnique<T extends Event_SeatFindUniqueArgs>(args: SelectSubset<T, Event_SeatFindUniqueArgs<ExtArgs>>): Prisma__Event_SeatClient<$Result.GetResult<Prisma.$Event_SeatPayload<ExtArgs>, T, "findUnique", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find one Event_Seat that matches the filter or throw an error with `error.code='P2025'`
+     * if no matches were found.
+     * @param {Event_SeatFindUniqueOrThrowArgs} args - Arguments to find a Event_Seat
+     * @example
+     * // Get one Event_Seat
+     * const event_Seat = await prisma.event_Seat.findUniqueOrThrow({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findUniqueOrThrow<T extends Event_SeatFindUniqueOrThrowArgs>(args: SelectSubset<T, Event_SeatFindUniqueOrThrowArgs<ExtArgs>>): Prisma__Event_SeatClient<$Result.GetResult<Prisma.$Event_SeatPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find the first Event_Seat that matches the filter.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {Event_SeatFindFirstArgs} args - Arguments to find a Event_Seat
+     * @example
+     * // Get one Event_Seat
+     * const event_Seat = await prisma.event_Seat.findFirst({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findFirst<T extends Event_SeatFindFirstArgs>(args?: SelectSubset<T, Event_SeatFindFirstArgs<ExtArgs>>): Prisma__Event_SeatClient<$Result.GetResult<Prisma.$Event_SeatPayload<ExtArgs>, T, "findFirst", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find the first Event_Seat that matches the filter or
+     * throw `PrismaKnownClientError` with `P2025` code if no matches were found.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {Event_SeatFindFirstOrThrowArgs} args - Arguments to find a Event_Seat
+     * @example
+     * // Get one Event_Seat
+     * const event_Seat = await prisma.event_Seat.findFirstOrThrow({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findFirstOrThrow<T extends Event_SeatFindFirstOrThrowArgs>(args?: SelectSubset<T, Event_SeatFindFirstOrThrowArgs<ExtArgs>>): Prisma__Event_SeatClient<$Result.GetResult<Prisma.$Event_SeatPayload<ExtArgs>, T, "findFirstOrThrow", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find zero or more Event_Seats that matches the filter.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {Event_SeatFindManyArgs} args - Arguments to filter and select certain fields only.
+     * @example
+     * // Get all Event_Seats
+     * const event_Seats = await prisma.event_Seat.findMany()
+     * 
+     * // Get first 10 Event_Seats
+     * const event_Seats = await prisma.event_Seat.findMany({ take: 10 })
+     * 
+     * // Only select the `id`
+     * const event_SeatWithIdOnly = await prisma.event_Seat.findMany({ select: { id: true } })
+     * 
+     */
+    findMany<T extends Event_SeatFindManyArgs>(args?: SelectSubset<T, Event_SeatFindManyArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$Event_SeatPayload<ExtArgs>, T, "findMany", GlobalOmitOptions>>
+
+    /**
+     * Create a Event_Seat.
+     * @param {Event_SeatCreateArgs} args - Arguments to create a Event_Seat.
+     * @example
+     * // Create one Event_Seat
+     * const Event_Seat = await prisma.event_Seat.create({
+     *   data: {
+     *     // ... data to create a Event_Seat
+     *   }
+     * })
+     * 
+     */
+    create<T extends Event_SeatCreateArgs>(args: SelectSubset<T, Event_SeatCreateArgs<ExtArgs>>): Prisma__Event_SeatClient<$Result.GetResult<Prisma.$Event_SeatPayload<ExtArgs>, T, "create", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Create many Event_Seats.
+     * @param {Event_SeatCreateManyArgs} args - Arguments to create many Event_Seats.
+     * @example
+     * // Create many Event_Seats
+     * const event_Seat = await prisma.event_Seat.createMany({
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     *     
+     */
+    createMany<T extends Event_SeatCreateManyArgs>(args?: SelectSubset<T, Event_SeatCreateManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Create many Event_Seats and returns the data saved in the database.
+     * @param {Event_SeatCreateManyAndReturnArgs} args - Arguments to create many Event_Seats.
+     * @example
+     * // Create many Event_Seats
+     * const event_Seat = await prisma.event_Seat.createManyAndReturn({
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * 
+     * // Create many Event_Seats and only return the `id`
+     * const event_SeatWithIdOnly = await prisma.event_Seat.createManyAndReturn({
+     *   select: { id: true },
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * 
+     */
+    createManyAndReturn<T extends Event_SeatCreateManyAndReturnArgs>(args?: SelectSubset<T, Event_SeatCreateManyAndReturnArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$Event_SeatPayload<ExtArgs>, T, "createManyAndReturn", GlobalOmitOptions>>
+
+    /**
+     * Delete a Event_Seat.
+     * @param {Event_SeatDeleteArgs} args - Arguments to delete one Event_Seat.
+     * @example
+     * // Delete one Event_Seat
+     * const Event_Seat = await prisma.event_Seat.delete({
+     *   where: {
+     *     // ... filter to delete one Event_Seat
+     *   }
+     * })
+     * 
+     */
+    delete<T extends Event_SeatDeleteArgs>(args: SelectSubset<T, Event_SeatDeleteArgs<ExtArgs>>): Prisma__Event_SeatClient<$Result.GetResult<Prisma.$Event_SeatPayload<ExtArgs>, T, "delete", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Update one Event_Seat.
+     * @param {Event_SeatUpdateArgs} args - Arguments to update one Event_Seat.
+     * @example
+     * // Update one Event_Seat
+     * const event_Seat = await prisma.event_Seat.update({
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: {
+     *     // ... provide data here
+     *   }
+     * })
+     * 
+     */
+    update<T extends Event_SeatUpdateArgs>(args: SelectSubset<T, Event_SeatUpdateArgs<ExtArgs>>): Prisma__Event_SeatClient<$Result.GetResult<Prisma.$Event_SeatPayload<ExtArgs>, T, "update", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Delete zero or more Event_Seats.
+     * @param {Event_SeatDeleteManyArgs} args - Arguments to filter Event_Seats to delete.
+     * @example
+     * // Delete a few Event_Seats
+     * const { count } = await prisma.event_Seat.deleteMany({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     * 
+     */
+    deleteMany<T extends Event_SeatDeleteManyArgs>(args?: SelectSubset<T, Event_SeatDeleteManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Update zero or more Event_Seats.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {Event_SeatUpdateManyArgs} args - Arguments to update one or more rows.
+     * @example
+     * // Update many Event_Seats
+     * const event_Seat = await prisma.event_Seat.updateMany({
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: {
+     *     // ... provide data here
+     *   }
+     * })
+     * 
+     */
+    updateMany<T extends Event_SeatUpdateManyArgs>(args: SelectSubset<T, Event_SeatUpdateManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Update zero or more Event_Seats and returns the data updated in the database.
+     * @param {Event_SeatUpdateManyAndReturnArgs} args - Arguments to update many Event_Seats.
+     * @example
+     * // Update many Event_Seats
+     * const event_Seat = await prisma.event_Seat.updateManyAndReturn({
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * 
+     * // Update zero or more Event_Seats and only return the `id`
+     * const event_SeatWithIdOnly = await prisma.event_Seat.updateManyAndReturn({
+     *   select: { id: true },
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * 
+     */
+    updateManyAndReturn<T extends Event_SeatUpdateManyAndReturnArgs>(args: SelectSubset<T, Event_SeatUpdateManyAndReturnArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$Event_SeatPayload<ExtArgs>, T, "updateManyAndReturn", GlobalOmitOptions>>
+
+    /**
+     * Create or update one Event_Seat.
+     * @param {Event_SeatUpsertArgs} args - Arguments to update or create a Event_Seat.
+     * @example
+     * // Update or create a Event_Seat
+     * const event_Seat = await prisma.event_Seat.upsert({
+     *   create: {
+     *     // ... data to create a Event_Seat
+     *   },
+     *   update: {
+     *     // ... in case it already exists, update
+     *   },
+     *   where: {
+     *     // ... the filter for the Event_Seat we want to update
+     *   }
+     * })
+     */
+    upsert<T extends Event_SeatUpsertArgs>(args: SelectSubset<T, Event_SeatUpsertArgs<ExtArgs>>): Prisma__Event_SeatClient<$Result.GetResult<Prisma.$Event_SeatPayload<ExtArgs>, T, "upsert", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+
+    /**
+     * Count the number of Event_Seats.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {Event_SeatCountArgs} args - Arguments to filter Event_Seats to count.
+     * @example
+     * // Count the number of Event_Seats
+     * const count = await prisma.event_Seat.count({
+     *   where: {
+     *     // ... the filter for the Event_Seats we want to count
+     *   }
+     * })
+    **/
+    count<T extends Event_SeatCountArgs>(
+      args?: Subset<T, Event_SeatCountArgs>,
+    ): Prisma.PrismaPromise<
+      T extends $Utils.Record<'select', any>
+        ? T['select'] extends true
+          ? number
+          : GetScalarType<T['select'], Event_SeatCountAggregateOutputType>
+        : number
+    >
+
+    /**
+     * Allows you to perform aggregations operations on a Event_Seat.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {Event_SeatAggregateArgs} args - Select which aggregations you would like to apply and on what fields.
+     * @example
+     * // Ordered by age ascending
+     * // Where email contains prisma.io
+     * // Limited to the 10 users
+     * const aggregations = await prisma.user.aggregate({
+     *   _avg: {
+     *     age: true,
+     *   },
+     *   where: {
+     *     email: {
+     *       contains: "prisma.io",
+     *     },
+     *   },
+     *   orderBy: {
+     *     age: "asc",
+     *   },
+     *   take: 10,
+     * })
+    **/
+    aggregate<T extends Event_SeatAggregateArgs>(args: Subset<T, Event_SeatAggregateArgs>): Prisma.PrismaPromise<GetEvent_SeatAggregateType<T>>
+
+    /**
+     * Group by Event_Seat.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {Event_SeatGroupByArgs} args - Group by arguments.
+     * @example
+     * // Group by city, order by createdAt, get count
+     * const result = await prisma.user.groupBy({
+     *   by: ['city', 'createdAt'],
+     *   orderBy: {
+     *     createdAt: true
+     *   },
+     *   _count: {
+     *     _all: true
+     *   },
+     * })
+     * 
+    **/
+    groupBy<
+      T extends Event_SeatGroupByArgs,
+      HasSelectOrTake extends Or<
+        Extends<'skip', Keys<T>>,
+        Extends<'take', Keys<T>>
+      >,
+      OrderByArg extends True extends HasSelectOrTake
+        ? { orderBy: Event_SeatGroupByArgs['orderBy'] }
+        : { orderBy?: Event_SeatGroupByArgs['orderBy'] },
+      OrderFields extends ExcludeUnderscoreKeys<Keys<MaybeTupleToUnion<T['orderBy']>>>,
+      ByFields extends MaybeTupleToUnion<T['by']>,
+      ByValid extends Has<ByFields, OrderFields>,
+      HavingFields extends GetHavingFields<T['having']>,
+      HavingValid extends Has<ByFields, HavingFields>,
+      ByEmpty extends T['by'] extends never[] ? True : False,
+      InputErrors extends ByEmpty extends True
+      ? `Error: "by" must not be empty.`
+      : HavingValid extends False
+      ? {
+          [P in HavingFields]: P extends ByFields
+            ? never
+            : P extends string
+            ? `Error: Field "${P}" used in "having" needs to be provided in "by".`
+            : [
+                Error,
+                'Field ',
+                P,
+                ` in "having" needs to be provided in "by"`,
+              ]
+        }[HavingFields]
+      : 'take' extends Keys<T>
+      ? 'orderBy' extends Keys<T>
+        ? ByValid extends True
+          ? {}
+          : {
+              [P in OrderFields]: P extends ByFields
+                ? never
+                : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+            }[OrderFields]
+        : 'Error: If you provide "take", you also need to provide "orderBy"'
+      : 'skip' extends Keys<T>
+      ? 'orderBy' extends Keys<T>
+        ? ByValid extends True
+          ? {}
+          : {
+              [P in OrderFields]: P extends ByFields
+                ? never
+                : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+            }[OrderFields]
+        : 'Error: If you provide "skip", you also need to provide "orderBy"'
+      : ByValid extends True
+      ? {}
+      : {
+          [P in OrderFields]: P extends ByFields
+            ? never
+            : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+        }[OrderFields]
+    >(args: SubsetIntersection<T, Event_SeatGroupByArgs, OrderByArg> & InputErrors): {} extends InputErrors ? GetEvent_SeatGroupByPayload<T> : Prisma.PrismaPromise<InputErrors>
+  /**
+   * Fields of the Event_Seat model
+   */
+  readonly fields: Event_SeatFieldRefs;
+  }
+
+  /**
+   * The delegate class that acts as a "Promise-like" for Event_Seat.
+   * Why is this prefixed with `Prisma__`?
+   * Because we want to prevent naming conflicts as mentioned in
+   * https://github.com/prisma/prisma-client-js/issues/707
+   */
+  export interface Prisma__Event_SeatClient<T, Null = never, ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs, GlobalOmitOptions = {}> extends Prisma.PrismaPromise<T> {
+    readonly [Symbol.toStringTag]: "PrismaPromise"
+    event<T extends EventsDefaultArgs<ExtArgs> = {}>(args?: Subset<T, EventsDefaultArgs<ExtArgs>>): Prisma__EventsClient<$Result.GetResult<Prisma.$EventsPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | Null, Null, ExtArgs, GlobalOmitOptions>
+    /**
+     * Attaches callbacks for the resolution and/or rejection of the Promise.
+     * @param onfulfilled The callback to execute when the Promise is resolved.
+     * @param onrejected The callback to execute when the Promise is rejected.
+     * @returns A Promise for the completion of which ever callback is executed.
+     */
+    then<TResult1 = T, TResult2 = never>(onfulfilled?: ((value: T) => TResult1 | PromiseLike<TResult1>) | undefined | null, onrejected?: ((reason: any) => TResult2 | PromiseLike<TResult2>) | undefined | null): $Utils.JsPromise<TResult1 | TResult2>
+    /**
+     * Attaches a callback for only the rejection of the Promise.
+     * @param onrejected The callback to execute when the Promise is rejected.
+     * @returns A Promise for the completion of the callback.
+     */
+    catch<TResult = never>(onrejected?: ((reason: any) => TResult | PromiseLike<TResult>) | undefined | null): $Utils.JsPromise<T | TResult>
+    /**
+     * Attaches a callback that is invoked when the Promise is settled (fulfilled or rejected). The
+     * resolved value cannot be modified from the callback.
+     * @param onfinally The callback to execute when the Promise is settled (fulfilled or rejected).
+     * @returns A Promise for the completion of the callback.
+     */
+    finally(onfinally?: (() => void) | undefined | null): $Utils.JsPromise<T>
+  }
+
+
+
+
+  /**
+   * Fields of the Event_Seat model
+   */
+  interface Event_SeatFieldRefs {
+    readonly id: FieldRef<"Event_Seat", 'String'>
+    readonly events_id: FieldRef<"Event_Seat", 'String'>
+    readonly total: FieldRef<"Event_Seat", 'Int'>
+  }
+    
+
+  // Custom InputTypes
+  /**
+   * Event_Seat findUnique
+   */
+  export type Event_SeatFindUniqueArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Event_Seat
+     */
+    select?: Event_SeatSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the Event_Seat
+     */
+    omit?: Event_SeatOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: Event_SeatInclude<ExtArgs> | null
+    /**
+     * Filter, which Event_Seat to fetch.
+     */
+    where: Event_SeatWhereUniqueInput
+  }
+
+  /**
+   * Event_Seat findUniqueOrThrow
+   */
+  export type Event_SeatFindUniqueOrThrowArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Event_Seat
+     */
+    select?: Event_SeatSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the Event_Seat
+     */
+    omit?: Event_SeatOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: Event_SeatInclude<ExtArgs> | null
+    /**
+     * Filter, which Event_Seat to fetch.
+     */
+    where: Event_SeatWhereUniqueInput
+  }
+
+  /**
+   * Event_Seat findFirst
+   */
+  export type Event_SeatFindFirstArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Event_Seat
+     */
+    select?: Event_SeatSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the Event_Seat
+     */
+    omit?: Event_SeatOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: Event_SeatInclude<ExtArgs> | null
+    /**
+     * Filter, which Event_Seat to fetch.
+     */
+    where?: Event_SeatWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of Event_Seats to fetch.
+     */
+    orderBy?: Event_SeatOrderByWithRelationInput | Event_SeatOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for searching for Event_Seats.
+     */
+    cursor?: Event_SeatWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` Event_Seats from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` Event_Seats.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
+     * 
+     * Filter by unique combinations of Event_Seats.
+     */
+    distinct?: Event_SeatScalarFieldEnum | Event_SeatScalarFieldEnum[]
+  }
+
+  /**
+   * Event_Seat findFirstOrThrow
+   */
+  export type Event_SeatFindFirstOrThrowArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Event_Seat
+     */
+    select?: Event_SeatSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the Event_Seat
+     */
+    omit?: Event_SeatOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: Event_SeatInclude<ExtArgs> | null
+    /**
+     * Filter, which Event_Seat to fetch.
+     */
+    where?: Event_SeatWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of Event_Seats to fetch.
+     */
+    orderBy?: Event_SeatOrderByWithRelationInput | Event_SeatOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for searching for Event_Seats.
+     */
+    cursor?: Event_SeatWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` Event_Seats from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` Event_Seats.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
+     * 
+     * Filter by unique combinations of Event_Seats.
+     */
+    distinct?: Event_SeatScalarFieldEnum | Event_SeatScalarFieldEnum[]
+  }
+
+  /**
+   * Event_Seat findMany
+   */
+  export type Event_SeatFindManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Event_Seat
+     */
+    select?: Event_SeatSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the Event_Seat
+     */
+    omit?: Event_SeatOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: Event_SeatInclude<ExtArgs> | null
+    /**
+     * Filter, which Event_Seats to fetch.
+     */
+    where?: Event_SeatWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of Event_Seats to fetch.
+     */
+    orderBy?: Event_SeatOrderByWithRelationInput | Event_SeatOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for listing Event_Seats.
+     */
+    cursor?: Event_SeatWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` Event_Seats from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` Event_Seats.
+     */
+    skip?: number
+    distinct?: Event_SeatScalarFieldEnum | Event_SeatScalarFieldEnum[]
+  }
+
+  /**
+   * Event_Seat create
+   */
+  export type Event_SeatCreateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Event_Seat
+     */
+    select?: Event_SeatSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the Event_Seat
+     */
+    omit?: Event_SeatOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: Event_SeatInclude<ExtArgs> | null
+    /**
+     * The data needed to create a Event_Seat.
+     */
+    data: XOR<Event_SeatCreateInput, Event_SeatUncheckedCreateInput>
+  }
+
+  /**
+   * Event_Seat createMany
+   */
+  export type Event_SeatCreateManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * The data used to create many Event_Seats.
+     */
+    data: Event_SeatCreateManyInput | Event_SeatCreateManyInput[]
+    skipDuplicates?: boolean
+  }
+
+  /**
+   * Event_Seat createManyAndReturn
+   */
+  export type Event_SeatCreateManyAndReturnArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Event_Seat
+     */
+    select?: Event_SeatSelectCreateManyAndReturn<ExtArgs> | null
+    /**
+     * Omit specific fields from the Event_Seat
+     */
+    omit?: Event_SeatOmit<ExtArgs> | null
+    /**
+     * The data used to create many Event_Seats.
+     */
+    data: Event_SeatCreateManyInput | Event_SeatCreateManyInput[]
+    skipDuplicates?: boolean
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: Event_SeatIncludeCreateManyAndReturn<ExtArgs> | null
+  }
+
+  /**
+   * Event_Seat update
+   */
+  export type Event_SeatUpdateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Event_Seat
+     */
+    select?: Event_SeatSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the Event_Seat
+     */
+    omit?: Event_SeatOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: Event_SeatInclude<ExtArgs> | null
+    /**
+     * The data needed to update a Event_Seat.
+     */
+    data: XOR<Event_SeatUpdateInput, Event_SeatUncheckedUpdateInput>
+    /**
+     * Choose, which Event_Seat to update.
+     */
+    where: Event_SeatWhereUniqueInput
+  }
+
+  /**
+   * Event_Seat updateMany
+   */
+  export type Event_SeatUpdateManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * The data used to update Event_Seats.
+     */
+    data: XOR<Event_SeatUpdateManyMutationInput, Event_SeatUncheckedUpdateManyInput>
+    /**
+     * Filter which Event_Seats to update
+     */
+    where?: Event_SeatWhereInput
+    /**
+     * Limit how many Event_Seats to update.
+     */
+    limit?: number
+  }
+
+  /**
+   * Event_Seat updateManyAndReturn
+   */
+  export type Event_SeatUpdateManyAndReturnArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Event_Seat
+     */
+    select?: Event_SeatSelectUpdateManyAndReturn<ExtArgs> | null
+    /**
+     * Omit specific fields from the Event_Seat
+     */
+    omit?: Event_SeatOmit<ExtArgs> | null
+    /**
+     * The data used to update Event_Seats.
+     */
+    data: XOR<Event_SeatUpdateManyMutationInput, Event_SeatUncheckedUpdateManyInput>
+    /**
+     * Filter which Event_Seats to update
+     */
+    where?: Event_SeatWhereInput
+    /**
+     * Limit how many Event_Seats to update.
+     */
+    limit?: number
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: Event_SeatIncludeUpdateManyAndReturn<ExtArgs> | null
+  }
+
+  /**
+   * Event_Seat upsert
+   */
+  export type Event_SeatUpsertArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Event_Seat
+     */
+    select?: Event_SeatSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the Event_Seat
+     */
+    omit?: Event_SeatOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: Event_SeatInclude<ExtArgs> | null
+    /**
+     * The filter to search for the Event_Seat to update in case it exists.
+     */
+    where: Event_SeatWhereUniqueInput
+    /**
+     * In case the Event_Seat found by the `where` argument doesn't exist, create a new Event_Seat with this data.
+     */
+    create: XOR<Event_SeatCreateInput, Event_SeatUncheckedCreateInput>
+    /**
+     * In case the Event_Seat was found with the provided `where` argument, update it with this data.
+     */
+    update: XOR<Event_SeatUpdateInput, Event_SeatUncheckedUpdateInput>
+  }
+
+  /**
+   * Event_Seat delete
+   */
+  export type Event_SeatDeleteArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Event_Seat
+     */
+    select?: Event_SeatSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the Event_Seat
+     */
+    omit?: Event_SeatOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: Event_SeatInclude<ExtArgs> | null
+    /**
+     * Filter which Event_Seat to delete.
+     */
+    where: Event_SeatWhereUniqueInput
+  }
+
+  /**
+   * Event_Seat deleteMany
+   */
+  export type Event_SeatDeleteManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Filter which Event_Seats to delete
+     */
+    where?: Event_SeatWhereInput
+    /**
+     * Limit how many Event_Seats to delete.
+     */
+    limit?: number
+  }
+
+  /**
+   * Event_Seat without action
+   */
+  export type Event_SeatDefaultArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Event_Seat
+     */
+    select?: Event_SeatSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the Event_Seat
+     */
+    omit?: Event_SeatOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: Event_SeatInclude<ExtArgs> | null
+  }
+
+
+  /**
+   * Model Event_Reviews
+   */
+
+  export type AggregateEvent_Reviews = {
+    _count: Event_ReviewsCountAggregateOutputType | null
+    _avg: Event_ReviewsAvgAggregateOutputType | null
+    _sum: Event_ReviewsSumAggregateOutputType | null
+    _min: Event_ReviewsMinAggregateOutputType | null
+    _max: Event_ReviewsMaxAggregateOutputType | null
+  }
+
+  export type Event_ReviewsAvgAggregateOutputType = {
+    rating: number | null
+  }
+
+  export type Event_ReviewsSumAggregateOutputType = {
+    rating: number | null
+  }
+
+  export type Event_ReviewsMinAggregateOutputType = {
+    id: string | null
+    user_id: string | null
+    events_id: string | null
+    review: string | null
+    rating: number | null
+    created_at: Date | null
+  }
+
+  export type Event_ReviewsMaxAggregateOutputType = {
+    id: string | null
+    user_id: string | null
+    events_id: string | null
+    review: string | null
+    rating: number | null
+    created_at: Date | null
+  }
+
+  export type Event_ReviewsCountAggregateOutputType = {
+    id: number
+    user_id: number
+    events_id: number
+    review: number
+    rating: number
+    created_at: number
+    _all: number
+  }
+
+
+  export type Event_ReviewsAvgAggregateInputType = {
+    rating?: true
+  }
+
+  export type Event_ReviewsSumAggregateInputType = {
+    rating?: true
+  }
+
+  export type Event_ReviewsMinAggregateInputType = {
+    id?: true
+    user_id?: true
+    events_id?: true
+    review?: true
+    rating?: true
+    created_at?: true
+  }
+
+  export type Event_ReviewsMaxAggregateInputType = {
+    id?: true
+    user_id?: true
+    events_id?: true
+    review?: true
+    rating?: true
+    created_at?: true
+  }
+
+  export type Event_ReviewsCountAggregateInputType = {
+    id?: true
+    user_id?: true
+    events_id?: true
+    review?: true
+    rating?: true
+    created_at?: true
+    _all?: true
+  }
+
+  export type Event_ReviewsAggregateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Filter which Event_Reviews to aggregate.
+     */
+    where?: Event_ReviewsWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of Event_Reviews to fetch.
+     */
+    orderBy?: Event_ReviewsOrderByWithRelationInput | Event_ReviewsOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the start position
+     */
+    cursor?: Event_ReviewsWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` Event_Reviews from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` Event_Reviews.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Count returned Event_Reviews
+    **/
+    _count?: true | Event_ReviewsCountAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to average
+    **/
+    _avg?: Event_ReviewsAvgAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to sum
+    **/
+    _sum?: Event_ReviewsSumAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to find the minimum value
+    **/
+    _min?: Event_ReviewsMinAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to find the maximum value
+    **/
+    _max?: Event_ReviewsMaxAggregateInputType
+  }
+
+  export type GetEvent_ReviewsAggregateType<T extends Event_ReviewsAggregateArgs> = {
+        [P in keyof T & keyof AggregateEvent_Reviews]: P extends '_count' | 'count'
+      ? T[P] extends true
+        ? number
+        : GetScalarType<T[P], AggregateEvent_Reviews[P]>
+      : GetScalarType<T[P], AggregateEvent_Reviews[P]>
+  }
+
+
+
+
+  export type Event_ReviewsGroupByArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    where?: Event_ReviewsWhereInput
+    orderBy?: Event_ReviewsOrderByWithAggregationInput | Event_ReviewsOrderByWithAggregationInput[]
+    by: Event_ReviewsScalarFieldEnum[] | Event_ReviewsScalarFieldEnum
+    having?: Event_ReviewsScalarWhereWithAggregatesInput
+    take?: number
+    skip?: number
+    _count?: Event_ReviewsCountAggregateInputType | true
+    _avg?: Event_ReviewsAvgAggregateInputType
+    _sum?: Event_ReviewsSumAggregateInputType
+    _min?: Event_ReviewsMinAggregateInputType
+    _max?: Event_ReviewsMaxAggregateInputType
+  }
+
+  export type Event_ReviewsGroupByOutputType = {
+    id: string
+    user_id: string
+    events_id: string
+    review: string
+    rating: number
+    created_at: Date
+    _count: Event_ReviewsCountAggregateOutputType | null
+    _avg: Event_ReviewsAvgAggregateOutputType | null
+    _sum: Event_ReviewsSumAggregateOutputType | null
+    _min: Event_ReviewsMinAggregateOutputType | null
+    _max: Event_ReviewsMaxAggregateOutputType | null
+  }
+
+  type GetEvent_ReviewsGroupByPayload<T extends Event_ReviewsGroupByArgs> = Prisma.PrismaPromise<
+    Array<
+      PickEnumerable<Event_ReviewsGroupByOutputType, T['by']> &
+        {
+          [P in ((keyof T) & (keyof Event_ReviewsGroupByOutputType))]: P extends '_count'
+            ? T[P] extends boolean
+              ? number
+              : GetScalarType<T[P], Event_ReviewsGroupByOutputType[P]>
+            : GetScalarType<T[P], Event_ReviewsGroupByOutputType[P]>
+        }
+      >
+    >
+
+
+  export type Event_ReviewsSelect<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
+    id?: boolean
+    user_id?: boolean
+    events_id?: boolean
+    review?: boolean
+    rating?: boolean
+    created_at?: boolean
+    reviews_user?: boolean | UsersDefaultArgs<ExtArgs>
+    reviews_event?: boolean | EventsDefaultArgs<ExtArgs>
+  }, ExtArgs["result"]["event_Reviews"]>
+
+  export type Event_ReviewsSelectCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
+    id?: boolean
+    user_id?: boolean
+    events_id?: boolean
+    review?: boolean
+    rating?: boolean
+    created_at?: boolean
+    reviews_user?: boolean | UsersDefaultArgs<ExtArgs>
+    reviews_event?: boolean | EventsDefaultArgs<ExtArgs>
+  }, ExtArgs["result"]["event_Reviews"]>
+
+  export type Event_ReviewsSelectUpdateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
+    id?: boolean
+    user_id?: boolean
+    events_id?: boolean
+    review?: boolean
+    rating?: boolean
+    created_at?: boolean
+    reviews_user?: boolean | UsersDefaultArgs<ExtArgs>
+    reviews_event?: boolean | EventsDefaultArgs<ExtArgs>
+  }, ExtArgs["result"]["event_Reviews"]>
+
+  export type Event_ReviewsSelectScalar = {
+    id?: boolean
+    user_id?: boolean
+    events_id?: boolean
+    review?: boolean
+    rating?: boolean
+    created_at?: boolean
+  }
+
+  export type Event_ReviewsOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "user_id" | "events_id" | "review" | "rating" | "created_at", ExtArgs["result"]["event_Reviews"]>
+  export type Event_ReviewsInclude<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    reviews_user?: boolean | UsersDefaultArgs<ExtArgs>
+    reviews_event?: boolean | EventsDefaultArgs<ExtArgs>
+  }
+  export type Event_ReviewsIncludeCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    reviews_user?: boolean | UsersDefaultArgs<ExtArgs>
+    reviews_event?: boolean | EventsDefaultArgs<ExtArgs>
+  }
+  export type Event_ReviewsIncludeUpdateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    reviews_user?: boolean | UsersDefaultArgs<ExtArgs>
+    reviews_event?: boolean | EventsDefaultArgs<ExtArgs>
+  }
+
+  export type $Event_ReviewsPayload<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    name: "Event_Reviews"
+    objects: {
+      reviews_user: Prisma.$UsersPayload<ExtArgs>
+      reviews_event: Prisma.$EventsPayload<ExtArgs>
+    }
+    scalars: $Extensions.GetPayloadResult<{
+      id: string
+      user_id: string
+      events_id: string
+      review: string
+      rating: number
+      created_at: Date
+    }, ExtArgs["result"]["event_Reviews"]>
+    composites: {}
+  }
+
+  type Event_ReviewsGetPayload<S extends boolean | null | undefined | Event_ReviewsDefaultArgs> = $Result.GetResult<Prisma.$Event_ReviewsPayload, S>
+
+  type Event_ReviewsCountArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> =
+    Omit<Event_ReviewsFindManyArgs, 'select' | 'include' | 'distinct' | 'omit'> & {
+      select?: Event_ReviewsCountAggregateInputType | true
+    }
+
+  export interface Event_ReviewsDelegate<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs, GlobalOmitOptions = {}> {
+    [K: symbol]: { types: Prisma.TypeMap<ExtArgs>['model']['Event_Reviews'], meta: { name: 'Event_Reviews' } }
+    /**
+     * Find zero or one Event_Reviews that matches the filter.
+     * @param {Event_ReviewsFindUniqueArgs} args - Arguments to find a Event_Reviews
+     * @example
+     * // Get one Event_Reviews
+     * const event_Reviews = await prisma.event_Reviews.findUnique({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findUnique<T extends Event_ReviewsFindUniqueArgs>(args: SelectSubset<T, Event_ReviewsFindUniqueArgs<ExtArgs>>): Prisma__Event_ReviewsClient<$Result.GetResult<Prisma.$Event_ReviewsPayload<ExtArgs>, T, "findUnique", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find one Event_Reviews that matches the filter or throw an error with `error.code='P2025'`
+     * if no matches were found.
+     * @param {Event_ReviewsFindUniqueOrThrowArgs} args - Arguments to find a Event_Reviews
+     * @example
+     * // Get one Event_Reviews
+     * const event_Reviews = await prisma.event_Reviews.findUniqueOrThrow({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findUniqueOrThrow<T extends Event_ReviewsFindUniqueOrThrowArgs>(args: SelectSubset<T, Event_ReviewsFindUniqueOrThrowArgs<ExtArgs>>): Prisma__Event_ReviewsClient<$Result.GetResult<Prisma.$Event_ReviewsPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find the first Event_Reviews that matches the filter.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {Event_ReviewsFindFirstArgs} args - Arguments to find a Event_Reviews
+     * @example
+     * // Get one Event_Reviews
+     * const event_Reviews = await prisma.event_Reviews.findFirst({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findFirst<T extends Event_ReviewsFindFirstArgs>(args?: SelectSubset<T, Event_ReviewsFindFirstArgs<ExtArgs>>): Prisma__Event_ReviewsClient<$Result.GetResult<Prisma.$Event_ReviewsPayload<ExtArgs>, T, "findFirst", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find the first Event_Reviews that matches the filter or
+     * throw `PrismaKnownClientError` with `P2025` code if no matches were found.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {Event_ReviewsFindFirstOrThrowArgs} args - Arguments to find a Event_Reviews
+     * @example
+     * // Get one Event_Reviews
+     * const event_Reviews = await prisma.event_Reviews.findFirstOrThrow({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findFirstOrThrow<T extends Event_ReviewsFindFirstOrThrowArgs>(args?: SelectSubset<T, Event_ReviewsFindFirstOrThrowArgs<ExtArgs>>): Prisma__Event_ReviewsClient<$Result.GetResult<Prisma.$Event_ReviewsPayload<ExtArgs>, T, "findFirstOrThrow", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find zero or more Event_Reviews that matches the filter.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {Event_ReviewsFindManyArgs} args - Arguments to filter and select certain fields only.
+     * @example
+     * // Get all Event_Reviews
+     * const event_Reviews = await prisma.event_Reviews.findMany()
+     * 
+     * // Get first 10 Event_Reviews
+     * const event_Reviews = await prisma.event_Reviews.findMany({ take: 10 })
+     * 
+     * // Only select the `id`
+     * const event_ReviewsWithIdOnly = await prisma.event_Reviews.findMany({ select: { id: true } })
+     * 
+     */
+    findMany<T extends Event_ReviewsFindManyArgs>(args?: SelectSubset<T, Event_ReviewsFindManyArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$Event_ReviewsPayload<ExtArgs>, T, "findMany", GlobalOmitOptions>>
+
+    /**
+     * Create a Event_Reviews.
+     * @param {Event_ReviewsCreateArgs} args - Arguments to create a Event_Reviews.
+     * @example
+     * // Create one Event_Reviews
+     * const Event_Reviews = await prisma.event_Reviews.create({
+     *   data: {
+     *     // ... data to create a Event_Reviews
+     *   }
+     * })
+     * 
+     */
+    create<T extends Event_ReviewsCreateArgs>(args: SelectSubset<T, Event_ReviewsCreateArgs<ExtArgs>>): Prisma__Event_ReviewsClient<$Result.GetResult<Prisma.$Event_ReviewsPayload<ExtArgs>, T, "create", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Create many Event_Reviews.
+     * @param {Event_ReviewsCreateManyArgs} args - Arguments to create many Event_Reviews.
+     * @example
+     * // Create many Event_Reviews
+     * const event_Reviews = await prisma.event_Reviews.createMany({
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     *     
+     */
+    createMany<T extends Event_ReviewsCreateManyArgs>(args?: SelectSubset<T, Event_ReviewsCreateManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Create many Event_Reviews and returns the data saved in the database.
+     * @param {Event_ReviewsCreateManyAndReturnArgs} args - Arguments to create many Event_Reviews.
+     * @example
+     * // Create many Event_Reviews
+     * const event_Reviews = await prisma.event_Reviews.createManyAndReturn({
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * 
+     * // Create many Event_Reviews and only return the `id`
+     * const event_ReviewsWithIdOnly = await prisma.event_Reviews.createManyAndReturn({
+     *   select: { id: true },
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * 
+     */
+    createManyAndReturn<T extends Event_ReviewsCreateManyAndReturnArgs>(args?: SelectSubset<T, Event_ReviewsCreateManyAndReturnArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$Event_ReviewsPayload<ExtArgs>, T, "createManyAndReturn", GlobalOmitOptions>>
+
+    /**
+     * Delete a Event_Reviews.
+     * @param {Event_ReviewsDeleteArgs} args - Arguments to delete one Event_Reviews.
+     * @example
+     * // Delete one Event_Reviews
+     * const Event_Reviews = await prisma.event_Reviews.delete({
+     *   where: {
+     *     // ... filter to delete one Event_Reviews
+     *   }
+     * })
+     * 
+     */
+    delete<T extends Event_ReviewsDeleteArgs>(args: SelectSubset<T, Event_ReviewsDeleteArgs<ExtArgs>>): Prisma__Event_ReviewsClient<$Result.GetResult<Prisma.$Event_ReviewsPayload<ExtArgs>, T, "delete", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Update one Event_Reviews.
+     * @param {Event_ReviewsUpdateArgs} args - Arguments to update one Event_Reviews.
+     * @example
+     * // Update one Event_Reviews
+     * const event_Reviews = await prisma.event_Reviews.update({
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: {
+     *     // ... provide data here
+     *   }
+     * })
+     * 
+     */
+    update<T extends Event_ReviewsUpdateArgs>(args: SelectSubset<T, Event_ReviewsUpdateArgs<ExtArgs>>): Prisma__Event_ReviewsClient<$Result.GetResult<Prisma.$Event_ReviewsPayload<ExtArgs>, T, "update", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Delete zero or more Event_Reviews.
+     * @param {Event_ReviewsDeleteManyArgs} args - Arguments to filter Event_Reviews to delete.
+     * @example
+     * // Delete a few Event_Reviews
+     * const { count } = await prisma.event_Reviews.deleteMany({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     * 
+     */
+    deleteMany<T extends Event_ReviewsDeleteManyArgs>(args?: SelectSubset<T, Event_ReviewsDeleteManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Update zero or more Event_Reviews.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {Event_ReviewsUpdateManyArgs} args - Arguments to update one or more rows.
+     * @example
+     * // Update many Event_Reviews
+     * const event_Reviews = await prisma.event_Reviews.updateMany({
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: {
+     *     // ... provide data here
+     *   }
+     * })
+     * 
+     */
+    updateMany<T extends Event_ReviewsUpdateManyArgs>(args: SelectSubset<T, Event_ReviewsUpdateManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Update zero or more Event_Reviews and returns the data updated in the database.
+     * @param {Event_ReviewsUpdateManyAndReturnArgs} args - Arguments to update many Event_Reviews.
+     * @example
+     * // Update many Event_Reviews
+     * const event_Reviews = await prisma.event_Reviews.updateManyAndReturn({
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * 
+     * // Update zero or more Event_Reviews and only return the `id`
+     * const event_ReviewsWithIdOnly = await prisma.event_Reviews.updateManyAndReturn({
+     *   select: { id: true },
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * 
+     */
+    updateManyAndReturn<T extends Event_ReviewsUpdateManyAndReturnArgs>(args: SelectSubset<T, Event_ReviewsUpdateManyAndReturnArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$Event_ReviewsPayload<ExtArgs>, T, "updateManyAndReturn", GlobalOmitOptions>>
+
+    /**
+     * Create or update one Event_Reviews.
+     * @param {Event_ReviewsUpsertArgs} args - Arguments to update or create a Event_Reviews.
+     * @example
+     * // Update or create a Event_Reviews
+     * const event_Reviews = await prisma.event_Reviews.upsert({
+     *   create: {
+     *     // ... data to create a Event_Reviews
+     *   },
+     *   update: {
+     *     // ... in case it already exists, update
+     *   },
+     *   where: {
+     *     // ... the filter for the Event_Reviews we want to update
+     *   }
+     * })
+     */
+    upsert<T extends Event_ReviewsUpsertArgs>(args: SelectSubset<T, Event_ReviewsUpsertArgs<ExtArgs>>): Prisma__Event_ReviewsClient<$Result.GetResult<Prisma.$Event_ReviewsPayload<ExtArgs>, T, "upsert", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+
+    /**
+     * Count the number of Event_Reviews.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {Event_ReviewsCountArgs} args - Arguments to filter Event_Reviews to count.
+     * @example
+     * // Count the number of Event_Reviews
+     * const count = await prisma.event_Reviews.count({
+     *   where: {
+     *     // ... the filter for the Event_Reviews we want to count
+     *   }
+     * })
+    **/
+    count<T extends Event_ReviewsCountArgs>(
+      args?: Subset<T, Event_ReviewsCountArgs>,
+    ): Prisma.PrismaPromise<
+      T extends $Utils.Record<'select', any>
+        ? T['select'] extends true
+          ? number
+          : GetScalarType<T['select'], Event_ReviewsCountAggregateOutputType>
+        : number
+    >
+
+    /**
+     * Allows you to perform aggregations operations on a Event_Reviews.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {Event_ReviewsAggregateArgs} args - Select which aggregations you would like to apply and on what fields.
+     * @example
+     * // Ordered by age ascending
+     * // Where email contains prisma.io
+     * // Limited to the 10 users
+     * const aggregations = await prisma.user.aggregate({
+     *   _avg: {
+     *     age: true,
+     *   },
+     *   where: {
+     *     email: {
+     *       contains: "prisma.io",
+     *     },
+     *   },
+     *   orderBy: {
+     *     age: "asc",
+     *   },
+     *   take: 10,
+     * })
+    **/
+    aggregate<T extends Event_ReviewsAggregateArgs>(args: Subset<T, Event_ReviewsAggregateArgs>): Prisma.PrismaPromise<GetEvent_ReviewsAggregateType<T>>
+
+    /**
+     * Group by Event_Reviews.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {Event_ReviewsGroupByArgs} args - Group by arguments.
+     * @example
+     * // Group by city, order by createdAt, get count
+     * const result = await prisma.user.groupBy({
+     *   by: ['city', 'createdAt'],
+     *   orderBy: {
+     *     createdAt: true
+     *   },
+     *   _count: {
+     *     _all: true
+     *   },
+     * })
+     * 
+    **/
+    groupBy<
+      T extends Event_ReviewsGroupByArgs,
+      HasSelectOrTake extends Or<
+        Extends<'skip', Keys<T>>,
+        Extends<'take', Keys<T>>
+      >,
+      OrderByArg extends True extends HasSelectOrTake
+        ? { orderBy: Event_ReviewsGroupByArgs['orderBy'] }
+        : { orderBy?: Event_ReviewsGroupByArgs['orderBy'] },
+      OrderFields extends ExcludeUnderscoreKeys<Keys<MaybeTupleToUnion<T['orderBy']>>>,
+      ByFields extends MaybeTupleToUnion<T['by']>,
+      ByValid extends Has<ByFields, OrderFields>,
+      HavingFields extends GetHavingFields<T['having']>,
+      HavingValid extends Has<ByFields, HavingFields>,
+      ByEmpty extends T['by'] extends never[] ? True : False,
+      InputErrors extends ByEmpty extends True
+      ? `Error: "by" must not be empty.`
+      : HavingValid extends False
+      ? {
+          [P in HavingFields]: P extends ByFields
+            ? never
+            : P extends string
+            ? `Error: Field "${P}" used in "having" needs to be provided in "by".`
+            : [
+                Error,
+                'Field ',
+                P,
+                ` in "having" needs to be provided in "by"`,
+              ]
+        }[HavingFields]
+      : 'take' extends Keys<T>
+      ? 'orderBy' extends Keys<T>
+        ? ByValid extends True
+          ? {}
+          : {
+              [P in OrderFields]: P extends ByFields
+                ? never
+                : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+            }[OrderFields]
+        : 'Error: If you provide "take", you also need to provide "orderBy"'
+      : 'skip' extends Keys<T>
+      ? 'orderBy' extends Keys<T>
+        ? ByValid extends True
+          ? {}
+          : {
+              [P in OrderFields]: P extends ByFields
+                ? never
+                : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+            }[OrderFields]
+        : 'Error: If you provide "skip", you also need to provide "orderBy"'
+      : ByValid extends True
+      ? {}
+      : {
+          [P in OrderFields]: P extends ByFields
+            ? never
+            : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+        }[OrderFields]
+    >(args: SubsetIntersection<T, Event_ReviewsGroupByArgs, OrderByArg> & InputErrors): {} extends InputErrors ? GetEvent_ReviewsGroupByPayload<T> : Prisma.PrismaPromise<InputErrors>
+  /**
+   * Fields of the Event_Reviews model
+   */
+  readonly fields: Event_ReviewsFieldRefs;
+  }
+
+  /**
+   * The delegate class that acts as a "Promise-like" for Event_Reviews.
+   * Why is this prefixed with `Prisma__`?
+   * Because we want to prevent naming conflicts as mentioned in
+   * https://github.com/prisma/prisma-client-js/issues/707
+   */
+  export interface Prisma__Event_ReviewsClient<T, Null = never, ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs, GlobalOmitOptions = {}> extends Prisma.PrismaPromise<T> {
+    readonly [Symbol.toStringTag]: "PrismaPromise"
+    reviews_user<T extends UsersDefaultArgs<ExtArgs> = {}>(args?: Subset<T, UsersDefaultArgs<ExtArgs>>): Prisma__UsersClient<$Result.GetResult<Prisma.$UsersPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | Null, Null, ExtArgs, GlobalOmitOptions>
+    reviews_event<T extends EventsDefaultArgs<ExtArgs> = {}>(args?: Subset<T, EventsDefaultArgs<ExtArgs>>): Prisma__EventsClient<$Result.GetResult<Prisma.$EventsPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | Null, Null, ExtArgs, GlobalOmitOptions>
+    /**
+     * Attaches callbacks for the resolution and/or rejection of the Promise.
+     * @param onfulfilled The callback to execute when the Promise is resolved.
+     * @param onrejected The callback to execute when the Promise is rejected.
+     * @returns A Promise for the completion of which ever callback is executed.
+     */
+    then<TResult1 = T, TResult2 = never>(onfulfilled?: ((value: T) => TResult1 | PromiseLike<TResult1>) | undefined | null, onrejected?: ((reason: any) => TResult2 | PromiseLike<TResult2>) | undefined | null): $Utils.JsPromise<TResult1 | TResult2>
+    /**
+     * Attaches a callback for only the rejection of the Promise.
+     * @param onrejected The callback to execute when the Promise is rejected.
+     * @returns A Promise for the completion of the callback.
+     */
+    catch<TResult = never>(onrejected?: ((reason: any) => TResult | PromiseLike<TResult>) | undefined | null): $Utils.JsPromise<T | TResult>
+    /**
+     * Attaches a callback that is invoked when the Promise is settled (fulfilled or rejected). The
+     * resolved value cannot be modified from the callback.
+     * @param onfinally The callback to execute when the Promise is settled (fulfilled or rejected).
+     * @returns A Promise for the completion of the callback.
+     */
+    finally(onfinally?: (() => void) | undefined | null): $Utils.JsPromise<T>
+  }
+
+
+
+
+  /**
+   * Fields of the Event_Reviews model
+   */
+  interface Event_ReviewsFieldRefs {
+    readonly id: FieldRef<"Event_Reviews", 'String'>
+    readonly user_id: FieldRef<"Event_Reviews", 'String'>
+    readonly events_id: FieldRef<"Event_Reviews", 'String'>
+    readonly review: FieldRef<"Event_Reviews", 'String'>
+    readonly rating: FieldRef<"Event_Reviews", 'Int'>
+    readonly created_at: FieldRef<"Event_Reviews", 'DateTime'>
+  }
+    
+
+  // Custom InputTypes
+  /**
+   * Event_Reviews findUnique
+   */
+  export type Event_ReviewsFindUniqueArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Event_Reviews
+     */
+    select?: Event_ReviewsSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the Event_Reviews
+     */
+    omit?: Event_ReviewsOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: Event_ReviewsInclude<ExtArgs> | null
+    /**
+     * Filter, which Event_Reviews to fetch.
+     */
+    where: Event_ReviewsWhereUniqueInput
+  }
+
+  /**
+   * Event_Reviews findUniqueOrThrow
+   */
+  export type Event_ReviewsFindUniqueOrThrowArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Event_Reviews
+     */
+    select?: Event_ReviewsSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the Event_Reviews
+     */
+    omit?: Event_ReviewsOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: Event_ReviewsInclude<ExtArgs> | null
+    /**
+     * Filter, which Event_Reviews to fetch.
+     */
+    where: Event_ReviewsWhereUniqueInput
+  }
+
+  /**
+   * Event_Reviews findFirst
+   */
+  export type Event_ReviewsFindFirstArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Event_Reviews
+     */
+    select?: Event_ReviewsSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the Event_Reviews
+     */
+    omit?: Event_ReviewsOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: Event_ReviewsInclude<ExtArgs> | null
+    /**
+     * Filter, which Event_Reviews to fetch.
+     */
+    where?: Event_ReviewsWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of Event_Reviews to fetch.
+     */
+    orderBy?: Event_ReviewsOrderByWithRelationInput | Event_ReviewsOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for searching for Event_Reviews.
+     */
+    cursor?: Event_ReviewsWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` Event_Reviews from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` Event_Reviews.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
+     * 
+     * Filter by unique combinations of Event_Reviews.
+     */
+    distinct?: Event_ReviewsScalarFieldEnum | Event_ReviewsScalarFieldEnum[]
+  }
+
+  /**
+   * Event_Reviews findFirstOrThrow
+   */
+  export type Event_ReviewsFindFirstOrThrowArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Event_Reviews
+     */
+    select?: Event_ReviewsSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the Event_Reviews
+     */
+    omit?: Event_ReviewsOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: Event_ReviewsInclude<ExtArgs> | null
+    /**
+     * Filter, which Event_Reviews to fetch.
+     */
+    where?: Event_ReviewsWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of Event_Reviews to fetch.
+     */
+    orderBy?: Event_ReviewsOrderByWithRelationInput | Event_ReviewsOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for searching for Event_Reviews.
+     */
+    cursor?: Event_ReviewsWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` Event_Reviews from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` Event_Reviews.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
+     * 
+     * Filter by unique combinations of Event_Reviews.
+     */
+    distinct?: Event_ReviewsScalarFieldEnum | Event_ReviewsScalarFieldEnum[]
+  }
+
+  /**
+   * Event_Reviews findMany
+   */
+  export type Event_ReviewsFindManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Event_Reviews
+     */
+    select?: Event_ReviewsSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the Event_Reviews
+     */
+    omit?: Event_ReviewsOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: Event_ReviewsInclude<ExtArgs> | null
+    /**
+     * Filter, which Event_Reviews to fetch.
+     */
+    where?: Event_ReviewsWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of Event_Reviews to fetch.
+     */
+    orderBy?: Event_ReviewsOrderByWithRelationInput | Event_ReviewsOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for listing Event_Reviews.
+     */
+    cursor?: Event_ReviewsWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` Event_Reviews from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` Event_Reviews.
+     */
+    skip?: number
+    distinct?: Event_ReviewsScalarFieldEnum | Event_ReviewsScalarFieldEnum[]
+  }
+
+  /**
+   * Event_Reviews create
+   */
+  export type Event_ReviewsCreateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Event_Reviews
+     */
+    select?: Event_ReviewsSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the Event_Reviews
+     */
+    omit?: Event_ReviewsOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: Event_ReviewsInclude<ExtArgs> | null
+    /**
+     * The data needed to create a Event_Reviews.
+     */
+    data: XOR<Event_ReviewsCreateInput, Event_ReviewsUncheckedCreateInput>
+  }
+
+  /**
+   * Event_Reviews createMany
+   */
+  export type Event_ReviewsCreateManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * The data used to create many Event_Reviews.
+     */
+    data: Event_ReviewsCreateManyInput | Event_ReviewsCreateManyInput[]
+    skipDuplicates?: boolean
+  }
+
+  /**
+   * Event_Reviews createManyAndReturn
+   */
+  export type Event_ReviewsCreateManyAndReturnArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Event_Reviews
+     */
+    select?: Event_ReviewsSelectCreateManyAndReturn<ExtArgs> | null
+    /**
+     * Omit specific fields from the Event_Reviews
+     */
+    omit?: Event_ReviewsOmit<ExtArgs> | null
+    /**
+     * The data used to create many Event_Reviews.
+     */
+    data: Event_ReviewsCreateManyInput | Event_ReviewsCreateManyInput[]
+    skipDuplicates?: boolean
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: Event_ReviewsIncludeCreateManyAndReturn<ExtArgs> | null
+  }
+
+  /**
+   * Event_Reviews update
+   */
+  export type Event_ReviewsUpdateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Event_Reviews
+     */
+    select?: Event_ReviewsSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the Event_Reviews
+     */
+    omit?: Event_ReviewsOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: Event_ReviewsInclude<ExtArgs> | null
+    /**
+     * The data needed to update a Event_Reviews.
+     */
+    data: XOR<Event_ReviewsUpdateInput, Event_ReviewsUncheckedUpdateInput>
+    /**
+     * Choose, which Event_Reviews to update.
+     */
+    where: Event_ReviewsWhereUniqueInput
+  }
+
+  /**
+   * Event_Reviews updateMany
+   */
+  export type Event_ReviewsUpdateManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * The data used to update Event_Reviews.
+     */
+    data: XOR<Event_ReviewsUpdateManyMutationInput, Event_ReviewsUncheckedUpdateManyInput>
+    /**
+     * Filter which Event_Reviews to update
+     */
+    where?: Event_ReviewsWhereInput
+    /**
+     * Limit how many Event_Reviews to update.
+     */
+    limit?: number
+  }
+
+  /**
+   * Event_Reviews updateManyAndReturn
+   */
+  export type Event_ReviewsUpdateManyAndReturnArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Event_Reviews
+     */
+    select?: Event_ReviewsSelectUpdateManyAndReturn<ExtArgs> | null
+    /**
+     * Omit specific fields from the Event_Reviews
+     */
+    omit?: Event_ReviewsOmit<ExtArgs> | null
+    /**
+     * The data used to update Event_Reviews.
+     */
+    data: XOR<Event_ReviewsUpdateManyMutationInput, Event_ReviewsUncheckedUpdateManyInput>
+    /**
+     * Filter which Event_Reviews to update
+     */
+    where?: Event_ReviewsWhereInput
+    /**
+     * Limit how many Event_Reviews to update.
+     */
+    limit?: number
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: Event_ReviewsIncludeUpdateManyAndReturn<ExtArgs> | null
+  }
+
+  /**
+   * Event_Reviews upsert
+   */
+  export type Event_ReviewsUpsertArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Event_Reviews
+     */
+    select?: Event_ReviewsSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the Event_Reviews
+     */
+    omit?: Event_ReviewsOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: Event_ReviewsInclude<ExtArgs> | null
+    /**
+     * The filter to search for the Event_Reviews to update in case it exists.
+     */
+    where: Event_ReviewsWhereUniqueInput
+    /**
+     * In case the Event_Reviews found by the `where` argument doesn't exist, create a new Event_Reviews with this data.
+     */
+    create: XOR<Event_ReviewsCreateInput, Event_ReviewsUncheckedCreateInput>
+    /**
+     * In case the Event_Reviews was found with the provided `where` argument, update it with this data.
+     */
+    update: XOR<Event_ReviewsUpdateInput, Event_ReviewsUncheckedUpdateInput>
+  }
+
+  /**
+   * Event_Reviews delete
+   */
+  export type Event_ReviewsDeleteArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Event_Reviews
+     */
+    select?: Event_ReviewsSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the Event_Reviews
+     */
+    omit?: Event_ReviewsOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: Event_ReviewsInclude<ExtArgs> | null
+    /**
+     * Filter which Event_Reviews to delete.
+     */
+    where: Event_ReviewsWhereUniqueInput
+  }
+
+  /**
+   * Event_Reviews deleteMany
+   */
+  export type Event_ReviewsDeleteManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Filter which Event_Reviews to delete
+     */
+    where?: Event_ReviewsWhereInput
+    /**
+     * Limit how many Event_Reviews to delete.
+     */
+    limit?: number
+  }
+
+  /**
+   * Event_Reviews without action
+   */
+  export type Event_ReviewsDefaultArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Event_Reviews
+     */
+    select?: Event_ReviewsSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the Event_Reviews
+     */
+    omit?: Event_ReviewsOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: Event_ReviewsInclude<ExtArgs> | null
+  }
+
+
+  /**
+   * Model Event_Attendees
+   */
+
+  export type AggregateEvent_Attendees = {
+    _count: Event_AttendeesCountAggregateOutputType | null
+    _min: Event_AttendeesMinAggregateOutputType | null
+    _max: Event_AttendeesMaxAggregateOutputType | null
+  }
+
+  export type Event_AttendeesMinAggregateOutputType = {
+    id: string | null
+    user_id: string | null
+    event_id: string | null
+    status: $Enums.Status | null
+  }
+
+  export type Event_AttendeesMaxAggregateOutputType = {
+    id: string | null
+    user_id: string | null
+    event_id: string | null
+    status: $Enums.Status | null
+  }
+
+  export type Event_AttendeesCountAggregateOutputType = {
+    id: number
+    user_id: number
+    event_id: number
+    status: number
+    _all: number
+  }
+
+
+  export type Event_AttendeesMinAggregateInputType = {
+    id?: true
+    user_id?: true
+    event_id?: true
+    status?: true
+  }
+
+  export type Event_AttendeesMaxAggregateInputType = {
+    id?: true
+    user_id?: true
+    event_id?: true
+    status?: true
+  }
+
+  export type Event_AttendeesCountAggregateInputType = {
+    id?: true
+    user_id?: true
+    event_id?: true
+    status?: true
+    _all?: true
+  }
+
+  export type Event_AttendeesAggregateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Filter which Event_Attendees to aggregate.
+     */
+    where?: Event_AttendeesWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of Event_Attendees to fetch.
+     */
+    orderBy?: Event_AttendeesOrderByWithRelationInput | Event_AttendeesOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the start position
+     */
+    cursor?: Event_AttendeesWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` Event_Attendees from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` Event_Attendees.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Count returned Event_Attendees
+    **/
+    _count?: true | Event_AttendeesCountAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to find the minimum value
+    **/
+    _min?: Event_AttendeesMinAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to find the maximum value
+    **/
+    _max?: Event_AttendeesMaxAggregateInputType
+  }
+
+  export type GetEvent_AttendeesAggregateType<T extends Event_AttendeesAggregateArgs> = {
+        [P in keyof T & keyof AggregateEvent_Attendees]: P extends '_count' | 'count'
+      ? T[P] extends true
+        ? number
+        : GetScalarType<T[P], AggregateEvent_Attendees[P]>
+      : GetScalarType<T[P], AggregateEvent_Attendees[P]>
+  }
+
+
+
+
+  export type Event_AttendeesGroupByArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    where?: Event_AttendeesWhereInput
+    orderBy?: Event_AttendeesOrderByWithAggregationInput | Event_AttendeesOrderByWithAggregationInput[]
+    by: Event_AttendeesScalarFieldEnum[] | Event_AttendeesScalarFieldEnum
+    having?: Event_AttendeesScalarWhereWithAggregatesInput
+    take?: number
+    skip?: number
+    _count?: Event_AttendeesCountAggregateInputType | true
+    _min?: Event_AttendeesMinAggregateInputType
+    _max?: Event_AttendeesMaxAggregateInputType
+  }
+
+  export type Event_AttendeesGroupByOutputType = {
+    id: string
+    user_id: string
+    event_id: string
+    status: $Enums.Status
+    _count: Event_AttendeesCountAggregateOutputType | null
+    _min: Event_AttendeesMinAggregateOutputType | null
+    _max: Event_AttendeesMaxAggregateOutputType | null
+  }
+
+  type GetEvent_AttendeesGroupByPayload<T extends Event_AttendeesGroupByArgs> = Prisma.PrismaPromise<
+    Array<
+      PickEnumerable<Event_AttendeesGroupByOutputType, T['by']> &
+        {
+          [P in ((keyof T) & (keyof Event_AttendeesGroupByOutputType))]: P extends '_count'
+            ? T[P] extends boolean
+              ? number
+              : GetScalarType<T[P], Event_AttendeesGroupByOutputType[P]>
+            : GetScalarType<T[P], Event_AttendeesGroupByOutputType[P]>
+        }
+      >
+    >
+
+
+  export type Event_AttendeesSelect<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
+    id?: boolean
+    user_id?: boolean
+    event_id?: boolean
+    status?: boolean
+    user_attendees?: boolean | UsersDefaultArgs<ExtArgs>
+    user_event?: boolean | EventsDefaultArgs<ExtArgs>
+  }, ExtArgs["result"]["event_Attendees"]>
+
+  export type Event_AttendeesSelectCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
+    id?: boolean
+    user_id?: boolean
+    event_id?: boolean
+    status?: boolean
+    user_attendees?: boolean | UsersDefaultArgs<ExtArgs>
+    user_event?: boolean | EventsDefaultArgs<ExtArgs>
+  }, ExtArgs["result"]["event_Attendees"]>
+
+  export type Event_AttendeesSelectUpdateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
+    id?: boolean
+    user_id?: boolean
+    event_id?: boolean
+    status?: boolean
+    user_attendees?: boolean | UsersDefaultArgs<ExtArgs>
+    user_event?: boolean | EventsDefaultArgs<ExtArgs>
+  }, ExtArgs["result"]["event_Attendees"]>
+
+  export type Event_AttendeesSelectScalar = {
+    id?: boolean
+    user_id?: boolean
+    event_id?: boolean
+    status?: boolean
+  }
+
+  export type Event_AttendeesOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "user_id" | "event_id" | "status", ExtArgs["result"]["event_Attendees"]>
+  export type Event_AttendeesInclude<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    user_attendees?: boolean | UsersDefaultArgs<ExtArgs>
+    user_event?: boolean | EventsDefaultArgs<ExtArgs>
+  }
+  export type Event_AttendeesIncludeCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    user_attendees?: boolean | UsersDefaultArgs<ExtArgs>
+    user_event?: boolean | EventsDefaultArgs<ExtArgs>
+  }
+  export type Event_AttendeesIncludeUpdateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    user_attendees?: boolean | UsersDefaultArgs<ExtArgs>
+    user_event?: boolean | EventsDefaultArgs<ExtArgs>
+  }
+
+  export type $Event_AttendeesPayload<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    name: "Event_Attendees"
+    objects: {
+      user_attendees: Prisma.$UsersPayload<ExtArgs>
+      user_event: Prisma.$EventsPayload<ExtArgs>
+    }
+    scalars: $Extensions.GetPayloadResult<{
+      id: string
+      user_id: string
+      event_id: string
+      status: $Enums.Status
+    }, ExtArgs["result"]["event_Attendees"]>
+    composites: {}
+  }
+
+  type Event_AttendeesGetPayload<S extends boolean | null | undefined | Event_AttendeesDefaultArgs> = $Result.GetResult<Prisma.$Event_AttendeesPayload, S>
+
+  type Event_AttendeesCountArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> =
+    Omit<Event_AttendeesFindManyArgs, 'select' | 'include' | 'distinct' | 'omit'> & {
+      select?: Event_AttendeesCountAggregateInputType | true
+    }
+
+  export interface Event_AttendeesDelegate<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs, GlobalOmitOptions = {}> {
+    [K: symbol]: { types: Prisma.TypeMap<ExtArgs>['model']['Event_Attendees'], meta: { name: 'Event_Attendees' } }
+    /**
+     * Find zero or one Event_Attendees that matches the filter.
+     * @param {Event_AttendeesFindUniqueArgs} args - Arguments to find a Event_Attendees
+     * @example
+     * // Get one Event_Attendees
+     * const event_Attendees = await prisma.event_Attendees.findUnique({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findUnique<T extends Event_AttendeesFindUniqueArgs>(args: SelectSubset<T, Event_AttendeesFindUniqueArgs<ExtArgs>>): Prisma__Event_AttendeesClient<$Result.GetResult<Prisma.$Event_AttendeesPayload<ExtArgs>, T, "findUnique", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find one Event_Attendees that matches the filter or throw an error with `error.code='P2025'`
+     * if no matches were found.
+     * @param {Event_AttendeesFindUniqueOrThrowArgs} args - Arguments to find a Event_Attendees
+     * @example
+     * // Get one Event_Attendees
+     * const event_Attendees = await prisma.event_Attendees.findUniqueOrThrow({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findUniqueOrThrow<T extends Event_AttendeesFindUniqueOrThrowArgs>(args: SelectSubset<T, Event_AttendeesFindUniqueOrThrowArgs<ExtArgs>>): Prisma__Event_AttendeesClient<$Result.GetResult<Prisma.$Event_AttendeesPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find the first Event_Attendees that matches the filter.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {Event_AttendeesFindFirstArgs} args - Arguments to find a Event_Attendees
+     * @example
+     * // Get one Event_Attendees
+     * const event_Attendees = await prisma.event_Attendees.findFirst({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findFirst<T extends Event_AttendeesFindFirstArgs>(args?: SelectSubset<T, Event_AttendeesFindFirstArgs<ExtArgs>>): Prisma__Event_AttendeesClient<$Result.GetResult<Prisma.$Event_AttendeesPayload<ExtArgs>, T, "findFirst", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find the first Event_Attendees that matches the filter or
+     * throw `PrismaKnownClientError` with `P2025` code if no matches were found.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {Event_AttendeesFindFirstOrThrowArgs} args - Arguments to find a Event_Attendees
+     * @example
+     * // Get one Event_Attendees
+     * const event_Attendees = await prisma.event_Attendees.findFirstOrThrow({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findFirstOrThrow<T extends Event_AttendeesFindFirstOrThrowArgs>(args?: SelectSubset<T, Event_AttendeesFindFirstOrThrowArgs<ExtArgs>>): Prisma__Event_AttendeesClient<$Result.GetResult<Prisma.$Event_AttendeesPayload<ExtArgs>, T, "findFirstOrThrow", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find zero or more Event_Attendees that matches the filter.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {Event_AttendeesFindManyArgs} args - Arguments to filter and select certain fields only.
+     * @example
+     * // Get all Event_Attendees
+     * const event_Attendees = await prisma.event_Attendees.findMany()
+     * 
+     * // Get first 10 Event_Attendees
+     * const event_Attendees = await prisma.event_Attendees.findMany({ take: 10 })
+     * 
+     * // Only select the `id`
+     * const event_AttendeesWithIdOnly = await prisma.event_Attendees.findMany({ select: { id: true } })
+     * 
+     */
+    findMany<T extends Event_AttendeesFindManyArgs>(args?: SelectSubset<T, Event_AttendeesFindManyArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$Event_AttendeesPayload<ExtArgs>, T, "findMany", GlobalOmitOptions>>
+
+    /**
+     * Create a Event_Attendees.
+     * @param {Event_AttendeesCreateArgs} args - Arguments to create a Event_Attendees.
+     * @example
+     * // Create one Event_Attendees
+     * const Event_Attendees = await prisma.event_Attendees.create({
+     *   data: {
+     *     // ... data to create a Event_Attendees
+     *   }
+     * })
+     * 
+     */
+    create<T extends Event_AttendeesCreateArgs>(args: SelectSubset<T, Event_AttendeesCreateArgs<ExtArgs>>): Prisma__Event_AttendeesClient<$Result.GetResult<Prisma.$Event_AttendeesPayload<ExtArgs>, T, "create", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Create many Event_Attendees.
+     * @param {Event_AttendeesCreateManyArgs} args - Arguments to create many Event_Attendees.
+     * @example
+     * // Create many Event_Attendees
+     * const event_Attendees = await prisma.event_Attendees.createMany({
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     *     
+     */
+    createMany<T extends Event_AttendeesCreateManyArgs>(args?: SelectSubset<T, Event_AttendeesCreateManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Create many Event_Attendees and returns the data saved in the database.
+     * @param {Event_AttendeesCreateManyAndReturnArgs} args - Arguments to create many Event_Attendees.
+     * @example
+     * // Create many Event_Attendees
+     * const event_Attendees = await prisma.event_Attendees.createManyAndReturn({
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * 
+     * // Create many Event_Attendees and only return the `id`
+     * const event_AttendeesWithIdOnly = await prisma.event_Attendees.createManyAndReturn({
+     *   select: { id: true },
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * 
+     */
+    createManyAndReturn<T extends Event_AttendeesCreateManyAndReturnArgs>(args?: SelectSubset<T, Event_AttendeesCreateManyAndReturnArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$Event_AttendeesPayload<ExtArgs>, T, "createManyAndReturn", GlobalOmitOptions>>
+
+    /**
+     * Delete a Event_Attendees.
+     * @param {Event_AttendeesDeleteArgs} args - Arguments to delete one Event_Attendees.
+     * @example
+     * // Delete one Event_Attendees
+     * const Event_Attendees = await prisma.event_Attendees.delete({
+     *   where: {
+     *     // ... filter to delete one Event_Attendees
+     *   }
+     * })
+     * 
+     */
+    delete<T extends Event_AttendeesDeleteArgs>(args: SelectSubset<T, Event_AttendeesDeleteArgs<ExtArgs>>): Prisma__Event_AttendeesClient<$Result.GetResult<Prisma.$Event_AttendeesPayload<ExtArgs>, T, "delete", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Update one Event_Attendees.
+     * @param {Event_AttendeesUpdateArgs} args - Arguments to update one Event_Attendees.
+     * @example
+     * // Update one Event_Attendees
+     * const event_Attendees = await prisma.event_Attendees.update({
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: {
+     *     // ... provide data here
+     *   }
+     * })
+     * 
+     */
+    update<T extends Event_AttendeesUpdateArgs>(args: SelectSubset<T, Event_AttendeesUpdateArgs<ExtArgs>>): Prisma__Event_AttendeesClient<$Result.GetResult<Prisma.$Event_AttendeesPayload<ExtArgs>, T, "update", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Delete zero or more Event_Attendees.
+     * @param {Event_AttendeesDeleteManyArgs} args - Arguments to filter Event_Attendees to delete.
+     * @example
+     * // Delete a few Event_Attendees
+     * const { count } = await prisma.event_Attendees.deleteMany({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     * 
+     */
+    deleteMany<T extends Event_AttendeesDeleteManyArgs>(args?: SelectSubset<T, Event_AttendeesDeleteManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Update zero or more Event_Attendees.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {Event_AttendeesUpdateManyArgs} args - Arguments to update one or more rows.
+     * @example
+     * // Update many Event_Attendees
+     * const event_Attendees = await prisma.event_Attendees.updateMany({
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: {
+     *     // ... provide data here
+     *   }
+     * })
+     * 
+     */
+    updateMany<T extends Event_AttendeesUpdateManyArgs>(args: SelectSubset<T, Event_AttendeesUpdateManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Update zero or more Event_Attendees and returns the data updated in the database.
+     * @param {Event_AttendeesUpdateManyAndReturnArgs} args - Arguments to update many Event_Attendees.
+     * @example
+     * // Update many Event_Attendees
+     * const event_Attendees = await prisma.event_Attendees.updateManyAndReturn({
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * 
+     * // Update zero or more Event_Attendees and only return the `id`
+     * const event_AttendeesWithIdOnly = await prisma.event_Attendees.updateManyAndReturn({
+     *   select: { id: true },
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * 
+     */
+    updateManyAndReturn<T extends Event_AttendeesUpdateManyAndReturnArgs>(args: SelectSubset<T, Event_AttendeesUpdateManyAndReturnArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$Event_AttendeesPayload<ExtArgs>, T, "updateManyAndReturn", GlobalOmitOptions>>
+
+    /**
+     * Create or update one Event_Attendees.
+     * @param {Event_AttendeesUpsertArgs} args - Arguments to update or create a Event_Attendees.
+     * @example
+     * // Update or create a Event_Attendees
+     * const event_Attendees = await prisma.event_Attendees.upsert({
+     *   create: {
+     *     // ... data to create a Event_Attendees
+     *   },
+     *   update: {
+     *     // ... in case it already exists, update
+     *   },
+     *   where: {
+     *     // ... the filter for the Event_Attendees we want to update
+     *   }
+     * })
+     */
+    upsert<T extends Event_AttendeesUpsertArgs>(args: SelectSubset<T, Event_AttendeesUpsertArgs<ExtArgs>>): Prisma__Event_AttendeesClient<$Result.GetResult<Prisma.$Event_AttendeesPayload<ExtArgs>, T, "upsert", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+
+    /**
+     * Count the number of Event_Attendees.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {Event_AttendeesCountArgs} args - Arguments to filter Event_Attendees to count.
+     * @example
+     * // Count the number of Event_Attendees
+     * const count = await prisma.event_Attendees.count({
+     *   where: {
+     *     // ... the filter for the Event_Attendees we want to count
+     *   }
+     * })
+    **/
+    count<T extends Event_AttendeesCountArgs>(
+      args?: Subset<T, Event_AttendeesCountArgs>,
+    ): Prisma.PrismaPromise<
+      T extends $Utils.Record<'select', any>
+        ? T['select'] extends true
+          ? number
+          : GetScalarType<T['select'], Event_AttendeesCountAggregateOutputType>
+        : number
+    >
+
+    /**
+     * Allows you to perform aggregations operations on a Event_Attendees.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {Event_AttendeesAggregateArgs} args - Select which aggregations you would like to apply and on what fields.
+     * @example
+     * // Ordered by age ascending
+     * // Where email contains prisma.io
+     * // Limited to the 10 users
+     * const aggregations = await prisma.user.aggregate({
+     *   _avg: {
+     *     age: true,
+     *   },
+     *   where: {
+     *     email: {
+     *       contains: "prisma.io",
+     *     },
+     *   },
+     *   orderBy: {
+     *     age: "asc",
+     *   },
+     *   take: 10,
+     * })
+    **/
+    aggregate<T extends Event_AttendeesAggregateArgs>(args: Subset<T, Event_AttendeesAggregateArgs>): Prisma.PrismaPromise<GetEvent_AttendeesAggregateType<T>>
+
+    /**
+     * Group by Event_Attendees.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {Event_AttendeesGroupByArgs} args - Group by arguments.
+     * @example
+     * // Group by city, order by createdAt, get count
+     * const result = await prisma.user.groupBy({
+     *   by: ['city', 'createdAt'],
+     *   orderBy: {
+     *     createdAt: true
+     *   },
+     *   _count: {
+     *     _all: true
+     *   },
+     * })
+     * 
+    **/
+    groupBy<
+      T extends Event_AttendeesGroupByArgs,
+      HasSelectOrTake extends Or<
+        Extends<'skip', Keys<T>>,
+        Extends<'take', Keys<T>>
+      >,
+      OrderByArg extends True extends HasSelectOrTake
+        ? { orderBy: Event_AttendeesGroupByArgs['orderBy'] }
+        : { orderBy?: Event_AttendeesGroupByArgs['orderBy'] },
+      OrderFields extends ExcludeUnderscoreKeys<Keys<MaybeTupleToUnion<T['orderBy']>>>,
+      ByFields extends MaybeTupleToUnion<T['by']>,
+      ByValid extends Has<ByFields, OrderFields>,
+      HavingFields extends GetHavingFields<T['having']>,
+      HavingValid extends Has<ByFields, HavingFields>,
+      ByEmpty extends T['by'] extends never[] ? True : False,
+      InputErrors extends ByEmpty extends True
+      ? `Error: "by" must not be empty.`
+      : HavingValid extends False
+      ? {
+          [P in HavingFields]: P extends ByFields
+            ? never
+            : P extends string
+            ? `Error: Field "${P}" used in "having" needs to be provided in "by".`
+            : [
+                Error,
+                'Field ',
+                P,
+                ` in "having" needs to be provided in "by"`,
+              ]
+        }[HavingFields]
+      : 'take' extends Keys<T>
+      ? 'orderBy' extends Keys<T>
+        ? ByValid extends True
+          ? {}
+          : {
+              [P in OrderFields]: P extends ByFields
+                ? never
+                : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+            }[OrderFields]
+        : 'Error: If you provide "take", you also need to provide "orderBy"'
+      : 'skip' extends Keys<T>
+      ? 'orderBy' extends Keys<T>
+        ? ByValid extends True
+          ? {}
+          : {
+              [P in OrderFields]: P extends ByFields
+                ? never
+                : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+            }[OrderFields]
+        : 'Error: If you provide "skip", you also need to provide "orderBy"'
+      : ByValid extends True
+      ? {}
+      : {
+          [P in OrderFields]: P extends ByFields
+            ? never
+            : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+        }[OrderFields]
+    >(args: SubsetIntersection<T, Event_AttendeesGroupByArgs, OrderByArg> & InputErrors): {} extends InputErrors ? GetEvent_AttendeesGroupByPayload<T> : Prisma.PrismaPromise<InputErrors>
+  /**
+   * Fields of the Event_Attendees model
+   */
+  readonly fields: Event_AttendeesFieldRefs;
+  }
+
+  /**
+   * The delegate class that acts as a "Promise-like" for Event_Attendees.
+   * Why is this prefixed with `Prisma__`?
+   * Because we want to prevent naming conflicts as mentioned in
+   * https://github.com/prisma/prisma-client-js/issues/707
+   */
+  export interface Prisma__Event_AttendeesClient<T, Null = never, ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs, GlobalOmitOptions = {}> extends Prisma.PrismaPromise<T> {
+    readonly [Symbol.toStringTag]: "PrismaPromise"
+    user_attendees<T extends UsersDefaultArgs<ExtArgs> = {}>(args?: Subset<T, UsersDefaultArgs<ExtArgs>>): Prisma__UsersClient<$Result.GetResult<Prisma.$UsersPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | Null, Null, ExtArgs, GlobalOmitOptions>
+    user_event<T extends EventsDefaultArgs<ExtArgs> = {}>(args?: Subset<T, EventsDefaultArgs<ExtArgs>>): Prisma__EventsClient<$Result.GetResult<Prisma.$EventsPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | Null, Null, ExtArgs, GlobalOmitOptions>
+    /**
+     * Attaches callbacks for the resolution and/or rejection of the Promise.
+     * @param onfulfilled The callback to execute when the Promise is resolved.
+     * @param onrejected The callback to execute when the Promise is rejected.
+     * @returns A Promise for the completion of which ever callback is executed.
+     */
+    then<TResult1 = T, TResult2 = never>(onfulfilled?: ((value: T) => TResult1 | PromiseLike<TResult1>) | undefined | null, onrejected?: ((reason: any) => TResult2 | PromiseLike<TResult2>) | undefined | null): $Utils.JsPromise<TResult1 | TResult2>
+    /**
+     * Attaches a callback for only the rejection of the Promise.
+     * @param onrejected The callback to execute when the Promise is rejected.
+     * @returns A Promise for the completion of the callback.
+     */
+    catch<TResult = never>(onrejected?: ((reason: any) => TResult | PromiseLike<TResult>) | undefined | null): $Utils.JsPromise<T | TResult>
+    /**
+     * Attaches a callback that is invoked when the Promise is settled (fulfilled or rejected). The
+     * resolved value cannot be modified from the callback.
+     * @param onfinally The callback to execute when the Promise is settled (fulfilled or rejected).
+     * @returns A Promise for the completion of the callback.
+     */
+    finally(onfinally?: (() => void) | undefined | null): $Utils.JsPromise<T>
+  }
+
+
+
+
+  /**
+   * Fields of the Event_Attendees model
+   */
+  interface Event_AttendeesFieldRefs {
+    readonly id: FieldRef<"Event_Attendees", 'String'>
+    readonly user_id: FieldRef<"Event_Attendees", 'String'>
+    readonly event_id: FieldRef<"Event_Attendees", 'String'>
+    readonly status: FieldRef<"Event_Attendees", 'Status'>
+  }
+    
+
+  // Custom InputTypes
+  /**
+   * Event_Attendees findUnique
+   */
+  export type Event_AttendeesFindUniqueArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Event_Attendees
+     */
+    select?: Event_AttendeesSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the Event_Attendees
+     */
+    omit?: Event_AttendeesOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: Event_AttendeesInclude<ExtArgs> | null
+    /**
+     * Filter, which Event_Attendees to fetch.
+     */
+    where: Event_AttendeesWhereUniqueInput
+  }
+
+  /**
+   * Event_Attendees findUniqueOrThrow
+   */
+  export type Event_AttendeesFindUniqueOrThrowArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Event_Attendees
+     */
+    select?: Event_AttendeesSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the Event_Attendees
+     */
+    omit?: Event_AttendeesOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: Event_AttendeesInclude<ExtArgs> | null
+    /**
+     * Filter, which Event_Attendees to fetch.
+     */
+    where: Event_AttendeesWhereUniqueInput
+  }
+
+  /**
+   * Event_Attendees findFirst
+   */
+  export type Event_AttendeesFindFirstArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Event_Attendees
+     */
+    select?: Event_AttendeesSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the Event_Attendees
+     */
+    omit?: Event_AttendeesOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: Event_AttendeesInclude<ExtArgs> | null
+    /**
+     * Filter, which Event_Attendees to fetch.
+     */
+    where?: Event_AttendeesWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of Event_Attendees to fetch.
+     */
+    orderBy?: Event_AttendeesOrderByWithRelationInput | Event_AttendeesOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for searching for Event_Attendees.
+     */
+    cursor?: Event_AttendeesWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` Event_Attendees from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` Event_Attendees.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
+     * 
+     * Filter by unique combinations of Event_Attendees.
+     */
+    distinct?: Event_AttendeesScalarFieldEnum | Event_AttendeesScalarFieldEnum[]
+  }
+
+  /**
+   * Event_Attendees findFirstOrThrow
+   */
+  export type Event_AttendeesFindFirstOrThrowArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Event_Attendees
+     */
+    select?: Event_AttendeesSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the Event_Attendees
+     */
+    omit?: Event_AttendeesOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: Event_AttendeesInclude<ExtArgs> | null
+    /**
+     * Filter, which Event_Attendees to fetch.
+     */
+    where?: Event_AttendeesWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of Event_Attendees to fetch.
+     */
+    orderBy?: Event_AttendeesOrderByWithRelationInput | Event_AttendeesOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for searching for Event_Attendees.
+     */
+    cursor?: Event_AttendeesWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` Event_Attendees from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` Event_Attendees.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
+     * 
+     * Filter by unique combinations of Event_Attendees.
+     */
+    distinct?: Event_AttendeesScalarFieldEnum | Event_AttendeesScalarFieldEnum[]
+  }
+
+  /**
+   * Event_Attendees findMany
+   */
+  export type Event_AttendeesFindManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Event_Attendees
+     */
+    select?: Event_AttendeesSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the Event_Attendees
+     */
+    omit?: Event_AttendeesOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: Event_AttendeesInclude<ExtArgs> | null
+    /**
+     * Filter, which Event_Attendees to fetch.
+     */
+    where?: Event_AttendeesWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of Event_Attendees to fetch.
+     */
+    orderBy?: Event_AttendeesOrderByWithRelationInput | Event_AttendeesOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for listing Event_Attendees.
+     */
+    cursor?: Event_AttendeesWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` Event_Attendees from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` Event_Attendees.
+     */
+    skip?: number
+    distinct?: Event_AttendeesScalarFieldEnum | Event_AttendeesScalarFieldEnum[]
+  }
+
+  /**
+   * Event_Attendees create
+   */
+  export type Event_AttendeesCreateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Event_Attendees
+     */
+    select?: Event_AttendeesSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the Event_Attendees
+     */
+    omit?: Event_AttendeesOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: Event_AttendeesInclude<ExtArgs> | null
+    /**
+     * The data needed to create a Event_Attendees.
+     */
+    data: XOR<Event_AttendeesCreateInput, Event_AttendeesUncheckedCreateInput>
+  }
+
+  /**
+   * Event_Attendees createMany
+   */
+  export type Event_AttendeesCreateManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * The data used to create many Event_Attendees.
+     */
+    data: Event_AttendeesCreateManyInput | Event_AttendeesCreateManyInput[]
+    skipDuplicates?: boolean
+  }
+
+  /**
+   * Event_Attendees createManyAndReturn
+   */
+  export type Event_AttendeesCreateManyAndReturnArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Event_Attendees
+     */
+    select?: Event_AttendeesSelectCreateManyAndReturn<ExtArgs> | null
+    /**
+     * Omit specific fields from the Event_Attendees
+     */
+    omit?: Event_AttendeesOmit<ExtArgs> | null
+    /**
+     * The data used to create many Event_Attendees.
+     */
+    data: Event_AttendeesCreateManyInput | Event_AttendeesCreateManyInput[]
+    skipDuplicates?: boolean
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: Event_AttendeesIncludeCreateManyAndReturn<ExtArgs> | null
+  }
+
+  /**
+   * Event_Attendees update
+   */
+  export type Event_AttendeesUpdateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Event_Attendees
+     */
+    select?: Event_AttendeesSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the Event_Attendees
+     */
+    omit?: Event_AttendeesOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: Event_AttendeesInclude<ExtArgs> | null
+    /**
+     * The data needed to update a Event_Attendees.
+     */
+    data: XOR<Event_AttendeesUpdateInput, Event_AttendeesUncheckedUpdateInput>
+    /**
+     * Choose, which Event_Attendees to update.
+     */
+    where: Event_AttendeesWhereUniqueInput
+  }
+
+  /**
+   * Event_Attendees updateMany
+   */
+  export type Event_AttendeesUpdateManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * The data used to update Event_Attendees.
+     */
+    data: XOR<Event_AttendeesUpdateManyMutationInput, Event_AttendeesUncheckedUpdateManyInput>
+    /**
+     * Filter which Event_Attendees to update
+     */
+    where?: Event_AttendeesWhereInput
+    /**
+     * Limit how many Event_Attendees to update.
+     */
+    limit?: number
+  }
+
+  /**
+   * Event_Attendees updateManyAndReturn
+   */
+  export type Event_AttendeesUpdateManyAndReturnArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Event_Attendees
+     */
+    select?: Event_AttendeesSelectUpdateManyAndReturn<ExtArgs> | null
+    /**
+     * Omit specific fields from the Event_Attendees
+     */
+    omit?: Event_AttendeesOmit<ExtArgs> | null
+    /**
+     * The data used to update Event_Attendees.
+     */
+    data: XOR<Event_AttendeesUpdateManyMutationInput, Event_AttendeesUncheckedUpdateManyInput>
+    /**
+     * Filter which Event_Attendees to update
+     */
+    where?: Event_AttendeesWhereInput
+    /**
+     * Limit how many Event_Attendees to update.
+     */
+    limit?: number
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: Event_AttendeesIncludeUpdateManyAndReturn<ExtArgs> | null
+  }
+
+  /**
+   * Event_Attendees upsert
+   */
+  export type Event_AttendeesUpsertArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Event_Attendees
+     */
+    select?: Event_AttendeesSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the Event_Attendees
+     */
+    omit?: Event_AttendeesOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: Event_AttendeesInclude<ExtArgs> | null
+    /**
+     * The filter to search for the Event_Attendees to update in case it exists.
+     */
+    where: Event_AttendeesWhereUniqueInput
+    /**
+     * In case the Event_Attendees found by the `where` argument doesn't exist, create a new Event_Attendees with this data.
+     */
+    create: XOR<Event_AttendeesCreateInput, Event_AttendeesUncheckedCreateInput>
+    /**
+     * In case the Event_Attendees was found with the provided `where` argument, update it with this data.
+     */
+    update: XOR<Event_AttendeesUpdateInput, Event_AttendeesUncheckedUpdateInput>
+  }
+
+  /**
+   * Event_Attendees delete
+   */
+  export type Event_AttendeesDeleteArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Event_Attendees
+     */
+    select?: Event_AttendeesSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the Event_Attendees
+     */
+    omit?: Event_AttendeesOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: Event_AttendeesInclude<ExtArgs> | null
+    /**
+     * Filter which Event_Attendees to delete.
+     */
+    where: Event_AttendeesWhereUniqueInput
+  }
+
+  /**
+   * Event_Attendees deleteMany
+   */
+  export type Event_AttendeesDeleteManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Filter which Event_Attendees to delete
+     */
+    where?: Event_AttendeesWhereInput
+    /**
+     * Limit how many Event_Attendees to delete.
+     */
+    limit?: number
+  }
+
+  /**
+   * Event_Attendees without action
+   */
+  export type Event_AttendeesDefaultArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Event_Attendees
+     */
+    select?: Event_AttendeesSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the Event_Attendees
+     */
+    omit?: Event_AttendeesOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: Event_AttendeesInclude<ExtArgs> | null
+  }
+
+
+  /**
+   * Model Referral_Code
+   */
+
+  export type AggregateReferral_Code = {
+    _count: Referral_CodeCountAggregateOutputType | null
+    _avg: Referral_CodeAvgAggregateOutputType | null
+    _sum: Referral_CodeSumAggregateOutputType | null
+    _min: Referral_CodeMinAggregateOutputType | null
+    _max: Referral_CodeMaxAggregateOutputType | null
+  }
+
+  export type Referral_CodeAvgAggregateOutputType = {
+    points: number | null
+  }
+
+  export type Referral_CodeSumAggregateOutputType = {
+    points: number | null
+  }
+
+  export type Referral_CodeMinAggregateOutputType = {
+    id: string | null
+    user_id: string | null
+    code: string | null
+    points: number | null
+  }
+
+  export type Referral_CodeMaxAggregateOutputType = {
+    id: string | null
+    user_id: string | null
+    code: string | null
+    points: number | null
+  }
+
+  export type Referral_CodeCountAggregateOutputType = {
+    id: number
+    user_id: number
+    code: number
+    points: number
+    _all: number
+  }
+
+
+  export type Referral_CodeAvgAggregateInputType = {
+    points?: true
+  }
+
+  export type Referral_CodeSumAggregateInputType = {
+    points?: true
+  }
+
+  export type Referral_CodeMinAggregateInputType = {
+    id?: true
+    user_id?: true
+    code?: true
+    points?: true
+  }
+
+  export type Referral_CodeMaxAggregateInputType = {
+    id?: true
+    user_id?: true
+    code?: true
+    points?: true
+  }
+
+  export type Referral_CodeCountAggregateInputType = {
+    id?: true
+    user_id?: true
+    code?: true
+    points?: true
+    _all?: true
+  }
+
+  export type Referral_CodeAggregateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Filter which Referral_Code to aggregate.
+     */
+    where?: Referral_CodeWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of Referral_Codes to fetch.
+     */
+    orderBy?: Referral_CodeOrderByWithRelationInput | Referral_CodeOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the start position
+     */
+    cursor?: Referral_CodeWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` Referral_Codes from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` Referral_Codes.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Count returned Referral_Codes
+    **/
+    _count?: true | Referral_CodeCountAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to average
+    **/
+    _avg?: Referral_CodeAvgAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to sum
+    **/
+    _sum?: Referral_CodeSumAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to find the minimum value
+    **/
+    _min?: Referral_CodeMinAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to find the maximum value
+    **/
+    _max?: Referral_CodeMaxAggregateInputType
+  }
+
+  export type GetReferral_CodeAggregateType<T extends Referral_CodeAggregateArgs> = {
+        [P in keyof T & keyof AggregateReferral_Code]: P extends '_count' | 'count'
+      ? T[P] extends true
+        ? number
+        : GetScalarType<T[P], AggregateReferral_Code[P]>
+      : GetScalarType<T[P], AggregateReferral_Code[P]>
+  }
+
+
+
+
+  export type Referral_CodeGroupByArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    where?: Referral_CodeWhereInput
+    orderBy?: Referral_CodeOrderByWithAggregationInput | Referral_CodeOrderByWithAggregationInput[]
+    by: Referral_CodeScalarFieldEnum[] | Referral_CodeScalarFieldEnum
+    having?: Referral_CodeScalarWhereWithAggregatesInput
+    take?: number
+    skip?: number
+    _count?: Referral_CodeCountAggregateInputType | true
+    _avg?: Referral_CodeAvgAggregateInputType
+    _sum?: Referral_CodeSumAggregateInputType
+    _min?: Referral_CodeMinAggregateInputType
+    _max?: Referral_CodeMaxAggregateInputType
+  }
+
+  export type Referral_CodeGroupByOutputType = {
+    id: string
+    user_id: string
+    code: string
+    points: number
+    _count: Referral_CodeCountAggregateOutputType | null
+    _avg: Referral_CodeAvgAggregateOutputType | null
+    _sum: Referral_CodeSumAggregateOutputType | null
+    _min: Referral_CodeMinAggregateOutputType | null
+    _max: Referral_CodeMaxAggregateOutputType | null
+  }
+
+  type GetReferral_CodeGroupByPayload<T extends Referral_CodeGroupByArgs> = Prisma.PrismaPromise<
+    Array<
+      PickEnumerable<Referral_CodeGroupByOutputType, T['by']> &
+        {
+          [P in ((keyof T) & (keyof Referral_CodeGroupByOutputType))]: P extends '_count'
+            ? T[P] extends boolean
+              ? number
+              : GetScalarType<T[P], Referral_CodeGroupByOutputType[P]>
+            : GetScalarType<T[P], Referral_CodeGroupByOutputType[P]>
+        }
+      >
+    >
+
+
+  export type Referral_CodeSelect<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
+    id?: boolean
+    user_id?: boolean
+    code?: boolean
+    points?: boolean
+    user_referral?: boolean | UsersDefaultArgs<ExtArgs>
+    user_referralUsage?: boolean | Referral_Code$user_referralUsageArgs<ExtArgs>
+    _count?: boolean | Referral_CodeCountOutputTypeDefaultArgs<ExtArgs>
+  }, ExtArgs["result"]["referral_Code"]>
+
+  export type Referral_CodeSelectCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
+    id?: boolean
+    user_id?: boolean
+    code?: boolean
+    points?: boolean
+    user_referral?: boolean | UsersDefaultArgs<ExtArgs>
+  }, ExtArgs["result"]["referral_Code"]>
+
+  export type Referral_CodeSelectUpdateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
+    id?: boolean
+    user_id?: boolean
+    code?: boolean
+    points?: boolean
+    user_referral?: boolean | UsersDefaultArgs<ExtArgs>
+  }, ExtArgs["result"]["referral_Code"]>
+
+  export type Referral_CodeSelectScalar = {
+    id?: boolean
+    user_id?: boolean
+    code?: boolean
+    points?: boolean
+  }
+
+  export type Referral_CodeOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "user_id" | "code" | "points", ExtArgs["result"]["referral_Code"]>
+  export type Referral_CodeInclude<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    user_referral?: boolean | UsersDefaultArgs<ExtArgs>
+    user_referralUsage?: boolean | Referral_Code$user_referralUsageArgs<ExtArgs>
+    _count?: boolean | Referral_CodeCountOutputTypeDefaultArgs<ExtArgs>
+  }
+  export type Referral_CodeIncludeCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    user_referral?: boolean | UsersDefaultArgs<ExtArgs>
+  }
+  export type Referral_CodeIncludeUpdateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    user_referral?: boolean | UsersDefaultArgs<ExtArgs>
+  }
+
+  export type $Referral_CodePayload<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    name: "Referral_Code"
+    objects: {
+      user_referral: Prisma.$UsersPayload<ExtArgs>
+      user_referralUsage: Prisma.$Referral_UsagePayload<ExtArgs>[]
+    }
+    scalars: $Extensions.GetPayloadResult<{
+      id: string
+      user_id: string
+      code: string
+      points: number
+    }, ExtArgs["result"]["referral_Code"]>
+    composites: {}
+  }
+
+  type Referral_CodeGetPayload<S extends boolean | null | undefined | Referral_CodeDefaultArgs> = $Result.GetResult<Prisma.$Referral_CodePayload, S>
+
+  type Referral_CodeCountArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> =
+    Omit<Referral_CodeFindManyArgs, 'select' | 'include' | 'distinct' | 'omit'> & {
+      select?: Referral_CodeCountAggregateInputType | true
+    }
+
+  export interface Referral_CodeDelegate<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs, GlobalOmitOptions = {}> {
+    [K: symbol]: { types: Prisma.TypeMap<ExtArgs>['model']['Referral_Code'], meta: { name: 'Referral_Code' } }
+    /**
+     * Find zero or one Referral_Code that matches the filter.
+     * @param {Referral_CodeFindUniqueArgs} args - Arguments to find a Referral_Code
+     * @example
+     * // Get one Referral_Code
+     * const referral_Code = await prisma.referral_Code.findUnique({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findUnique<T extends Referral_CodeFindUniqueArgs>(args: SelectSubset<T, Referral_CodeFindUniqueArgs<ExtArgs>>): Prisma__Referral_CodeClient<$Result.GetResult<Prisma.$Referral_CodePayload<ExtArgs>, T, "findUnique", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find one Referral_Code that matches the filter or throw an error with `error.code='P2025'`
+     * if no matches were found.
+     * @param {Referral_CodeFindUniqueOrThrowArgs} args - Arguments to find a Referral_Code
+     * @example
+     * // Get one Referral_Code
+     * const referral_Code = await prisma.referral_Code.findUniqueOrThrow({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findUniqueOrThrow<T extends Referral_CodeFindUniqueOrThrowArgs>(args: SelectSubset<T, Referral_CodeFindUniqueOrThrowArgs<ExtArgs>>): Prisma__Referral_CodeClient<$Result.GetResult<Prisma.$Referral_CodePayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find the first Referral_Code that matches the filter.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {Referral_CodeFindFirstArgs} args - Arguments to find a Referral_Code
+     * @example
+     * // Get one Referral_Code
+     * const referral_Code = await prisma.referral_Code.findFirst({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findFirst<T extends Referral_CodeFindFirstArgs>(args?: SelectSubset<T, Referral_CodeFindFirstArgs<ExtArgs>>): Prisma__Referral_CodeClient<$Result.GetResult<Prisma.$Referral_CodePayload<ExtArgs>, T, "findFirst", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find the first Referral_Code that matches the filter or
+     * throw `PrismaKnownClientError` with `P2025` code if no matches were found.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {Referral_CodeFindFirstOrThrowArgs} args - Arguments to find a Referral_Code
+     * @example
+     * // Get one Referral_Code
+     * const referral_Code = await prisma.referral_Code.findFirstOrThrow({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findFirstOrThrow<T extends Referral_CodeFindFirstOrThrowArgs>(args?: SelectSubset<T, Referral_CodeFindFirstOrThrowArgs<ExtArgs>>): Prisma__Referral_CodeClient<$Result.GetResult<Prisma.$Referral_CodePayload<ExtArgs>, T, "findFirstOrThrow", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find zero or more Referral_Codes that matches the filter.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {Referral_CodeFindManyArgs} args - Arguments to filter and select certain fields only.
+     * @example
+     * // Get all Referral_Codes
+     * const referral_Codes = await prisma.referral_Code.findMany()
+     * 
+     * // Get first 10 Referral_Codes
+     * const referral_Codes = await prisma.referral_Code.findMany({ take: 10 })
+     * 
+     * // Only select the `id`
+     * const referral_CodeWithIdOnly = await prisma.referral_Code.findMany({ select: { id: true } })
+     * 
+     */
+    findMany<T extends Referral_CodeFindManyArgs>(args?: SelectSubset<T, Referral_CodeFindManyArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$Referral_CodePayload<ExtArgs>, T, "findMany", GlobalOmitOptions>>
+
+    /**
+     * Create a Referral_Code.
+     * @param {Referral_CodeCreateArgs} args - Arguments to create a Referral_Code.
+     * @example
+     * // Create one Referral_Code
+     * const Referral_Code = await prisma.referral_Code.create({
+     *   data: {
+     *     // ... data to create a Referral_Code
+     *   }
+     * })
+     * 
+     */
+    create<T extends Referral_CodeCreateArgs>(args: SelectSubset<T, Referral_CodeCreateArgs<ExtArgs>>): Prisma__Referral_CodeClient<$Result.GetResult<Prisma.$Referral_CodePayload<ExtArgs>, T, "create", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Create many Referral_Codes.
+     * @param {Referral_CodeCreateManyArgs} args - Arguments to create many Referral_Codes.
+     * @example
+     * // Create many Referral_Codes
+     * const referral_Code = await prisma.referral_Code.createMany({
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     *     
+     */
+    createMany<T extends Referral_CodeCreateManyArgs>(args?: SelectSubset<T, Referral_CodeCreateManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Create many Referral_Codes and returns the data saved in the database.
+     * @param {Referral_CodeCreateManyAndReturnArgs} args - Arguments to create many Referral_Codes.
+     * @example
+     * // Create many Referral_Codes
+     * const referral_Code = await prisma.referral_Code.createManyAndReturn({
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * 
+     * // Create many Referral_Codes and only return the `id`
+     * const referral_CodeWithIdOnly = await prisma.referral_Code.createManyAndReturn({
+     *   select: { id: true },
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * 
+     */
+    createManyAndReturn<T extends Referral_CodeCreateManyAndReturnArgs>(args?: SelectSubset<T, Referral_CodeCreateManyAndReturnArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$Referral_CodePayload<ExtArgs>, T, "createManyAndReturn", GlobalOmitOptions>>
+
+    /**
+     * Delete a Referral_Code.
+     * @param {Referral_CodeDeleteArgs} args - Arguments to delete one Referral_Code.
+     * @example
+     * // Delete one Referral_Code
+     * const Referral_Code = await prisma.referral_Code.delete({
+     *   where: {
+     *     // ... filter to delete one Referral_Code
+     *   }
+     * })
+     * 
+     */
+    delete<T extends Referral_CodeDeleteArgs>(args: SelectSubset<T, Referral_CodeDeleteArgs<ExtArgs>>): Prisma__Referral_CodeClient<$Result.GetResult<Prisma.$Referral_CodePayload<ExtArgs>, T, "delete", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Update one Referral_Code.
+     * @param {Referral_CodeUpdateArgs} args - Arguments to update one Referral_Code.
+     * @example
+     * // Update one Referral_Code
+     * const referral_Code = await prisma.referral_Code.update({
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: {
+     *     // ... provide data here
+     *   }
+     * })
+     * 
+     */
+    update<T extends Referral_CodeUpdateArgs>(args: SelectSubset<T, Referral_CodeUpdateArgs<ExtArgs>>): Prisma__Referral_CodeClient<$Result.GetResult<Prisma.$Referral_CodePayload<ExtArgs>, T, "update", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Delete zero or more Referral_Codes.
+     * @param {Referral_CodeDeleteManyArgs} args - Arguments to filter Referral_Codes to delete.
+     * @example
+     * // Delete a few Referral_Codes
+     * const { count } = await prisma.referral_Code.deleteMany({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     * 
+     */
+    deleteMany<T extends Referral_CodeDeleteManyArgs>(args?: SelectSubset<T, Referral_CodeDeleteManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Update zero or more Referral_Codes.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {Referral_CodeUpdateManyArgs} args - Arguments to update one or more rows.
+     * @example
+     * // Update many Referral_Codes
+     * const referral_Code = await prisma.referral_Code.updateMany({
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: {
+     *     // ... provide data here
+     *   }
+     * })
+     * 
+     */
+    updateMany<T extends Referral_CodeUpdateManyArgs>(args: SelectSubset<T, Referral_CodeUpdateManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Update zero or more Referral_Codes and returns the data updated in the database.
+     * @param {Referral_CodeUpdateManyAndReturnArgs} args - Arguments to update many Referral_Codes.
+     * @example
+     * // Update many Referral_Codes
+     * const referral_Code = await prisma.referral_Code.updateManyAndReturn({
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * 
+     * // Update zero or more Referral_Codes and only return the `id`
+     * const referral_CodeWithIdOnly = await prisma.referral_Code.updateManyAndReturn({
+     *   select: { id: true },
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * 
+     */
+    updateManyAndReturn<T extends Referral_CodeUpdateManyAndReturnArgs>(args: SelectSubset<T, Referral_CodeUpdateManyAndReturnArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$Referral_CodePayload<ExtArgs>, T, "updateManyAndReturn", GlobalOmitOptions>>
+
+    /**
+     * Create or update one Referral_Code.
+     * @param {Referral_CodeUpsertArgs} args - Arguments to update or create a Referral_Code.
+     * @example
+     * // Update or create a Referral_Code
+     * const referral_Code = await prisma.referral_Code.upsert({
+     *   create: {
+     *     // ... data to create a Referral_Code
+     *   },
+     *   update: {
+     *     // ... in case it already exists, update
+     *   },
+     *   where: {
+     *     // ... the filter for the Referral_Code we want to update
+     *   }
+     * })
+     */
+    upsert<T extends Referral_CodeUpsertArgs>(args: SelectSubset<T, Referral_CodeUpsertArgs<ExtArgs>>): Prisma__Referral_CodeClient<$Result.GetResult<Prisma.$Referral_CodePayload<ExtArgs>, T, "upsert", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+
+    /**
+     * Count the number of Referral_Codes.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {Referral_CodeCountArgs} args - Arguments to filter Referral_Codes to count.
+     * @example
+     * // Count the number of Referral_Codes
+     * const count = await prisma.referral_Code.count({
+     *   where: {
+     *     // ... the filter for the Referral_Codes we want to count
+     *   }
+     * })
+    **/
+    count<T extends Referral_CodeCountArgs>(
+      args?: Subset<T, Referral_CodeCountArgs>,
+    ): Prisma.PrismaPromise<
+      T extends $Utils.Record<'select', any>
+        ? T['select'] extends true
+          ? number
+          : GetScalarType<T['select'], Referral_CodeCountAggregateOutputType>
+        : number
+    >
+
+    /**
+     * Allows you to perform aggregations operations on a Referral_Code.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {Referral_CodeAggregateArgs} args - Select which aggregations you would like to apply and on what fields.
+     * @example
+     * // Ordered by age ascending
+     * // Where email contains prisma.io
+     * // Limited to the 10 users
+     * const aggregations = await prisma.user.aggregate({
+     *   _avg: {
+     *     age: true,
+     *   },
+     *   where: {
+     *     email: {
+     *       contains: "prisma.io",
+     *     },
+     *   },
+     *   orderBy: {
+     *     age: "asc",
+     *   },
+     *   take: 10,
+     * })
+    **/
+    aggregate<T extends Referral_CodeAggregateArgs>(args: Subset<T, Referral_CodeAggregateArgs>): Prisma.PrismaPromise<GetReferral_CodeAggregateType<T>>
+
+    /**
+     * Group by Referral_Code.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {Referral_CodeGroupByArgs} args - Group by arguments.
+     * @example
+     * // Group by city, order by createdAt, get count
+     * const result = await prisma.user.groupBy({
+     *   by: ['city', 'createdAt'],
+     *   orderBy: {
+     *     createdAt: true
+     *   },
+     *   _count: {
+     *     _all: true
+     *   },
+     * })
+     * 
+    **/
+    groupBy<
+      T extends Referral_CodeGroupByArgs,
+      HasSelectOrTake extends Or<
+        Extends<'skip', Keys<T>>,
+        Extends<'take', Keys<T>>
+      >,
+      OrderByArg extends True extends HasSelectOrTake
+        ? { orderBy: Referral_CodeGroupByArgs['orderBy'] }
+        : { orderBy?: Referral_CodeGroupByArgs['orderBy'] },
+      OrderFields extends ExcludeUnderscoreKeys<Keys<MaybeTupleToUnion<T['orderBy']>>>,
+      ByFields extends MaybeTupleToUnion<T['by']>,
+      ByValid extends Has<ByFields, OrderFields>,
+      HavingFields extends GetHavingFields<T['having']>,
+      HavingValid extends Has<ByFields, HavingFields>,
+      ByEmpty extends T['by'] extends never[] ? True : False,
+      InputErrors extends ByEmpty extends True
+      ? `Error: "by" must not be empty.`
+      : HavingValid extends False
+      ? {
+          [P in HavingFields]: P extends ByFields
+            ? never
+            : P extends string
+            ? `Error: Field "${P}" used in "having" needs to be provided in "by".`
+            : [
+                Error,
+                'Field ',
+                P,
+                ` in "having" needs to be provided in "by"`,
+              ]
+        }[HavingFields]
+      : 'take' extends Keys<T>
+      ? 'orderBy' extends Keys<T>
+        ? ByValid extends True
+          ? {}
+          : {
+              [P in OrderFields]: P extends ByFields
+                ? never
+                : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+            }[OrderFields]
+        : 'Error: If you provide "take", you also need to provide "orderBy"'
+      : 'skip' extends Keys<T>
+      ? 'orderBy' extends Keys<T>
+        ? ByValid extends True
+          ? {}
+          : {
+              [P in OrderFields]: P extends ByFields
+                ? never
+                : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+            }[OrderFields]
+        : 'Error: If you provide "skip", you also need to provide "orderBy"'
+      : ByValid extends True
+      ? {}
+      : {
+          [P in OrderFields]: P extends ByFields
+            ? never
+            : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+        }[OrderFields]
+    >(args: SubsetIntersection<T, Referral_CodeGroupByArgs, OrderByArg> & InputErrors): {} extends InputErrors ? GetReferral_CodeGroupByPayload<T> : Prisma.PrismaPromise<InputErrors>
+  /**
+   * Fields of the Referral_Code model
+   */
+  readonly fields: Referral_CodeFieldRefs;
+  }
+
+  /**
+   * The delegate class that acts as a "Promise-like" for Referral_Code.
+   * Why is this prefixed with `Prisma__`?
+   * Because we want to prevent naming conflicts as mentioned in
+   * https://github.com/prisma/prisma-client-js/issues/707
+   */
+  export interface Prisma__Referral_CodeClient<T, Null = never, ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs, GlobalOmitOptions = {}> extends Prisma.PrismaPromise<T> {
+    readonly [Symbol.toStringTag]: "PrismaPromise"
+    user_referral<T extends UsersDefaultArgs<ExtArgs> = {}>(args?: Subset<T, UsersDefaultArgs<ExtArgs>>): Prisma__UsersClient<$Result.GetResult<Prisma.$UsersPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | Null, Null, ExtArgs, GlobalOmitOptions>
+    user_referralUsage<T extends Referral_Code$user_referralUsageArgs<ExtArgs> = {}>(args?: Subset<T, Referral_Code$user_referralUsageArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$Referral_UsagePayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
+    /**
+     * Attaches callbacks for the resolution and/or rejection of the Promise.
+     * @param onfulfilled The callback to execute when the Promise is resolved.
+     * @param onrejected The callback to execute when the Promise is rejected.
+     * @returns A Promise for the completion of which ever callback is executed.
+     */
+    then<TResult1 = T, TResult2 = never>(onfulfilled?: ((value: T) => TResult1 | PromiseLike<TResult1>) | undefined | null, onrejected?: ((reason: any) => TResult2 | PromiseLike<TResult2>) | undefined | null): $Utils.JsPromise<TResult1 | TResult2>
+    /**
+     * Attaches a callback for only the rejection of the Promise.
+     * @param onrejected The callback to execute when the Promise is rejected.
+     * @returns A Promise for the completion of the callback.
+     */
+    catch<TResult = never>(onrejected?: ((reason: any) => TResult | PromiseLike<TResult>) | undefined | null): $Utils.JsPromise<T | TResult>
+    /**
+     * Attaches a callback that is invoked when the Promise is settled (fulfilled or rejected). The
+     * resolved value cannot be modified from the callback.
+     * @param onfinally The callback to execute when the Promise is settled (fulfilled or rejected).
+     * @returns A Promise for the completion of the callback.
+     */
+    finally(onfinally?: (() => void) | undefined | null): $Utils.JsPromise<T>
+  }
+
+
+
+
+  /**
+   * Fields of the Referral_Code model
+   */
+  interface Referral_CodeFieldRefs {
+    readonly id: FieldRef<"Referral_Code", 'String'>
+    readonly user_id: FieldRef<"Referral_Code", 'String'>
+    readonly code: FieldRef<"Referral_Code", 'String'>
+    readonly points: FieldRef<"Referral_Code", 'Int'>
+  }
+    
+
+  // Custom InputTypes
+  /**
+   * Referral_Code findUnique
+   */
+  export type Referral_CodeFindUniqueArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Referral_Code
+     */
+    select?: Referral_CodeSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the Referral_Code
+     */
+    omit?: Referral_CodeOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: Referral_CodeInclude<ExtArgs> | null
+    /**
+     * Filter, which Referral_Code to fetch.
+     */
+    where: Referral_CodeWhereUniqueInput
+  }
+
+  /**
+   * Referral_Code findUniqueOrThrow
+   */
+  export type Referral_CodeFindUniqueOrThrowArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Referral_Code
+     */
+    select?: Referral_CodeSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the Referral_Code
+     */
+    omit?: Referral_CodeOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: Referral_CodeInclude<ExtArgs> | null
+    /**
+     * Filter, which Referral_Code to fetch.
+     */
+    where: Referral_CodeWhereUniqueInput
+  }
+
+  /**
+   * Referral_Code findFirst
+   */
+  export type Referral_CodeFindFirstArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Referral_Code
+     */
+    select?: Referral_CodeSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the Referral_Code
+     */
+    omit?: Referral_CodeOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: Referral_CodeInclude<ExtArgs> | null
+    /**
+     * Filter, which Referral_Code to fetch.
+     */
+    where?: Referral_CodeWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of Referral_Codes to fetch.
+     */
+    orderBy?: Referral_CodeOrderByWithRelationInput | Referral_CodeOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for searching for Referral_Codes.
+     */
+    cursor?: Referral_CodeWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` Referral_Codes from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` Referral_Codes.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
+     * 
+     * Filter by unique combinations of Referral_Codes.
+     */
+    distinct?: Referral_CodeScalarFieldEnum | Referral_CodeScalarFieldEnum[]
+  }
+
+  /**
+   * Referral_Code findFirstOrThrow
+   */
+  export type Referral_CodeFindFirstOrThrowArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Referral_Code
+     */
+    select?: Referral_CodeSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the Referral_Code
+     */
+    omit?: Referral_CodeOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: Referral_CodeInclude<ExtArgs> | null
+    /**
+     * Filter, which Referral_Code to fetch.
+     */
+    where?: Referral_CodeWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of Referral_Codes to fetch.
+     */
+    orderBy?: Referral_CodeOrderByWithRelationInput | Referral_CodeOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for searching for Referral_Codes.
+     */
+    cursor?: Referral_CodeWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` Referral_Codes from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` Referral_Codes.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
+     * 
+     * Filter by unique combinations of Referral_Codes.
+     */
+    distinct?: Referral_CodeScalarFieldEnum | Referral_CodeScalarFieldEnum[]
+  }
+
+  /**
+   * Referral_Code findMany
+   */
+  export type Referral_CodeFindManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Referral_Code
+     */
+    select?: Referral_CodeSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the Referral_Code
+     */
+    omit?: Referral_CodeOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: Referral_CodeInclude<ExtArgs> | null
+    /**
+     * Filter, which Referral_Codes to fetch.
+     */
+    where?: Referral_CodeWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of Referral_Codes to fetch.
+     */
+    orderBy?: Referral_CodeOrderByWithRelationInput | Referral_CodeOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for listing Referral_Codes.
+     */
+    cursor?: Referral_CodeWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` Referral_Codes from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` Referral_Codes.
+     */
+    skip?: number
+    distinct?: Referral_CodeScalarFieldEnum | Referral_CodeScalarFieldEnum[]
+  }
+
+  /**
+   * Referral_Code create
+   */
+  export type Referral_CodeCreateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Referral_Code
+     */
+    select?: Referral_CodeSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the Referral_Code
+     */
+    omit?: Referral_CodeOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: Referral_CodeInclude<ExtArgs> | null
+    /**
+     * The data needed to create a Referral_Code.
+     */
+    data: XOR<Referral_CodeCreateInput, Referral_CodeUncheckedCreateInput>
+  }
+
+  /**
+   * Referral_Code createMany
+   */
+  export type Referral_CodeCreateManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * The data used to create many Referral_Codes.
+     */
+    data: Referral_CodeCreateManyInput | Referral_CodeCreateManyInput[]
+    skipDuplicates?: boolean
+  }
+
+  /**
+   * Referral_Code createManyAndReturn
+   */
+  export type Referral_CodeCreateManyAndReturnArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Referral_Code
+     */
+    select?: Referral_CodeSelectCreateManyAndReturn<ExtArgs> | null
+    /**
+     * Omit specific fields from the Referral_Code
+     */
+    omit?: Referral_CodeOmit<ExtArgs> | null
+    /**
+     * The data used to create many Referral_Codes.
+     */
+    data: Referral_CodeCreateManyInput | Referral_CodeCreateManyInput[]
+    skipDuplicates?: boolean
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: Referral_CodeIncludeCreateManyAndReturn<ExtArgs> | null
+  }
+
+  /**
+   * Referral_Code update
+   */
+  export type Referral_CodeUpdateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Referral_Code
+     */
+    select?: Referral_CodeSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the Referral_Code
+     */
+    omit?: Referral_CodeOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: Referral_CodeInclude<ExtArgs> | null
+    /**
+     * The data needed to update a Referral_Code.
+     */
+    data: XOR<Referral_CodeUpdateInput, Referral_CodeUncheckedUpdateInput>
+    /**
+     * Choose, which Referral_Code to update.
+     */
+    where: Referral_CodeWhereUniqueInput
+  }
+
+  /**
+   * Referral_Code updateMany
+   */
+  export type Referral_CodeUpdateManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * The data used to update Referral_Codes.
+     */
+    data: XOR<Referral_CodeUpdateManyMutationInput, Referral_CodeUncheckedUpdateManyInput>
+    /**
+     * Filter which Referral_Codes to update
+     */
+    where?: Referral_CodeWhereInput
+    /**
+     * Limit how many Referral_Codes to update.
+     */
+    limit?: number
+  }
+
+  /**
+   * Referral_Code updateManyAndReturn
+   */
+  export type Referral_CodeUpdateManyAndReturnArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Referral_Code
+     */
+    select?: Referral_CodeSelectUpdateManyAndReturn<ExtArgs> | null
+    /**
+     * Omit specific fields from the Referral_Code
+     */
+    omit?: Referral_CodeOmit<ExtArgs> | null
+    /**
+     * The data used to update Referral_Codes.
+     */
+    data: XOR<Referral_CodeUpdateManyMutationInput, Referral_CodeUncheckedUpdateManyInput>
+    /**
+     * Filter which Referral_Codes to update
+     */
+    where?: Referral_CodeWhereInput
+    /**
+     * Limit how many Referral_Codes to update.
+     */
+    limit?: number
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: Referral_CodeIncludeUpdateManyAndReturn<ExtArgs> | null
+  }
+
+  /**
+   * Referral_Code upsert
+   */
+  export type Referral_CodeUpsertArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Referral_Code
+     */
+    select?: Referral_CodeSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the Referral_Code
+     */
+    omit?: Referral_CodeOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: Referral_CodeInclude<ExtArgs> | null
+    /**
+     * The filter to search for the Referral_Code to update in case it exists.
+     */
+    where: Referral_CodeWhereUniqueInput
+    /**
+     * In case the Referral_Code found by the `where` argument doesn't exist, create a new Referral_Code with this data.
+     */
+    create: XOR<Referral_CodeCreateInput, Referral_CodeUncheckedCreateInput>
+    /**
+     * In case the Referral_Code was found with the provided `where` argument, update it with this data.
+     */
+    update: XOR<Referral_CodeUpdateInput, Referral_CodeUncheckedUpdateInput>
+  }
+
+  /**
+   * Referral_Code delete
+   */
+  export type Referral_CodeDeleteArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Referral_Code
+     */
+    select?: Referral_CodeSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the Referral_Code
+     */
+    omit?: Referral_CodeOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: Referral_CodeInclude<ExtArgs> | null
+    /**
+     * Filter which Referral_Code to delete.
+     */
+    where: Referral_CodeWhereUniqueInput
+  }
+
+  /**
+   * Referral_Code deleteMany
+   */
+  export type Referral_CodeDeleteManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Filter which Referral_Codes to delete
+     */
+    where?: Referral_CodeWhereInput
+    /**
+     * Limit how many Referral_Codes to delete.
+     */
+    limit?: number
+  }
+
+  /**
+   * Referral_Code.user_referralUsage
+   */
+  export type Referral_Code$user_referralUsageArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Referral_Usage
+     */
+    select?: Referral_UsageSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the Referral_Usage
+     */
+    omit?: Referral_UsageOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: Referral_UsageInclude<ExtArgs> | null
+    where?: Referral_UsageWhereInput
+    orderBy?: Referral_UsageOrderByWithRelationInput | Referral_UsageOrderByWithRelationInput[]
+    cursor?: Referral_UsageWhereUniqueInput
+    take?: number
+    skip?: number
+    distinct?: Referral_UsageScalarFieldEnum | Referral_UsageScalarFieldEnum[]
+  }
+
+  /**
+   * Referral_Code without action
+   */
+  export type Referral_CodeDefaultArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Referral_Code
+     */
+    select?: Referral_CodeSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the Referral_Code
+     */
+    omit?: Referral_CodeOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: Referral_CodeInclude<ExtArgs> | null
+  }
+
+
+  /**
+   * Model Referral_Usage
+   */
+
+  export type AggregateReferral_Usage = {
+    _count: Referral_UsageCountAggregateOutputType | null
+    _min: Referral_UsageMinAggregateOutputType | null
+    _max: Referral_UsageMaxAggregateOutputType | null
+  }
+
+  export type Referral_UsageMinAggregateOutputType = {
+    id: string | null
+    user_id: string | null
+    referral_code_id: string | null
+    used_at: Date | null
+  }
+
+  export type Referral_UsageMaxAggregateOutputType = {
+    id: string | null
+    user_id: string | null
+    referral_code_id: string | null
+    used_at: Date | null
+  }
+
+  export type Referral_UsageCountAggregateOutputType = {
+    id: number
+    user_id: number
+    referral_code_id: number
+    used_at: number
+    _all: number
+  }
+
+
+  export type Referral_UsageMinAggregateInputType = {
+    id?: true
+    user_id?: true
+    referral_code_id?: true
+    used_at?: true
+  }
+
+  export type Referral_UsageMaxAggregateInputType = {
+    id?: true
+    user_id?: true
+    referral_code_id?: true
+    used_at?: true
+  }
+
+  export type Referral_UsageCountAggregateInputType = {
+    id?: true
+    user_id?: true
+    referral_code_id?: true
+    used_at?: true
+    _all?: true
+  }
+
+  export type Referral_UsageAggregateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Filter which Referral_Usage to aggregate.
+     */
+    where?: Referral_UsageWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of Referral_Usages to fetch.
+     */
+    orderBy?: Referral_UsageOrderByWithRelationInput | Referral_UsageOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the start position
+     */
+    cursor?: Referral_UsageWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` Referral_Usages from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` Referral_Usages.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Count returned Referral_Usages
+    **/
+    _count?: true | Referral_UsageCountAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to find the minimum value
+    **/
+    _min?: Referral_UsageMinAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to find the maximum value
+    **/
+    _max?: Referral_UsageMaxAggregateInputType
+  }
+
+  export type GetReferral_UsageAggregateType<T extends Referral_UsageAggregateArgs> = {
+        [P in keyof T & keyof AggregateReferral_Usage]: P extends '_count' | 'count'
+      ? T[P] extends true
+        ? number
+        : GetScalarType<T[P], AggregateReferral_Usage[P]>
+      : GetScalarType<T[P], AggregateReferral_Usage[P]>
+  }
+
+
+
+
+  export type Referral_UsageGroupByArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    where?: Referral_UsageWhereInput
+    orderBy?: Referral_UsageOrderByWithAggregationInput | Referral_UsageOrderByWithAggregationInput[]
+    by: Referral_UsageScalarFieldEnum[] | Referral_UsageScalarFieldEnum
+    having?: Referral_UsageScalarWhereWithAggregatesInput
+    take?: number
+    skip?: number
+    _count?: Referral_UsageCountAggregateInputType | true
+    _min?: Referral_UsageMinAggregateInputType
+    _max?: Referral_UsageMaxAggregateInputType
+  }
+
+  export type Referral_UsageGroupByOutputType = {
+    id: string
+    user_id: string
+    referral_code_id: string
+    used_at: Date
+    _count: Referral_UsageCountAggregateOutputType | null
+    _min: Referral_UsageMinAggregateOutputType | null
+    _max: Referral_UsageMaxAggregateOutputType | null
+  }
+
+  type GetReferral_UsageGroupByPayload<T extends Referral_UsageGroupByArgs> = Prisma.PrismaPromise<
+    Array<
+      PickEnumerable<Referral_UsageGroupByOutputType, T['by']> &
+        {
+          [P in ((keyof T) & (keyof Referral_UsageGroupByOutputType))]: P extends '_count'
+            ? T[P] extends boolean
+              ? number
+              : GetScalarType<T[P], Referral_UsageGroupByOutputType[P]>
+            : GetScalarType<T[P], Referral_UsageGroupByOutputType[P]>
+        }
+      >
+    >
+
+
+  export type Referral_UsageSelect<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
+    id?: boolean
+    user_id?: boolean
+    referral_code_id?: boolean
+    used_at?: boolean
+    user_referralUsage?: boolean | UsersDefaultArgs<ExtArgs>
+    code_referralUsage?: boolean | Referral_CodeDefaultArgs<ExtArgs>
+  }, ExtArgs["result"]["referral_Usage"]>
+
+  export type Referral_UsageSelectCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
+    id?: boolean
+    user_id?: boolean
+    referral_code_id?: boolean
+    used_at?: boolean
+    user_referralUsage?: boolean | UsersDefaultArgs<ExtArgs>
+    code_referralUsage?: boolean | Referral_CodeDefaultArgs<ExtArgs>
+  }, ExtArgs["result"]["referral_Usage"]>
+
+  export type Referral_UsageSelectUpdateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
+    id?: boolean
+    user_id?: boolean
+    referral_code_id?: boolean
+    used_at?: boolean
+    user_referralUsage?: boolean | UsersDefaultArgs<ExtArgs>
+    code_referralUsage?: boolean | Referral_CodeDefaultArgs<ExtArgs>
+  }, ExtArgs["result"]["referral_Usage"]>
+
+  export type Referral_UsageSelectScalar = {
+    id?: boolean
+    user_id?: boolean
+    referral_code_id?: boolean
+    used_at?: boolean
+  }
+
+  export type Referral_UsageOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "user_id" | "referral_code_id" | "used_at", ExtArgs["result"]["referral_Usage"]>
+  export type Referral_UsageInclude<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    user_referralUsage?: boolean | UsersDefaultArgs<ExtArgs>
+    code_referralUsage?: boolean | Referral_CodeDefaultArgs<ExtArgs>
+  }
+  export type Referral_UsageIncludeCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    user_referralUsage?: boolean | UsersDefaultArgs<ExtArgs>
+    code_referralUsage?: boolean | Referral_CodeDefaultArgs<ExtArgs>
+  }
+  export type Referral_UsageIncludeUpdateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    user_referralUsage?: boolean | UsersDefaultArgs<ExtArgs>
+    code_referralUsage?: boolean | Referral_CodeDefaultArgs<ExtArgs>
+  }
+
+  export type $Referral_UsagePayload<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    name: "Referral_Usage"
+    objects: {
+      user_referralUsage: Prisma.$UsersPayload<ExtArgs>
+      code_referralUsage: Prisma.$Referral_CodePayload<ExtArgs>
+    }
+    scalars: $Extensions.GetPayloadResult<{
+      id: string
+      user_id: string
+      referral_code_id: string
+      used_at: Date
+    }, ExtArgs["result"]["referral_Usage"]>
+    composites: {}
+  }
+
+  type Referral_UsageGetPayload<S extends boolean | null | undefined | Referral_UsageDefaultArgs> = $Result.GetResult<Prisma.$Referral_UsagePayload, S>
+
+  type Referral_UsageCountArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> =
+    Omit<Referral_UsageFindManyArgs, 'select' | 'include' | 'distinct' | 'omit'> & {
+      select?: Referral_UsageCountAggregateInputType | true
+    }
+
+  export interface Referral_UsageDelegate<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs, GlobalOmitOptions = {}> {
+    [K: symbol]: { types: Prisma.TypeMap<ExtArgs>['model']['Referral_Usage'], meta: { name: 'Referral_Usage' } }
+    /**
+     * Find zero or one Referral_Usage that matches the filter.
+     * @param {Referral_UsageFindUniqueArgs} args - Arguments to find a Referral_Usage
+     * @example
+     * // Get one Referral_Usage
+     * const referral_Usage = await prisma.referral_Usage.findUnique({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findUnique<T extends Referral_UsageFindUniqueArgs>(args: SelectSubset<T, Referral_UsageFindUniqueArgs<ExtArgs>>): Prisma__Referral_UsageClient<$Result.GetResult<Prisma.$Referral_UsagePayload<ExtArgs>, T, "findUnique", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find one Referral_Usage that matches the filter or throw an error with `error.code='P2025'`
+     * if no matches were found.
+     * @param {Referral_UsageFindUniqueOrThrowArgs} args - Arguments to find a Referral_Usage
+     * @example
+     * // Get one Referral_Usage
+     * const referral_Usage = await prisma.referral_Usage.findUniqueOrThrow({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findUniqueOrThrow<T extends Referral_UsageFindUniqueOrThrowArgs>(args: SelectSubset<T, Referral_UsageFindUniqueOrThrowArgs<ExtArgs>>): Prisma__Referral_UsageClient<$Result.GetResult<Prisma.$Referral_UsagePayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find the first Referral_Usage that matches the filter.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {Referral_UsageFindFirstArgs} args - Arguments to find a Referral_Usage
+     * @example
+     * // Get one Referral_Usage
+     * const referral_Usage = await prisma.referral_Usage.findFirst({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findFirst<T extends Referral_UsageFindFirstArgs>(args?: SelectSubset<T, Referral_UsageFindFirstArgs<ExtArgs>>): Prisma__Referral_UsageClient<$Result.GetResult<Prisma.$Referral_UsagePayload<ExtArgs>, T, "findFirst", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find the first Referral_Usage that matches the filter or
+     * throw `PrismaKnownClientError` with `P2025` code if no matches were found.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {Referral_UsageFindFirstOrThrowArgs} args - Arguments to find a Referral_Usage
+     * @example
+     * // Get one Referral_Usage
+     * const referral_Usage = await prisma.referral_Usage.findFirstOrThrow({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findFirstOrThrow<T extends Referral_UsageFindFirstOrThrowArgs>(args?: SelectSubset<T, Referral_UsageFindFirstOrThrowArgs<ExtArgs>>): Prisma__Referral_UsageClient<$Result.GetResult<Prisma.$Referral_UsagePayload<ExtArgs>, T, "findFirstOrThrow", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find zero or more Referral_Usages that matches the filter.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {Referral_UsageFindManyArgs} args - Arguments to filter and select certain fields only.
+     * @example
+     * // Get all Referral_Usages
+     * const referral_Usages = await prisma.referral_Usage.findMany()
+     * 
+     * // Get first 10 Referral_Usages
+     * const referral_Usages = await prisma.referral_Usage.findMany({ take: 10 })
+     * 
+     * // Only select the `id`
+     * const referral_UsageWithIdOnly = await prisma.referral_Usage.findMany({ select: { id: true } })
+     * 
+     */
+    findMany<T extends Referral_UsageFindManyArgs>(args?: SelectSubset<T, Referral_UsageFindManyArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$Referral_UsagePayload<ExtArgs>, T, "findMany", GlobalOmitOptions>>
+
+    /**
+     * Create a Referral_Usage.
+     * @param {Referral_UsageCreateArgs} args - Arguments to create a Referral_Usage.
+     * @example
+     * // Create one Referral_Usage
+     * const Referral_Usage = await prisma.referral_Usage.create({
+     *   data: {
+     *     // ... data to create a Referral_Usage
+     *   }
+     * })
+     * 
+     */
+    create<T extends Referral_UsageCreateArgs>(args: SelectSubset<T, Referral_UsageCreateArgs<ExtArgs>>): Prisma__Referral_UsageClient<$Result.GetResult<Prisma.$Referral_UsagePayload<ExtArgs>, T, "create", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Create many Referral_Usages.
+     * @param {Referral_UsageCreateManyArgs} args - Arguments to create many Referral_Usages.
+     * @example
+     * // Create many Referral_Usages
+     * const referral_Usage = await prisma.referral_Usage.createMany({
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     *     
+     */
+    createMany<T extends Referral_UsageCreateManyArgs>(args?: SelectSubset<T, Referral_UsageCreateManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Create many Referral_Usages and returns the data saved in the database.
+     * @param {Referral_UsageCreateManyAndReturnArgs} args - Arguments to create many Referral_Usages.
+     * @example
+     * // Create many Referral_Usages
+     * const referral_Usage = await prisma.referral_Usage.createManyAndReturn({
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * 
+     * // Create many Referral_Usages and only return the `id`
+     * const referral_UsageWithIdOnly = await prisma.referral_Usage.createManyAndReturn({
+     *   select: { id: true },
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * 
+     */
+    createManyAndReturn<T extends Referral_UsageCreateManyAndReturnArgs>(args?: SelectSubset<T, Referral_UsageCreateManyAndReturnArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$Referral_UsagePayload<ExtArgs>, T, "createManyAndReturn", GlobalOmitOptions>>
+
+    /**
+     * Delete a Referral_Usage.
+     * @param {Referral_UsageDeleteArgs} args - Arguments to delete one Referral_Usage.
+     * @example
+     * // Delete one Referral_Usage
+     * const Referral_Usage = await prisma.referral_Usage.delete({
+     *   where: {
+     *     // ... filter to delete one Referral_Usage
+     *   }
+     * })
+     * 
+     */
+    delete<T extends Referral_UsageDeleteArgs>(args: SelectSubset<T, Referral_UsageDeleteArgs<ExtArgs>>): Prisma__Referral_UsageClient<$Result.GetResult<Prisma.$Referral_UsagePayload<ExtArgs>, T, "delete", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Update one Referral_Usage.
+     * @param {Referral_UsageUpdateArgs} args - Arguments to update one Referral_Usage.
+     * @example
+     * // Update one Referral_Usage
+     * const referral_Usage = await prisma.referral_Usage.update({
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: {
+     *     // ... provide data here
+     *   }
+     * })
+     * 
+     */
+    update<T extends Referral_UsageUpdateArgs>(args: SelectSubset<T, Referral_UsageUpdateArgs<ExtArgs>>): Prisma__Referral_UsageClient<$Result.GetResult<Prisma.$Referral_UsagePayload<ExtArgs>, T, "update", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Delete zero or more Referral_Usages.
+     * @param {Referral_UsageDeleteManyArgs} args - Arguments to filter Referral_Usages to delete.
+     * @example
+     * // Delete a few Referral_Usages
+     * const { count } = await prisma.referral_Usage.deleteMany({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     * 
+     */
+    deleteMany<T extends Referral_UsageDeleteManyArgs>(args?: SelectSubset<T, Referral_UsageDeleteManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Update zero or more Referral_Usages.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {Referral_UsageUpdateManyArgs} args - Arguments to update one or more rows.
+     * @example
+     * // Update many Referral_Usages
+     * const referral_Usage = await prisma.referral_Usage.updateMany({
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: {
+     *     // ... provide data here
+     *   }
+     * })
+     * 
+     */
+    updateMany<T extends Referral_UsageUpdateManyArgs>(args: SelectSubset<T, Referral_UsageUpdateManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Update zero or more Referral_Usages and returns the data updated in the database.
+     * @param {Referral_UsageUpdateManyAndReturnArgs} args - Arguments to update many Referral_Usages.
+     * @example
+     * // Update many Referral_Usages
+     * const referral_Usage = await prisma.referral_Usage.updateManyAndReturn({
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * 
+     * // Update zero or more Referral_Usages and only return the `id`
+     * const referral_UsageWithIdOnly = await prisma.referral_Usage.updateManyAndReturn({
+     *   select: { id: true },
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * 
+     */
+    updateManyAndReturn<T extends Referral_UsageUpdateManyAndReturnArgs>(args: SelectSubset<T, Referral_UsageUpdateManyAndReturnArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$Referral_UsagePayload<ExtArgs>, T, "updateManyAndReturn", GlobalOmitOptions>>
+
+    /**
+     * Create or update one Referral_Usage.
+     * @param {Referral_UsageUpsertArgs} args - Arguments to update or create a Referral_Usage.
+     * @example
+     * // Update or create a Referral_Usage
+     * const referral_Usage = await prisma.referral_Usage.upsert({
+     *   create: {
+     *     // ... data to create a Referral_Usage
+     *   },
+     *   update: {
+     *     // ... in case it already exists, update
+     *   },
+     *   where: {
+     *     // ... the filter for the Referral_Usage we want to update
+     *   }
+     * })
+     */
+    upsert<T extends Referral_UsageUpsertArgs>(args: SelectSubset<T, Referral_UsageUpsertArgs<ExtArgs>>): Prisma__Referral_UsageClient<$Result.GetResult<Prisma.$Referral_UsagePayload<ExtArgs>, T, "upsert", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+
+    /**
+     * Count the number of Referral_Usages.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {Referral_UsageCountArgs} args - Arguments to filter Referral_Usages to count.
+     * @example
+     * // Count the number of Referral_Usages
+     * const count = await prisma.referral_Usage.count({
+     *   where: {
+     *     // ... the filter for the Referral_Usages we want to count
+     *   }
+     * })
+    **/
+    count<T extends Referral_UsageCountArgs>(
+      args?: Subset<T, Referral_UsageCountArgs>,
+    ): Prisma.PrismaPromise<
+      T extends $Utils.Record<'select', any>
+        ? T['select'] extends true
+          ? number
+          : GetScalarType<T['select'], Referral_UsageCountAggregateOutputType>
+        : number
+    >
+
+    /**
+     * Allows you to perform aggregations operations on a Referral_Usage.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {Referral_UsageAggregateArgs} args - Select which aggregations you would like to apply and on what fields.
+     * @example
+     * // Ordered by age ascending
+     * // Where email contains prisma.io
+     * // Limited to the 10 users
+     * const aggregations = await prisma.user.aggregate({
+     *   _avg: {
+     *     age: true,
+     *   },
+     *   where: {
+     *     email: {
+     *       contains: "prisma.io",
+     *     },
+     *   },
+     *   orderBy: {
+     *     age: "asc",
+     *   },
+     *   take: 10,
+     * })
+    **/
+    aggregate<T extends Referral_UsageAggregateArgs>(args: Subset<T, Referral_UsageAggregateArgs>): Prisma.PrismaPromise<GetReferral_UsageAggregateType<T>>
+
+    /**
+     * Group by Referral_Usage.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {Referral_UsageGroupByArgs} args - Group by arguments.
+     * @example
+     * // Group by city, order by createdAt, get count
+     * const result = await prisma.user.groupBy({
+     *   by: ['city', 'createdAt'],
+     *   orderBy: {
+     *     createdAt: true
+     *   },
+     *   _count: {
+     *     _all: true
+     *   },
+     * })
+     * 
+    **/
+    groupBy<
+      T extends Referral_UsageGroupByArgs,
+      HasSelectOrTake extends Or<
+        Extends<'skip', Keys<T>>,
+        Extends<'take', Keys<T>>
+      >,
+      OrderByArg extends True extends HasSelectOrTake
+        ? { orderBy: Referral_UsageGroupByArgs['orderBy'] }
+        : { orderBy?: Referral_UsageGroupByArgs['orderBy'] },
+      OrderFields extends ExcludeUnderscoreKeys<Keys<MaybeTupleToUnion<T['orderBy']>>>,
+      ByFields extends MaybeTupleToUnion<T['by']>,
+      ByValid extends Has<ByFields, OrderFields>,
+      HavingFields extends GetHavingFields<T['having']>,
+      HavingValid extends Has<ByFields, HavingFields>,
+      ByEmpty extends T['by'] extends never[] ? True : False,
+      InputErrors extends ByEmpty extends True
+      ? `Error: "by" must not be empty.`
+      : HavingValid extends False
+      ? {
+          [P in HavingFields]: P extends ByFields
+            ? never
+            : P extends string
+            ? `Error: Field "${P}" used in "having" needs to be provided in "by".`
+            : [
+                Error,
+                'Field ',
+                P,
+                ` in "having" needs to be provided in "by"`,
+              ]
+        }[HavingFields]
+      : 'take' extends Keys<T>
+      ? 'orderBy' extends Keys<T>
+        ? ByValid extends True
+          ? {}
+          : {
+              [P in OrderFields]: P extends ByFields
+                ? never
+                : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+            }[OrderFields]
+        : 'Error: If you provide "take", you also need to provide "orderBy"'
+      : 'skip' extends Keys<T>
+      ? 'orderBy' extends Keys<T>
+        ? ByValid extends True
+          ? {}
+          : {
+              [P in OrderFields]: P extends ByFields
+                ? never
+                : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+            }[OrderFields]
+        : 'Error: If you provide "skip", you also need to provide "orderBy"'
+      : ByValid extends True
+      ? {}
+      : {
+          [P in OrderFields]: P extends ByFields
+            ? never
+            : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+        }[OrderFields]
+    >(args: SubsetIntersection<T, Referral_UsageGroupByArgs, OrderByArg> & InputErrors): {} extends InputErrors ? GetReferral_UsageGroupByPayload<T> : Prisma.PrismaPromise<InputErrors>
+  /**
+   * Fields of the Referral_Usage model
+   */
+  readonly fields: Referral_UsageFieldRefs;
+  }
+
+  /**
+   * The delegate class that acts as a "Promise-like" for Referral_Usage.
+   * Why is this prefixed with `Prisma__`?
+   * Because we want to prevent naming conflicts as mentioned in
+   * https://github.com/prisma/prisma-client-js/issues/707
+   */
+  export interface Prisma__Referral_UsageClient<T, Null = never, ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs, GlobalOmitOptions = {}> extends Prisma.PrismaPromise<T> {
+    readonly [Symbol.toStringTag]: "PrismaPromise"
+    user_referralUsage<T extends UsersDefaultArgs<ExtArgs> = {}>(args?: Subset<T, UsersDefaultArgs<ExtArgs>>): Prisma__UsersClient<$Result.GetResult<Prisma.$UsersPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | Null, Null, ExtArgs, GlobalOmitOptions>
+    code_referralUsage<T extends Referral_CodeDefaultArgs<ExtArgs> = {}>(args?: Subset<T, Referral_CodeDefaultArgs<ExtArgs>>): Prisma__Referral_CodeClient<$Result.GetResult<Prisma.$Referral_CodePayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | Null, Null, ExtArgs, GlobalOmitOptions>
+    /**
+     * Attaches callbacks for the resolution and/or rejection of the Promise.
+     * @param onfulfilled The callback to execute when the Promise is resolved.
+     * @param onrejected The callback to execute when the Promise is rejected.
+     * @returns A Promise for the completion of which ever callback is executed.
+     */
+    then<TResult1 = T, TResult2 = never>(onfulfilled?: ((value: T) => TResult1 | PromiseLike<TResult1>) | undefined | null, onrejected?: ((reason: any) => TResult2 | PromiseLike<TResult2>) | undefined | null): $Utils.JsPromise<TResult1 | TResult2>
+    /**
+     * Attaches a callback for only the rejection of the Promise.
+     * @param onrejected The callback to execute when the Promise is rejected.
+     * @returns A Promise for the completion of the callback.
+     */
+    catch<TResult = never>(onrejected?: ((reason: any) => TResult | PromiseLike<TResult>) | undefined | null): $Utils.JsPromise<T | TResult>
+    /**
+     * Attaches a callback that is invoked when the Promise is settled (fulfilled or rejected). The
+     * resolved value cannot be modified from the callback.
+     * @param onfinally The callback to execute when the Promise is settled (fulfilled or rejected).
+     * @returns A Promise for the completion of the callback.
+     */
+    finally(onfinally?: (() => void) | undefined | null): $Utils.JsPromise<T>
+  }
+
+
+
+
+  /**
+   * Fields of the Referral_Usage model
+   */
+  interface Referral_UsageFieldRefs {
+    readonly id: FieldRef<"Referral_Usage", 'String'>
+    readonly user_id: FieldRef<"Referral_Usage", 'String'>
+    readonly referral_code_id: FieldRef<"Referral_Usage", 'String'>
+    readonly used_at: FieldRef<"Referral_Usage", 'DateTime'>
+  }
+    
+
+  // Custom InputTypes
+  /**
+   * Referral_Usage findUnique
+   */
+  export type Referral_UsageFindUniqueArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Referral_Usage
+     */
+    select?: Referral_UsageSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the Referral_Usage
+     */
+    omit?: Referral_UsageOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: Referral_UsageInclude<ExtArgs> | null
+    /**
+     * Filter, which Referral_Usage to fetch.
+     */
+    where: Referral_UsageWhereUniqueInput
+  }
+
+  /**
+   * Referral_Usage findUniqueOrThrow
+   */
+  export type Referral_UsageFindUniqueOrThrowArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Referral_Usage
+     */
+    select?: Referral_UsageSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the Referral_Usage
+     */
+    omit?: Referral_UsageOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: Referral_UsageInclude<ExtArgs> | null
+    /**
+     * Filter, which Referral_Usage to fetch.
+     */
+    where: Referral_UsageWhereUniqueInput
+  }
+
+  /**
+   * Referral_Usage findFirst
+   */
+  export type Referral_UsageFindFirstArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Referral_Usage
+     */
+    select?: Referral_UsageSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the Referral_Usage
+     */
+    omit?: Referral_UsageOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: Referral_UsageInclude<ExtArgs> | null
+    /**
+     * Filter, which Referral_Usage to fetch.
+     */
+    where?: Referral_UsageWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of Referral_Usages to fetch.
+     */
+    orderBy?: Referral_UsageOrderByWithRelationInput | Referral_UsageOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for searching for Referral_Usages.
+     */
+    cursor?: Referral_UsageWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` Referral_Usages from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` Referral_Usages.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
+     * 
+     * Filter by unique combinations of Referral_Usages.
+     */
+    distinct?: Referral_UsageScalarFieldEnum | Referral_UsageScalarFieldEnum[]
+  }
+
+  /**
+   * Referral_Usage findFirstOrThrow
+   */
+  export type Referral_UsageFindFirstOrThrowArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Referral_Usage
+     */
+    select?: Referral_UsageSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the Referral_Usage
+     */
+    omit?: Referral_UsageOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: Referral_UsageInclude<ExtArgs> | null
+    /**
+     * Filter, which Referral_Usage to fetch.
+     */
+    where?: Referral_UsageWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of Referral_Usages to fetch.
+     */
+    orderBy?: Referral_UsageOrderByWithRelationInput | Referral_UsageOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for searching for Referral_Usages.
+     */
+    cursor?: Referral_UsageWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` Referral_Usages from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` Referral_Usages.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
+     * 
+     * Filter by unique combinations of Referral_Usages.
+     */
+    distinct?: Referral_UsageScalarFieldEnum | Referral_UsageScalarFieldEnum[]
+  }
+
+  /**
+   * Referral_Usage findMany
+   */
+  export type Referral_UsageFindManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Referral_Usage
+     */
+    select?: Referral_UsageSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the Referral_Usage
+     */
+    omit?: Referral_UsageOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: Referral_UsageInclude<ExtArgs> | null
+    /**
+     * Filter, which Referral_Usages to fetch.
+     */
+    where?: Referral_UsageWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of Referral_Usages to fetch.
+     */
+    orderBy?: Referral_UsageOrderByWithRelationInput | Referral_UsageOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for listing Referral_Usages.
+     */
+    cursor?: Referral_UsageWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` Referral_Usages from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` Referral_Usages.
+     */
+    skip?: number
+    distinct?: Referral_UsageScalarFieldEnum | Referral_UsageScalarFieldEnum[]
+  }
+
+  /**
+   * Referral_Usage create
+   */
+  export type Referral_UsageCreateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Referral_Usage
+     */
+    select?: Referral_UsageSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the Referral_Usage
+     */
+    omit?: Referral_UsageOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: Referral_UsageInclude<ExtArgs> | null
+    /**
+     * The data needed to create a Referral_Usage.
+     */
+    data: XOR<Referral_UsageCreateInput, Referral_UsageUncheckedCreateInput>
+  }
+
+  /**
+   * Referral_Usage createMany
+   */
+  export type Referral_UsageCreateManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * The data used to create many Referral_Usages.
+     */
+    data: Referral_UsageCreateManyInput | Referral_UsageCreateManyInput[]
+    skipDuplicates?: boolean
+  }
+
+  /**
+   * Referral_Usage createManyAndReturn
+   */
+  export type Referral_UsageCreateManyAndReturnArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Referral_Usage
+     */
+    select?: Referral_UsageSelectCreateManyAndReturn<ExtArgs> | null
+    /**
+     * Omit specific fields from the Referral_Usage
+     */
+    omit?: Referral_UsageOmit<ExtArgs> | null
+    /**
+     * The data used to create many Referral_Usages.
+     */
+    data: Referral_UsageCreateManyInput | Referral_UsageCreateManyInput[]
+    skipDuplicates?: boolean
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: Referral_UsageIncludeCreateManyAndReturn<ExtArgs> | null
+  }
+
+  /**
+   * Referral_Usage update
+   */
+  export type Referral_UsageUpdateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Referral_Usage
+     */
+    select?: Referral_UsageSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the Referral_Usage
+     */
+    omit?: Referral_UsageOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: Referral_UsageInclude<ExtArgs> | null
+    /**
+     * The data needed to update a Referral_Usage.
+     */
+    data: XOR<Referral_UsageUpdateInput, Referral_UsageUncheckedUpdateInput>
+    /**
+     * Choose, which Referral_Usage to update.
+     */
+    where: Referral_UsageWhereUniqueInput
+  }
+
+  /**
+   * Referral_Usage updateMany
+   */
+  export type Referral_UsageUpdateManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * The data used to update Referral_Usages.
+     */
+    data: XOR<Referral_UsageUpdateManyMutationInput, Referral_UsageUncheckedUpdateManyInput>
+    /**
+     * Filter which Referral_Usages to update
+     */
+    where?: Referral_UsageWhereInput
+    /**
+     * Limit how many Referral_Usages to update.
+     */
+    limit?: number
+  }
+
+  /**
+   * Referral_Usage updateManyAndReturn
+   */
+  export type Referral_UsageUpdateManyAndReturnArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Referral_Usage
+     */
+    select?: Referral_UsageSelectUpdateManyAndReturn<ExtArgs> | null
+    /**
+     * Omit specific fields from the Referral_Usage
+     */
+    omit?: Referral_UsageOmit<ExtArgs> | null
+    /**
+     * The data used to update Referral_Usages.
+     */
+    data: XOR<Referral_UsageUpdateManyMutationInput, Referral_UsageUncheckedUpdateManyInput>
+    /**
+     * Filter which Referral_Usages to update
+     */
+    where?: Referral_UsageWhereInput
+    /**
+     * Limit how many Referral_Usages to update.
+     */
+    limit?: number
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: Referral_UsageIncludeUpdateManyAndReturn<ExtArgs> | null
+  }
+
+  /**
+   * Referral_Usage upsert
+   */
+  export type Referral_UsageUpsertArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Referral_Usage
+     */
+    select?: Referral_UsageSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the Referral_Usage
+     */
+    omit?: Referral_UsageOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: Referral_UsageInclude<ExtArgs> | null
+    /**
+     * The filter to search for the Referral_Usage to update in case it exists.
+     */
+    where: Referral_UsageWhereUniqueInput
+    /**
+     * In case the Referral_Usage found by the `where` argument doesn't exist, create a new Referral_Usage with this data.
+     */
+    create: XOR<Referral_UsageCreateInput, Referral_UsageUncheckedCreateInput>
+    /**
+     * In case the Referral_Usage was found with the provided `where` argument, update it with this data.
+     */
+    update: XOR<Referral_UsageUpdateInput, Referral_UsageUncheckedUpdateInput>
+  }
+
+  /**
+   * Referral_Usage delete
+   */
+  export type Referral_UsageDeleteArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Referral_Usage
+     */
+    select?: Referral_UsageSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the Referral_Usage
+     */
+    omit?: Referral_UsageOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: Referral_UsageInclude<ExtArgs> | null
+    /**
+     * Filter which Referral_Usage to delete.
+     */
+    where: Referral_UsageWhereUniqueInput
+  }
+
+  /**
+   * Referral_Usage deleteMany
+   */
+  export type Referral_UsageDeleteManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Filter which Referral_Usages to delete
+     */
+    where?: Referral_UsageWhereInput
+    /**
+     * Limit how many Referral_Usages to delete.
+     */
+    limit?: number
+  }
+
+  /**
+   * Referral_Usage without action
+   */
+  export type Referral_UsageDefaultArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Referral_Usage
+     */
+    select?: Referral_UsageSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the Referral_Usage
+     */
+    omit?: Referral_UsageOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: Referral_UsageInclude<ExtArgs> | null
+  }
+
+
+  /**
+   * Model Voucher
+   */
+
+  export type AggregateVoucher = {
+    _count: VoucherCountAggregateOutputType | null
+    _avg: VoucherAvgAggregateOutputType | null
+    _sum: VoucherSumAggregateOutputType | null
+    _min: VoucherMinAggregateOutputType | null
+    _max: VoucherMaxAggregateOutputType | null
+  }
+
+  export type VoucherAvgAggregateOutputType = {
+    amount: number | null
+    limit: number | null
+  }
+
+  export type VoucherSumAggregateOutputType = {
+    amount: number | null
+    limit: number | null
+  }
+
+  export type VoucherMinAggregateOutputType = {
+    id: string | null
+    organizer_id: string | null
+    code: string | null
+    amount: number | null
+    limit: number | null
+    expired_at: Date | null
+  }
+
+  export type VoucherMaxAggregateOutputType = {
+    id: string | null
+    organizer_id: string | null
+    code: string | null
+    amount: number | null
+    limit: number | null
+    expired_at: Date | null
+  }
+
+  export type VoucherCountAggregateOutputType = {
+    id: number
+    organizer_id: number
+    code: number
+    amount: number
+    limit: number
+    expired_at: number
+    _all: number
+  }
+
+
+  export type VoucherAvgAggregateInputType = {
+    amount?: true
+    limit?: true
+  }
+
+  export type VoucherSumAggregateInputType = {
+    amount?: true
+    limit?: true
+  }
+
+  export type VoucherMinAggregateInputType = {
+    id?: true
+    organizer_id?: true
+    code?: true
+    amount?: true
+    limit?: true
+    expired_at?: true
+  }
+
+  export type VoucherMaxAggregateInputType = {
+    id?: true
+    organizer_id?: true
+    code?: true
+    amount?: true
+    limit?: true
+    expired_at?: true
+  }
+
+  export type VoucherCountAggregateInputType = {
+    id?: true
+    organizer_id?: true
+    code?: true
+    amount?: true
+    limit?: true
+    expired_at?: true
+    _all?: true
+  }
+
+  export type VoucherAggregateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Filter which Voucher to aggregate.
+     */
+    where?: VoucherWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of Vouchers to fetch.
+     */
+    orderBy?: VoucherOrderByWithRelationInput | VoucherOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the start position
+     */
+    cursor?: VoucherWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` Vouchers from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` Vouchers.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Count returned Vouchers
+    **/
+    _count?: true | VoucherCountAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to average
+    **/
+    _avg?: VoucherAvgAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to sum
+    **/
+    _sum?: VoucherSumAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to find the minimum value
+    **/
+    _min?: VoucherMinAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to find the maximum value
+    **/
+    _max?: VoucherMaxAggregateInputType
+  }
+
+  export type GetVoucherAggregateType<T extends VoucherAggregateArgs> = {
+        [P in keyof T & keyof AggregateVoucher]: P extends '_count' | 'count'
+      ? T[P] extends true
+        ? number
+        : GetScalarType<T[P], AggregateVoucher[P]>
+      : GetScalarType<T[P], AggregateVoucher[P]>
+  }
+
+
+
+
+  export type VoucherGroupByArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    where?: VoucherWhereInput
+    orderBy?: VoucherOrderByWithAggregationInput | VoucherOrderByWithAggregationInput[]
+    by: VoucherScalarFieldEnum[] | VoucherScalarFieldEnum
+    having?: VoucherScalarWhereWithAggregatesInput
+    take?: number
+    skip?: number
+    _count?: VoucherCountAggregateInputType | true
+    _avg?: VoucherAvgAggregateInputType
+    _sum?: VoucherSumAggregateInputType
+    _min?: VoucherMinAggregateInputType
+    _max?: VoucherMaxAggregateInputType
+  }
+
+  export type VoucherGroupByOutputType = {
+    id: string
+    organizer_id: string
+    code: string
+    amount: number
+    limit: number
+    expired_at: Date
+    _count: VoucherCountAggregateOutputType | null
+    _avg: VoucherAvgAggregateOutputType | null
+    _sum: VoucherSumAggregateOutputType | null
+    _min: VoucherMinAggregateOutputType | null
+    _max: VoucherMaxAggregateOutputType | null
+  }
+
+  type GetVoucherGroupByPayload<T extends VoucherGroupByArgs> = Prisma.PrismaPromise<
+    Array<
+      PickEnumerable<VoucherGroupByOutputType, T['by']> &
+        {
+          [P in ((keyof T) & (keyof VoucherGroupByOutputType))]: P extends '_count'
+            ? T[P] extends boolean
+              ? number
+              : GetScalarType<T[P], VoucherGroupByOutputType[P]>
+            : GetScalarType<T[P], VoucherGroupByOutputType[P]>
+        }
+      >
+    >
+
+
+  export type VoucherSelect<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
+    id?: boolean
+    organizer_id?: boolean
+    code?: boolean
+    amount?: boolean
+    limit?: boolean
+    expired_at?: boolean
+    voucher_organizer?: boolean | OrganizerDefaultArgs<ExtArgs>
+    voucher_transaction?: boolean | Voucher$voucher_transactionArgs<ExtArgs>
+    _count?: boolean | VoucherCountOutputTypeDefaultArgs<ExtArgs>
+  }, ExtArgs["result"]["voucher"]>
+
+  export type VoucherSelectCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
+    id?: boolean
+    organizer_id?: boolean
+    code?: boolean
+    amount?: boolean
+    limit?: boolean
+    expired_at?: boolean
+    voucher_organizer?: boolean | OrganizerDefaultArgs<ExtArgs>
+  }, ExtArgs["result"]["voucher"]>
+
+  export type VoucherSelectUpdateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
+    id?: boolean
+    organizer_id?: boolean
+    code?: boolean
+    amount?: boolean
+    limit?: boolean
+    expired_at?: boolean
+    voucher_organizer?: boolean | OrganizerDefaultArgs<ExtArgs>
+  }, ExtArgs["result"]["voucher"]>
+
+  export type VoucherSelectScalar = {
+    id?: boolean
+    organizer_id?: boolean
+    code?: boolean
+    amount?: boolean
+    limit?: boolean
+    expired_at?: boolean
+  }
+
+  export type VoucherOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "organizer_id" | "code" | "amount" | "limit" | "expired_at", ExtArgs["result"]["voucher"]>
+  export type VoucherInclude<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    voucher_organizer?: boolean | OrganizerDefaultArgs<ExtArgs>
+    voucher_transaction?: boolean | Voucher$voucher_transactionArgs<ExtArgs>
+    _count?: boolean | VoucherCountOutputTypeDefaultArgs<ExtArgs>
+  }
+  export type VoucherIncludeCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    voucher_organizer?: boolean | OrganizerDefaultArgs<ExtArgs>
+  }
+  export type VoucherIncludeUpdateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    voucher_organizer?: boolean | OrganizerDefaultArgs<ExtArgs>
+  }
+
+  export type $VoucherPayload<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    name: "Voucher"
+    objects: {
+      voucher_organizer: Prisma.$OrganizerPayload<ExtArgs>
+      voucher_transaction: Prisma.$TransactionsPayload<ExtArgs>[]
+    }
+    scalars: $Extensions.GetPayloadResult<{
+      id: string
+      organizer_id: string
+      code: string
+      amount: number
+      limit: number
+      expired_at: Date
+    }, ExtArgs["result"]["voucher"]>
+    composites: {}
+  }
+
+  type VoucherGetPayload<S extends boolean | null | undefined | VoucherDefaultArgs> = $Result.GetResult<Prisma.$VoucherPayload, S>
+
+  type VoucherCountArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> =
+    Omit<VoucherFindManyArgs, 'select' | 'include' | 'distinct' | 'omit'> & {
+      select?: VoucherCountAggregateInputType | true
+    }
+
+  export interface VoucherDelegate<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs, GlobalOmitOptions = {}> {
+    [K: symbol]: { types: Prisma.TypeMap<ExtArgs>['model']['Voucher'], meta: { name: 'Voucher' } }
+    /**
+     * Find zero or one Voucher that matches the filter.
+     * @param {VoucherFindUniqueArgs} args - Arguments to find a Voucher
+     * @example
+     * // Get one Voucher
+     * const voucher = await prisma.voucher.findUnique({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findUnique<T extends VoucherFindUniqueArgs>(args: SelectSubset<T, VoucherFindUniqueArgs<ExtArgs>>): Prisma__VoucherClient<$Result.GetResult<Prisma.$VoucherPayload<ExtArgs>, T, "findUnique", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find one Voucher that matches the filter or throw an error with `error.code='P2025'`
+     * if no matches were found.
+     * @param {VoucherFindUniqueOrThrowArgs} args - Arguments to find a Voucher
+     * @example
+     * // Get one Voucher
+     * const voucher = await prisma.voucher.findUniqueOrThrow({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findUniqueOrThrow<T extends VoucherFindUniqueOrThrowArgs>(args: SelectSubset<T, VoucherFindUniqueOrThrowArgs<ExtArgs>>): Prisma__VoucherClient<$Result.GetResult<Prisma.$VoucherPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find the first Voucher that matches the filter.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {VoucherFindFirstArgs} args - Arguments to find a Voucher
+     * @example
+     * // Get one Voucher
+     * const voucher = await prisma.voucher.findFirst({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findFirst<T extends VoucherFindFirstArgs>(args?: SelectSubset<T, VoucherFindFirstArgs<ExtArgs>>): Prisma__VoucherClient<$Result.GetResult<Prisma.$VoucherPayload<ExtArgs>, T, "findFirst", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find the first Voucher that matches the filter or
+     * throw `PrismaKnownClientError` with `P2025` code if no matches were found.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {VoucherFindFirstOrThrowArgs} args - Arguments to find a Voucher
+     * @example
+     * // Get one Voucher
+     * const voucher = await prisma.voucher.findFirstOrThrow({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findFirstOrThrow<T extends VoucherFindFirstOrThrowArgs>(args?: SelectSubset<T, VoucherFindFirstOrThrowArgs<ExtArgs>>): Prisma__VoucherClient<$Result.GetResult<Prisma.$VoucherPayload<ExtArgs>, T, "findFirstOrThrow", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find zero or more Vouchers that matches the filter.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {VoucherFindManyArgs} args - Arguments to filter and select certain fields only.
+     * @example
+     * // Get all Vouchers
+     * const vouchers = await prisma.voucher.findMany()
+     * 
+     * // Get first 10 Vouchers
+     * const vouchers = await prisma.voucher.findMany({ take: 10 })
+     * 
+     * // Only select the `id`
+     * const voucherWithIdOnly = await prisma.voucher.findMany({ select: { id: true } })
+     * 
+     */
+    findMany<T extends VoucherFindManyArgs>(args?: SelectSubset<T, VoucherFindManyArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$VoucherPayload<ExtArgs>, T, "findMany", GlobalOmitOptions>>
+
+    /**
+     * Create a Voucher.
+     * @param {VoucherCreateArgs} args - Arguments to create a Voucher.
+     * @example
+     * // Create one Voucher
+     * const Voucher = await prisma.voucher.create({
+     *   data: {
+     *     // ... data to create a Voucher
+     *   }
+     * })
+     * 
+     */
+    create<T extends VoucherCreateArgs>(args: SelectSubset<T, VoucherCreateArgs<ExtArgs>>): Prisma__VoucherClient<$Result.GetResult<Prisma.$VoucherPayload<ExtArgs>, T, "create", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Create many Vouchers.
+     * @param {VoucherCreateManyArgs} args - Arguments to create many Vouchers.
+     * @example
+     * // Create many Vouchers
+     * const voucher = await prisma.voucher.createMany({
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     *     
+     */
+    createMany<T extends VoucherCreateManyArgs>(args?: SelectSubset<T, VoucherCreateManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Create many Vouchers and returns the data saved in the database.
+     * @param {VoucherCreateManyAndReturnArgs} args - Arguments to create many Vouchers.
+     * @example
+     * // Create many Vouchers
+     * const voucher = await prisma.voucher.createManyAndReturn({
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * 
+     * // Create many Vouchers and only return the `id`
+     * const voucherWithIdOnly = await prisma.voucher.createManyAndReturn({
+     *   select: { id: true },
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * 
+     */
+    createManyAndReturn<T extends VoucherCreateManyAndReturnArgs>(args?: SelectSubset<T, VoucherCreateManyAndReturnArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$VoucherPayload<ExtArgs>, T, "createManyAndReturn", GlobalOmitOptions>>
+
+    /**
+     * Delete a Voucher.
+     * @param {VoucherDeleteArgs} args - Arguments to delete one Voucher.
+     * @example
+     * // Delete one Voucher
+     * const Voucher = await prisma.voucher.delete({
+     *   where: {
+     *     // ... filter to delete one Voucher
+     *   }
+     * })
+     * 
+     */
+    delete<T extends VoucherDeleteArgs>(args: SelectSubset<T, VoucherDeleteArgs<ExtArgs>>): Prisma__VoucherClient<$Result.GetResult<Prisma.$VoucherPayload<ExtArgs>, T, "delete", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Update one Voucher.
+     * @param {VoucherUpdateArgs} args - Arguments to update one Voucher.
+     * @example
+     * // Update one Voucher
+     * const voucher = await prisma.voucher.update({
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: {
+     *     // ... provide data here
+     *   }
+     * })
+     * 
+     */
+    update<T extends VoucherUpdateArgs>(args: SelectSubset<T, VoucherUpdateArgs<ExtArgs>>): Prisma__VoucherClient<$Result.GetResult<Prisma.$VoucherPayload<ExtArgs>, T, "update", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Delete zero or more Vouchers.
+     * @param {VoucherDeleteManyArgs} args - Arguments to filter Vouchers to delete.
+     * @example
+     * // Delete a few Vouchers
+     * const { count } = await prisma.voucher.deleteMany({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     * 
+     */
+    deleteMany<T extends VoucherDeleteManyArgs>(args?: SelectSubset<T, VoucherDeleteManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Update zero or more Vouchers.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {VoucherUpdateManyArgs} args - Arguments to update one or more rows.
+     * @example
+     * // Update many Vouchers
+     * const voucher = await prisma.voucher.updateMany({
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: {
+     *     // ... provide data here
+     *   }
+     * })
+     * 
+     */
+    updateMany<T extends VoucherUpdateManyArgs>(args: SelectSubset<T, VoucherUpdateManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Update zero or more Vouchers and returns the data updated in the database.
+     * @param {VoucherUpdateManyAndReturnArgs} args - Arguments to update many Vouchers.
+     * @example
+     * // Update many Vouchers
+     * const voucher = await prisma.voucher.updateManyAndReturn({
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * 
+     * // Update zero or more Vouchers and only return the `id`
+     * const voucherWithIdOnly = await prisma.voucher.updateManyAndReturn({
+     *   select: { id: true },
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * 
+     */
+    updateManyAndReturn<T extends VoucherUpdateManyAndReturnArgs>(args: SelectSubset<T, VoucherUpdateManyAndReturnArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$VoucherPayload<ExtArgs>, T, "updateManyAndReturn", GlobalOmitOptions>>
+
+    /**
+     * Create or update one Voucher.
+     * @param {VoucherUpsertArgs} args - Arguments to update or create a Voucher.
+     * @example
+     * // Update or create a Voucher
+     * const voucher = await prisma.voucher.upsert({
+     *   create: {
+     *     // ... data to create a Voucher
+     *   },
+     *   update: {
+     *     // ... in case it already exists, update
+     *   },
+     *   where: {
+     *     // ... the filter for the Voucher we want to update
+     *   }
+     * })
+     */
+    upsert<T extends VoucherUpsertArgs>(args: SelectSubset<T, VoucherUpsertArgs<ExtArgs>>): Prisma__VoucherClient<$Result.GetResult<Prisma.$VoucherPayload<ExtArgs>, T, "upsert", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+
+    /**
+     * Count the number of Vouchers.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {VoucherCountArgs} args - Arguments to filter Vouchers to count.
+     * @example
+     * // Count the number of Vouchers
+     * const count = await prisma.voucher.count({
+     *   where: {
+     *     // ... the filter for the Vouchers we want to count
+     *   }
+     * })
+    **/
+    count<T extends VoucherCountArgs>(
+      args?: Subset<T, VoucherCountArgs>,
+    ): Prisma.PrismaPromise<
+      T extends $Utils.Record<'select', any>
+        ? T['select'] extends true
+          ? number
+          : GetScalarType<T['select'], VoucherCountAggregateOutputType>
+        : number
+    >
+
+    /**
+     * Allows you to perform aggregations operations on a Voucher.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {VoucherAggregateArgs} args - Select which aggregations you would like to apply and on what fields.
+     * @example
+     * // Ordered by age ascending
+     * // Where email contains prisma.io
+     * // Limited to the 10 users
+     * const aggregations = await prisma.user.aggregate({
+     *   _avg: {
+     *     age: true,
+     *   },
+     *   where: {
+     *     email: {
+     *       contains: "prisma.io",
+     *     },
+     *   },
+     *   orderBy: {
+     *     age: "asc",
+     *   },
+     *   take: 10,
+     * })
+    **/
+    aggregate<T extends VoucherAggregateArgs>(args: Subset<T, VoucherAggregateArgs>): Prisma.PrismaPromise<GetVoucherAggregateType<T>>
+
+    /**
+     * Group by Voucher.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {VoucherGroupByArgs} args - Group by arguments.
+     * @example
+     * // Group by city, order by createdAt, get count
+     * const result = await prisma.user.groupBy({
+     *   by: ['city', 'createdAt'],
+     *   orderBy: {
+     *     createdAt: true
+     *   },
+     *   _count: {
+     *     _all: true
+     *   },
+     * })
+     * 
+    **/
+    groupBy<
+      T extends VoucherGroupByArgs,
+      HasSelectOrTake extends Or<
+        Extends<'skip', Keys<T>>,
+        Extends<'take', Keys<T>>
+      >,
+      OrderByArg extends True extends HasSelectOrTake
+        ? { orderBy: VoucherGroupByArgs['orderBy'] }
+        : { orderBy?: VoucherGroupByArgs['orderBy'] },
+      OrderFields extends ExcludeUnderscoreKeys<Keys<MaybeTupleToUnion<T['orderBy']>>>,
+      ByFields extends MaybeTupleToUnion<T['by']>,
+      ByValid extends Has<ByFields, OrderFields>,
+      HavingFields extends GetHavingFields<T['having']>,
+      HavingValid extends Has<ByFields, HavingFields>,
+      ByEmpty extends T['by'] extends never[] ? True : False,
+      InputErrors extends ByEmpty extends True
+      ? `Error: "by" must not be empty.`
+      : HavingValid extends False
+      ? {
+          [P in HavingFields]: P extends ByFields
+            ? never
+            : P extends string
+            ? `Error: Field "${P}" used in "having" needs to be provided in "by".`
+            : [
+                Error,
+                'Field ',
+                P,
+                ` in "having" needs to be provided in "by"`,
+              ]
+        }[HavingFields]
+      : 'take' extends Keys<T>
+      ? 'orderBy' extends Keys<T>
+        ? ByValid extends True
+          ? {}
+          : {
+              [P in OrderFields]: P extends ByFields
+                ? never
+                : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+            }[OrderFields]
+        : 'Error: If you provide "take", you also need to provide "orderBy"'
+      : 'skip' extends Keys<T>
+      ? 'orderBy' extends Keys<T>
+        ? ByValid extends True
+          ? {}
+          : {
+              [P in OrderFields]: P extends ByFields
+                ? never
+                : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+            }[OrderFields]
+        : 'Error: If you provide "skip", you also need to provide "orderBy"'
+      : ByValid extends True
+      ? {}
+      : {
+          [P in OrderFields]: P extends ByFields
+            ? never
+            : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+        }[OrderFields]
+    >(args: SubsetIntersection<T, VoucherGroupByArgs, OrderByArg> & InputErrors): {} extends InputErrors ? GetVoucherGroupByPayload<T> : Prisma.PrismaPromise<InputErrors>
+  /**
+   * Fields of the Voucher model
+   */
+  readonly fields: VoucherFieldRefs;
+  }
+
+  /**
+   * The delegate class that acts as a "Promise-like" for Voucher.
+   * Why is this prefixed with `Prisma__`?
+   * Because we want to prevent naming conflicts as mentioned in
+   * https://github.com/prisma/prisma-client-js/issues/707
+   */
+  export interface Prisma__VoucherClient<T, Null = never, ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs, GlobalOmitOptions = {}> extends Prisma.PrismaPromise<T> {
+    readonly [Symbol.toStringTag]: "PrismaPromise"
+    voucher_organizer<T extends OrganizerDefaultArgs<ExtArgs> = {}>(args?: Subset<T, OrganizerDefaultArgs<ExtArgs>>): Prisma__OrganizerClient<$Result.GetResult<Prisma.$OrganizerPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | Null, Null, ExtArgs, GlobalOmitOptions>
+    voucher_transaction<T extends Voucher$voucher_transactionArgs<ExtArgs> = {}>(args?: Subset<T, Voucher$voucher_transactionArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$TransactionsPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
+    /**
+     * Attaches callbacks for the resolution and/or rejection of the Promise.
+     * @param onfulfilled The callback to execute when the Promise is resolved.
+     * @param onrejected The callback to execute when the Promise is rejected.
+     * @returns A Promise for the completion of which ever callback is executed.
+     */
+    then<TResult1 = T, TResult2 = never>(onfulfilled?: ((value: T) => TResult1 | PromiseLike<TResult1>) | undefined | null, onrejected?: ((reason: any) => TResult2 | PromiseLike<TResult2>) | undefined | null): $Utils.JsPromise<TResult1 | TResult2>
+    /**
+     * Attaches a callback for only the rejection of the Promise.
+     * @param onrejected The callback to execute when the Promise is rejected.
+     * @returns A Promise for the completion of the callback.
+     */
+    catch<TResult = never>(onrejected?: ((reason: any) => TResult | PromiseLike<TResult>) | undefined | null): $Utils.JsPromise<T | TResult>
+    /**
+     * Attaches a callback that is invoked when the Promise is settled (fulfilled or rejected). The
+     * resolved value cannot be modified from the callback.
+     * @param onfinally The callback to execute when the Promise is settled (fulfilled or rejected).
+     * @returns A Promise for the completion of the callback.
+     */
+    finally(onfinally?: (() => void) | undefined | null): $Utils.JsPromise<T>
+  }
+
+
+
+
+  /**
+   * Fields of the Voucher model
+   */
+  interface VoucherFieldRefs {
+    readonly id: FieldRef<"Voucher", 'String'>
+    readonly organizer_id: FieldRef<"Voucher", 'String'>
+    readonly code: FieldRef<"Voucher", 'String'>
+    readonly amount: FieldRef<"Voucher", 'Int'>
+    readonly limit: FieldRef<"Voucher", 'Int'>
+    readonly expired_at: FieldRef<"Voucher", 'DateTime'>
+  }
+    
+
+  // Custom InputTypes
+  /**
+   * Voucher findUnique
+   */
+  export type VoucherFindUniqueArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Voucher
+     */
+    select?: VoucherSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the Voucher
+     */
+    omit?: VoucherOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: VoucherInclude<ExtArgs> | null
+    /**
+     * Filter, which Voucher to fetch.
+     */
+    where: VoucherWhereUniqueInput
+  }
+
+  /**
+   * Voucher findUniqueOrThrow
+   */
+  export type VoucherFindUniqueOrThrowArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Voucher
+     */
+    select?: VoucherSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the Voucher
+     */
+    omit?: VoucherOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: VoucherInclude<ExtArgs> | null
+    /**
+     * Filter, which Voucher to fetch.
+     */
+    where: VoucherWhereUniqueInput
+  }
+
+  /**
+   * Voucher findFirst
+   */
+  export type VoucherFindFirstArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Voucher
+     */
+    select?: VoucherSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the Voucher
+     */
+    omit?: VoucherOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: VoucherInclude<ExtArgs> | null
+    /**
+     * Filter, which Voucher to fetch.
+     */
+    where?: VoucherWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of Vouchers to fetch.
+     */
+    orderBy?: VoucherOrderByWithRelationInput | VoucherOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for searching for Vouchers.
+     */
+    cursor?: VoucherWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` Vouchers from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` Vouchers.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
+     * 
+     * Filter by unique combinations of Vouchers.
+     */
+    distinct?: VoucherScalarFieldEnum | VoucherScalarFieldEnum[]
+  }
+
+  /**
+   * Voucher findFirstOrThrow
+   */
+  export type VoucherFindFirstOrThrowArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Voucher
+     */
+    select?: VoucherSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the Voucher
+     */
+    omit?: VoucherOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: VoucherInclude<ExtArgs> | null
+    /**
+     * Filter, which Voucher to fetch.
+     */
+    where?: VoucherWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of Vouchers to fetch.
+     */
+    orderBy?: VoucherOrderByWithRelationInput | VoucherOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for searching for Vouchers.
+     */
+    cursor?: VoucherWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` Vouchers from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` Vouchers.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
+     * 
+     * Filter by unique combinations of Vouchers.
+     */
+    distinct?: VoucherScalarFieldEnum | VoucherScalarFieldEnum[]
+  }
+
+  /**
+   * Voucher findMany
+   */
+  export type VoucherFindManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Voucher
+     */
+    select?: VoucherSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the Voucher
+     */
+    omit?: VoucherOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: VoucherInclude<ExtArgs> | null
+    /**
+     * Filter, which Vouchers to fetch.
+     */
+    where?: VoucherWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of Vouchers to fetch.
+     */
+    orderBy?: VoucherOrderByWithRelationInput | VoucherOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for listing Vouchers.
+     */
+    cursor?: VoucherWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` Vouchers from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` Vouchers.
+     */
+    skip?: number
+    distinct?: VoucherScalarFieldEnum | VoucherScalarFieldEnum[]
+  }
+
+  /**
+   * Voucher create
+   */
+  export type VoucherCreateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Voucher
+     */
+    select?: VoucherSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the Voucher
+     */
+    omit?: VoucherOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: VoucherInclude<ExtArgs> | null
+    /**
+     * The data needed to create a Voucher.
+     */
+    data: XOR<VoucherCreateInput, VoucherUncheckedCreateInput>
+  }
+
+  /**
+   * Voucher createMany
+   */
+  export type VoucherCreateManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * The data used to create many Vouchers.
+     */
+    data: VoucherCreateManyInput | VoucherCreateManyInput[]
+    skipDuplicates?: boolean
+  }
+
+  /**
+   * Voucher createManyAndReturn
+   */
+  export type VoucherCreateManyAndReturnArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Voucher
+     */
+    select?: VoucherSelectCreateManyAndReturn<ExtArgs> | null
+    /**
+     * Omit specific fields from the Voucher
+     */
+    omit?: VoucherOmit<ExtArgs> | null
+    /**
+     * The data used to create many Vouchers.
+     */
+    data: VoucherCreateManyInput | VoucherCreateManyInput[]
+    skipDuplicates?: boolean
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: VoucherIncludeCreateManyAndReturn<ExtArgs> | null
+  }
+
+  /**
+   * Voucher update
+   */
+  export type VoucherUpdateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Voucher
+     */
+    select?: VoucherSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the Voucher
+     */
+    omit?: VoucherOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: VoucherInclude<ExtArgs> | null
+    /**
+     * The data needed to update a Voucher.
+     */
+    data: XOR<VoucherUpdateInput, VoucherUncheckedUpdateInput>
+    /**
+     * Choose, which Voucher to update.
+     */
+    where: VoucherWhereUniqueInput
+  }
+
+  /**
+   * Voucher updateMany
+   */
+  export type VoucherUpdateManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * The data used to update Vouchers.
+     */
+    data: XOR<VoucherUpdateManyMutationInput, VoucherUncheckedUpdateManyInput>
+    /**
+     * Filter which Vouchers to update
+     */
+    where?: VoucherWhereInput
+    /**
+     * Limit how many Vouchers to update.
+     */
+    limit?: number
+  }
+
+  /**
+   * Voucher updateManyAndReturn
+   */
+  export type VoucherUpdateManyAndReturnArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Voucher
+     */
+    select?: VoucherSelectUpdateManyAndReturn<ExtArgs> | null
+    /**
+     * Omit specific fields from the Voucher
+     */
+    omit?: VoucherOmit<ExtArgs> | null
+    /**
+     * The data used to update Vouchers.
+     */
+    data: XOR<VoucherUpdateManyMutationInput, VoucherUncheckedUpdateManyInput>
+    /**
+     * Filter which Vouchers to update
+     */
+    where?: VoucherWhereInput
+    /**
+     * Limit how many Vouchers to update.
+     */
+    limit?: number
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: VoucherIncludeUpdateManyAndReturn<ExtArgs> | null
+  }
+
+  /**
+   * Voucher upsert
+   */
+  export type VoucherUpsertArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Voucher
+     */
+    select?: VoucherSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the Voucher
+     */
+    omit?: VoucherOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: VoucherInclude<ExtArgs> | null
+    /**
+     * The filter to search for the Voucher to update in case it exists.
+     */
+    where: VoucherWhereUniqueInput
+    /**
+     * In case the Voucher found by the `where` argument doesn't exist, create a new Voucher with this data.
+     */
+    create: XOR<VoucherCreateInput, VoucherUncheckedCreateInput>
+    /**
+     * In case the Voucher was found with the provided `where` argument, update it with this data.
+     */
+    update: XOR<VoucherUpdateInput, VoucherUncheckedUpdateInput>
+  }
+
+  /**
+   * Voucher delete
+   */
+  export type VoucherDeleteArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Voucher
+     */
+    select?: VoucherSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the Voucher
+     */
+    omit?: VoucherOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: VoucherInclude<ExtArgs> | null
+    /**
+     * Filter which Voucher to delete.
+     */
+    where: VoucherWhereUniqueInput
+  }
+
+  /**
+   * Voucher deleteMany
+   */
+  export type VoucherDeleteManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Filter which Vouchers to delete
+     */
+    where?: VoucherWhereInput
+    /**
+     * Limit how many Vouchers to delete.
+     */
+    limit?: number
+  }
+
+  /**
+   * Voucher.voucher_transaction
+   */
+  export type Voucher$voucher_transactionArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Transactions
+     */
+    select?: TransactionsSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the Transactions
+     */
+    omit?: TransactionsOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: TransactionsInclude<ExtArgs> | null
+    where?: TransactionsWhereInput
+    orderBy?: TransactionsOrderByWithRelationInput | TransactionsOrderByWithRelationInput[]
+    cursor?: TransactionsWhereUniqueInput
+    take?: number
+    skip?: number
+    distinct?: TransactionsScalarFieldEnum | TransactionsScalarFieldEnum[]
+  }
+
+  /**
+   * Voucher without action
+   */
+  export type VoucherDefaultArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Voucher
+     */
+    select?: VoucherSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the Voucher
+     */
+    omit?: VoucherOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: VoucherInclude<ExtArgs> | null
+  }
+
+
+  /**
+   * Model Transactions
+   */
+
+  export type AggregateTransactions = {
+    _count: TransactionsCountAggregateOutputType | null
+    _avg: TransactionsAvgAggregateOutputType | null
+    _sum: TransactionsSumAggregateOutputType | null
+    _min: TransactionsMinAggregateOutputType | null
+    _max: TransactionsMaxAggregateOutputType | null
+  }
+
+  export type TransactionsAvgAggregateOutputType = {
+    amount: number | null
+  }
+
+  export type TransactionsSumAggregateOutputType = {
+    amount: number | null
+  }
+
+  export type TransactionsMinAggregateOutputType = {
+    id: string | null
+    voucher_id: string | null
+    amount: number | null
+    proof: string | null
+  }
+
+  export type TransactionsMaxAggregateOutputType = {
+    id: string | null
+    voucher_id: string | null
+    amount: number | null
+    proof: string | null
+  }
+
+  export type TransactionsCountAggregateOutputType = {
+    id: number
+    voucher_id: number
+    amount: number
+    proof: number
+    _all: number
+  }
+
+
+  export type TransactionsAvgAggregateInputType = {
+    amount?: true
+  }
+
+  export type TransactionsSumAggregateInputType = {
+    amount?: true
+  }
+
+  export type TransactionsMinAggregateInputType = {
+    id?: true
+    voucher_id?: true
+    amount?: true
+    proof?: true
+  }
+
+  export type TransactionsMaxAggregateInputType = {
+    id?: true
+    voucher_id?: true
+    amount?: true
+    proof?: true
+  }
+
+  export type TransactionsCountAggregateInputType = {
+    id?: true
+    voucher_id?: true
+    amount?: true
+    proof?: true
+    _all?: true
+  }
+
+  export type TransactionsAggregateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Filter which Transactions to aggregate.
+     */
+    where?: TransactionsWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of Transactions to fetch.
+     */
+    orderBy?: TransactionsOrderByWithRelationInput | TransactionsOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the start position
+     */
+    cursor?: TransactionsWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` Transactions from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` Transactions.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Count returned Transactions
+    **/
+    _count?: true | TransactionsCountAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to average
+    **/
+    _avg?: TransactionsAvgAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to sum
+    **/
+    _sum?: TransactionsSumAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to find the minimum value
+    **/
+    _min?: TransactionsMinAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to find the maximum value
+    **/
+    _max?: TransactionsMaxAggregateInputType
+  }
+
+  export type GetTransactionsAggregateType<T extends TransactionsAggregateArgs> = {
+        [P in keyof T & keyof AggregateTransactions]: P extends '_count' | 'count'
+      ? T[P] extends true
+        ? number
+        : GetScalarType<T[P], AggregateTransactions[P]>
+      : GetScalarType<T[P], AggregateTransactions[P]>
+  }
+
+
+
+
+  export type TransactionsGroupByArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    where?: TransactionsWhereInput
+    orderBy?: TransactionsOrderByWithAggregationInput | TransactionsOrderByWithAggregationInput[]
+    by: TransactionsScalarFieldEnum[] | TransactionsScalarFieldEnum
+    having?: TransactionsScalarWhereWithAggregatesInput
+    take?: number
+    skip?: number
+    _count?: TransactionsCountAggregateInputType | true
+    _avg?: TransactionsAvgAggregateInputType
+    _sum?: TransactionsSumAggregateInputType
+    _min?: TransactionsMinAggregateInputType
+    _max?: TransactionsMaxAggregateInputType
+  }
+
+  export type TransactionsGroupByOutputType = {
+    id: string
+    voucher_id: string
+    amount: number
+    proof: string
+    _count: TransactionsCountAggregateOutputType | null
+    _avg: TransactionsAvgAggregateOutputType | null
+    _sum: TransactionsSumAggregateOutputType | null
+    _min: TransactionsMinAggregateOutputType | null
+    _max: TransactionsMaxAggregateOutputType | null
+  }
+
+  type GetTransactionsGroupByPayload<T extends TransactionsGroupByArgs> = Prisma.PrismaPromise<
+    Array<
+      PickEnumerable<TransactionsGroupByOutputType, T['by']> &
+        {
+          [P in ((keyof T) & (keyof TransactionsGroupByOutputType))]: P extends '_count'
+            ? T[P] extends boolean
+              ? number
+              : GetScalarType<T[P], TransactionsGroupByOutputType[P]>
+            : GetScalarType<T[P], TransactionsGroupByOutputType[P]>
+        }
+      >
+    >
+
+
+  export type TransactionsSelect<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
+    id?: boolean
+    voucher_id?: boolean
+    amount?: boolean
+    proof?: boolean
+    transaction_voucher?: boolean | VoucherDefaultArgs<ExtArgs>
+    transaction_details?: boolean | Transactions$transaction_detailsArgs<ExtArgs>
+    _count?: boolean | TransactionsCountOutputTypeDefaultArgs<ExtArgs>
+  }, ExtArgs["result"]["transactions"]>
+
+  export type TransactionsSelectCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
+    id?: boolean
+    voucher_id?: boolean
+    amount?: boolean
+    proof?: boolean
+    transaction_voucher?: boolean | VoucherDefaultArgs<ExtArgs>
+  }, ExtArgs["result"]["transactions"]>
+
+  export type TransactionsSelectUpdateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
+    id?: boolean
+    voucher_id?: boolean
+    amount?: boolean
+    proof?: boolean
+    transaction_voucher?: boolean | VoucherDefaultArgs<ExtArgs>
+  }, ExtArgs["result"]["transactions"]>
+
+  export type TransactionsSelectScalar = {
+    id?: boolean
+    voucher_id?: boolean
+    amount?: boolean
+    proof?: boolean
+  }
+
+  export type TransactionsOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "voucher_id" | "amount" | "proof", ExtArgs["result"]["transactions"]>
+  export type TransactionsInclude<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    transaction_voucher?: boolean | VoucherDefaultArgs<ExtArgs>
+    transaction_details?: boolean | Transactions$transaction_detailsArgs<ExtArgs>
+    _count?: boolean | TransactionsCountOutputTypeDefaultArgs<ExtArgs>
+  }
+  export type TransactionsIncludeCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    transaction_voucher?: boolean | VoucherDefaultArgs<ExtArgs>
+  }
+  export type TransactionsIncludeUpdateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    transaction_voucher?: boolean | VoucherDefaultArgs<ExtArgs>
+  }
+
+  export type $TransactionsPayload<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    name: "Transactions"
+    objects: {
+      transaction_voucher: Prisma.$VoucherPayload<ExtArgs>
+      transaction_details: Prisma.$Transactions_detailPayload<ExtArgs>[]
+    }
+    scalars: $Extensions.GetPayloadResult<{
+      id: string
+      voucher_id: string
+      amount: number
+      proof: string
+    }, ExtArgs["result"]["transactions"]>
+    composites: {}
+  }
+
+  type TransactionsGetPayload<S extends boolean | null | undefined | TransactionsDefaultArgs> = $Result.GetResult<Prisma.$TransactionsPayload, S>
+
+  type TransactionsCountArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> =
+    Omit<TransactionsFindManyArgs, 'select' | 'include' | 'distinct' | 'omit'> & {
+      select?: TransactionsCountAggregateInputType | true
+    }
+
+  export interface TransactionsDelegate<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs, GlobalOmitOptions = {}> {
+    [K: symbol]: { types: Prisma.TypeMap<ExtArgs>['model']['Transactions'], meta: { name: 'Transactions' } }
+    /**
+     * Find zero or one Transactions that matches the filter.
+     * @param {TransactionsFindUniqueArgs} args - Arguments to find a Transactions
+     * @example
+     * // Get one Transactions
+     * const transactions = await prisma.transactions.findUnique({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findUnique<T extends TransactionsFindUniqueArgs>(args: SelectSubset<T, TransactionsFindUniqueArgs<ExtArgs>>): Prisma__TransactionsClient<$Result.GetResult<Prisma.$TransactionsPayload<ExtArgs>, T, "findUnique", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find one Transactions that matches the filter or throw an error with `error.code='P2025'`
+     * if no matches were found.
+     * @param {TransactionsFindUniqueOrThrowArgs} args - Arguments to find a Transactions
+     * @example
+     * // Get one Transactions
+     * const transactions = await prisma.transactions.findUniqueOrThrow({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findUniqueOrThrow<T extends TransactionsFindUniqueOrThrowArgs>(args: SelectSubset<T, TransactionsFindUniqueOrThrowArgs<ExtArgs>>): Prisma__TransactionsClient<$Result.GetResult<Prisma.$TransactionsPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find the first Transactions that matches the filter.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {TransactionsFindFirstArgs} args - Arguments to find a Transactions
+     * @example
+     * // Get one Transactions
+     * const transactions = await prisma.transactions.findFirst({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findFirst<T extends TransactionsFindFirstArgs>(args?: SelectSubset<T, TransactionsFindFirstArgs<ExtArgs>>): Prisma__TransactionsClient<$Result.GetResult<Prisma.$TransactionsPayload<ExtArgs>, T, "findFirst", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find the first Transactions that matches the filter or
+     * throw `PrismaKnownClientError` with `P2025` code if no matches were found.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {TransactionsFindFirstOrThrowArgs} args - Arguments to find a Transactions
+     * @example
+     * // Get one Transactions
+     * const transactions = await prisma.transactions.findFirstOrThrow({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findFirstOrThrow<T extends TransactionsFindFirstOrThrowArgs>(args?: SelectSubset<T, TransactionsFindFirstOrThrowArgs<ExtArgs>>): Prisma__TransactionsClient<$Result.GetResult<Prisma.$TransactionsPayload<ExtArgs>, T, "findFirstOrThrow", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find zero or more Transactions that matches the filter.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {TransactionsFindManyArgs} args - Arguments to filter and select certain fields only.
+     * @example
+     * // Get all Transactions
+     * const transactions = await prisma.transactions.findMany()
+     * 
+     * // Get first 10 Transactions
+     * const transactions = await prisma.transactions.findMany({ take: 10 })
+     * 
+     * // Only select the `id`
+     * const transactionsWithIdOnly = await prisma.transactions.findMany({ select: { id: true } })
+     * 
+     */
+    findMany<T extends TransactionsFindManyArgs>(args?: SelectSubset<T, TransactionsFindManyArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$TransactionsPayload<ExtArgs>, T, "findMany", GlobalOmitOptions>>
+
+    /**
+     * Create a Transactions.
+     * @param {TransactionsCreateArgs} args - Arguments to create a Transactions.
+     * @example
+     * // Create one Transactions
+     * const Transactions = await prisma.transactions.create({
+     *   data: {
+     *     // ... data to create a Transactions
+     *   }
+     * })
+     * 
+     */
+    create<T extends TransactionsCreateArgs>(args: SelectSubset<T, TransactionsCreateArgs<ExtArgs>>): Prisma__TransactionsClient<$Result.GetResult<Prisma.$TransactionsPayload<ExtArgs>, T, "create", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Create many Transactions.
+     * @param {TransactionsCreateManyArgs} args - Arguments to create many Transactions.
+     * @example
+     * // Create many Transactions
+     * const transactions = await prisma.transactions.createMany({
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     *     
+     */
+    createMany<T extends TransactionsCreateManyArgs>(args?: SelectSubset<T, TransactionsCreateManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Create many Transactions and returns the data saved in the database.
+     * @param {TransactionsCreateManyAndReturnArgs} args - Arguments to create many Transactions.
+     * @example
+     * // Create many Transactions
+     * const transactions = await prisma.transactions.createManyAndReturn({
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * 
+     * // Create many Transactions and only return the `id`
+     * const transactionsWithIdOnly = await prisma.transactions.createManyAndReturn({
+     *   select: { id: true },
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * 
+     */
+    createManyAndReturn<T extends TransactionsCreateManyAndReturnArgs>(args?: SelectSubset<T, TransactionsCreateManyAndReturnArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$TransactionsPayload<ExtArgs>, T, "createManyAndReturn", GlobalOmitOptions>>
+
+    /**
+     * Delete a Transactions.
+     * @param {TransactionsDeleteArgs} args - Arguments to delete one Transactions.
+     * @example
+     * // Delete one Transactions
+     * const Transactions = await prisma.transactions.delete({
+     *   where: {
+     *     // ... filter to delete one Transactions
+     *   }
+     * })
+     * 
+     */
+    delete<T extends TransactionsDeleteArgs>(args: SelectSubset<T, TransactionsDeleteArgs<ExtArgs>>): Prisma__TransactionsClient<$Result.GetResult<Prisma.$TransactionsPayload<ExtArgs>, T, "delete", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Update one Transactions.
+     * @param {TransactionsUpdateArgs} args - Arguments to update one Transactions.
+     * @example
+     * // Update one Transactions
+     * const transactions = await prisma.transactions.update({
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: {
+     *     // ... provide data here
+     *   }
+     * })
+     * 
+     */
+    update<T extends TransactionsUpdateArgs>(args: SelectSubset<T, TransactionsUpdateArgs<ExtArgs>>): Prisma__TransactionsClient<$Result.GetResult<Prisma.$TransactionsPayload<ExtArgs>, T, "update", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Delete zero or more Transactions.
+     * @param {TransactionsDeleteManyArgs} args - Arguments to filter Transactions to delete.
+     * @example
+     * // Delete a few Transactions
+     * const { count } = await prisma.transactions.deleteMany({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     * 
+     */
+    deleteMany<T extends TransactionsDeleteManyArgs>(args?: SelectSubset<T, TransactionsDeleteManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Update zero or more Transactions.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {TransactionsUpdateManyArgs} args - Arguments to update one or more rows.
+     * @example
+     * // Update many Transactions
+     * const transactions = await prisma.transactions.updateMany({
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: {
+     *     // ... provide data here
+     *   }
+     * })
+     * 
+     */
+    updateMany<T extends TransactionsUpdateManyArgs>(args: SelectSubset<T, TransactionsUpdateManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Update zero or more Transactions and returns the data updated in the database.
+     * @param {TransactionsUpdateManyAndReturnArgs} args - Arguments to update many Transactions.
+     * @example
+     * // Update many Transactions
+     * const transactions = await prisma.transactions.updateManyAndReturn({
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * 
+     * // Update zero or more Transactions and only return the `id`
+     * const transactionsWithIdOnly = await prisma.transactions.updateManyAndReturn({
+     *   select: { id: true },
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * 
+     */
+    updateManyAndReturn<T extends TransactionsUpdateManyAndReturnArgs>(args: SelectSubset<T, TransactionsUpdateManyAndReturnArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$TransactionsPayload<ExtArgs>, T, "updateManyAndReturn", GlobalOmitOptions>>
+
+    /**
+     * Create or update one Transactions.
+     * @param {TransactionsUpsertArgs} args - Arguments to update or create a Transactions.
+     * @example
+     * // Update or create a Transactions
+     * const transactions = await prisma.transactions.upsert({
+     *   create: {
+     *     // ... data to create a Transactions
+     *   },
+     *   update: {
+     *     // ... in case it already exists, update
+     *   },
+     *   where: {
+     *     // ... the filter for the Transactions we want to update
+     *   }
+     * })
+     */
+    upsert<T extends TransactionsUpsertArgs>(args: SelectSubset<T, TransactionsUpsertArgs<ExtArgs>>): Prisma__TransactionsClient<$Result.GetResult<Prisma.$TransactionsPayload<ExtArgs>, T, "upsert", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+
+    /**
+     * Count the number of Transactions.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {TransactionsCountArgs} args - Arguments to filter Transactions to count.
+     * @example
+     * // Count the number of Transactions
+     * const count = await prisma.transactions.count({
+     *   where: {
+     *     // ... the filter for the Transactions we want to count
+     *   }
+     * })
+    **/
+    count<T extends TransactionsCountArgs>(
+      args?: Subset<T, TransactionsCountArgs>,
+    ): Prisma.PrismaPromise<
+      T extends $Utils.Record<'select', any>
+        ? T['select'] extends true
+          ? number
+          : GetScalarType<T['select'], TransactionsCountAggregateOutputType>
+        : number
+    >
+
+    /**
+     * Allows you to perform aggregations operations on a Transactions.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {TransactionsAggregateArgs} args - Select which aggregations you would like to apply and on what fields.
+     * @example
+     * // Ordered by age ascending
+     * // Where email contains prisma.io
+     * // Limited to the 10 users
+     * const aggregations = await prisma.user.aggregate({
+     *   _avg: {
+     *     age: true,
+     *   },
+     *   where: {
+     *     email: {
+     *       contains: "prisma.io",
+     *     },
+     *   },
+     *   orderBy: {
+     *     age: "asc",
+     *   },
+     *   take: 10,
+     * })
+    **/
+    aggregate<T extends TransactionsAggregateArgs>(args: Subset<T, TransactionsAggregateArgs>): Prisma.PrismaPromise<GetTransactionsAggregateType<T>>
+
+    /**
+     * Group by Transactions.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {TransactionsGroupByArgs} args - Group by arguments.
+     * @example
+     * // Group by city, order by createdAt, get count
+     * const result = await prisma.user.groupBy({
+     *   by: ['city', 'createdAt'],
+     *   orderBy: {
+     *     createdAt: true
+     *   },
+     *   _count: {
+     *     _all: true
+     *   },
+     * })
+     * 
+    **/
+    groupBy<
+      T extends TransactionsGroupByArgs,
+      HasSelectOrTake extends Or<
+        Extends<'skip', Keys<T>>,
+        Extends<'take', Keys<T>>
+      >,
+      OrderByArg extends True extends HasSelectOrTake
+        ? { orderBy: TransactionsGroupByArgs['orderBy'] }
+        : { orderBy?: TransactionsGroupByArgs['orderBy'] },
+      OrderFields extends ExcludeUnderscoreKeys<Keys<MaybeTupleToUnion<T['orderBy']>>>,
+      ByFields extends MaybeTupleToUnion<T['by']>,
+      ByValid extends Has<ByFields, OrderFields>,
+      HavingFields extends GetHavingFields<T['having']>,
+      HavingValid extends Has<ByFields, HavingFields>,
+      ByEmpty extends T['by'] extends never[] ? True : False,
+      InputErrors extends ByEmpty extends True
+      ? `Error: "by" must not be empty.`
+      : HavingValid extends False
+      ? {
+          [P in HavingFields]: P extends ByFields
+            ? never
+            : P extends string
+            ? `Error: Field "${P}" used in "having" needs to be provided in "by".`
+            : [
+                Error,
+                'Field ',
+                P,
+                ` in "having" needs to be provided in "by"`,
+              ]
+        }[HavingFields]
+      : 'take' extends Keys<T>
+      ? 'orderBy' extends Keys<T>
+        ? ByValid extends True
+          ? {}
+          : {
+              [P in OrderFields]: P extends ByFields
+                ? never
+                : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+            }[OrderFields]
+        : 'Error: If you provide "take", you also need to provide "orderBy"'
+      : 'skip' extends Keys<T>
+      ? 'orderBy' extends Keys<T>
+        ? ByValid extends True
+          ? {}
+          : {
+              [P in OrderFields]: P extends ByFields
+                ? never
+                : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+            }[OrderFields]
+        : 'Error: If you provide "skip", you also need to provide "orderBy"'
+      : ByValid extends True
+      ? {}
+      : {
+          [P in OrderFields]: P extends ByFields
+            ? never
+            : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+        }[OrderFields]
+    >(args: SubsetIntersection<T, TransactionsGroupByArgs, OrderByArg> & InputErrors): {} extends InputErrors ? GetTransactionsGroupByPayload<T> : Prisma.PrismaPromise<InputErrors>
+  /**
+   * Fields of the Transactions model
+   */
+  readonly fields: TransactionsFieldRefs;
+  }
+
+  /**
+   * The delegate class that acts as a "Promise-like" for Transactions.
+   * Why is this prefixed with `Prisma__`?
+   * Because we want to prevent naming conflicts as mentioned in
+   * https://github.com/prisma/prisma-client-js/issues/707
+   */
+  export interface Prisma__TransactionsClient<T, Null = never, ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs, GlobalOmitOptions = {}> extends Prisma.PrismaPromise<T> {
+    readonly [Symbol.toStringTag]: "PrismaPromise"
+    transaction_voucher<T extends VoucherDefaultArgs<ExtArgs> = {}>(args?: Subset<T, VoucherDefaultArgs<ExtArgs>>): Prisma__VoucherClient<$Result.GetResult<Prisma.$VoucherPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | Null, Null, ExtArgs, GlobalOmitOptions>
+    transaction_details<T extends Transactions$transaction_detailsArgs<ExtArgs> = {}>(args?: Subset<T, Transactions$transaction_detailsArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$Transactions_detailPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
+    /**
+     * Attaches callbacks for the resolution and/or rejection of the Promise.
+     * @param onfulfilled The callback to execute when the Promise is resolved.
+     * @param onrejected The callback to execute when the Promise is rejected.
+     * @returns A Promise for the completion of which ever callback is executed.
+     */
+    then<TResult1 = T, TResult2 = never>(onfulfilled?: ((value: T) => TResult1 | PromiseLike<TResult1>) | undefined | null, onrejected?: ((reason: any) => TResult2 | PromiseLike<TResult2>) | undefined | null): $Utils.JsPromise<TResult1 | TResult2>
+    /**
+     * Attaches a callback for only the rejection of the Promise.
+     * @param onrejected The callback to execute when the Promise is rejected.
+     * @returns A Promise for the completion of the callback.
+     */
+    catch<TResult = never>(onrejected?: ((reason: any) => TResult | PromiseLike<TResult>) | undefined | null): $Utils.JsPromise<T | TResult>
+    /**
+     * Attaches a callback that is invoked when the Promise is settled (fulfilled or rejected). The
+     * resolved value cannot be modified from the callback.
+     * @param onfinally The callback to execute when the Promise is settled (fulfilled or rejected).
+     * @returns A Promise for the completion of the callback.
+     */
+    finally(onfinally?: (() => void) | undefined | null): $Utils.JsPromise<T>
+  }
+
+
+
+
+  /**
+   * Fields of the Transactions model
+   */
+  interface TransactionsFieldRefs {
+    readonly id: FieldRef<"Transactions", 'String'>
+    readonly voucher_id: FieldRef<"Transactions", 'String'>
+    readonly amount: FieldRef<"Transactions", 'Int'>
+    readonly proof: FieldRef<"Transactions", 'String'>
+  }
+    
+
+  // Custom InputTypes
+  /**
+   * Transactions findUnique
+   */
+  export type TransactionsFindUniqueArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Transactions
+     */
+    select?: TransactionsSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the Transactions
+     */
+    omit?: TransactionsOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: TransactionsInclude<ExtArgs> | null
+    /**
+     * Filter, which Transactions to fetch.
+     */
+    where: TransactionsWhereUniqueInput
+  }
+
+  /**
+   * Transactions findUniqueOrThrow
+   */
+  export type TransactionsFindUniqueOrThrowArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Transactions
+     */
+    select?: TransactionsSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the Transactions
+     */
+    omit?: TransactionsOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: TransactionsInclude<ExtArgs> | null
+    /**
+     * Filter, which Transactions to fetch.
+     */
+    where: TransactionsWhereUniqueInput
+  }
+
+  /**
+   * Transactions findFirst
+   */
+  export type TransactionsFindFirstArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Transactions
+     */
+    select?: TransactionsSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the Transactions
+     */
+    omit?: TransactionsOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: TransactionsInclude<ExtArgs> | null
+    /**
+     * Filter, which Transactions to fetch.
+     */
+    where?: TransactionsWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of Transactions to fetch.
+     */
+    orderBy?: TransactionsOrderByWithRelationInput | TransactionsOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for searching for Transactions.
+     */
+    cursor?: TransactionsWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` Transactions from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` Transactions.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
+     * 
+     * Filter by unique combinations of Transactions.
+     */
+    distinct?: TransactionsScalarFieldEnum | TransactionsScalarFieldEnum[]
+  }
+
+  /**
+   * Transactions findFirstOrThrow
+   */
+  export type TransactionsFindFirstOrThrowArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Transactions
+     */
+    select?: TransactionsSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the Transactions
+     */
+    omit?: TransactionsOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: TransactionsInclude<ExtArgs> | null
+    /**
+     * Filter, which Transactions to fetch.
+     */
+    where?: TransactionsWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of Transactions to fetch.
+     */
+    orderBy?: TransactionsOrderByWithRelationInput | TransactionsOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for searching for Transactions.
+     */
+    cursor?: TransactionsWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` Transactions from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` Transactions.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
+     * 
+     * Filter by unique combinations of Transactions.
+     */
+    distinct?: TransactionsScalarFieldEnum | TransactionsScalarFieldEnum[]
+  }
+
+  /**
+   * Transactions findMany
+   */
+  export type TransactionsFindManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Transactions
+     */
+    select?: TransactionsSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the Transactions
+     */
+    omit?: TransactionsOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: TransactionsInclude<ExtArgs> | null
+    /**
+     * Filter, which Transactions to fetch.
+     */
+    where?: TransactionsWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of Transactions to fetch.
+     */
+    orderBy?: TransactionsOrderByWithRelationInput | TransactionsOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for listing Transactions.
+     */
+    cursor?: TransactionsWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` Transactions from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` Transactions.
+     */
+    skip?: number
+    distinct?: TransactionsScalarFieldEnum | TransactionsScalarFieldEnum[]
+  }
+
+  /**
+   * Transactions create
+   */
+  export type TransactionsCreateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Transactions
+     */
+    select?: TransactionsSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the Transactions
+     */
+    omit?: TransactionsOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: TransactionsInclude<ExtArgs> | null
+    /**
+     * The data needed to create a Transactions.
+     */
+    data: XOR<TransactionsCreateInput, TransactionsUncheckedCreateInput>
+  }
+
+  /**
+   * Transactions createMany
+   */
+  export type TransactionsCreateManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * The data used to create many Transactions.
+     */
+    data: TransactionsCreateManyInput | TransactionsCreateManyInput[]
+    skipDuplicates?: boolean
+  }
+
+  /**
+   * Transactions createManyAndReturn
+   */
+  export type TransactionsCreateManyAndReturnArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Transactions
+     */
+    select?: TransactionsSelectCreateManyAndReturn<ExtArgs> | null
+    /**
+     * Omit specific fields from the Transactions
+     */
+    omit?: TransactionsOmit<ExtArgs> | null
+    /**
+     * The data used to create many Transactions.
+     */
+    data: TransactionsCreateManyInput | TransactionsCreateManyInput[]
+    skipDuplicates?: boolean
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: TransactionsIncludeCreateManyAndReturn<ExtArgs> | null
+  }
+
+  /**
+   * Transactions update
+   */
+  export type TransactionsUpdateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Transactions
+     */
+    select?: TransactionsSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the Transactions
+     */
+    omit?: TransactionsOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: TransactionsInclude<ExtArgs> | null
+    /**
+     * The data needed to update a Transactions.
+     */
+    data: XOR<TransactionsUpdateInput, TransactionsUncheckedUpdateInput>
+    /**
+     * Choose, which Transactions to update.
+     */
+    where: TransactionsWhereUniqueInput
+  }
+
+  /**
+   * Transactions updateMany
+   */
+  export type TransactionsUpdateManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * The data used to update Transactions.
+     */
+    data: XOR<TransactionsUpdateManyMutationInput, TransactionsUncheckedUpdateManyInput>
+    /**
+     * Filter which Transactions to update
+     */
+    where?: TransactionsWhereInput
+    /**
+     * Limit how many Transactions to update.
+     */
+    limit?: number
+  }
+
+  /**
+   * Transactions updateManyAndReturn
+   */
+  export type TransactionsUpdateManyAndReturnArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Transactions
+     */
+    select?: TransactionsSelectUpdateManyAndReturn<ExtArgs> | null
+    /**
+     * Omit specific fields from the Transactions
+     */
+    omit?: TransactionsOmit<ExtArgs> | null
+    /**
+     * The data used to update Transactions.
+     */
+    data: XOR<TransactionsUpdateManyMutationInput, TransactionsUncheckedUpdateManyInput>
+    /**
+     * Filter which Transactions to update
+     */
+    where?: TransactionsWhereInput
+    /**
+     * Limit how many Transactions to update.
+     */
+    limit?: number
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: TransactionsIncludeUpdateManyAndReturn<ExtArgs> | null
+  }
+
+  /**
+   * Transactions upsert
+   */
+  export type TransactionsUpsertArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Transactions
+     */
+    select?: TransactionsSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the Transactions
+     */
+    omit?: TransactionsOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: TransactionsInclude<ExtArgs> | null
+    /**
+     * The filter to search for the Transactions to update in case it exists.
+     */
+    where: TransactionsWhereUniqueInput
+    /**
+     * In case the Transactions found by the `where` argument doesn't exist, create a new Transactions with this data.
+     */
+    create: XOR<TransactionsCreateInput, TransactionsUncheckedCreateInput>
+    /**
+     * In case the Transactions was found with the provided `where` argument, update it with this data.
+     */
+    update: XOR<TransactionsUpdateInput, TransactionsUncheckedUpdateInput>
+  }
+
+  /**
+   * Transactions delete
+   */
+  export type TransactionsDeleteArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Transactions
+     */
+    select?: TransactionsSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the Transactions
+     */
+    omit?: TransactionsOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: TransactionsInclude<ExtArgs> | null
+    /**
+     * Filter which Transactions to delete.
+     */
+    where: TransactionsWhereUniqueInput
+  }
+
+  /**
+   * Transactions deleteMany
+   */
+  export type TransactionsDeleteManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Filter which Transactions to delete
+     */
+    where?: TransactionsWhereInput
+    /**
+     * Limit how many Transactions to delete.
+     */
+    limit?: number
+  }
+
+  /**
+   * Transactions.transaction_details
+   */
+  export type Transactions$transaction_detailsArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Transactions_detail
+     */
+    select?: Transactions_detailSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the Transactions_detail
+     */
+    omit?: Transactions_detailOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: Transactions_detailInclude<ExtArgs> | null
+    where?: Transactions_detailWhereInput
+    orderBy?: Transactions_detailOrderByWithRelationInput | Transactions_detailOrderByWithRelationInput[]
+    cursor?: Transactions_detailWhereUniqueInput
+    take?: number
+    skip?: number
+    distinct?: Transactions_detailScalarFieldEnum | Transactions_detailScalarFieldEnum[]
+  }
+
+  /**
+   * Transactions without action
+   */
+  export type TransactionsDefaultArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Transactions
+     */
+    select?: TransactionsSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the Transactions
+     */
+    omit?: TransactionsOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: TransactionsInclude<ExtArgs> | null
+  }
+
+
+  /**
+   * Model Transactions_detail
+   */
+
+  export type AggregateTransactions_detail = {
+    _count: Transactions_detailCountAggregateOutputType | null
+    _avg: Transactions_detailAvgAggregateOutputType | null
+    _sum: Transactions_detailSumAggregateOutputType | null
+    _min: Transactions_detailMinAggregateOutputType | null
+    _max: Transactions_detailMaxAggregateOutputType | null
+  }
+
+  export type Transactions_detailAvgAggregateOutputType = {
+    quantity: number | null
+    price: number | null
+  }
+
+  export type Transactions_detailSumAggregateOutputType = {
+    quantity: number | null
+    price: number | null
+  }
+
+  export type Transactions_detailMinAggregateOutputType = {
+    id: string | null
+    transaction_id: string | null
+    user_id: string | null
+    event_id: string | null
+    organizer_id: string | null
+    quantity: number | null
+    price: number | null
+    isConfirmed: boolean | null
+    transaction_status: $Enums.TransactionStatus | null
+  }
+
+  export type Transactions_detailMaxAggregateOutputType = {
+    id: string | null
+    transaction_id: string | null
+    user_id: string | null
+    event_id: string | null
+    organizer_id: string | null
+    quantity: number | null
+    price: number | null
+    isConfirmed: boolean | null
+    transaction_status: $Enums.TransactionStatus | null
+  }
+
+  export type Transactions_detailCountAggregateOutputType = {
+    id: number
+    transaction_id: number
+    user_id: number
+    event_id: number
+    organizer_id: number
+    quantity: number
+    price: number
+    isConfirmed: number
+    transaction_status: number
+    _all: number
+  }
+
+
+  export type Transactions_detailAvgAggregateInputType = {
+    quantity?: true
+    price?: true
+  }
+
+  export type Transactions_detailSumAggregateInputType = {
+    quantity?: true
+    price?: true
+  }
+
+  export type Transactions_detailMinAggregateInputType = {
+    id?: true
+    transaction_id?: true
+    user_id?: true
+    event_id?: true
+    organizer_id?: true
+    quantity?: true
+    price?: true
+    isConfirmed?: true
+    transaction_status?: true
+  }
+
+  export type Transactions_detailMaxAggregateInputType = {
+    id?: true
+    transaction_id?: true
+    user_id?: true
+    event_id?: true
+    organizer_id?: true
+    quantity?: true
+    price?: true
+    isConfirmed?: true
+    transaction_status?: true
+  }
+
+  export type Transactions_detailCountAggregateInputType = {
+    id?: true
+    transaction_id?: true
+    user_id?: true
+    event_id?: true
+    organizer_id?: true
+    quantity?: true
+    price?: true
+    isConfirmed?: true
+    transaction_status?: true
+    _all?: true
+  }
+
+  export type Transactions_detailAggregateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Filter which Transactions_detail to aggregate.
+     */
+    where?: Transactions_detailWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of Transactions_details to fetch.
+     */
+    orderBy?: Transactions_detailOrderByWithRelationInput | Transactions_detailOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the start position
+     */
+    cursor?: Transactions_detailWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` Transactions_details from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` Transactions_details.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Count returned Transactions_details
+    **/
+    _count?: true | Transactions_detailCountAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to average
+    **/
+    _avg?: Transactions_detailAvgAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to sum
+    **/
+    _sum?: Transactions_detailSumAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to find the minimum value
+    **/
+    _min?: Transactions_detailMinAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to find the maximum value
+    **/
+    _max?: Transactions_detailMaxAggregateInputType
+  }
+
+  export type GetTransactions_detailAggregateType<T extends Transactions_detailAggregateArgs> = {
+        [P in keyof T & keyof AggregateTransactions_detail]: P extends '_count' | 'count'
+      ? T[P] extends true
+        ? number
+        : GetScalarType<T[P], AggregateTransactions_detail[P]>
+      : GetScalarType<T[P], AggregateTransactions_detail[P]>
+  }
+
+
+
+
+  export type Transactions_detailGroupByArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    where?: Transactions_detailWhereInput
+    orderBy?: Transactions_detailOrderByWithAggregationInput | Transactions_detailOrderByWithAggregationInput[]
+    by: Transactions_detailScalarFieldEnum[] | Transactions_detailScalarFieldEnum
+    having?: Transactions_detailScalarWhereWithAggregatesInput
+    take?: number
+    skip?: number
+    _count?: Transactions_detailCountAggregateInputType | true
+    _avg?: Transactions_detailAvgAggregateInputType
+    _sum?: Transactions_detailSumAggregateInputType
+    _min?: Transactions_detailMinAggregateInputType
+    _max?: Transactions_detailMaxAggregateInputType
+  }
+
+  export type Transactions_detailGroupByOutputType = {
+    id: string
+    transaction_id: string
+    user_id: string
+    event_id: string
+    organizer_id: string
+    quantity: number
+    price: number
+    isConfirmed: boolean
+    transaction_status: $Enums.TransactionStatus
+    _count: Transactions_detailCountAggregateOutputType | null
+    _avg: Transactions_detailAvgAggregateOutputType | null
+    _sum: Transactions_detailSumAggregateOutputType | null
+    _min: Transactions_detailMinAggregateOutputType | null
+    _max: Transactions_detailMaxAggregateOutputType | null
+  }
+
+  type GetTransactions_detailGroupByPayload<T extends Transactions_detailGroupByArgs> = Prisma.PrismaPromise<
+    Array<
+      PickEnumerable<Transactions_detailGroupByOutputType, T['by']> &
+        {
+          [P in ((keyof T) & (keyof Transactions_detailGroupByOutputType))]: P extends '_count'
+            ? T[P] extends boolean
+              ? number
+              : GetScalarType<T[P], Transactions_detailGroupByOutputType[P]>
+            : GetScalarType<T[P], Transactions_detailGroupByOutputType[P]>
+        }
+      >
+    >
+
+
+  export type Transactions_detailSelect<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
+    id?: boolean
+    transaction_id?: boolean
+    user_id?: boolean
+    event_id?: boolean
+    organizer_id?: boolean
+    quantity?: boolean
+    price?: boolean
+    isConfirmed?: boolean
+    transaction_status?: boolean
+    user?: boolean | UsersDefaultArgs<ExtArgs>
+    details_transaction?: boolean | TransactionsDefaultArgs<ExtArgs>
+    detail_event?: boolean | EventsDefaultArgs<ExtArgs>
+    detail_organizer?: boolean | OrganizerDefaultArgs<ExtArgs>
+  }, ExtArgs["result"]["transactions_detail"]>
+
+  export type Transactions_detailSelectCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
+    id?: boolean
+    transaction_id?: boolean
+    user_id?: boolean
+    event_id?: boolean
+    organizer_id?: boolean
+    quantity?: boolean
+    price?: boolean
+    isConfirmed?: boolean
+    transaction_status?: boolean
+    user?: boolean | UsersDefaultArgs<ExtArgs>
+    details_transaction?: boolean | TransactionsDefaultArgs<ExtArgs>
+    detail_event?: boolean | EventsDefaultArgs<ExtArgs>
+    detail_organizer?: boolean | OrganizerDefaultArgs<ExtArgs>
+  }, ExtArgs["result"]["transactions_detail"]>
+
+  export type Transactions_detailSelectUpdateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
+    id?: boolean
+    transaction_id?: boolean
+    user_id?: boolean
+    event_id?: boolean
+    organizer_id?: boolean
+    quantity?: boolean
+    price?: boolean
+    isConfirmed?: boolean
+    transaction_status?: boolean
+    user?: boolean | UsersDefaultArgs<ExtArgs>
+    details_transaction?: boolean | TransactionsDefaultArgs<ExtArgs>
+    detail_event?: boolean | EventsDefaultArgs<ExtArgs>
+    detail_organizer?: boolean | OrganizerDefaultArgs<ExtArgs>
+  }, ExtArgs["result"]["transactions_detail"]>
+
+  export type Transactions_detailSelectScalar = {
+    id?: boolean
+    transaction_id?: boolean
+    user_id?: boolean
+    event_id?: boolean
+    organizer_id?: boolean
+    quantity?: boolean
+    price?: boolean
+    isConfirmed?: boolean
+    transaction_status?: boolean
+  }
+
+  export type Transactions_detailOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "transaction_id" | "user_id" | "event_id" | "organizer_id" | "quantity" | "price" | "isConfirmed" | "transaction_status", ExtArgs["result"]["transactions_detail"]>
+  export type Transactions_detailInclude<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    user?: boolean | UsersDefaultArgs<ExtArgs>
+    details_transaction?: boolean | TransactionsDefaultArgs<ExtArgs>
+    detail_event?: boolean | EventsDefaultArgs<ExtArgs>
+    detail_organizer?: boolean | OrganizerDefaultArgs<ExtArgs>
+  }
+  export type Transactions_detailIncludeCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    user?: boolean | UsersDefaultArgs<ExtArgs>
+    details_transaction?: boolean | TransactionsDefaultArgs<ExtArgs>
+    detail_event?: boolean | EventsDefaultArgs<ExtArgs>
+    detail_organizer?: boolean | OrganizerDefaultArgs<ExtArgs>
+  }
+  export type Transactions_detailIncludeUpdateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    user?: boolean | UsersDefaultArgs<ExtArgs>
+    details_transaction?: boolean | TransactionsDefaultArgs<ExtArgs>
+    detail_event?: boolean | EventsDefaultArgs<ExtArgs>
+    detail_organizer?: boolean | OrganizerDefaultArgs<ExtArgs>
+  }
+
+  export type $Transactions_detailPayload<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    name: "Transactions_detail"
+    objects: {
+      user: Prisma.$UsersPayload<ExtArgs>
+      details_transaction: Prisma.$TransactionsPayload<ExtArgs>
+      detail_event: Prisma.$EventsPayload<ExtArgs>
+      detail_organizer: Prisma.$OrganizerPayload<ExtArgs>
+    }
+    scalars: $Extensions.GetPayloadResult<{
+      id: string
+      transaction_id: string
+      user_id: string
+      event_id: string
+      organizer_id: string
+      quantity: number
+      price: number
+      isConfirmed: boolean
+      transaction_status: $Enums.TransactionStatus
+    }, ExtArgs["result"]["transactions_detail"]>
+    composites: {}
+  }
+
+  type Transactions_detailGetPayload<S extends boolean | null | undefined | Transactions_detailDefaultArgs> = $Result.GetResult<Prisma.$Transactions_detailPayload, S>
+
+  type Transactions_detailCountArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> =
+    Omit<Transactions_detailFindManyArgs, 'select' | 'include' | 'distinct' | 'omit'> & {
+      select?: Transactions_detailCountAggregateInputType | true
+    }
+
+  export interface Transactions_detailDelegate<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs, GlobalOmitOptions = {}> {
+    [K: symbol]: { types: Prisma.TypeMap<ExtArgs>['model']['Transactions_detail'], meta: { name: 'Transactions_detail' } }
+    /**
+     * Find zero or one Transactions_detail that matches the filter.
+     * @param {Transactions_detailFindUniqueArgs} args - Arguments to find a Transactions_detail
+     * @example
+     * // Get one Transactions_detail
+     * const transactions_detail = await prisma.transactions_detail.findUnique({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findUnique<T extends Transactions_detailFindUniqueArgs>(args: SelectSubset<T, Transactions_detailFindUniqueArgs<ExtArgs>>): Prisma__Transactions_detailClient<$Result.GetResult<Prisma.$Transactions_detailPayload<ExtArgs>, T, "findUnique", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find one Transactions_detail that matches the filter or throw an error with `error.code='P2025'`
+     * if no matches were found.
+     * @param {Transactions_detailFindUniqueOrThrowArgs} args - Arguments to find a Transactions_detail
+     * @example
+     * // Get one Transactions_detail
+     * const transactions_detail = await prisma.transactions_detail.findUniqueOrThrow({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findUniqueOrThrow<T extends Transactions_detailFindUniqueOrThrowArgs>(args: SelectSubset<T, Transactions_detailFindUniqueOrThrowArgs<ExtArgs>>): Prisma__Transactions_detailClient<$Result.GetResult<Prisma.$Transactions_detailPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find the first Transactions_detail that matches the filter.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {Transactions_detailFindFirstArgs} args - Arguments to find a Transactions_detail
+     * @example
+     * // Get one Transactions_detail
+     * const transactions_detail = await prisma.transactions_detail.findFirst({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findFirst<T extends Transactions_detailFindFirstArgs>(args?: SelectSubset<T, Transactions_detailFindFirstArgs<ExtArgs>>): Prisma__Transactions_detailClient<$Result.GetResult<Prisma.$Transactions_detailPayload<ExtArgs>, T, "findFirst", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find the first Transactions_detail that matches the filter or
+     * throw `PrismaKnownClientError` with `P2025` code if no matches were found.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {Transactions_detailFindFirstOrThrowArgs} args - Arguments to find a Transactions_detail
+     * @example
+     * // Get one Transactions_detail
+     * const transactions_detail = await prisma.transactions_detail.findFirstOrThrow({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findFirstOrThrow<T extends Transactions_detailFindFirstOrThrowArgs>(args?: SelectSubset<T, Transactions_detailFindFirstOrThrowArgs<ExtArgs>>): Prisma__Transactions_detailClient<$Result.GetResult<Prisma.$Transactions_detailPayload<ExtArgs>, T, "findFirstOrThrow", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find zero or more Transactions_details that matches the filter.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {Transactions_detailFindManyArgs} args - Arguments to filter and select certain fields only.
+     * @example
+     * // Get all Transactions_details
+     * const transactions_details = await prisma.transactions_detail.findMany()
+     * 
+     * // Get first 10 Transactions_details
+     * const transactions_details = await prisma.transactions_detail.findMany({ take: 10 })
+     * 
+     * // Only select the `id`
+     * const transactions_detailWithIdOnly = await prisma.transactions_detail.findMany({ select: { id: true } })
+     * 
+     */
+    findMany<T extends Transactions_detailFindManyArgs>(args?: SelectSubset<T, Transactions_detailFindManyArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$Transactions_detailPayload<ExtArgs>, T, "findMany", GlobalOmitOptions>>
+
+    /**
+     * Create a Transactions_detail.
+     * @param {Transactions_detailCreateArgs} args - Arguments to create a Transactions_detail.
+     * @example
+     * // Create one Transactions_detail
+     * const Transactions_detail = await prisma.transactions_detail.create({
+     *   data: {
+     *     // ... data to create a Transactions_detail
+     *   }
+     * })
+     * 
+     */
+    create<T extends Transactions_detailCreateArgs>(args: SelectSubset<T, Transactions_detailCreateArgs<ExtArgs>>): Prisma__Transactions_detailClient<$Result.GetResult<Prisma.$Transactions_detailPayload<ExtArgs>, T, "create", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Create many Transactions_details.
+     * @param {Transactions_detailCreateManyArgs} args - Arguments to create many Transactions_details.
+     * @example
+     * // Create many Transactions_details
+     * const transactions_detail = await prisma.transactions_detail.createMany({
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     *     
+     */
+    createMany<T extends Transactions_detailCreateManyArgs>(args?: SelectSubset<T, Transactions_detailCreateManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Create many Transactions_details and returns the data saved in the database.
+     * @param {Transactions_detailCreateManyAndReturnArgs} args - Arguments to create many Transactions_details.
+     * @example
+     * // Create many Transactions_details
+     * const transactions_detail = await prisma.transactions_detail.createManyAndReturn({
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * 
+     * // Create many Transactions_details and only return the `id`
+     * const transactions_detailWithIdOnly = await prisma.transactions_detail.createManyAndReturn({
+     *   select: { id: true },
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * 
+     */
+    createManyAndReturn<T extends Transactions_detailCreateManyAndReturnArgs>(args?: SelectSubset<T, Transactions_detailCreateManyAndReturnArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$Transactions_detailPayload<ExtArgs>, T, "createManyAndReturn", GlobalOmitOptions>>
+
+    /**
+     * Delete a Transactions_detail.
+     * @param {Transactions_detailDeleteArgs} args - Arguments to delete one Transactions_detail.
+     * @example
+     * // Delete one Transactions_detail
+     * const Transactions_detail = await prisma.transactions_detail.delete({
+     *   where: {
+     *     // ... filter to delete one Transactions_detail
+     *   }
+     * })
+     * 
+     */
+    delete<T extends Transactions_detailDeleteArgs>(args: SelectSubset<T, Transactions_detailDeleteArgs<ExtArgs>>): Prisma__Transactions_detailClient<$Result.GetResult<Prisma.$Transactions_detailPayload<ExtArgs>, T, "delete", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Update one Transactions_detail.
+     * @param {Transactions_detailUpdateArgs} args - Arguments to update one Transactions_detail.
+     * @example
+     * // Update one Transactions_detail
+     * const transactions_detail = await prisma.transactions_detail.update({
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: {
+     *     // ... provide data here
+     *   }
+     * })
+     * 
+     */
+    update<T extends Transactions_detailUpdateArgs>(args: SelectSubset<T, Transactions_detailUpdateArgs<ExtArgs>>): Prisma__Transactions_detailClient<$Result.GetResult<Prisma.$Transactions_detailPayload<ExtArgs>, T, "update", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Delete zero or more Transactions_details.
+     * @param {Transactions_detailDeleteManyArgs} args - Arguments to filter Transactions_details to delete.
+     * @example
+     * // Delete a few Transactions_details
+     * const { count } = await prisma.transactions_detail.deleteMany({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     * 
+     */
+    deleteMany<T extends Transactions_detailDeleteManyArgs>(args?: SelectSubset<T, Transactions_detailDeleteManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Update zero or more Transactions_details.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {Transactions_detailUpdateManyArgs} args - Arguments to update one or more rows.
+     * @example
+     * // Update many Transactions_details
+     * const transactions_detail = await prisma.transactions_detail.updateMany({
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: {
+     *     // ... provide data here
+     *   }
+     * })
+     * 
+     */
+    updateMany<T extends Transactions_detailUpdateManyArgs>(args: SelectSubset<T, Transactions_detailUpdateManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Update zero or more Transactions_details and returns the data updated in the database.
+     * @param {Transactions_detailUpdateManyAndReturnArgs} args - Arguments to update many Transactions_details.
+     * @example
+     * // Update many Transactions_details
+     * const transactions_detail = await prisma.transactions_detail.updateManyAndReturn({
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * 
+     * // Update zero or more Transactions_details and only return the `id`
+     * const transactions_detailWithIdOnly = await prisma.transactions_detail.updateManyAndReturn({
+     *   select: { id: true },
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * 
+     */
+    updateManyAndReturn<T extends Transactions_detailUpdateManyAndReturnArgs>(args: SelectSubset<T, Transactions_detailUpdateManyAndReturnArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$Transactions_detailPayload<ExtArgs>, T, "updateManyAndReturn", GlobalOmitOptions>>
+
+    /**
+     * Create or update one Transactions_detail.
+     * @param {Transactions_detailUpsertArgs} args - Arguments to update or create a Transactions_detail.
+     * @example
+     * // Update or create a Transactions_detail
+     * const transactions_detail = await prisma.transactions_detail.upsert({
+     *   create: {
+     *     // ... data to create a Transactions_detail
+     *   },
+     *   update: {
+     *     // ... in case it already exists, update
+     *   },
+     *   where: {
+     *     // ... the filter for the Transactions_detail we want to update
+     *   }
+     * })
+     */
+    upsert<T extends Transactions_detailUpsertArgs>(args: SelectSubset<T, Transactions_detailUpsertArgs<ExtArgs>>): Prisma__Transactions_detailClient<$Result.GetResult<Prisma.$Transactions_detailPayload<ExtArgs>, T, "upsert", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+
+    /**
+     * Count the number of Transactions_details.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {Transactions_detailCountArgs} args - Arguments to filter Transactions_details to count.
+     * @example
+     * // Count the number of Transactions_details
+     * const count = await prisma.transactions_detail.count({
+     *   where: {
+     *     // ... the filter for the Transactions_details we want to count
+     *   }
+     * })
+    **/
+    count<T extends Transactions_detailCountArgs>(
+      args?: Subset<T, Transactions_detailCountArgs>,
+    ): Prisma.PrismaPromise<
+      T extends $Utils.Record<'select', any>
+        ? T['select'] extends true
+          ? number
+          : GetScalarType<T['select'], Transactions_detailCountAggregateOutputType>
+        : number
+    >
+
+    /**
+     * Allows you to perform aggregations operations on a Transactions_detail.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {Transactions_detailAggregateArgs} args - Select which aggregations you would like to apply and on what fields.
+     * @example
+     * // Ordered by age ascending
+     * // Where email contains prisma.io
+     * // Limited to the 10 users
+     * const aggregations = await prisma.user.aggregate({
+     *   _avg: {
+     *     age: true,
+     *   },
+     *   where: {
+     *     email: {
+     *       contains: "prisma.io",
+     *     },
+     *   },
+     *   orderBy: {
+     *     age: "asc",
+     *   },
+     *   take: 10,
+     * })
+    **/
+    aggregate<T extends Transactions_detailAggregateArgs>(args: Subset<T, Transactions_detailAggregateArgs>): Prisma.PrismaPromise<GetTransactions_detailAggregateType<T>>
+
+    /**
+     * Group by Transactions_detail.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {Transactions_detailGroupByArgs} args - Group by arguments.
+     * @example
+     * // Group by city, order by createdAt, get count
+     * const result = await prisma.user.groupBy({
+     *   by: ['city', 'createdAt'],
+     *   orderBy: {
+     *     createdAt: true
+     *   },
+     *   _count: {
+     *     _all: true
+     *   },
+     * })
+     * 
+    **/
+    groupBy<
+      T extends Transactions_detailGroupByArgs,
+      HasSelectOrTake extends Or<
+        Extends<'skip', Keys<T>>,
+        Extends<'take', Keys<T>>
+      >,
+      OrderByArg extends True extends HasSelectOrTake
+        ? { orderBy: Transactions_detailGroupByArgs['orderBy'] }
+        : { orderBy?: Transactions_detailGroupByArgs['orderBy'] },
+      OrderFields extends ExcludeUnderscoreKeys<Keys<MaybeTupleToUnion<T['orderBy']>>>,
+      ByFields extends MaybeTupleToUnion<T['by']>,
+      ByValid extends Has<ByFields, OrderFields>,
+      HavingFields extends GetHavingFields<T['having']>,
+      HavingValid extends Has<ByFields, HavingFields>,
+      ByEmpty extends T['by'] extends never[] ? True : False,
+      InputErrors extends ByEmpty extends True
+      ? `Error: "by" must not be empty.`
+      : HavingValid extends False
+      ? {
+          [P in HavingFields]: P extends ByFields
+            ? never
+            : P extends string
+            ? `Error: Field "${P}" used in "having" needs to be provided in "by".`
+            : [
+                Error,
+                'Field ',
+                P,
+                ` in "having" needs to be provided in "by"`,
+              ]
+        }[HavingFields]
+      : 'take' extends Keys<T>
+      ? 'orderBy' extends Keys<T>
+        ? ByValid extends True
+          ? {}
+          : {
+              [P in OrderFields]: P extends ByFields
+                ? never
+                : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+            }[OrderFields]
+        : 'Error: If you provide "take", you also need to provide "orderBy"'
+      : 'skip' extends Keys<T>
+      ? 'orderBy' extends Keys<T>
+        ? ByValid extends True
+          ? {}
+          : {
+              [P in OrderFields]: P extends ByFields
+                ? never
+                : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+            }[OrderFields]
+        : 'Error: If you provide "skip", you also need to provide "orderBy"'
+      : ByValid extends True
+      ? {}
+      : {
+          [P in OrderFields]: P extends ByFields
+            ? never
+            : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+        }[OrderFields]
+    >(args: SubsetIntersection<T, Transactions_detailGroupByArgs, OrderByArg> & InputErrors): {} extends InputErrors ? GetTransactions_detailGroupByPayload<T> : Prisma.PrismaPromise<InputErrors>
+  /**
+   * Fields of the Transactions_detail model
+   */
+  readonly fields: Transactions_detailFieldRefs;
+  }
+
+  /**
+   * The delegate class that acts as a "Promise-like" for Transactions_detail.
+   * Why is this prefixed with `Prisma__`?
+   * Because we want to prevent naming conflicts as mentioned in
+   * https://github.com/prisma/prisma-client-js/issues/707
+   */
+  export interface Prisma__Transactions_detailClient<T, Null = never, ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs, GlobalOmitOptions = {}> extends Prisma.PrismaPromise<T> {
+    readonly [Symbol.toStringTag]: "PrismaPromise"
+    user<T extends UsersDefaultArgs<ExtArgs> = {}>(args?: Subset<T, UsersDefaultArgs<ExtArgs>>): Prisma__UsersClient<$Result.GetResult<Prisma.$UsersPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | Null, Null, ExtArgs, GlobalOmitOptions>
+    details_transaction<T extends TransactionsDefaultArgs<ExtArgs> = {}>(args?: Subset<T, TransactionsDefaultArgs<ExtArgs>>): Prisma__TransactionsClient<$Result.GetResult<Prisma.$TransactionsPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | Null, Null, ExtArgs, GlobalOmitOptions>
+    detail_event<T extends EventsDefaultArgs<ExtArgs> = {}>(args?: Subset<T, EventsDefaultArgs<ExtArgs>>): Prisma__EventsClient<$Result.GetResult<Prisma.$EventsPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | Null, Null, ExtArgs, GlobalOmitOptions>
+    detail_organizer<T extends OrganizerDefaultArgs<ExtArgs> = {}>(args?: Subset<T, OrganizerDefaultArgs<ExtArgs>>): Prisma__OrganizerClient<$Result.GetResult<Prisma.$OrganizerPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | Null, Null, ExtArgs, GlobalOmitOptions>
+    /**
+     * Attaches callbacks for the resolution and/or rejection of the Promise.
+     * @param onfulfilled The callback to execute when the Promise is resolved.
+     * @param onrejected The callback to execute when the Promise is rejected.
+     * @returns A Promise for the completion of which ever callback is executed.
+     */
+    then<TResult1 = T, TResult2 = never>(onfulfilled?: ((value: T) => TResult1 | PromiseLike<TResult1>) | undefined | null, onrejected?: ((reason: any) => TResult2 | PromiseLike<TResult2>) | undefined | null): $Utils.JsPromise<TResult1 | TResult2>
+    /**
+     * Attaches a callback for only the rejection of the Promise.
+     * @param onrejected The callback to execute when the Promise is rejected.
+     * @returns A Promise for the completion of the callback.
+     */
+    catch<TResult = never>(onrejected?: ((reason: any) => TResult | PromiseLike<TResult>) | undefined | null): $Utils.JsPromise<T | TResult>
+    /**
+     * Attaches a callback that is invoked when the Promise is settled (fulfilled or rejected). The
+     * resolved value cannot be modified from the callback.
+     * @param onfinally The callback to execute when the Promise is settled (fulfilled or rejected).
+     * @returns A Promise for the completion of the callback.
+     */
+    finally(onfinally?: (() => void) | undefined | null): $Utils.JsPromise<T>
+  }
+
+
+
+
+  /**
+   * Fields of the Transactions_detail model
+   */
+  interface Transactions_detailFieldRefs {
+    readonly id: FieldRef<"Transactions_detail", 'String'>
+    readonly transaction_id: FieldRef<"Transactions_detail", 'String'>
+    readonly user_id: FieldRef<"Transactions_detail", 'String'>
+    readonly event_id: FieldRef<"Transactions_detail", 'String'>
+    readonly organizer_id: FieldRef<"Transactions_detail", 'String'>
+    readonly quantity: FieldRef<"Transactions_detail", 'Int'>
+    readonly price: FieldRef<"Transactions_detail", 'Int'>
+    readonly isConfirmed: FieldRef<"Transactions_detail", 'Boolean'>
+    readonly transaction_status: FieldRef<"Transactions_detail", 'TransactionStatus'>
+  }
+    
+
+  // Custom InputTypes
+  /**
+   * Transactions_detail findUnique
+   */
+  export type Transactions_detailFindUniqueArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Transactions_detail
+     */
+    select?: Transactions_detailSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the Transactions_detail
+     */
+    omit?: Transactions_detailOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: Transactions_detailInclude<ExtArgs> | null
+    /**
+     * Filter, which Transactions_detail to fetch.
+     */
+    where: Transactions_detailWhereUniqueInput
+  }
+
+  /**
+   * Transactions_detail findUniqueOrThrow
+   */
+  export type Transactions_detailFindUniqueOrThrowArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Transactions_detail
+     */
+    select?: Transactions_detailSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the Transactions_detail
+     */
+    omit?: Transactions_detailOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: Transactions_detailInclude<ExtArgs> | null
+    /**
+     * Filter, which Transactions_detail to fetch.
+     */
+    where: Transactions_detailWhereUniqueInput
+  }
+
+  /**
+   * Transactions_detail findFirst
+   */
+  export type Transactions_detailFindFirstArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Transactions_detail
+     */
+    select?: Transactions_detailSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the Transactions_detail
+     */
+    omit?: Transactions_detailOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: Transactions_detailInclude<ExtArgs> | null
+    /**
+     * Filter, which Transactions_detail to fetch.
+     */
+    where?: Transactions_detailWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of Transactions_details to fetch.
+     */
+    orderBy?: Transactions_detailOrderByWithRelationInput | Transactions_detailOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for searching for Transactions_details.
+     */
+    cursor?: Transactions_detailWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` Transactions_details from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` Transactions_details.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
+     * 
+     * Filter by unique combinations of Transactions_details.
+     */
+    distinct?: Transactions_detailScalarFieldEnum | Transactions_detailScalarFieldEnum[]
+  }
+
+  /**
+   * Transactions_detail findFirstOrThrow
+   */
+  export type Transactions_detailFindFirstOrThrowArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Transactions_detail
+     */
+    select?: Transactions_detailSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the Transactions_detail
+     */
+    omit?: Transactions_detailOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: Transactions_detailInclude<ExtArgs> | null
+    /**
+     * Filter, which Transactions_detail to fetch.
+     */
+    where?: Transactions_detailWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of Transactions_details to fetch.
+     */
+    orderBy?: Transactions_detailOrderByWithRelationInput | Transactions_detailOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for searching for Transactions_details.
+     */
+    cursor?: Transactions_detailWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` Transactions_details from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` Transactions_details.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
+     * 
+     * Filter by unique combinations of Transactions_details.
+     */
+    distinct?: Transactions_detailScalarFieldEnum | Transactions_detailScalarFieldEnum[]
+  }
+
+  /**
+   * Transactions_detail findMany
+   */
+  export type Transactions_detailFindManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Transactions_detail
+     */
+    select?: Transactions_detailSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the Transactions_detail
+     */
+    omit?: Transactions_detailOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: Transactions_detailInclude<ExtArgs> | null
+    /**
+     * Filter, which Transactions_details to fetch.
+     */
+    where?: Transactions_detailWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of Transactions_details to fetch.
+     */
+    orderBy?: Transactions_detailOrderByWithRelationInput | Transactions_detailOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for listing Transactions_details.
+     */
+    cursor?: Transactions_detailWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` Transactions_details from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` Transactions_details.
+     */
+    skip?: number
+    distinct?: Transactions_detailScalarFieldEnum | Transactions_detailScalarFieldEnum[]
+  }
+
+  /**
+   * Transactions_detail create
+   */
+  export type Transactions_detailCreateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Transactions_detail
+     */
+    select?: Transactions_detailSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the Transactions_detail
+     */
+    omit?: Transactions_detailOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: Transactions_detailInclude<ExtArgs> | null
+    /**
+     * The data needed to create a Transactions_detail.
+     */
+    data: XOR<Transactions_detailCreateInput, Transactions_detailUncheckedCreateInput>
+  }
+
+  /**
+   * Transactions_detail createMany
+   */
+  export type Transactions_detailCreateManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * The data used to create many Transactions_details.
+     */
+    data: Transactions_detailCreateManyInput | Transactions_detailCreateManyInput[]
+    skipDuplicates?: boolean
+  }
+
+  /**
+   * Transactions_detail createManyAndReturn
+   */
+  export type Transactions_detailCreateManyAndReturnArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Transactions_detail
+     */
+    select?: Transactions_detailSelectCreateManyAndReturn<ExtArgs> | null
+    /**
+     * Omit specific fields from the Transactions_detail
+     */
+    omit?: Transactions_detailOmit<ExtArgs> | null
+    /**
+     * The data used to create many Transactions_details.
+     */
+    data: Transactions_detailCreateManyInput | Transactions_detailCreateManyInput[]
+    skipDuplicates?: boolean
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: Transactions_detailIncludeCreateManyAndReturn<ExtArgs> | null
+  }
+
+  /**
+   * Transactions_detail update
+   */
+  export type Transactions_detailUpdateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Transactions_detail
+     */
+    select?: Transactions_detailSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the Transactions_detail
+     */
+    omit?: Transactions_detailOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: Transactions_detailInclude<ExtArgs> | null
+    /**
+     * The data needed to update a Transactions_detail.
+     */
+    data: XOR<Transactions_detailUpdateInput, Transactions_detailUncheckedUpdateInput>
+    /**
+     * Choose, which Transactions_detail to update.
+     */
+    where: Transactions_detailWhereUniqueInput
+  }
+
+  /**
+   * Transactions_detail updateMany
+   */
+  export type Transactions_detailUpdateManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * The data used to update Transactions_details.
+     */
+    data: XOR<Transactions_detailUpdateManyMutationInput, Transactions_detailUncheckedUpdateManyInput>
+    /**
+     * Filter which Transactions_details to update
+     */
+    where?: Transactions_detailWhereInput
+    /**
+     * Limit how many Transactions_details to update.
+     */
+    limit?: number
+  }
+
+  /**
+   * Transactions_detail updateManyAndReturn
+   */
+  export type Transactions_detailUpdateManyAndReturnArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Transactions_detail
+     */
+    select?: Transactions_detailSelectUpdateManyAndReturn<ExtArgs> | null
+    /**
+     * Omit specific fields from the Transactions_detail
+     */
+    omit?: Transactions_detailOmit<ExtArgs> | null
+    /**
+     * The data used to update Transactions_details.
+     */
+    data: XOR<Transactions_detailUpdateManyMutationInput, Transactions_detailUncheckedUpdateManyInput>
+    /**
+     * Filter which Transactions_details to update
+     */
+    where?: Transactions_detailWhereInput
+    /**
+     * Limit how many Transactions_details to update.
+     */
+    limit?: number
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: Transactions_detailIncludeUpdateManyAndReturn<ExtArgs> | null
+  }
+
+  /**
+   * Transactions_detail upsert
+   */
+  export type Transactions_detailUpsertArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Transactions_detail
+     */
+    select?: Transactions_detailSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the Transactions_detail
+     */
+    omit?: Transactions_detailOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: Transactions_detailInclude<ExtArgs> | null
+    /**
+     * The filter to search for the Transactions_detail to update in case it exists.
+     */
+    where: Transactions_detailWhereUniqueInput
+    /**
+     * In case the Transactions_detail found by the `where` argument doesn't exist, create a new Transactions_detail with this data.
+     */
+    create: XOR<Transactions_detailCreateInput, Transactions_detailUncheckedCreateInput>
+    /**
+     * In case the Transactions_detail was found with the provided `where` argument, update it with this data.
+     */
+    update: XOR<Transactions_detailUpdateInput, Transactions_detailUncheckedUpdateInput>
+  }
+
+  /**
+   * Transactions_detail delete
+   */
+  export type Transactions_detailDeleteArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Transactions_detail
+     */
+    select?: Transactions_detailSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the Transactions_detail
+     */
+    omit?: Transactions_detailOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: Transactions_detailInclude<ExtArgs> | null
+    /**
+     * Filter which Transactions_detail to delete.
+     */
+    where: Transactions_detailWhereUniqueInput
+  }
+
+  /**
+   * Transactions_detail deleteMany
+   */
+  export type Transactions_detailDeleteManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Filter which Transactions_details to delete
+     */
+    where?: Transactions_detailWhereInput
+    /**
+     * Limit how many Transactions_details to delete.
+     */
+    limit?: number
+  }
+
+  /**
+   * Transactions_detail without action
+   */
+  export type Transactions_detailDefaultArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Transactions_detail
+     */
+    select?: Transactions_detailSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the Transactions_detail
+     */
+    omit?: Transactions_detailOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: Transactions_detailInclude<ExtArgs> | null
+  }
+
+
+  /**
    * Enums
    */
 
@@ -6877,7 +18034,7 @@ export namespace Prisma {
     birthdate: 'birthdate',
     phone_number: 'phone_number',
     avatar: 'avatar',
-    refferal_code: 'refferal_code',
+    referral_code: 'referral_code',
     isVerified: 'isVerified',
     created_at: 'created_at',
     updated_at: 'updated_at'
@@ -6894,6 +18051,16 @@ export namespace Prisma {
   export type OrganizerScalarFieldEnum = (typeof OrganizerScalarFieldEnum)[keyof typeof OrganizerScalarFieldEnum]
 
 
+  export const ArticlesScalarFieldEnum: {
+    id: 'id',
+    organizer_id: 'organizer_id',
+    title: 'title',
+    created_at: 'created_at'
+  };
+
+  export type ArticlesScalarFieldEnum = (typeof ArticlesScalarFieldEnum)[keyof typeof ArticlesScalarFieldEnum]
+
+
   export const EventsScalarFieldEnum: {
     id: 'id',
     organizer_id: 'organizer_id',
@@ -6901,6 +18068,7 @@ export namespace Prisma {
     event_location_id: 'event_location_id',
     name: 'name',
     description: 'description',
+    image: 'image',
     price: 'price',
     start_date: 'start_date',
     end_date: 'end_date',
@@ -6921,12 +18089,99 @@ export namespace Prisma {
 
   export const Event_LocationScalarFieldEnum: {
     id: 'id',
-    event_id: 'event_id',
     city: 'city',
     address: 'address'
   };
 
   export type Event_LocationScalarFieldEnum = (typeof Event_LocationScalarFieldEnum)[keyof typeof Event_LocationScalarFieldEnum]
+
+
+  export const Event_SeatScalarFieldEnum: {
+    id: 'id',
+    events_id: 'events_id',
+    total: 'total'
+  };
+
+  export type Event_SeatScalarFieldEnum = (typeof Event_SeatScalarFieldEnum)[keyof typeof Event_SeatScalarFieldEnum]
+
+
+  export const Event_ReviewsScalarFieldEnum: {
+    id: 'id',
+    user_id: 'user_id',
+    events_id: 'events_id',
+    review: 'review',
+    rating: 'rating',
+    created_at: 'created_at'
+  };
+
+  export type Event_ReviewsScalarFieldEnum = (typeof Event_ReviewsScalarFieldEnum)[keyof typeof Event_ReviewsScalarFieldEnum]
+
+
+  export const Event_AttendeesScalarFieldEnum: {
+    id: 'id',
+    user_id: 'user_id',
+    event_id: 'event_id',
+    status: 'status'
+  };
+
+  export type Event_AttendeesScalarFieldEnum = (typeof Event_AttendeesScalarFieldEnum)[keyof typeof Event_AttendeesScalarFieldEnum]
+
+
+  export const Referral_CodeScalarFieldEnum: {
+    id: 'id',
+    user_id: 'user_id',
+    code: 'code',
+    points: 'points'
+  };
+
+  export type Referral_CodeScalarFieldEnum = (typeof Referral_CodeScalarFieldEnum)[keyof typeof Referral_CodeScalarFieldEnum]
+
+
+  export const Referral_UsageScalarFieldEnum: {
+    id: 'id',
+    user_id: 'user_id',
+    referral_code_id: 'referral_code_id',
+    used_at: 'used_at'
+  };
+
+  export type Referral_UsageScalarFieldEnum = (typeof Referral_UsageScalarFieldEnum)[keyof typeof Referral_UsageScalarFieldEnum]
+
+
+  export const VoucherScalarFieldEnum: {
+    id: 'id',
+    organizer_id: 'organizer_id',
+    code: 'code',
+    amount: 'amount',
+    limit: 'limit',
+    expired_at: 'expired_at'
+  };
+
+  export type VoucherScalarFieldEnum = (typeof VoucherScalarFieldEnum)[keyof typeof VoucherScalarFieldEnum]
+
+
+  export const TransactionsScalarFieldEnum: {
+    id: 'id',
+    voucher_id: 'voucher_id',
+    amount: 'amount',
+    proof: 'proof'
+  };
+
+  export type TransactionsScalarFieldEnum = (typeof TransactionsScalarFieldEnum)[keyof typeof TransactionsScalarFieldEnum]
+
+
+  export const Transactions_detailScalarFieldEnum: {
+    id: 'id',
+    transaction_id: 'transaction_id',
+    user_id: 'user_id',
+    event_id: 'event_id',
+    organizer_id: 'organizer_id',
+    quantity: 'quantity',
+    price: 'price',
+    isConfirmed: 'isConfirmed',
+    transaction_status: 'transaction_status'
+  };
+
+  export type Transactions_detailScalarFieldEnum = (typeof Transactions_detailScalarFieldEnum)[keyof typeof Transactions_detailScalarFieldEnum]
 
 
   export const SortOrder: {
@@ -7008,6 +18263,34 @@ export namespace Prisma {
 
 
   /**
+   * Reference to a field of type 'Status'
+   */
+  export type EnumStatusFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'Status'>
+    
+
+
+  /**
+   * Reference to a field of type 'Status[]'
+   */
+  export type ListEnumStatusFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'Status[]'>
+    
+
+
+  /**
+   * Reference to a field of type 'TransactionStatus'
+   */
+  export type EnumTransactionStatusFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'TransactionStatus'>
+    
+
+
+  /**
+   * Reference to a field of type 'TransactionStatus[]'
+   */
+  export type ListEnumTransactionStatusFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'TransactionStatus[]'>
+    
+
+
+  /**
    * Reference to a field of type 'Float'
    */
   export type FloatFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'Float'>
@@ -7037,11 +18320,16 @@ export namespace Prisma {
     birthdate?: DateTimeFilter<"Users"> | Date | string
     phone_number?: StringFilter<"Users"> | string
     avatar?: StringNullableFilter<"Users"> | string | null
-    refferal_code?: StringNullableFilter<"Users"> | string | null
+    referral_code?: StringNullableFilter<"Users"> | string | null
     isVerified?: BoolFilter<"Users"> | boolean
     created_at?: DateTimeFilter<"Users"> | Date | string
     updated_at?: DateTimeFilter<"Users"> | Date | string
     organizer?: OrganizerListRelationFilter
+    reviews_user?: Event_ReviewsListRelationFilter
+    attendees_user?: Event_AttendeesListRelationFilter
+    referral_user?: XOR<Referral_CodeNullableScalarRelationFilter, Referral_CodeWhereInput> | null
+    usageReferral_user?: Referral_UsageListRelationFilter
+    transactions?: Transactions_detailListRelationFilter
   }
 
   export type UsersOrderByWithRelationInput = {
@@ -7054,17 +18342,22 @@ export namespace Prisma {
     birthdate?: SortOrder
     phone_number?: SortOrder
     avatar?: SortOrderInput | SortOrder
-    refferal_code?: SortOrderInput | SortOrder
+    referral_code?: SortOrderInput | SortOrder
     isVerified?: SortOrder
     created_at?: SortOrder
     updated_at?: SortOrder
     organizer?: OrganizerOrderByRelationAggregateInput
+    reviews_user?: Event_ReviewsOrderByRelationAggregateInput
+    attendees_user?: Event_AttendeesOrderByRelationAggregateInput
+    referral_user?: Referral_CodeOrderByWithRelationInput
+    usageReferral_user?: Referral_UsageOrderByRelationAggregateInput
+    transactions?: Transactions_detailOrderByRelationAggregateInput
   }
 
   export type UsersWhereUniqueInput = Prisma.AtLeast<{
     id?: string
     email?: string
-    refferal_code?: string
+    referral_code?: string
     AND?: UsersWhereInput | UsersWhereInput[]
     OR?: UsersWhereInput[]
     NOT?: UsersWhereInput | UsersWhereInput[]
@@ -7079,7 +18372,12 @@ export namespace Prisma {
     created_at?: DateTimeFilter<"Users"> | Date | string
     updated_at?: DateTimeFilter<"Users"> | Date | string
     organizer?: OrganizerListRelationFilter
-  }, "id" | "email" | "refferal_code">
+    reviews_user?: Event_ReviewsListRelationFilter
+    attendees_user?: Event_AttendeesListRelationFilter
+    referral_user?: XOR<Referral_CodeNullableScalarRelationFilter, Referral_CodeWhereInput> | null
+    usageReferral_user?: Referral_UsageListRelationFilter
+    transactions?: Transactions_detailListRelationFilter
+  }, "id" | "email" | "referral_code">
 
   export type UsersOrderByWithAggregationInput = {
     id?: SortOrder
@@ -7091,7 +18389,7 @@ export namespace Prisma {
     birthdate?: SortOrder
     phone_number?: SortOrder
     avatar?: SortOrderInput | SortOrder
-    refferal_code?: SortOrderInput | SortOrder
+    referral_code?: SortOrderInput | SortOrder
     isVerified?: SortOrder
     created_at?: SortOrder
     updated_at?: SortOrder
@@ -7113,7 +18411,7 @@ export namespace Prisma {
     birthdate?: DateTimeWithAggregatesFilter<"Users"> | Date | string
     phone_number?: StringWithAggregatesFilter<"Users"> | string
     avatar?: StringNullableWithAggregatesFilter<"Users"> | string | null
-    refferal_code?: StringNullableWithAggregatesFilter<"Users"> | string | null
+    referral_code?: StringNullableWithAggregatesFilter<"Users"> | string | null
     isVerified?: BoolWithAggregatesFilter<"Users"> | boolean
     created_at?: DateTimeWithAggregatesFilter<"Users"> | Date | string
     updated_at?: DateTimeWithAggregatesFilter<"Users"> | Date | string
@@ -7127,6 +18425,8 @@ export namespace Prisma {
     user_id?: StringFilter<"Organizer"> | string
     user?: XOR<UsersScalarRelationFilter, UsersWhereInput>
     event?: EventsListRelationFilter
+    organizer_voucher?: VoucherListRelationFilter
+    organizer_transactionDetails?: Transactions_detailListRelationFilter
   }
 
   export type OrganizerOrderByWithRelationInput = {
@@ -7134,6 +18434,8 @@ export namespace Prisma {
     user_id?: SortOrder
     user?: UsersOrderByWithRelationInput
     event?: EventsOrderByRelationAggregateInput
+    organizer_voucher?: VoucherOrderByRelationAggregateInput
+    organizer_transactionDetails?: Transactions_detailOrderByRelationAggregateInput
   }
 
   export type OrganizerWhereUniqueInput = Prisma.AtLeast<{
@@ -7144,6 +18446,8 @@ export namespace Prisma {
     user_id?: StringFilter<"Organizer"> | string
     user?: XOR<UsersScalarRelationFilter, UsersWhereInput>
     event?: EventsListRelationFilter
+    organizer_voucher?: VoucherListRelationFilter
+    organizer_transactionDetails?: Transactions_detailListRelationFilter
   }, "id">
 
   export type OrganizerOrderByWithAggregationInput = {
@@ -7162,6 +18466,53 @@ export namespace Prisma {
     user_id?: StringWithAggregatesFilter<"Organizer"> | string
   }
 
+  export type ArticlesWhereInput = {
+    AND?: ArticlesWhereInput | ArticlesWhereInput[]
+    OR?: ArticlesWhereInput[]
+    NOT?: ArticlesWhereInput | ArticlesWhereInput[]
+    id?: StringFilter<"Articles"> | string
+    organizer_id?: StringFilter<"Articles"> | string
+    title?: StringFilter<"Articles"> | string
+    created_at?: DateTimeFilter<"Articles"> | Date | string
+  }
+
+  export type ArticlesOrderByWithRelationInput = {
+    id?: SortOrder
+    organizer_id?: SortOrder
+    title?: SortOrder
+    created_at?: SortOrder
+  }
+
+  export type ArticlesWhereUniqueInput = Prisma.AtLeast<{
+    id?: string
+    AND?: ArticlesWhereInput | ArticlesWhereInput[]
+    OR?: ArticlesWhereInput[]
+    NOT?: ArticlesWhereInput | ArticlesWhereInput[]
+    organizer_id?: StringFilter<"Articles"> | string
+    title?: StringFilter<"Articles"> | string
+    created_at?: DateTimeFilter<"Articles"> | Date | string
+  }, "id">
+
+  export type ArticlesOrderByWithAggregationInput = {
+    id?: SortOrder
+    organizer_id?: SortOrder
+    title?: SortOrder
+    created_at?: SortOrder
+    _count?: ArticlesCountOrderByAggregateInput
+    _max?: ArticlesMaxOrderByAggregateInput
+    _min?: ArticlesMinOrderByAggregateInput
+  }
+
+  export type ArticlesScalarWhereWithAggregatesInput = {
+    AND?: ArticlesScalarWhereWithAggregatesInput | ArticlesScalarWhereWithAggregatesInput[]
+    OR?: ArticlesScalarWhereWithAggregatesInput[]
+    NOT?: ArticlesScalarWhereWithAggregatesInput | ArticlesScalarWhereWithAggregatesInput[]
+    id?: StringWithAggregatesFilter<"Articles"> | string
+    organizer_id?: StringWithAggregatesFilter<"Articles"> | string
+    title?: StringWithAggregatesFilter<"Articles"> | string
+    created_at?: DateTimeWithAggregatesFilter<"Articles"> | Date | string
+  }
+
   export type EventsWhereInput = {
     AND?: EventsWhereInput | EventsWhereInput[]
     OR?: EventsWhereInput[]
@@ -7172,14 +18523,19 @@ export namespace Prisma {
     event_location_id?: StringFilter<"Events"> | string
     name?: StringFilter<"Events"> | string
     description?: StringFilter<"Events"> | string
+    image?: StringFilter<"Events"> | string
     price?: IntFilter<"Events"> | number
     start_date?: DateTimeFilter<"Events"> | Date | string
     end_date?: DateTimeNullableFilter<"Events"> | Date | string | null
     created_at?: DateTimeFilter<"Events"> | Date | string
     updated_at?: DateTimeFilter<"Events"> | Date | string
     organizer?: XOR<OrganizerScalarRelationFilter, OrganizerWhereInput>
-    event_category?: XOR<Event_CategoryScalarRelationFilter, Event_CategoryWhereInput>
-    event_location?: XOR<Event_LocationScalarRelationFilter, Event_LocationWhereInput>
+    category_event?: XOR<Event_CategoryScalarRelationFilter, Event_CategoryWhereInput>
+    location_Event?: XOR<Event_LocationScalarRelationFilter, Event_LocationWhereInput>
+    seat_event?: XOR<Event_SeatNullableScalarRelationFilter, Event_SeatWhereInput> | null
+    reviews_event?: Event_ReviewsListRelationFilter
+    attendees_event?: Event_AttendeesListRelationFilter
+    event_transactionDetail?: Transactions_detailListRelationFilter
   }
 
   export type EventsOrderByWithRelationInput = {
@@ -7189,14 +18545,19 @@ export namespace Prisma {
     event_location_id?: SortOrder
     name?: SortOrder
     description?: SortOrder
+    image?: SortOrder
     price?: SortOrder
     start_date?: SortOrder
     end_date?: SortOrderInput | SortOrder
     created_at?: SortOrder
     updated_at?: SortOrder
     organizer?: OrganizerOrderByWithRelationInput
-    event_category?: Event_CategoryOrderByWithRelationInput
-    event_location?: Event_LocationOrderByWithRelationInput
+    category_event?: Event_CategoryOrderByWithRelationInput
+    location_Event?: Event_LocationOrderByWithRelationInput
+    seat_event?: Event_SeatOrderByWithRelationInput
+    reviews_event?: Event_ReviewsOrderByRelationAggregateInput
+    attendees_event?: Event_AttendeesOrderByRelationAggregateInput
+    event_transactionDetail?: Transactions_detailOrderByRelationAggregateInput
   }
 
   export type EventsWhereUniqueInput = Prisma.AtLeast<{
@@ -7209,14 +18570,19 @@ export namespace Prisma {
     event_location_id?: StringFilter<"Events"> | string
     name?: StringFilter<"Events"> | string
     description?: StringFilter<"Events"> | string
+    image?: StringFilter<"Events"> | string
     price?: IntFilter<"Events"> | number
     start_date?: DateTimeFilter<"Events"> | Date | string
     end_date?: DateTimeNullableFilter<"Events"> | Date | string | null
     created_at?: DateTimeFilter<"Events"> | Date | string
     updated_at?: DateTimeFilter<"Events"> | Date | string
     organizer?: XOR<OrganizerScalarRelationFilter, OrganizerWhereInput>
-    event_category?: XOR<Event_CategoryScalarRelationFilter, Event_CategoryWhereInput>
-    event_location?: XOR<Event_LocationScalarRelationFilter, Event_LocationWhereInput>
+    category_event?: XOR<Event_CategoryScalarRelationFilter, Event_CategoryWhereInput>
+    location_Event?: XOR<Event_LocationScalarRelationFilter, Event_LocationWhereInput>
+    seat_event?: XOR<Event_SeatNullableScalarRelationFilter, Event_SeatWhereInput> | null
+    reviews_event?: Event_ReviewsListRelationFilter
+    attendees_event?: Event_AttendeesListRelationFilter
+    event_transactionDetail?: Transactions_detailListRelationFilter
   }, "id">
 
   export type EventsOrderByWithAggregationInput = {
@@ -7226,6 +18592,7 @@ export namespace Prisma {
     event_location_id?: SortOrder
     name?: SortOrder
     description?: SortOrder
+    image?: SortOrder
     price?: SortOrder
     start_date?: SortOrder
     end_date?: SortOrderInput | SortOrder
@@ -7248,6 +18615,7 @@ export namespace Prisma {
     event_location_id?: StringWithAggregatesFilter<"Events"> | string
     name?: StringWithAggregatesFilter<"Events"> | string
     description?: StringWithAggregatesFilter<"Events"> | string
+    image?: StringWithAggregatesFilter<"Events"> | string
     price?: IntWithAggregatesFilter<"Events"> | number
     start_date?: DateTimeWithAggregatesFilter<"Events"> | Date | string
     end_date?: DateTimeNullableWithAggregatesFilter<"Events"> | Date | string | null
@@ -7300,7 +18668,6 @@ export namespace Prisma {
     OR?: Event_LocationWhereInput[]
     NOT?: Event_LocationWhereInput | Event_LocationWhereInput[]
     id?: StringFilter<"Event_Location"> | string
-    event_id?: StringFilter<"Event_Location"> | string
     city?: StringFilter<"Event_Location"> | string
     address?: StringFilter<"Event_Location"> | string
     event?: EventsListRelationFilter
@@ -7308,7 +18675,6 @@ export namespace Prisma {
 
   export type Event_LocationOrderByWithRelationInput = {
     id?: SortOrder
-    event_id?: SortOrder
     city?: SortOrder
     address?: SortOrder
     event?: EventsOrderByRelationAggregateInput
@@ -7319,7 +18685,6 @@ export namespace Prisma {
     AND?: Event_LocationWhereInput | Event_LocationWhereInput[]
     OR?: Event_LocationWhereInput[]
     NOT?: Event_LocationWhereInput | Event_LocationWhereInput[]
-    event_id?: StringFilter<"Event_Location"> | string
     city?: StringFilter<"Event_Location"> | string
     address?: StringFilter<"Event_Location"> | string
     event?: EventsListRelationFilter
@@ -7327,7 +18692,6 @@ export namespace Prisma {
 
   export type Event_LocationOrderByWithAggregationInput = {
     id?: SortOrder
-    event_id?: SortOrder
     city?: SortOrder
     address?: SortOrder
     _count?: Event_LocationCountOrderByAggregateInput
@@ -7340,9 +18704,487 @@ export namespace Prisma {
     OR?: Event_LocationScalarWhereWithAggregatesInput[]
     NOT?: Event_LocationScalarWhereWithAggregatesInput | Event_LocationScalarWhereWithAggregatesInput[]
     id?: StringWithAggregatesFilter<"Event_Location"> | string
-    event_id?: StringWithAggregatesFilter<"Event_Location"> | string
     city?: StringWithAggregatesFilter<"Event_Location"> | string
     address?: StringWithAggregatesFilter<"Event_Location"> | string
+  }
+
+  export type Event_SeatWhereInput = {
+    AND?: Event_SeatWhereInput | Event_SeatWhereInput[]
+    OR?: Event_SeatWhereInput[]
+    NOT?: Event_SeatWhereInput | Event_SeatWhereInput[]
+    id?: StringFilter<"Event_Seat"> | string
+    events_id?: StringFilter<"Event_Seat"> | string
+    total?: IntFilter<"Event_Seat"> | number
+    event?: XOR<EventsScalarRelationFilter, EventsWhereInput>
+  }
+
+  export type Event_SeatOrderByWithRelationInput = {
+    id?: SortOrder
+    events_id?: SortOrder
+    total?: SortOrder
+    event?: EventsOrderByWithRelationInput
+  }
+
+  export type Event_SeatWhereUniqueInput = Prisma.AtLeast<{
+    id?: string
+    events_id?: string
+    AND?: Event_SeatWhereInput | Event_SeatWhereInput[]
+    OR?: Event_SeatWhereInput[]
+    NOT?: Event_SeatWhereInput | Event_SeatWhereInput[]
+    total?: IntFilter<"Event_Seat"> | number
+    event?: XOR<EventsScalarRelationFilter, EventsWhereInput>
+  }, "id" | "events_id">
+
+  export type Event_SeatOrderByWithAggregationInput = {
+    id?: SortOrder
+    events_id?: SortOrder
+    total?: SortOrder
+    _count?: Event_SeatCountOrderByAggregateInput
+    _avg?: Event_SeatAvgOrderByAggregateInput
+    _max?: Event_SeatMaxOrderByAggregateInput
+    _min?: Event_SeatMinOrderByAggregateInput
+    _sum?: Event_SeatSumOrderByAggregateInput
+  }
+
+  export type Event_SeatScalarWhereWithAggregatesInput = {
+    AND?: Event_SeatScalarWhereWithAggregatesInput | Event_SeatScalarWhereWithAggregatesInput[]
+    OR?: Event_SeatScalarWhereWithAggregatesInput[]
+    NOT?: Event_SeatScalarWhereWithAggregatesInput | Event_SeatScalarWhereWithAggregatesInput[]
+    id?: StringWithAggregatesFilter<"Event_Seat"> | string
+    events_id?: StringWithAggregatesFilter<"Event_Seat"> | string
+    total?: IntWithAggregatesFilter<"Event_Seat"> | number
+  }
+
+  export type Event_ReviewsWhereInput = {
+    AND?: Event_ReviewsWhereInput | Event_ReviewsWhereInput[]
+    OR?: Event_ReviewsWhereInput[]
+    NOT?: Event_ReviewsWhereInput | Event_ReviewsWhereInput[]
+    id?: StringFilter<"Event_Reviews"> | string
+    user_id?: StringFilter<"Event_Reviews"> | string
+    events_id?: StringFilter<"Event_Reviews"> | string
+    review?: StringFilter<"Event_Reviews"> | string
+    rating?: IntFilter<"Event_Reviews"> | number
+    created_at?: DateTimeFilter<"Event_Reviews"> | Date | string
+    reviews_user?: XOR<UsersScalarRelationFilter, UsersWhereInput>
+    reviews_event?: XOR<EventsScalarRelationFilter, EventsWhereInput>
+  }
+
+  export type Event_ReviewsOrderByWithRelationInput = {
+    id?: SortOrder
+    user_id?: SortOrder
+    events_id?: SortOrder
+    review?: SortOrder
+    rating?: SortOrder
+    created_at?: SortOrder
+    reviews_user?: UsersOrderByWithRelationInput
+    reviews_event?: EventsOrderByWithRelationInput
+  }
+
+  export type Event_ReviewsWhereUniqueInput = Prisma.AtLeast<{
+    id?: string
+    AND?: Event_ReviewsWhereInput | Event_ReviewsWhereInput[]
+    OR?: Event_ReviewsWhereInput[]
+    NOT?: Event_ReviewsWhereInput | Event_ReviewsWhereInput[]
+    user_id?: StringFilter<"Event_Reviews"> | string
+    events_id?: StringFilter<"Event_Reviews"> | string
+    review?: StringFilter<"Event_Reviews"> | string
+    rating?: IntFilter<"Event_Reviews"> | number
+    created_at?: DateTimeFilter<"Event_Reviews"> | Date | string
+    reviews_user?: XOR<UsersScalarRelationFilter, UsersWhereInput>
+    reviews_event?: XOR<EventsScalarRelationFilter, EventsWhereInput>
+  }, "id">
+
+  export type Event_ReviewsOrderByWithAggregationInput = {
+    id?: SortOrder
+    user_id?: SortOrder
+    events_id?: SortOrder
+    review?: SortOrder
+    rating?: SortOrder
+    created_at?: SortOrder
+    _count?: Event_ReviewsCountOrderByAggregateInput
+    _avg?: Event_ReviewsAvgOrderByAggregateInput
+    _max?: Event_ReviewsMaxOrderByAggregateInput
+    _min?: Event_ReviewsMinOrderByAggregateInput
+    _sum?: Event_ReviewsSumOrderByAggregateInput
+  }
+
+  export type Event_ReviewsScalarWhereWithAggregatesInput = {
+    AND?: Event_ReviewsScalarWhereWithAggregatesInput | Event_ReviewsScalarWhereWithAggregatesInput[]
+    OR?: Event_ReviewsScalarWhereWithAggregatesInput[]
+    NOT?: Event_ReviewsScalarWhereWithAggregatesInput | Event_ReviewsScalarWhereWithAggregatesInput[]
+    id?: StringWithAggregatesFilter<"Event_Reviews"> | string
+    user_id?: StringWithAggregatesFilter<"Event_Reviews"> | string
+    events_id?: StringWithAggregatesFilter<"Event_Reviews"> | string
+    review?: StringWithAggregatesFilter<"Event_Reviews"> | string
+    rating?: IntWithAggregatesFilter<"Event_Reviews"> | number
+    created_at?: DateTimeWithAggregatesFilter<"Event_Reviews"> | Date | string
+  }
+
+  export type Event_AttendeesWhereInput = {
+    AND?: Event_AttendeesWhereInput | Event_AttendeesWhereInput[]
+    OR?: Event_AttendeesWhereInput[]
+    NOT?: Event_AttendeesWhereInput | Event_AttendeesWhereInput[]
+    id?: StringFilter<"Event_Attendees"> | string
+    user_id?: StringFilter<"Event_Attendees"> | string
+    event_id?: StringFilter<"Event_Attendees"> | string
+    status?: EnumStatusFilter<"Event_Attendees"> | $Enums.Status
+    user_attendees?: XOR<UsersScalarRelationFilter, UsersWhereInput>
+    user_event?: XOR<EventsScalarRelationFilter, EventsWhereInput>
+  }
+
+  export type Event_AttendeesOrderByWithRelationInput = {
+    id?: SortOrder
+    user_id?: SortOrder
+    event_id?: SortOrder
+    status?: SortOrder
+    user_attendees?: UsersOrderByWithRelationInput
+    user_event?: EventsOrderByWithRelationInput
+  }
+
+  export type Event_AttendeesWhereUniqueInput = Prisma.AtLeast<{
+    id?: string
+    AND?: Event_AttendeesWhereInput | Event_AttendeesWhereInput[]
+    OR?: Event_AttendeesWhereInput[]
+    NOT?: Event_AttendeesWhereInput | Event_AttendeesWhereInput[]
+    user_id?: StringFilter<"Event_Attendees"> | string
+    event_id?: StringFilter<"Event_Attendees"> | string
+    status?: EnumStatusFilter<"Event_Attendees"> | $Enums.Status
+    user_attendees?: XOR<UsersScalarRelationFilter, UsersWhereInput>
+    user_event?: XOR<EventsScalarRelationFilter, EventsWhereInput>
+  }, "id">
+
+  export type Event_AttendeesOrderByWithAggregationInput = {
+    id?: SortOrder
+    user_id?: SortOrder
+    event_id?: SortOrder
+    status?: SortOrder
+    _count?: Event_AttendeesCountOrderByAggregateInput
+    _max?: Event_AttendeesMaxOrderByAggregateInput
+    _min?: Event_AttendeesMinOrderByAggregateInput
+  }
+
+  export type Event_AttendeesScalarWhereWithAggregatesInput = {
+    AND?: Event_AttendeesScalarWhereWithAggregatesInput | Event_AttendeesScalarWhereWithAggregatesInput[]
+    OR?: Event_AttendeesScalarWhereWithAggregatesInput[]
+    NOT?: Event_AttendeesScalarWhereWithAggregatesInput | Event_AttendeesScalarWhereWithAggregatesInput[]
+    id?: StringWithAggregatesFilter<"Event_Attendees"> | string
+    user_id?: StringWithAggregatesFilter<"Event_Attendees"> | string
+    event_id?: StringWithAggregatesFilter<"Event_Attendees"> | string
+    status?: EnumStatusWithAggregatesFilter<"Event_Attendees"> | $Enums.Status
+  }
+
+  export type Referral_CodeWhereInput = {
+    AND?: Referral_CodeWhereInput | Referral_CodeWhereInput[]
+    OR?: Referral_CodeWhereInput[]
+    NOT?: Referral_CodeWhereInput | Referral_CodeWhereInput[]
+    id?: StringFilter<"Referral_Code"> | string
+    user_id?: StringFilter<"Referral_Code"> | string
+    code?: StringFilter<"Referral_Code"> | string
+    points?: IntFilter<"Referral_Code"> | number
+    user_referral?: XOR<UsersScalarRelationFilter, UsersWhereInput>
+    user_referralUsage?: Referral_UsageListRelationFilter
+  }
+
+  export type Referral_CodeOrderByWithRelationInput = {
+    id?: SortOrder
+    user_id?: SortOrder
+    code?: SortOrder
+    points?: SortOrder
+    user_referral?: UsersOrderByWithRelationInput
+    user_referralUsage?: Referral_UsageOrderByRelationAggregateInput
+  }
+
+  export type Referral_CodeWhereUniqueInput = Prisma.AtLeast<{
+    id?: string
+    user_id?: string
+    AND?: Referral_CodeWhereInput | Referral_CodeWhereInput[]
+    OR?: Referral_CodeWhereInput[]
+    NOT?: Referral_CodeWhereInput | Referral_CodeWhereInput[]
+    code?: StringFilter<"Referral_Code"> | string
+    points?: IntFilter<"Referral_Code"> | number
+    user_referral?: XOR<UsersScalarRelationFilter, UsersWhereInput>
+    user_referralUsage?: Referral_UsageListRelationFilter
+  }, "id" | "user_id">
+
+  export type Referral_CodeOrderByWithAggregationInput = {
+    id?: SortOrder
+    user_id?: SortOrder
+    code?: SortOrder
+    points?: SortOrder
+    _count?: Referral_CodeCountOrderByAggregateInput
+    _avg?: Referral_CodeAvgOrderByAggregateInput
+    _max?: Referral_CodeMaxOrderByAggregateInput
+    _min?: Referral_CodeMinOrderByAggregateInput
+    _sum?: Referral_CodeSumOrderByAggregateInput
+  }
+
+  export type Referral_CodeScalarWhereWithAggregatesInput = {
+    AND?: Referral_CodeScalarWhereWithAggregatesInput | Referral_CodeScalarWhereWithAggregatesInput[]
+    OR?: Referral_CodeScalarWhereWithAggregatesInput[]
+    NOT?: Referral_CodeScalarWhereWithAggregatesInput | Referral_CodeScalarWhereWithAggregatesInput[]
+    id?: StringWithAggregatesFilter<"Referral_Code"> | string
+    user_id?: StringWithAggregatesFilter<"Referral_Code"> | string
+    code?: StringWithAggregatesFilter<"Referral_Code"> | string
+    points?: IntWithAggregatesFilter<"Referral_Code"> | number
+  }
+
+  export type Referral_UsageWhereInput = {
+    AND?: Referral_UsageWhereInput | Referral_UsageWhereInput[]
+    OR?: Referral_UsageWhereInput[]
+    NOT?: Referral_UsageWhereInput | Referral_UsageWhereInput[]
+    id?: StringFilter<"Referral_Usage"> | string
+    user_id?: StringFilter<"Referral_Usage"> | string
+    referral_code_id?: StringFilter<"Referral_Usage"> | string
+    used_at?: DateTimeFilter<"Referral_Usage"> | Date | string
+    user_referralUsage?: XOR<UsersScalarRelationFilter, UsersWhereInput>
+    code_referralUsage?: XOR<Referral_CodeScalarRelationFilter, Referral_CodeWhereInput>
+  }
+
+  export type Referral_UsageOrderByWithRelationInput = {
+    id?: SortOrder
+    user_id?: SortOrder
+    referral_code_id?: SortOrder
+    used_at?: SortOrder
+    user_referralUsage?: UsersOrderByWithRelationInput
+    code_referralUsage?: Referral_CodeOrderByWithRelationInput
+  }
+
+  export type Referral_UsageWhereUniqueInput = Prisma.AtLeast<{
+    id?: string
+    AND?: Referral_UsageWhereInput | Referral_UsageWhereInput[]
+    OR?: Referral_UsageWhereInput[]
+    NOT?: Referral_UsageWhereInput | Referral_UsageWhereInput[]
+    user_id?: StringFilter<"Referral_Usage"> | string
+    referral_code_id?: StringFilter<"Referral_Usage"> | string
+    used_at?: DateTimeFilter<"Referral_Usage"> | Date | string
+    user_referralUsage?: XOR<UsersScalarRelationFilter, UsersWhereInput>
+    code_referralUsage?: XOR<Referral_CodeScalarRelationFilter, Referral_CodeWhereInput>
+  }, "id">
+
+  export type Referral_UsageOrderByWithAggregationInput = {
+    id?: SortOrder
+    user_id?: SortOrder
+    referral_code_id?: SortOrder
+    used_at?: SortOrder
+    _count?: Referral_UsageCountOrderByAggregateInput
+    _max?: Referral_UsageMaxOrderByAggregateInput
+    _min?: Referral_UsageMinOrderByAggregateInput
+  }
+
+  export type Referral_UsageScalarWhereWithAggregatesInput = {
+    AND?: Referral_UsageScalarWhereWithAggregatesInput | Referral_UsageScalarWhereWithAggregatesInput[]
+    OR?: Referral_UsageScalarWhereWithAggregatesInput[]
+    NOT?: Referral_UsageScalarWhereWithAggregatesInput | Referral_UsageScalarWhereWithAggregatesInput[]
+    id?: StringWithAggregatesFilter<"Referral_Usage"> | string
+    user_id?: StringWithAggregatesFilter<"Referral_Usage"> | string
+    referral_code_id?: StringWithAggregatesFilter<"Referral_Usage"> | string
+    used_at?: DateTimeWithAggregatesFilter<"Referral_Usage"> | Date | string
+  }
+
+  export type VoucherWhereInput = {
+    AND?: VoucherWhereInput | VoucherWhereInput[]
+    OR?: VoucherWhereInput[]
+    NOT?: VoucherWhereInput | VoucherWhereInput[]
+    id?: StringFilter<"Voucher"> | string
+    organizer_id?: StringFilter<"Voucher"> | string
+    code?: StringFilter<"Voucher"> | string
+    amount?: IntFilter<"Voucher"> | number
+    limit?: IntFilter<"Voucher"> | number
+    expired_at?: DateTimeFilter<"Voucher"> | Date | string
+    voucher_organizer?: XOR<OrganizerScalarRelationFilter, OrganizerWhereInput>
+    voucher_transaction?: TransactionsListRelationFilter
+  }
+
+  export type VoucherOrderByWithRelationInput = {
+    id?: SortOrder
+    organizer_id?: SortOrder
+    code?: SortOrder
+    amount?: SortOrder
+    limit?: SortOrder
+    expired_at?: SortOrder
+    voucher_organizer?: OrganizerOrderByWithRelationInput
+    voucher_transaction?: TransactionsOrderByRelationAggregateInput
+  }
+
+  export type VoucherWhereUniqueInput = Prisma.AtLeast<{
+    id?: string
+    AND?: VoucherWhereInput | VoucherWhereInput[]
+    OR?: VoucherWhereInput[]
+    NOT?: VoucherWhereInput | VoucherWhereInput[]
+    organizer_id?: StringFilter<"Voucher"> | string
+    code?: StringFilter<"Voucher"> | string
+    amount?: IntFilter<"Voucher"> | number
+    limit?: IntFilter<"Voucher"> | number
+    expired_at?: DateTimeFilter<"Voucher"> | Date | string
+    voucher_organizer?: XOR<OrganizerScalarRelationFilter, OrganizerWhereInput>
+    voucher_transaction?: TransactionsListRelationFilter
+  }, "id">
+
+  export type VoucherOrderByWithAggregationInput = {
+    id?: SortOrder
+    organizer_id?: SortOrder
+    code?: SortOrder
+    amount?: SortOrder
+    limit?: SortOrder
+    expired_at?: SortOrder
+    _count?: VoucherCountOrderByAggregateInput
+    _avg?: VoucherAvgOrderByAggregateInput
+    _max?: VoucherMaxOrderByAggregateInput
+    _min?: VoucherMinOrderByAggregateInput
+    _sum?: VoucherSumOrderByAggregateInput
+  }
+
+  export type VoucherScalarWhereWithAggregatesInput = {
+    AND?: VoucherScalarWhereWithAggregatesInput | VoucherScalarWhereWithAggregatesInput[]
+    OR?: VoucherScalarWhereWithAggregatesInput[]
+    NOT?: VoucherScalarWhereWithAggregatesInput | VoucherScalarWhereWithAggregatesInput[]
+    id?: StringWithAggregatesFilter<"Voucher"> | string
+    organizer_id?: StringWithAggregatesFilter<"Voucher"> | string
+    code?: StringWithAggregatesFilter<"Voucher"> | string
+    amount?: IntWithAggregatesFilter<"Voucher"> | number
+    limit?: IntWithAggregatesFilter<"Voucher"> | number
+    expired_at?: DateTimeWithAggregatesFilter<"Voucher"> | Date | string
+  }
+
+  export type TransactionsWhereInput = {
+    AND?: TransactionsWhereInput | TransactionsWhereInput[]
+    OR?: TransactionsWhereInput[]
+    NOT?: TransactionsWhereInput | TransactionsWhereInput[]
+    id?: StringFilter<"Transactions"> | string
+    voucher_id?: StringFilter<"Transactions"> | string
+    amount?: IntFilter<"Transactions"> | number
+    proof?: StringFilter<"Transactions"> | string
+    transaction_voucher?: XOR<VoucherScalarRelationFilter, VoucherWhereInput>
+    transaction_details?: Transactions_detailListRelationFilter
+  }
+
+  export type TransactionsOrderByWithRelationInput = {
+    id?: SortOrder
+    voucher_id?: SortOrder
+    amount?: SortOrder
+    proof?: SortOrder
+    transaction_voucher?: VoucherOrderByWithRelationInput
+    transaction_details?: Transactions_detailOrderByRelationAggregateInput
+  }
+
+  export type TransactionsWhereUniqueInput = Prisma.AtLeast<{
+    id?: string
+    AND?: TransactionsWhereInput | TransactionsWhereInput[]
+    OR?: TransactionsWhereInput[]
+    NOT?: TransactionsWhereInput | TransactionsWhereInput[]
+    voucher_id?: StringFilter<"Transactions"> | string
+    amount?: IntFilter<"Transactions"> | number
+    proof?: StringFilter<"Transactions"> | string
+    transaction_voucher?: XOR<VoucherScalarRelationFilter, VoucherWhereInput>
+    transaction_details?: Transactions_detailListRelationFilter
+  }, "id">
+
+  export type TransactionsOrderByWithAggregationInput = {
+    id?: SortOrder
+    voucher_id?: SortOrder
+    amount?: SortOrder
+    proof?: SortOrder
+    _count?: TransactionsCountOrderByAggregateInput
+    _avg?: TransactionsAvgOrderByAggregateInput
+    _max?: TransactionsMaxOrderByAggregateInput
+    _min?: TransactionsMinOrderByAggregateInput
+    _sum?: TransactionsSumOrderByAggregateInput
+  }
+
+  export type TransactionsScalarWhereWithAggregatesInput = {
+    AND?: TransactionsScalarWhereWithAggregatesInput | TransactionsScalarWhereWithAggregatesInput[]
+    OR?: TransactionsScalarWhereWithAggregatesInput[]
+    NOT?: TransactionsScalarWhereWithAggregatesInput | TransactionsScalarWhereWithAggregatesInput[]
+    id?: StringWithAggregatesFilter<"Transactions"> | string
+    voucher_id?: StringWithAggregatesFilter<"Transactions"> | string
+    amount?: IntWithAggregatesFilter<"Transactions"> | number
+    proof?: StringWithAggregatesFilter<"Transactions"> | string
+  }
+
+  export type Transactions_detailWhereInput = {
+    AND?: Transactions_detailWhereInput | Transactions_detailWhereInput[]
+    OR?: Transactions_detailWhereInput[]
+    NOT?: Transactions_detailWhereInput | Transactions_detailWhereInput[]
+    id?: StringFilter<"Transactions_detail"> | string
+    transaction_id?: StringFilter<"Transactions_detail"> | string
+    user_id?: StringFilter<"Transactions_detail"> | string
+    event_id?: StringFilter<"Transactions_detail"> | string
+    organizer_id?: StringFilter<"Transactions_detail"> | string
+    quantity?: IntFilter<"Transactions_detail"> | number
+    price?: IntFilter<"Transactions_detail"> | number
+    isConfirmed?: BoolFilter<"Transactions_detail"> | boolean
+    transaction_status?: EnumTransactionStatusFilter<"Transactions_detail"> | $Enums.TransactionStatus
+    user?: XOR<UsersScalarRelationFilter, UsersWhereInput>
+    details_transaction?: XOR<TransactionsScalarRelationFilter, TransactionsWhereInput>
+    detail_event?: XOR<EventsScalarRelationFilter, EventsWhereInput>
+    detail_organizer?: XOR<OrganizerScalarRelationFilter, OrganizerWhereInput>
+  }
+
+  export type Transactions_detailOrderByWithRelationInput = {
+    id?: SortOrder
+    transaction_id?: SortOrder
+    user_id?: SortOrder
+    event_id?: SortOrder
+    organizer_id?: SortOrder
+    quantity?: SortOrder
+    price?: SortOrder
+    isConfirmed?: SortOrder
+    transaction_status?: SortOrder
+    user?: UsersOrderByWithRelationInput
+    details_transaction?: TransactionsOrderByWithRelationInput
+    detail_event?: EventsOrderByWithRelationInput
+    detail_organizer?: OrganizerOrderByWithRelationInput
+  }
+
+  export type Transactions_detailWhereUniqueInput = Prisma.AtLeast<{
+    id?: string
+    AND?: Transactions_detailWhereInput | Transactions_detailWhereInput[]
+    OR?: Transactions_detailWhereInput[]
+    NOT?: Transactions_detailWhereInput | Transactions_detailWhereInput[]
+    transaction_id?: StringFilter<"Transactions_detail"> | string
+    user_id?: StringFilter<"Transactions_detail"> | string
+    event_id?: StringFilter<"Transactions_detail"> | string
+    organizer_id?: StringFilter<"Transactions_detail"> | string
+    quantity?: IntFilter<"Transactions_detail"> | number
+    price?: IntFilter<"Transactions_detail"> | number
+    isConfirmed?: BoolFilter<"Transactions_detail"> | boolean
+    transaction_status?: EnumTransactionStatusFilter<"Transactions_detail"> | $Enums.TransactionStatus
+    user?: XOR<UsersScalarRelationFilter, UsersWhereInput>
+    details_transaction?: XOR<TransactionsScalarRelationFilter, TransactionsWhereInput>
+    detail_event?: XOR<EventsScalarRelationFilter, EventsWhereInput>
+    detail_organizer?: XOR<OrganizerScalarRelationFilter, OrganizerWhereInput>
+  }, "id">
+
+  export type Transactions_detailOrderByWithAggregationInput = {
+    id?: SortOrder
+    transaction_id?: SortOrder
+    user_id?: SortOrder
+    event_id?: SortOrder
+    organizer_id?: SortOrder
+    quantity?: SortOrder
+    price?: SortOrder
+    isConfirmed?: SortOrder
+    transaction_status?: SortOrder
+    _count?: Transactions_detailCountOrderByAggregateInput
+    _avg?: Transactions_detailAvgOrderByAggregateInput
+    _max?: Transactions_detailMaxOrderByAggregateInput
+    _min?: Transactions_detailMinOrderByAggregateInput
+    _sum?: Transactions_detailSumOrderByAggregateInput
+  }
+
+  export type Transactions_detailScalarWhereWithAggregatesInput = {
+    AND?: Transactions_detailScalarWhereWithAggregatesInput | Transactions_detailScalarWhereWithAggregatesInput[]
+    OR?: Transactions_detailScalarWhereWithAggregatesInput[]
+    NOT?: Transactions_detailScalarWhereWithAggregatesInput | Transactions_detailScalarWhereWithAggregatesInput[]
+    id?: StringWithAggregatesFilter<"Transactions_detail"> | string
+    transaction_id?: StringWithAggregatesFilter<"Transactions_detail"> | string
+    user_id?: StringWithAggregatesFilter<"Transactions_detail"> | string
+    event_id?: StringWithAggregatesFilter<"Transactions_detail"> | string
+    organizer_id?: StringWithAggregatesFilter<"Transactions_detail"> | string
+    quantity?: IntWithAggregatesFilter<"Transactions_detail"> | number
+    price?: IntWithAggregatesFilter<"Transactions_detail"> | number
+    isConfirmed?: BoolWithAggregatesFilter<"Transactions_detail"> | boolean
+    transaction_status?: EnumTransactionStatusWithAggregatesFilter<"Transactions_detail"> | $Enums.TransactionStatus
   }
 
   export type UsersCreateInput = {
@@ -7355,11 +19197,16 @@ export namespace Prisma {
     birthdate: Date | string
     phone_number: string
     avatar?: string | null
-    refferal_code?: string | null
+    referral_code?: string | null
     isVerified?: boolean
     created_at?: Date | string
     updated_at?: Date | string
     organizer?: OrganizerCreateNestedManyWithoutUserInput
+    reviews_user?: Event_ReviewsCreateNestedManyWithoutReviews_userInput
+    attendees_user?: Event_AttendeesCreateNestedManyWithoutUser_attendeesInput
+    referral_user?: Referral_CodeCreateNestedOneWithoutUser_referralInput
+    usageReferral_user?: Referral_UsageCreateNestedManyWithoutUser_referralUsageInput
+    transactions?: Transactions_detailCreateNestedManyWithoutUserInput
   }
 
   export type UsersUncheckedCreateInput = {
@@ -7372,11 +19219,16 @@ export namespace Prisma {
     birthdate: Date | string
     phone_number: string
     avatar?: string | null
-    refferal_code?: string | null
+    referral_code?: string | null
     isVerified?: boolean
     created_at?: Date | string
     updated_at?: Date | string
     organizer?: OrganizerUncheckedCreateNestedManyWithoutUserInput
+    reviews_user?: Event_ReviewsUncheckedCreateNestedManyWithoutReviews_userInput
+    attendees_user?: Event_AttendeesUncheckedCreateNestedManyWithoutUser_attendeesInput
+    referral_user?: Referral_CodeUncheckedCreateNestedOneWithoutUser_referralInput
+    usageReferral_user?: Referral_UsageUncheckedCreateNestedManyWithoutUser_referralUsageInput
+    transactions?: Transactions_detailUncheckedCreateNestedManyWithoutUserInput
   }
 
   export type UsersUpdateInput = {
@@ -7389,11 +19241,16 @@ export namespace Prisma {
     birthdate?: DateTimeFieldUpdateOperationsInput | Date | string
     phone_number?: StringFieldUpdateOperationsInput | string
     avatar?: NullableStringFieldUpdateOperationsInput | string | null
-    refferal_code?: NullableStringFieldUpdateOperationsInput | string | null
+    referral_code?: NullableStringFieldUpdateOperationsInput | string | null
     isVerified?: BoolFieldUpdateOperationsInput | boolean
     created_at?: DateTimeFieldUpdateOperationsInput | Date | string
     updated_at?: DateTimeFieldUpdateOperationsInput | Date | string
     organizer?: OrganizerUpdateManyWithoutUserNestedInput
+    reviews_user?: Event_ReviewsUpdateManyWithoutReviews_userNestedInput
+    attendees_user?: Event_AttendeesUpdateManyWithoutUser_attendeesNestedInput
+    referral_user?: Referral_CodeUpdateOneWithoutUser_referralNestedInput
+    usageReferral_user?: Referral_UsageUpdateManyWithoutUser_referralUsageNestedInput
+    transactions?: Transactions_detailUpdateManyWithoutUserNestedInput
   }
 
   export type UsersUncheckedUpdateInput = {
@@ -7406,11 +19263,16 @@ export namespace Prisma {
     birthdate?: DateTimeFieldUpdateOperationsInput | Date | string
     phone_number?: StringFieldUpdateOperationsInput | string
     avatar?: NullableStringFieldUpdateOperationsInput | string | null
-    refferal_code?: NullableStringFieldUpdateOperationsInput | string | null
+    referral_code?: NullableStringFieldUpdateOperationsInput | string | null
     isVerified?: BoolFieldUpdateOperationsInput | boolean
     created_at?: DateTimeFieldUpdateOperationsInput | Date | string
     updated_at?: DateTimeFieldUpdateOperationsInput | Date | string
     organizer?: OrganizerUncheckedUpdateManyWithoutUserNestedInput
+    reviews_user?: Event_ReviewsUncheckedUpdateManyWithoutReviews_userNestedInput
+    attendees_user?: Event_AttendeesUncheckedUpdateManyWithoutUser_attendeesNestedInput
+    referral_user?: Referral_CodeUncheckedUpdateOneWithoutUser_referralNestedInput
+    usageReferral_user?: Referral_UsageUncheckedUpdateManyWithoutUser_referralUsageNestedInput
+    transactions?: Transactions_detailUncheckedUpdateManyWithoutUserNestedInput
   }
 
   export type UsersCreateManyInput = {
@@ -7423,7 +19285,7 @@ export namespace Prisma {
     birthdate: Date | string
     phone_number: string
     avatar?: string | null
-    refferal_code?: string | null
+    referral_code?: string | null
     isVerified?: boolean
     created_at?: Date | string
     updated_at?: Date | string
@@ -7439,7 +19301,7 @@ export namespace Prisma {
     birthdate?: DateTimeFieldUpdateOperationsInput | Date | string
     phone_number?: StringFieldUpdateOperationsInput | string
     avatar?: NullableStringFieldUpdateOperationsInput | string | null
-    refferal_code?: NullableStringFieldUpdateOperationsInput | string | null
+    referral_code?: NullableStringFieldUpdateOperationsInput | string | null
     isVerified?: BoolFieldUpdateOperationsInput | boolean
     created_at?: DateTimeFieldUpdateOperationsInput | Date | string
     updated_at?: DateTimeFieldUpdateOperationsInput | Date | string
@@ -7455,7 +19317,7 @@ export namespace Prisma {
     birthdate?: DateTimeFieldUpdateOperationsInput | Date | string
     phone_number?: StringFieldUpdateOperationsInput | string
     avatar?: NullableStringFieldUpdateOperationsInput | string | null
-    refferal_code?: NullableStringFieldUpdateOperationsInput | string | null
+    referral_code?: NullableStringFieldUpdateOperationsInput | string | null
     isVerified?: BoolFieldUpdateOperationsInput | boolean
     created_at?: DateTimeFieldUpdateOperationsInput | Date | string
     updated_at?: DateTimeFieldUpdateOperationsInput | Date | string
@@ -7465,24 +19327,32 @@ export namespace Prisma {
     id?: string
     user: UsersCreateNestedOneWithoutOrganizerInput
     event?: EventsCreateNestedManyWithoutOrganizerInput
+    organizer_voucher?: VoucherCreateNestedManyWithoutVoucher_organizerInput
+    organizer_transactionDetails?: Transactions_detailCreateNestedManyWithoutDetail_organizerInput
   }
 
   export type OrganizerUncheckedCreateInput = {
     id?: string
     user_id: string
     event?: EventsUncheckedCreateNestedManyWithoutOrganizerInput
+    organizer_voucher?: VoucherUncheckedCreateNestedManyWithoutVoucher_organizerInput
+    organizer_transactionDetails?: Transactions_detailUncheckedCreateNestedManyWithoutDetail_organizerInput
   }
 
   export type OrganizerUpdateInput = {
     id?: StringFieldUpdateOperationsInput | string
     user?: UsersUpdateOneRequiredWithoutOrganizerNestedInput
     event?: EventsUpdateManyWithoutOrganizerNestedInput
+    organizer_voucher?: VoucherUpdateManyWithoutVoucher_organizerNestedInput
+    organizer_transactionDetails?: Transactions_detailUpdateManyWithoutDetail_organizerNestedInput
   }
 
   export type OrganizerUncheckedUpdateInput = {
     id?: StringFieldUpdateOperationsInput | string
     user_id?: StringFieldUpdateOperationsInput | string
     event?: EventsUncheckedUpdateManyWithoutOrganizerNestedInput
+    organizer_voucher?: VoucherUncheckedUpdateManyWithoutVoucher_organizerNestedInput
+    organizer_transactionDetails?: Transactions_detailUncheckedUpdateManyWithoutDetail_organizerNestedInput
   }
 
   export type OrganizerCreateManyInput = {
@@ -7499,18 +19369,72 @@ export namespace Prisma {
     user_id?: StringFieldUpdateOperationsInput | string
   }
 
+  export type ArticlesCreateInput = {
+    id?: string
+    organizer_id: string
+    title: string
+    created_at?: Date | string
+  }
+
+  export type ArticlesUncheckedCreateInput = {
+    id?: string
+    organizer_id: string
+    title: string
+    created_at?: Date | string
+  }
+
+  export type ArticlesUpdateInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    organizer_id?: StringFieldUpdateOperationsInput | string
+    title?: StringFieldUpdateOperationsInput | string
+    created_at?: DateTimeFieldUpdateOperationsInput | Date | string
+  }
+
+  export type ArticlesUncheckedUpdateInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    organizer_id?: StringFieldUpdateOperationsInput | string
+    title?: StringFieldUpdateOperationsInput | string
+    created_at?: DateTimeFieldUpdateOperationsInput | Date | string
+  }
+
+  export type ArticlesCreateManyInput = {
+    id?: string
+    organizer_id: string
+    title: string
+    created_at?: Date | string
+  }
+
+  export type ArticlesUpdateManyMutationInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    organizer_id?: StringFieldUpdateOperationsInput | string
+    title?: StringFieldUpdateOperationsInput | string
+    created_at?: DateTimeFieldUpdateOperationsInput | Date | string
+  }
+
+  export type ArticlesUncheckedUpdateManyInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    organizer_id?: StringFieldUpdateOperationsInput | string
+    title?: StringFieldUpdateOperationsInput | string
+    created_at?: DateTimeFieldUpdateOperationsInput | Date | string
+  }
+
   export type EventsCreateInput = {
     id?: string
     name: string
     description: string
+    image: string
     price: number
     start_date: Date | string
     end_date?: Date | string | null
     created_at?: Date | string
     updated_at?: Date | string
     organizer: OrganizerCreateNestedOneWithoutEventInput
-    event_category: Event_CategoryCreateNestedOneWithoutEventInput
-    event_location: Event_LocationCreateNestedOneWithoutEventInput
+    category_event: Event_CategoryCreateNestedOneWithoutEventInput
+    location_Event: Event_LocationCreateNestedOneWithoutEventInput
+    seat_event?: Event_SeatCreateNestedOneWithoutEventInput
+    reviews_event?: Event_ReviewsCreateNestedManyWithoutReviews_eventInput
+    attendees_event?: Event_AttendeesCreateNestedManyWithoutUser_eventInput
+    event_transactionDetail?: Transactions_detailCreateNestedManyWithoutDetail_eventInput
   }
 
   export type EventsUncheckedCreateInput = {
@@ -7520,25 +19444,35 @@ export namespace Prisma {
     event_location_id: string
     name: string
     description: string
+    image: string
     price: number
     start_date: Date | string
     end_date?: Date | string | null
     created_at?: Date | string
     updated_at?: Date | string
+    seat_event?: Event_SeatUncheckedCreateNestedOneWithoutEventInput
+    reviews_event?: Event_ReviewsUncheckedCreateNestedManyWithoutReviews_eventInput
+    attendees_event?: Event_AttendeesUncheckedCreateNestedManyWithoutUser_eventInput
+    event_transactionDetail?: Transactions_detailUncheckedCreateNestedManyWithoutDetail_eventInput
   }
 
   export type EventsUpdateInput = {
     id?: StringFieldUpdateOperationsInput | string
     name?: StringFieldUpdateOperationsInput | string
     description?: StringFieldUpdateOperationsInput | string
+    image?: StringFieldUpdateOperationsInput | string
     price?: IntFieldUpdateOperationsInput | number
     start_date?: DateTimeFieldUpdateOperationsInput | Date | string
     end_date?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     created_at?: DateTimeFieldUpdateOperationsInput | Date | string
     updated_at?: DateTimeFieldUpdateOperationsInput | Date | string
     organizer?: OrganizerUpdateOneRequiredWithoutEventNestedInput
-    event_category?: Event_CategoryUpdateOneRequiredWithoutEventNestedInput
-    event_location?: Event_LocationUpdateOneRequiredWithoutEventNestedInput
+    category_event?: Event_CategoryUpdateOneRequiredWithoutEventNestedInput
+    location_Event?: Event_LocationUpdateOneRequiredWithoutEventNestedInput
+    seat_event?: Event_SeatUpdateOneWithoutEventNestedInput
+    reviews_event?: Event_ReviewsUpdateManyWithoutReviews_eventNestedInput
+    attendees_event?: Event_AttendeesUpdateManyWithoutUser_eventNestedInput
+    event_transactionDetail?: Transactions_detailUpdateManyWithoutDetail_eventNestedInput
   }
 
   export type EventsUncheckedUpdateInput = {
@@ -7548,11 +19482,16 @@ export namespace Prisma {
     event_location_id?: StringFieldUpdateOperationsInput | string
     name?: StringFieldUpdateOperationsInput | string
     description?: StringFieldUpdateOperationsInput | string
+    image?: StringFieldUpdateOperationsInput | string
     price?: IntFieldUpdateOperationsInput | number
     start_date?: DateTimeFieldUpdateOperationsInput | Date | string
     end_date?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     created_at?: DateTimeFieldUpdateOperationsInput | Date | string
     updated_at?: DateTimeFieldUpdateOperationsInput | Date | string
+    seat_event?: Event_SeatUncheckedUpdateOneWithoutEventNestedInput
+    reviews_event?: Event_ReviewsUncheckedUpdateManyWithoutReviews_eventNestedInput
+    attendees_event?: Event_AttendeesUncheckedUpdateManyWithoutUser_eventNestedInput
+    event_transactionDetail?: Transactions_detailUncheckedUpdateManyWithoutDetail_eventNestedInput
   }
 
   export type EventsCreateManyInput = {
@@ -7562,6 +19501,7 @@ export namespace Prisma {
     event_location_id: string
     name: string
     description: string
+    image: string
     price: number
     start_date: Date | string
     end_date?: Date | string | null
@@ -7573,6 +19513,7 @@ export namespace Prisma {
     id?: StringFieldUpdateOperationsInput | string
     name?: StringFieldUpdateOperationsInput | string
     description?: StringFieldUpdateOperationsInput | string
+    image?: StringFieldUpdateOperationsInput | string
     price?: IntFieldUpdateOperationsInput | number
     start_date?: DateTimeFieldUpdateOperationsInput | Date | string
     end_date?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
@@ -7587,6 +19528,7 @@ export namespace Prisma {
     event_location_id?: StringFieldUpdateOperationsInput | string
     name?: StringFieldUpdateOperationsInput | string
     description?: StringFieldUpdateOperationsInput | string
+    image?: StringFieldUpdateOperationsInput | string
     price?: IntFieldUpdateOperationsInput | number
     start_date?: DateTimeFieldUpdateOperationsInput | Date | string
     end_date?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
@@ -7597,25 +19539,25 @@ export namespace Prisma {
   export type Event_CategoryCreateInput = {
     id?: string
     name: string
-    event?: EventsCreateNestedManyWithoutEvent_categoryInput
+    event?: EventsCreateNestedManyWithoutCategory_eventInput
   }
 
   export type Event_CategoryUncheckedCreateInput = {
     id?: string
     name: string
-    event?: EventsUncheckedCreateNestedManyWithoutEvent_categoryInput
+    event?: EventsUncheckedCreateNestedManyWithoutCategory_eventInput
   }
 
   export type Event_CategoryUpdateInput = {
     id?: StringFieldUpdateOperationsInput | string
     name?: StringFieldUpdateOperationsInput | string
-    event?: EventsUpdateManyWithoutEvent_categoryNestedInput
+    event?: EventsUpdateManyWithoutCategory_eventNestedInput
   }
 
   export type Event_CategoryUncheckedUpdateInput = {
     id?: StringFieldUpdateOperationsInput | string
     name?: StringFieldUpdateOperationsInput | string
-    event?: EventsUncheckedUpdateManyWithoutEvent_categoryNestedInput
+    event?: EventsUncheckedUpdateManyWithoutCategory_eventNestedInput
   }
 
   export type Event_CategoryCreateManyInput = {
@@ -7635,55 +19577,494 @@ export namespace Prisma {
 
   export type Event_LocationCreateInput = {
     id?: string
-    event_id: string
     city: string
     address: string
-    event?: EventsCreateNestedManyWithoutEvent_locationInput
+    event?: EventsCreateNestedManyWithoutLocation_EventInput
   }
 
   export type Event_LocationUncheckedCreateInput = {
     id?: string
-    event_id: string
     city: string
     address: string
-    event?: EventsUncheckedCreateNestedManyWithoutEvent_locationInput
+    event?: EventsUncheckedCreateNestedManyWithoutLocation_EventInput
   }
 
   export type Event_LocationUpdateInput = {
     id?: StringFieldUpdateOperationsInput | string
-    event_id?: StringFieldUpdateOperationsInput | string
     city?: StringFieldUpdateOperationsInput | string
     address?: StringFieldUpdateOperationsInput | string
-    event?: EventsUpdateManyWithoutEvent_locationNestedInput
+    event?: EventsUpdateManyWithoutLocation_EventNestedInput
   }
 
   export type Event_LocationUncheckedUpdateInput = {
     id?: StringFieldUpdateOperationsInput | string
-    event_id?: StringFieldUpdateOperationsInput | string
     city?: StringFieldUpdateOperationsInput | string
     address?: StringFieldUpdateOperationsInput | string
-    event?: EventsUncheckedUpdateManyWithoutEvent_locationNestedInput
+    event?: EventsUncheckedUpdateManyWithoutLocation_EventNestedInput
   }
 
   export type Event_LocationCreateManyInput = {
     id?: string
-    event_id: string
     city: string
     address: string
   }
 
   export type Event_LocationUpdateManyMutationInput = {
     id?: StringFieldUpdateOperationsInput | string
-    event_id?: StringFieldUpdateOperationsInput | string
     city?: StringFieldUpdateOperationsInput | string
     address?: StringFieldUpdateOperationsInput | string
   }
 
   export type Event_LocationUncheckedUpdateManyInput = {
     id?: StringFieldUpdateOperationsInput | string
-    event_id?: StringFieldUpdateOperationsInput | string
     city?: StringFieldUpdateOperationsInput | string
     address?: StringFieldUpdateOperationsInput | string
+  }
+
+  export type Event_SeatCreateInput = {
+    id?: string
+    total: number
+    event: EventsCreateNestedOneWithoutSeat_eventInput
+  }
+
+  export type Event_SeatUncheckedCreateInput = {
+    id?: string
+    events_id: string
+    total: number
+  }
+
+  export type Event_SeatUpdateInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    total?: IntFieldUpdateOperationsInput | number
+    event?: EventsUpdateOneRequiredWithoutSeat_eventNestedInput
+  }
+
+  export type Event_SeatUncheckedUpdateInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    events_id?: StringFieldUpdateOperationsInput | string
+    total?: IntFieldUpdateOperationsInput | number
+  }
+
+  export type Event_SeatCreateManyInput = {
+    id?: string
+    events_id: string
+    total: number
+  }
+
+  export type Event_SeatUpdateManyMutationInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    total?: IntFieldUpdateOperationsInput | number
+  }
+
+  export type Event_SeatUncheckedUpdateManyInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    events_id?: StringFieldUpdateOperationsInput | string
+    total?: IntFieldUpdateOperationsInput | number
+  }
+
+  export type Event_ReviewsCreateInput = {
+    id?: string
+    review: string
+    rating: number
+    created_at?: Date | string
+    reviews_user: UsersCreateNestedOneWithoutReviews_userInput
+    reviews_event: EventsCreateNestedOneWithoutReviews_eventInput
+  }
+
+  export type Event_ReviewsUncheckedCreateInput = {
+    id?: string
+    user_id: string
+    events_id: string
+    review: string
+    rating: number
+    created_at?: Date | string
+  }
+
+  export type Event_ReviewsUpdateInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    review?: StringFieldUpdateOperationsInput | string
+    rating?: IntFieldUpdateOperationsInput | number
+    created_at?: DateTimeFieldUpdateOperationsInput | Date | string
+    reviews_user?: UsersUpdateOneRequiredWithoutReviews_userNestedInput
+    reviews_event?: EventsUpdateOneRequiredWithoutReviews_eventNestedInput
+  }
+
+  export type Event_ReviewsUncheckedUpdateInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    user_id?: StringFieldUpdateOperationsInput | string
+    events_id?: StringFieldUpdateOperationsInput | string
+    review?: StringFieldUpdateOperationsInput | string
+    rating?: IntFieldUpdateOperationsInput | number
+    created_at?: DateTimeFieldUpdateOperationsInput | Date | string
+  }
+
+  export type Event_ReviewsCreateManyInput = {
+    id?: string
+    user_id: string
+    events_id: string
+    review: string
+    rating: number
+    created_at?: Date | string
+  }
+
+  export type Event_ReviewsUpdateManyMutationInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    review?: StringFieldUpdateOperationsInput | string
+    rating?: IntFieldUpdateOperationsInput | number
+    created_at?: DateTimeFieldUpdateOperationsInput | Date | string
+  }
+
+  export type Event_ReviewsUncheckedUpdateManyInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    user_id?: StringFieldUpdateOperationsInput | string
+    events_id?: StringFieldUpdateOperationsInput | string
+    review?: StringFieldUpdateOperationsInput | string
+    rating?: IntFieldUpdateOperationsInput | number
+    created_at?: DateTimeFieldUpdateOperationsInput | Date | string
+  }
+
+  export type Event_AttendeesCreateInput = {
+    id?: string
+    status: $Enums.Status
+    user_attendees: UsersCreateNestedOneWithoutAttendees_userInput
+    user_event: EventsCreateNestedOneWithoutAttendees_eventInput
+  }
+
+  export type Event_AttendeesUncheckedCreateInput = {
+    id?: string
+    user_id: string
+    event_id: string
+    status: $Enums.Status
+  }
+
+  export type Event_AttendeesUpdateInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    status?: EnumStatusFieldUpdateOperationsInput | $Enums.Status
+    user_attendees?: UsersUpdateOneRequiredWithoutAttendees_userNestedInput
+    user_event?: EventsUpdateOneRequiredWithoutAttendees_eventNestedInput
+  }
+
+  export type Event_AttendeesUncheckedUpdateInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    user_id?: StringFieldUpdateOperationsInput | string
+    event_id?: StringFieldUpdateOperationsInput | string
+    status?: EnumStatusFieldUpdateOperationsInput | $Enums.Status
+  }
+
+  export type Event_AttendeesCreateManyInput = {
+    id?: string
+    user_id: string
+    event_id: string
+    status: $Enums.Status
+  }
+
+  export type Event_AttendeesUpdateManyMutationInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    status?: EnumStatusFieldUpdateOperationsInput | $Enums.Status
+  }
+
+  export type Event_AttendeesUncheckedUpdateManyInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    user_id?: StringFieldUpdateOperationsInput | string
+    event_id?: StringFieldUpdateOperationsInput | string
+    status?: EnumStatusFieldUpdateOperationsInput | $Enums.Status
+  }
+
+  export type Referral_CodeCreateInput = {
+    id?: string
+    code: string
+    points: number
+    user_referral: UsersCreateNestedOneWithoutReferral_userInput
+    user_referralUsage?: Referral_UsageCreateNestedManyWithoutCode_referralUsageInput
+  }
+
+  export type Referral_CodeUncheckedCreateInput = {
+    id?: string
+    user_id: string
+    code: string
+    points: number
+    user_referralUsage?: Referral_UsageUncheckedCreateNestedManyWithoutCode_referralUsageInput
+  }
+
+  export type Referral_CodeUpdateInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    code?: StringFieldUpdateOperationsInput | string
+    points?: IntFieldUpdateOperationsInput | number
+    user_referral?: UsersUpdateOneRequiredWithoutReferral_userNestedInput
+    user_referralUsage?: Referral_UsageUpdateManyWithoutCode_referralUsageNestedInput
+  }
+
+  export type Referral_CodeUncheckedUpdateInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    user_id?: StringFieldUpdateOperationsInput | string
+    code?: StringFieldUpdateOperationsInput | string
+    points?: IntFieldUpdateOperationsInput | number
+    user_referralUsage?: Referral_UsageUncheckedUpdateManyWithoutCode_referralUsageNestedInput
+  }
+
+  export type Referral_CodeCreateManyInput = {
+    id?: string
+    user_id: string
+    code: string
+    points: number
+  }
+
+  export type Referral_CodeUpdateManyMutationInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    code?: StringFieldUpdateOperationsInput | string
+    points?: IntFieldUpdateOperationsInput | number
+  }
+
+  export type Referral_CodeUncheckedUpdateManyInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    user_id?: StringFieldUpdateOperationsInput | string
+    code?: StringFieldUpdateOperationsInput | string
+    points?: IntFieldUpdateOperationsInput | number
+  }
+
+  export type Referral_UsageCreateInput = {
+    id?: string
+    used_at?: Date | string
+    user_referralUsage: UsersCreateNestedOneWithoutUsageReferral_userInput
+    code_referralUsage: Referral_CodeCreateNestedOneWithoutUser_referralUsageInput
+  }
+
+  export type Referral_UsageUncheckedCreateInput = {
+    id?: string
+    user_id: string
+    referral_code_id: string
+    used_at?: Date | string
+  }
+
+  export type Referral_UsageUpdateInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    used_at?: DateTimeFieldUpdateOperationsInput | Date | string
+    user_referralUsage?: UsersUpdateOneRequiredWithoutUsageReferral_userNestedInput
+    code_referralUsage?: Referral_CodeUpdateOneRequiredWithoutUser_referralUsageNestedInput
+  }
+
+  export type Referral_UsageUncheckedUpdateInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    user_id?: StringFieldUpdateOperationsInput | string
+    referral_code_id?: StringFieldUpdateOperationsInput | string
+    used_at?: DateTimeFieldUpdateOperationsInput | Date | string
+  }
+
+  export type Referral_UsageCreateManyInput = {
+    id?: string
+    user_id: string
+    referral_code_id: string
+    used_at?: Date | string
+  }
+
+  export type Referral_UsageUpdateManyMutationInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    used_at?: DateTimeFieldUpdateOperationsInput | Date | string
+  }
+
+  export type Referral_UsageUncheckedUpdateManyInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    user_id?: StringFieldUpdateOperationsInput | string
+    referral_code_id?: StringFieldUpdateOperationsInput | string
+    used_at?: DateTimeFieldUpdateOperationsInput | Date | string
+  }
+
+  export type VoucherCreateInput = {
+    id?: string
+    code: string
+    amount: number
+    limit: number
+    expired_at: Date | string
+    voucher_organizer: OrganizerCreateNestedOneWithoutOrganizer_voucherInput
+    voucher_transaction?: TransactionsCreateNestedManyWithoutTransaction_voucherInput
+  }
+
+  export type VoucherUncheckedCreateInput = {
+    id?: string
+    organizer_id: string
+    code: string
+    amount: number
+    limit: number
+    expired_at: Date | string
+    voucher_transaction?: TransactionsUncheckedCreateNestedManyWithoutTransaction_voucherInput
+  }
+
+  export type VoucherUpdateInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    code?: StringFieldUpdateOperationsInput | string
+    amount?: IntFieldUpdateOperationsInput | number
+    limit?: IntFieldUpdateOperationsInput | number
+    expired_at?: DateTimeFieldUpdateOperationsInput | Date | string
+    voucher_organizer?: OrganizerUpdateOneRequiredWithoutOrganizer_voucherNestedInput
+    voucher_transaction?: TransactionsUpdateManyWithoutTransaction_voucherNestedInput
+  }
+
+  export type VoucherUncheckedUpdateInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    organizer_id?: StringFieldUpdateOperationsInput | string
+    code?: StringFieldUpdateOperationsInput | string
+    amount?: IntFieldUpdateOperationsInput | number
+    limit?: IntFieldUpdateOperationsInput | number
+    expired_at?: DateTimeFieldUpdateOperationsInput | Date | string
+    voucher_transaction?: TransactionsUncheckedUpdateManyWithoutTransaction_voucherNestedInput
+  }
+
+  export type VoucherCreateManyInput = {
+    id?: string
+    organizer_id: string
+    code: string
+    amount: number
+    limit: number
+    expired_at: Date | string
+  }
+
+  export type VoucherUpdateManyMutationInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    code?: StringFieldUpdateOperationsInput | string
+    amount?: IntFieldUpdateOperationsInput | number
+    limit?: IntFieldUpdateOperationsInput | number
+    expired_at?: DateTimeFieldUpdateOperationsInput | Date | string
+  }
+
+  export type VoucherUncheckedUpdateManyInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    organizer_id?: StringFieldUpdateOperationsInput | string
+    code?: StringFieldUpdateOperationsInput | string
+    amount?: IntFieldUpdateOperationsInput | number
+    limit?: IntFieldUpdateOperationsInput | number
+    expired_at?: DateTimeFieldUpdateOperationsInput | Date | string
+  }
+
+  export type TransactionsCreateInput = {
+    id?: string
+    amount: number
+    proof: string
+    transaction_voucher: VoucherCreateNestedOneWithoutVoucher_transactionInput
+    transaction_details?: Transactions_detailCreateNestedManyWithoutDetails_transactionInput
+  }
+
+  export type TransactionsUncheckedCreateInput = {
+    id?: string
+    voucher_id: string
+    amount: number
+    proof: string
+    transaction_details?: Transactions_detailUncheckedCreateNestedManyWithoutDetails_transactionInput
+  }
+
+  export type TransactionsUpdateInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    amount?: IntFieldUpdateOperationsInput | number
+    proof?: StringFieldUpdateOperationsInput | string
+    transaction_voucher?: VoucherUpdateOneRequiredWithoutVoucher_transactionNestedInput
+    transaction_details?: Transactions_detailUpdateManyWithoutDetails_transactionNestedInput
+  }
+
+  export type TransactionsUncheckedUpdateInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    voucher_id?: StringFieldUpdateOperationsInput | string
+    amount?: IntFieldUpdateOperationsInput | number
+    proof?: StringFieldUpdateOperationsInput | string
+    transaction_details?: Transactions_detailUncheckedUpdateManyWithoutDetails_transactionNestedInput
+  }
+
+  export type TransactionsCreateManyInput = {
+    id?: string
+    voucher_id: string
+    amount: number
+    proof: string
+  }
+
+  export type TransactionsUpdateManyMutationInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    amount?: IntFieldUpdateOperationsInput | number
+    proof?: StringFieldUpdateOperationsInput | string
+  }
+
+  export type TransactionsUncheckedUpdateManyInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    voucher_id?: StringFieldUpdateOperationsInput | string
+    amount?: IntFieldUpdateOperationsInput | number
+    proof?: StringFieldUpdateOperationsInput | string
+  }
+
+  export type Transactions_detailCreateInput = {
+    id?: string
+    quantity: number
+    price: number
+    isConfirmed?: boolean
+    transaction_status: $Enums.TransactionStatus
+    user: UsersCreateNestedOneWithoutTransactionsInput
+    details_transaction: TransactionsCreateNestedOneWithoutTransaction_detailsInput
+    detail_event: EventsCreateNestedOneWithoutEvent_transactionDetailInput
+    detail_organizer: OrganizerCreateNestedOneWithoutOrganizer_transactionDetailsInput
+  }
+
+  export type Transactions_detailUncheckedCreateInput = {
+    id?: string
+    transaction_id: string
+    user_id: string
+    event_id: string
+    organizer_id: string
+    quantity: number
+    price: number
+    isConfirmed?: boolean
+    transaction_status: $Enums.TransactionStatus
+  }
+
+  export type Transactions_detailUpdateInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    quantity?: IntFieldUpdateOperationsInput | number
+    price?: IntFieldUpdateOperationsInput | number
+    isConfirmed?: BoolFieldUpdateOperationsInput | boolean
+    transaction_status?: EnumTransactionStatusFieldUpdateOperationsInput | $Enums.TransactionStatus
+    user?: UsersUpdateOneRequiredWithoutTransactionsNestedInput
+    details_transaction?: TransactionsUpdateOneRequiredWithoutTransaction_detailsNestedInput
+    detail_event?: EventsUpdateOneRequiredWithoutEvent_transactionDetailNestedInput
+    detail_organizer?: OrganizerUpdateOneRequiredWithoutOrganizer_transactionDetailsNestedInput
+  }
+
+  export type Transactions_detailUncheckedUpdateInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    transaction_id?: StringFieldUpdateOperationsInput | string
+    user_id?: StringFieldUpdateOperationsInput | string
+    event_id?: StringFieldUpdateOperationsInput | string
+    organizer_id?: StringFieldUpdateOperationsInput | string
+    quantity?: IntFieldUpdateOperationsInput | number
+    price?: IntFieldUpdateOperationsInput | number
+    isConfirmed?: BoolFieldUpdateOperationsInput | boolean
+    transaction_status?: EnumTransactionStatusFieldUpdateOperationsInput | $Enums.TransactionStatus
+  }
+
+  export type Transactions_detailCreateManyInput = {
+    id?: string
+    transaction_id: string
+    user_id: string
+    event_id: string
+    organizer_id: string
+    quantity: number
+    price: number
+    isConfirmed?: boolean
+    transaction_status: $Enums.TransactionStatus
+  }
+
+  export type Transactions_detailUpdateManyMutationInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    quantity?: IntFieldUpdateOperationsInput | number
+    price?: IntFieldUpdateOperationsInput | number
+    isConfirmed?: BoolFieldUpdateOperationsInput | boolean
+    transaction_status?: EnumTransactionStatusFieldUpdateOperationsInput | $Enums.TransactionStatus
+  }
+
+  export type Transactions_detailUncheckedUpdateManyInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    transaction_id?: StringFieldUpdateOperationsInput | string
+    user_id?: StringFieldUpdateOperationsInput | string
+    event_id?: StringFieldUpdateOperationsInput | string
+    organizer_id?: StringFieldUpdateOperationsInput | string
+    quantity?: IntFieldUpdateOperationsInput | number
+    price?: IntFieldUpdateOperationsInput | number
+    isConfirmed?: BoolFieldUpdateOperationsInput | boolean
+    transaction_status?: EnumTransactionStatusFieldUpdateOperationsInput | $Enums.TransactionStatus
   }
 
   export type StringFilter<$PrismaModel = never> = {
@@ -7738,12 +20119,57 @@ export namespace Prisma {
     none?: OrganizerWhereInput
   }
 
+  export type Event_ReviewsListRelationFilter = {
+    every?: Event_ReviewsWhereInput
+    some?: Event_ReviewsWhereInput
+    none?: Event_ReviewsWhereInput
+  }
+
+  export type Event_AttendeesListRelationFilter = {
+    every?: Event_AttendeesWhereInput
+    some?: Event_AttendeesWhereInput
+    none?: Event_AttendeesWhereInput
+  }
+
+  export type Referral_CodeNullableScalarRelationFilter = {
+    is?: Referral_CodeWhereInput | null
+    isNot?: Referral_CodeWhereInput | null
+  }
+
+  export type Referral_UsageListRelationFilter = {
+    every?: Referral_UsageWhereInput
+    some?: Referral_UsageWhereInput
+    none?: Referral_UsageWhereInput
+  }
+
+  export type Transactions_detailListRelationFilter = {
+    every?: Transactions_detailWhereInput
+    some?: Transactions_detailWhereInput
+    none?: Transactions_detailWhereInput
+  }
+
   export type SortOrderInput = {
     sort: SortOrder
     nulls?: NullsOrder
   }
 
   export type OrganizerOrderByRelationAggregateInput = {
+    _count?: SortOrder
+  }
+
+  export type Event_ReviewsOrderByRelationAggregateInput = {
+    _count?: SortOrder
+  }
+
+  export type Event_AttendeesOrderByRelationAggregateInput = {
+    _count?: SortOrder
+  }
+
+  export type Referral_UsageOrderByRelationAggregateInput = {
+    _count?: SortOrder
+  }
+
+  export type Transactions_detailOrderByRelationAggregateInput = {
     _count?: SortOrder
   }
 
@@ -7757,7 +20183,7 @@ export namespace Prisma {
     birthdate?: SortOrder
     phone_number?: SortOrder
     avatar?: SortOrder
-    refferal_code?: SortOrder
+    referral_code?: SortOrder
     isVerified?: SortOrder
     created_at?: SortOrder
     updated_at?: SortOrder
@@ -7773,7 +20199,7 @@ export namespace Prisma {
     birthdate?: SortOrder
     phone_number?: SortOrder
     avatar?: SortOrder
-    refferal_code?: SortOrder
+    referral_code?: SortOrder
     isVerified?: SortOrder
     created_at?: SortOrder
     updated_at?: SortOrder
@@ -7789,7 +20215,7 @@ export namespace Prisma {
     birthdate?: SortOrder
     phone_number?: SortOrder
     avatar?: SortOrder
-    refferal_code?: SortOrder
+    referral_code?: SortOrder
     isVerified?: SortOrder
     created_at?: SortOrder
     updated_at?: SortOrder
@@ -7864,7 +20290,17 @@ export namespace Prisma {
     none?: EventsWhereInput
   }
 
+  export type VoucherListRelationFilter = {
+    every?: VoucherWhereInput
+    some?: VoucherWhereInput
+    none?: VoucherWhereInput
+  }
+
   export type EventsOrderByRelationAggregateInput = {
+    _count?: SortOrder
+  }
+
+  export type VoucherOrderByRelationAggregateInput = {
     _count?: SortOrder
   }
 
@@ -7881,6 +20317,27 @@ export namespace Prisma {
   export type OrganizerMinOrderByAggregateInput = {
     id?: SortOrder
     user_id?: SortOrder
+  }
+
+  export type ArticlesCountOrderByAggregateInput = {
+    id?: SortOrder
+    organizer_id?: SortOrder
+    title?: SortOrder
+    created_at?: SortOrder
+  }
+
+  export type ArticlesMaxOrderByAggregateInput = {
+    id?: SortOrder
+    organizer_id?: SortOrder
+    title?: SortOrder
+    created_at?: SortOrder
+  }
+
+  export type ArticlesMinOrderByAggregateInput = {
+    id?: SortOrder
+    organizer_id?: SortOrder
+    title?: SortOrder
+    created_at?: SortOrder
   }
 
   export type IntFilter<$PrismaModel = never> = {
@@ -7920,6 +20377,11 @@ export namespace Prisma {
     isNot?: Event_LocationWhereInput
   }
 
+  export type Event_SeatNullableScalarRelationFilter = {
+    is?: Event_SeatWhereInput | null
+    isNot?: Event_SeatWhereInput | null
+  }
+
   export type EventsCountOrderByAggregateInput = {
     id?: SortOrder
     organizer_id?: SortOrder
@@ -7927,6 +20389,7 @@ export namespace Prisma {
     event_location_id?: SortOrder
     name?: SortOrder
     description?: SortOrder
+    image?: SortOrder
     price?: SortOrder
     start_date?: SortOrder
     end_date?: SortOrder
@@ -7945,6 +20408,7 @@ export namespace Prisma {
     event_location_id?: SortOrder
     name?: SortOrder
     description?: SortOrder
+    image?: SortOrder
     price?: SortOrder
     start_date?: SortOrder
     end_date?: SortOrder
@@ -7959,6 +20423,7 @@ export namespace Prisma {
     event_location_id?: SortOrder
     name?: SortOrder
     description?: SortOrder
+    image?: SortOrder
     price?: SortOrder
     start_date?: SortOrder
     end_date?: SortOrder
@@ -8017,23 +20482,328 @@ export namespace Prisma {
 
   export type Event_LocationCountOrderByAggregateInput = {
     id?: SortOrder
-    event_id?: SortOrder
     city?: SortOrder
     address?: SortOrder
   }
 
   export type Event_LocationMaxOrderByAggregateInput = {
     id?: SortOrder
-    event_id?: SortOrder
     city?: SortOrder
     address?: SortOrder
   }
 
   export type Event_LocationMinOrderByAggregateInput = {
     id?: SortOrder
-    event_id?: SortOrder
     city?: SortOrder
     address?: SortOrder
+  }
+
+  export type EventsScalarRelationFilter = {
+    is?: EventsWhereInput
+    isNot?: EventsWhereInput
+  }
+
+  export type Event_SeatCountOrderByAggregateInput = {
+    id?: SortOrder
+    events_id?: SortOrder
+    total?: SortOrder
+  }
+
+  export type Event_SeatAvgOrderByAggregateInput = {
+    total?: SortOrder
+  }
+
+  export type Event_SeatMaxOrderByAggregateInput = {
+    id?: SortOrder
+    events_id?: SortOrder
+    total?: SortOrder
+  }
+
+  export type Event_SeatMinOrderByAggregateInput = {
+    id?: SortOrder
+    events_id?: SortOrder
+    total?: SortOrder
+  }
+
+  export type Event_SeatSumOrderByAggregateInput = {
+    total?: SortOrder
+  }
+
+  export type Event_ReviewsCountOrderByAggregateInput = {
+    id?: SortOrder
+    user_id?: SortOrder
+    events_id?: SortOrder
+    review?: SortOrder
+    rating?: SortOrder
+    created_at?: SortOrder
+  }
+
+  export type Event_ReviewsAvgOrderByAggregateInput = {
+    rating?: SortOrder
+  }
+
+  export type Event_ReviewsMaxOrderByAggregateInput = {
+    id?: SortOrder
+    user_id?: SortOrder
+    events_id?: SortOrder
+    review?: SortOrder
+    rating?: SortOrder
+    created_at?: SortOrder
+  }
+
+  export type Event_ReviewsMinOrderByAggregateInput = {
+    id?: SortOrder
+    user_id?: SortOrder
+    events_id?: SortOrder
+    review?: SortOrder
+    rating?: SortOrder
+    created_at?: SortOrder
+  }
+
+  export type Event_ReviewsSumOrderByAggregateInput = {
+    rating?: SortOrder
+  }
+
+  export type EnumStatusFilter<$PrismaModel = never> = {
+    equals?: $Enums.Status | EnumStatusFieldRefInput<$PrismaModel>
+    in?: $Enums.Status[] | ListEnumStatusFieldRefInput<$PrismaModel>
+    notIn?: $Enums.Status[] | ListEnumStatusFieldRefInput<$PrismaModel>
+    not?: NestedEnumStatusFilter<$PrismaModel> | $Enums.Status
+  }
+
+  export type Event_AttendeesCountOrderByAggregateInput = {
+    id?: SortOrder
+    user_id?: SortOrder
+    event_id?: SortOrder
+    status?: SortOrder
+  }
+
+  export type Event_AttendeesMaxOrderByAggregateInput = {
+    id?: SortOrder
+    user_id?: SortOrder
+    event_id?: SortOrder
+    status?: SortOrder
+  }
+
+  export type Event_AttendeesMinOrderByAggregateInput = {
+    id?: SortOrder
+    user_id?: SortOrder
+    event_id?: SortOrder
+    status?: SortOrder
+  }
+
+  export type EnumStatusWithAggregatesFilter<$PrismaModel = never> = {
+    equals?: $Enums.Status | EnumStatusFieldRefInput<$PrismaModel>
+    in?: $Enums.Status[] | ListEnumStatusFieldRefInput<$PrismaModel>
+    notIn?: $Enums.Status[] | ListEnumStatusFieldRefInput<$PrismaModel>
+    not?: NestedEnumStatusWithAggregatesFilter<$PrismaModel> | $Enums.Status
+    _count?: NestedIntFilter<$PrismaModel>
+    _min?: NestedEnumStatusFilter<$PrismaModel>
+    _max?: NestedEnumStatusFilter<$PrismaModel>
+  }
+
+  export type Referral_CodeCountOrderByAggregateInput = {
+    id?: SortOrder
+    user_id?: SortOrder
+    code?: SortOrder
+    points?: SortOrder
+  }
+
+  export type Referral_CodeAvgOrderByAggregateInput = {
+    points?: SortOrder
+  }
+
+  export type Referral_CodeMaxOrderByAggregateInput = {
+    id?: SortOrder
+    user_id?: SortOrder
+    code?: SortOrder
+    points?: SortOrder
+  }
+
+  export type Referral_CodeMinOrderByAggregateInput = {
+    id?: SortOrder
+    user_id?: SortOrder
+    code?: SortOrder
+    points?: SortOrder
+  }
+
+  export type Referral_CodeSumOrderByAggregateInput = {
+    points?: SortOrder
+  }
+
+  export type Referral_CodeScalarRelationFilter = {
+    is?: Referral_CodeWhereInput
+    isNot?: Referral_CodeWhereInput
+  }
+
+  export type Referral_UsageCountOrderByAggregateInput = {
+    id?: SortOrder
+    user_id?: SortOrder
+    referral_code_id?: SortOrder
+    used_at?: SortOrder
+  }
+
+  export type Referral_UsageMaxOrderByAggregateInput = {
+    id?: SortOrder
+    user_id?: SortOrder
+    referral_code_id?: SortOrder
+    used_at?: SortOrder
+  }
+
+  export type Referral_UsageMinOrderByAggregateInput = {
+    id?: SortOrder
+    user_id?: SortOrder
+    referral_code_id?: SortOrder
+    used_at?: SortOrder
+  }
+
+  export type TransactionsListRelationFilter = {
+    every?: TransactionsWhereInput
+    some?: TransactionsWhereInput
+    none?: TransactionsWhereInput
+  }
+
+  export type TransactionsOrderByRelationAggregateInput = {
+    _count?: SortOrder
+  }
+
+  export type VoucherCountOrderByAggregateInput = {
+    id?: SortOrder
+    organizer_id?: SortOrder
+    code?: SortOrder
+    amount?: SortOrder
+    limit?: SortOrder
+    expired_at?: SortOrder
+  }
+
+  export type VoucherAvgOrderByAggregateInput = {
+    amount?: SortOrder
+    limit?: SortOrder
+  }
+
+  export type VoucherMaxOrderByAggregateInput = {
+    id?: SortOrder
+    organizer_id?: SortOrder
+    code?: SortOrder
+    amount?: SortOrder
+    limit?: SortOrder
+    expired_at?: SortOrder
+  }
+
+  export type VoucherMinOrderByAggregateInput = {
+    id?: SortOrder
+    organizer_id?: SortOrder
+    code?: SortOrder
+    amount?: SortOrder
+    limit?: SortOrder
+    expired_at?: SortOrder
+  }
+
+  export type VoucherSumOrderByAggregateInput = {
+    amount?: SortOrder
+    limit?: SortOrder
+  }
+
+  export type VoucherScalarRelationFilter = {
+    is?: VoucherWhereInput
+    isNot?: VoucherWhereInput
+  }
+
+  export type TransactionsCountOrderByAggregateInput = {
+    id?: SortOrder
+    voucher_id?: SortOrder
+    amount?: SortOrder
+    proof?: SortOrder
+  }
+
+  export type TransactionsAvgOrderByAggregateInput = {
+    amount?: SortOrder
+  }
+
+  export type TransactionsMaxOrderByAggregateInput = {
+    id?: SortOrder
+    voucher_id?: SortOrder
+    amount?: SortOrder
+    proof?: SortOrder
+  }
+
+  export type TransactionsMinOrderByAggregateInput = {
+    id?: SortOrder
+    voucher_id?: SortOrder
+    amount?: SortOrder
+    proof?: SortOrder
+  }
+
+  export type TransactionsSumOrderByAggregateInput = {
+    amount?: SortOrder
+  }
+
+  export type EnumTransactionStatusFilter<$PrismaModel = never> = {
+    equals?: $Enums.TransactionStatus | EnumTransactionStatusFieldRefInput<$PrismaModel>
+    in?: $Enums.TransactionStatus[] | ListEnumTransactionStatusFieldRefInput<$PrismaModel>
+    notIn?: $Enums.TransactionStatus[] | ListEnumTransactionStatusFieldRefInput<$PrismaModel>
+    not?: NestedEnumTransactionStatusFilter<$PrismaModel> | $Enums.TransactionStatus
+  }
+
+  export type TransactionsScalarRelationFilter = {
+    is?: TransactionsWhereInput
+    isNot?: TransactionsWhereInput
+  }
+
+  export type Transactions_detailCountOrderByAggregateInput = {
+    id?: SortOrder
+    transaction_id?: SortOrder
+    user_id?: SortOrder
+    event_id?: SortOrder
+    organizer_id?: SortOrder
+    quantity?: SortOrder
+    price?: SortOrder
+    isConfirmed?: SortOrder
+    transaction_status?: SortOrder
+  }
+
+  export type Transactions_detailAvgOrderByAggregateInput = {
+    quantity?: SortOrder
+    price?: SortOrder
+  }
+
+  export type Transactions_detailMaxOrderByAggregateInput = {
+    id?: SortOrder
+    transaction_id?: SortOrder
+    user_id?: SortOrder
+    event_id?: SortOrder
+    organizer_id?: SortOrder
+    quantity?: SortOrder
+    price?: SortOrder
+    isConfirmed?: SortOrder
+    transaction_status?: SortOrder
+  }
+
+  export type Transactions_detailMinOrderByAggregateInput = {
+    id?: SortOrder
+    transaction_id?: SortOrder
+    user_id?: SortOrder
+    event_id?: SortOrder
+    organizer_id?: SortOrder
+    quantity?: SortOrder
+    price?: SortOrder
+    isConfirmed?: SortOrder
+    transaction_status?: SortOrder
+  }
+
+  export type Transactions_detailSumOrderByAggregateInput = {
+    quantity?: SortOrder
+    price?: SortOrder
+  }
+
+  export type EnumTransactionStatusWithAggregatesFilter<$PrismaModel = never> = {
+    equals?: $Enums.TransactionStatus | EnumTransactionStatusFieldRefInput<$PrismaModel>
+    in?: $Enums.TransactionStatus[] | ListEnumTransactionStatusFieldRefInput<$PrismaModel>
+    notIn?: $Enums.TransactionStatus[] | ListEnumTransactionStatusFieldRefInput<$PrismaModel>
+    not?: NestedEnumTransactionStatusWithAggregatesFilter<$PrismaModel> | $Enums.TransactionStatus
+    _count?: NestedIntFilter<$PrismaModel>
+    _min?: NestedEnumTransactionStatusFilter<$PrismaModel>
+    _max?: NestedEnumTransactionStatusFilter<$PrismaModel>
   }
 
   export type OrganizerCreateNestedManyWithoutUserInput = {
@@ -8043,11 +20813,79 @@ export namespace Prisma {
     connect?: OrganizerWhereUniqueInput | OrganizerWhereUniqueInput[]
   }
 
+  export type Event_ReviewsCreateNestedManyWithoutReviews_userInput = {
+    create?: XOR<Event_ReviewsCreateWithoutReviews_userInput, Event_ReviewsUncheckedCreateWithoutReviews_userInput> | Event_ReviewsCreateWithoutReviews_userInput[] | Event_ReviewsUncheckedCreateWithoutReviews_userInput[]
+    connectOrCreate?: Event_ReviewsCreateOrConnectWithoutReviews_userInput | Event_ReviewsCreateOrConnectWithoutReviews_userInput[]
+    createMany?: Event_ReviewsCreateManyReviews_userInputEnvelope
+    connect?: Event_ReviewsWhereUniqueInput | Event_ReviewsWhereUniqueInput[]
+  }
+
+  export type Event_AttendeesCreateNestedManyWithoutUser_attendeesInput = {
+    create?: XOR<Event_AttendeesCreateWithoutUser_attendeesInput, Event_AttendeesUncheckedCreateWithoutUser_attendeesInput> | Event_AttendeesCreateWithoutUser_attendeesInput[] | Event_AttendeesUncheckedCreateWithoutUser_attendeesInput[]
+    connectOrCreate?: Event_AttendeesCreateOrConnectWithoutUser_attendeesInput | Event_AttendeesCreateOrConnectWithoutUser_attendeesInput[]
+    createMany?: Event_AttendeesCreateManyUser_attendeesInputEnvelope
+    connect?: Event_AttendeesWhereUniqueInput | Event_AttendeesWhereUniqueInput[]
+  }
+
+  export type Referral_CodeCreateNestedOneWithoutUser_referralInput = {
+    create?: XOR<Referral_CodeCreateWithoutUser_referralInput, Referral_CodeUncheckedCreateWithoutUser_referralInput>
+    connectOrCreate?: Referral_CodeCreateOrConnectWithoutUser_referralInput
+    connect?: Referral_CodeWhereUniqueInput
+  }
+
+  export type Referral_UsageCreateNestedManyWithoutUser_referralUsageInput = {
+    create?: XOR<Referral_UsageCreateWithoutUser_referralUsageInput, Referral_UsageUncheckedCreateWithoutUser_referralUsageInput> | Referral_UsageCreateWithoutUser_referralUsageInput[] | Referral_UsageUncheckedCreateWithoutUser_referralUsageInput[]
+    connectOrCreate?: Referral_UsageCreateOrConnectWithoutUser_referralUsageInput | Referral_UsageCreateOrConnectWithoutUser_referralUsageInput[]
+    createMany?: Referral_UsageCreateManyUser_referralUsageInputEnvelope
+    connect?: Referral_UsageWhereUniqueInput | Referral_UsageWhereUniqueInput[]
+  }
+
+  export type Transactions_detailCreateNestedManyWithoutUserInput = {
+    create?: XOR<Transactions_detailCreateWithoutUserInput, Transactions_detailUncheckedCreateWithoutUserInput> | Transactions_detailCreateWithoutUserInput[] | Transactions_detailUncheckedCreateWithoutUserInput[]
+    connectOrCreate?: Transactions_detailCreateOrConnectWithoutUserInput | Transactions_detailCreateOrConnectWithoutUserInput[]
+    createMany?: Transactions_detailCreateManyUserInputEnvelope
+    connect?: Transactions_detailWhereUniqueInput | Transactions_detailWhereUniqueInput[]
+  }
+
   export type OrganizerUncheckedCreateNestedManyWithoutUserInput = {
     create?: XOR<OrganizerCreateWithoutUserInput, OrganizerUncheckedCreateWithoutUserInput> | OrganizerCreateWithoutUserInput[] | OrganizerUncheckedCreateWithoutUserInput[]
     connectOrCreate?: OrganizerCreateOrConnectWithoutUserInput | OrganizerCreateOrConnectWithoutUserInput[]
     createMany?: OrganizerCreateManyUserInputEnvelope
     connect?: OrganizerWhereUniqueInput | OrganizerWhereUniqueInput[]
+  }
+
+  export type Event_ReviewsUncheckedCreateNestedManyWithoutReviews_userInput = {
+    create?: XOR<Event_ReviewsCreateWithoutReviews_userInput, Event_ReviewsUncheckedCreateWithoutReviews_userInput> | Event_ReviewsCreateWithoutReviews_userInput[] | Event_ReviewsUncheckedCreateWithoutReviews_userInput[]
+    connectOrCreate?: Event_ReviewsCreateOrConnectWithoutReviews_userInput | Event_ReviewsCreateOrConnectWithoutReviews_userInput[]
+    createMany?: Event_ReviewsCreateManyReviews_userInputEnvelope
+    connect?: Event_ReviewsWhereUniqueInput | Event_ReviewsWhereUniqueInput[]
+  }
+
+  export type Event_AttendeesUncheckedCreateNestedManyWithoutUser_attendeesInput = {
+    create?: XOR<Event_AttendeesCreateWithoutUser_attendeesInput, Event_AttendeesUncheckedCreateWithoutUser_attendeesInput> | Event_AttendeesCreateWithoutUser_attendeesInput[] | Event_AttendeesUncheckedCreateWithoutUser_attendeesInput[]
+    connectOrCreate?: Event_AttendeesCreateOrConnectWithoutUser_attendeesInput | Event_AttendeesCreateOrConnectWithoutUser_attendeesInput[]
+    createMany?: Event_AttendeesCreateManyUser_attendeesInputEnvelope
+    connect?: Event_AttendeesWhereUniqueInput | Event_AttendeesWhereUniqueInput[]
+  }
+
+  export type Referral_CodeUncheckedCreateNestedOneWithoutUser_referralInput = {
+    create?: XOR<Referral_CodeCreateWithoutUser_referralInput, Referral_CodeUncheckedCreateWithoutUser_referralInput>
+    connectOrCreate?: Referral_CodeCreateOrConnectWithoutUser_referralInput
+    connect?: Referral_CodeWhereUniqueInput
+  }
+
+  export type Referral_UsageUncheckedCreateNestedManyWithoutUser_referralUsageInput = {
+    create?: XOR<Referral_UsageCreateWithoutUser_referralUsageInput, Referral_UsageUncheckedCreateWithoutUser_referralUsageInput> | Referral_UsageCreateWithoutUser_referralUsageInput[] | Referral_UsageUncheckedCreateWithoutUser_referralUsageInput[]
+    connectOrCreate?: Referral_UsageCreateOrConnectWithoutUser_referralUsageInput | Referral_UsageCreateOrConnectWithoutUser_referralUsageInput[]
+    createMany?: Referral_UsageCreateManyUser_referralUsageInputEnvelope
+    connect?: Referral_UsageWhereUniqueInput | Referral_UsageWhereUniqueInput[]
+  }
+
+  export type Transactions_detailUncheckedCreateNestedManyWithoutUserInput = {
+    create?: XOR<Transactions_detailCreateWithoutUserInput, Transactions_detailUncheckedCreateWithoutUserInput> | Transactions_detailCreateWithoutUserInput[] | Transactions_detailUncheckedCreateWithoutUserInput[]
+    connectOrCreate?: Transactions_detailCreateOrConnectWithoutUserInput | Transactions_detailCreateOrConnectWithoutUserInput[]
+    createMany?: Transactions_detailCreateManyUserInputEnvelope
+    connect?: Transactions_detailWhereUniqueInput | Transactions_detailWhereUniqueInput[]
   }
 
   export type StringFieldUpdateOperationsInput = {
@@ -8080,6 +20918,72 @@ export namespace Prisma {
     deleteMany?: OrganizerScalarWhereInput | OrganizerScalarWhereInput[]
   }
 
+  export type Event_ReviewsUpdateManyWithoutReviews_userNestedInput = {
+    create?: XOR<Event_ReviewsCreateWithoutReviews_userInput, Event_ReviewsUncheckedCreateWithoutReviews_userInput> | Event_ReviewsCreateWithoutReviews_userInput[] | Event_ReviewsUncheckedCreateWithoutReviews_userInput[]
+    connectOrCreate?: Event_ReviewsCreateOrConnectWithoutReviews_userInput | Event_ReviewsCreateOrConnectWithoutReviews_userInput[]
+    upsert?: Event_ReviewsUpsertWithWhereUniqueWithoutReviews_userInput | Event_ReviewsUpsertWithWhereUniqueWithoutReviews_userInput[]
+    createMany?: Event_ReviewsCreateManyReviews_userInputEnvelope
+    set?: Event_ReviewsWhereUniqueInput | Event_ReviewsWhereUniqueInput[]
+    disconnect?: Event_ReviewsWhereUniqueInput | Event_ReviewsWhereUniqueInput[]
+    delete?: Event_ReviewsWhereUniqueInput | Event_ReviewsWhereUniqueInput[]
+    connect?: Event_ReviewsWhereUniqueInput | Event_ReviewsWhereUniqueInput[]
+    update?: Event_ReviewsUpdateWithWhereUniqueWithoutReviews_userInput | Event_ReviewsUpdateWithWhereUniqueWithoutReviews_userInput[]
+    updateMany?: Event_ReviewsUpdateManyWithWhereWithoutReviews_userInput | Event_ReviewsUpdateManyWithWhereWithoutReviews_userInput[]
+    deleteMany?: Event_ReviewsScalarWhereInput | Event_ReviewsScalarWhereInput[]
+  }
+
+  export type Event_AttendeesUpdateManyWithoutUser_attendeesNestedInput = {
+    create?: XOR<Event_AttendeesCreateWithoutUser_attendeesInput, Event_AttendeesUncheckedCreateWithoutUser_attendeesInput> | Event_AttendeesCreateWithoutUser_attendeesInput[] | Event_AttendeesUncheckedCreateWithoutUser_attendeesInput[]
+    connectOrCreate?: Event_AttendeesCreateOrConnectWithoutUser_attendeesInput | Event_AttendeesCreateOrConnectWithoutUser_attendeesInput[]
+    upsert?: Event_AttendeesUpsertWithWhereUniqueWithoutUser_attendeesInput | Event_AttendeesUpsertWithWhereUniqueWithoutUser_attendeesInput[]
+    createMany?: Event_AttendeesCreateManyUser_attendeesInputEnvelope
+    set?: Event_AttendeesWhereUniqueInput | Event_AttendeesWhereUniqueInput[]
+    disconnect?: Event_AttendeesWhereUniqueInput | Event_AttendeesWhereUniqueInput[]
+    delete?: Event_AttendeesWhereUniqueInput | Event_AttendeesWhereUniqueInput[]
+    connect?: Event_AttendeesWhereUniqueInput | Event_AttendeesWhereUniqueInput[]
+    update?: Event_AttendeesUpdateWithWhereUniqueWithoutUser_attendeesInput | Event_AttendeesUpdateWithWhereUniqueWithoutUser_attendeesInput[]
+    updateMany?: Event_AttendeesUpdateManyWithWhereWithoutUser_attendeesInput | Event_AttendeesUpdateManyWithWhereWithoutUser_attendeesInput[]
+    deleteMany?: Event_AttendeesScalarWhereInput | Event_AttendeesScalarWhereInput[]
+  }
+
+  export type Referral_CodeUpdateOneWithoutUser_referralNestedInput = {
+    create?: XOR<Referral_CodeCreateWithoutUser_referralInput, Referral_CodeUncheckedCreateWithoutUser_referralInput>
+    connectOrCreate?: Referral_CodeCreateOrConnectWithoutUser_referralInput
+    upsert?: Referral_CodeUpsertWithoutUser_referralInput
+    disconnect?: Referral_CodeWhereInput | boolean
+    delete?: Referral_CodeWhereInput | boolean
+    connect?: Referral_CodeWhereUniqueInput
+    update?: XOR<XOR<Referral_CodeUpdateToOneWithWhereWithoutUser_referralInput, Referral_CodeUpdateWithoutUser_referralInput>, Referral_CodeUncheckedUpdateWithoutUser_referralInput>
+  }
+
+  export type Referral_UsageUpdateManyWithoutUser_referralUsageNestedInput = {
+    create?: XOR<Referral_UsageCreateWithoutUser_referralUsageInput, Referral_UsageUncheckedCreateWithoutUser_referralUsageInput> | Referral_UsageCreateWithoutUser_referralUsageInput[] | Referral_UsageUncheckedCreateWithoutUser_referralUsageInput[]
+    connectOrCreate?: Referral_UsageCreateOrConnectWithoutUser_referralUsageInput | Referral_UsageCreateOrConnectWithoutUser_referralUsageInput[]
+    upsert?: Referral_UsageUpsertWithWhereUniqueWithoutUser_referralUsageInput | Referral_UsageUpsertWithWhereUniqueWithoutUser_referralUsageInput[]
+    createMany?: Referral_UsageCreateManyUser_referralUsageInputEnvelope
+    set?: Referral_UsageWhereUniqueInput | Referral_UsageWhereUniqueInput[]
+    disconnect?: Referral_UsageWhereUniqueInput | Referral_UsageWhereUniqueInput[]
+    delete?: Referral_UsageWhereUniqueInput | Referral_UsageWhereUniqueInput[]
+    connect?: Referral_UsageWhereUniqueInput | Referral_UsageWhereUniqueInput[]
+    update?: Referral_UsageUpdateWithWhereUniqueWithoutUser_referralUsageInput | Referral_UsageUpdateWithWhereUniqueWithoutUser_referralUsageInput[]
+    updateMany?: Referral_UsageUpdateManyWithWhereWithoutUser_referralUsageInput | Referral_UsageUpdateManyWithWhereWithoutUser_referralUsageInput[]
+    deleteMany?: Referral_UsageScalarWhereInput | Referral_UsageScalarWhereInput[]
+  }
+
+  export type Transactions_detailUpdateManyWithoutUserNestedInput = {
+    create?: XOR<Transactions_detailCreateWithoutUserInput, Transactions_detailUncheckedCreateWithoutUserInput> | Transactions_detailCreateWithoutUserInput[] | Transactions_detailUncheckedCreateWithoutUserInput[]
+    connectOrCreate?: Transactions_detailCreateOrConnectWithoutUserInput | Transactions_detailCreateOrConnectWithoutUserInput[]
+    upsert?: Transactions_detailUpsertWithWhereUniqueWithoutUserInput | Transactions_detailUpsertWithWhereUniqueWithoutUserInput[]
+    createMany?: Transactions_detailCreateManyUserInputEnvelope
+    set?: Transactions_detailWhereUniqueInput | Transactions_detailWhereUniqueInput[]
+    disconnect?: Transactions_detailWhereUniqueInput | Transactions_detailWhereUniqueInput[]
+    delete?: Transactions_detailWhereUniqueInput | Transactions_detailWhereUniqueInput[]
+    connect?: Transactions_detailWhereUniqueInput | Transactions_detailWhereUniqueInput[]
+    update?: Transactions_detailUpdateWithWhereUniqueWithoutUserInput | Transactions_detailUpdateWithWhereUniqueWithoutUserInput[]
+    updateMany?: Transactions_detailUpdateManyWithWhereWithoutUserInput | Transactions_detailUpdateManyWithWhereWithoutUserInput[]
+    deleteMany?: Transactions_detailScalarWhereInput | Transactions_detailScalarWhereInput[]
+  }
+
   export type OrganizerUncheckedUpdateManyWithoutUserNestedInput = {
     create?: XOR<OrganizerCreateWithoutUserInput, OrganizerUncheckedCreateWithoutUserInput> | OrganizerCreateWithoutUserInput[] | OrganizerUncheckedCreateWithoutUserInput[]
     connectOrCreate?: OrganizerCreateOrConnectWithoutUserInput | OrganizerCreateOrConnectWithoutUserInput[]
@@ -8092,6 +20996,72 @@ export namespace Prisma {
     update?: OrganizerUpdateWithWhereUniqueWithoutUserInput | OrganizerUpdateWithWhereUniqueWithoutUserInput[]
     updateMany?: OrganizerUpdateManyWithWhereWithoutUserInput | OrganizerUpdateManyWithWhereWithoutUserInput[]
     deleteMany?: OrganizerScalarWhereInput | OrganizerScalarWhereInput[]
+  }
+
+  export type Event_ReviewsUncheckedUpdateManyWithoutReviews_userNestedInput = {
+    create?: XOR<Event_ReviewsCreateWithoutReviews_userInput, Event_ReviewsUncheckedCreateWithoutReviews_userInput> | Event_ReviewsCreateWithoutReviews_userInput[] | Event_ReviewsUncheckedCreateWithoutReviews_userInput[]
+    connectOrCreate?: Event_ReviewsCreateOrConnectWithoutReviews_userInput | Event_ReviewsCreateOrConnectWithoutReviews_userInput[]
+    upsert?: Event_ReviewsUpsertWithWhereUniqueWithoutReviews_userInput | Event_ReviewsUpsertWithWhereUniqueWithoutReviews_userInput[]
+    createMany?: Event_ReviewsCreateManyReviews_userInputEnvelope
+    set?: Event_ReviewsWhereUniqueInput | Event_ReviewsWhereUniqueInput[]
+    disconnect?: Event_ReviewsWhereUniqueInput | Event_ReviewsWhereUniqueInput[]
+    delete?: Event_ReviewsWhereUniqueInput | Event_ReviewsWhereUniqueInput[]
+    connect?: Event_ReviewsWhereUniqueInput | Event_ReviewsWhereUniqueInput[]
+    update?: Event_ReviewsUpdateWithWhereUniqueWithoutReviews_userInput | Event_ReviewsUpdateWithWhereUniqueWithoutReviews_userInput[]
+    updateMany?: Event_ReviewsUpdateManyWithWhereWithoutReviews_userInput | Event_ReviewsUpdateManyWithWhereWithoutReviews_userInput[]
+    deleteMany?: Event_ReviewsScalarWhereInput | Event_ReviewsScalarWhereInput[]
+  }
+
+  export type Event_AttendeesUncheckedUpdateManyWithoutUser_attendeesNestedInput = {
+    create?: XOR<Event_AttendeesCreateWithoutUser_attendeesInput, Event_AttendeesUncheckedCreateWithoutUser_attendeesInput> | Event_AttendeesCreateWithoutUser_attendeesInput[] | Event_AttendeesUncheckedCreateWithoutUser_attendeesInput[]
+    connectOrCreate?: Event_AttendeesCreateOrConnectWithoutUser_attendeesInput | Event_AttendeesCreateOrConnectWithoutUser_attendeesInput[]
+    upsert?: Event_AttendeesUpsertWithWhereUniqueWithoutUser_attendeesInput | Event_AttendeesUpsertWithWhereUniqueWithoutUser_attendeesInput[]
+    createMany?: Event_AttendeesCreateManyUser_attendeesInputEnvelope
+    set?: Event_AttendeesWhereUniqueInput | Event_AttendeesWhereUniqueInput[]
+    disconnect?: Event_AttendeesWhereUniqueInput | Event_AttendeesWhereUniqueInput[]
+    delete?: Event_AttendeesWhereUniqueInput | Event_AttendeesWhereUniqueInput[]
+    connect?: Event_AttendeesWhereUniqueInput | Event_AttendeesWhereUniqueInput[]
+    update?: Event_AttendeesUpdateWithWhereUniqueWithoutUser_attendeesInput | Event_AttendeesUpdateWithWhereUniqueWithoutUser_attendeesInput[]
+    updateMany?: Event_AttendeesUpdateManyWithWhereWithoutUser_attendeesInput | Event_AttendeesUpdateManyWithWhereWithoutUser_attendeesInput[]
+    deleteMany?: Event_AttendeesScalarWhereInput | Event_AttendeesScalarWhereInput[]
+  }
+
+  export type Referral_CodeUncheckedUpdateOneWithoutUser_referralNestedInput = {
+    create?: XOR<Referral_CodeCreateWithoutUser_referralInput, Referral_CodeUncheckedCreateWithoutUser_referralInput>
+    connectOrCreate?: Referral_CodeCreateOrConnectWithoutUser_referralInput
+    upsert?: Referral_CodeUpsertWithoutUser_referralInput
+    disconnect?: Referral_CodeWhereInput | boolean
+    delete?: Referral_CodeWhereInput | boolean
+    connect?: Referral_CodeWhereUniqueInput
+    update?: XOR<XOR<Referral_CodeUpdateToOneWithWhereWithoutUser_referralInput, Referral_CodeUpdateWithoutUser_referralInput>, Referral_CodeUncheckedUpdateWithoutUser_referralInput>
+  }
+
+  export type Referral_UsageUncheckedUpdateManyWithoutUser_referralUsageNestedInput = {
+    create?: XOR<Referral_UsageCreateWithoutUser_referralUsageInput, Referral_UsageUncheckedCreateWithoutUser_referralUsageInput> | Referral_UsageCreateWithoutUser_referralUsageInput[] | Referral_UsageUncheckedCreateWithoutUser_referralUsageInput[]
+    connectOrCreate?: Referral_UsageCreateOrConnectWithoutUser_referralUsageInput | Referral_UsageCreateOrConnectWithoutUser_referralUsageInput[]
+    upsert?: Referral_UsageUpsertWithWhereUniqueWithoutUser_referralUsageInput | Referral_UsageUpsertWithWhereUniqueWithoutUser_referralUsageInput[]
+    createMany?: Referral_UsageCreateManyUser_referralUsageInputEnvelope
+    set?: Referral_UsageWhereUniqueInput | Referral_UsageWhereUniqueInput[]
+    disconnect?: Referral_UsageWhereUniqueInput | Referral_UsageWhereUniqueInput[]
+    delete?: Referral_UsageWhereUniqueInput | Referral_UsageWhereUniqueInput[]
+    connect?: Referral_UsageWhereUniqueInput | Referral_UsageWhereUniqueInput[]
+    update?: Referral_UsageUpdateWithWhereUniqueWithoutUser_referralUsageInput | Referral_UsageUpdateWithWhereUniqueWithoutUser_referralUsageInput[]
+    updateMany?: Referral_UsageUpdateManyWithWhereWithoutUser_referralUsageInput | Referral_UsageUpdateManyWithWhereWithoutUser_referralUsageInput[]
+    deleteMany?: Referral_UsageScalarWhereInput | Referral_UsageScalarWhereInput[]
+  }
+
+  export type Transactions_detailUncheckedUpdateManyWithoutUserNestedInput = {
+    create?: XOR<Transactions_detailCreateWithoutUserInput, Transactions_detailUncheckedCreateWithoutUserInput> | Transactions_detailCreateWithoutUserInput[] | Transactions_detailUncheckedCreateWithoutUserInput[]
+    connectOrCreate?: Transactions_detailCreateOrConnectWithoutUserInput | Transactions_detailCreateOrConnectWithoutUserInput[]
+    upsert?: Transactions_detailUpsertWithWhereUniqueWithoutUserInput | Transactions_detailUpsertWithWhereUniqueWithoutUserInput[]
+    createMany?: Transactions_detailCreateManyUserInputEnvelope
+    set?: Transactions_detailWhereUniqueInput | Transactions_detailWhereUniqueInput[]
+    disconnect?: Transactions_detailWhereUniqueInput | Transactions_detailWhereUniqueInput[]
+    delete?: Transactions_detailWhereUniqueInput | Transactions_detailWhereUniqueInput[]
+    connect?: Transactions_detailWhereUniqueInput | Transactions_detailWhereUniqueInput[]
+    update?: Transactions_detailUpdateWithWhereUniqueWithoutUserInput | Transactions_detailUpdateWithWhereUniqueWithoutUserInput[]
+    updateMany?: Transactions_detailUpdateManyWithWhereWithoutUserInput | Transactions_detailUpdateManyWithWhereWithoutUserInput[]
+    deleteMany?: Transactions_detailScalarWhereInput | Transactions_detailScalarWhereInput[]
   }
 
   export type UsersCreateNestedOneWithoutOrganizerInput = {
@@ -8107,11 +21077,39 @@ export namespace Prisma {
     connect?: EventsWhereUniqueInput | EventsWhereUniqueInput[]
   }
 
+  export type VoucherCreateNestedManyWithoutVoucher_organizerInput = {
+    create?: XOR<VoucherCreateWithoutVoucher_organizerInput, VoucherUncheckedCreateWithoutVoucher_organizerInput> | VoucherCreateWithoutVoucher_organizerInput[] | VoucherUncheckedCreateWithoutVoucher_organizerInput[]
+    connectOrCreate?: VoucherCreateOrConnectWithoutVoucher_organizerInput | VoucherCreateOrConnectWithoutVoucher_organizerInput[]
+    createMany?: VoucherCreateManyVoucher_organizerInputEnvelope
+    connect?: VoucherWhereUniqueInput | VoucherWhereUniqueInput[]
+  }
+
+  export type Transactions_detailCreateNestedManyWithoutDetail_organizerInput = {
+    create?: XOR<Transactions_detailCreateWithoutDetail_organizerInput, Transactions_detailUncheckedCreateWithoutDetail_organizerInput> | Transactions_detailCreateWithoutDetail_organizerInput[] | Transactions_detailUncheckedCreateWithoutDetail_organizerInput[]
+    connectOrCreate?: Transactions_detailCreateOrConnectWithoutDetail_organizerInput | Transactions_detailCreateOrConnectWithoutDetail_organizerInput[]
+    createMany?: Transactions_detailCreateManyDetail_organizerInputEnvelope
+    connect?: Transactions_detailWhereUniqueInput | Transactions_detailWhereUniqueInput[]
+  }
+
   export type EventsUncheckedCreateNestedManyWithoutOrganizerInput = {
     create?: XOR<EventsCreateWithoutOrganizerInput, EventsUncheckedCreateWithoutOrganizerInput> | EventsCreateWithoutOrganizerInput[] | EventsUncheckedCreateWithoutOrganizerInput[]
     connectOrCreate?: EventsCreateOrConnectWithoutOrganizerInput | EventsCreateOrConnectWithoutOrganizerInput[]
     createMany?: EventsCreateManyOrganizerInputEnvelope
     connect?: EventsWhereUniqueInput | EventsWhereUniqueInput[]
+  }
+
+  export type VoucherUncheckedCreateNestedManyWithoutVoucher_organizerInput = {
+    create?: XOR<VoucherCreateWithoutVoucher_organizerInput, VoucherUncheckedCreateWithoutVoucher_organizerInput> | VoucherCreateWithoutVoucher_organizerInput[] | VoucherUncheckedCreateWithoutVoucher_organizerInput[]
+    connectOrCreate?: VoucherCreateOrConnectWithoutVoucher_organizerInput | VoucherCreateOrConnectWithoutVoucher_organizerInput[]
+    createMany?: VoucherCreateManyVoucher_organizerInputEnvelope
+    connect?: VoucherWhereUniqueInput | VoucherWhereUniqueInput[]
+  }
+
+  export type Transactions_detailUncheckedCreateNestedManyWithoutDetail_organizerInput = {
+    create?: XOR<Transactions_detailCreateWithoutDetail_organizerInput, Transactions_detailUncheckedCreateWithoutDetail_organizerInput> | Transactions_detailCreateWithoutDetail_organizerInput[] | Transactions_detailUncheckedCreateWithoutDetail_organizerInput[]
+    connectOrCreate?: Transactions_detailCreateOrConnectWithoutDetail_organizerInput | Transactions_detailCreateOrConnectWithoutDetail_organizerInput[]
+    createMany?: Transactions_detailCreateManyDetail_organizerInputEnvelope
+    connect?: Transactions_detailWhereUniqueInput | Transactions_detailWhereUniqueInput[]
   }
 
   export type UsersUpdateOneRequiredWithoutOrganizerNestedInput = {
@@ -8136,6 +21134,34 @@ export namespace Prisma {
     deleteMany?: EventsScalarWhereInput | EventsScalarWhereInput[]
   }
 
+  export type VoucherUpdateManyWithoutVoucher_organizerNestedInput = {
+    create?: XOR<VoucherCreateWithoutVoucher_organizerInput, VoucherUncheckedCreateWithoutVoucher_organizerInput> | VoucherCreateWithoutVoucher_organizerInput[] | VoucherUncheckedCreateWithoutVoucher_organizerInput[]
+    connectOrCreate?: VoucherCreateOrConnectWithoutVoucher_organizerInput | VoucherCreateOrConnectWithoutVoucher_organizerInput[]
+    upsert?: VoucherUpsertWithWhereUniqueWithoutVoucher_organizerInput | VoucherUpsertWithWhereUniqueWithoutVoucher_organizerInput[]
+    createMany?: VoucherCreateManyVoucher_organizerInputEnvelope
+    set?: VoucherWhereUniqueInput | VoucherWhereUniqueInput[]
+    disconnect?: VoucherWhereUniqueInput | VoucherWhereUniqueInput[]
+    delete?: VoucherWhereUniqueInput | VoucherWhereUniqueInput[]
+    connect?: VoucherWhereUniqueInput | VoucherWhereUniqueInput[]
+    update?: VoucherUpdateWithWhereUniqueWithoutVoucher_organizerInput | VoucherUpdateWithWhereUniqueWithoutVoucher_organizerInput[]
+    updateMany?: VoucherUpdateManyWithWhereWithoutVoucher_organizerInput | VoucherUpdateManyWithWhereWithoutVoucher_organizerInput[]
+    deleteMany?: VoucherScalarWhereInput | VoucherScalarWhereInput[]
+  }
+
+  export type Transactions_detailUpdateManyWithoutDetail_organizerNestedInput = {
+    create?: XOR<Transactions_detailCreateWithoutDetail_organizerInput, Transactions_detailUncheckedCreateWithoutDetail_organizerInput> | Transactions_detailCreateWithoutDetail_organizerInput[] | Transactions_detailUncheckedCreateWithoutDetail_organizerInput[]
+    connectOrCreate?: Transactions_detailCreateOrConnectWithoutDetail_organizerInput | Transactions_detailCreateOrConnectWithoutDetail_organizerInput[]
+    upsert?: Transactions_detailUpsertWithWhereUniqueWithoutDetail_organizerInput | Transactions_detailUpsertWithWhereUniqueWithoutDetail_organizerInput[]
+    createMany?: Transactions_detailCreateManyDetail_organizerInputEnvelope
+    set?: Transactions_detailWhereUniqueInput | Transactions_detailWhereUniqueInput[]
+    disconnect?: Transactions_detailWhereUniqueInput | Transactions_detailWhereUniqueInput[]
+    delete?: Transactions_detailWhereUniqueInput | Transactions_detailWhereUniqueInput[]
+    connect?: Transactions_detailWhereUniqueInput | Transactions_detailWhereUniqueInput[]
+    update?: Transactions_detailUpdateWithWhereUniqueWithoutDetail_organizerInput | Transactions_detailUpdateWithWhereUniqueWithoutDetail_organizerInput[]
+    updateMany?: Transactions_detailUpdateManyWithWhereWithoutDetail_organizerInput | Transactions_detailUpdateManyWithWhereWithoutDetail_organizerInput[]
+    deleteMany?: Transactions_detailScalarWhereInput | Transactions_detailScalarWhereInput[]
+  }
+
   export type EventsUncheckedUpdateManyWithoutOrganizerNestedInput = {
     create?: XOR<EventsCreateWithoutOrganizerInput, EventsUncheckedCreateWithoutOrganizerInput> | EventsCreateWithoutOrganizerInput[] | EventsUncheckedCreateWithoutOrganizerInput[]
     connectOrCreate?: EventsCreateOrConnectWithoutOrganizerInput | EventsCreateOrConnectWithoutOrganizerInput[]
@@ -8148,6 +21174,34 @@ export namespace Prisma {
     update?: EventsUpdateWithWhereUniqueWithoutOrganizerInput | EventsUpdateWithWhereUniqueWithoutOrganizerInput[]
     updateMany?: EventsUpdateManyWithWhereWithoutOrganizerInput | EventsUpdateManyWithWhereWithoutOrganizerInput[]
     deleteMany?: EventsScalarWhereInput | EventsScalarWhereInput[]
+  }
+
+  export type VoucherUncheckedUpdateManyWithoutVoucher_organizerNestedInput = {
+    create?: XOR<VoucherCreateWithoutVoucher_organizerInput, VoucherUncheckedCreateWithoutVoucher_organizerInput> | VoucherCreateWithoutVoucher_organizerInput[] | VoucherUncheckedCreateWithoutVoucher_organizerInput[]
+    connectOrCreate?: VoucherCreateOrConnectWithoutVoucher_organizerInput | VoucherCreateOrConnectWithoutVoucher_organizerInput[]
+    upsert?: VoucherUpsertWithWhereUniqueWithoutVoucher_organizerInput | VoucherUpsertWithWhereUniqueWithoutVoucher_organizerInput[]
+    createMany?: VoucherCreateManyVoucher_organizerInputEnvelope
+    set?: VoucherWhereUniqueInput | VoucherWhereUniqueInput[]
+    disconnect?: VoucherWhereUniqueInput | VoucherWhereUniqueInput[]
+    delete?: VoucherWhereUniqueInput | VoucherWhereUniqueInput[]
+    connect?: VoucherWhereUniqueInput | VoucherWhereUniqueInput[]
+    update?: VoucherUpdateWithWhereUniqueWithoutVoucher_organizerInput | VoucherUpdateWithWhereUniqueWithoutVoucher_organizerInput[]
+    updateMany?: VoucherUpdateManyWithWhereWithoutVoucher_organizerInput | VoucherUpdateManyWithWhereWithoutVoucher_organizerInput[]
+    deleteMany?: VoucherScalarWhereInput | VoucherScalarWhereInput[]
+  }
+
+  export type Transactions_detailUncheckedUpdateManyWithoutDetail_organizerNestedInput = {
+    create?: XOR<Transactions_detailCreateWithoutDetail_organizerInput, Transactions_detailUncheckedCreateWithoutDetail_organizerInput> | Transactions_detailCreateWithoutDetail_organizerInput[] | Transactions_detailUncheckedCreateWithoutDetail_organizerInput[]
+    connectOrCreate?: Transactions_detailCreateOrConnectWithoutDetail_organizerInput | Transactions_detailCreateOrConnectWithoutDetail_organizerInput[]
+    upsert?: Transactions_detailUpsertWithWhereUniqueWithoutDetail_organizerInput | Transactions_detailUpsertWithWhereUniqueWithoutDetail_organizerInput[]
+    createMany?: Transactions_detailCreateManyDetail_organizerInputEnvelope
+    set?: Transactions_detailWhereUniqueInput | Transactions_detailWhereUniqueInput[]
+    disconnect?: Transactions_detailWhereUniqueInput | Transactions_detailWhereUniqueInput[]
+    delete?: Transactions_detailWhereUniqueInput | Transactions_detailWhereUniqueInput[]
+    connect?: Transactions_detailWhereUniqueInput | Transactions_detailWhereUniqueInput[]
+    update?: Transactions_detailUpdateWithWhereUniqueWithoutDetail_organizerInput | Transactions_detailUpdateWithWhereUniqueWithoutDetail_organizerInput[]
+    updateMany?: Transactions_detailUpdateManyWithWhereWithoutDetail_organizerInput | Transactions_detailUpdateManyWithWhereWithoutDetail_organizerInput[]
+    deleteMany?: Transactions_detailScalarWhereInput | Transactions_detailScalarWhereInput[]
   }
 
   export type OrganizerCreateNestedOneWithoutEventInput = {
@@ -8166,6 +21220,60 @@ export namespace Prisma {
     create?: XOR<Event_LocationCreateWithoutEventInput, Event_LocationUncheckedCreateWithoutEventInput>
     connectOrCreate?: Event_LocationCreateOrConnectWithoutEventInput
     connect?: Event_LocationWhereUniqueInput
+  }
+
+  export type Event_SeatCreateNestedOneWithoutEventInput = {
+    create?: XOR<Event_SeatCreateWithoutEventInput, Event_SeatUncheckedCreateWithoutEventInput>
+    connectOrCreate?: Event_SeatCreateOrConnectWithoutEventInput
+    connect?: Event_SeatWhereUniqueInput
+  }
+
+  export type Event_ReviewsCreateNestedManyWithoutReviews_eventInput = {
+    create?: XOR<Event_ReviewsCreateWithoutReviews_eventInput, Event_ReviewsUncheckedCreateWithoutReviews_eventInput> | Event_ReviewsCreateWithoutReviews_eventInput[] | Event_ReviewsUncheckedCreateWithoutReviews_eventInput[]
+    connectOrCreate?: Event_ReviewsCreateOrConnectWithoutReviews_eventInput | Event_ReviewsCreateOrConnectWithoutReviews_eventInput[]
+    createMany?: Event_ReviewsCreateManyReviews_eventInputEnvelope
+    connect?: Event_ReviewsWhereUniqueInput | Event_ReviewsWhereUniqueInput[]
+  }
+
+  export type Event_AttendeesCreateNestedManyWithoutUser_eventInput = {
+    create?: XOR<Event_AttendeesCreateWithoutUser_eventInput, Event_AttendeesUncheckedCreateWithoutUser_eventInput> | Event_AttendeesCreateWithoutUser_eventInput[] | Event_AttendeesUncheckedCreateWithoutUser_eventInput[]
+    connectOrCreate?: Event_AttendeesCreateOrConnectWithoutUser_eventInput | Event_AttendeesCreateOrConnectWithoutUser_eventInput[]
+    createMany?: Event_AttendeesCreateManyUser_eventInputEnvelope
+    connect?: Event_AttendeesWhereUniqueInput | Event_AttendeesWhereUniqueInput[]
+  }
+
+  export type Transactions_detailCreateNestedManyWithoutDetail_eventInput = {
+    create?: XOR<Transactions_detailCreateWithoutDetail_eventInput, Transactions_detailUncheckedCreateWithoutDetail_eventInput> | Transactions_detailCreateWithoutDetail_eventInput[] | Transactions_detailUncheckedCreateWithoutDetail_eventInput[]
+    connectOrCreate?: Transactions_detailCreateOrConnectWithoutDetail_eventInput | Transactions_detailCreateOrConnectWithoutDetail_eventInput[]
+    createMany?: Transactions_detailCreateManyDetail_eventInputEnvelope
+    connect?: Transactions_detailWhereUniqueInput | Transactions_detailWhereUniqueInput[]
+  }
+
+  export type Event_SeatUncheckedCreateNestedOneWithoutEventInput = {
+    create?: XOR<Event_SeatCreateWithoutEventInput, Event_SeatUncheckedCreateWithoutEventInput>
+    connectOrCreate?: Event_SeatCreateOrConnectWithoutEventInput
+    connect?: Event_SeatWhereUniqueInput
+  }
+
+  export type Event_ReviewsUncheckedCreateNestedManyWithoutReviews_eventInput = {
+    create?: XOR<Event_ReviewsCreateWithoutReviews_eventInput, Event_ReviewsUncheckedCreateWithoutReviews_eventInput> | Event_ReviewsCreateWithoutReviews_eventInput[] | Event_ReviewsUncheckedCreateWithoutReviews_eventInput[]
+    connectOrCreate?: Event_ReviewsCreateOrConnectWithoutReviews_eventInput | Event_ReviewsCreateOrConnectWithoutReviews_eventInput[]
+    createMany?: Event_ReviewsCreateManyReviews_eventInputEnvelope
+    connect?: Event_ReviewsWhereUniqueInput | Event_ReviewsWhereUniqueInput[]
+  }
+
+  export type Event_AttendeesUncheckedCreateNestedManyWithoutUser_eventInput = {
+    create?: XOR<Event_AttendeesCreateWithoutUser_eventInput, Event_AttendeesUncheckedCreateWithoutUser_eventInput> | Event_AttendeesCreateWithoutUser_eventInput[] | Event_AttendeesUncheckedCreateWithoutUser_eventInput[]
+    connectOrCreate?: Event_AttendeesCreateOrConnectWithoutUser_eventInput | Event_AttendeesCreateOrConnectWithoutUser_eventInput[]
+    createMany?: Event_AttendeesCreateManyUser_eventInputEnvelope
+    connect?: Event_AttendeesWhereUniqueInput | Event_AttendeesWhereUniqueInput[]
+  }
+
+  export type Transactions_detailUncheckedCreateNestedManyWithoutDetail_eventInput = {
+    create?: XOR<Transactions_detailCreateWithoutDetail_eventInput, Transactions_detailUncheckedCreateWithoutDetail_eventInput> | Transactions_detailCreateWithoutDetail_eventInput[] | Transactions_detailUncheckedCreateWithoutDetail_eventInput[]
+    connectOrCreate?: Transactions_detailCreateOrConnectWithoutDetail_eventInput | Transactions_detailCreateOrConnectWithoutDetail_eventInput[]
+    createMany?: Transactions_detailCreateManyDetail_eventInputEnvelope
+    connect?: Transactions_detailWhereUniqueInput | Transactions_detailWhereUniqueInput[]
   }
 
   export type IntFieldUpdateOperationsInput = {
@@ -8204,88 +21312,522 @@ export namespace Prisma {
     update?: XOR<XOR<Event_LocationUpdateToOneWithWhereWithoutEventInput, Event_LocationUpdateWithoutEventInput>, Event_LocationUncheckedUpdateWithoutEventInput>
   }
 
-  export type EventsCreateNestedManyWithoutEvent_categoryInput = {
-    create?: XOR<EventsCreateWithoutEvent_categoryInput, EventsUncheckedCreateWithoutEvent_categoryInput> | EventsCreateWithoutEvent_categoryInput[] | EventsUncheckedCreateWithoutEvent_categoryInput[]
-    connectOrCreate?: EventsCreateOrConnectWithoutEvent_categoryInput | EventsCreateOrConnectWithoutEvent_categoryInput[]
-    createMany?: EventsCreateManyEvent_categoryInputEnvelope
+  export type Event_SeatUpdateOneWithoutEventNestedInput = {
+    create?: XOR<Event_SeatCreateWithoutEventInput, Event_SeatUncheckedCreateWithoutEventInput>
+    connectOrCreate?: Event_SeatCreateOrConnectWithoutEventInput
+    upsert?: Event_SeatUpsertWithoutEventInput
+    disconnect?: Event_SeatWhereInput | boolean
+    delete?: Event_SeatWhereInput | boolean
+    connect?: Event_SeatWhereUniqueInput
+    update?: XOR<XOR<Event_SeatUpdateToOneWithWhereWithoutEventInput, Event_SeatUpdateWithoutEventInput>, Event_SeatUncheckedUpdateWithoutEventInput>
+  }
+
+  export type Event_ReviewsUpdateManyWithoutReviews_eventNestedInput = {
+    create?: XOR<Event_ReviewsCreateWithoutReviews_eventInput, Event_ReviewsUncheckedCreateWithoutReviews_eventInput> | Event_ReviewsCreateWithoutReviews_eventInput[] | Event_ReviewsUncheckedCreateWithoutReviews_eventInput[]
+    connectOrCreate?: Event_ReviewsCreateOrConnectWithoutReviews_eventInput | Event_ReviewsCreateOrConnectWithoutReviews_eventInput[]
+    upsert?: Event_ReviewsUpsertWithWhereUniqueWithoutReviews_eventInput | Event_ReviewsUpsertWithWhereUniqueWithoutReviews_eventInput[]
+    createMany?: Event_ReviewsCreateManyReviews_eventInputEnvelope
+    set?: Event_ReviewsWhereUniqueInput | Event_ReviewsWhereUniqueInput[]
+    disconnect?: Event_ReviewsWhereUniqueInput | Event_ReviewsWhereUniqueInput[]
+    delete?: Event_ReviewsWhereUniqueInput | Event_ReviewsWhereUniqueInput[]
+    connect?: Event_ReviewsWhereUniqueInput | Event_ReviewsWhereUniqueInput[]
+    update?: Event_ReviewsUpdateWithWhereUniqueWithoutReviews_eventInput | Event_ReviewsUpdateWithWhereUniqueWithoutReviews_eventInput[]
+    updateMany?: Event_ReviewsUpdateManyWithWhereWithoutReviews_eventInput | Event_ReviewsUpdateManyWithWhereWithoutReviews_eventInput[]
+    deleteMany?: Event_ReviewsScalarWhereInput | Event_ReviewsScalarWhereInput[]
+  }
+
+  export type Event_AttendeesUpdateManyWithoutUser_eventNestedInput = {
+    create?: XOR<Event_AttendeesCreateWithoutUser_eventInput, Event_AttendeesUncheckedCreateWithoutUser_eventInput> | Event_AttendeesCreateWithoutUser_eventInput[] | Event_AttendeesUncheckedCreateWithoutUser_eventInput[]
+    connectOrCreate?: Event_AttendeesCreateOrConnectWithoutUser_eventInput | Event_AttendeesCreateOrConnectWithoutUser_eventInput[]
+    upsert?: Event_AttendeesUpsertWithWhereUniqueWithoutUser_eventInput | Event_AttendeesUpsertWithWhereUniqueWithoutUser_eventInput[]
+    createMany?: Event_AttendeesCreateManyUser_eventInputEnvelope
+    set?: Event_AttendeesWhereUniqueInput | Event_AttendeesWhereUniqueInput[]
+    disconnect?: Event_AttendeesWhereUniqueInput | Event_AttendeesWhereUniqueInput[]
+    delete?: Event_AttendeesWhereUniqueInput | Event_AttendeesWhereUniqueInput[]
+    connect?: Event_AttendeesWhereUniqueInput | Event_AttendeesWhereUniqueInput[]
+    update?: Event_AttendeesUpdateWithWhereUniqueWithoutUser_eventInput | Event_AttendeesUpdateWithWhereUniqueWithoutUser_eventInput[]
+    updateMany?: Event_AttendeesUpdateManyWithWhereWithoutUser_eventInput | Event_AttendeesUpdateManyWithWhereWithoutUser_eventInput[]
+    deleteMany?: Event_AttendeesScalarWhereInput | Event_AttendeesScalarWhereInput[]
+  }
+
+  export type Transactions_detailUpdateManyWithoutDetail_eventNestedInput = {
+    create?: XOR<Transactions_detailCreateWithoutDetail_eventInput, Transactions_detailUncheckedCreateWithoutDetail_eventInput> | Transactions_detailCreateWithoutDetail_eventInput[] | Transactions_detailUncheckedCreateWithoutDetail_eventInput[]
+    connectOrCreate?: Transactions_detailCreateOrConnectWithoutDetail_eventInput | Transactions_detailCreateOrConnectWithoutDetail_eventInput[]
+    upsert?: Transactions_detailUpsertWithWhereUniqueWithoutDetail_eventInput | Transactions_detailUpsertWithWhereUniqueWithoutDetail_eventInput[]
+    createMany?: Transactions_detailCreateManyDetail_eventInputEnvelope
+    set?: Transactions_detailWhereUniqueInput | Transactions_detailWhereUniqueInput[]
+    disconnect?: Transactions_detailWhereUniqueInput | Transactions_detailWhereUniqueInput[]
+    delete?: Transactions_detailWhereUniqueInput | Transactions_detailWhereUniqueInput[]
+    connect?: Transactions_detailWhereUniqueInput | Transactions_detailWhereUniqueInput[]
+    update?: Transactions_detailUpdateWithWhereUniqueWithoutDetail_eventInput | Transactions_detailUpdateWithWhereUniqueWithoutDetail_eventInput[]
+    updateMany?: Transactions_detailUpdateManyWithWhereWithoutDetail_eventInput | Transactions_detailUpdateManyWithWhereWithoutDetail_eventInput[]
+    deleteMany?: Transactions_detailScalarWhereInput | Transactions_detailScalarWhereInput[]
+  }
+
+  export type Event_SeatUncheckedUpdateOneWithoutEventNestedInput = {
+    create?: XOR<Event_SeatCreateWithoutEventInput, Event_SeatUncheckedCreateWithoutEventInput>
+    connectOrCreate?: Event_SeatCreateOrConnectWithoutEventInput
+    upsert?: Event_SeatUpsertWithoutEventInput
+    disconnect?: Event_SeatWhereInput | boolean
+    delete?: Event_SeatWhereInput | boolean
+    connect?: Event_SeatWhereUniqueInput
+    update?: XOR<XOR<Event_SeatUpdateToOneWithWhereWithoutEventInput, Event_SeatUpdateWithoutEventInput>, Event_SeatUncheckedUpdateWithoutEventInput>
+  }
+
+  export type Event_ReviewsUncheckedUpdateManyWithoutReviews_eventNestedInput = {
+    create?: XOR<Event_ReviewsCreateWithoutReviews_eventInput, Event_ReviewsUncheckedCreateWithoutReviews_eventInput> | Event_ReviewsCreateWithoutReviews_eventInput[] | Event_ReviewsUncheckedCreateWithoutReviews_eventInput[]
+    connectOrCreate?: Event_ReviewsCreateOrConnectWithoutReviews_eventInput | Event_ReviewsCreateOrConnectWithoutReviews_eventInput[]
+    upsert?: Event_ReviewsUpsertWithWhereUniqueWithoutReviews_eventInput | Event_ReviewsUpsertWithWhereUniqueWithoutReviews_eventInput[]
+    createMany?: Event_ReviewsCreateManyReviews_eventInputEnvelope
+    set?: Event_ReviewsWhereUniqueInput | Event_ReviewsWhereUniqueInput[]
+    disconnect?: Event_ReviewsWhereUniqueInput | Event_ReviewsWhereUniqueInput[]
+    delete?: Event_ReviewsWhereUniqueInput | Event_ReviewsWhereUniqueInput[]
+    connect?: Event_ReviewsWhereUniqueInput | Event_ReviewsWhereUniqueInput[]
+    update?: Event_ReviewsUpdateWithWhereUniqueWithoutReviews_eventInput | Event_ReviewsUpdateWithWhereUniqueWithoutReviews_eventInput[]
+    updateMany?: Event_ReviewsUpdateManyWithWhereWithoutReviews_eventInput | Event_ReviewsUpdateManyWithWhereWithoutReviews_eventInput[]
+    deleteMany?: Event_ReviewsScalarWhereInput | Event_ReviewsScalarWhereInput[]
+  }
+
+  export type Event_AttendeesUncheckedUpdateManyWithoutUser_eventNestedInput = {
+    create?: XOR<Event_AttendeesCreateWithoutUser_eventInput, Event_AttendeesUncheckedCreateWithoutUser_eventInput> | Event_AttendeesCreateWithoutUser_eventInput[] | Event_AttendeesUncheckedCreateWithoutUser_eventInput[]
+    connectOrCreate?: Event_AttendeesCreateOrConnectWithoutUser_eventInput | Event_AttendeesCreateOrConnectWithoutUser_eventInput[]
+    upsert?: Event_AttendeesUpsertWithWhereUniqueWithoutUser_eventInput | Event_AttendeesUpsertWithWhereUniqueWithoutUser_eventInput[]
+    createMany?: Event_AttendeesCreateManyUser_eventInputEnvelope
+    set?: Event_AttendeesWhereUniqueInput | Event_AttendeesWhereUniqueInput[]
+    disconnect?: Event_AttendeesWhereUniqueInput | Event_AttendeesWhereUniqueInput[]
+    delete?: Event_AttendeesWhereUniqueInput | Event_AttendeesWhereUniqueInput[]
+    connect?: Event_AttendeesWhereUniqueInput | Event_AttendeesWhereUniqueInput[]
+    update?: Event_AttendeesUpdateWithWhereUniqueWithoutUser_eventInput | Event_AttendeesUpdateWithWhereUniqueWithoutUser_eventInput[]
+    updateMany?: Event_AttendeesUpdateManyWithWhereWithoutUser_eventInput | Event_AttendeesUpdateManyWithWhereWithoutUser_eventInput[]
+    deleteMany?: Event_AttendeesScalarWhereInput | Event_AttendeesScalarWhereInput[]
+  }
+
+  export type Transactions_detailUncheckedUpdateManyWithoutDetail_eventNestedInput = {
+    create?: XOR<Transactions_detailCreateWithoutDetail_eventInput, Transactions_detailUncheckedCreateWithoutDetail_eventInput> | Transactions_detailCreateWithoutDetail_eventInput[] | Transactions_detailUncheckedCreateWithoutDetail_eventInput[]
+    connectOrCreate?: Transactions_detailCreateOrConnectWithoutDetail_eventInput | Transactions_detailCreateOrConnectWithoutDetail_eventInput[]
+    upsert?: Transactions_detailUpsertWithWhereUniqueWithoutDetail_eventInput | Transactions_detailUpsertWithWhereUniqueWithoutDetail_eventInput[]
+    createMany?: Transactions_detailCreateManyDetail_eventInputEnvelope
+    set?: Transactions_detailWhereUniqueInput | Transactions_detailWhereUniqueInput[]
+    disconnect?: Transactions_detailWhereUniqueInput | Transactions_detailWhereUniqueInput[]
+    delete?: Transactions_detailWhereUniqueInput | Transactions_detailWhereUniqueInput[]
+    connect?: Transactions_detailWhereUniqueInput | Transactions_detailWhereUniqueInput[]
+    update?: Transactions_detailUpdateWithWhereUniqueWithoutDetail_eventInput | Transactions_detailUpdateWithWhereUniqueWithoutDetail_eventInput[]
+    updateMany?: Transactions_detailUpdateManyWithWhereWithoutDetail_eventInput | Transactions_detailUpdateManyWithWhereWithoutDetail_eventInput[]
+    deleteMany?: Transactions_detailScalarWhereInput | Transactions_detailScalarWhereInput[]
+  }
+
+  export type EventsCreateNestedManyWithoutCategory_eventInput = {
+    create?: XOR<EventsCreateWithoutCategory_eventInput, EventsUncheckedCreateWithoutCategory_eventInput> | EventsCreateWithoutCategory_eventInput[] | EventsUncheckedCreateWithoutCategory_eventInput[]
+    connectOrCreate?: EventsCreateOrConnectWithoutCategory_eventInput | EventsCreateOrConnectWithoutCategory_eventInput[]
+    createMany?: EventsCreateManyCategory_eventInputEnvelope
     connect?: EventsWhereUniqueInput | EventsWhereUniqueInput[]
   }
 
-  export type EventsUncheckedCreateNestedManyWithoutEvent_categoryInput = {
-    create?: XOR<EventsCreateWithoutEvent_categoryInput, EventsUncheckedCreateWithoutEvent_categoryInput> | EventsCreateWithoutEvent_categoryInput[] | EventsUncheckedCreateWithoutEvent_categoryInput[]
-    connectOrCreate?: EventsCreateOrConnectWithoutEvent_categoryInput | EventsCreateOrConnectWithoutEvent_categoryInput[]
-    createMany?: EventsCreateManyEvent_categoryInputEnvelope
+  export type EventsUncheckedCreateNestedManyWithoutCategory_eventInput = {
+    create?: XOR<EventsCreateWithoutCategory_eventInput, EventsUncheckedCreateWithoutCategory_eventInput> | EventsCreateWithoutCategory_eventInput[] | EventsUncheckedCreateWithoutCategory_eventInput[]
+    connectOrCreate?: EventsCreateOrConnectWithoutCategory_eventInput | EventsCreateOrConnectWithoutCategory_eventInput[]
+    createMany?: EventsCreateManyCategory_eventInputEnvelope
     connect?: EventsWhereUniqueInput | EventsWhereUniqueInput[]
   }
 
-  export type EventsUpdateManyWithoutEvent_categoryNestedInput = {
-    create?: XOR<EventsCreateWithoutEvent_categoryInput, EventsUncheckedCreateWithoutEvent_categoryInput> | EventsCreateWithoutEvent_categoryInput[] | EventsUncheckedCreateWithoutEvent_categoryInput[]
-    connectOrCreate?: EventsCreateOrConnectWithoutEvent_categoryInput | EventsCreateOrConnectWithoutEvent_categoryInput[]
-    upsert?: EventsUpsertWithWhereUniqueWithoutEvent_categoryInput | EventsUpsertWithWhereUniqueWithoutEvent_categoryInput[]
-    createMany?: EventsCreateManyEvent_categoryInputEnvelope
+  export type EventsUpdateManyWithoutCategory_eventNestedInput = {
+    create?: XOR<EventsCreateWithoutCategory_eventInput, EventsUncheckedCreateWithoutCategory_eventInput> | EventsCreateWithoutCategory_eventInput[] | EventsUncheckedCreateWithoutCategory_eventInput[]
+    connectOrCreate?: EventsCreateOrConnectWithoutCategory_eventInput | EventsCreateOrConnectWithoutCategory_eventInput[]
+    upsert?: EventsUpsertWithWhereUniqueWithoutCategory_eventInput | EventsUpsertWithWhereUniqueWithoutCategory_eventInput[]
+    createMany?: EventsCreateManyCategory_eventInputEnvelope
     set?: EventsWhereUniqueInput | EventsWhereUniqueInput[]
     disconnect?: EventsWhereUniqueInput | EventsWhereUniqueInput[]
     delete?: EventsWhereUniqueInput | EventsWhereUniqueInput[]
     connect?: EventsWhereUniqueInput | EventsWhereUniqueInput[]
-    update?: EventsUpdateWithWhereUniqueWithoutEvent_categoryInput | EventsUpdateWithWhereUniqueWithoutEvent_categoryInput[]
-    updateMany?: EventsUpdateManyWithWhereWithoutEvent_categoryInput | EventsUpdateManyWithWhereWithoutEvent_categoryInput[]
+    update?: EventsUpdateWithWhereUniqueWithoutCategory_eventInput | EventsUpdateWithWhereUniqueWithoutCategory_eventInput[]
+    updateMany?: EventsUpdateManyWithWhereWithoutCategory_eventInput | EventsUpdateManyWithWhereWithoutCategory_eventInput[]
     deleteMany?: EventsScalarWhereInput | EventsScalarWhereInput[]
   }
 
-  export type EventsUncheckedUpdateManyWithoutEvent_categoryNestedInput = {
-    create?: XOR<EventsCreateWithoutEvent_categoryInput, EventsUncheckedCreateWithoutEvent_categoryInput> | EventsCreateWithoutEvent_categoryInput[] | EventsUncheckedCreateWithoutEvent_categoryInput[]
-    connectOrCreate?: EventsCreateOrConnectWithoutEvent_categoryInput | EventsCreateOrConnectWithoutEvent_categoryInput[]
-    upsert?: EventsUpsertWithWhereUniqueWithoutEvent_categoryInput | EventsUpsertWithWhereUniqueWithoutEvent_categoryInput[]
-    createMany?: EventsCreateManyEvent_categoryInputEnvelope
+  export type EventsUncheckedUpdateManyWithoutCategory_eventNestedInput = {
+    create?: XOR<EventsCreateWithoutCategory_eventInput, EventsUncheckedCreateWithoutCategory_eventInput> | EventsCreateWithoutCategory_eventInput[] | EventsUncheckedCreateWithoutCategory_eventInput[]
+    connectOrCreate?: EventsCreateOrConnectWithoutCategory_eventInput | EventsCreateOrConnectWithoutCategory_eventInput[]
+    upsert?: EventsUpsertWithWhereUniqueWithoutCategory_eventInput | EventsUpsertWithWhereUniqueWithoutCategory_eventInput[]
+    createMany?: EventsCreateManyCategory_eventInputEnvelope
     set?: EventsWhereUniqueInput | EventsWhereUniqueInput[]
     disconnect?: EventsWhereUniqueInput | EventsWhereUniqueInput[]
     delete?: EventsWhereUniqueInput | EventsWhereUniqueInput[]
     connect?: EventsWhereUniqueInput | EventsWhereUniqueInput[]
-    update?: EventsUpdateWithWhereUniqueWithoutEvent_categoryInput | EventsUpdateWithWhereUniqueWithoutEvent_categoryInput[]
-    updateMany?: EventsUpdateManyWithWhereWithoutEvent_categoryInput | EventsUpdateManyWithWhereWithoutEvent_categoryInput[]
+    update?: EventsUpdateWithWhereUniqueWithoutCategory_eventInput | EventsUpdateWithWhereUniqueWithoutCategory_eventInput[]
+    updateMany?: EventsUpdateManyWithWhereWithoutCategory_eventInput | EventsUpdateManyWithWhereWithoutCategory_eventInput[]
     deleteMany?: EventsScalarWhereInput | EventsScalarWhereInput[]
   }
 
-  export type EventsCreateNestedManyWithoutEvent_locationInput = {
-    create?: XOR<EventsCreateWithoutEvent_locationInput, EventsUncheckedCreateWithoutEvent_locationInput> | EventsCreateWithoutEvent_locationInput[] | EventsUncheckedCreateWithoutEvent_locationInput[]
-    connectOrCreate?: EventsCreateOrConnectWithoutEvent_locationInput | EventsCreateOrConnectWithoutEvent_locationInput[]
-    createMany?: EventsCreateManyEvent_locationInputEnvelope
+  export type EventsCreateNestedManyWithoutLocation_EventInput = {
+    create?: XOR<EventsCreateWithoutLocation_EventInput, EventsUncheckedCreateWithoutLocation_EventInput> | EventsCreateWithoutLocation_EventInput[] | EventsUncheckedCreateWithoutLocation_EventInput[]
+    connectOrCreate?: EventsCreateOrConnectWithoutLocation_EventInput | EventsCreateOrConnectWithoutLocation_EventInput[]
+    createMany?: EventsCreateManyLocation_EventInputEnvelope
     connect?: EventsWhereUniqueInput | EventsWhereUniqueInput[]
   }
 
-  export type EventsUncheckedCreateNestedManyWithoutEvent_locationInput = {
-    create?: XOR<EventsCreateWithoutEvent_locationInput, EventsUncheckedCreateWithoutEvent_locationInput> | EventsCreateWithoutEvent_locationInput[] | EventsUncheckedCreateWithoutEvent_locationInput[]
-    connectOrCreate?: EventsCreateOrConnectWithoutEvent_locationInput | EventsCreateOrConnectWithoutEvent_locationInput[]
-    createMany?: EventsCreateManyEvent_locationInputEnvelope
+  export type EventsUncheckedCreateNestedManyWithoutLocation_EventInput = {
+    create?: XOR<EventsCreateWithoutLocation_EventInput, EventsUncheckedCreateWithoutLocation_EventInput> | EventsCreateWithoutLocation_EventInput[] | EventsUncheckedCreateWithoutLocation_EventInput[]
+    connectOrCreate?: EventsCreateOrConnectWithoutLocation_EventInput | EventsCreateOrConnectWithoutLocation_EventInput[]
+    createMany?: EventsCreateManyLocation_EventInputEnvelope
     connect?: EventsWhereUniqueInput | EventsWhereUniqueInput[]
   }
 
-  export type EventsUpdateManyWithoutEvent_locationNestedInput = {
-    create?: XOR<EventsCreateWithoutEvent_locationInput, EventsUncheckedCreateWithoutEvent_locationInput> | EventsCreateWithoutEvent_locationInput[] | EventsUncheckedCreateWithoutEvent_locationInput[]
-    connectOrCreate?: EventsCreateOrConnectWithoutEvent_locationInput | EventsCreateOrConnectWithoutEvent_locationInput[]
-    upsert?: EventsUpsertWithWhereUniqueWithoutEvent_locationInput | EventsUpsertWithWhereUniqueWithoutEvent_locationInput[]
-    createMany?: EventsCreateManyEvent_locationInputEnvelope
+  export type EventsUpdateManyWithoutLocation_EventNestedInput = {
+    create?: XOR<EventsCreateWithoutLocation_EventInput, EventsUncheckedCreateWithoutLocation_EventInput> | EventsCreateWithoutLocation_EventInput[] | EventsUncheckedCreateWithoutLocation_EventInput[]
+    connectOrCreate?: EventsCreateOrConnectWithoutLocation_EventInput | EventsCreateOrConnectWithoutLocation_EventInput[]
+    upsert?: EventsUpsertWithWhereUniqueWithoutLocation_EventInput | EventsUpsertWithWhereUniqueWithoutLocation_EventInput[]
+    createMany?: EventsCreateManyLocation_EventInputEnvelope
     set?: EventsWhereUniqueInput | EventsWhereUniqueInput[]
     disconnect?: EventsWhereUniqueInput | EventsWhereUniqueInput[]
     delete?: EventsWhereUniqueInput | EventsWhereUniqueInput[]
     connect?: EventsWhereUniqueInput | EventsWhereUniqueInput[]
-    update?: EventsUpdateWithWhereUniqueWithoutEvent_locationInput | EventsUpdateWithWhereUniqueWithoutEvent_locationInput[]
-    updateMany?: EventsUpdateManyWithWhereWithoutEvent_locationInput | EventsUpdateManyWithWhereWithoutEvent_locationInput[]
+    update?: EventsUpdateWithWhereUniqueWithoutLocation_EventInput | EventsUpdateWithWhereUniqueWithoutLocation_EventInput[]
+    updateMany?: EventsUpdateManyWithWhereWithoutLocation_EventInput | EventsUpdateManyWithWhereWithoutLocation_EventInput[]
     deleteMany?: EventsScalarWhereInput | EventsScalarWhereInput[]
   }
 
-  export type EventsUncheckedUpdateManyWithoutEvent_locationNestedInput = {
-    create?: XOR<EventsCreateWithoutEvent_locationInput, EventsUncheckedCreateWithoutEvent_locationInput> | EventsCreateWithoutEvent_locationInput[] | EventsUncheckedCreateWithoutEvent_locationInput[]
-    connectOrCreate?: EventsCreateOrConnectWithoutEvent_locationInput | EventsCreateOrConnectWithoutEvent_locationInput[]
-    upsert?: EventsUpsertWithWhereUniqueWithoutEvent_locationInput | EventsUpsertWithWhereUniqueWithoutEvent_locationInput[]
-    createMany?: EventsCreateManyEvent_locationInputEnvelope
+  export type EventsUncheckedUpdateManyWithoutLocation_EventNestedInput = {
+    create?: XOR<EventsCreateWithoutLocation_EventInput, EventsUncheckedCreateWithoutLocation_EventInput> | EventsCreateWithoutLocation_EventInput[] | EventsUncheckedCreateWithoutLocation_EventInput[]
+    connectOrCreate?: EventsCreateOrConnectWithoutLocation_EventInput | EventsCreateOrConnectWithoutLocation_EventInput[]
+    upsert?: EventsUpsertWithWhereUniqueWithoutLocation_EventInput | EventsUpsertWithWhereUniqueWithoutLocation_EventInput[]
+    createMany?: EventsCreateManyLocation_EventInputEnvelope
     set?: EventsWhereUniqueInput | EventsWhereUniqueInput[]
     disconnect?: EventsWhereUniqueInput | EventsWhereUniqueInput[]
     delete?: EventsWhereUniqueInput | EventsWhereUniqueInput[]
     connect?: EventsWhereUniqueInput | EventsWhereUniqueInput[]
-    update?: EventsUpdateWithWhereUniqueWithoutEvent_locationInput | EventsUpdateWithWhereUniqueWithoutEvent_locationInput[]
-    updateMany?: EventsUpdateManyWithWhereWithoutEvent_locationInput | EventsUpdateManyWithWhereWithoutEvent_locationInput[]
+    update?: EventsUpdateWithWhereUniqueWithoutLocation_EventInput | EventsUpdateWithWhereUniqueWithoutLocation_EventInput[]
+    updateMany?: EventsUpdateManyWithWhereWithoutLocation_EventInput | EventsUpdateManyWithWhereWithoutLocation_EventInput[]
     deleteMany?: EventsScalarWhereInput | EventsScalarWhereInput[]
+  }
+
+  export type EventsCreateNestedOneWithoutSeat_eventInput = {
+    create?: XOR<EventsCreateWithoutSeat_eventInput, EventsUncheckedCreateWithoutSeat_eventInput>
+    connectOrCreate?: EventsCreateOrConnectWithoutSeat_eventInput
+    connect?: EventsWhereUniqueInput
+  }
+
+  export type EventsUpdateOneRequiredWithoutSeat_eventNestedInput = {
+    create?: XOR<EventsCreateWithoutSeat_eventInput, EventsUncheckedCreateWithoutSeat_eventInput>
+    connectOrCreate?: EventsCreateOrConnectWithoutSeat_eventInput
+    upsert?: EventsUpsertWithoutSeat_eventInput
+    connect?: EventsWhereUniqueInput
+    update?: XOR<XOR<EventsUpdateToOneWithWhereWithoutSeat_eventInput, EventsUpdateWithoutSeat_eventInput>, EventsUncheckedUpdateWithoutSeat_eventInput>
+  }
+
+  export type UsersCreateNestedOneWithoutReviews_userInput = {
+    create?: XOR<UsersCreateWithoutReviews_userInput, UsersUncheckedCreateWithoutReviews_userInput>
+    connectOrCreate?: UsersCreateOrConnectWithoutReviews_userInput
+    connect?: UsersWhereUniqueInput
+  }
+
+  export type EventsCreateNestedOneWithoutReviews_eventInput = {
+    create?: XOR<EventsCreateWithoutReviews_eventInput, EventsUncheckedCreateWithoutReviews_eventInput>
+    connectOrCreate?: EventsCreateOrConnectWithoutReviews_eventInput
+    connect?: EventsWhereUniqueInput
+  }
+
+  export type UsersUpdateOneRequiredWithoutReviews_userNestedInput = {
+    create?: XOR<UsersCreateWithoutReviews_userInput, UsersUncheckedCreateWithoutReviews_userInput>
+    connectOrCreate?: UsersCreateOrConnectWithoutReviews_userInput
+    upsert?: UsersUpsertWithoutReviews_userInput
+    connect?: UsersWhereUniqueInput
+    update?: XOR<XOR<UsersUpdateToOneWithWhereWithoutReviews_userInput, UsersUpdateWithoutReviews_userInput>, UsersUncheckedUpdateWithoutReviews_userInput>
+  }
+
+  export type EventsUpdateOneRequiredWithoutReviews_eventNestedInput = {
+    create?: XOR<EventsCreateWithoutReviews_eventInput, EventsUncheckedCreateWithoutReviews_eventInput>
+    connectOrCreate?: EventsCreateOrConnectWithoutReviews_eventInput
+    upsert?: EventsUpsertWithoutReviews_eventInput
+    connect?: EventsWhereUniqueInput
+    update?: XOR<XOR<EventsUpdateToOneWithWhereWithoutReviews_eventInput, EventsUpdateWithoutReviews_eventInput>, EventsUncheckedUpdateWithoutReviews_eventInput>
+  }
+
+  export type UsersCreateNestedOneWithoutAttendees_userInput = {
+    create?: XOR<UsersCreateWithoutAttendees_userInput, UsersUncheckedCreateWithoutAttendees_userInput>
+    connectOrCreate?: UsersCreateOrConnectWithoutAttendees_userInput
+    connect?: UsersWhereUniqueInput
+  }
+
+  export type EventsCreateNestedOneWithoutAttendees_eventInput = {
+    create?: XOR<EventsCreateWithoutAttendees_eventInput, EventsUncheckedCreateWithoutAttendees_eventInput>
+    connectOrCreate?: EventsCreateOrConnectWithoutAttendees_eventInput
+    connect?: EventsWhereUniqueInput
+  }
+
+  export type EnumStatusFieldUpdateOperationsInput = {
+    set?: $Enums.Status
+  }
+
+  export type UsersUpdateOneRequiredWithoutAttendees_userNestedInput = {
+    create?: XOR<UsersCreateWithoutAttendees_userInput, UsersUncheckedCreateWithoutAttendees_userInput>
+    connectOrCreate?: UsersCreateOrConnectWithoutAttendees_userInput
+    upsert?: UsersUpsertWithoutAttendees_userInput
+    connect?: UsersWhereUniqueInput
+    update?: XOR<XOR<UsersUpdateToOneWithWhereWithoutAttendees_userInput, UsersUpdateWithoutAttendees_userInput>, UsersUncheckedUpdateWithoutAttendees_userInput>
+  }
+
+  export type EventsUpdateOneRequiredWithoutAttendees_eventNestedInput = {
+    create?: XOR<EventsCreateWithoutAttendees_eventInput, EventsUncheckedCreateWithoutAttendees_eventInput>
+    connectOrCreate?: EventsCreateOrConnectWithoutAttendees_eventInput
+    upsert?: EventsUpsertWithoutAttendees_eventInput
+    connect?: EventsWhereUniqueInput
+    update?: XOR<XOR<EventsUpdateToOneWithWhereWithoutAttendees_eventInput, EventsUpdateWithoutAttendees_eventInput>, EventsUncheckedUpdateWithoutAttendees_eventInput>
+  }
+
+  export type UsersCreateNestedOneWithoutReferral_userInput = {
+    create?: XOR<UsersCreateWithoutReferral_userInput, UsersUncheckedCreateWithoutReferral_userInput>
+    connectOrCreate?: UsersCreateOrConnectWithoutReferral_userInput
+    connect?: UsersWhereUniqueInput
+  }
+
+  export type Referral_UsageCreateNestedManyWithoutCode_referralUsageInput = {
+    create?: XOR<Referral_UsageCreateWithoutCode_referralUsageInput, Referral_UsageUncheckedCreateWithoutCode_referralUsageInput> | Referral_UsageCreateWithoutCode_referralUsageInput[] | Referral_UsageUncheckedCreateWithoutCode_referralUsageInput[]
+    connectOrCreate?: Referral_UsageCreateOrConnectWithoutCode_referralUsageInput | Referral_UsageCreateOrConnectWithoutCode_referralUsageInput[]
+    createMany?: Referral_UsageCreateManyCode_referralUsageInputEnvelope
+    connect?: Referral_UsageWhereUniqueInput | Referral_UsageWhereUniqueInput[]
+  }
+
+  export type Referral_UsageUncheckedCreateNestedManyWithoutCode_referralUsageInput = {
+    create?: XOR<Referral_UsageCreateWithoutCode_referralUsageInput, Referral_UsageUncheckedCreateWithoutCode_referralUsageInput> | Referral_UsageCreateWithoutCode_referralUsageInput[] | Referral_UsageUncheckedCreateWithoutCode_referralUsageInput[]
+    connectOrCreate?: Referral_UsageCreateOrConnectWithoutCode_referralUsageInput | Referral_UsageCreateOrConnectWithoutCode_referralUsageInput[]
+    createMany?: Referral_UsageCreateManyCode_referralUsageInputEnvelope
+    connect?: Referral_UsageWhereUniqueInput | Referral_UsageWhereUniqueInput[]
+  }
+
+  export type UsersUpdateOneRequiredWithoutReferral_userNestedInput = {
+    create?: XOR<UsersCreateWithoutReferral_userInput, UsersUncheckedCreateWithoutReferral_userInput>
+    connectOrCreate?: UsersCreateOrConnectWithoutReferral_userInput
+    upsert?: UsersUpsertWithoutReferral_userInput
+    connect?: UsersWhereUniqueInput
+    update?: XOR<XOR<UsersUpdateToOneWithWhereWithoutReferral_userInput, UsersUpdateWithoutReferral_userInput>, UsersUncheckedUpdateWithoutReferral_userInput>
+  }
+
+  export type Referral_UsageUpdateManyWithoutCode_referralUsageNestedInput = {
+    create?: XOR<Referral_UsageCreateWithoutCode_referralUsageInput, Referral_UsageUncheckedCreateWithoutCode_referralUsageInput> | Referral_UsageCreateWithoutCode_referralUsageInput[] | Referral_UsageUncheckedCreateWithoutCode_referralUsageInput[]
+    connectOrCreate?: Referral_UsageCreateOrConnectWithoutCode_referralUsageInput | Referral_UsageCreateOrConnectWithoutCode_referralUsageInput[]
+    upsert?: Referral_UsageUpsertWithWhereUniqueWithoutCode_referralUsageInput | Referral_UsageUpsertWithWhereUniqueWithoutCode_referralUsageInput[]
+    createMany?: Referral_UsageCreateManyCode_referralUsageInputEnvelope
+    set?: Referral_UsageWhereUniqueInput | Referral_UsageWhereUniqueInput[]
+    disconnect?: Referral_UsageWhereUniqueInput | Referral_UsageWhereUniqueInput[]
+    delete?: Referral_UsageWhereUniqueInput | Referral_UsageWhereUniqueInput[]
+    connect?: Referral_UsageWhereUniqueInput | Referral_UsageWhereUniqueInput[]
+    update?: Referral_UsageUpdateWithWhereUniqueWithoutCode_referralUsageInput | Referral_UsageUpdateWithWhereUniqueWithoutCode_referralUsageInput[]
+    updateMany?: Referral_UsageUpdateManyWithWhereWithoutCode_referralUsageInput | Referral_UsageUpdateManyWithWhereWithoutCode_referralUsageInput[]
+    deleteMany?: Referral_UsageScalarWhereInput | Referral_UsageScalarWhereInput[]
+  }
+
+  export type Referral_UsageUncheckedUpdateManyWithoutCode_referralUsageNestedInput = {
+    create?: XOR<Referral_UsageCreateWithoutCode_referralUsageInput, Referral_UsageUncheckedCreateWithoutCode_referralUsageInput> | Referral_UsageCreateWithoutCode_referralUsageInput[] | Referral_UsageUncheckedCreateWithoutCode_referralUsageInput[]
+    connectOrCreate?: Referral_UsageCreateOrConnectWithoutCode_referralUsageInput | Referral_UsageCreateOrConnectWithoutCode_referralUsageInput[]
+    upsert?: Referral_UsageUpsertWithWhereUniqueWithoutCode_referralUsageInput | Referral_UsageUpsertWithWhereUniqueWithoutCode_referralUsageInput[]
+    createMany?: Referral_UsageCreateManyCode_referralUsageInputEnvelope
+    set?: Referral_UsageWhereUniqueInput | Referral_UsageWhereUniqueInput[]
+    disconnect?: Referral_UsageWhereUniqueInput | Referral_UsageWhereUniqueInput[]
+    delete?: Referral_UsageWhereUniqueInput | Referral_UsageWhereUniqueInput[]
+    connect?: Referral_UsageWhereUniqueInput | Referral_UsageWhereUniqueInput[]
+    update?: Referral_UsageUpdateWithWhereUniqueWithoutCode_referralUsageInput | Referral_UsageUpdateWithWhereUniqueWithoutCode_referralUsageInput[]
+    updateMany?: Referral_UsageUpdateManyWithWhereWithoutCode_referralUsageInput | Referral_UsageUpdateManyWithWhereWithoutCode_referralUsageInput[]
+    deleteMany?: Referral_UsageScalarWhereInput | Referral_UsageScalarWhereInput[]
+  }
+
+  export type UsersCreateNestedOneWithoutUsageReferral_userInput = {
+    create?: XOR<UsersCreateWithoutUsageReferral_userInput, UsersUncheckedCreateWithoutUsageReferral_userInput>
+    connectOrCreate?: UsersCreateOrConnectWithoutUsageReferral_userInput
+    connect?: UsersWhereUniqueInput
+  }
+
+  export type Referral_CodeCreateNestedOneWithoutUser_referralUsageInput = {
+    create?: XOR<Referral_CodeCreateWithoutUser_referralUsageInput, Referral_CodeUncheckedCreateWithoutUser_referralUsageInput>
+    connectOrCreate?: Referral_CodeCreateOrConnectWithoutUser_referralUsageInput
+    connect?: Referral_CodeWhereUniqueInput
+  }
+
+  export type UsersUpdateOneRequiredWithoutUsageReferral_userNestedInput = {
+    create?: XOR<UsersCreateWithoutUsageReferral_userInput, UsersUncheckedCreateWithoutUsageReferral_userInput>
+    connectOrCreate?: UsersCreateOrConnectWithoutUsageReferral_userInput
+    upsert?: UsersUpsertWithoutUsageReferral_userInput
+    connect?: UsersWhereUniqueInput
+    update?: XOR<XOR<UsersUpdateToOneWithWhereWithoutUsageReferral_userInput, UsersUpdateWithoutUsageReferral_userInput>, UsersUncheckedUpdateWithoutUsageReferral_userInput>
+  }
+
+  export type Referral_CodeUpdateOneRequiredWithoutUser_referralUsageNestedInput = {
+    create?: XOR<Referral_CodeCreateWithoutUser_referralUsageInput, Referral_CodeUncheckedCreateWithoutUser_referralUsageInput>
+    connectOrCreate?: Referral_CodeCreateOrConnectWithoutUser_referralUsageInput
+    upsert?: Referral_CodeUpsertWithoutUser_referralUsageInput
+    connect?: Referral_CodeWhereUniqueInput
+    update?: XOR<XOR<Referral_CodeUpdateToOneWithWhereWithoutUser_referralUsageInput, Referral_CodeUpdateWithoutUser_referralUsageInput>, Referral_CodeUncheckedUpdateWithoutUser_referralUsageInput>
+  }
+
+  export type OrganizerCreateNestedOneWithoutOrganizer_voucherInput = {
+    create?: XOR<OrganizerCreateWithoutOrganizer_voucherInput, OrganizerUncheckedCreateWithoutOrganizer_voucherInput>
+    connectOrCreate?: OrganizerCreateOrConnectWithoutOrganizer_voucherInput
+    connect?: OrganizerWhereUniqueInput
+  }
+
+  export type TransactionsCreateNestedManyWithoutTransaction_voucherInput = {
+    create?: XOR<TransactionsCreateWithoutTransaction_voucherInput, TransactionsUncheckedCreateWithoutTransaction_voucherInput> | TransactionsCreateWithoutTransaction_voucherInput[] | TransactionsUncheckedCreateWithoutTransaction_voucherInput[]
+    connectOrCreate?: TransactionsCreateOrConnectWithoutTransaction_voucherInput | TransactionsCreateOrConnectWithoutTransaction_voucherInput[]
+    createMany?: TransactionsCreateManyTransaction_voucherInputEnvelope
+    connect?: TransactionsWhereUniqueInput | TransactionsWhereUniqueInput[]
+  }
+
+  export type TransactionsUncheckedCreateNestedManyWithoutTransaction_voucherInput = {
+    create?: XOR<TransactionsCreateWithoutTransaction_voucherInput, TransactionsUncheckedCreateWithoutTransaction_voucherInput> | TransactionsCreateWithoutTransaction_voucherInput[] | TransactionsUncheckedCreateWithoutTransaction_voucherInput[]
+    connectOrCreate?: TransactionsCreateOrConnectWithoutTransaction_voucherInput | TransactionsCreateOrConnectWithoutTransaction_voucherInput[]
+    createMany?: TransactionsCreateManyTransaction_voucherInputEnvelope
+    connect?: TransactionsWhereUniqueInput | TransactionsWhereUniqueInput[]
+  }
+
+  export type OrganizerUpdateOneRequiredWithoutOrganizer_voucherNestedInput = {
+    create?: XOR<OrganizerCreateWithoutOrganizer_voucherInput, OrganizerUncheckedCreateWithoutOrganizer_voucherInput>
+    connectOrCreate?: OrganizerCreateOrConnectWithoutOrganizer_voucherInput
+    upsert?: OrganizerUpsertWithoutOrganizer_voucherInput
+    connect?: OrganizerWhereUniqueInput
+    update?: XOR<XOR<OrganizerUpdateToOneWithWhereWithoutOrganizer_voucherInput, OrganizerUpdateWithoutOrganizer_voucherInput>, OrganizerUncheckedUpdateWithoutOrganizer_voucherInput>
+  }
+
+  export type TransactionsUpdateManyWithoutTransaction_voucherNestedInput = {
+    create?: XOR<TransactionsCreateWithoutTransaction_voucherInput, TransactionsUncheckedCreateWithoutTransaction_voucherInput> | TransactionsCreateWithoutTransaction_voucherInput[] | TransactionsUncheckedCreateWithoutTransaction_voucherInput[]
+    connectOrCreate?: TransactionsCreateOrConnectWithoutTransaction_voucherInput | TransactionsCreateOrConnectWithoutTransaction_voucherInput[]
+    upsert?: TransactionsUpsertWithWhereUniqueWithoutTransaction_voucherInput | TransactionsUpsertWithWhereUniqueWithoutTransaction_voucherInput[]
+    createMany?: TransactionsCreateManyTransaction_voucherInputEnvelope
+    set?: TransactionsWhereUniqueInput | TransactionsWhereUniqueInput[]
+    disconnect?: TransactionsWhereUniqueInput | TransactionsWhereUniqueInput[]
+    delete?: TransactionsWhereUniqueInput | TransactionsWhereUniqueInput[]
+    connect?: TransactionsWhereUniqueInput | TransactionsWhereUniqueInput[]
+    update?: TransactionsUpdateWithWhereUniqueWithoutTransaction_voucherInput | TransactionsUpdateWithWhereUniqueWithoutTransaction_voucherInput[]
+    updateMany?: TransactionsUpdateManyWithWhereWithoutTransaction_voucherInput | TransactionsUpdateManyWithWhereWithoutTransaction_voucherInput[]
+    deleteMany?: TransactionsScalarWhereInput | TransactionsScalarWhereInput[]
+  }
+
+  export type TransactionsUncheckedUpdateManyWithoutTransaction_voucherNestedInput = {
+    create?: XOR<TransactionsCreateWithoutTransaction_voucherInput, TransactionsUncheckedCreateWithoutTransaction_voucherInput> | TransactionsCreateWithoutTransaction_voucherInput[] | TransactionsUncheckedCreateWithoutTransaction_voucherInput[]
+    connectOrCreate?: TransactionsCreateOrConnectWithoutTransaction_voucherInput | TransactionsCreateOrConnectWithoutTransaction_voucherInput[]
+    upsert?: TransactionsUpsertWithWhereUniqueWithoutTransaction_voucherInput | TransactionsUpsertWithWhereUniqueWithoutTransaction_voucherInput[]
+    createMany?: TransactionsCreateManyTransaction_voucherInputEnvelope
+    set?: TransactionsWhereUniqueInput | TransactionsWhereUniqueInput[]
+    disconnect?: TransactionsWhereUniqueInput | TransactionsWhereUniqueInput[]
+    delete?: TransactionsWhereUniqueInput | TransactionsWhereUniqueInput[]
+    connect?: TransactionsWhereUniqueInput | TransactionsWhereUniqueInput[]
+    update?: TransactionsUpdateWithWhereUniqueWithoutTransaction_voucherInput | TransactionsUpdateWithWhereUniqueWithoutTransaction_voucherInput[]
+    updateMany?: TransactionsUpdateManyWithWhereWithoutTransaction_voucherInput | TransactionsUpdateManyWithWhereWithoutTransaction_voucherInput[]
+    deleteMany?: TransactionsScalarWhereInput | TransactionsScalarWhereInput[]
+  }
+
+  export type VoucherCreateNestedOneWithoutVoucher_transactionInput = {
+    create?: XOR<VoucherCreateWithoutVoucher_transactionInput, VoucherUncheckedCreateWithoutVoucher_transactionInput>
+    connectOrCreate?: VoucherCreateOrConnectWithoutVoucher_transactionInput
+    connect?: VoucherWhereUniqueInput
+  }
+
+  export type Transactions_detailCreateNestedManyWithoutDetails_transactionInput = {
+    create?: XOR<Transactions_detailCreateWithoutDetails_transactionInput, Transactions_detailUncheckedCreateWithoutDetails_transactionInput> | Transactions_detailCreateWithoutDetails_transactionInput[] | Transactions_detailUncheckedCreateWithoutDetails_transactionInput[]
+    connectOrCreate?: Transactions_detailCreateOrConnectWithoutDetails_transactionInput | Transactions_detailCreateOrConnectWithoutDetails_transactionInput[]
+    createMany?: Transactions_detailCreateManyDetails_transactionInputEnvelope
+    connect?: Transactions_detailWhereUniqueInput | Transactions_detailWhereUniqueInput[]
+  }
+
+  export type Transactions_detailUncheckedCreateNestedManyWithoutDetails_transactionInput = {
+    create?: XOR<Transactions_detailCreateWithoutDetails_transactionInput, Transactions_detailUncheckedCreateWithoutDetails_transactionInput> | Transactions_detailCreateWithoutDetails_transactionInput[] | Transactions_detailUncheckedCreateWithoutDetails_transactionInput[]
+    connectOrCreate?: Transactions_detailCreateOrConnectWithoutDetails_transactionInput | Transactions_detailCreateOrConnectWithoutDetails_transactionInput[]
+    createMany?: Transactions_detailCreateManyDetails_transactionInputEnvelope
+    connect?: Transactions_detailWhereUniqueInput | Transactions_detailWhereUniqueInput[]
+  }
+
+  export type VoucherUpdateOneRequiredWithoutVoucher_transactionNestedInput = {
+    create?: XOR<VoucherCreateWithoutVoucher_transactionInput, VoucherUncheckedCreateWithoutVoucher_transactionInput>
+    connectOrCreate?: VoucherCreateOrConnectWithoutVoucher_transactionInput
+    upsert?: VoucherUpsertWithoutVoucher_transactionInput
+    connect?: VoucherWhereUniqueInput
+    update?: XOR<XOR<VoucherUpdateToOneWithWhereWithoutVoucher_transactionInput, VoucherUpdateWithoutVoucher_transactionInput>, VoucherUncheckedUpdateWithoutVoucher_transactionInput>
+  }
+
+  export type Transactions_detailUpdateManyWithoutDetails_transactionNestedInput = {
+    create?: XOR<Transactions_detailCreateWithoutDetails_transactionInput, Transactions_detailUncheckedCreateWithoutDetails_transactionInput> | Transactions_detailCreateWithoutDetails_transactionInput[] | Transactions_detailUncheckedCreateWithoutDetails_transactionInput[]
+    connectOrCreate?: Transactions_detailCreateOrConnectWithoutDetails_transactionInput | Transactions_detailCreateOrConnectWithoutDetails_transactionInput[]
+    upsert?: Transactions_detailUpsertWithWhereUniqueWithoutDetails_transactionInput | Transactions_detailUpsertWithWhereUniqueWithoutDetails_transactionInput[]
+    createMany?: Transactions_detailCreateManyDetails_transactionInputEnvelope
+    set?: Transactions_detailWhereUniqueInput | Transactions_detailWhereUniqueInput[]
+    disconnect?: Transactions_detailWhereUniqueInput | Transactions_detailWhereUniqueInput[]
+    delete?: Transactions_detailWhereUniqueInput | Transactions_detailWhereUniqueInput[]
+    connect?: Transactions_detailWhereUniqueInput | Transactions_detailWhereUniqueInput[]
+    update?: Transactions_detailUpdateWithWhereUniqueWithoutDetails_transactionInput | Transactions_detailUpdateWithWhereUniqueWithoutDetails_transactionInput[]
+    updateMany?: Transactions_detailUpdateManyWithWhereWithoutDetails_transactionInput | Transactions_detailUpdateManyWithWhereWithoutDetails_transactionInput[]
+    deleteMany?: Transactions_detailScalarWhereInput | Transactions_detailScalarWhereInput[]
+  }
+
+  export type Transactions_detailUncheckedUpdateManyWithoutDetails_transactionNestedInput = {
+    create?: XOR<Transactions_detailCreateWithoutDetails_transactionInput, Transactions_detailUncheckedCreateWithoutDetails_transactionInput> | Transactions_detailCreateWithoutDetails_transactionInput[] | Transactions_detailUncheckedCreateWithoutDetails_transactionInput[]
+    connectOrCreate?: Transactions_detailCreateOrConnectWithoutDetails_transactionInput | Transactions_detailCreateOrConnectWithoutDetails_transactionInput[]
+    upsert?: Transactions_detailUpsertWithWhereUniqueWithoutDetails_transactionInput | Transactions_detailUpsertWithWhereUniqueWithoutDetails_transactionInput[]
+    createMany?: Transactions_detailCreateManyDetails_transactionInputEnvelope
+    set?: Transactions_detailWhereUniqueInput | Transactions_detailWhereUniqueInput[]
+    disconnect?: Transactions_detailWhereUniqueInput | Transactions_detailWhereUniqueInput[]
+    delete?: Transactions_detailWhereUniqueInput | Transactions_detailWhereUniqueInput[]
+    connect?: Transactions_detailWhereUniqueInput | Transactions_detailWhereUniqueInput[]
+    update?: Transactions_detailUpdateWithWhereUniqueWithoutDetails_transactionInput | Transactions_detailUpdateWithWhereUniqueWithoutDetails_transactionInput[]
+    updateMany?: Transactions_detailUpdateManyWithWhereWithoutDetails_transactionInput | Transactions_detailUpdateManyWithWhereWithoutDetails_transactionInput[]
+    deleteMany?: Transactions_detailScalarWhereInput | Transactions_detailScalarWhereInput[]
+  }
+
+  export type UsersCreateNestedOneWithoutTransactionsInput = {
+    create?: XOR<UsersCreateWithoutTransactionsInput, UsersUncheckedCreateWithoutTransactionsInput>
+    connectOrCreate?: UsersCreateOrConnectWithoutTransactionsInput
+    connect?: UsersWhereUniqueInput
+  }
+
+  export type TransactionsCreateNestedOneWithoutTransaction_detailsInput = {
+    create?: XOR<TransactionsCreateWithoutTransaction_detailsInput, TransactionsUncheckedCreateWithoutTransaction_detailsInput>
+    connectOrCreate?: TransactionsCreateOrConnectWithoutTransaction_detailsInput
+    connect?: TransactionsWhereUniqueInput
+  }
+
+  export type EventsCreateNestedOneWithoutEvent_transactionDetailInput = {
+    create?: XOR<EventsCreateWithoutEvent_transactionDetailInput, EventsUncheckedCreateWithoutEvent_transactionDetailInput>
+    connectOrCreate?: EventsCreateOrConnectWithoutEvent_transactionDetailInput
+    connect?: EventsWhereUniqueInput
+  }
+
+  export type OrganizerCreateNestedOneWithoutOrganizer_transactionDetailsInput = {
+    create?: XOR<OrganizerCreateWithoutOrganizer_transactionDetailsInput, OrganizerUncheckedCreateWithoutOrganizer_transactionDetailsInput>
+    connectOrCreate?: OrganizerCreateOrConnectWithoutOrganizer_transactionDetailsInput
+    connect?: OrganizerWhereUniqueInput
+  }
+
+  export type EnumTransactionStatusFieldUpdateOperationsInput = {
+    set?: $Enums.TransactionStatus
+  }
+
+  export type UsersUpdateOneRequiredWithoutTransactionsNestedInput = {
+    create?: XOR<UsersCreateWithoutTransactionsInput, UsersUncheckedCreateWithoutTransactionsInput>
+    connectOrCreate?: UsersCreateOrConnectWithoutTransactionsInput
+    upsert?: UsersUpsertWithoutTransactionsInput
+    connect?: UsersWhereUniqueInput
+    update?: XOR<XOR<UsersUpdateToOneWithWhereWithoutTransactionsInput, UsersUpdateWithoutTransactionsInput>, UsersUncheckedUpdateWithoutTransactionsInput>
+  }
+
+  export type TransactionsUpdateOneRequiredWithoutTransaction_detailsNestedInput = {
+    create?: XOR<TransactionsCreateWithoutTransaction_detailsInput, TransactionsUncheckedCreateWithoutTransaction_detailsInput>
+    connectOrCreate?: TransactionsCreateOrConnectWithoutTransaction_detailsInput
+    upsert?: TransactionsUpsertWithoutTransaction_detailsInput
+    connect?: TransactionsWhereUniqueInput
+    update?: XOR<XOR<TransactionsUpdateToOneWithWhereWithoutTransaction_detailsInput, TransactionsUpdateWithoutTransaction_detailsInput>, TransactionsUncheckedUpdateWithoutTransaction_detailsInput>
+  }
+
+  export type EventsUpdateOneRequiredWithoutEvent_transactionDetailNestedInput = {
+    create?: XOR<EventsCreateWithoutEvent_transactionDetailInput, EventsUncheckedCreateWithoutEvent_transactionDetailInput>
+    connectOrCreate?: EventsCreateOrConnectWithoutEvent_transactionDetailInput
+    upsert?: EventsUpsertWithoutEvent_transactionDetailInput
+    connect?: EventsWhereUniqueInput
+    update?: XOR<XOR<EventsUpdateToOneWithWhereWithoutEvent_transactionDetailInput, EventsUpdateWithoutEvent_transactionDetailInput>, EventsUncheckedUpdateWithoutEvent_transactionDetailInput>
+  }
+
+  export type OrganizerUpdateOneRequiredWithoutOrganizer_transactionDetailsNestedInput = {
+    create?: XOR<OrganizerCreateWithoutOrganizer_transactionDetailsInput, OrganizerUncheckedCreateWithoutOrganizer_transactionDetailsInput>
+    connectOrCreate?: OrganizerCreateOrConnectWithoutOrganizer_transactionDetailsInput
+    upsert?: OrganizerUpsertWithoutOrganizer_transactionDetailsInput
+    connect?: OrganizerWhereUniqueInput
+    update?: XOR<XOR<OrganizerUpdateToOneWithWhereWithoutOrganizer_transactionDetailsInput, OrganizerUpdateWithoutOrganizer_transactionDetailsInput>, OrganizerUncheckedUpdateWithoutOrganizer_transactionDetailsInput>
   }
 
   export type NestedStringFilter<$PrismaModel = never> = {
@@ -8462,14 +22004,52 @@ export namespace Prisma {
     _max?: NestedDateTimeNullableFilter<$PrismaModel>
   }
 
+  export type NestedEnumStatusFilter<$PrismaModel = never> = {
+    equals?: $Enums.Status | EnumStatusFieldRefInput<$PrismaModel>
+    in?: $Enums.Status[] | ListEnumStatusFieldRefInput<$PrismaModel>
+    notIn?: $Enums.Status[] | ListEnumStatusFieldRefInput<$PrismaModel>
+    not?: NestedEnumStatusFilter<$PrismaModel> | $Enums.Status
+  }
+
+  export type NestedEnumStatusWithAggregatesFilter<$PrismaModel = never> = {
+    equals?: $Enums.Status | EnumStatusFieldRefInput<$PrismaModel>
+    in?: $Enums.Status[] | ListEnumStatusFieldRefInput<$PrismaModel>
+    notIn?: $Enums.Status[] | ListEnumStatusFieldRefInput<$PrismaModel>
+    not?: NestedEnumStatusWithAggregatesFilter<$PrismaModel> | $Enums.Status
+    _count?: NestedIntFilter<$PrismaModel>
+    _min?: NestedEnumStatusFilter<$PrismaModel>
+    _max?: NestedEnumStatusFilter<$PrismaModel>
+  }
+
+  export type NestedEnumTransactionStatusFilter<$PrismaModel = never> = {
+    equals?: $Enums.TransactionStatus | EnumTransactionStatusFieldRefInput<$PrismaModel>
+    in?: $Enums.TransactionStatus[] | ListEnumTransactionStatusFieldRefInput<$PrismaModel>
+    notIn?: $Enums.TransactionStatus[] | ListEnumTransactionStatusFieldRefInput<$PrismaModel>
+    not?: NestedEnumTransactionStatusFilter<$PrismaModel> | $Enums.TransactionStatus
+  }
+
+  export type NestedEnumTransactionStatusWithAggregatesFilter<$PrismaModel = never> = {
+    equals?: $Enums.TransactionStatus | EnumTransactionStatusFieldRefInput<$PrismaModel>
+    in?: $Enums.TransactionStatus[] | ListEnumTransactionStatusFieldRefInput<$PrismaModel>
+    notIn?: $Enums.TransactionStatus[] | ListEnumTransactionStatusFieldRefInput<$PrismaModel>
+    not?: NestedEnumTransactionStatusWithAggregatesFilter<$PrismaModel> | $Enums.TransactionStatus
+    _count?: NestedIntFilter<$PrismaModel>
+    _min?: NestedEnumTransactionStatusFilter<$PrismaModel>
+    _max?: NestedEnumTransactionStatusFilter<$PrismaModel>
+  }
+
   export type OrganizerCreateWithoutUserInput = {
     id?: string
     event?: EventsCreateNestedManyWithoutOrganizerInput
+    organizer_voucher?: VoucherCreateNestedManyWithoutVoucher_organizerInput
+    organizer_transactionDetails?: Transactions_detailCreateNestedManyWithoutDetail_organizerInput
   }
 
   export type OrganizerUncheckedCreateWithoutUserInput = {
     id?: string
     event?: EventsUncheckedCreateNestedManyWithoutOrganizerInput
+    organizer_voucher?: VoucherUncheckedCreateNestedManyWithoutVoucher_organizerInput
+    organizer_transactionDetails?: Transactions_detailUncheckedCreateNestedManyWithoutDetail_organizerInput
   }
 
   export type OrganizerCreateOrConnectWithoutUserInput = {
@@ -8479,6 +22059,127 @@ export namespace Prisma {
 
   export type OrganizerCreateManyUserInputEnvelope = {
     data: OrganizerCreateManyUserInput | OrganizerCreateManyUserInput[]
+    skipDuplicates?: boolean
+  }
+
+  export type Event_ReviewsCreateWithoutReviews_userInput = {
+    id?: string
+    review: string
+    rating: number
+    created_at?: Date | string
+    reviews_event: EventsCreateNestedOneWithoutReviews_eventInput
+  }
+
+  export type Event_ReviewsUncheckedCreateWithoutReviews_userInput = {
+    id?: string
+    events_id: string
+    review: string
+    rating: number
+    created_at?: Date | string
+  }
+
+  export type Event_ReviewsCreateOrConnectWithoutReviews_userInput = {
+    where: Event_ReviewsWhereUniqueInput
+    create: XOR<Event_ReviewsCreateWithoutReviews_userInput, Event_ReviewsUncheckedCreateWithoutReviews_userInput>
+  }
+
+  export type Event_ReviewsCreateManyReviews_userInputEnvelope = {
+    data: Event_ReviewsCreateManyReviews_userInput | Event_ReviewsCreateManyReviews_userInput[]
+    skipDuplicates?: boolean
+  }
+
+  export type Event_AttendeesCreateWithoutUser_attendeesInput = {
+    id?: string
+    status: $Enums.Status
+    user_event: EventsCreateNestedOneWithoutAttendees_eventInput
+  }
+
+  export type Event_AttendeesUncheckedCreateWithoutUser_attendeesInput = {
+    id?: string
+    event_id: string
+    status: $Enums.Status
+  }
+
+  export type Event_AttendeesCreateOrConnectWithoutUser_attendeesInput = {
+    where: Event_AttendeesWhereUniqueInput
+    create: XOR<Event_AttendeesCreateWithoutUser_attendeesInput, Event_AttendeesUncheckedCreateWithoutUser_attendeesInput>
+  }
+
+  export type Event_AttendeesCreateManyUser_attendeesInputEnvelope = {
+    data: Event_AttendeesCreateManyUser_attendeesInput | Event_AttendeesCreateManyUser_attendeesInput[]
+    skipDuplicates?: boolean
+  }
+
+  export type Referral_CodeCreateWithoutUser_referralInput = {
+    id?: string
+    code: string
+    points: number
+    user_referralUsage?: Referral_UsageCreateNestedManyWithoutCode_referralUsageInput
+  }
+
+  export type Referral_CodeUncheckedCreateWithoutUser_referralInput = {
+    id?: string
+    code: string
+    points: number
+    user_referralUsage?: Referral_UsageUncheckedCreateNestedManyWithoutCode_referralUsageInput
+  }
+
+  export type Referral_CodeCreateOrConnectWithoutUser_referralInput = {
+    where: Referral_CodeWhereUniqueInput
+    create: XOR<Referral_CodeCreateWithoutUser_referralInput, Referral_CodeUncheckedCreateWithoutUser_referralInput>
+  }
+
+  export type Referral_UsageCreateWithoutUser_referralUsageInput = {
+    id?: string
+    used_at?: Date | string
+    code_referralUsage: Referral_CodeCreateNestedOneWithoutUser_referralUsageInput
+  }
+
+  export type Referral_UsageUncheckedCreateWithoutUser_referralUsageInput = {
+    id?: string
+    referral_code_id: string
+    used_at?: Date | string
+  }
+
+  export type Referral_UsageCreateOrConnectWithoutUser_referralUsageInput = {
+    where: Referral_UsageWhereUniqueInput
+    create: XOR<Referral_UsageCreateWithoutUser_referralUsageInput, Referral_UsageUncheckedCreateWithoutUser_referralUsageInput>
+  }
+
+  export type Referral_UsageCreateManyUser_referralUsageInputEnvelope = {
+    data: Referral_UsageCreateManyUser_referralUsageInput | Referral_UsageCreateManyUser_referralUsageInput[]
+    skipDuplicates?: boolean
+  }
+
+  export type Transactions_detailCreateWithoutUserInput = {
+    id?: string
+    quantity: number
+    price: number
+    isConfirmed?: boolean
+    transaction_status: $Enums.TransactionStatus
+    details_transaction: TransactionsCreateNestedOneWithoutTransaction_detailsInput
+    detail_event: EventsCreateNestedOneWithoutEvent_transactionDetailInput
+    detail_organizer: OrganizerCreateNestedOneWithoutOrganizer_transactionDetailsInput
+  }
+
+  export type Transactions_detailUncheckedCreateWithoutUserInput = {
+    id?: string
+    transaction_id: string
+    event_id: string
+    organizer_id: string
+    quantity: number
+    price: number
+    isConfirmed?: boolean
+    transaction_status: $Enums.TransactionStatus
+  }
+
+  export type Transactions_detailCreateOrConnectWithoutUserInput = {
+    where: Transactions_detailWhereUniqueInput
+    create: XOR<Transactions_detailCreateWithoutUserInput, Transactions_detailUncheckedCreateWithoutUserInput>
+  }
+
+  export type Transactions_detailCreateManyUserInputEnvelope = {
+    data: Transactions_detailCreateManyUserInput | Transactions_detailCreateManyUserInput[]
     skipDuplicates?: boolean
   }
 
@@ -8506,6 +22207,142 @@ export namespace Prisma {
     user_id?: StringFilter<"Organizer"> | string
   }
 
+  export type Event_ReviewsUpsertWithWhereUniqueWithoutReviews_userInput = {
+    where: Event_ReviewsWhereUniqueInput
+    update: XOR<Event_ReviewsUpdateWithoutReviews_userInput, Event_ReviewsUncheckedUpdateWithoutReviews_userInput>
+    create: XOR<Event_ReviewsCreateWithoutReviews_userInput, Event_ReviewsUncheckedCreateWithoutReviews_userInput>
+  }
+
+  export type Event_ReviewsUpdateWithWhereUniqueWithoutReviews_userInput = {
+    where: Event_ReviewsWhereUniqueInput
+    data: XOR<Event_ReviewsUpdateWithoutReviews_userInput, Event_ReviewsUncheckedUpdateWithoutReviews_userInput>
+  }
+
+  export type Event_ReviewsUpdateManyWithWhereWithoutReviews_userInput = {
+    where: Event_ReviewsScalarWhereInput
+    data: XOR<Event_ReviewsUpdateManyMutationInput, Event_ReviewsUncheckedUpdateManyWithoutReviews_userInput>
+  }
+
+  export type Event_ReviewsScalarWhereInput = {
+    AND?: Event_ReviewsScalarWhereInput | Event_ReviewsScalarWhereInput[]
+    OR?: Event_ReviewsScalarWhereInput[]
+    NOT?: Event_ReviewsScalarWhereInput | Event_ReviewsScalarWhereInput[]
+    id?: StringFilter<"Event_Reviews"> | string
+    user_id?: StringFilter<"Event_Reviews"> | string
+    events_id?: StringFilter<"Event_Reviews"> | string
+    review?: StringFilter<"Event_Reviews"> | string
+    rating?: IntFilter<"Event_Reviews"> | number
+    created_at?: DateTimeFilter<"Event_Reviews"> | Date | string
+  }
+
+  export type Event_AttendeesUpsertWithWhereUniqueWithoutUser_attendeesInput = {
+    where: Event_AttendeesWhereUniqueInput
+    update: XOR<Event_AttendeesUpdateWithoutUser_attendeesInput, Event_AttendeesUncheckedUpdateWithoutUser_attendeesInput>
+    create: XOR<Event_AttendeesCreateWithoutUser_attendeesInput, Event_AttendeesUncheckedCreateWithoutUser_attendeesInput>
+  }
+
+  export type Event_AttendeesUpdateWithWhereUniqueWithoutUser_attendeesInput = {
+    where: Event_AttendeesWhereUniqueInput
+    data: XOR<Event_AttendeesUpdateWithoutUser_attendeesInput, Event_AttendeesUncheckedUpdateWithoutUser_attendeesInput>
+  }
+
+  export type Event_AttendeesUpdateManyWithWhereWithoutUser_attendeesInput = {
+    where: Event_AttendeesScalarWhereInput
+    data: XOR<Event_AttendeesUpdateManyMutationInput, Event_AttendeesUncheckedUpdateManyWithoutUser_attendeesInput>
+  }
+
+  export type Event_AttendeesScalarWhereInput = {
+    AND?: Event_AttendeesScalarWhereInput | Event_AttendeesScalarWhereInput[]
+    OR?: Event_AttendeesScalarWhereInput[]
+    NOT?: Event_AttendeesScalarWhereInput | Event_AttendeesScalarWhereInput[]
+    id?: StringFilter<"Event_Attendees"> | string
+    user_id?: StringFilter<"Event_Attendees"> | string
+    event_id?: StringFilter<"Event_Attendees"> | string
+    status?: EnumStatusFilter<"Event_Attendees"> | $Enums.Status
+  }
+
+  export type Referral_CodeUpsertWithoutUser_referralInput = {
+    update: XOR<Referral_CodeUpdateWithoutUser_referralInput, Referral_CodeUncheckedUpdateWithoutUser_referralInput>
+    create: XOR<Referral_CodeCreateWithoutUser_referralInput, Referral_CodeUncheckedCreateWithoutUser_referralInput>
+    where?: Referral_CodeWhereInput
+  }
+
+  export type Referral_CodeUpdateToOneWithWhereWithoutUser_referralInput = {
+    where?: Referral_CodeWhereInput
+    data: XOR<Referral_CodeUpdateWithoutUser_referralInput, Referral_CodeUncheckedUpdateWithoutUser_referralInput>
+  }
+
+  export type Referral_CodeUpdateWithoutUser_referralInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    code?: StringFieldUpdateOperationsInput | string
+    points?: IntFieldUpdateOperationsInput | number
+    user_referralUsage?: Referral_UsageUpdateManyWithoutCode_referralUsageNestedInput
+  }
+
+  export type Referral_CodeUncheckedUpdateWithoutUser_referralInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    code?: StringFieldUpdateOperationsInput | string
+    points?: IntFieldUpdateOperationsInput | number
+    user_referralUsage?: Referral_UsageUncheckedUpdateManyWithoutCode_referralUsageNestedInput
+  }
+
+  export type Referral_UsageUpsertWithWhereUniqueWithoutUser_referralUsageInput = {
+    where: Referral_UsageWhereUniqueInput
+    update: XOR<Referral_UsageUpdateWithoutUser_referralUsageInput, Referral_UsageUncheckedUpdateWithoutUser_referralUsageInput>
+    create: XOR<Referral_UsageCreateWithoutUser_referralUsageInput, Referral_UsageUncheckedCreateWithoutUser_referralUsageInput>
+  }
+
+  export type Referral_UsageUpdateWithWhereUniqueWithoutUser_referralUsageInput = {
+    where: Referral_UsageWhereUniqueInput
+    data: XOR<Referral_UsageUpdateWithoutUser_referralUsageInput, Referral_UsageUncheckedUpdateWithoutUser_referralUsageInput>
+  }
+
+  export type Referral_UsageUpdateManyWithWhereWithoutUser_referralUsageInput = {
+    where: Referral_UsageScalarWhereInput
+    data: XOR<Referral_UsageUpdateManyMutationInput, Referral_UsageUncheckedUpdateManyWithoutUser_referralUsageInput>
+  }
+
+  export type Referral_UsageScalarWhereInput = {
+    AND?: Referral_UsageScalarWhereInput | Referral_UsageScalarWhereInput[]
+    OR?: Referral_UsageScalarWhereInput[]
+    NOT?: Referral_UsageScalarWhereInput | Referral_UsageScalarWhereInput[]
+    id?: StringFilter<"Referral_Usage"> | string
+    user_id?: StringFilter<"Referral_Usage"> | string
+    referral_code_id?: StringFilter<"Referral_Usage"> | string
+    used_at?: DateTimeFilter<"Referral_Usage"> | Date | string
+  }
+
+  export type Transactions_detailUpsertWithWhereUniqueWithoutUserInput = {
+    where: Transactions_detailWhereUniqueInput
+    update: XOR<Transactions_detailUpdateWithoutUserInput, Transactions_detailUncheckedUpdateWithoutUserInput>
+    create: XOR<Transactions_detailCreateWithoutUserInput, Transactions_detailUncheckedCreateWithoutUserInput>
+  }
+
+  export type Transactions_detailUpdateWithWhereUniqueWithoutUserInput = {
+    where: Transactions_detailWhereUniqueInput
+    data: XOR<Transactions_detailUpdateWithoutUserInput, Transactions_detailUncheckedUpdateWithoutUserInput>
+  }
+
+  export type Transactions_detailUpdateManyWithWhereWithoutUserInput = {
+    where: Transactions_detailScalarWhereInput
+    data: XOR<Transactions_detailUpdateManyMutationInput, Transactions_detailUncheckedUpdateManyWithoutUserInput>
+  }
+
+  export type Transactions_detailScalarWhereInput = {
+    AND?: Transactions_detailScalarWhereInput | Transactions_detailScalarWhereInput[]
+    OR?: Transactions_detailScalarWhereInput[]
+    NOT?: Transactions_detailScalarWhereInput | Transactions_detailScalarWhereInput[]
+    id?: StringFilter<"Transactions_detail"> | string
+    transaction_id?: StringFilter<"Transactions_detail"> | string
+    user_id?: StringFilter<"Transactions_detail"> | string
+    event_id?: StringFilter<"Transactions_detail"> | string
+    organizer_id?: StringFilter<"Transactions_detail"> | string
+    quantity?: IntFilter<"Transactions_detail"> | number
+    price?: IntFilter<"Transactions_detail"> | number
+    isConfirmed?: BoolFilter<"Transactions_detail"> | boolean
+    transaction_status?: EnumTransactionStatusFilter<"Transactions_detail"> | $Enums.TransactionStatus
+  }
+
   export type UsersCreateWithoutOrganizerInput = {
     id?: string
     first_name: string
@@ -8516,10 +22353,15 @@ export namespace Prisma {
     birthdate: Date | string
     phone_number: string
     avatar?: string | null
-    refferal_code?: string | null
+    referral_code?: string | null
     isVerified?: boolean
     created_at?: Date | string
     updated_at?: Date | string
+    reviews_user?: Event_ReviewsCreateNestedManyWithoutReviews_userInput
+    attendees_user?: Event_AttendeesCreateNestedManyWithoutUser_attendeesInput
+    referral_user?: Referral_CodeCreateNestedOneWithoutUser_referralInput
+    usageReferral_user?: Referral_UsageCreateNestedManyWithoutUser_referralUsageInput
+    transactions?: Transactions_detailCreateNestedManyWithoutUserInput
   }
 
   export type UsersUncheckedCreateWithoutOrganizerInput = {
@@ -8532,10 +22374,15 @@ export namespace Prisma {
     birthdate: Date | string
     phone_number: string
     avatar?: string | null
-    refferal_code?: string | null
+    referral_code?: string | null
     isVerified?: boolean
     created_at?: Date | string
     updated_at?: Date | string
+    reviews_user?: Event_ReviewsUncheckedCreateNestedManyWithoutReviews_userInput
+    attendees_user?: Event_AttendeesUncheckedCreateNestedManyWithoutUser_attendeesInput
+    referral_user?: Referral_CodeUncheckedCreateNestedOneWithoutUser_referralInput
+    usageReferral_user?: Referral_UsageUncheckedCreateNestedManyWithoutUser_referralUsageInput
+    transactions?: Transactions_detailUncheckedCreateNestedManyWithoutUserInput
   }
 
   export type UsersCreateOrConnectWithoutOrganizerInput = {
@@ -8547,13 +22394,18 @@ export namespace Prisma {
     id?: string
     name: string
     description: string
+    image: string
     price: number
     start_date: Date | string
     end_date?: Date | string | null
     created_at?: Date | string
     updated_at?: Date | string
-    event_category: Event_CategoryCreateNestedOneWithoutEventInput
-    event_location: Event_LocationCreateNestedOneWithoutEventInput
+    category_event: Event_CategoryCreateNestedOneWithoutEventInput
+    location_Event: Event_LocationCreateNestedOneWithoutEventInput
+    seat_event?: Event_SeatCreateNestedOneWithoutEventInput
+    reviews_event?: Event_ReviewsCreateNestedManyWithoutReviews_eventInput
+    attendees_event?: Event_AttendeesCreateNestedManyWithoutUser_eventInput
+    event_transactionDetail?: Transactions_detailCreateNestedManyWithoutDetail_eventInput
   }
 
   export type EventsUncheckedCreateWithoutOrganizerInput = {
@@ -8562,11 +22414,16 @@ export namespace Prisma {
     event_location_id: string
     name: string
     description: string
+    image: string
     price: number
     start_date: Date | string
     end_date?: Date | string | null
     created_at?: Date | string
     updated_at?: Date | string
+    seat_event?: Event_SeatUncheckedCreateNestedOneWithoutEventInput
+    reviews_event?: Event_ReviewsUncheckedCreateNestedManyWithoutReviews_eventInput
+    attendees_event?: Event_AttendeesUncheckedCreateNestedManyWithoutUser_eventInput
+    event_transactionDetail?: Transactions_detailUncheckedCreateNestedManyWithoutDetail_eventInput
   }
 
   export type EventsCreateOrConnectWithoutOrganizerInput = {
@@ -8576,6 +22433,66 @@ export namespace Prisma {
 
   export type EventsCreateManyOrganizerInputEnvelope = {
     data: EventsCreateManyOrganizerInput | EventsCreateManyOrganizerInput[]
+    skipDuplicates?: boolean
+  }
+
+  export type VoucherCreateWithoutVoucher_organizerInput = {
+    id?: string
+    code: string
+    amount: number
+    limit: number
+    expired_at: Date | string
+    voucher_transaction?: TransactionsCreateNestedManyWithoutTransaction_voucherInput
+  }
+
+  export type VoucherUncheckedCreateWithoutVoucher_organizerInput = {
+    id?: string
+    code: string
+    amount: number
+    limit: number
+    expired_at: Date | string
+    voucher_transaction?: TransactionsUncheckedCreateNestedManyWithoutTransaction_voucherInput
+  }
+
+  export type VoucherCreateOrConnectWithoutVoucher_organizerInput = {
+    where: VoucherWhereUniqueInput
+    create: XOR<VoucherCreateWithoutVoucher_organizerInput, VoucherUncheckedCreateWithoutVoucher_organizerInput>
+  }
+
+  export type VoucherCreateManyVoucher_organizerInputEnvelope = {
+    data: VoucherCreateManyVoucher_organizerInput | VoucherCreateManyVoucher_organizerInput[]
+    skipDuplicates?: boolean
+  }
+
+  export type Transactions_detailCreateWithoutDetail_organizerInput = {
+    id?: string
+    quantity: number
+    price: number
+    isConfirmed?: boolean
+    transaction_status: $Enums.TransactionStatus
+    user: UsersCreateNestedOneWithoutTransactionsInput
+    details_transaction: TransactionsCreateNestedOneWithoutTransaction_detailsInput
+    detail_event: EventsCreateNestedOneWithoutEvent_transactionDetailInput
+  }
+
+  export type Transactions_detailUncheckedCreateWithoutDetail_organizerInput = {
+    id?: string
+    transaction_id: string
+    user_id: string
+    event_id: string
+    quantity: number
+    price: number
+    isConfirmed?: boolean
+    transaction_status: $Enums.TransactionStatus
+  }
+
+  export type Transactions_detailCreateOrConnectWithoutDetail_organizerInput = {
+    where: Transactions_detailWhereUniqueInput
+    create: XOR<Transactions_detailCreateWithoutDetail_organizerInput, Transactions_detailUncheckedCreateWithoutDetail_organizerInput>
+  }
+
+  export type Transactions_detailCreateManyDetail_organizerInputEnvelope = {
+    data: Transactions_detailCreateManyDetail_organizerInput | Transactions_detailCreateManyDetail_organizerInput[]
     skipDuplicates?: boolean
   }
 
@@ -8600,10 +22517,15 @@ export namespace Prisma {
     birthdate?: DateTimeFieldUpdateOperationsInput | Date | string
     phone_number?: StringFieldUpdateOperationsInput | string
     avatar?: NullableStringFieldUpdateOperationsInput | string | null
-    refferal_code?: NullableStringFieldUpdateOperationsInput | string | null
+    referral_code?: NullableStringFieldUpdateOperationsInput | string | null
     isVerified?: BoolFieldUpdateOperationsInput | boolean
     created_at?: DateTimeFieldUpdateOperationsInput | Date | string
     updated_at?: DateTimeFieldUpdateOperationsInput | Date | string
+    reviews_user?: Event_ReviewsUpdateManyWithoutReviews_userNestedInput
+    attendees_user?: Event_AttendeesUpdateManyWithoutUser_attendeesNestedInput
+    referral_user?: Referral_CodeUpdateOneWithoutUser_referralNestedInput
+    usageReferral_user?: Referral_UsageUpdateManyWithoutUser_referralUsageNestedInput
+    transactions?: Transactions_detailUpdateManyWithoutUserNestedInput
   }
 
   export type UsersUncheckedUpdateWithoutOrganizerInput = {
@@ -8616,10 +22538,15 @@ export namespace Prisma {
     birthdate?: DateTimeFieldUpdateOperationsInput | Date | string
     phone_number?: StringFieldUpdateOperationsInput | string
     avatar?: NullableStringFieldUpdateOperationsInput | string | null
-    refferal_code?: NullableStringFieldUpdateOperationsInput | string | null
+    referral_code?: NullableStringFieldUpdateOperationsInput | string | null
     isVerified?: BoolFieldUpdateOperationsInput | boolean
     created_at?: DateTimeFieldUpdateOperationsInput | Date | string
     updated_at?: DateTimeFieldUpdateOperationsInput | Date | string
+    reviews_user?: Event_ReviewsUncheckedUpdateManyWithoutReviews_userNestedInput
+    attendees_user?: Event_AttendeesUncheckedUpdateManyWithoutUser_attendeesNestedInput
+    referral_user?: Referral_CodeUncheckedUpdateOneWithoutUser_referralNestedInput
+    usageReferral_user?: Referral_UsageUncheckedUpdateManyWithoutUser_referralUsageNestedInput
+    transactions?: Transactions_detailUncheckedUpdateManyWithoutUserNestedInput
   }
 
   export type EventsUpsertWithWhereUniqueWithoutOrganizerInput = {
@@ -8648,6 +22575,7 @@ export namespace Prisma {
     event_location_id?: StringFilter<"Events"> | string
     name?: StringFilter<"Events"> | string
     description?: StringFilter<"Events"> | string
+    image?: StringFilter<"Events"> | string
     price?: IntFilter<"Events"> | number
     start_date?: DateTimeFilter<"Events"> | Date | string
     end_date?: DateTimeNullableFilter<"Events"> | Date | string | null
@@ -8655,14 +22583,62 @@ export namespace Prisma {
     updated_at?: DateTimeFilter<"Events"> | Date | string
   }
 
+  export type VoucherUpsertWithWhereUniqueWithoutVoucher_organizerInput = {
+    where: VoucherWhereUniqueInput
+    update: XOR<VoucherUpdateWithoutVoucher_organizerInput, VoucherUncheckedUpdateWithoutVoucher_organizerInput>
+    create: XOR<VoucherCreateWithoutVoucher_organizerInput, VoucherUncheckedCreateWithoutVoucher_organizerInput>
+  }
+
+  export type VoucherUpdateWithWhereUniqueWithoutVoucher_organizerInput = {
+    where: VoucherWhereUniqueInput
+    data: XOR<VoucherUpdateWithoutVoucher_organizerInput, VoucherUncheckedUpdateWithoutVoucher_organizerInput>
+  }
+
+  export type VoucherUpdateManyWithWhereWithoutVoucher_organizerInput = {
+    where: VoucherScalarWhereInput
+    data: XOR<VoucherUpdateManyMutationInput, VoucherUncheckedUpdateManyWithoutVoucher_organizerInput>
+  }
+
+  export type VoucherScalarWhereInput = {
+    AND?: VoucherScalarWhereInput | VoucherScalarWhereInput[]
+    OR?: VoucherScalarWhereInput[]
+    NOT?: VoucherScalarWhereInput | VoucherScalarWhereInput[]
+    id?: StringFilter<"Voucher"> | string
+    organizer_id?: StringFilter<"Voucher"> | string
+    code?: StringFilter<"Voucher"> | string
+    amount?: IntFilter<"Voucher"> | number
+    limit?: IntFilter<"Voucher"> | number
+    expired_at?: DateTimeFilter<"Voucher"> | Date | string
+  }
+
+  export type Transactions_detailUpsertWithWhereUniqueWithoutDetail_organizerInput = {
+    where: Transactions_detailWhereUniqueInput
+    update: XOR<Transactions_detailUpdateWithoutDetail_organizerInput, Transactions_detailUncheckedUpdateWithoutDetail_organizerInput>
+    create: XOR<Transactions_detailCreateWithoutDetail_organizerInput, Transactions_detailUncheckedCreateWithoutDetail_organizerInput>
+  }
+
+  export type Transactions_detailUpdateWithWhereUniqueWithoutDetail_organizerInput = {
+    where: Transactions_detailWhereUniqueInput
+    data: XOR<Transactions_detailUpdateWithoutDetail_organizerInput, Transactions_detailUncheckedUpdateWithoutDetail_organizerInput>
+  }
+
+  export type Transactions_detailUpdateManyWithWhereWithoutDetail_organizerInput = {
+    where: Transactions_detailScalarWhereInput
+    data: XOR<Transactions_detailUpdateManyMutationInput, Transactions_detailUncheckedUpdateManyWithoutDetail_organizerInput>
+  }
+
   export type OrganizerCreateWithoutEventInput = {
     id?: string
     user: UsersCreateNestedOneWithoutOrganizerInput
+    organizer_voucher?: VoucherCreateNestedManyWithoutVoucher_organizerInput
+    organizer_transactionDetails?: Transactions_detailCreateNestedManyWithoutDetail_organizerInput
   }
 
   export type OrganizerUncheckedCreateWithoutEventInput = {
     id?: string
     user_id: string
+    organizer_voucher?: VoucherUncheckedCreateNestedManyWithoutVoucher_organizerInput
+    organizer_transactionDetails?: Transactions_detailUncheckedCreateNestedManyWithoutDetail_organizerInput
   }
 
   export type OrganizerCreateOrConnectWithoutEventInput = {
@@ -8687,14 +22663,12 @@ export namespace Prisma {
 
   export type Event_LocationCreateWithoutEventInput = {
     id?: string
-    event_id: string
     city: string
     address: string
   }
 
   export type Event_LocationUncheckedCreateWithoutEventInput = {
     id?: string
-    event_id: string
     city: string
     address: string
   }
@@ -8702,6 +22676,101 @@ export namespace Prisma {
   export type Event_LocationCreateOrConnectWithoutEventInput = {
     where: Event_LocationWhereUniqueInput
     create: XOR<Event_LocationCreateWithoutEventInput, Event_LocationUncheckedCreateWithoutEventInput>
+  }
+
+  export type Event_SeatCreateWithoutEventInput = {
+    id?: string
+    total: number
+  }
+
+  export type Event_SeatUncheckedCreateWithoutEventInput = {
+    id?: string
+    total: number
+  }
+
+  export type Event_SeatCreateOrConnectWithoutEventInput = {
+    where: Event_SeatWhereUniqueInput
+    create: XOR<Event_SeatCreateWithoutEventInput, Event_SeatUncheckedCreateWithoutEventInput>
+  }
+
+  export type Event_ReviewsCreateWithoutReviews_eventInput = {
+    id?: string
+    review: string
+    rating: number
+    created_at?: Date | string
+    reviews_user: UsersCreateNestedOneWithoutReviews_userInput
+  }
+
+  export type Event_ReviewsUncheckedCreateWithoutReviews_eventInput = {
+    id?: string
+    user_id: string
+    review: string
+    rating: number
+    created_at?: Date | string
+  }
+
+  export type Event_ReviewsCreateOrConnectWithoutReviews_eventInput = {
+    where: Event_ReviewsWhereUniqueInput
+    create: XOR<Event_ReviewsCreateWithoutReviews_eventInput, Event_ReviewsUncheckedCreateWithoutReviews_eventInput>
+  }
+
+  export type Event_ReviewsCreateManyReviews_eventInputEnvelope = {
+    data: Event_ReviewsCreateManyReviews_eventInput | Event_ReviewsCreateManyReviews_eventInput[]
+    skipDuplicates?: boolean
+  }
+
+  export type Event_AttendeesCreateWithoutUser_eventInput = {
+    id?: string
+    status: $Enums.Status
+    user_attendees: UsersCreateNestedOneWithoutAttendees_userInput
+  }
+
+  export type Event_AttendeesUncheckedCreateWithoutUser_eventInput = {
+    id?: string
+    user_id: string
+    status: $Enums.Status
+  }
+
+  export type Event_AttendeesCreateOrConnectWithoutUser_eventInput = {
+    where: Event_AttendeesWhereUniqueInput
+    create: XOR<Event_AttendeesCreateWithoutUser_eventInput, Event_AttendeesUncheckedCreateWithoutUser_eventInput>
+  }
+
+  export type Event_AttendeesCreateManyUser_eventInputEnvelope = {
+    data: Event_AttendeesCreateManyUser_eventInput | Event_AttendeesCreateManyUser_eventInput[]
+    skipDuplicates?: boolean
+  }
+
+  export type Transactions_detailCreateWithoutDetail_eventInput = {
+    id?: string
+    quantity: number
+    price: number
+    isConfirmed?: boolean
+    transaction_status: $Enums.TransactionStatus
+    user: UsersCreateNestedOneWithoutTransactionsInput
+    details_transaction: TransactionsCreateNestedOneWithoutTransaction_detailsInput
+    detail_organizer: OrganizerCreateNestedOneWithoutOrganizer_transactionDetailsInput
+  }
+
+  export type Transactions_detailUncheckedCreateWithoutDetail_eventInput = {
+    id?: string
+    transaction_id: string
+    user_id: string
+    organizer_id: string
+    quantity: number
+    price: number
+    isConfirmed?: boolean
+    transaction_status: $Enums.TransactionStatus
+  }
+
+  export type Transactions_detailCreateOrConnectWithoutDetail_eventInput = {
+    where: Transactions_detailWhereUniqueInput
+    create: XOR<Transactions_detailCreateWithoutDetail_eventInput, Transactions_detailUncheckedCreateWithoutDetail_eventInput>
+  }
+
+  export type Transactions_detailCreateManyDetail_eventInputEnvelope = {
+    data: Transactions_detailCreateManyDetail_eventInput | Transactions_detailCreateManyDetail_eventInput[]
+    skipDuplicates?: boolean
   }
 
   export type OrganizerUpsertWithoutEventInput = {
@@ -8718,11 +22787,15 @@ export namespace Prisma {
   export type OrganizerUpdateWithoutEventInput = {
     id?: StringFieldUpdateOperationsInput | string
     user?: UsersUpdateOneRequiredWithoutOrganizerNestedInput
+    organizer_voucher?: VoucherUpdateManyWithoutVoucher_organizerNestedInput
+    organizer_transactionDetails?: Transactions_detailUpdateManyWithoutDetail_organizerNestedInput
   }
 
   export type OrganizerUncheckedUpdateWithoutEventInput = {
     id?: StringFieldUpdateOperationsInput | string
     user_id?: StringFieldUpdateOperationsInput | string
+    organizer_voucher?: VoucherUncheckedUpdateManyWithoutVoucher_organizerNestedInput
+    organizer_transactionDetails?: Transactions_detailUncheckedUpdateManyWithoutDetail_organizerNestedInput
   }
 
   export type Event_CategoryUpsertWithoutEventInput = {
@@ -8759,138 +22832,1569 @@ export namespace Prisma {
 
   export type Event_LocationUpdateWithoutEventInput = {
     id?: StringFieldUpdateOperationsInput | string
-    event_id?: StringFieldUpdateOperationsInput | string
     city?: StringFieldUpdateOperationsInput | string
     address?: StringFieldUpdateOperationsInput | string
   }
 
   export type Event_LocationUncheckedUpdateWithoutEventInput = {
     id?: StringFieldUpdateOperationsInput | string
-    event_id?: StringFieldUpdateOperationsInput | string
     city?: StringFieldUpdateOperationsInput | string
     address?: StringFieldUpdateOperationsInput | string
   }
 
-  export type EventsCreateWithoutEvent_categoryInput = {
+  export type Event_SeatUpsertWithoutEventInput = {
+    update: XOR<Event_SeatUpdateWithoutEventInput, Event_SeatUncheckedUpdateWithoutEventInput>
+    create: XOR<Event_SeatCreateWithoutEventInput, Event_SeatUncheckedCreateWithoutEventInput>
+    where?: Event_SeatWhereInput
+  }
+
+  export type Event_SeatUpdateToOneWithWhereWithoutEventInput = {
+    where?: Event_SeatWhereInput
+    data: XOR<Event_SeatUpdateWithoutEventInput, Event_SeatUncheckedUpdateWithoutEventInput>
+  }
+
+  export type Event_SeatUpdateWithoutEventInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    total?: IntFieldUpdateOperationsInput | number
+  }
+
+  export type Event_SeatUncheckedUpdateWithoutEventInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    total?: IntFieldUpdateOperationsInput | number
+  }
+
+  export type Event_ReviewsUpsertWithWhereUniqueWithoutReviews_eventInput = {
+    where: Event_ReviewsWhereUniqueInput
+    update: XOR<Event_ReviewsUpdateWithoutReviews_eventInput, Event_ReviewsUncheckedUpdateWithoutReviews_eventInput>
+    create: XOR<Event_ReviewsCreateWithoutReviews_eventInput, Event_ReviewsUncheckedCreateWithoutReviews_eventInput>
+  }
+
+  export type Event_ReviewsUpdateWithWhereUniqueWithoutReviews_eventInput = {
+    where: Event_ReviewsWhereUniqueInput
+    data: XOR<Event_ReviewsUpdateWithoutReviews_eventInput, Event_ReviewsUncheckedUpdateWithoutReviews_eventInput>
+  }
+
+  export type Event_ReviewsUpdateManyWithWhereWithoutReviews_eventInput = {
+    where: Event_ReviewsScalarWhereInput
+    data: XOR<Event_ReviewsUpdateManyMutationInput, Event_ReviewsUncheckedUpdateManyWithoutReviews_eventInput>
+  }
+
+  export type Event_AttendeesUpsertWithWhereUniqueWithoutUser_eventInput = {
+    where: Event_AttendeesWhereUniqueInput
+    update: XOR<Event_AttendeesUpdateWithoutUser_eventInput, Event_AttendeesUncheckedUpdateWithoutUser_eventInput>
+    create: XOR<Event_AttendeesCreateWithoutUser_eventInput, Event_AttendeesUncheckedCreateWithoutUser_eventInput>
+  }
+
+  export type Event_AttendeesUpdateWithWhereUniqueWithoutUser_eventInput = {
+    where: Event_AttendeesWhereUniqueInput
+    data: XOR<Event_AttendeesUpdateWithoutUser_eventInput, Event_AttendeesUncheckedUpdateWithoutUser_eventInput>
+  }
+
+  export type Event_AttendeesUpdateManyWithWhereWithoutUser_eventInput = {
+    where: Event_AttendeesScalarWhereInput
+    data: XOR<Event_AttendeesUpdateManyMutationInput, Event_AttendeesUncheckedUpdateManyWithoutUser_eventInput>
+  }
+
+  export type Transactions_detailUpsertWithWhereUniqueWithoutDetail_eventInput = {
+    where: Transactions_detailWhereUniqueInput
+    update: XOR<Transactions_detailUpdateWithoutDetail_eventInput, Transactions_detailUncheckedUpdateWithoutDetail_eventInput>
+    create: XOR<Transactions_detailCreateWithoutDetail_eventInput, Transactions_detailUncheckedCreateWithoutDetail_eventInput>
+  }
+
+  export type Transactions_detailUpdateWithWhereUniqueWithoutDetail_eventInput = {
+    where: Transactions_detailWhereUniqueInput
+    data: XOR<Transactions_detailUpdateWithoutDetail_eventInput, Transactions_detailUncheckedUpdateWithoutDetail_eventInput>
+  }
+
+  export type Transactions_detailUpdateManyWithWhereWithoutDetail_eventInput = {
+    where: Transactions_detailScalarWhereInput
+    data: XOR<Transactions_detailUpdateManyMutationInput, Transactions_detailUncheckedUpdateManyWithoutDetail_eventInput>
+  }
+
+  export type EventsCreateWithoutCategory_eventInput = {
     id?: string
     name: string
     description: string
+    image: string
     price: number
     start_date: Date | string
     end_date?: Date | string | null
     created_at?: Date | string
     updated_at?: Date | string
     organizer: OrganizerCreateNestedOneWithoutEventInput
-    event_location: Event_LocationCreateNestedOneWithoutEventInput
+    location_Event: Event_LocationCreateNestedOneWithoutEventInput
+    seat_event?: Event_SeatCreateNestedOneWithoutEventInput
+    reviews_event?: Event_ReviewsCreateNestedManyWithoutReviews_eventInput
+    attendees_event?: Event_AttendeesCreateNestedManyWithoutUser_eventInput
+    event_transactionDetail?: Transactions_detailCreateNestedManyWithoutDetail_eventInput
   }
 
-  export type EventsUncheckedCreateWithoutEvent_categoryInput = {
+  export type EventsUncheckedCreateWithoutCategory_eventInput = {
     id?: string
     organizer_id: string
     event_location_id: string
     name: string
     description: string
+    image: string
     price: number
     start_date: Date | string
     end_date?: Date | string | null
     created_at?: Date | string
     updated_at?: Date | string
+    seat_event?: Event_SeatUncheckedCreateNestedOneWithoutEventInput
+    reviews_event?: Event_ReviewsUncheckedCreateNestedManyWithoutReviews_eventInput
+    attendees_event?: Event_AttendeesUncheckedCreateNestedManyWithoutUser_eventInput
+    event_transactionDetail?: Transactions_detailUncheckedCreateNestedManyWithoutDetail_eventInput
   }
 
-  export type EventsCreateOrConnectWithoutEvent_categoryInput = {
+  export type EventsCreateOrConnectWithoutCategory_eventInput = {
     where: EventsWhereUniqueInput
-    create: XOR<EventsCreateWithoutEvent_categoryInput, EventsUncheckedCreateWithoutEvent_categoryInput>
+    create: XOR<EventsCreateWithoutCategory_eventInput, EventsUncheckedCreateWithoutCategory_eventInput>
   }
 
-  export type EventsCreateManyEvent_categoryInputEnvelope = {
-    data: EventsCreateManyEvent_categoryInput | EventsCreateManyEvent_categoryInput[]
+  export type EventsCreateManyCategory_eventInputEnvelope = {
+    data: EventsCreateManyCategory_eventInput | EventsCreateManyCategory_eventInput[]
     skipDuplicates?: boolean
   }
 
-  export type EventsUpsertWithWhereUniqueWithoutEvent_categoryInput = {
+  export type EventsUpsertWithWhereUniqueWithoutCategory_eventInput = {
     where: EventsWhereUniqueInput
-    update: XOR<EventsUpdateWithoutEvent_categoryInput, EventsUncheckedUpdateWithoutEvent_categoryInput>
-    create: XOR<EventsCreateWithoutEvent_categoryInput, EventsUncheckedCreateWithoutEvent_categoryInput>
+    update: XOR<EventsUpdateWithoutCategory_eventInput, EventsUncheckedUpdateWithoutCategory_eventInput>
+    create: XOR<EventsCreateWithoutCategory_eventInput, EventsUncheckedCreateWithoutCategory_eventInput>
   }
 
-  export type EventsUpdateWithWhereUniqueWithoutEvent_categoryInput = {
+  export type EventsUpdateWithWhereUniqueWithoutCategory_eventInput = {
     where: EventsWhereUniqueInput
-    data: XOR<EventsUpdateWithoutEvent_categoryInput, EventsUncheckedUpdateWithoutEvent_categoryInput>
+    data: XOR<EventsUpdateWithoutCategory_eventInput, EventsUncheckedUpdateWithoutCategory_eventInput>
   }
 
-  export type EventsUpdateManyWithWhereWithoutEvent_categoryInput = {
+  export type EventsUpdateManyWithWhereWithoutCategory_eventInput = {
     where: EventsScalarWhereInput
-    data: XOR<EventsUpdateManyMutationInput, EventsUncheckedUpdateManyWithoutEvent_categoryInput>
+    data: XOR<EventsUpdateManyMutationInput, EventsUncheckedUpdateManyWithoutCategory_eventInput>
   }
 
-  export type EventsCreateWithoutEvent_locationInput = {
+  export type EventsCreateWithoutLocation_EventInput = {
     id?: string
     name: string
     description: string
+    image: string
     price: number
     start_date: Date | string
     end_date?: Date | string | null
     created_at?: Date | string
     updated_at?: Date | string
     organizer: OrganizerCreateNestedOneWithoutEventInput
-    event_category: Event_CategoryCreateNestedOneWithoutEventInput
+    category_event: Event_CategoryCreateNestedOneWithoutEventInput
+    seat_event?: Event_SeatCreateNestedOneWithoutEventInput
+    reviews_event?: Event_ReviewsCreateNestedManyWithoutReviews_eventInput
+    attendees_event?: Event_AttendeesCreateNestedManyWithoutUser_eventInput
+    event_transactionDetail?: Transactions_detailCreateNestedManyWithoutDetail_eventInput
   }
 
-  export type EventsUncheckedCreateWithoutEvent_locationInput = {
+  export type EventsUncheckedCreateWithoutLocation_EventInput = {
     id?: string
     organizer_id: string
     event_category_id: string
     name: string
     description: string
+    image: string
     price: number
     start_date: Date | string
     end_date?: Date | string | null
     created_at?: Date | string
     updated_at?: Date | string
+    seat_event?: Event_SeatUncheckedCreateNestedOneWithoutEventInput
+    reviews_event?: Event_ReviewsUncheckedCreateNestedManyWithoutReviews_eventInput
+    attendees_event?: Event_AttendeesUncheckedCreateNestedManyWithoutUser_eventInput
+    event_transactionDetail?: Transactions_detailUncheckedCreateNestedManyWithoutDetail_eventInput
   }
 
-  export type EventsCreateOrConnectWithoutEvent_locationInput = {
+  export type EventsCreateOrConnectWithoutLocation_EventInput = {
     where: EventsWhereUniqueInput
-    create: XOR<EventsCreateWithoutEvent_locationInput, EventsUncheckedCreateWithoutEvent_locationInput>
+    create: XOR<EventsCreateWithoutLocation_EventInput, EventsUncheckedCreateWithoutLocation_EventInput>
   }
 
-  export type EventsCreateManyEvent_locationInputEnvelope = {
-    data: EventsCreateManyEvent_locationInput | EventsCreateManyEvent_locationInput[]
+  export type EventsCreateManyLocation_EventInputEnvelope = {
+    data: EventsCreateManyLocation_EventInput | EventsCreateManyLocation_EventInput[]
     skipDuplicates?: boolean
   }
 
-  export type EventsUpsertWithWhereUniqueWithoutEvent_locationInput = {
+  export type EventsUpsertWithWhereUniqueWithoutLocation_EventInput = {
     where: EventsWhereUniqueInput
-    update: XOR<EventsUpdateWithoutEvent_locationInput, EventsUncheckedUpdateWithoutEvent_locationInput>
-    create: XOR<EventsCreateWithoutEvent_locationInput, EventsUncheckedCreateWithoutEvent_locationInput>
+    update: XOR<EventsUpdateWithoutLocation_EventInput, EventsUncheckedUpdateWithoutLocation_EventInput>
+    create: XOR<EventsCreateWithoutLocation_EventInput, EventsUncheckedCreateWithoutLocation_EventInput>
   }
 
-  export type EventsUpdateWithWhereUniqueWithoutEvent_locationInput = {
+  export type EventsUpdateWithWhereUniqueWithoutLocation_EventInput = {
     where: EventsWhereUniqueInput
-    data: XOR<EventsUpdateWithoutEvent_locationInput, EventsUncheckedUpdateWithoutEvent_locationInput>
+    data: XOR<EventsUpdateWithoutLocation_EventInput, EventsUncheckedUpdateWithoutLocation_EventInput>
   }
 
-  export type EventsUpdateManyWithWhereWithoutEvent_locationInput = {
+  export type EventsUpdateManyWithWhereWithoutLocation_EventInput = {
     where: EventsScalarWhereInput
-    data: XOR<EventsUpdateManyMutationInput, EventsUncheckedUpdateManyWithoutEvent_locationInput>
+    data: XOR<EventsUpdateManyMutationInput, EventsUncheckedUpdateManyWithoutLocation_EventInput>
+  }
+
+  export type EventsCreateWithoutSeat_eventInput = {
+    id?: string
+    name: string
+    description: string
+    image: string
+    price: number
+    start_date: Date | string
+    end_date?: Date | string | null
+    created_at?: Date | string
+    updated_at?: Date | string
+    organizer: OrganizerCreateNestedOneWithoutEventInput
+    category_event: Event_CategoryCreateNestedOneWithoutEventInput
+    location_Event: Event_LocationCreateNestedOneWithoutEventInput
+    reviews_event?: Event_ReviewsCreateNestedManyWithoutReviews_eventInput
+    attendees_event?: Event_AttendeesCreateNestedManyWithoutUser_eventInput
+    event_transactionDetail?: Transactions_detailCreateNestedManyWithoutDetail_eventInput
+  }
+
+  export type EventsUncheckedCreateWithoutSeat_eventInput = {
+    id?: string
+    organizer_id: string
+    event_category_id: string
+    event_location_id: string
+    name: string
+    description: string
+    image: string
+    price: number
+    start_date: Date | string
+    end_date?: Date | string | null
+    created_at?: Date | string
+    updated_at?: Date | string
+    reviews_event?: Event_ReviewsUncheckedCreateNestedManyWithoutReviews_eventInput
+    attendees_event?: Event_AttendeesUncheckedCreateNestedManyWithoutUser_eventInput
+    event_transactionDetail?: Transactions_detailUncheckedCreateNestedManyWithoutDetail_eventInput
+  }
+
+  export type EventsCreateOrConnectWithoutSeat_eventInput = {
+    where: EventsWhereUniqueInput
+    create: XOR<EventsCreateWithoutSeat_eventInput, EventsUncheckedCreateWithoutSeat_eventInput>
+  }
+
+  export type EventsUpsertWithoutSeat_eventInput = {
+    update: XOR<EventsUpdateWithoutSeat_eventInput, EventsUncheckedUpdateWithoutSeat_eventInput>
+    create: XOR<EventsCreateWithoutSeat_eventInput, EventsUncheckedCreateWithoutSeat_eventInput>
+    where?: EventsWhereInput
+  }
+
+  export type EventsUpdateToOneWithWhereWithoutSeat_eventInput = {
+    where?: EventsWhereInput
+    data: XOR<EventsUpdateWithoutSeat_eventInput, EventsUncheckedUpdateWithoutSeat_eventInput>
+  }
+
+  export type EventsUpdateWithoutSeat_eventInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    name?: StringFieldUpdateOperationsInput | string
+    description?: StringFieldUpdateOperationsInput | string
+    image?: StringFieldUpdateOperationsInput | string
+    price?: IntFieldUpdateOperationsInput | number
+    start_date?: DateTimeFieldUpdateOperationsInput | Date | string
+    end_date?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    created_at?: DateTimeFieldUpdateOperationsInput | Date | string
+    updated_at?: DateTimeFieldUpdateOperationsInput | Date | string
+    organizer?: OrganizerUpdateOneRequiredWithoutEventNestedInput
+    category_event?: Event_CategoryUpdateOneRequiredWithoutEventNestedInput
+    location_Event?: Event_LocationUpdateOneRequiredWithoutEventNestedInput
+    reviews_event?: Event_ReviewsUpdateManyWithoutReviews_eventNestedInput
+    attendees_event?: Event_AttendeesUpdateManyWithoutUser_eventNestedInput
+    event_transactionDetail?: Transactions_detailUpdateManyWithoutDetail_eventNestedInput
+  }
+
+  export type EventsUncheckedUpdateWithoutSeat_eventInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    organizer_id?: StringFieldUpdateOperationsInput | string
+    event_category_id?: StringFieldUpdateOperationsInput | string
+    event_location_id?: StringFieldUpdateOperationsInput | string
+    name?: StringFieldUpdateOperationsInput | string
+    description?: StringFieldUpdateOperationsInput | string
+    image?: StringFieldUpdateOperationsInput | string
+    price?: IntFieldUpdateOperationsInput | number
+    start_date?: DateTimeFieldUpdateOperationsInput | Date | string
+    end_date?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    created_at?: DateTimeFieldUpdateOperationsInput | Date | string
+    updated_at?: DateTimeFieldUpdateOperationsInput | Date | string
+    reviews_event?: Event_ReviewsUncheckedUpdateManyWithoutReviews_eventNestedInput
+    attendees_event?: Event_AttendeesUncheckedUpdateManyWithoutUser_eventNestedInput
+    event_transactionDetail?: Transactions_detailUncheckedUpdateManyWithoutDetail_eventNestedInput
+  }
+
+  export type UsersCreateWithoutReviews_userInput = {
+    id?: string
+    first_name: string
+    last_name: string
+    email: string
+    password: string
+    country: string
+    birthdate: Date | string
+    phone_number: string
+    avatar?: string | null
+    referral_code?: string | null
+    isVerified?: boolean
+    created_at?: Date | string
+    updated_at?: Date | string
+    organizer?: OrganizerCreateNestedManyWithoutUserInput
+    attendees_user?: Event_AttendeesCreateNestedManyWithoutUser_attendeesInput
+    referral_user?: Referral_CodeCreateNestedOneWithoutUser_referralInput
+    usageReferral_user?: Referral_UsageCreateNestedManyWithoutUser_referralUsageInput
+    transactions?: Transactions_detailCreateNestedManyWithoutUserInput
+  }
+
+  export type UsersUncheckedCreateWithoutReviews_userInput = {
+    id?: string
+    first_name: string
+    last_name: string
+    email: string
+    password: string
+    country: string
+    birthdate: Date | string
+    phone_number: string
+    avatar?: string | null
+    referral_code?: string | null
+    isVerified?: boolean
+    created_at?: Date | string
+    updated_at?: Date | string
+    organizer?: OrganizerUncheckedCreateNestedManyWithoutUserInput
+    attendees_user?: Event_AttendeesUncheckedCreateNestedManyWithoutUser_attendeesInput
+    referral_user?: Referral_CodeUncheckedCreateNestedOneWithoutUser_referralInput
+    usageReferral_user?: Referral_UsageUncheckedCreateNestedManyWithoutUser_referralUsageInput
+    transactions?: Transactions_detailUncheckedCreateNestedManyWithoutUserInput
+  }
+
+  export type UsersCreateOrConnectWithoutReviews_userInput = {
+    where: UsersWhereUniqueInput
+    create: XOR<UsersCreateWithoutReviews_userInput, UsersUncheckedCreateWithoutReviews_userInput>
+  }
+
+  export type EventsCreateWithoutReviews_eventInput = {
+    id?: string
+    name: string
+    description: string
+    image: string
+    price: number
+    start_date: Date | string
+    end_date?: Date | string | null
+    created_at?: Date | string
+    updated_at?: Date | string
+    organizer: OrganizerCreateNestedOneWithoutEventInput
+    category_event: Event_CategoryCreateNestedOneWithoutEventInput
+    location_Event: Event_LocationCreateNestedOneWithoutEventInput
+    seat_event?: Event_SeatCreateNestedOneWithoutEventInput
+    attendees_event?: Event_AttendeesCreateNestedManyWithoutUser_eventInput
+    event_transactionDetail?: Transactions_detailCreateNestedManyWithoutDetail_eventInput
+  }
+
+  export type EventsUncheckedCreateWithoutReviews_eventInput = {
+    id?: string
+    organizer_id: string
+    event_category_id: string
+    event_location_id: string
+    name: string
+    description: string
+    image: string
+    price: number
+    start_date: Date | string
+    end_date?: Date | string | null
+    created_at?: Date | string
+    updated_at?: Date | string
+    seat_event?: Event_SeatUncheckedCreateNestedOneWithoutEventInput
+    attendees_event?: Event_AttendeesUncheckedCreateNestedManyWithoutUser_eventInput
+    event_transactionDetail?: Transactions_detailUncheckedCreateNestedManyWithoutDetail_eventInput
+  }
+
+  export type EventsCreateOrConnectWithoutReviews_eventInput = {
+    where: EventsWhereUniqueInput
+    create: XOR<EventsCreateWithoutReviews_eventInput, EventsUncheckedCreateWithoutReviews_eventInput>
+  }
+
+  export type UsersUpsertWithoutReviews_userInput = {
+    update: XOR<UsersUpdateWithoutReviews_userInput, UsersUncheckedUpdateWithoutReviews_userInput>
+    create: XOR<UsersCreateWithoutReviews_userInput, UsersUncheckedCreateWithoutReviews_userInput>
+    where?: UsersWhereInput
+  }
+
+  export type UsersUpdateToOneWithWhereWithoutReviews_userInput = {
+    where?: UsersWhereInput
+    data: XOR<UsersUpdateWithoutReviews_userInput, UsersUncheckedUpdateWithoutReviews_userInput>
+  }
+
+  export type UsersUpdateWithoutReviews_userInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    first_name?: StringFieldUpdateOperationsInput | string
+    last_name?: StringFieldUpdateOperationsInput | string
+    email?: StringFieldUpdateOperationsInput | string
+    password?: StringFieldUpdateOperationsInput | string
+    country?: StringFieldUpdateOperationsInput | string
+    birthdate?: DateTimeFieldUpdateOperationsInput | Date | string
+    phone_number?: StringFieldUpdateOperationsInput | string
+    avatar?: NullableStringFieldUpdateOperationsInput | string | null
+    referral_code?: NullableStringFieldUpdateOperationsInput | string | null
+    isVerified?: BoolFieldUpdateOperationsInput | boolean
+    created_at?: DateTimeFieldUpdateOperationsInput | Date | string
+    updated_at?: DateTimeFieldUpdateOperationsInput | Date | string
+    organizer?: OrganizerUpdateManyWithoutUserNestedInput
+    attendees_user?: Event_AttendeesUpdateManyWithoutUser_attendeesNestedInput
+    referral_user?: Referral_CodeUpdateOneWithoutUser_referralNestedInput
+    usageReferral_user?: Referral_UsageUpdateManyWithoutUser_referralUsageNestedInput
+    transactions?: Transactions_detailUpdateManyWithoutUserNestedInput
+  }
+
+  export type UsersUncheckedUpdateWithoutReviews_userInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    first_name?: StringFieldUpdateOperationsInput | string
+    last_name?: StringFieldUpdateOperationsInput | string
+    email?: StringFieldUpdateOperationsInput | string
+    password?: StringFieldUpdateOperationsInput | string
+    country?: StringFieldUpdateOperationsInput | string
+    birthdate?: DateTimeFieldUpdateOperationsInput | Date | string
+    phone_number?: StringFieldUpdateOperationsInput | string
+    avatar?: NullableStringFieldUpdateOperationsInput | string | null
+    referral_code?: NullableStringFieldUpdateOperationsInput | string | null
+    isVerified?: BoolFieldUpdateOperationsInput | boolean
+    created_at?: DateTimeFieldUpdateOperationsInput | Date | string
+    updated_at?: DateTimeFieldUpdateOperationsInput | Date | string
+    organizer?: OrganizerUncheckedUpdateManyWithoutUserNestedInput
+    attendees_user?: Event_AttendeesUncheckedUpdateManyWithoutUser_attendeesNestedInput
+    referral_user?: Referral_CodeUncheckedUpdateOneWithoutUser_referralNestedInput
+    usageReferral_user?: Referral_UsageUncheckedUpdateManyWithoutUser_referralUsageNestedInput
+    transactions?: Transactions_detailUncheckedUpdateManyWithoutUserNestedInput
+  }
+
+  export type EventsUpsertWithoutReviews_eventInput = {
+    update: XOR<EventsUpdateWithoutReviews_eventInput, EventsUncheckedUpdateWithoutReviews_eventInput>
+    create: XOR<EventsCreateWithoutReviews_eventInput, EventsUncheckedCreateWithoutReviews_eventInput>
+    where?: EventsWhereInput
+  }
+
+  export type EventsUpdateToOneWithWhereWithoutReviews_eventInput = {
+    where?: EventsWhereInput
+    data: XOR<EventsUpdateWithoutReviews_eventInput, EventsUncheckedUpdateWithoutReviews_eventInput>
+  }
+
+  export type EventsUpdateWithoutReviews_eventInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    name?: StringFieldUpdateOperationsInput | string
+    description?: StringFieldUpdateOperationsInput | string
+    image?: StringFieldUpdateOperationsInput | string
+    price?: IntFieldUpdateOperationsInput | number
+    start_date?: DateTimeFieldUpdateOperationsInput | Date | string
+    end_date?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    created_at?: DateTimeFieldUpdateOperationsInput | Date | string
+    updated_at?: DateTimeFieldUpdateOperationsInput | Date | string
+    organizer?: OrganizerUpdateOneRequiredWithoutEventNestedInput
+    category_event?: Event_CategoryUpdateOneRequiredWithoutEventNestedInput
+    location_Event?: Event_LocationUpdateOneRequiredWithoutEventNestedInput
+    seat_event?: Event_SeatUpdateOneWithoutEventNestedInput
+    attendees_event?: Event_AttendeesUpdateManyWithoutUser_eventNestedInput
+    event_transactionDetail?: Transactions_detailUpdateManyWithoutDetail_eventNestedInput
+  }
+
+  export type EventsUncheckedUpdateWithoutReviews_eventInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    organizer_id?: StringFieldUpdateOperationsInput | string
+    event_category_id?: StringFieldUpdateOperationsInput | string
+    event_location_id?: StringFieldUpdateOperationsInput | string
+    name?: StringFieldUpdateOperationsInput | string
+    description?: StringFieldUpdateOperationsInput | string
+    image?: StringFieldUpdateOperationsInput | string
+    price?: IntFieldUpdateOperationsInput | number
+    start_date?: DateTimeFieldUpdateOperationsInput | Date | string
+    end_date?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    created_at?: DateTimeFieldUpdateOperationsInput | Date | string
+    updated_at?: DateTimeFieldUpdateOperationsInput | Date | string
+    seat_event?: Event_SeatUncheckedUpdateOneWithoutEventNestedInput
+    attendees_event?: Event_AttendeesUncheckedUpdateManyWithoutUser_eventNestedInput
+    event_transactionDetail?: Transactions_detailUncheckedUpdateManyWithoutDetail_eventNestedInput
+  }
+
+  export type UsersCreateWithoutAttendees_userInput = {
+    id?: string
+    first_name: string
+    last_name: string
+    email: string
+    password: string
+    country: string
+    birthdate: Date | string
+    phone_number: string
+    avatar?: string | null
+    referral_code?: string | null
+    isVerified?: boolean
+    created_at?: Date | string
+    updated_at?: Date | string
+    organizer?: OrganizerCreateNestedManyWithoutUserInput
+    reviews_user?: Event_ReviewsCreateNestedManyWithoutReviews_userInput
+    referral_user?: Referral_CodeCreateNestedOneWithoutUser_referralInput
+    usageReferral_user?: Referral_UsageCreateNestedManyWithoutUser_referralUsageInput
+    transactions?: Transactions_detailCreateNestedManyWithoutUserInput
+  }
+
+  export type UsersUncheckedCreateWithoutAttendees_userInput = {
+    id?: string
+    first_name: string
+    last_name: string
+    email: string
+    password: string
+    country: string
+    birthdate: Date | string
+    phone_number: string
+    avatar?: string | null
+    referral_code?: string | null
+    isVerified?: boolean
+    created_at?: Date | string
+    updated_at?: Date | string
+    organizer?: OrganizerUncheckedCreateNestedManyWithoutUserInput
+    reviews_user?: Event_ReviewsUncheckedCreateNestedManyWithoutReviews_userInput
+    referral_user?: Referral_CodeUncheckedCreateNestedOneWithoutUser_referralInput
+    usageReferral_user?: Referral_UsageUncheckedCreateNestedManyWithoutUser_referralUsageInput
+    transactions?: Transactions_detailUncheckedCreateNestedManyWithoutUserInput
+  }
+
+  export type UsersCreateOrConnectWithoutAttendees_userInput = {
+    where: UsersWhereUniqueInput
+    create: XOR<UsersCreateWithoutAttendees_userInput, UsersUncheckedCreateWithoutAttendees_userInput>
+  }
+
+  export type EventsCreateWithoutAttendees_eventInput = {
+    id?: string
+    name: string
+    description: string
+    image: string
+    price: number
+    start_date: Date | string
+    end_date?: Date | string | null
+    created_at?: Date | string
+    updated_at?: Date | string
+    organizer: OrganizerCreateNestedOneWithoutEventInput
+    category_event: Event_CategoryCreateNestedOneWithoutEventInput
+    location_Event: Event_LocationCreateNestedOneWithoutEventInput
+    seat_event?: Event_SeatCreateNestedOneWithoutEventInput
+    reviews_event?: Event_ReviewsCreateNestedManyWithoutReviews_eventInput
+    event_transactionDetail?: Transactions_detailCreateNestedManyWithoutDetail_eventInput
+  }
+
+  export type EventsUncheckedCreateWithoutAttendees_eventInput = {
+    id?: string
+    organizer_id: string
+    event_category_id: string
+    event_location_id: string
+    name: string
+    description: string
+    image: string
+    price: number
+    start_date: Date | string
+    end_date?: Date | string | null
+    created_at?: Date | string
+    updated_at?: Date | string
+    seat_event?: Event_SeatUncheckedCreateNestedOneWithoutEventInput
+    reviews_event?: Event_ReviewsUncheckedCreateNestedManyWithoutReviews_eventInput
+    event_transactionDetail?: Transactions_detailUncheckedCreateNestedManyWithoutDetail_eventInput
+  }
+
+  export type EventsCreateOrConnectWithoutAttendees_eventInput = {
+    where: EventsWhereUniqueInput
+    create: XOR<EventsCreateWithoutAttendees_eventInput, EventsUncheckedCreateWithoutAttendees_eventInput>
+  }
+
+  export type UsersUpsertWithoutAttendees_userInput = {
+    update: XOR<UsersUpdateWithoutAttendees_userInput, UsersUncheckedUpdateWithoutAttendees_userInput>
+    create: XOR<UsersCreateWithoutAttendees_userInput, UsersUncheckedCreateWithoutAttendees_userInput>
+    where?: UsersWhereInput
+  }
+
+  export type UsersUpdateToOneWithWhereWithoutAttendees_userInput = {
+    where?: UsersWhereInput
+    data: XOR<UsersUpdateWithoutAttendees_userInput, UsersUncheckedUpdateWithoutAttendees_userInput>
+  }
+
+  export type UsersUpdateWithoutAttendees_userInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    first_name?: StringFieldUpdateOperationsInput | string
+    last_name?: StringFieldUpdateOperationsInput | string
+    email?: StringFieldUpdateOperationsInput | string
+    password?: StringFieldUpdateOperationsInput | string
+    country?: StringFieldUpdateOperationsInput | string
+    birthdate?: DateTimeFieldUpdateOperationsInput | Date | string
+    phone_number?: StringFieldUpdateOperationsInput | string
+    avatar?: NullableStringFieldUpdateOperationsInput | string | null
+    referral_code?: NullableStringFieldUpdateOperationsInput | string | null
+    isVerified?: BoolFieldUpdateOperationsInput | boolean
+    created_at?: DateTimeFieldUpdateOperationsInput | Date | string
+    updated_at?: DateTimeFieldUpdateOperationsInput | Date | string
+    organizer?: OrganizerUpdateManyWithoutUserNestedInput
+    reviews_user?: Event_ReviewsUpdateManyWithoutReviews_userNestedInput
+    referral_user?: Referral_CodeUpdateOneWithoutUser_referralNestedInput
+    usageReferral_user?: Referral_UsageUpdateManyWithoutUser_referralUsageNestedInput
+    transactions?: Transactions_detailUpdateManyWithoutUserNestedInput
+  }
+
+  export type UsersUncheckedUpdateWithoutAttendees_userInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    first_name?: StringFieldUpdateOperationsInput | string
+    last_name?: StringFieldUpdateOperationsInput | string
+    email?: StringFieldUpdateOperationsInput | string
+    password?: StringFieldUpdateOperationsInput | string
+    country?: StringFieldUpdateOperationsInput | string
+    birthdate?: DateTimeFieldUpdateOperationsInput | Date | string
+    phone_number?: StringFieldUpdateOperationsInput | string
+    avatar?: NullableStringFieldUpdateOperationsInput | string | null
+    referral_code?: NullableStringFieldUpdateOperationsInput | string | null
+    isVerified?: BoolFieldUpdateOperationsInput | boolean
+    created_at?: DateTimeFieldUpdateOperationsInput | Date | string
+    updated_at?: DateTimeFieldUpdateOperationsInput | Date | string
+    organizer?: OrganizerUncheckedUpdateManyWithoutUserNestedInput
+    reviews_user?: Event_ReviewsUncheckedUpdateManyWithoutReviews_userNestedInput
+    referral_user?: Referral_CodeUncheckedUpdateOneWithoutUser_referralNestedInput
+    usageReferral_user?: Referral_UsageUncheckedUpdateManyWithoutUser_referralUsageNestedInput
+    transactions?: Transactions_detailUncheckedUpdateManyWithoutUserNestedInput
+  }
+
+  export type EventsUpsertWithoutAttendees_eventInput = {
+    update: XOR<EventsUpdateWithoutAttendees_eventInput, EventsUncheckedUpdateWithoutAttendees_eventInput>
+    create: XOR<EventsCreateWithoutAttendees_eventInput, EventsUncheckedCreateWithoutAttendees_eventInput>
+    where?: EventsWhereInput
+  }
+
+  export type EventsUpdateToOneWithWhereWithoutAttendees_eventInput = {
+    where?: EventsWhereInput
+    data: XOR<EventsUpdateWithoutAttendees_eventInput, EventsUncheckedUpdateWithoutAttendees_eventInput>
+  }
+
+  export type EventsUpdateWithoutAttendees_eventInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    name?: StringFieldUpdateOperationsInput | string
+    description?: StringFieldUpdateOperationsInput | string
+    image?: StringFieldUpdateOperationsInput | string
+    price?: IntFieldUpdateOperationsInput | number
+    start_date?: DateTimeFieldUpdateOperationsInput | Date | string
+    end_date?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    created_at?: DateTimeFieldUpdateOperationsInput | Date | string
+    updated_at?: DateTimeFieldUpdateOperationsInput | Date | string
+    organizer?: OrganizerUpdateOneRequiredWithoutEventNestedInput
+    category_event?: Event_CategoryUpdateOneRequiredWithoutEventNestedInput
+    location_Event?: Event_LocationUpdateOneRequiredWithoutEventNestedInput
+    seat_event?: Event_SeatUpdateOneWithoutEventNestedInput
+    reviews_event?: Event_ReviewsUpdateManyWithoutReviews_eventNestedInput
+    event_transactionDetail?: Transactions_detailUpdateManyWithoutDetail_eventNestedInput
+  }
+
+  export type EventsUncheckedUpdateWithoutAttendees_eventInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    organizer_id?: StringFieldUpdateOperationsInput | string
+    event_category_id?: StringFieldUpdateOperationsInput | string
+    event_location_id?: StringFieldUpdateOperationsInput | string
+    name?: StringFieldUpdateOperationsInput | string
+    description?: StringFieldUpdateOperationsInput | string
+    image?: StringFieldUpdateOperationsInput | string
+    price?: IntFieldUpdateOperationsInput | number
+    start_date?: DateTimeFieldUpdateOperationsInput | Date | string
+    end_date?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    created_at?: DateTimeFieldUpdateOperationsInput | Date | string
+    updated_at?: DateTimeFieldUpdateOperationsInput | Date | string
+    seat_event?: Event_SeatUncheckedUpdateOneWithoutEventNestedInput
+    reviews_event?: Event_ReviewsUncheckedUpdateManyWithoutReviews_eventNestedInput
+    event_transactionDetail?: Transactions_detailUncheckedUpdateManyWithoutDetail_eventNestedInput
+  }
+
+  export type UsersCreateWithoutReferral_userInput = {
+    id?: string
+    first_name: string
+    last_name: string
+    email: string
+    password: string
+    country: string
+    birthdate: Date | string
+    phone_number: string
+    avatar?: string | null
+    referral_code?: string | null
+    isVerified?: boolean
+    created_at?: Date | string
+    updated_at?: Date | string
+    organizer?: OrganizerCreateNestedManyWithoutUserInput
+    reviews_user?: Event_ReviewsCreateNestedManyWithoutReviews_userInput
+    attendees_user?: Event_AttendeesCreateNestedManyWithoutUser_attendeesInput
+    usageReferral_user?: Referral_UsageCreateNestedManyWithoutUser_referralUsageInput
+    transactions?: Transactions_detailCreateNestedManyWithoutUserInput
+  }
+
+  export type UsersUncheckedCreateWithoutReferral_userInput = {
+    id?: string
+    first_name: string
+    last_name: string
+    email: string
+    password: string
+    country: string
+    birthdate: Date | string
+    phone_number: string
+    avatar?: string | null
+    referral_code?: string | null
+    isVerified?: boolean
+    created_at?: Date | string
+    updated_at?: Date | string
+    organizer?: OrganizerUncheckedCreateNestedManyWithoutUserInput
+    reviews_user?: Event_ReviewsUncheckedCreateNestedManyWithoutReviews_userInput
+    attendees_user?: Event_AttendeesUncheckedCreateNestedManyWithoutUser_attendeesInput
+    usageReferral_user?: Referral_UsageUncheckedCreateNestedManyWithoutUser_referralUsageInput
+    transactions?: Transactions_detailUncheckedCreateNestedManyWithoutUserInput
+  }
+
+  export type UsersCreateOrConnectWithoutReferral_userInput = {
+    where: UsersWhereUniqueInput
+    create: XOR<UsersCreateWithoutReferral_userInput, UsersUncheckedCreateWithoutReferral_userInput>
+  }
+
+  export type Referral_UsageCreateWithoutCode_referralUsageInput = {
+    id?: string
+    used_at?: Date | string
+    user_referralUsage: UsersCreateNestedOneWithoutUsageReferral_userInput
+  }
+
+  export type Referral_UsageUncheckedCreateWithoutCode_referralUsageInput = {
+    id?: string
+    user_id: string
+    used_at?: Date | string
+  }
+
+  export type Referral_UsageCreateOrConnectWithoutCode_referralUsageInput = {
+    where: Referral_UsageWhereUniqueInput
+    create: XOR<Referral_UsageCreateWithoutCode_referralUsageInput, Referral_UsageUncheckedCreateWithoutCode_referralUsageInput>
+  }
+
+  export type Referral_UsageCreateManyCode_referralUsageInputEnvelope = {
+    data: Referral_UsageCreateManyCode_referralUsageInput | Referral_UsageCreateManyCode_referralUsageInput[]
+    skipDuplicates?: boolean
+  }
+
+  export type UsersUpsertWithoutReferral_userInput = {
+    update: XOR<UsersUpdateWithoutReferral_userInput, UsersUncheckedUpdateWithoutReferral_userInput>
+    create: XOR<UsersCreateWithoutReferral_userInput, UsersUncheckedCreateWithoutReferral_userInput>
+    where?: UsersWhereInput
+  }
+
+  export type UsersUpdateToOneWithWhereWithoutReferral_userInput = {
+    where?: UsersWhereInput
+    data: XOR<UsersUpdateWithoutReferral_userInput, UsersUncheckedUpdateWithoutReferral_userInput>
+  }
+
+  export type UsersUpdateWithoutReferral_userInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    first_name?: StringFieldUpdateOperationsInput | string
+    last_name?: StringFieldUpdateOperationsInput | string
+    email?: StringFieldUpdateOperationsInput | string
+    password?: StringFieldUpdateOperationsInput | string
+    country?: StringFieldUpdateOperationsInput | string
+    birthdate?: DateTimeFieldUpdateOperationsInput | Date | string
+    phone_number?: StringFieldUpdateOperationsInput | string
+    avatar?: NullableStringFieldUpdateOperationsInput | string | null
+    referral_code?: NullableStringFieldUpdateOperationsInput | string | null
+    isVerified?: BoolFieldUpdateOperationsInput | boolean
+    created_at?: DateTimeFieldUpdateOperationsInput | Date | string
+    updated_at?: DateTimeFieldUpdateOperationsInput | Date | string
+    organizer?: OrganizerUpdateManyWithoutUserNestedInput
+    reviews_user?: Event_ReviewsUpdateManyWithoutReviews_userNestedInput
+    attendees_user?: Event_AttendeesUpdateManyWithoutUser_attendeesNestedInput
+    usageReferral_user?: Referral_UsageUpdateManyWithoutUser_referralUsageNestedInput
+    transactions?: Transactions_detailUpdateManyWithoutUserNestedInput
+  }
+
+  export type UsersUncheckedUpdateWithoutReferral_userInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    first_name?: StringFieldUpdateOperationsInput | string
+    last_name?: StringFieldUpdateOperationsInput | string
+    email?: StringFieldUpdateOperationsInput | string
+    password?: StringFieldUpdateOperationsInput | string
+    country?: StringFieldUpdateOperationsInput | string
+    birthdate?: DateTimeFieldUpdateOperationsInput | Date | string
+    phone_number?: StringFieldUpdateOperationsInput | string
+    avatar?: NullableStringFieldUpdateOperationsInput | string | null
+    referral_code?: NullableStringFieldUpdateOperationsInput | string | null
+    isVerified?: BoolFieldUpdateOperationsInput | boolean
+    created_at?: DateTimeFieldUpdateOperationsInput | Date | string
+    updated_at?: DateTimeFieldUpdateOperationsInput | Date | string
+    organizer?: OrganizerUncheckedUpdateManyWithoutUserNestedInput
+    reviews_user?: Event_ReviewsUncheckedUpdateManyWithoutReviews_userNestedInput
+    attendees_user?: Event_AttendeesUncheckedUpdateManyWithoutUser_attendeesNestedInput
+    usageReferral_user?: Referral_UsageUncheckedUpdateManyWithoutUser_referralUsageNestedInput
+    transactions?: Transactions_detailUncheckedUpdateManyWithoutUserNestedInput
+  }
+
+  export type Referral_UsageUpsertWithWhereUniqueWithoutCode_referralUsageInput = {
+    where: Referral_UsageWhereUniqueInput
+    update: XOR<Referral_UsageUpdateWithoutCode_referralUsageInput, Referral_UsageUncheckedUpdateWithoutCode_referralUsageInput>
+    create: XOR<Referral_UsageCreateWithoutCode_referralUsageInput, Referral_UsageUncheckedCreateWithoutCode_referralUsageInput>
+  }
+
+  export type Referral_UsageUpdateWithWhereUniqueWithoutCode_referralUsageInput = {
+    where: Referral_UsageWhereUniqueInput
+    data: XOR<Referral_UsageUpdateWithoutCode_referralUsageInput, Referral_UsageUncheckedUpdateWithoutCode_referralUsageInput>
+  }
+
+  export type Referral_UsageUpdateManyWithWhereWithoutCode_referralUsageInput = {
+    where: Referral_UsageScalarWhereInput
+    data: XOR<Referral_UsageUpdateManyMutationInput, Referral_UsageUncheckedUpdateManyWithoutCode_referralUsageInput>
+  }
+
+  export type UsersCreateWithoutUsageReferral_userInput = {
+    id?: string
+    first_name: string
+    last_name: string
+    email: string
+    password: string
+    country: string
+    birthdate: Date | string
+    phone_number: string
+    avatar?: string | null
+    referral_code?: string | null
+    isVerified?: boolean
+    created_at?: Date | string
+    updated_at?: Date | string
+    organizer?: OrganizerCreateNestedManyWithoutUserInput
+    reviews_user?: Event_ReviewsCreateNestedManyWithoutReviews_userInput
+    attendees_user?: Event_AttendeesCreateNestedManyWithoutUser_attendeesInput
+    referral_user?: Referral_CodeCreateNestedOneWithoutUser_referralInput
+    transactions?: Transactions_detailCreateNestedManyWithoutUserInput
+  }
+
+  export type UsersUncheckedCreateWithoutUsageReferral_userInput = {
+    id?: string
+    first_name: string
+    last_name: string
+    email: string
+    password: string
+    country: string
+    birthdate: Date | string
+    phone_number: string
+    avatar?: string | null
+    referral_code?: string | null
+    isVerified?: boolean
+    created_at?: Date | string
+    updated_at?: Date | string
+    organizer?: OrganizerUncheckedCreateNestedManyWithoutUserInput
+    reviews_user?: Event_ReviewsUncheckedCreateNestedManyWithoutReviews_userInput
+    attendees_user?: Event_AttendeesUncheckedCreateNestedManyWithoutUser_attendeesInput
+    referral_user?: Referral_CodeUncheckedCreateNestedOneWithoutUser_referralInput
+    transactions?: Transactions_detailUncheckedCreateNestedManyWithoutUserInput
+  }
+
+  export type UsersCreateOrConnectWithoutUsageReferral_userInput = {
+    where: UsersWhereUniqueInput
+    create: XOR<UsersCreateWithoutUsageReferral_userInput, UsersUncheckedCreateWithoutUsageReferral_userInput>
+  }
+
+  export type Referral_CodeCreateWithoutUser_referralUsageInput = {
+    id?: string
+    code: string
+    points: number
+    user_referral: UsersCreateNestedOneWithoutReferral_userInput
+  }
+
+  export type Referral_CodeUncheckedCreateWithoutUser_referralUsageInput = {
+    id?: string
+    user_id: string
+    code: string
+    points: number
+  }
+
+  export type Referral_CodeCreateOrConnectWithoutUser_referralUsageInput = {
+    where: Referral_CodeWhereUniqueInput
+    create: XOR<Referral_CodeCreateWithoutUser_referralUsageInput, Referral_CodeUncheckedCreateWithoutUser_referralUsageInput>
+  }
+
+  export type UsersUpsertWithoutUsageReferral_userInput = {
+    update: XOR<UsersUpdateWithoutUsageReferral_userInput, UsersUncheckedUpdateWithoutUsageReferral_userInput>
+    create: XOR<UsersCreateWithoutUsageReferral_userInput, UsersUncheckedCreateWithoutUsageReferral_userInput>
+    where?: UsersWhereInput
+  }
+
+  export type UsersUpdateToOneWithWhereWithoutUsageReferral_userInput = {
+    where?: UsersWhereInput
+    data: XOR<UsersUpdateWithoutUsageReferral_userInput, UsersUncheckedUpdateWithoutUsageReferral_userInput>
+  }
+
+  export type UsersUpdateWithoutUsageReferral_userInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    first_name?: StringFieldUpdateOperationsInput | string
+    last_name?: StringFieldUpdateOperationsInput | string
+    email?: StringFieldUpdateOperationsInput | string
+    password?: StringFieldUpdateOperationsInput | string
+    country?: StringFieldUpdateOperationsInput | string
+    birthdate?: DateTimeFieldUpdateOperationsInput | Date | string
+    phone_number?: StringFieldUpdateOperationsInput | string
+    avatar?: NullableStringFieldUpdateOperationsInput | string | null
+    referral_code?: NullableStringFieldUpdateOperationsInput | string | null
+    isVerified?: BoolFieldUpdateOperationsInput | boolean
+    created_at?: DateTimeFieldUpdateOperationsInput | Date | string
+    updated_at?: DateTimeFieldUpdateOperationsInput | Date | string
+    organizer?: OrganizerUpdateManyWithoutUserNestedInput
+    reviews_user?: Event_ReviewsUpdateManyWithoutReviews_userNestedInput
+    attendees_user?: Event_AttendeesUpdateManyWithoutUser_attendeesNestedInput
+    referral_user?: Referral_CodeUpdateOneWithoutUser_referralNestedInput
+    transactions?: Transactions_detailUpdateManyWithoutUserNestedInput
+  }
+
+  export type UsersUncheckedUpdateWithoutUsageReferral_userInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    first_name?: StringFieldUpdateOperationsInput | string
+    last_name?: StringFieldUpdateOperationsInput | string
+    email?: StringFieldUpdateOperationsInput | string
+    password?: StringFieldUpdateOperationsInput | string
+    country?: StringFieldUpdateOperationsInput | string
+    birthdate?: DateTimeFieldUpdateOperationsInput | Date | string
+    phone_number?: StringFieldUpdateOperationsInput | string
+    avatar?: NullableStringFieldUpdateOperationsInput | string | null
+    referral_code?: NullableStringFieldUpdateOperationsInput | string | null
+    isVerified?: BoolFieldUpdateOperationsInput | boolean
+    created_at?: DateTimeFieldUpdateOperationsInput | Date | string
+    updated_at?: DateTimeFieldUpdateOperationsInput | Date | string
+    organizer?: OrganizerUncheckedUpdateManyWithoutUserNestedInput
+    reviews_user?: Event_ReviewsUncheckedUpdateManyWithoutReviews_userNestedInput
+    attendees_user?: Event_AttendeesUncheckedUpdateManyWithoutUser_attendeesNestedInput
+    referral_user?: Referral_CodeUncheckedUpdateOneWithoutUser_referralNestedInput
+    transactions?: Transactions_detailUncheckedUpdateManyWithoutUserNestedInput
+  }
+
+  export type Referral_CodeUpsertWithoutUser_referralUsageInput = {
+    update: XOR<Referral_CodeUpdateWithoutUser_referralUsageInput, Referral_CodeUncheckedUpdateWithoutUser_referralUsageInput>
+    create: XOR<Referral_CodeCreateWithoutUser_referralUsageInput, Referral_CodeUncheckedCreateWithoutUser_referralUsageInput>
+    where?: Referral_CodeWhereInput
+  }
+
+  export type Referral_CodeUpdateToOneWithWhereWithoutUser_referralUsageInput = {
+    where?: Referral_CodeWhereInput
+    data: XOR<Referral_CodeUpdateWithoutUser_referralUsageInput, Referral_CodeUncheckedUpdateWithoutUser_referralUsageInput>
+  }
+
+  export type Referral_CodeUpdateWithoutUser_referralUsageInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    code?: StringFieldUpdateOperationsInput | string
+    points?: IntFieldUpdateOperationsInput | number
+    user_referral?: UsersUpdateOneRequiredWithoutReferral_userNestedInput
+  }
+
+  export type Referral_CodeUncheckedUpdateWithoutUser_referralUsageInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    user_id?: StringFieldUpdateOperationsInput | string
+    code?: StringFieldUpdateOperationsInput | string
+    points?: IntFieldUpdateOperationsInput | number
+  }
+
+  export type OrganizerCreateWithoutOrganizer_voucherInput = {
+    id?: string
+    user: UsersCreateNestedOneWithoutOrganizerInput
+    event?: EventsCreateNestedManyWithoutOrganizerInput
+    organizer_transactionDetails?: Transactions_detailCreateNestedManyWithoutDetail_organizerInput
+  }
+
+  export type OrganizerUncheckedCreateWithoutOrganizer_voucherInput = {
+    id?: string
+    user_id: string
+    event?: EventsUncheckedCreateNestedManyWithoutOrganizerInput
+    organizer_transactionDetails?: Transactions_detailUncheckedCreateNestedManyWithoutDetail_organizerInput
+  }
+
+  export type OrganizerCreateOrConnectWithoutOrganizer_voucherInput = {
+    where: OrganizerWhereUniqueInput
+    create: XOR<OrganizerCreateWithoutOrganizer_voucherInput, OrganizerUncheckedCreateWithoutOrganizer_voucherInput>
+  }
+
+  export type TransactionsCreateWithoutTransaction_voucherInput = {
+    id?: string
+    amount: number
+    proof: string
+    transaction_details?: Transactions_detailCreateNestedManyWithoutDetails_transactionInput
+  }
+
+  export type TransactionsUncheckedCreateWithoutTransaction_voucherInput = {
+    id?: string
+    amount: number
+    proof: string
+    transaction_details?: Transactions_detailUncheckedCreateNestedManyWithoutDetails_transactionInput
+  }
+
+  export type TransactionsCreateOrConnectWithoutTransaction_voucherInput = {
+    where: TransactionsWhereUniqueInput
+    create: XOR<TransactionsCreateWithoutTransaction_voucherInput, TransactionsUncheckedCreateWithoutTransaction_voucherInput>
+  }
+
+  export type TransactionsCreateManyTransaction_voucherInputEnvelope = {
+    data: TransactionsCreateManyTransaction_voucherInput | TransactionsCreateManyTransaction_voucherInput[]
+    skipDuplicates?: boolean
+  }
+
+  export type OrganizerUpsertWithoutOrganizer_voucherInput = {
+    update: XOR<OrganizerUpdateWithoutOrganizer_voucherInput, OrganizerUncheckedUpdateWithoutOrganizer_voucherInput>
+    create: XOR<OrganizerCreateWithoutOrganizer_voucherInput, OrganizerUncheckedCreateWithoutOrganizer_voucherInput>
+    where?: OrganizerWhereInput
+  }
+
+  export type OrganizerUpdateToOneWithWhereWithoutOrganizer_voucherInput = {
+    where?: OrganizerWhereInput
+    data: XOR<OrganizerUpdateWithoutOrganizer_voucherInput, OrganizerUncheckedUpdateWithoutOrganizer_voucherInput>
+  }
+
+  export type OrganizerUpdateWithoutOrganizer_voucherInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    user?: UsersUpdateOneRequiredWithoutOrganizerNestedInput
+    event?: EventsUpdateManyWithoutOrganizerNestedInput
+    organizer_transactionDetails?: Transactions_detailUpdateManyWithoutDetail_organizerNestedInput
+  }
+
+  export type OrganizerUncheckedUpdateWithoutOrganizer_voucherInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    user_id?: StringFieldUpdateOperationsInput | string
+    event?: EventsUncheckedUpdateManyWithoutOrganizerNestedInput
+    organizer_transactionDetails?: Transactions_detailUncheckedUpdateManyWithoutDetail_organizerNestedInput
+  }
+
+  export type TransactionsUpsertWithWhereUniqueWithoutTransaction_voucherInput = {
+    where: TransactionsWhereUniqueInput
+    update: XOR<TransactionsUpdateWithoutTransaction_voucherInput, TransactionsUncheckedUpdateWithoutTransaction_voucherInput>
+    create: XOR<TransactionsCreateWithoutTransaction_voucherInput, TransactionsUncheckedCreateWithoutTransaction_voucherInput>
+  }
+
+  export type TransactionsUpdateWithWhereUniqueWithoutTransaction_voucherInput = {
+    where: TransactionsWhereUniqueInput
+    data: XOR<TransactionsUpdateWithoutTransaction_voucherInput, TransactionsUncheckedUpdateWithoutTransaction_voucherInput>
+  }
+
+  export type TransactionsUpdateManyWithWhereWithoutTransaction_voucherInput = {
+    where: TransactionsScalarWhereInput
+    data: XOR<TransactionsUpdateManyMutationInput, TransactionsUncheckedUpdateManyWithoutTransaction_voucherInput>
+  }
+
+  export type TransactionsScalarWhereInput = {
+    AND?: TransactionsScalarWhereInput | TransactionsScalarWhereInput[]
+    OR?: TransactionsScalarWhereInput[]
+    NOT?: TransactionsScalarWhereInput | TransactionsScalarWhereInput[]
+    id?: StringFilter<"Transactions"> | string
+    voucher_id?: StringFilter<"Transactions"> | string
+    amount?: IntFilter<"Transactions"> | number
+    proof?: StringFilter<"Transactions"> | string
+  }
+
+  export type VoucherCreateWithoutVoucher_transactionInput = {
+    id?: string
+    code: string
+    amount: number
+    limit: number
+    expired_at: Date | string
+    voucher_organizer: OrganizerCreateNestedOneWithoutOrganizer_voucherInput
+  }
+
+  export type VoucherUncheckedCreateWithoutVoucher_transactionInput = {
+    id?: string
+    organizer_id: string
+    code: string
+    amount: number
+    limit: number
+    expired_at: Date | string
+  }
+
+  export type VoucherCreateOrConnectWithoutVoucher_transactionInput = {
+    where: VoucherWhereUniqueInput
+    create: XOR<VoucherCreateWithoutVoucher_transactionInput, VoucherUncheckedCreateWithoutVoucher_transactionInput>
+  }
+
+  export type Transactions_detailCreateWithoutDetails_transactionInput = {
+    id?: string
+    quantity: number
+    price: number
+    isConfirmed?: boolean
+    transaction_status: $Enums.TransactionStatus
+    user: UsersCreateNestedOneWithoutTransactionsInput
+    detail_event: EventsCreateNestedOneWithoutEvent_transactionDetailInput
+    detail_organizer: OrganizerCreateNestedOneWithoutOrganizer_transactionDetailsInput
+  }
+
+  export type Transactions_detailUncheckedCreateWithoutDetails_transactionInput = {
+    id?: string
+    user_id: string
+    event_id: string
+    organizer_id: string
+    quantity: number
+    price: number
+    isConfirmed?: boolean
+    transaction_status: $Enums.TransactionStatus
+  }
+
+  export type Transactions_detailCreateOrConnectWithoutDetails_transactionInput = {
+    where: Transactions_detailWhereUniqueInput
+    create: XOR<Transactions_detailCreateWithoutDetails_transactionInput, Transactions_detailUncheckedCreateWithoutDetails_transactionInput>
+  }
+
+  export type Transactions_detailCreateManyDetails_transactionInputEnvelope = {
+    data: Transactions_detailCreateManyDetails_transactionInput | Transactions_detailCreateManyDetails_transactionInput[]
+    skipDuplicates?: boolean
+  }
+
+  export type VoucherUpsertWithoutVoucher_transactionInput = {
+    update: XOR<VoucherUpdateWithoutVoucher_transactionInput, VoucherUncheckedUpdateWithoutVoucher_transactionInput>
+    create: XOR<VoucherCreateWithoutVoucher_transactionInput, VoucherUncheckedCreateWithoutVoucher_transactionInput>
+    where?: VoucherWhereInput
+  }
+
+  export type VoucherUpdateToOneWithWhereWithoutVoucher_transactionInput = {
+    where?: VoucherWhereInput
+    data: XOR<VoucherUpdateWithoutVoucher_transactionInput, VoucherUncheckedUpdateWithoutVoucher_transactionInput>
+  }
+
+  export type VoucherUpdateWithoutVoucher_transactionInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    code?: StringFieldUpdateOperationsInput | string
+    amount?: IntFieldUpdateOperationsInput | number
+    limit?: IntFieldUpdateOperationsInput | number
+    expired_at?: DateTimeFieldUpdateOperationsInput | Date | string
+    voucher_organizer?: OrganizerUpdateOneRequiredWithoutOrganizer_voucherNestedInput
+  }
+
+  export type VoucherUncheckedUpdateWithoutVoucher_transactionInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    organizer_id?: StringFieldUpdateOperationsInput | string
+    code?: StringFieldUpdateOperationsInput | string
+    amount?: IntFieldUpdateOperationsInput | number
+    limit?: IntFieldUpdateOperationsInput | number
+    expired_at?: DateTimeFieldUpdateOperationsInput | Date | string
+  }
+
+  export type Transactions_detailUpsertWithWhereUniqueWithoutDetails_transactionInput = {
+    where: Transactions_detailWhereUniqueInput
+    update: XOR<Transactions_detailUpdateWithoutDetails_transactionInput, Transactions_detailUncheckedUpdateWithoutDetails_transactionInput>
+    create: XOR<Transactions_detailCreateWithoutDetails_transactionInput, Transactions_detailUncheckedCreateWithoutDetails_transactionInput>
+  }
+
+  export type Transactions_detailUpdateWithWhereUniqueWithoutDetails_transactionInput = {
+    where: Transactions_detailWhereUniqueInput
+    data: XOR<Transactions_detailUpdateWithoutDetails_transactionInput, Transactions_detailUncheckedUpdateWithoutDetails_transactionInput>
+  }
+
+  export type Transactions_detailUpdateManyWithWhereWithoutDetails_transactionInput = {
+    where: Transactions_detailScalarWhereInput
+    data: XOR<Transactions_detailUpdateManyMutationInput, Transactions_detailUncheckedUpdateManyWithoutDetails_transactionInput>
+  }
+
+  export type UsersCreateWithoutTransactionsInput = {
+    id?: string
+    first_name: string
+    last_name: string
+    email: string
+    password: string
+    country: string
+    birthdate: Date | string
+    phone_number: string
+    avatar?: string | null
+    referral_code?: string | null
+    isVerified?: boolean
+    created_at?: Date | string
+    updated_at?: Date | string
+    organizer?: OrganizerCreateNestedManyWithoutUserInput
+    reviews_user?: Event_ReviewsCreateNestedManyWithoutReviews_userInput
+    attendees_user?: Event_AttendeesCreateNestedManyWithoutUser_attendeesInput
+    referral_user?: Referral_CodeCreateNestedOneWithoutUser_referralInput
+    usageReferral_user?: Referral_UsageCreateNestedManyWithoutUser_referralUsageInput
+  }
+
+  export type UsersUncheckedCreateWithoutTransactionsInput = {
+    id?: string
+    first_name: string
+    last_name: string
+    email: string
+    password: string
+    country: string
+    birthdate: Date | string
+    phone_number: string
+    avatar?: string | null
+    referral_code?: string | null
+    isVerified?: boolean
+    created_at?: Date | string
+    updated_at?: Date | string
+    organizer?: OrganizerUncheckedCreateNestedManyWithoutUserInput
+    reviews_user?: Event_ReviewsUncheckedCreateNestedManyWithoutReviews_userInput
+    attendees_user?: Event_AttendeesUncheckedCreateNestedManyWithoutUser_attendeesInput
+    referral_user?: Referral_CodeUncheckedCreateNestedOneWithoutUser_referralInput
+    usageReferral_user?: Referral_UsageUncheckedCreateNestedManyWithoutUser_referralUsageInput
+  }
+
+  export type UsersCreateOrConnectWithoutTransactionsInput = {
+    where: UsersWhereUniqueInput
+    create: XOR<UsersCreateWithoutTransactionsInput, UsersUncheckedCreateWithoutTransactionsInput>
+  }
+
+  export type TransactionsCreateWithoutTransaction_detailsInput = {
+    id?: string
+    amount: number
+    proof: string
+    transaction_voucher: VoucherCreateNestedOneWithoutVoucher_transactionInput
+  }
+
+  export type TransactionsUncheckedCreateWithoutTransaction_detailsInput = {
+    id?: string
+    voucher_id: string
+    amount: number
+    proof: string
+  }
+
+  export type TransactionsCreateOrConnectWithoutTransaction_detailsInput = {
+    where: TransactionsWhereUniqueInput
+    create: XOR<TransactionsCreateWithoutTransaction_detailsInput, TransactionsUncheckedCreateWithoutTransaction_detailsInput>
+  }
+
+  export type EventsCreateWithoutEvent_transactionDetailInput = {
+    id?: string
+    name: string
+    description: string
+    image: string
+    price: number
+    start_date: Date | string
+    end_date?: Date | string | null
+    created_at?: Date | string
+    updated_at?: Date | string
+    organizer: OrganizerCreateNestedOneWithoutEventInput
+    category_event: Event_CategoryCreateNestedOneWithoutEventInput
+    location_Event: Event_LocationCreateNestedOneWithoutEventInput
+    seat_event?: Event_SeatCreateNestedOneWithoutEventInput
+    reviews_event?: Event_ReviewsCreateNestedManyWithoutReviews_eventInput
+    attendees_event?: Event_AttendeesCreateNestedManyWithoutUser_eventInput
+  }
+
+  export type EventsUncheckedCreateWithoutEvent_transactionDetailInput = {
+    id?: string
+    organizer_id: string
+    event_category_id: string
+    event_location_id: string
+    name: string
+    description: string
+    image: string
+    price: number
+    start_date: Date | string
+    end_date?: Date | string | null
+    created_at?: Date | string
+    updated_at?: Date | string
+    seat_event?: Event_SeatUncheckedCreateNestedOneWithoutEventInput
+    reviews_event?: Event_ReviewsUncheckedCreateNestedManyWithoutReviews_eventInput
+    attendees_event?: Event_AttendeesUncheckedCreateNestedManyWithoutUser_eventInput
+  }
+
+  export type EventsCreateOrConnectWithoutEvent_transactionDetailInput = {
+    where: EventsWhereUniqueInput
+    create: XOR<EventsCreateWithoutEvent_transactionDetailInput, EventsUncheckedCreateWithoutEvent_transactionDetailInput>
+  }
+
+  export type OrganizerCreateWithoutOrganizer_transactionDetailsInput = {
+    id?: string
+    user: UsersCreateNestedOneWithoutOrganizerInput
+    event?: EventsCreateNestedManyWithoutOrganizerInput
+    organizer_voucher?: VoucherCreateNestedManyWithoutVoucher_organizerInput
+  }
+
+  export type OrganizerUncheckedCreateWithoutOrganizer_transactionDetailsInput = {
+    id?: string
+    user_id: string
+    event?: EventsUncheckedCreateNestedManyWithoutOrganizerInput
+    organizer_voucher?: VoucherUncheckedCreateNestedManyWithoutVoucher_organizerInput
+  }
+
+  export type OrganizerCreateOrConnectWithoutOrganizer_transactionDetailsInput = {
+    where: OrganizerWhereUniqueInput
+    create: XOR<OrganizerCreateWithoutOrganizer_transactionDetailsInput, OrganizerUncheckedCreateWithoutOrganizer_transactionDetailsInput>
+  }
+
+  export type UsersUpsertWithoutTransactionsInput = {
+    update: XOR<UsersUpdateWithoutTransactionsInput, UsersUncheckedUpdateWithoutTransactionsInput>
+    create: XOR<UsersCreateWithoutTransactionsInput, UsersUncheckedCreateWithoutTransactionsInput>
+    where?: UsersWhereInput
+  }
+
+  export type UsersUpdateToOneWithWhereWithoutTransactionsInput = {
+    where?: UsersWhereInput
+    data: XOR<UsersUpdateWithoutTransactionsInput, UsersUncheckedUpdateWithoutTransactionsInput>
+  }
+
+  export type UsersUpdateWithoutTransactionsInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    first_name?: StringFieldUpdateOperationsInput | string
+    last_name?: StringFieldUpdateOperationsInput | string
+    email?: StringFieldUpdateOperationsInput | string
+    password?: StringFieldUpdateOperationsInput | string
+    country?: StringFieldUpdateOperationsInput | string
+    birthdate?: DateTimeFieldUpdateOperationsInput | Date | string
+    phone_number?: StringFieldUpdateOperationsInput | string
+    avatar?: NullableStringFieldUpdateOperationsInput | string | null
+    referral_code?: NullableStringFieldUpdateOperationsInput | string | null
+    isVerified?: BoolFieldUpdateOperationsInput | boolean
+    created_at?: DateTimeFieldUpdateOperationsInput | Date | string
+    updated_at?: DateTimeFieldUpdateOperationsInput | Date | string
+    organizer?: OrganizerUpdateManyWithoutUserNestedInput
+    reviews_user?: Event_ReviewsUpdateManyWithoutReviews_userNestedInput
+    attendees_user?: Event_AttendeesUpdateManyWithoutUser_attendeesNestedInput
+    referral_user?: Referral_CodeUpdateOneWithoutUser_referralNestedInput
+    usageReferral_user?: Referral_UsageUpdateManyWithoutUser_referralUsageNestedInput
+  }
+
+  export type UsersUncheckedUpdateWithoutTransactionsInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    first_name?: StringFieldUpdateOperationsInput | string
+    last_name?: StringFieldUpdateOperationsInput | string
+    email?: StringFieldUpdateOperationsInput | string
+    password?: StringFieldUpdateOperationsInput | string
+    country?: StringFieldUpdateOperationsInput | string
+    birthdate?: DateTimeFieldUpdateOperationsInput | Date | string
+    phone_number?: StringFieldUpdateOperationsInput | string
+    avatar?: NullableStringFieldUpdateOperationsInput | string | null
+    referral_code?: NullableStringFieldUpdateOperationsInput | string | null
+    isVerified?: BoolFieldUpdateOperationsInput | boolean
+    created_at?: DateTimeFieldUpdateOperationsInput | Date | string
+    updated_at?: DateTimeFieldUpdateOperationsInput | Date | string
+    organizer?: OrganizerUncheckedUpdateManyWithoutUserNestedInput
+    reviews_user?: Event_ReviewsUncheckedUpdateManyWithoutReviews_userNestedInput
+    attendees_user?: Event_AttendeesUncheckedUpdateManyWithoutUser_attendeesNestedInput
+    referral_user?: Referral_CodeUncheckedUpdateOneWithoutUser_referralNestedInput
+    usageReferral_user?: Referral_UsageUncheckedUpdateManyWithoutUser_referralUsageNestedInput
+  }
+
+  export type TransactionsUpsertWithoutTransaction_detailsInput = {
+    update: XOR<TransactionsUpdateWithoutTransaction_detailsInput, TransactionsUncheckedUpdateWithoutTransaction_detailsInput>
+    create: XOR<TransactionsCreateWithoutTransaction_detailsInput, TransactionsUncheckedCreateWithoutTransaction_detailsInput>
+    where?: TransactionsWhereInput
+  }
+
+  export type TransactionsUpdateToOneWithWhereWithoutTransaction_detailsInput = {
+    where?: TransactionsWhereInput
+    data: XOR<TransactionsUpdateWithoutTransaction_detailsInput, TransactionsUncheckedUpdateWithoutTransaction_detailsInput>
+  }
+
+  export type TransactionsUpdateWithoutTransaction_detailsInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    amount?: IntFieldUpdateOperationsInput | number
+    proof?: StringFieldUpdateOperationsInput | string
+    transaction_voucher?: VoucherUpdateOneRequiredWithoutVoucher_transactionNestedInput
+  }
+
+  export type TransactionsUncheckedUpdateWithoutTransaction_detailsInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    voucher_id?: StringFieldUpdateOperationsInput | string
+    amount?: IntFieldUpdateOperationsInput | number
+    proof?: StringFieldUpdateOperationsInput | string
+  }
+
+  export type EventsUpsertWithoutEvent_transactionDetailInput = {
+    update: XOR<EventsUpdateWithoutEvent_transactionDetailInput, EventsUncheckedUpdateWithoutEvent_transactionDetailInput>
+    create: XOR<EventsCreateWithoutEvent_transactionDetailInput, EventsUncheckedCreateWithoutEvent_transactionDetailInput>
+    where?: EventsWhereInput
+  }
+
+  export type EventsUpdateToOneWithWhereWithoutEvent_transactionDetailInput = {
+    where?: EventsWhereInput
+    data: XOR<EventsUpdateWithoutEvent_transactionDetailInput, EventsUncheckedUpdateWithoutEvent_transactionDetailInput>
+  }
+
+  export type EventsUpdateWithoutEvent_transactionDetailInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    name?: StringFieldUpdateOperationsInput | string
+    description?: StringFieldUpdateOperationsInput | string
+    image?: StringFieldUpdateOperationsInput | string
+    price?: IntFieldUpdateOperationsInput | number
+    start_date?: DateTimeFieldUpdateOperationsInput | Date | string
+    end_date?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    created_at?: DateTimeFieldUpdateOperationsInput | Date | string
+    updated_at?: DateTimeFieldUpdateOperationsInput | Date | string
+    organizer?: OrganizerUpdateOneRequiredWithoutEventNestedInput
+    category_event?: Event_CategoryUpdateOneRequiredWithoutEventNestedInput
+    location_Event?: Event_LocationUpdateOneRequiredWithoutEventNestedInput
+    seat_event?: Event_SeatUpdateOneWithoutEventNestedInput
+    reviews_event?: Event_ReviewsUpdateManyWithoutReviews_eventNestedInput
+    attendees_event?: Event_AttendeesUpdateManyWithoutUser_eventNestedInput
+  }
+
+  export type EventsUncheckedUpdateWithoutEvent_transactionDetailInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    organizer_id?: StringFieldUpdateOperationsInput | string
+    event_category_id?: StringFieldUpdateOperationsInput | string
+    event_location_id?: StringFieldUpdateOperationsInput | string
+    name?: StringFieldUpdateOperationsInput | string
+    description?: StringFieldUpdateOperationsInput | string
+    image?: StringFieldUpdateOperationsInput | string
+    price?: IntFieldUpdateOperationsInput | number
+    start_date?: DateTimeFieldUpdateOperationsInput | Date | string
+    end_date?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    created_at?: DateTimeFieldUpdateOperationsInput | Date | string
+    updated_at?: DateTimeFieldUpdateOperationsInput | Date | string
+    seat_event?: Event_SeatUncheckedUpdateOneWithoutEventNestedInput
+    reviews_event?: Event_ReviewsUncheckedUpdateManyWithoutReviews_eventNestedInput
+    attendees_event?: Event_AttendeesUncheckedUpdateManyWithoutUser_eventNestedInput
+  }
+
+  export type OrganizerUpsertWithoutOrganizer_transactionDetailsInput = {
+    update: XOR<OrganizerUpdateWithoutOrganizer_transactionDetailsInput, OrganizerUncheckedUpdateWithoutOrganizer_transactionDetailsInput>
+    create: XOR<OrganizerCreateWithoutOrganizer_transactionDetailsInput, OrganizerUncheckedCreateWithoutOrganizer_transactionDetailsInput>
+    where?: OrganizerWhereInput
+  }
+
+  export type OrganizerUpdateToOneWithWhereWithoutOrganizer_transactionDetailsInput = {
+    where?: OrganizerWhereInput
+    data: XOR<OrganizerUpdateWithoutOrganizer_transactionDetailsInput, OrganizerUncheckedUpdateWithoutOrganizer_transactionDetailsInput>
+  }
+
+  export type OrganizerUpdateWithoutOrganizer_transactionDetailsInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    user?: UsersUpdateOneRequiredWithoutOrganizerNestedInput
+    event?: EventsUpdateManyWithoutOrganizerNestedInput
+    organizer_voucher?: VoucherUpdateManyWithoutVoucher_organizerNestedInput
+  }
+
+  export type OrganizerUncheckedUpdateWithoutOrganizer_transactionDetailsInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    user_id?: StringFieldUpdateOperationsInput | string
+    event?: EventsUncheckedUpdateManyWithoutOrganizerNestedInput
+    organizer_voucher?: VoucherUncheckedUpdateManyWithoutVoucher_organizerNestedInput
   }
 
   export type OrganizerCreateManyUserInput = {
     id?: string
   }
 
+  export type Event_ReviewsCreateManyReviews_userInput = {
+    id?: string
+    events_id: string
+    review: string
+    rating: number
+    created_at?: Date | string
+  }
+
+  export type Event_AttendeesCreateManyUser_attendeesInput = {
+    id?: string
+    event_id: string
+    status: $Enums.Status
+  }
+
+  export type Referral_UsageCreateManyUser_referralUsageInput = {
+    id?: string
+    referral_code_id: string
+    used_at?: Date | string
+  }
+
+  export type Transactions_detailCreateManyUserInput = {
+    id?: string
+    transaction_id: string
+    event_id: string
+    organizer_id: string
+    quantity: number
+    price: number
+    isConfirmed?: boolean
+    transaction_status: $Enums.TransactionStatus
+  }
+
   export type OrganizerUpdateWithoutUserInput = {
     id?: StringFieldUpdateOperationsInput | string
     event?: EventsUpdateManyWithoutOrganizerNestedInput
+    organizer_voucher?: VoucherUpdateManyWithoutVoucher_organizerNestedInput
+    organizer_transactionDetails?: Transactions_detailUpdateManyWithoutDetail_organizerNestedInput
   }
 
   export type OrganizerUncheckedUpdateWithoutUserInput = {
     id?: StringFieldUpdateOperationsInput | string
     event?: EventsUncheckedUpdateManyWithoutOrganizerNestedInput
+    organizer_voucher?: VoucherUncheckedUpdateManyWithoutVoucher_organizerNestedInput
+    organizer_transactionDetails?: Transactions_detailUncheckedUpdateManyWithoutDetail_organizerNestedInput
   }
 
   export type OrganizerUncheckedUpdateManyWithoutUserInput = {
     id?: StringFieldUpdateOperationsInput | string
+  }
+
+  export type Event_ReviewsUpdateWithoutReviews_userInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    review?: StringFieldUpdateOperationsInput | string
+    rating?: IntFieldUpdateOperationsInput | number
+    created_at?: DateTimeFieldUpdateOperationsInput | Date | string
+    reviews_event?: EventsUpdateOneRequiredWithoutReviews_eventNestedInput
+  }
+
+  export type Event_ReviewsUncheckedUpdateWithoutReviews_userInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    events_id?: StringFieldUpdateOperationsInput | string
+    review?: StringFieldUpdateOperationsInput | string
+    rating?: IntFieldUpdateOperationsInput | number
+    created_at?: DateTimeFieldUpdateOperationsInput | Date | string
+  }
+
+  export type Event_ReviewsUncheckedUpdateManyWithoutReviews_userInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    events_id?: StringFieldUpdateOperationsInput | string
+    review?: StringFieldUpdateOperationsInput | string
+    rating?: IntFieldUpdateOperationsInput | number
+    created_at?: DateTimeFieldUpdateOperationsInput | Date | string
+  }
+
+  export type Event_AttendeesUpdateWithoutUser_attendeesInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    status?: EnumStatusFieldUpdateOperationsInput | $Enums.Status
+    user_event?: EventsUpdateOneRequiredWithoutAttendees_eventNestedInput
+  }
+
+  export type Event_AttendeesUncheckedUpdateWithoutUser_attendeesInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    event_id?: StringFieldUpdateOperationsInput | string
+    status?: EnumStatusFieldUpdateOperationsInput | $Enums.Status
+  }
+
+  export type Event_AttendeesUncheckedUpdateManyWithoutUser_attendeesInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    event_id?: StringFieldUpdateOperationsInput | string
+    status?: EnumStatusFieldUpdateOperationsInput | $Enums.Status
+  }
+
+  export type Referral_UsageUpdateWithoutUser_referralUsageInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    used_at?: DateTimeFieldUpdateOperationsInput | Date | string
+    code_referralUsage?: Referral_CodeUpdateOneRequiredWithoutUser_referralUsageNestedInput
+  }
+
+  export type Referral_UsageUncheckedUpdateWithoutUser_referralUsageInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    referral_code_id?: StringFieldUpdateOperationsInput | string
+    used_at?: DateTimeFieldUpdateOperationsInput | Date | string
+  }
+
+  export type Referral_UsageUncheckedUpdateManyWithoutUser_referralUsageInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    referral_code_id?: StringFieldUpdateOperationsInput | string
+    used_at?: DateTimeFieldUpdateOperationsInput | Date | string
+  }
+
+  export type Transactions_detailUpdateWithoutUserInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    quantity?: IntFieldUpdateOperationsInput | number
+    price?: IntFieldUpdateOperationsInput | number
+    isConfirmed?: BoolFieldUpdateOperationsInput | boolean
+    transaction_status?: EnumTransactionStatusFieldUpdateOperationsInput | $Enums.TransactionStatus
+    details_transaction?: TransactionsUpdateOneRequiredWithoutTransaction_detailsNestedInput
+    detail_event?: EventsUpdateOneRequiredWithoutEvent_transactionDetailNestedInput
+    detail_organizer?: OrganizerUpdateOneRequiredWithoutOrganizer_transactionDetailsNestedInput
+  }
+
+  export type Transactions_detailUncheckedUpdateWithoutUserInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    transaction_id?: StringFieldUpdateOperationsInput | string
+    event_id?: StringFieldUpdateOperationsInput | string
+    organizer_id?: StringFieldUpdateOperationsInput | string
+    quantity?: IntFieldUpdateOperationsInput | number
+    price?: IntFieldUpdateOperationsInput | number
+    isConfirmed?: BoolFieldUpdateOperationsInput | boolean
+    transaction_status?: EnumTransactionStatusFieldUpdateOperationsInput | $Enums.TransactionStatus
+  }
+
+  export type Transactions_detailUncheckedUpdateManyWithoutUserInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    transaction_id?: StringFieldUpdateOperationsInput | string
+    event_id?: StringFieldUpdateOperationsInput | string
+    organizer_id?: StringFieldUpdateOperationsInput | string
+    quantity?: IntFieldUpdateOperationsInput | number
+    price?: IntFieldUpdateOperationsInput | number
+    isConfirmed?: BoolFieldUpdateOperationsInput | boolean
+    transaction_status?: EnumTransactionStatusFieldUpdateOperationsInput | $Enums.TransactionStatus
   }
 
   export type EventsCreateManyOrganizerInput = {
@@ -8899,6 +24403,7 @@ export namespace Prisma {
     event_location_id: string
     name: string
     description: string
+    image: string
     price: number
     start_date: Date | string
     end_date?: Date | string | null
@@ -8906,17 +24411,41 @@ export namespace Prisma {
     updated_at?: Date | string
   }
 
+  export type VoucherCreateManyVoucher_organizerInput = {
+    id?: string
+    code: string
+    amount: number
+    limit: number
+    expired_at: Date | string
+  }
+
+  export type Transactions_detailCreateManyDetail_organizerInput = {
+    id?: string
+    transaction_id: string
+    user_id: string
+    event_id: string
+    quantity: number
+    price: number
+    isConfirmed?: boolean
+    transaction_status: $Enums.TransactionStatus
+  }
+
   export type EventsUpdateWithoutOrganizerInput = {
     id?: StringFieldUpdateOperationsInput | string
     name?: StringFieldUpdateOperationsInput | string
     description?: StringFieldUpdateOperationsInput | string
+    image?: StringFieldUpdateOperationsInput | string
     price?: IntFieldUpdateOperationsInput | number
     start_date?: DateTimeFieldUpdateOperationsInput | Date | string
     end_date?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     created_at?: DateTimeFieldUpdateOperationsInput | Date | string
     updated_at?: DateTimeFieldUpdateOperationsInput | Date | string
-    event_category?: Event_CategoryUpdateOneRequiredWithoutEventNestedInput
-    event_location?: Event_LocationUpdateOneRequiredWithoutEventNestedInput
+    category_event?: Event_CategoryUpdateOneRequiredWithoutEventNestedInput
+    location_Event?: Event_LocationUpdateOneRequiredWithoutEventNestedInput
+    seat_event?: Event_SeatUpdateOneWithoutEventNestedInput
+    reviews_event?: Event_ReviewsUpdateManyWithoutReviews_eventNestedInput
+    attendees_event?: Event_AttendeesUpdateManyWithoutUser_eventNestedInput
+    event_transactionDetail?: Transactions_detailUpdateManyWithoutDetail_eventNestedInput
   }
 
   export type EventsUncheckedUpdateWithoutOrganizerInput = {
@@ -8925,11 +24454,16 @@ export namespace Prisma {
     event_location_id?: StringFieldUpdateOperationsInput | string
     name?: StringFieldUpdateOperationsInput | string
     description?: StringFieldUpdateOperationsInput | string
+    image?: StringFieldUpdateOperationsInput | string
     price?: IntFieldUpdateOperationsInput | number
     start_date?: DateTimeFieldUpdateOperationsInput | Date | string
     end_date?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     created_at?: DateTimeFieldUpdateOperationsInput | Date | string
     updated_at?: DateTimeFieldUpdateOperationsInput | Date | string
+    seat_event?: Event_SeatUncheckedUpdateOneWithoutEventNestedInput
+    reviews_event?: Event_ReviewsUncheckedUpdateManyWithoutReviews_eventNestedInput
+    attendees_event?: Event_AttendeesUncheckedUpdateManyWithoutUser_eventNestedInput
+    event_transactionDetail?: Transactions_detailUncheckedUpdateManyWithoutDetail_eventNestedInput
   }
 
   export type EventsUncheckedUpdateManyWithoutOrganizerInput = {
@@ -8938,6 +24472,7 @@ export namespace Prisma {
     event_location_id?: StringFieldUpdateOperationsInput | string
     name?: StringFieldUpdateOperationsInput | string
     description?: StringFieldUpdateOperationsInput | string
+    image?: StringFieldUpdateOperationsInput | string
     price?: IntFieldUpdateOperationsInput | number
     start_date?: DateTimeFieldUpdateOperationsInput | Date | string
     end_date?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
@@ -8945,12 +24480,172 @@ export namespace Prisma {
     updated_at?: DateTimeFieldUpdateOperationsInput | Date | string
   }
 
-  export type EventsCreateManyEvent_categoryInput = {
+  export type VoucherUpdateWithoutVoucher_organizerInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    code?: StringFieldUpdateOperationsInput | string
+    amount?: IntFieldUpdateOperationsInput | number
+    limit?: IntFieldUpdateOperationsInput | number
+    expired_at?: DateTimeFieldUpdateOperationsInput | Date | string
+    voucher_transaction?: TransactionsUpdateManyWithoutTransaction_voucherNestedInput
+  }
+
+  export type VoucherUncheckedUpdateWithoutVoucher_organizerInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    code?: StringFieldUpdateOperationsInput | string
+    amount?: IntFieldUpdateOperationsInput | number
+    limit?: IntFieldUpdateOperationsInput | number
+    expired_at?: DateTimeFieldUpdateOperationsInput | Date | string
+    voucher_transaction?: TransactionsUncheckedUpdateManyWithoutTransaction_voucherNestedInput
+  }
+
+  export type VoucherUncheckedUpdateManyWithoutVoucher_organizerInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    code?: StringFieldUpdateOperationsInput | string
+    amount?: IntFieldUpdateOperationsInput | number
+    limit?: IntFieldUpdateOperationsInput | number
+    expired_at?: DateTimeFieldUpdateOperationsInput | Date | string
+  }
+
+  export type Transactions_detailUpdateWithoutDetail_organizerInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    quantity?: IntFieldUpdateOperationsInput | number
+    price?: IntFieldUpdateOperationsInput | number
+    isConfirmed?: BoolFieldUpdateOperationsInput | boolean
+    transaction_status?: EnumTransactionStatusFieldUpdateOperationsInput | $Enums.TransactionStatus
+    user?: UsersUpdateOneRequiredWithoutTransactionsNestedInput
+    details_transaction?: TransactionsUpdateOneRequiredWithoutTransaction_detailsNestedInput
+    detail_event?: EventsUpdateOneRequiredWithoutEvent_transactionDetailNestedInput
+  }
+
+  export type Transactions_detailUncheckedUpdateWithoutDetail_organizerInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    transaction_id?: StringFieldUpdateOperationsInput | string
+    user_id?: StringFieldUpdateOperationsInput | string
+    event_id?: StringFieldUpdateOperationsInput | string
+    quantity?: IntFieldUpdateOperationsInput | number
+    price?: IntFieldUpdateOperationsInput | number
+    isConfirmed?: BoolFieldUpdateOperationsInput | boolean
+    transaction_status?: EnumTransactionStatusFieldUpdateOperationsInput | $Enums.TransactionStatus
+  }
+
+  export type Transactions_detailUncheckedUpdateManyWithoutDetail_organizerInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    transaction_id?: StringFieldUpdateOperationsInput | string
+    user_id?: StringFieldUpdateOperationsInput | string
+    event_id?: StringFieldUpdateOperationsInput | string
+    quantity?: IntFieldUpdateOperationsInput | number
+    price?: IntFieldUpdateOperationsInput | number
+    isConfirmed?: BoolFieldUpdateOperationsInput | boolean
+    transaction_status?: EnumTransactionStatusFieldUpdateOperationsInput | $Enums.TransactionStatus
+  }
+
+  export type Event_ReviewsCreateManyReviews_eventInput = {
+    id?: string
+    user_id: string
+    review: string
+    rating: number
+    created_at?: Date | string
+  }
+
+  export type Event_AttendeesCreateManyUser_eventInput = {
+    id?: string
+    user_id: string
+    status: $Enums.Status
+  }
+
+  export type Transactions_detailCreateManyDetail_eventInput = {
+    id?: string
+    transaction_id: string
+    user_id: string
+    organizer_id: string
+    quantity: number
+    price: number
+    isConfirmed?: boolean
+    transaction_status: $Enums.TransactionStatus
+  }
+
+  export type Event_ReviewsUpdateWithoutReviews_eventInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    review?: StringFieldUpdateOperationsInput | string
+    rating?: IntFieldUpdateOperationsInput | number
+    created_at?: DateTimeFieldUpdateOperationsInput | Date | string
+    reviews_user?: UsersUpdateOneRequiredWithoutReviews_userNestedInput
+  }
+
+  export type Event_ReviewsUncheckedUpdateWithoutReviews_eventInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    user_id?: StringFieldUpdateOperationsInput | string
+    review?: StringFieldUpdateOperationsInput | string
+    rating?: IntFieldUpdateOperationsInput | number
+    created_at?: DateTimeFieldUpdateOperationsInput | Date | string
+  }
+
+  export type Event_ReviewsUncheckedUpdateManyWithoutReviews_eventInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    user_id?: StringFieldUpdateOperationsInput | string
+    review?: StringFieldUpdateOperationsInput | string
+    rating?: IntFieldUpdateOperationsInput | number
+    created_at?: DateTimeFieldUpdateOperationsInput | Date | string
+  }
+
+  export type Event_AttendeesUpdateWithoutUser_eventInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    status?: EnumStatusFieldUpdateOperationsInput | $Enums.Status
+    user_attendees?: UsersUpdateOneRequiredWithoutAttendees_userNestedInput
+  }
+
+  export type Event_AttendeesUncheckedUpdateWithoutUser_eventInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    user_id?: StringFieldUpdateOperationsInput | string
+    status?: EnumStatusFieldUpdateOperationsInput | $Enums.Status
+  }
+
+  export type Event_AttendeesUncheckedUpdateManyWithoutUser_eventInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    user_id?: StringFieldUpdateOperationsInput | string
+    status?: EnumStatusFieldUpdateOperationsInput | $Enums.Status
+  }
+
+  export type Transactions_detailUpdateWithoutDetail_eventInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    quantity?: IntFieldUpdateOperationsInput | number
+    price?: IntFieldUpdateOperationsInput | number
+    isConfirmed?: BoolFieldUpdateOperationsInput | boolean
+    transaction_status?: EnumTransactionStatusFieldUpdateOperationsInput | $Enums.TransactionStatus
+    user?: UsersUpdateOneRequiredWithoutTransactionsNestedInput
+    details_transaction?: TransactionsUpdateOneRequiredWithoutTransaction_detailsNestedInput
+    detail_organizer?: OrganizerUpdateOneRequiredWithoutOrganizer_transactionDetailsNestedInput
+  }
+
+  export type Transactions_detailUncheckedUpdateWithoutDetail_eventInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    transaction_id?: StringFieldUpdateOperationsInput | string
+    user_id?: StringFieldUpdateOperationsInput | string
+    organizer_id?: StringFieldUpdateOperationsInput | string
+    quantity?: IntFieldUpdateOperationsInput | number
+    price?: IntFieldUpdateOperationsInput | number
+    isConfirmed?: BoolFieldUpdateOperationsInput | boolean
+    transaction_status?: EnumTransactionStatusFieldUpdateOperationsInput | $Enums.TransactionStatus
+  }
+
+  export type Transactions_detailUncheckedUpdateManyWithoutDetail_eventInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    transaction_id?: StringFieldUpdateOperationsInput | string
+    user_id?: StringFieldUpdateOperationsInput | string
+    organizer_id?: StringFieldUpdateOperationsInput | string
+    quantity?: IntFieldUpdateOperationsInput | number
+    price?: IntFieldUpdateOperationsInput | number
+    isConfirmed?: BoolFieldUpdateOperationsInput | boolean
+    transaction_status?: EnumTransactionStatusFieldUpdateOperationsInput | $Enums.TransactionStatus
+  }
+
+  export type EventsCreateManyCategory_eventInput = {
     id?: string
     organizer_id: string
     event_location_id: string
     name: string
     description: string
+    image: string
     price: number
     start_date: Date | string
     end_date?: Date | string | null
@@ -8958,25 +24653,49 @@ export namespace Prisma {
     updated_at?: Date | string
   }
 
-  export type EventsUpdateWithoutEvent_categoryInput = {
+  export type EventsUpdateWithoutCategory_eventInput = {
     id?: StringFieldUpdateOperationsInput | string
     name?: StringFieldUpdateOperationsInput | string
     description?: StringFieldUpdateOperationsInput | string
+    image?: StringFieldUpdateOperationsInput | string
     price?: IntFieldUpdateOperationsInput | number
     start_date?: DateTimeFieldUpdateOperationsInput | Date | string
     end_date?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     created_at?: DateTimeFieldUpdateOperationsInput | Date | string
     updated_at?: DateTimeFieldUpdateOperationsInput | Date | string
     organizer?: OrganizerUpdateOneRequiredWithoutEventNestedInput
-    event_location?: Event_LocationUpdateOneRequiredWithoutEventNestedInput
+    location_Event?: Event_LocationUpdateOneRequiredWithoutEventNestedInput
+    seat_event?: Event_SeatUpdateOneWithoutEventNestedInput
+    reviews_event?: Event_ReviewsUpdateManyWithoutReviews_eventNestedInput
+    attendees_event?: Event_AttendeesUpdateManyWithoutUser_eventNestedInput
+    event_transactionDetail?: Transactions_detailUpdateManyWithoutDetail_eventNestedInput
   }
 
-  export type EventsUncheckedUpdateWithoutEvent_categoryInput = {
+  export type EventsUncheckedUpdateWithoutCategory_eventInput = {
     id?: StringFieldUpdateOperationsInput | string
     organizer_id?: StringFieldUpdateOperationsInput | string
     event_location_id?: StringFieldUpdateOperationsInput | string
     name?: StringFieldUpdateOperationsInput | string
     description?: StringFieldUpdateOperationsInput | string
+    image?: StringFieldUpdateOperationsInput | string
+    price?: IntFieldUpdateOperationsInput | number
+    start_date?: DateTimeFieldUpdateOperationsInput | Date | string
+    end_date?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    created_at?: DateTimeFieldUpdateOperationsInput | Date | string
+    updated_at?: DateTimeFieldUpdateOperationsInput | Date | string
+    seat_event?: Event_SeatUncheckedUpdateOneWithoutEventNestedInput
+    reviews_event?: Event_ReviewsUncheckedUpdateManyWithoutReviews_eventNestedInput
+    attendees_event?: Event_AttendeesUncheckedUpdateManyWithoutUser_eventNestedInput
+    event_transactionDetail?: Transactions_detailUncheckedUpdateManyWithoutDetail_eventNestedInput
+  }
+
+  export type EventsUncheckedUpdateManyWithoutCategory_eventInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    organizer_id?: StringFieldUpdateOperationsInput | string
+    event_location_id?: StringFieldUpdateOperationsInput | string
+    name?: StringFieldUpdateOperationsInput | string
+    description?: StringFieldUpdateOperationsInput | string
+    image?: StringFieldUpdateOperationsInput | string
     price?: IntFieldUpdateOperationsInput | number
     start_date?: DateTimeFieldUpdateOperationsInput | Date | string
     end_date?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
@@ -8984,25 +24703,13 @@ export namespace Prisma {
     updated_at?: DateTimeFieldUpdateOperationsInput | Date | string
   }
 
-  export type EventsUncheckedUpdateManyWithoutEvent_categoryInput = {
-    id?: StringFieldUpdateOperationsInput | string
-    organizer_id?: StringFieldUpdateOperationsInput | string
-    event_location_id?: StringFieldUpdateOperationsInput | string
-    name?: StringFieldUpdateOperationsInput | string
-    description?: StringFieldUpdateOperationsInput | string
-    price?: IntFieldUpdateOperationsInput | number
-    start_date?: DateTimeFieldUpdateOperationsInput | Date | string
-    end_date?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
-    created_at?: DateTimeFieldUpdateOperationsInput | Date | string
-    updated_at?: DateTimeFieldUpdateOperationsInput | Date | string
-  }
-
-  export type EventsCreateManyEvent_locationInput = {
+  export type EventsCreateManyLocation_EventInput = {
     id?: string
     organizer_id: string
     event_category_id: string
     name: string
     description: string
+    image: string
     price: number
     start_date: Date | string
     end_date?: Date | string | null
@@ -9010,25 +24717,49 @@ export namespace Prisma {
     updated_at?: Date | string
   }
 
-  export type EventsUpdateWithoutEvent_locationInput = {
+  export type EventsUpdateWithoutLocation_EventInput = {
     id?: StringFieldUpdateOperationsInput | string
     name?: StringFieldUpdateOperationsInput | string
     description?: StringFieldUpdateOperationsInput | string
+    image?: StringFieldUpdateOperationsInput | string
     price?: IntFieldUpdateOperationsInput | number
     start_date?: DateTimeFieldUpdateOperationsInput | Date | string
     end_date?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     created_at?: DateTimeFieldUpdateOperationsInput | Date | string
     updated_at?: DateTimeFieldUpdateOperationsInput | Date | string
     organizer?: OrganizerUpdateOneRequiredWithoutEventNestedInput
-    event_category?: Event_CategoryUpdateOneRequiredWithoutEventNestedInput
+    category_event?: Event_CategoryUpdateOneRequiredWithoutEventNestedInput
+    seat_event?: Event_SeatUpdateOneWithoutEventNestedInput
+    reviews_event?: Event_ReviewsUpdateManyWithoutReviews_eventNestedInput
+    attendees_event?: Event_AttendeesUpdateManyWithoutUser_eventNestedInput
+    event_transactionDetail?: Transactions_detailUpdateManyWithoutDetail_eventNestedInput
   }
 
-  export type EventsUncheckedUpdateWithoutEvent_locationInput = {
+  export type EventsUncheckedUpdateWithoutLocation_EventInput = {
     id?: StringFieldUpdateOperationsInput | string
     organizer_id?: StringFieldUpdateOperationsInput | string
     event_category_id?: StringFieldUpdateOperationsInput | string
     name?: StringFieldUpdateOperationsInput | string
     description?: StringFieldUpdateOperationsInput | string
+    image?: StringFieldUpdateOperationsInput | string
+    price?: IntFieldUpdateOperationsInput | number
+    start_date?: DateTimeFieldUpdateOperationsInput | Date | string
+    end_date?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    created_at?: DateTimeFieldUpdateOperationsInput | Date | string
+    updated_at?: DateTimeFieldUpdateOperationsInput | Date | string
+    seat_event?: Event_SeatUncheckedUpdateOneWithoutEventNestedInput
+    reviews_event?: Event_ReviewsUncheckedUpdateManyWithoutReviews_eventNestedInput
+    attendees_event?: Event_AttendeesUncheckedUpdateManyWithoutUser_eventNestedInput
+    event_transactionDetail?: Transactions_detailUncheckedUpdateManyWithoutDetail_eventNestedInput
+  }
+
+  export type EventsUncheckedUpdateManyWithoutLocation_EventInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    organizer_id?: StringFieldUpdateOperationsInput | string
+    event_category_id?: StringFieldUpdateOperationsInput | string
+    name?: StringFieldUpdateOperationsInput | string
+    description?: StringFieldUpdateOperationsInput | string
+    image?: StringFieldUpdateOperationsInput | string
     price?: IntFieldUpdateOperationsInput | number
     start_date?: DateTimeFieldUpdateOperationsInput | Date | string
     end_date?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
@@ -9036,17 +24767,98 @@ export namespace Prisma {
     updated_at?: DateTimeFieldUpdateOperationsInput | Date | string
   }
 
-  export type EventsUncheckedUpdateManyWithoutEvent_locationInput = {
+  export type Referral_UsageCreateManyCode_referralUsageInput = {
+    id?: string
+    user_id: string
+    used_at?: Date | string
+  }
+
+  export type Referral_UsageUpdateWithoutCode_referralUsageInput = {
     id?: StringFieldUpdateOperationsInput | string
-    organizer_id?: StringFieldUpdateOperationsInput | string
-    event_category_id?: StringFieldUpdateOperationsInput | string
-    name?: StringFieldUpdateOperationsInput | string
-    description?: StringFieldUpdateOperationsInput | string
+    used_at?: DateTimeFieldUpdateOperationsInput | Date | string
+    user_referralUsage?: UsersUpdateOneRequiredWithoutUsageReferral_userNestedInput
+  }
+
+  export type Referral_UsageUncheckedUpdateWithoutCode_referralUsageInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    user_id?: StringFieldUpdateOperationsInput | string
+    used_at?: DateTimeFieldUpdateOperationsInput | Date | string
+  }
+
+  export type Referral_UsageUncheckedUpdateManyWithoutCode_referralUsageInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    user_id?: StringFieldUpdateOperationsInput | string
+    used_at?: DateTimeFieldUpdateOperationsInput | Date | string
+  }
+
+  export type TransactionsCreateManyTransaction_voucherInput = {
+    id?: string
+    amount: number
+    proof: string
+  }
+
+  export type TransactionsUpdateWithoutTransaction_voucherInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    amount?: IntFieldUpdateOperationsInput | number
+    proof?: StringFieldUpdateOperationsInput | string
+    transaction_details?: Transactions_detailUpdateManyWithoutDetails_transactionNestedInput
+  }
+
+  export type TransactionsUncheckedUpdateWithoutTransaction_voucherInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    amount?: IntFieldUpdateOperationsInput | number
+    proof?: StringFieldUpdateOperationsInput | string
+    transaction_details?: Transactions_detailUncheckedUpdateManyWithoutDetails_transactionNestedInput
+  }
+
+  export type TransactionsUncheckedUpdateManyWithoutTransaction_voucherInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    amount?: IntFieldUpdateOperationsInput | number
+    proof?: StringFieldUpdateOperationsInput | string
+  }
+
+  export type Transactions_detailCreateManyDetails_transactionInput = {
+    id?: string
+    user_id: string
+    event_id: string
+    organizer_id: string
+    quantity: number
+    price: number
+    isConfirmed?: boolean
+    transaction_status: $Enums.TransactionStatus
+  }
+
+  export type Transactions_detailUpdateWithoutDetails_transactionInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    quantity?: IntFieldUpdateOperationsInput | number
     price?: IntFieldUpdateOperationsInput | number
-    start_date?: DateTimeFieldUpdateOperationsInput | Date | string
-    end_date?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
-    created_at?: DateTimeFieldUpdateOperationsInput | Date | string
-    updated_at?: DateTimeFieldUpdateOperationsInput | Date | string
+    isConfirmed?: BoolFieldUpdateOperationsInput | boolean
+    transaction_status?: EnumTransactionStatusFieldUpdateOperationsInput | $Enums.TransactionStatus
+    user?: UsersUpdateOneRequiredWithoutTransactionsNestedInput
+    detail_event?: EventsUpdateOneRequiredWithoutEvent_transactionDetailNestedInput
+    detail_organizer?: OrganizerUpdateOneRequiredWithoutOrganizer_transactionDetailsNestedInput
+  }
+
+  export type Transactions_detailUncheckedUpdateWithoutDetails_transactionInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    user_id?: StringFieldUpdateOperationsInput | string
+    event_id?: StringFieldUpdateOperationsInput | string
+    organizer_id?: StringFieldUpdateOperationsInput | string
+    quantity?: IntFieldUpdateOperationsInput | number
+    price?: IntFieldUpdateOperationsInput | number
+    isConfirmed?: BoolFieldUpdateOperationsInput | boolean
+    transaction_status?: EnumTransactionStatusFieldUpdateOperationsInput | $Enums.TransactionStatus
+  }
+
+  export type Transactions_detailUncheckedUpdateManyWithoutDetails_transactionInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    user_id?: StringFieldUpdateOperationsInput | string
+    event_id?: StringFieldUpdateOperationsInput | string
+    organizer_id?: StringFieldUpdateOperationsInput | string
+    quantity?: IntFieldUpdateOperationsInput | number
+    price?: IntFieldUpdateOperationsInput | number
+    isConfirmed?: BoolFieldUpdateOperationsInput | boolean
+    transaction_status?: EnumTransactionStatusFieldUpdateOperationsInput | $Enums.TransactionStatus
   }
 
 
