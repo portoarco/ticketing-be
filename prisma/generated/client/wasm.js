@@ -20,12 +20,12 @@ exports.Prisma = Prisma
 exports.$Enums = {}
 
 /**
- * Prisma Client JS version: 6.12.0
- * Query Engine version: 8047c96bbd92db98a2abc7c9323ce77c02c89dbc
+ * Prisma Client JS version: 6.13.0
+ * Query Engine version: 361e86d0ea4987e9f53a565309b3eed797a6bcbd
  */
 Prisma.prismaVersion = {
-  client: "6.12.0",
-  engine: "8047c96bbd92db98a2abc7c9323ce77c02c89dbc"
+  client: "6.13.0",
+  engine: "361e86d0ea4987e9f53a565309b3eed797a6bcbd"
 }
 
 Prisma.PrismaClientKnownRequestError = () => {
@@ -130,7 +130,7 @@ exports.Prisma.UsersScalarFieldEnum = {
   birthdate: 'birthdate',
   phone_number: 'phone_number',
   avatar: 'avatar',
-  refferal_code: 'refferal_code',
+  referral_code: 'referral_code',
   isVerified: 'isVerified',
   created_at: 'created_at',
   updated_at: 'updated_at'
@@ -141,6 +141,13 @@ exports.Prisma.OrganizerScalarFieldEnum = {
   user_id: 'user_id'
 };
 
+exports.Prisma.ArticlesScalarFieldEnum = {
+  id: 'id',
+  organizer_id: 'organizer_id',
+  title: 'title',
+  created_at: 'created_at'
+};
+
 exports.Prisma.EventsScalarFieldEnum = {
   id: 'id',
   organizer_id: 'organizer_id',
@@ -148,6 +155,7 @@ exports.Prisma.EventsScalarFieldEnum = {
   event_location_id: 'event_location_id',
   name: 'name',
   description: 'description',
+  image: 'image',
   price: 'price',
   start_date: 'start_date',
   end_date: 'end_date',
@@ -162,9 +170,72 @@ exports.Prisma.Event_CategoryScalarFieldEnum = {
 
 exports.Prisma.Event_LocationScalarFieldEnum = {
   id: 'id',
-  event_id: 'event_id',
   city: 'city',
   address: 'address'
+};
+
+exports.Prisma.Event_SeatScalarFieldEnum = {
+  id: 'id',
+  events_id: 'events_id',
+  total: 'total'
+};
+
+exports.Prisma.Event_ReviewsScalarFieldEnum = {
+  id: 'id',
+  user_id: 'user_id',
+  events_id: 'events_id',
+  review: 'review',
+  rating: 'rating',
+  created_at: 'created_at'
+};
+
+exports.Prisma.Event_AttendeesScalarFieldEnum = {
+  id: 'id',
+  user_id: 'user_id',
+  event_id: 'event_id',
+  status: 'status'
+};
+
+exports.Prisma.Referral_CodeScalarFieldEnum = {
+  id: 'id',
+  user_id: 'user_id',
+  code: 'code',
+  points: 'points'
+};
+
+exports.Prisma.Referral_UsageScalarFieldEnum = {
+  id: 'id',
+  user_id: 'user_id',
+  referral_code_id: 'referral_code_id',
+  used_at: 'used_at'
+};
+
+exports.Prisma.VoucherScalarFieldEnum = {
+  id: 'id',
+  organizer_id: 'organizer_id',
+  code: 'code',
+  amount: 'amount',
+  limit: 'limit',
+  expired_at: 'expired_at'
+};
+
+exports.Prisma.TransactionsScalarFieldEnum = {
+  id: 'id',
+  voucher_id: 'voucher_id',
+  amount: 'amount',
+  proof: 'proof'
+};
+
+exports.Prisma.Transactions_detailScalarFieldEnum = {
+  id: 'id',
+  transaction_id: 'transaction_id',
+  user_id: 'user_id',
+  event_id: 'event_id',
+  organizer_id: 'organizer_id',
+  quantity: 'quantity',
+  price: 'price',
+  isConfirmed: 'isConfirmed',
+  transaction_status: 'transaction_status'
 };
 
 exports.Prisma.SortOrder = {
@@ -181,14 +252,35 @@ exports.Prisma.NullsOrder = {
   first: 'first',
   last: 'last'
 };
+exports.Status = exports.$Enums.Status = {
+  PENDING: 'PENDING',
+  CONFIRMED: 'CONFIRMED',
+  COMPLETED: 'COMPLETED',
+  CANCELED: 'CANCELED'
+};
 
+exports.TransactionStatus = exports.$Enums.TransactionStatus = {
+  PENDING: 'PENDING',
+  PAID: 'PAID',
+  REJECTED: 'REJECTED',
+  CANCELED: 'CANCELED'
+};
 
 exports.Prisma.ModelName = {
   Users: 'Users',
   Organizer: 'Organizer',
+  Articles: 'Articles',
   Events: 'Events',
   Event_Category: 'Event_Category',
-  Event_Location: 'Event_Location'
+  Event_Location: 'Event_Location',
+  Event_Seat: 'Event_Seat',
+  Event_Reviews: 'Event_Reviews',
+  Event_Attendees: 'Event_Attendees',
+  Referral_Code: 'Referral_Code',
+  Referral_Usage: 'Referral_Usage',
+  Voucher: 'Voucher',
+  Transactions: 'Transactions',
+  Transactions_detail: 'Transactions_detail'
 };
 
 /**
