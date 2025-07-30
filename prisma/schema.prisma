@@ -19,12 +19,19 @@ model Users {
   birthdate     DateTime
   phone_number  String
   avatar        String?
-  refferal_code String?  @unique
+  referral_code String?  @unique
   isVerified    Boolean  @default(false)
   created_at    DateTime @default(now())
   updated_at    DateTime @updatedAt
 
+// relation
   organizer Organizer[]
+  reviews_user Event_Reviews[]
+  attendees_user Event_Attendees[]
+  referral_user Referral_Code?
+  usageReferral_user Referral_Usage []
+  transactions Transactions_detail[]
+  
 }
 
 model Organizer {
@@ -34,7 +41,17 @@ model Organizer {
   user Users @relation(fields: [user_id], references: [id], onDelete: Cascade)
 
   event Events[]
+  organizer_voucher Voucher[]
+  organizer_transactionDetails Transactions_detail[]
 }
+
+model Articles {
+  id String @id @default(uuid())
+  organizer_id String
+  title String
+  created_at DateTime @default(now())
+}
+
 
 model Events {
   id                String    @id @default(uuid())
@@ -50,9 +67,17 @@ model Events {
   created_at        DateTime  @default(now())
   updated_at        DateTime  @updatedAt
 
+// relation
   organizer      Organizer      @relation(fields: [organizer_id], references: [id], onDelete: Cascade)
-  event_category Event_Category @relation(fields: [event_category_id], references: [id], onDelete: Cascade)
-  event_location Event_Location @relation(fields: [event_location_id], references: [id], onDelete: Cascade)
+  category_event Event_Category @relation(fields: [event_category_id], references: [id], onDelete: Cascade)
+  location_Event Event_Location @relation(fields: [event_location_id], references: [id], onDelete: Cascade)
+  seat_event Event_Seat?
+  reviews_event Event_Reviews[]
+  attendees_event Event_Attendees[]
+  event_transactionDetail Transactions_detail[]
+  
+  
+
 }
 
 model Event_Category {
@@ -63,10 +88,120 @@ model Event_Category {
 }
 
 model Event_Location {
-  id       String @id @default(uuid())
+  id   String @id @default(uuid())
   event_id String
-  city     String
-  address  String
+  city String 
+  address String
 
   event Events[]
+}
+
+model Event_Seat {
+  id String @id @default(uuid())
+  events_id String @unique
+  total Int
+
+  event Events @relation(fields: [events_id], references: [id], onDelete: Cascade)
+}
+
+model Event_Reviews {
+  id String @id @default(uuid())
+  user_id String
+  events_id String 
+  review String 
+  rating Int
+  created_at DateTime @default(now())
+
+  reviews_user Users @relation(fields: [user_id],references: [id],onDelete: Cascade)
+  reviews_event Events @relation(fields: [events_id],references: [id],onDelete: Cascade)
+
+  
+}
+
+model Event_Attendees {
+  id String @id @default(uuid())
+  user_id String
+  event_id String
+  status Status
+
+  user_attendees Users @relation(fields: [user_id],references: [id],onDelete: Cascade)
+  user_event Events @relation(fields: [event_id],references: [id],onDelete:Cascade)
+}
+
+model Referral_Code {
+  id String @id @default(uuid())
+  user_id String @unique
+  code String
+  points Int
+
+  user_referral Users @relation(fields: [user_id],references: [id],onDelete: Cascade)
+  user_referralUsage Referral_Usage[]
+
+}
+
+model Referral_Usage {
+  id String @id @default(uuid())
+  user_id String
+  referral_code_id String
+  used_at DateTime @default(now())
+
+  user_referralUsage Users @relation(fields: [user_id],references: [id],onDelete: Cascade)
+  code_referralUsage Referral_Code @relation(fields: [referral_code_id],references: [id],onDelete: Cascade)
+}
+
+model Voucher {
+  id String @id @default(uuid())
+  organizer_id String
+  code String
+  amount Int
+  limit Int
+  expired_at DateTime
+
+  voucher_organizer Organizer @relation(fields: [organizer_id],references: [id],onDelete: Cascade)
+  voucher_transaction Transactions[]
+}
+model Transactions {
+  id String @id @default(uuid())
+  voucher_id String
+  amount Int
+  proof  String
+
+  transaction_voucher Voucher @relation(fields: [voucher_id],references: [id],onDelete: Cascade)
+  transaction_details Transactions_detail[]
+
+}
+
+model Transactions_detail {
+  id String @id @default(uuid())
+  transaction_id String
+  user_id  String
+  event_id String
+  organizer_id String
+  quantity Int
+  price Int
+  isConfirmed Boolean @default(false)
+  transaction_status TransactionStatus
+
+  user Users  @relation(fields: [user_id], references: [id], onDelete: Cascade)
+  details_transaction Transactions @relation(fields: [transaction_id],references: [id],onDelete: Cascade)
+  detail_event Events @relation(fields: [event_id],references: [id],onDelete: Cascade)
+  detail_organizer Organizer @relation(fields: [organizer_id],references: [id],onDelete: Cascade)
+
+  }
+
+
+
+enum Status {
+  PENDING
+  CONFIRMED
+  COMPLETED
+  CANCELED
+
+}
+
+enum TransactionStatus {
+  PENDING
+  PAID 
+  REJECTED
+  CANCELED
 }
