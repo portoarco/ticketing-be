@@ -159,7 +159,6 @@ exports.Prisma.EventsScalarFieldEnum = {
   price: 'price',
   start_date: 'start_date',
   end_date: 'end_date',
-  image: 'image',
   created_at: 'created_at',
   updated_at: 'updated_at'
 };
@@ -171,6 +170,7 @@ exports.Prisma.Event_CategoryScalarFieldEnum = {
 
 exports.Prisma.Event_LocationScalarFieldEnum = {
   id: 'id',
+  event_id: 'event_id',
   city: 'city',
   address: 'address'
 };
@@ -213,6 +213,7 @@ exports.Prisma.Referral_UsageScalarFieldEnum = {
 
 exports.Prisma.VoucherScalarFieldEnum = {
   id: 'id',
+  user_id: 'user_id',
   organizer_id: 'organizer_id',
   code: 'code',
   amount: 'amount',

@@ -31,6 +31,7 @@ model Users {
   referral_user Referral_Code?
   usageReferral_user Referral_Usage []
   transactions Transactions_detail[]
+  user_voucher Voucher[]
   
 }
 
@@ -60,10 +61,10 @@ model Events {
   event_location_id String
   name              String
   description       String
+  image String?
   price             Int
   start_date        DateTime
   end_date          DateTime?
-  image             String?
   created_at        DateTime  @default(now())
   updated_at        DateTime  @updatedAt
 
@@ -75,6 +76,7 @@ model Events {
   reviews_event Event_Reviews[]
   attendees_event Event_Attendees[]
   event_transactionDetail Transactions_detail[]
+
   
   
 
@@ -151,6 +153,7 @@ model Referral_Usage {
 
 model Voucher {
   id String @id @default(uuid())
+  user_id String 
   organizer_id String
   code String
   amount Int
@@ -159,6 +162,7 @@ model Voucher {
 
   voucher_organizer Organizer @relation(fields: [organizer_id],references: [id],onDelete: Cascade)
   voucher_transaction Transactions[]
+  voucher_user Users @relation(fields: [user_id],references: [id],onDelete: Cascade)
 }
 model Transactions {
   id String @id @default(uuid())
