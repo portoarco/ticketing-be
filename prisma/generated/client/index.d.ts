@@ -2101,6 +2101,7 @@ export namespace Prisma {
     organizer: number
     reviews_user: number
     attendees_user: number
+    referral_user: number
     usageReferral_user: number
     transactions: number
     user_voucher: number
@@ -2110,6 +2111,7 @@ export namespace Prisma {
     organizer?: boolean | UsersCountOutputTypeCountOrganizerArgs
     reviews_user?: boolean | UsersCountOutputTypeCountReviews_userArgs
     attendees_user?: boolean | UsersCountOutputTypeCountAttendees_userArgs
+    referral_user?: boolean | UsersCountOutputTypeCountReferral_userArgs
     usageReferral_user?: boolean | UsersCountOutputTypeCountUsageReferral_userArgs
     transactions?: boolean | UsersCountOutputTypeCountTransactionsArgs
     user_voucher?: boolean | UsersCountOutputTypeCountUser_voucherArgs
@@ -2145,6 +2147,13 @@ export namespace Prisma {
    */
   export type UsersCountOutputTypeCountAttendees_userArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     where?: Event_AttendeesWhereInput
+  }
+
+  /**
+   * UsersCountOutputType without action
+   */
+  export type UsersCountOutputTypeCountReferral_userArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    where?: Referral_CodeWhereInput
   }
 
   /**
@@ -2446,7 +2455,8 @@ export namespace Prisma {
     birthdate: Date | null
     phone_number: string | null
     avatar: string | null
-    referral_code: string | null
+    refferal_code: string | null
+    referrer_code: string | null
     isVerified: boolean | null
     created_at: Date | null
     updated_at: Date | null
@@ -2462,7 +2472,8 @@ export namespace Prisma {
     birthdate: Date | null
     phone_number: string | null
     avatar: string | null
-    referral_code: string | null
+    refferal_code: string | null
+    referrer_code: string | null
     isVerified: boolean | null
     created_at: Date | null
     updated_at: Date | null
@@ -2478,7 +2489,8 @@ export namespace Prisma {
     birthdate: number
     phone_number: number
     avatar: number
-    referral_code: number
+    refferal_code: number
+    referrer_code: number
     isVerified: number
     created_at: number
     updated_at: number
@@ -2496,7 +2508,8 @@ export namespace Prisma {
     birthdate?: true
     phone_number?: true
     avatar?: true
-    referral_code?: true
+    refferal_code?: true
+    referrer_code?: true
     isVerified?: true
     created_at?: true
     updated_at?: true
@@ -2512,7 +2525,8 @@ export namespace Prisma {
     birthdate?: true
     phone_number?: true
     avatar?: true
-    referral_code?: true
+    refferal_code?: true
+    referrer_code?: true
     isVerified?: true
     created_at?: true
     updated_at?: true
@@ -2528,7 +2542,8 @@ export namespace Prisma {
     birthdate?: true
     phone_number?: true
     avatar?: true
-    referral_code?: true
+    refferal_code?: true
+    referrer_code?: true
     isVerified?: true
     created_at?: true
     updated_at?: true
@@ -2617,7 +2632,8 @@ export namespace Prisma {
     birthdate: Date
     phone_number: string
     avatar: string | null
-    referral_code: string | null
+    refferal_code: string | null
+    referrer_code: string | null
     isVerified: boolean
     created_at: Date
     updated_at: Date
@@ -2650,7 +2666,8 @@ export namespace Prisma {
     birthdate?: boolean
     phone_number?: boolean
     avatar?: boolean
-    referral_code?: boolean
+    refferal_code?: boolean
+    referrer_code?: boolean
     isVerified?: boolean
     created_at?: boolean
     updated_at?: boolean
@@ -2674,7 +2691,8 @@ export namespace Prisma {
     birthdate?: boolean
     phone_number?: boolean
     avatar?: boolean
-    referral_code?: boolean
+    refferal_code?: boolean
+    referrer_code?: boolean
     isVerified?: boolean
     created_at?: boolean
     updated_at?: boolean
@@ -2690,7 +2708,8 @@ export namespace Prisma {
     birthdate?: boolean
     phone_number?: boolean
     avatar?: boolean
-    referral_code?: boolean
+    refferal_code?: boolean
+    referrer_code?: boolean
     isVerified?: boolean
     created_at?: boolean
     updated_at?: boolean
@@ -2706,13 +2725,14 @@ export namespace Prisma {
     birthdate?: boolean
     phone_number?: boolean
     avatar?: boolean
-    referral_code?: boolean
+    refferal_code?: boolean
+    referrer_code?: boolean
     isVerified?: boolean
     created_at?: boolean
     updated_at?: boolean
   }
 
-  export type UsersOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "first_name" | "last_name" | "email" | "password" | "country" | "birthdate" | "phone_number" | "avatar" | "referral_code" | "isVerified" | "created_at" | "updated_at", ExtArgs["result"]["users"]>
+  export type UsersOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "first_name" | "last_name" | "email" | "password" | "country" | "birthdate" | "phone_number" | "avatar" | "refferal_code" | "referrer_code" | "isVerified" | "created_at" | "updated_at", ExtArgs["result"]["users"]>
   export type UsersInclude<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     organizer?: boolean | Users$organizerArgs<ExtArgs>
     reviews_user?: boolean | Users$reviews_userArgs<ExtArgs>
@@ -2732,7 +2752,7 @@ export namespace Prisma {
       organizer: Prisma.$OrganizerPayload<ExtArgs>[]
       reviews_user: Prisma.$Event_ReviewsPayload<ExtArgs>[]
       attendees_user: Prisma.$Event_AttendeesPayload<ExtArgs>[]
-      referral_user: Prisma.$Referral_CodePayload<ExtArgs> | null
+      referral_user: Prisma.$Referral_CodePayload<ExtArgs>[]
       usageReferral_user: Prisma.$Referral_UsagePayload<ExtArgs>[]
       transactions: Prisma.$Transactions_detailPayload<ExtArgs>[]
       user_voucher: Prisma.$VoucherPayload<ExtArgs>[]
@@ -2747,7 +2767,8 @@ export namespace Prisma {
       birthdate: Date
       phone_number: string
       avatar: string | null
-      referral_code: string | null
+      refferal_code: string | null
+      referrer_code: string | null
       isVerified: boolean
       created_at: Date
       updated_at: Date
@@ -3148,7 +3169,7 @@ export namespace Prisma {
     organizer<T extends Users$organizerArgs<ExtArgs> = {}>(args?: Subset<T, Users$organizerArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$OrganizerPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
     reviews_user<T extends Users$reviews_userArgs<ExtArgs> = {}>(args?: Subset<T, Users$reviews_userArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$Event_ReviewsPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
     attendees_user<T extends Users$attendees_userArgs<ExtArgs> = {}>(args?: Subset<T, Users$attendees_userArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$Event_AttendeesPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
-    referral_user<T extends Users$referral_userArgs<ExtArgs> = {}>(args?: Subset<T, Users$referral_userArgs<ExtArgs>>): Prisma__Referral_CodeClient<$Result.GetResult<Prisma.$Referral_CodePayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
+    referral_user<T extends Users$referral_userArgs<ExtArgs> = {}>(args?: Subset<T, Users$referral_userArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$Referral_CodePayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
     usageReferral_user<T extends Users$usageReferral_userArgs<ExtArgs> = {}>(args?: Subset<T, Users$usageReferral_userArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$Referral_UsagePayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
     transactions<T extends Users$transactionsArgs<ExtArgs> = {}>(args?: Subset<T, Users$transactionsArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$Transactions_detailPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
     user_voucher<T extends Users$user_voucherArgs<ExtArgs> = {}>(args?: Subset<T, Users$user_voucherArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$VoucherPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
@@ -3190,7 +3211,8 @@ export namespace Prisma {
     readonly birthdate: FieldRef<"Users", 'DateTime'>
     readonly phone_number: FieldRef<"Users", 'String'>
     readonly avatar: FieldRef<"Users", 'String'>
-    readonly referral_code: FieldRef<"Users", 'String'>
+    readonly refferal_code: FieldRef<"Users", 'String'>
+    readonly referrer_code: FieldRef<"Users", 'String'>
     readonly isVerified: FieldRef<"Users", 'Boolean'>
     readonly created_at: FieldRef<"Users", 'DateTime'>
     readonly updated_at: FieldRef<"Users", 'DateTime'>
@@ -3670,6 +3692,11 @@ export namespace Prisma {
      */
     include?: Referral_CodeInclude<ExtArgs> | null
     where?: Referral_CodeWhereInput
+    orderBy?: Referral_CodeOrderByWithRelationInput | Referral_CodeOrderByWithRelationInput[]
+    cursor?: Referral_CodeWhereUniqueInput
+    take?: number
+    skip?: number
+    distinct?: Referral_CodeScalarFieldEnum | Referral_CodeScalarFieldEnum[]
   }
 
   /**
@@ -12503,6 +12530,8 @@ export namespace Prisma {
     user_id: string | null
     code: string | null
     points: number | null
+    created_at: Date | null
+    expired_at: Date | null
   }
 
   export type Referral_CodeMaxAggregateOutputType = {
@@ -12510,6 +12539,8 @@ export namespace Prisma {
     user_id: string | null
     code: string | null
     points: number | null
+    created_at: Date | null
+    expired_at: Date | null
   }
 
   export type Referral_CodeCountAggregateOutputType = {
@@ -12517,6 +12548,8 @@ export namespace Prisma {
     user_id: number
     code: number
     points: number
+    created_at: number
+    expired_at: number
     _all: number
   }
 
@@ -12534,6 +12567,8 @@ export namespace Prisma {
     user_id?: true
     code?: true
     points?: true
+    created_at?: true
+    expired_at?: true
   }
 
   export type Referral_CodeMaxAggregateInputType = {
@@ -12541,6 +12576,8 @@ export namespace Prisma {
     user_id?: true
     code?: true
     points?: true
+    created_at?: true
+    expired_at?: true
   }
 
   export type Referral_CodeCountAggregateInputType = {
@@ -12548,6 +12585,8 @@ export namespace Prisma {
     user_id?: true
     code?: true
     points?: true
+    created_at?: true
+    expired_at?: true
     _all?: true
   }
 
@@ -12641,7 +12680,9 @@ export namespace Prisma {
     id: string
     user_id: string
     code: string
-    points: number
+    points: number | null
+    created_at: Date
+    expired_at: Date | null
     _count: Referral_CodeCountAggregateOutputType | null
     _avg: Referral_CodeAvgAggregateOutputType | null
     _sum: Referral_CodeSumAggregateOutputType | null
@@ -12668,6 +12709,8 @@ export namespace Prisma {
     user_id?: boolean
     code?: boolean
     points?: boolean
+    created_at?: boolean
+    expired_at?: boolean
     user_referral?: boolean | UsersDefaultArgs<ExtArgs>
     user_referralUsage?: boolean | Referral_Code$user_referralUsageArgs<ExtArgs>
     _count?: boolean | Referral_CodeCountOutputTypeDefaultArgs<ExtArgs>
@@ -12678,6 +12721,8 @@ export namespace Prisma {
     user_id?: boolean
     code?: boolean
     points?: boolean
+    created_at?: boolean
+    expired_at?: boolean
     user_referral?: boolean | UsersDefaultArgs<ExtArgs>
   }, ExtArgs["result"]["referral_Code"]>
 
@@ -12686,6 +12731,8 @@ export namespace Prisma {
     user_id?: boolean
     code?: boolean
     points?: boolean
+    created_at?: boolean
+    expired_at?: boolean
     user_referral?: boolean | UsersDefaultArgs<ExtArgs>
   }, ExtArgs["result"]["referral_Code"]>
 
@@ -12694,9 +12741,11 @@ export namespace Prisma {
     user_id?: boolean
     code?: boolean
     points?: boolean
+    created_at?: boolean
+    expired_at?: boolean
   }
 
-  export type Referral_CodeOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "user_id" | "code" | "points", ExtArgs["result"]["referral_Code"]>
+  export type Referral_CodeOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "user_id" | "code" | "points" | "created_at" | "expired_at", ExtArgs["result"]["referral_Code"]>
   export type Referral_CodeInclude<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     user_referral?: boolean | UsersDefaultArgs<ExtArgs>
     user_referralUsage?: boolean | Referral_Code$user_referralUsageArgs<ExtArgs>
@@ -12719,7 +12768,9 @@ export namespace Prisma {
       id: string
       user_id: string
       code: string
-      points: number
+      points: number | null
+      created_at: Date
+      expired_at: Date | null
     }, ExtArgs["result"]["referral_Code"]>
     composites: {}
   }
@@ -13149,6 +13200,8 @@ export namespace Prisma {
     readonly user_id: FieldRef<"Referral_Code", 'String'>
     readonly code: FieldRef<"Referral_Code", 'String'>
     readonly points: FieldRef<"Referral_Code", 'Int'>
+    readonly created_at: FieldRef<"Referral_Code", 'DateTime'>
+    readonly expired_at: FieldRef<"Referral_Code", 'DateTime'>
   }
     
 
@@ -14653,13 +14706,13 @@ export namespace Prisma {
   }
 
   export type VoucherAvgAggregateOutputType = {
+    percentage: number | null
     amount: number | null
-    limit: number | null
   }
 
   export type VoucherSumAggregateOutputType = {
+    percentage: number | null
     amount: number | null
-    limit: number | null
   }
 
   export type VoucherMinAggregateOutputType = {
@@ -14667,8 +14720,9 @@ export namespace Prisma {
     user_id: string | null
     organizer_id: string | null
     code: string | null
+    percentage: number | null
     amount: number | null
-    limit: number | null
+    created_at: Date | null
     expired_at: Date | null
   }
 
@@ -14677,8 +14731,9 @@ export namespace Prisma {
     user_id: string | null
     organizer_id: string | null
     code: string | null
+    percentage: number | null
     amount: number | null
-    limit: number | null
+    created_at: Date | null
     expired_at: Date | null
   }
 
@@ -14687,21 +14742,22 @@ export namespace Prisma {
     user_id: number
     organizer_id: number
     code: number
+    percentage: number
     amount: number
-    limit: number
+    created_at: number
     expired_at: number
     _all: number
   }
 
 
   export type VoucherAvgAggregateInputType = {
+    percentage?: true
     amount?: true
-    limit?: true
   }
 
   export type VoucherSumAggregateInputType = {
+    percentage?: true
     amount?: true
-    limit?: true
   }
 
   export type VoucherMinAggregateInputType = {
@@ -14709,8 +14765,9 @@ export namespace Prisma {
     user_id?: true
     organizer_id?: true
     code?: true
+    percentage?: true
     amount?: true
-    limit?: true
+    created_at?: true
     expired_at?: true
   }
 
@@ -14719,8 +14776,9 @@ export namespace Prisma {
     user_id?: true
     organizer_id?: true
     code?: true
+    percentage?: true
     amount?: true
-    limit?: true
+    created_at?: true
     expired_at?: true
   }
 
@@ -14729,8 +14787,9 @@ export namespace Prisma {
     user_id?: true
     organizer_id?: true
     code?: true
+    percentage?: true
     amount?: true
-    limit?: true
+    created_at?: true
     expired_at?: true
     _all?: true
   }
@@ -14823,11 +14882,12 @@ export namespace Prisma {
 
   export type VoucherGroupByOutputType = {
     id: string
-    user_id: string
-    organizer_id: string
+    user_id: string | null
+    organizer_id: string | null
     code: string
-    amount: number
-    limit: number
+    percentage: number | null
+    amount: number | null
+    created_at: Date
     expired_at: Date
     _count: VoucherCountAggregateOutputType | null
     _avg: VoucherAvgAggregateOutputType | null
@@ -14855,12 +14915,13 @@ export namespace Prisma {
     user_id?: boolean
     organizer_id?: boolean
     code?: boolean
+    percentage?: boolean
     amount?: boolean
-    limit?: boolean
+    created_at?: boolean
     expired_at?: boolean
-    voucher_organizer?: boolean | OrganizerDefaultArgs<ExtArgs>
+    voucher_organizer?: boolean | Voucher$voucher_organizerArgs<ExtArgs>
+    voucher_user?: boolean | Voucher$voucher_userArgs<ExtArgs>
     voucher_transaction?: boolean | Voucher$voucher_transactionArgs<ExtArgs>
-    voucher_user?: boolean | UsersDefaultArgs<ExtArgs>
     _count?: boolean | VoucherCountOutputTypeDefaultArgs<ExtArgs>
   }, ExtArgs["result"]["voucher"]>
 
@@ -14869,11 +14930,12 @@ export namespace Prisma {
     user_id?: boolean
     organizer_id?: boolean
     code?: boolean
+    percentage?: boolean
     amount?: boolean
-    limit?: boolean
+    created_at?: boolean
     expired_at?: boolean
-    voucher_organizer?: boolean | OrganizerDefaultArgs<ExtArgs>
-    voucher_user?: boolean | UsersDefaultArgs<ExtArgs>
+    voucher_organizer?: boolean | Voucher$voucher_organizerArgs<ExtArgs>
+    voucher_user?: boolean | Voucher$voucher_userArgs<ExtArgs>
   }, ExtArgs["result"]["voucher"]>
 
   export type VoucherSelectUpdateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
@@ -14881,11 +14943,12 @@ export namespace Prisma {
     user_id?: boolean
     organizer_id?: boolean
     code?: boolean
+    percentage?: boolean
     amount?: boolean
-    limit?: boolean
+    created_at?: boolean
     expired_at?: boolean
-    voucher_organizer?: boolean | OrganizerDefaultArgs<ExtArgs>
-    voucher_user?: boolean | UsersDefaultArgs<ExtArgs>
+    voucher_organizer?: boolean | Voucher$voucher_organizerArgs<ExtArgs>
+    voucher_user?: boolean | Voucher$voucher_userArgs<ExtArgs>
   }, ExtArgs["result"]["voucher"]>
 
   export type VoucherSelectScalar = {
@@ -14893,41 +14956,43 @@ export namespace Prisma {
     user_id?: boolean
     organizer_id?: boolean
     code?: boolean
+    percentage?: boolean
     amount?: boolean
-    limit?: boolean
+    created_at?: boolean
     expired_at?: boolean
   }
 
-  export type VoucherOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "user_id" | "organizer_id" | "code" | "amount" | "limit" | "expired_at", ExtArgs["result"]["voucher"]>
+  export type VoucherOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "user_id" | "organizer_id" | "code" | "percentage" | "amount" | "created_at" | "expired_at", ExtArgs["result"]["voucher"]>
   export type VoucherInclude<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    voucher_organizer?: boolean | OrganizerDefaultArgs<ExtArgs>
+    voucher_organizer?: boolean | Voucher$voucher_organizerArgs<ExtArgs>
+    voucher_user?: boolean | Voucher$voucher_userArgs<ExtArgs>
     voucher_transaction?: boolean | Voucher$voucher_transactionArgs<ExtArgs>
-    voucher_user?: boolean | UsersDefaultArgs<ExtArgs>
     _count?: boolean | VoucherCountOutputTypeDefaultArgs<ExtArgs>
   }
   export type VoucherIncludeCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    voucher_organizer?: boolean | OrganizerDefaultArgs<ExtArgs>
-    voucher_user?: boolean | UsersDefaultArgs<ExtArgs>
+    voucher_organizer?: boolean | Voucher$voucher_organizerArgs<ExtArgs>
+    voucher_user?: boolean | Voucher$voucher_userArgs<ExtArgs>
   }
   export type VoucherIncludeUpdateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    voucher_organizer?: boolean | OrganizerDefaultArgs<ExtArgs>
-    voucher_user?: boolean | UsersDefaultArgs<ExtArgs>
+    voucher_organizer?: boolean | Voucher$voucher_organizerArgs<ExtArgs>
+    voucher_user?: boolean | Voucher$voucher_userArgs<ExtArgs>
   }
 
   export type $VoucherPayload<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     name: "Voucher"
     objects: {
-      voucher_organizer: Prisma.$OrganizerPayload<ExtArgs>
+      voucher_organizer: Prisma.$OrganizerPayload<ExtArgs> | null
+      voucher_user: Prisma.$UsersPayload<ExtArgs> | null
       voucher_transaction: Prisma.$TransactionsPayload<ExtArgs>[]
-      voucher_user: Prisma.$UsersPayload<ExtArgs>
     }
     scalars: $Extensions.GetPayloadResult<{
       id: string
-      user_id: string
-      organizer_id: string
+      user_id: string | null
+      organizer_id: string | null
       code: string
-      amount: number
-      limit: number
+      percentage: number | null
+      amount: number | null
+      created_at: Date
       expired_at: Date
     }, ExtArgs["result"]["voucher"]>
     composites: {}
@@ -15323,9 +15388,9 @@ export namespace Prisma {
    */
   export interface Prisma__VoucherClient<T, Null = never, ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs, GlobalOmitOptions = {}> extends Prisma.PrismaPromise<T> {
     readonly [Symbol.toStringTag]: "PrismaPromise"
-    voucher_organizer<T extends OrganizerDefaultArgs<ExtArgs> = {}>(args?: Subset<T, OrganizerDefaultArgs<ExtArgs>>): Prisma__OrganizerClient<$Result.GetResult<Prisma.$OrganizerPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | Null, Null, ExtArgs, GlobalOmitOptions>
+    voucher_organizer<T extends Voucher$voucher_organizerArgs<ExtArgs> = {}>(args?: Subset<T, Voucher$voucher_organizerArgs<ExtArgs>>): Prisma__OrganizerClient<$Result.GetResult<Prisma.$OrganizerPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
+    voucher_user<T extends Voucher$voucher_userArgs<ExtArgs> = {}>(args?: Subset<T, Voucher$voucher_userArgs<ExtArgs>>): Prisma__UsersClient<$Result.GetResult<Prisma.$UsersPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
     voucher_transaction<T extends Voucher$voucher_transactionArgs<ExtArgs> = {}>(args?: Subset<T, Voucher$voucher_transactionArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$TransactionsPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
-    voucher_user<T extends UsersDefaultArgs<ExtArgs> = {}>(args?: Subset<T, UsersDefaultArgs<ExtArgs>>): Prisma__UsersClient<$Result.GetResult<Prisma.$UsersPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | Null, Null, ExtArgs, GlobalOmitOptions>
     /**
      * Attaches callbacks for the resolution and/or rejection of the Promise.
      * @param onfulfilled The callback to execute when the Promise is resolved.
@@ -15359,8 +15424,9 @@ export namespace Prisma {
     readonly user_id: FieldRef<"Voucher", 'String'>
     readonly organizer_id: FieldRef<"Voucher", 'String'>
     readonly code: FieldRef<"Voucher", 'String'>
+    readonly percentage: FieldRef<"Voucher", 'Int'>
     readonly amount: FieldRef<"Voucher", 'Int'>
-    readonly limit: FieldRef<"Voucher", 'Int'>
+    readonly created_at: FieldRef<"Voucher", 'DateTime'>
     readonly expired_at: FieldRef<"Voucher", 'DateTime'>
   }
     
@@ -15755,6 +15821,44 @@ export namespace Prisma {
      * Limit how many Vouchers to delete.
      */
     limit?: number
+  }
+
+  /**
+   * Voucher.voucher_organizer
+   */
+  export type Voucher$voucher_organizerArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Organizer
+     */
+    select?: OrganizerSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the Organizer
+     */
+    omit?: OrganizerOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: OrganizerInclude<ExtArgs> | null
+    where?: OrganizerWhereInput
+  }
+
+  /**
+   * Voucher.voucher_user
+   */
+  export type Voucher$voucher_userArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Users
+     */
+    select?: UsersSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the Users
+     */
+    omit?: UsersOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: UsersInclude<ExtArgs> | null
+    where?: UsersWhereInput
   }
 
   /**
@@ -18105,7 +18209,8 @@ export namespace Prisma {
     birthdate: 'birthdate',
     phone_number: 'phone_number',
     avatar: 'avatar',
-    referral_code: 'referral_code',
+    refferal_code: 'refferal_code',
+    referrer_code: 'referrer_code',
     isVerified: 'isVerified',
     created_at: 'created_at',
     updated_at: 'updated_at'
@@ -18203,7 +18308,9 @@ export namespace Prisma {
     id: 'id',
     user_id: 'user_id',
     code: 'code',
-    points: 'points'
+    points: 'points',
+    created_at: 'created_at',
+    expired_at: 'expired_at'
   };
 
   export type Referral_CodeScalarFieldEnum = (typeof Referral_CodeScalarFieldEnum)[keyof typeof Referral_CodeScalarFieldEnum]
@@ -18224,8 +18331,9 @@ export namespace Prisma {
     user_id: 'user_id',
     organizer_id: 'organizer_id',
     code: 'code',
+    percentage: 'percentage',
     amount: 'amount',
-    limit: 'limit',
+    created_at: 'created_at',
     expired_at: 'expired_at'
   };
 
@@ -18393,14 +18501,15 @@ export namespace Prisma {
     birthdate?: DateTimeFilter<"Users"> | Date | string
     phone_number?: StringFilter<"Users"> | string
     avatar?: StringNullableFilter<"Users"> | string | null
-    referral_code?: StringNullableFilter<"Users"> | string | null
+    refferal_code?: StringNullableFilter<"Users"> | string | null
+    referrer_code?: StringNullableFilter<"Users"> | string | null
     isVerified?: BoolFilter<"Users"> | boolean
     created_at?: DateTimeFilter<"Users"> | Date | string
     updated_at?: DateTimeFilter<"Users"> | Date | string
     organizer?: OrganizerListRelationFilter
     reviews_user?: Event_ReviewsListRelationFilter
     attendees_user?: Event_AttendeesListRelationFilter
-    referral_user?: XOR<Referral_CodeNullableScalarRelationFilter, Referral_CodeWhereInput> | null
+    referral_user?: Referral_CodeListRelationFilter
     usageReferral_user?: Referral_UsageListRelationFilter
     transactions?: Transactions_detailListRelationFilter
     user_voucher?: VoucherListRelationFilter
@@ -18416,14 +18525,15 @@ export namespace Prisma {
     birthdate?: SortOrder
     phone_number?: SortOrder
     avatar?: SortOrderInput | SortOrder
-    referral_code?: SortOrderInput | SortOrder
+    refferal_code?: SortOrderInput | SortOrder
+    referrer_code?: SortOrderInput | SortOrder
     isVerified?: SortOrder
     created_at?: SortOrder
     updated_at?: SortOrder
     organizer?: OrganizerOrderByRelationAggregateInput
     reviews_user?: Event_ReviewsOrderByRelationAggregateInput
     attendees_user?: Event_AttendeesOrderByRelationAggregateInput
-    referral_user?: Referral_CodeOrderByWithRelationInput
+    referral_user?: Referral_CodeOrderByRelationAggregateInput
     usageReferral_user?: Referral_UsageOrderByRelationAggregateInput
     transactions?: Transactions_detailOrderByRelationAggregateInput
     user_voucher?: VoucherOrderByRelationAggregateInput
@@ -18432,7 +18542,7 @@ export namespace Prisma {
   export type UsersWhereUniqueInput = Prisma.AtLeast<{
     id?: string
     email?: string
-    referral_code?: string
+    refferal_code?: string
     AND?: UsersWhereInput | UsersWhereInput[]
     OR?: UsersWhereInput[]
     NOT?: UsersWhereInput | UsersWhereInput[]
@@ -18443,17 +18553,18 @@ export namespace Prisma {
     birthdate?: DateTimeFilter<"Users"> | Date | string
     phone_number?: StringFilter<"Users"> | string
     avatar?: StringNullableFilter<"Users"> | string | null
+    referrer_code?: StringNullableFilter<"Users"> | string | null
     isVerified?: BoolFilter<"Users"> | boolean
     created_at?: DateTimeFilter<"Users"> | Date | string
     updated_at?: DateTimeFilter<"Users"> | Date | string
     organizer?: OrganizerListRelationFilter
     reviews_user?: Event_ReviewsListRelationFilter
     attendees_user?: Event_AttendeesListRelationFilter
-    referral_user?: XOR<Referral_CodeNullableScalarRelationFilter, Referral_CodeWhereInput> | null
+    referral_user?: Referral_CodeListRelationFilter
     usageReferral_user?: Referral_UsageListRelationFilter
     transactions?: Transactions_detailListRelationFilter
     user_voucher?: VoucherListRelationFilter
-  }, "id" | "email" | "referral_code">
+  }, "id" | "email" | "refferal_code">
 
   export type UsersOrderByWithAggregationInput = {
     id?: SortOrder
@@ -18465,7 +18576,8 @@ export namespace Prisma {
     birthdate?: SortOrder
     phone_number?: SortOrder
     avatar?: SortOrderInput | SortOrder
-    referral_code?: SortOrderInput | SortOrder
+    refferal_code?: SortOrderInput | SortOrder
+    referrer_code?: SortOrderInput | SortOrder
     isVerified?: SortOrder
     created_at?: SortOrder
     updated_at?: SortOrder
@@ -18487,7 +18599,8 @@ export namespace Prisma {
     birthdate?: DateTimeWithAggregatesFilter<"Users"> | Date | string
     phone_number?: StringWithAggregatesFilter<"Users"> | string
     avatar?: StringNullableWithAggregatesFilter<"Users"> | string | null
-    referral_code?: StringNullableWithAggregatesFilter<"Users"> | string | null
+    refferal_code?: StringNullableWithAggregatesFilter<"Users"> | string | null
+    referrer_code?: StringNullableWithAggregatesFilter<"Users"> | string | null
     isVerified?: BoolWithAggregatesFilter<"Users"> | boolean
     created_at?: DateTimeWithAggregatesFilter<"Users"> | Date | string
     updated_at?: DateTimeWithAggregatesFilter<"Users"> | Date | string
@@ -18961,7 +19074,9 @@ export namespace Prisma {
     id?: StringFilter<"Referral_Code"> | string
     user_id?: StringFilter<"Referral_Code"> | string
     code?: StringFilter<"Referral_Code"> | string
-    points?: IntFilter<"Referral_Code"> | number
+    points?: IntNullableFilter<"Referral_Code"> | number | null
+    created_at?: DateTimeFilter<"Referral_Code"> | Date | string
+    expired_at?: DateTimeNullableFilter<"Referral_Code"> | Date | string | null
     user_referral?: XOR<UsersScalarRelationFilter, UsersWhereInput>
     user_referralUsage?: Referral_UsageListRelationFilter
   }
@@ -18970,28 +19085,34 @@ export namespace Prisma {
     id?: SortOrder
     user_id?: SortOrder
     code?: SortOrder
-    points?: SortOrder
+    points?: SortOrderInput | SortOrder
+    created_at?: SortOrder
+    expired_at?: SortOrderInput | SortOrder
     user_referral?: UsersOrderByWithRelationInput
     user_referralUsage?: Referral_UsageOrderByRelationAggregateInput
   }
 
   export type Referral_CodeWhereUniqueInput = Prisma.AtLeast<{
     id?: string
-    user_id?: string
     AND?: Referral_CodeWhereInput | Referral_CodeWhereInput[]
     OR?: Referral_CodeWhereInput[]
     NOT?: Referral_CodeWhereInput | Referral_CodeWhereInput[]
+    user_id?: StringFilter<"Referral_Code"> | string
     code?: StringFilter<"Referral_Code"> | string
-    points?: IntFilter<"Referral_Code"> | number
+    points?: IntNullableFilter<"Referral_Code"> | number | null
+    created_at?: DateTimeFilter<"Referral_Code"> | Date | string
+    expired_at?: DateTimeNullableFilter<"Referral_Code"> | Date | string | null
     user_referral?: XOR<UsersScalarRelationFilter, UsersWhereInput>
     user_referralUsage?: Referral_UsageListRelationFilter
-  }, "id" | "user_id">
+  }, "id">
 
   export type Referral_CodeOrderByWithAggregationInput = {
     id?: SortOrder
     user_id?: SortOrder
     code?: SortOrder
-    points?: SortOrder
+    points?: SortOrderInput | SortOrder
+    created_at?: SortOrder
+    expired_at?: SortOrderInput | SortOrder
     _count?: Referral_CodeCountOrderByAggregateInput
     _avg?: Referral_CodeAvgOrderByAggregateInput
     _max?: Referral_CodeMaxOrderByAggregateInput
@@ -19006,7 +19127,9 @@ export namespace Prisma {
     id?: StringWithAggregatesFilter<"Referral_Code"> | string
     user_id?: StringWithAggregatesFilter<"Referral_Code"> | string
     code?: StringWithAggregatesFilter<"Referral_Code"> | string
-    points?: IntWithAggregatesFilter<"Referral_Code"> | number
+    points?: IntNullableWithAggregatesFilter<"Referral_Code"> | number | null
+    created_at?: DateTimeWithAggregatesFilter<"Referral_Code"> | Date | string
+    expired_at?: DateTimeNullableWithAggregatesFilter<"Referral_Code"> | Date | string | null
   }
 
   export type Referral_UsageWhereInput = {
@@ -19067,28 +19190,30 @@ export namespace Prisma {
     OR?: VoucherWhereInput[]
     NOT?: VoucherWhereInput | VoucherWhereInput[]
     id?: StringFilter<"Voucher"> | string
-    user_id?: StringFilter<"Voucher"> | string
-    organizer_id?: StringFilter<"Voucher"> | string
+    user_id?: StringNullableFilter<"Voucher"> | string | null
+    organizer_id?: StringNullableFilter<"Voucher"> | string | null
     code?: StringFilter<"Voucher"> | string
-    amount?: IntFilter<"Voucher"> | number
-    limit?: IntFilter<"Voucher"> | number
+    percentage?: IntNullableFilter<"Voucher"> | number | null
+    amount?: IntNullableFilter<"Voucher"> | number | null
+    created_at?: DateTimeFilter<"Voucher"> | Date | string
     expired_at?: DateTimeFilter<"Voucher"> | Date | string
-    voucher_organizer?: XOR<OrganizerScalarRelationFilter, OrganizerWhereInput>
+    voucher_organizer?: XOR<OrganizerNullableScalarRelationFilter, OrganizerWhereInput> | null
+    voucher_user?: XOR<UsersNullableScalarRelationFilter, UsersWhereInput> | null
     voucher_transaction?: TransactionsListRelationFilter
-    voucher_user?: XOR<UsersScalarRelationFilter, UsersWhereInput>
   }
 
   export type VoucherOrderByWithRelationInput = {
     id?: SortOrder
-    user_id?: SortOrder
-    organizer_id?: SortOrder
+    user_id?: SortOrderInput | SortOrder
+    organizer_id?: SortOrderInput | SortOrder
     code?: SortOrder
-    amount?: SortOrder
-    limit?: SortOrder
+    percentage?: SortOrderInput | SortOrder
+    amount?: SortOrderInput | SortOrder
+    created_at?: SortOrder
     expired_at?: SortOrder
     voucher_organizer?: OrganizerOrderByWithRelationInput
-    voucher_transaction?: TransactionsOrderByRelationAggregateInput
     voucher_user?: UsersOrderByWithRelationInput
+    voucher_transaction?: TransactionsOrderByRelationAggregateInput
   }
 
   export type VoucherWhereUniqueInput = Prisma.AtLeast<{
@@ -19096,24 +19221,26 @@ export namespace Prisma {
     AND?: VoucherWhereInput | VoucherWhereInput[]
     OR?: VoucherWhereInput[]
     NOT?: VoucherWhereInput | VoucherWhereInput[]
-    user_id?: StringFilter<"Voucher"> | string
-    organizer_id?: StringFilter<"Voucher"> | string
+    user_id?: StringNullableFilter<"Voucher"> | string | null
+    organizer_id?: StringNullableFilter<"Voucher"> | string | null
     code?: StringFilter<"Voucher"> | string
-    amount?: IntFilter<"Voucher"> | number
-    limit?: IntFilter<"Voucher"> | number
+    percentage?: IntNullableFilter<"Voucher"> | number | null
+    amount?: IntNullableFilter<"Voucher"> | number | null
+    created_at?: DateTimeFilter<"Voucher"> | Date | string
     expired_at?: DateTimeFilter<"Voucher"> | Date | string
-    voucher_organizer?: XOR<OrganizerScalarRelationFilter, OrganizerWhereInput>
+    voucher_organizer?: XOR<OrganizerNullableScalarRelationFilter, OrganizerWhereInput> | null
+    voucher_user?: XOR<UsersNullableScalarRelationFilter, UsersWhereInput> | null
     voucher_transaction?: TransactionsListRelationFilter
-    voucher_user?: XOR<UsersScalarRelationFilter, UsersWhereInput>
   }, "id">
 
   export type VoucherOrderByWithAggregationInput = {
     id?: SortOrder
-    user_id?: SortOrder
-    organizer_id?: SortOrder
+    user_id?: SortOrderInput | SortOrder
+    organizer_id?: SortOrderInput | SortOrder
     code?: SortOrder
-    amount?: SortOrder
-    limit?: SortOrder
+    percentage?: SortOrderInput | SortOrder
+    amount?: SortOrderInput | SortOrder
+    created_at?: SortOrder
     expired_at?: SortOrder
     _count?: VoucherCountOrderByAggregateInput
     _avg?: VoucherAvgOrderByAggregateInput
@@ -19127,11 +19254,12 @@ export namespace Prisma {
     OR?: VoucherScalarWhereWithAggregatesInput[]
     NOT?: VoucherScalarWhereWithAggregatesInput | VoucherScalarWhereWithAggregatesInput[]
     id?: StringWithAggregatesFilter<"Voucher"> | string
-    user_id?: StringWithAggregatesFilter<"Voucher"> | string
-    organizer_id?: StringWithAggregatesFilter<"Voucher"> | string
+    user_id?: StringNullableWithAggregatesFilter<"Voucher"> | string | null
+    organizer_id?: StringNullableWithAggregatesFilter<"Voucher"> | string | null
     code?: StringWithAggregatesFilter<"Voucher"> | string
-    amount?: IntWithAggregatesFilter<"Voucher"> | number
-    limit?: IntWithAggregatesFilter<"Voucher"> | number
+    percentage?: IntNullableWithAggregatesFilter<"Voucher"> | number | null
+    amount?: IntNullableWithAggregatesFilter<"Voucher"> | number | null
+    created_at?: DateTimeWithAggregatesFilter<"Voucher"> | Date | string
     expired_at?: DateTimeWithAggregatesFilter<"Voucher"> | Date | string
   }
 
@@ -19286,14 +19414,15 @@ export namespace Prisma {
     birthdate: Date | string
     phone_number: string
     avatar?: string | null
-    referral_code?: string | null
+    refferal_code?: string | null
+    referrer_code?: string | null
     isVerified?: boolean
     created_at?: Date | string
     updated_at?: Date | string
     organizer?: OrganizerCreateNestedManyWithoutUserInput
     reviews_user?: Event_ReviewsCreateNestedManyWithoutReviews_userInput
     attendees_user?: Event_AttendeesCreateNestedManyWithoutUser_attendeesInput
-    referral_user?: Referral_CodeCreateNestedOneWithoutUser_referralInput
+    referral_user?: Referral_CodeCreateNestedManyWithoutUser_referralInput
     usageReferral_user?: Referral_UsageCreateNestedManyWithoutUser_referralUsageInput
     transactions?: Transactions_detailCreateNestedManyWithoutUserInput
     user_voucher?: VoucherCreateNestedManyWithoutVoucher_userInput
@@ -19309,14 +19438,15 @@ export namespace Prisma {
     birthdate: Date | string
     phone_number: string
     avatar?: string | null
-    referral_code?: string | null
+    refferal_code?: string | null
+    referrer_code?: string | null
     isVerified?: boolean
     created_at?: Date | string
     updated_at?: Date | string
     organizer?: OrganizerUncheckedCreateNestedManyWithoutUserInput
     reviews_user?: Event_ReviewsUncheckedCreateNestedManyWithoutReviews_userInput
     attendees_user?: Event_AttendeesUncheckedCreateNestedManyWithoutUser_attendeesInput
-    referral_user?: Referral_CodeUncheckedCreateNestedOneWithoutUser_referralInput
+    referral_user?: Referral_CodeUncheckedCreateNestedManyWithoutUser_referralInput
     usageReferral_user?: Referral_UsageUncheckedCreateNestedManyWithoutUser_referralUsageInput
     transactions?: Transactions_detailUncheckedCreateNestedManyWithoutUserInput
     user_voucher?: VoucherUncheckedCreateNestedManyWithoutVoucher_userInput
@@ -19332,14 +19462,15 @@ export namespace Prisma {
     birthdate?: DateTimeFieldUpdateOperationsInput | Date | string
     phone_number?: StringFieldUpdateOperationsInput | string
     avatar?: NullableStringFieldUpdateOperationsInput | string | null
-    referral_code?: NullableStringFieldUpdateOperationsInput | string | null
+    refferal_code?: NullableStringFieldUpdateOperationsInput | string | null
+    referrer_code?: NullableStringFieldUpdateOperationsInput | string | null
     isVerified?: BoolFieldUpdateOperationsInput | boolean
     created_at?: DateTimeFieldUpdateOperationsInput | Date | string
     updated_at?: DateTimeFieldUpdateOperationsInput | Date | string
     organizer?: OrganizerUpdateManyWithoutUserNestedInput
     reviews_user?: Event_ReviewsUpdateManyWithoutReviews_userNestedInput
     attendees_user?: Event_AttendeesUpdateManyWithoutUser_attendeesNestedInput
-    referral_user?: Referral_CodeUpdateOneWithoutUser_referralNestedInput
+    referral_user?: Referral_CodeUpdateManyWithoutUser_referralNestedInput
     usageReferral_user?: Referral_UsageUpdateManyWithoutUser_referralUsageNestedInput
     transactions?: Transactions_detailUpdateManyWithoutUserNestedInput
     user_voucher?: VoucherUpdateManyWithoutVoucher_userNestedInput
@@ -19355,14 +19486,15 @@ export namespace Prisma {
     birthdate?: DateTimeFieldUpdateOperationsInput | Date | string
     phone_number?: StringFieldUpdateOperationsInput | string
     avatar?: NullableStringFieldUpdateOperationsInput | string | null
-    referral_code?: NullableStringFieldUpdateOperationsInput | string | null
+    refferal_code?: NullableStringFieldUpdateOperationsInput | string | null
+    referrer_code?: NullableStringFieldUpdateOperationsInput | string | null
     isVerified?: BoolFieldUpdateOperationsInput | boolean
     created_at?: DateTimeFieldUpdateOperationsInput | Date | string
     updated_at?: DateTimeFieldUpdateOperationsInput | Date | string
     organizer?: OrganizerUncheckedUpdateManyWithoutUserNestedInput
     reviews_user?: Event_ReviewsUncheckedUpdateManyWithoutReviews_userNestedInput
     attendees_user?: Event_AttendeesUncheckedUpdateManyWithoutUser_attendeesNestedInput
-    referral_user?: Referral_CodeUncheckedUpdateOneWithoutUser_referralNestedInput
+    referral_user?: Referral_CodeUncheckedUpdateManyWithoutUser_referralNestedInput
     usageReferral_user?: Referral_UsageUncheckedUpdateManyWithoutUser_referralUsageNestedInput
     transactions?: Transactions_detailUncheckedUpdateManyWithoutUserNestedInput
     user_voucher?: VoucherUncheckedUpdateManyWithoutVoucher_userNestedInput
@@ -19378,7 +19510,8 @@ export namespace Prisma {
     birthdate: Date | string
     phone_number: string
     avatar?: string | null
-    referral_code?: string | null
+    refferal_code?: string | null
+    referrer_code?: string | null
     isVerified?: boolean
     created_at?: Date | string
     updated_at?: Date | string
@@ -19394,7 +19527,8 @@ export namespace Prisma {
     birthdate?: DateTimeFieldUpdateOperationsInput | Date | string
     phone_number?: StringFieldUpdateOperationsInput | string
     avatar?: NullableStringFieldUpdateOperationsInput | string | null
-    referral_code?: NullableStringFieldUpdateOperationsInput | string | null
+    refferal_code?: NullableStringFieldUpdateOperationsInput | string | null
+    referrer_code?: NullableStringFieldUpdateOperationsInput | string | null
     isVerified?: BoolFieldUpdateOperationsInput | boolean
     created_at?: DateTimeFieldUpdateOperationsInput | Date | string
     updated_at?: DateTimeFieldUpdateOperationsInput | Date | string
@@ -19410,7 +19544,8 @@ export namespace Prisma {
     birthdate?: DateTimeFieldUpdateOperationsInput | Date | string
     phone_number?: StringFieldUpdateOperationsInput | string
     avatar?: NullableStringFieldUpdateOperationsInput | string | null
-    referral_code?: NullableStringFieldUpdateOperationsInput | string | null
+    refferal_code?: NullableStringFieldUpdateOperationsInput | string | null
+    referrer_code?: NullableStringFieldUpdateOperationsInput | string | null
     isVerified?: BoolFieldUpdateOperationsInput | boolean
     created_at?: DateTimeFieldUpdateOperationsInput | Date | string
     updated_at?: DateTimeFieldUpdateOperationsInput | Date | string
@@ -19873,7 +20008,9 @@ export namespace Prisma {
   export type Referral_CodeCreateInput = {
     id?: string
     code: string
-    points: number
+    points?: number | null
+    created_at?: Date | string
+    expired_at?: Date | string | null
     user_referral: UsersCreateNestedOneWithoutReferral_userInput
     user_referralUsage?: Referral_UsageCreateNestedManyWithoutCode_referralUsageInput
   }
@@ -19882,14 +20019,18 @@ export namespace Prisma {
     id?: string
     user_id: string
     code: string
-    points: number
+    points?: number | null
+    created_at?: Date | string
+    expired_at?: Date | string | null
     user_referralUsage?: Referral_UsageUncheckedCreateNestedManyWithoutCode_referralUsageInput
   }
 
   export type Referral_CodeUpdateInput = {
     id?: StringFieldUpdateOperationsInput | string
     code?: StringFieldUpdateOperationsInput | string
-    points?: IntFieldUpdateOperationsInput | number
+    points?: NullableIntFieldUpdateOperationsInput | number | null
+    created_at?: DateTimeFieldUpdateOperationsInput | Date | string
+    expired_at?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     user_referral?: UsersUpdateOneRequiredWithoutReferral_userNestedInput
     user_referralUsage?: Referral_UsageUpdateManyWithoutCode_referralUsageNestedInput
   }
@@ -19898,7 +20039,9 @@ export namespace Prisma {
     id?: StringFieldUpdateOperationsInput | string
     user_id?: StringFieldUpdateOperationsInput | string
     code?: StringFieldUpdateOperationsInput | string
-    points?: IntFieldUpdateOperationsInput | number
+    points?: NullableIntFieldUpdateOperationsInput | number | null
+    created_at?: DateTimeFieldUpdateOperationsInput | Date | string
+    expired_at?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     user_referralUsage?: Referral_UsageUncheckedUpdateManyWithoutCode_referralUsageNestedInput
   }
 
@@ -19906,20 +20049,26 @@ export namespace Prisma {
     id?: string
     user_id: string
     code: string
-    points: number
+    points?: number | null
+    created_at?: Date | string
+    expired_at?: Date | string | null
   }
 
   export type Referral_CodeUpdateManyMutationInput = {
     id?: StringFieldUpdateOperationsInput | string
     code?: StringFieldUpdateOperationsInput | string
-    points?: IntFieldUpdateOperationsInput | number
+    points?: NullableIntFieldUpdateOperationsInput | number | null
+    created_at?: DateTimeFieldUpdateOperationsInput | Date | string
+    expired_at?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   }
 
   export type Referral_CodeUncheckedUpdateManyInput = {
     id?: StringFieldUpdateOperationsInput | string
     user_id?: StringFieldUpdateOperationsInput | string
     code?: StringFieldUpdateOperationsInput | string
-    points?: IntFieldUpdateOperationsInput | number
+    points?: NullableIntFieldUpdateOperationsInput | number | null
+    created_at?: DateTimeFieldUpdateOperationsInput | Date | string
+    expired_at?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   }
 
   export type Referral_UsageCreateInput = {
@@ -19972,21 +20121,23 @@ export namespace Prisma {
   export type VoucherCreateInput = {
     id?: string
     code: string
-    amount: number
-    limit: number
+    percentage?: number | null
+    amount?: number | null
+    created_at?: Date | string
     expired_at: Date | string
-    voucher_organizer: OrganizerCreateNestedOneWithoutOrganizer_voucherInput
+    voucher_organizer?: OrganizerCreateNestedOneWithoutOrganizer_voucherInput
+    voucher_user?: UsersCreateNestedOneWithoutUser_voucherInput
     voucher_transaction?: TransactionsCreateNestedManyWithoutTransaction_voucherInput
-    voucher_user: UsersCreateNestedOneWithoutUser_voucherInput
   }
 
   export type VoucherUncheckedCreateInput = {
     id?: string
-    user_id: string
-    organizer_id: string
+    user_id?: string | null
+    organizer_id?: string | null
     code: string
-    amount: number
-    limit: number
+    percentage?: number | null
+    amount?: number | null
+    created_at?: Date | string
     expired_at: Date | string
     voucher_transaction?: TransactionsUncheckedCreateNestedManyWithoutTransaction_voucherInput
   }
@@ -19994,50 +20145,55 @@ export namespace Prisma {
   export type VoucherUpdateInput = {
     id?: StringFieldUpdateOperationsInput | string
     code?: StringFieldUpdateOperationsInput | string
-    amount?: IntFieldUpdateOperationsInput | number
-    limit?: IntFieldUpdateOperationsInput | number
+    percentage?: NullableIntFieldUpdateOperationsInput | number | null
+    amount?: NullableIntFieldUpdateOperationsInput | number | null
+    created_at?: DateTimeFieldUpdateOperationsInput | Date | string
     expired_at?: DateTimeFieldUpdateOperationsInput | Date | string
-    voucher_organizer?: OrganizerUpdateOneRequiredWithoutOrganizer_voucherNestedInput
+    voucher_organizer?: OrganizerUpdateOneWithoutOrganizer_voucherNestedInput
+    voucher_user?: UsersUpdateOneWithoutUser_voucherNestedInput
     voucher_transaction?: TransactionsUpdateManyWithoutTransaction_voucherNestedInput
-    voucher_user?: UsersUpdateOneRequiredWithoutUser_voucherNestedInput
   }
 
   export type VoucherUncheckedUpdateInput = {
     id?: StringFieldUpdateOperationsInput | string
-    user_id?: StringFieldUpdateOperationsInput | string
-    organizer_id?: StringFieldUpdateOperationsInput | string
+    user_id?: NullableStringFieldUpdateOperationsInput | string | null
+    organizer_id?: NullableStringFieldUpdateOperationsInput | string | null
     code?: StringFieldUpdateOperationsInput | string
-    amount?: IntFieldUpdateOperationsInput | number
-    limit?: IntFieldUpdateOperationsInput | number
+    percentage?: NullableIntFieldUpdateOperationsInput | number | null
+    amount?: NullableIntFieldUpdateOperationsInput | number | null
+    created_at?: DateTimeFieldUpdateOperationsInput | Date | string
     expired_at?: DateTimeFieldUpdateOperationsInput | Date | string
     voucher_transaction?: TransactionsUncheckedUpdateManyWithoutTransaction_voucherNestedInput
   }
 
   export type VoucherCreateManyInput = {
     id?: string
-    user_id: string
-    organizer_id: string
+    user_id?: string | null
+    organizer_id?: string | null
     code: string
-    amount: number
-    limit: number
+    percentage?: number | null
+    amount?: number | null
+    created_at?: Date | string
     expired_at: Date | string
   }
 
   export type VoucherUpdateManyMutationInput = {
     id?: StringFieldUpdateOperationsInput | string
     code?: StringFieldUpdateOperationsInput | string
-    amount?: IntFieldUpdateOperationsInput | number
-    limit?: IntFieldUpdateOperationsInput | number
+    percentage?: NullableIntFieldUpdateOperationsInput | number | null
+    amount?: NullableIntFieldUpdateOperationsInput | number | null
+    created_at?: DateTimeFieldUpdateOperationsInput | Date | string
     expired_at?: DateTimeFieldUpdateOperationsInput | Date | string
   }
 
   export type VoucherUncheckedUpdateManyInput = {
     id?: StringFieldUpdateOperationsInput | string
-    user_id?: StringFieldUpdateOperationsInput | string
-    organizer_id?: StringFieldUpdateOperationsInput | string
+    user_id?: NullableStringFieldUpdateOperationsInput | string | null
+    organizer_id?: NullableStringFieldUpdateOperationsInput | string | null
     code?: StringFieldUpdateOperationsInput | string
-    amount?: IntFieldUpdateOperationsInput | number
-    limit?: IntFieldUpdateOperationsInput | number
+    percentage?: NullableIntFieldUpdateOperationsInput | number | null
+    amount?: NullableIntFieldUpdateOperationsInput | number | null
+    created_at?: DateTimeFieldUpdateOperationsInput | Date | string
     expired_at?: DateTimeFieldUpdateOperationsInput | Date | string
   }
 
@@ -20237,9 +20393,10 @@ export namespace Prisma {
     none?: Event_AttendeesWhereInput
   }
 
-  export type Referral_CodeNullableScalarRelationFilter = {
-    is?: Referral_CodeWhereInput | null
-    isNot?: Referral_CodeWhereInput | null
+  export type Referral_CodeListRelationFilter = {
+    every?: Referral_CodeWhereInput
+    some?: Referral_CodeWhereInput
+    none?: Referral_CodeWhereInput
   }
 
   export type Referral_UsageListRelationFilter = {
@@ -20277,6 +20434,10 @@ export namespace Prisma {
     _count?: SortOrder
   }
 
+  export type Referral_CodeOrderByRelationAggregateInput = {
+    _count?: SortOrder
+  }
+
   export type Referral_UsageOrderByRelationAggregateInput = {
     _count?: SortOrder
   }
@@ -20299,7 +20460,8 @@ export namespace Prisma {
     birthdate?: SortOrder
     phone_number?: SortOrder
     avatar?: SortOrder
-    referral_code?: SortOrder
+    refferal_code?: SortOrder
+    referrer_code?: SortOrder
     isVerified?: SortOrder
     created_at?: SortOrder
     updated_at?: SortOrder
@@ -20315,7 +20477,8 @@ export namespace Prisma {
     birthdate?: SortOrder
     phone_number?: SortOrder
     avatar?: SortOrder
-    referral_code?: SortOrder
+    refferal_code?: SortOrder
+    referrer_code?: SortOrder
     isVerified?: SortOrder
     created_at?: SortOrder
     updated_at?: SortOrder
@@ -20331,7 +20494,8 @@ export namespace Prisma {
     birthdate?: SortOrder
     phone_number?: SortOrder
     avatar?: SortOrder
-    referral_code?: SortOrder
+    refferal_code?: SortOrder
+    referrer_code?: SortOrder
     isVerified?: SortOrder
     created_at?: SortOrder
     updated_at?: SortOrder
@@ -20711,11 +20875,24 @@ export namespace Prisma {
     _max?: NestedEnumStatusFilter<$PrismaModel>
   }
 
+  export type IntNullableFilter<$PrismaModel = never> = {
+    equals?: number | IntFieldRefInput<$PrismaModel> | null
+    in?: number[] | ListIntFieldRefInput<$PrismaModel> | null
+    notIn?: number[] | ListIntFieldRefInput<$PrismaModel> | null
+    lt?: number | IntFieldRefInput<$PrismaModel>
+    lte?: number | IntFieldRefInput<$PrismaModel>
+    gt?: number | IntFieldRefInput<$PrismaModel>
+    gte?: number | IntFieldRefInput<$PrismaModel>
+    not?: NestedIntNullableFilter<$PrismaModel> | number | null
+  }
+
   export type Referral_CodeCountOrderByAggregateInput = {
     id?: SortOrder
     user_id?: SortOrder
     code?: SortOrder
     points?: SortOrder
+    created_at?: SortOrder
+    expired_at?: SortOrder
   }
 
   export type Referral_CodeAvgOrderByAggregateInput = {
@@ -20727,6 +20904,8 @@ export namespace Prisma {
     user_id?: SortOrder
     code?: SortOrder
     points?: SortOrder
+    created_at?: SortOrder
+    expired_at?: SortOrder
   }
 
   export type Referral_CodeMinOrderByAggregateInput = {
@@ -20734,10 +20913,28 @@ export namespace Prisma {
     user_id?: SortOrder
     code?: SortOrder
     points?: SortOrder
+    created_at?: SortOrder
+    expired_at?: SortOrder
   }
 
   export type Referral_CodeSumOrderByAggregateInput = {
     points?: SortOrder
+  }
+
+  export type IntNullableWithAggregatesFilter<$PrismaModel = never> = {
+    equals?: number | IntFieldRefInput<$PrismaModel> | null
+    in?: number[] | ListIntFieldRefInput<$PrismaModel> | null
+    notIn?: number[] | ListIntFieldRefInput<$PrismaModel> | null
+    lt?: number | IntFieldRefInput<$PrismaModel>
+    lte?: number | IntFieldRefInput<$PrismaModel>
+    gt?: number | IntFieldRefInput<$PrismaModel>
+    gte?: number | IntFieldRefInput<$PrismaModel>
+    not?: NestedIntNullableWithAggregatesFilter<$PrismaModel> | number | null
+    _count?: NestedIntNullableFilter<$PrismaModel>
+    _avg?: NestedFloatNullableFilter<$PrismaModel>
+    _sum?: NestedIntNullableFilter<$PrismaModel>
+    _min?: NestedIntNullableFilter<$PrismaModel>
+    _max?: NestedIntNullableFilter<$PrismaModel>
   }
 
   export type Referral_CodeScalarRelationFilter = {
@@ -20766,6 +20963,16 @@ export namespace Prisma {
     used_at?: SortOrder
   }
 
+  export type OrganizerNullableScalarRelationFilter = {
+    is?: OrganizerWhereInput | null
+    isNot?: OrganizerWhereInput | null
+  }
+
+  export type UsersNullableScalarRelationFilter = {
+    is?: UsersWhereInput | null
+    isNot?: UsersWhereInput | null
+  }
+
   export type TransactionsListRelationFilter = {
     every?: TransactionsWhereInput
     some?: TransactionsWhereInput
@@ -20781,14 +20988,15 @@ export namespace Prisma {
     user_id?: SortOrder
     organizer_id?: SortOrder
     code?: SortOrder
+    percentage?: SortOrder
     amount?: SortOrder
-    limit?: SortOrder
+    created_at?: SortOrder
     expired_at?: SortOrder
   }
 
   export type VoucherAvgOrderByAggregateInput = {
+    percentage?: SortOrder
     amount?: SortOrder
-    limit?: SortOrder
   }
 
   export type VoucherMaxOrderByAggregateInput = {
@@ -20796,8 +21004,9 @@ export namespace Prisma {
     user_id?: SortOrder
     organizer_id?: SortOrder
     code?: SortOrder
+    percentage?: SortOrder
     amount?: SortOrder
-    limit?: SortOrder
+    created_at?: SortOrder
     expired_at?: SortOrder
   }
 
@@ -20806,14 +21015,15 @@ export namespace Prisma {
     user_id?: SortOrder
     organizer_id?: SortOrder
     code?: SortOrder
+    percentage?: SortOrder
     amount?: SortOrder
-    limit?: SortOrder
+    created_at?: SortOrder
     expired_at?: SortOrder
   }
 
   export type VoucherSumOrderByAggregateInput = {
+    percentage?: SortOrder
     amount?: SortOrder
-    limit?: SortOrder
   }
 
   export type VoucherScalarRelationFilter = {
@@ -20939,10 +21149,11 @@ export namespace Prisma {
     connect?: Event_AttendeesWhereUniqueInput | Event_AttendeesWhereUniqueInput[]
   }
 
-  export type Referral_CodeCreateNestedOneWithoutUser_referralInput = {
-    create?: XOR<Referral_CodeCreateWithoutUser_referralInput, Referral_CodeUncheckedCreateWithoutUser_referralInput>
-    connectOrCreate?: Referral_CodeCreateOrConnectWithoutUser_referralInput
-    connect?: Referral_CodeWhereUniqueInput
+  export type Referral_CodeCreateNestedManyWithoutUser_referralInput = {
+    create?: XOR<Referral_CodeCreateWithoutUser_referralInput, Referral_CodeUncheckedCreateWithoutUser_referralInput> | Referral_CodeCreateWithoutUser_referralInput[] | Referral_CodeUncheckedCreateWithoutUser_referralInput[]
+    connectOrCreate?: Referral_CodeCreateOrConnectWithoutUser_referralInput | Referral_CodeCreateOrConnectWithoutUser_referralInput[]
+    createMany?: Referral_CodeCreateManyUser_referralInputEnvelope
+    connect?: Referral_CodeWhereUniqueInput | Referral_CodeWhereUniqueInput[]
   }
 
   export type Referral_UsageCreateNestedManyWithoutUser_referralUsageInput = {
@@ -20987,10 +21198,11 @@ export namespace Prisma {
     connect?: Event_AttendeesWhereUniqueInput | Event_AttendeesWhereUniqueInput[]
   }
 
-  export type Referral_CodeUncheckedCreateNestedOneWithoutUser_referralInput = {
-    create?: XOR<Referral_CodeCreateWithoutUser_referralInput, Referral_CodeUncheckedCreateWithoutUser_referralInput>
-    connectOrCreate?: Referral_CodeCreateOrConnectWithoutUser_referralInput
-    connect?: Referral_CodeWhereUniqueInput
+  export type Referral_CodeUncheckedCreateNestedManyWithoutUser_referralInput = {
+    create?: XOR<Referral_CodeCreateWithoutUser_referralInput, Referral_CodeUncheckedCreateWithoutUser_referralInput> | Referral_CodeCreateWithoutUser_referralInput[] | Referral_CodeUncheckedCreateWithoutUser_referralInput[]
+    connectOrCreate?: Referral_CodeCreateOrConnectWithoutUser_referralInput | Referral_CodeCreateOrConnectWithoutUser_referralInput[]
+    createMany?: Referral_CodeCreateManyUser_referralInputEnvelope
+    connect?: Referral_CodeWhereUniqueInput | Referral_CodeWhereUniqueInput[]
   }
 
   export type Referral_UsageUncheckedCreateNestedManyWithoutUser_referralUsageInput = {
@@ -21072,14 +21284,18 @@ export namespace Prisma {
     deleteMany?: Event_AttendeesScalarWhereInput | Event_AttendeesScalarWhereInput[]
   }
 
-  export type Referral_CodeUpdateOneWithoutUser_referralNestedInput = {
-    create?: XOR<Referral_CodeCreateWithoutUser_referralInput, Referral_CodeUncheckedCreateWithoutUser_referralInput>
-    connectOrCreate?: Referral_CodeCreateOrConnectWithoutUser_referralInput
-    upsert?: Referral_CodeUpsertWithoutUser_referralInput
-    disconnect?: Referral_CodeWhereInput | boolean
-    delete?: Referral_CodeWhereInput | boolean
-    connect?: Referral_CodeWhereUniqueInput
-    update?: XOR<XOR<Referral_CodeUpdateToOneWithWhereWithoutUser_referralInput, Referral_CodeUpdateWithoutUser_referralInput>, Referral_CodeUncheckedUpdateWithoutUser_referralInput>
+  export type Referral_CodeUpdateManyWithoutUser_referralNestedInput = {
+    create?: XOR<Referral_CodeCreateWithoutUser_referralInput, Referral_CodeUncheckedCreateWithoutUser_referralInput> | Referral_CodeCreateWithoutUser_referralInput[] | Referral_CodeUncheckedCreateWithoutUser_referralInput[]
+    connectOrCreate?: Referral_CodeCreateOrConnectWithoutUser_referralInput | Referral_CodeCreateOrConnectWithoutUser_referralInput[]
+    upsert?: Referral_CodeUpsertWithWhereUniqueWithoutUser_referralInput | Referral_CodeUpsertWithWhereUniqueWithoutUser_referralInput[]
+    createMany?: Referral_CodeCreateManyUser_referralInputEnvelope
+    set?: Referral_CodeWhereUniqueInput | Referral_CodeWhereUniqueInput[]
+    disconnect?: Referral_CodeWhereUniqueInput | Referral_CodeWhereUniqueInput[]
+    delete?: Referral_CodeWhereUniqueInput | Referral_CodeWhereUniqueInput[]
+    connect?: Referral_CodeWhereUniqueInput | Referral_CodeWhereUniqueInput[]
+    update?: Referral_CodeUpdateWithWhereUniqueWithoutUser_referralInput | Referral_CodeUpdateWithWhereUniqueWithoutUser_referralInput[]
+    updateMany?: Referral_CodeUpdateManyWithWhereWithoutUser_referralInput | Referral_CodeUpdateManyWithWhereWithoutUser_referralInput[]
+    deleteMany?: Referral_CodeScalarWhereInput | Referral_CodeScalarWhereInput[]
   }
 
   export type Referral_UsageUpdateManyWithoutUser_referralUsageNestedInput = {
@@ -21166,14 +21382,18 @@ export namespace Prisma {
     deleteMany?: Event_AttendeesScalarWhereInput | Event_AttendeesScalarWhereInput[]
   }
 
-  export type Referral_CodeUncheckedUpdateOneWithoutUser_referralNestedInput = {
-    create?: XOR<Referral_CodeCreateWithoutUser_referralInput, Referral_CodeUncheckedCreateWithoutUser_referralInput>
-    connectOrCreate?: Referral_CodeCreateOrConnectWithoutUser_referralInput
-    upsert?: Referral_CodeUpsertWithoutUser_referralInput
-    disconnect?: Referral_CodeWhereInput | boolean
-    delete?: Referral_CodeWhereInput | boolean
-    connect?: Referral_CodeWhereUniqueInput
-    update?: XOR<XOR<Referral_CodeUpdateToOneWithWhereWithoutUser_referralInput, Referral_CodeUpdateWithoutUser_referralInput>, Referral_CodeUncheckedUpdateWithoutUser_referralInput>
+  export type Referral_CodeUncheckedUpdateManyWithoutUser_referralNestedInput = {
+    create?: XOR<Referral_CodeCreateWithoutUser_referralInput, Referral_CodeUncheckedCreateWithoutUser_referralInput> | Referral_CodeCreateWithoutUser_referralInput[] | Referral_CodeUncheckedCreateWithoutUser_referralInput[]
+    connectOrCreate?: Referral_CodeCreateOrConnectWithoutUser_referralInput | Referral_CodeCreateOrConnectWithoutUser_referralInput[]
+    upsert?: Referral_CodeUpsertWithWhereUniqueWithoutUser_referralInput | Referral_CodeUpsertWithWhereUniqueWithoutUser_referralInput[]
+    createMany?: Referral_CodeCreateManyUser_referralInputEnvelope
+    set?: Referral_CodeWhereUniqueInput | Referral_CodeWhereUniqueInput[]
+    disconnect?: Referral_CodeWhereUniqueInput | Referral_CodeWhereUniqueInput[]
+    delete?: Referral_CodeWhereUniqueInput | Referral_CodeWhereUniqueInput[]
+    connect?: Referral_CodeWhereUniqueInput | Referral_CodeWhereUniqueInput[]
+    update?: Referral_CodeUpdateWithWhereUniqueWithoutUser_referralInput | Referral_CodeUpdateWithWhereUniqueWithoutUser_referralInput[]
+    updateMany?: Referral_CodeUpdateManyWithWhereWithoutUser_referralInput | Referral_CodeUpdateManyWithWhereWithoutUser_referralInput[]
+    deleteMany?: Referral_CodeScalarWhereInput | Referral_CodeScalarWhereInput[]
   }
 
   export type Referral_UsageUncheckedUpdateManyWithoutUser_referralUsageNestedInput = {
@@ -21748,6 +21968,14 @@ export namespace Prisma {
     connect?: Referral_UsageWhereUniqueInput | Referral_UsageWhereUniqueInput[]
   }
 
+  export type NullableIntFieldUpdateOperationsInput = {
+    set?: number | null
+    increment?: number
+    decrement?: number
+    multiply?: number
+    divide?: number
+  }
+
   export type UsersUpdateOneRequiredWithoutReferral_userNestedInput = {
     create?: XOR<UsersCreateWithoutReferral_userInput, UsersUncheckedCreateWithoutReferral_userInput>
     connectOrCreate?: UsersCreateOrConnectWithoutReferral_userInput
@@ -21818,17 +22046,17 @@ export namespace Prisma {
     connect?: OrganizerWhereUniqueInput
   }
 
+  export type UsersCreateNestedOneWithoutUser_voucherInput = {
+    create?: XOR<UsersCreateWithoutUser_voucherInput, UsersUncheckedCreateWithoutUser_voucherInput>
+    connectOrCreate?: UsersCreateOrConnectWithoutUser_voucherInput
+    connect?: UsersWhereUniqueInput
+  }
+
   export type TransactionsCreateNestedManyWithoutTransaction_voucherInput = {
     create?: XOR<TransactionsCreateWithoutTransaction_voucherInput, TransactionsUncheckedCreateWithoutTransaction_voucherInput> | TransactionsCreateWithoutTransaction_voucherInput[] | TransactionsUncheckedCreateWithoutTransaction_voucherInput[]
     connectOrCreate?: TransactionsCreateOrConnectWithoutTransaction_voucherInput | TransactionsCreateOrConnectWithoutTransaction_voucherInput[]
     createMany?: TransactionsCreateManyTransaction_voucherInputEnvelope
     connect?: TransactionsWhereUniqueInput | TransactionsWhereUniqueInput[]
-  }
-
-  export type UsersCreateNestedOneWithoutUser_voucherInput = {
-    create?: XOR<UsersCreateWithoutUser_voucherInput, UsersUncheckedCreateWithoutUser_voucherInput>
-    connectOrCreate?: UsersCreateOrConnectWithoutUser_voucherInput
-    connect?: UsersWhereUniqueInput
   }
 
   export type TransactionsUncheckedCreateNestedManyWithoutTransaction_voucherInput = {
@@ -21838,12 +22066,24 @@ export namespace Prisma {
     connect?: TransactionsWhereUniqueInput | TransactionsWhereUniqueInput[]
   }
 
-  export type OrganizerUpdateOneRequiredWithoutOrganizer_voucherNestedInput = {
+  export type OrganizerUpdateOneWithoutOrganizer_voucherNestedInput = {
     create?: XOR<OrganizerCreateWithoutOrganizer_voucherInput, OrganizerUncheckedCreateWithoutOrganizer_voucherInput>
     connectOrCreate?: OrganizerCreateOrConnectWithoutOrganizer_voucherInput
     upsert?: OrganizerUpsertWithoutOrganizer_voucherInput
+    disconnect?: OrganizerWhereInput | boolean
+    delete?: OrganizerWhereInput | boolean
     connect?: OrganizerWhereUniqueInput
     update?: XOR<XOR<OrganizerUpdateToOneWithWhereWithoutOrganizer_voucherInput, OrganizerUpdateWithoutOrganizer_voucherInput>, OrganizerUncheckedUpdateWithoutOrganizer_voucherInput>
+  }
+
+  export type UsersUpdateOneWithoutUser_voucherNestedInput = {
+    create?: XOR<UsersCreateWithoutUser_voucherInput, UsersUncheckedCreateWithoutUser_voucherInput>
+    connectOrCreate?: UsersCreateOrConnectWithoutUser_voucherInput
+    upsert?: UsersUpsertWithoutUser_voucherInput
+    disconnect?: UsersWhereInput | boolean
+    delete?: UsersWhereInput | boolean
+    connect?: UsersWhereUniqueInput
+    update?: XOR<XOR<UsersUpdateToOneWithWhereWithoutUser_voucherInput, UsersUpdateWithoutUser_voucherInput>, UsersUncheckedUpdateWithoutUser_voucherInput>
   }
 
   export type TransactionsUpdateManyWithoutTransaction_voucherNestedInput = {
@@ -21858,14 +22098,6 @@ export namespace Prisma {
     update?: TransactionsUpdateWithWhereUniqueWithoutTransaction_voucherInput | TransactionsUpdateWithWhereUniqueWithoutTransaction_voucherInput[]
     updateMany?: TransactionsUpdateManyWithWhereWithoutTransaction_voucherInput | TransactionsUpdateManyWithWhereWithoutTransaction_voucherInput[]
     deleteMany?: TransactionsScalarWhereInput | TransactionsScalarWhereInput[]
-  }
-
-  export type UsersUpdateOneRequiredWithoutUser_voucherNestedInput = {
-    create?: XOR<UsersCreateWithoutUser_voucherInput, UsersUncheckedCreateWithoutUser_voucherInput>
-    connectOrCreate?: UsersCreateOrConnectWithoutUser_voucherInput
-    upsert?: UsersUpsertWithoutUser_voucherInput
-    connect?: UsersWhereUniqueInput
-    update?: XOR<XOR<UsersUpdateToOneWithWhereWithoutUser_voucherInput, UsersUpdateWithoutUser_voucherInput>, UsersUncheckedUpdateWithoutUser_voucherInput>
   }
 
   export type TransactionsUncheckedUpdateManyWithoutTransaction_voucherNestedInput = {
@@ -22189,6 +22421,33 @@ export namespace Prisma {
     _max?: NestedEnumStatusFilter<$PrismaModel>
   }
 
+  export type NestedIntNullableWithAggregatesFilter<$PrismaModel = never> = {
+    equals?: number | IntFieldRefInput<$PrismaModel> | null
+    in?: number[] | ListIntFieldRefInput<$PrismaModel> | null
+    notIn?: number[] | ListIntFieldRefInput<$PrismaModel> | null
+    lt?: number | IntFieldRefInput<$PrismaModel>
+    lte?: number | IntFieldRefInput<$PrismaModel>
+    gt?: number | IntFieldRefInput<$PrismaModel>
+    gte?: number | IntFieldRefInput<$PrismaModel>
+    not?: NestedIntNullableWithAggregatesFilter<$PrismaModel> | number | null
+    _count?: NestedIntNullableFilter<$PrismaModel>
+    _avg?: NestedFloatNullableFilter<$PrismaModel>
+    _sum?: NestedIntNullableFilter<$PrismaModel>
+    _min?: NestedIntNullableFilter<$PrismaModel>
+    _max?: NestedIntNullableFilter<$PrismaModel>
+  }
+
+  export type NestedFloatNullableFilter<$PrismaModel = never> = {
+    equals?: number | FloatFieldRefInput<$PrismaModel> | null
+    in?: number[] | ListFloatFieldRefInput<$PrismaModel> | null
+    notIn?: number[] | ListFloatFieldRefInput<$PrismaModel> | null
+    lt?: number | FloatFieldRefInput<$PrismaModel>
+    lte?: number | FloatFieldRefInput<$PrismaModel>
+    gt?: number | FloatFieldRefInput<$PrismaModel>
+    gte?: number | FloatFieldRefInput<$PrismaModel>
+    not?: NestedFloatNullableFilter<$PrismaModel> | number | null
+  }
+
   export type NestedEnumTransactionStatusFilter<$PrismaModel = never> = {
     equals?: $Enums.TransactionStatus | EnumTransactionStatusFieldRefInput<$PrismaModel>
     in?: $Enums.TransactionStatus[] | ListEnumTransactionStatusFieldRefInput<$PrismaModel>
@@ -22281,20 +22540,29 @@ export namespace Prisma {
   export type Referral_CodeCreateWithoutUser_referralInput = {
     id?: string
     code: string
-    points: number
+    points?: number | null
+    created_at?: Date | string
+    expired_at?: Date | string | null
     user_referralUsage?: Referral_UsageCreateNestedManyWithoutCode_referralUsageInput
   }
 
   export type Referral_CodeUncheckedCreateWithoutUser_referralInput = {
     id?: string
     code: string
-    points: number
+    points?: number | null
+    created_at?: Date | string
+    expired_at?: Date | string | null
     user_referralUsage?: Referral_UsageUncheckedCreateNestedManyWithoutCode_referralUsageInput
   }
 
   export type Referral_CodeCreateOrConnectWithoutUser_referralInput = {
     where: Referral_CodeWhereUniqueInput
     create: XOR<Referral_CodeCreateWithoutUser_referralInput, Referral_CodeUncheckedCreateWithoutUser_referralInput>
+  }
+
+  export type Referral_CodeCreateManyUser_referralInputEnvelope = {
+    data: Referral_CodeCreateManyUser_referralInput | Referral_CodeCreateManyUser_referralInput[]
+    skipDuplicates?: boolean
   }
 
   export type Referral_UsageCreateWithoutUser_referralUsageInput = {
@@ -22354,19 +22622,21 @@ export namespace Prisma {
   export type VoucherCreateWithoutVoucher_userInput = {
     id?: string
     code: string
-    amount: number
-    limit: number
+    percentage?: number | null
+    amount?: number | null
+    created_at?: Date | string
     expired_at: Date | string
-    voucher_organizer: OrganizerCreateNestedOneWithoutOrganizer_voucherInput
+    voucher_organizer?: OrganizerCreateNestedOneWithoutOrganizer_voucherInput
     voucher_transaction?: TransactionsCreateNestedManyWithoutTransaction_voucherInput
   }
 
   export type VoucherUncheckedCreateWithoutVoucher_userInput = {
     id?: string
-    organizer_id: string
+    organizer_id?: string | null
     code: string
-    amount: number
-    limit: number
+    percentage?: number | null
+    amount?: number | null
+    created_at?: Date | string
     expired_at: Date | string
     voucher_transaction?: TransactionsUncheckedCreateNestedManyWithoutTransaction_voucherInput
   }
@@ -22459,29 +22729,32 @@ export namespace Prisma {
     status?: EnumStatusFilter<"Event_Attendees"> | $Enums.Status
   }
 
-  export type Referral_CodeUpsertWithoutUser_referralInput = {
+  export type Referral_CodeUpsertWithWhereUniqueWithoutUser_referralInput = {
+    where: Referral_CodeWhereUniqueInput
     update: XOR<Referral_CodeUpdateWithoutUser_referralInput, Referral_CodeUncheckedUpdateWithoutUser_referralInput>
     create: XOR<Referral_CodeCreateWithoutUser_referralInput, Referral_CodeUncheckedCreateWithoutUser_referralInput>
-    where?: Referral_CodeWhereInput
   }
 
-  export type Referral_CodeUpdateToOneWithWhereWithoutUser_referralInput = {
-    where?: Referral_CodeWhereInput
+  export type Referral_CodeUpdateWithWhereUniqueWithoutUser_referralInput = {
+    where: Referral_CodeWhereUniqueInput
     data: XOR<Referral_CodeUpdateWithoutUser_referralInput, Referral_CodeUncheckedUpdateWithoutUser_referralInput>
   }
 
-  export type Referral_CodeUpdateWithoutUser_referralInput = {
-    id?: StringFieldUpdateOperationsInput | string
-    code?: StringFieldUpdateOperationsInput | string
-    points?: IntFieldUpdateOperationsInput | number
-    user_referralUsage?: Referral_UsageUpdateManyWithoutCode_referralUsageNestedInput
+  export type Referral_CodeUpdateManyWithWhereWithoutUser_referralInput = {
+    where: Referral_CodeScalarWhereInput
+    data: XOR<Referral_CodeUpdateManyMutationInput, Referral_CodeUncheckedUpdateManyWithoutUser_referralInput>
   }
 
-  export type Referral_CodeUncheckedUpdateWithoutUser_referralInput = {
-    id?: StringFieldUpdateOperationsInput | string
-    code?: StringFieldUpdateOperationsInput | string
-    points?: IntFieldUpdateOperationsInput | number
-    user_referralUsage?: Referral_UsageUncheckedUpdateManyWithoutCode_referralUsageNestedInput
+  export type Referral_CodeScalarWhereInput = {
+    AND?: Referral_CodeScalarWhereInput | Referral_CodeScalarWhereInput[]
+    OR?: Referral_CodeScalarWhereInput[]
+    NOT?: Referral_CodeScalarWhereInput | Referral_CodeScalarWhereInput[]
+    id?: StringFilter<"Referral_Code"> | string
+    user_id?: StringFilter<"Referral_Code"> | string
+    code?: StringFilter<"Referral_Code"> | string
+    points?: IntNullableFilter<"Referral_Code"> | number | null
+    created_at?: DateTimeFilter<"Referral_Code"> | Date | string
+    expired_at?: DateTimeNullableFilter<"Referral_Code"> | Date | string | null
   }
 
   export type Referral_UsageUpsertWithWhereUniqueWithoutUser_referralUsageInput = {
@@ -22562,11 +22835,12 @@ export namespace Prisma {
     OR?: VoucherScalarWhereInput[]
     NOT?: VoucherScalarWhereInput | VoucherScalarWhereInput[]
     id?: StringFilter<"Voucher"> | string
-    user_id?: StringFilter<"Voucher"> | string
-    organizer_id?: StringFilter<"Voucher"> | string
+    user_id?: StringNullableFilter<"Voucher"> | string | null
+    organizer_id?: StringNullableFilter<"Voucher"> | string | null
     code?: StringFilter<"Voucher"> | string
-    amount?: IntFilter<"Voucher"> | number
-    limit?: IntFilter<"Voucher"> | number
+    percentage?: IntNullableFilter<"Voucher"> | number | null
+    amount?: IntNullableFilter<"Voucher"> | number | null
+    created_at?: DateTimeFilter<"Voucher"> | Date | string
     expired_at?: DateTimeFilter<"Voucher"> | Date | string
   }
 
@@ -22580,13 +22854,14 @@ export namespace Prisma {
     birthdate: Date | string
     phone_number: string
     avatar?: string | null
-    referral_code?: string | null
+    refferal_code?: string | null
+    referrer_code?: string | null
     isVerified?: boolean
     created_at?: Date | string
     updated_at?: Date | string
     reviews_user?: Event_ReviewsCreateNestedManyWithoutReviews_userInput
     attendees_user?: Event_AttendeesCreateNestedManyWithoutUser_attendeesInput
-    referral_user?: Referral_CodeCreateNestedOneWithoutUser_referralInput
+    referral_user?: Referral_CodeCreateNestedManyWithoutUser_referralInput
     usageReferral_user?: Referral_UsageCreateNestedManyWithoutUser_referralUsageInput
     transactions?: Transactions_detailCreateNestedManyWithoutUserInput
     user_voucher?: VoucherCreateNestedManyWithoutVoucher_userInput
@@ -22602,13 +22877,14 @@ export namespace Prisma {
     birthdate: Date | string
     phone_number: string
     avatar?: string | null
-    referral_code?: string | null
+    refferal_code?: string | null
+    referrer_code?: string | null
     isVerified?: boolean
     created_at?: Date | string
     updated_at?: Date | string
     reviews_user?: Event_ReviewsUncheckedCreateNestedManyWithoutReviews_userInput
     attendees_user?: Event_AttendeesUncheckedCreateNestedManyWithoutUser_attendeesInput
-    referral_user?: Referral_CodeUncheckedCreateNestedOneWithoutUser_referralInput
+    referral_user?: Referral_CodeUncheckedCreateNestedManyWithoutUser_referralInput
     usageReferral_user?: Referral_UsageUncheckedCreateNestedManyWithoutUser_referralUsageInput
     transactions?: Transactions_detailUncheckedCreateNestedManyWithoutUserInput
     user_voucher?: VoucherUncheckedCreateNestedManyWithoutVoucher_userInput
@@ -22668,19 +22944,21 @@ export namespace Prisma {
   export type VoucherCreateWithoutVoucher_organizerInput = {
     id?: string
     code: string
-    amount: number
-    limit: number
+    percentage?: number | null
+    amount?: number | null
+    created_at?: Date | string
     expired_at: Date | string
+    voucher_user?: UsersCreateNestedOneWithoutUser_voucherInput
     voucher_transaction?: TransactionsCreateNestedManyWithoutTransaction_voucherInput
-    voucher_user: UsersCreateNestedOneWithoutUser_voucherInput
   }
 
   export type VoucherUncheckedCreateWithoutVoucher_organizerInput = {
     id?: string
-    user_id: string
+    user_id?: string | null
     code: string
-    amount: number
-    limit: number
+    percentage?: number | null
+    amount?: number | null
+    created_at?: Date | string
     expired_at: Date | string
     voucher_transaction?: TransactionsUncheckedCreateNestedManyWithoutTransaction_voucherInput
   }
@@ -22748,13 +23026,14 @@ export namespace Prisma {
     birthdate?: DateTimeFieldUpdateOperationsInput | Date | string
     phone_number?: StringFieldUpdateOperationsInput | string
     avatar?: NullableStringFieldUpdateOperationsInput | string | null
-    referral_code?: NullableStringFieldUpdateOperationsInput | string | null
+    refferal_code?: NullableStringFieldUpdateOperationsInput | string | null
+    referrer_code?: NullableStringFieldUpdateOperationsInput | string | null
     isVerified?: BoolFieldUpdateOperationsInput | boolean
     created_at?: DateTimeFieldUpdateOperationsInput | Date | string
     updated_at?: DateTimeFieldUpdateOperationsInput | Date | string
     reviews_user?: Event_ReviewsUpdateManyWithoutReviews_userNestedInput
     attendees_user?: Event_AttendeesUpdateManyWithoutUser_attendeesNestedInput
-    referral_user?: Referral_CodeUpdateOneWithoutUser_referralNestedInput
+    referral_user?: Referral_CodeUpdateManyWithoutUser_referralNestedInput
     usageReferral_user?: Referral_UsageUpdateManyWithoutUser_referralUsageNestedInput
     transactions?: Transactions_detailUpdateManyWithoutUserNestedInput
     user_voucher?: VoucherUpdateManyWithoutVoucher_userNestedInput
@@ -22770,13 +23049,14 @@ export namespace Prisma {
     birthdate?: DateTimeFieldUpdateOperationsInput | Date | string
     phone_number?: StringFieldUpdateOperationsInput | string
     avatar?: NullableStringFieldUpdateOperationsInput | string | null
-    referral_code?: NullableStringFieldUpdateOperationsInput | string | null
+    refferal_code?: NullableStringFieldUpdateOperationsInput | string | null
+    referrer_code?: NullableStringFieldUpdateOperationsInput | string | null
     isVerified?: BoolFieldUpdateOperationsInput | boolean
     created_at?: DateTimeFieldUpdateOperationsInput | Date | string
     updated_at?: DateTimeFieldUpdateOperationsInput | Date | string
     reviews_user?: Event_ReviewsUncheckedUpdateManyWithoutReviews_userNestedInput
     attendees_user?: Event_AttendeesUncheckedUpdateManyWithoutUser_attendeesNestedInput
-    referral_user?: Referral_CodeUncheckedUpdateOneWithoutUser_referralNestedInput
+    referral_user?: Referral_CodeUncheckedUpdateManyWithoutUser_referralNestedInput
     usageReferral_user?: Referral_UsageUncheckedUpdateManyWithoutUser_referralUsageNestedInput
     transactions?: Transactions_detailUncheckedUpdateManyWithoutUserNestedInput
     user_voucher?: VoucherUncheckedUpdateManyWithoutVoucher_userNestedInput
@@ -23358,13 +23638,14 @@ export namespace Prisma {
     birthdate: Date | string
     phone_number: string
     avatar?: string | null
-    referral_code?: string | null
+    refferal_code?: string | null
+    referrer_code?: string | null
     isVerified?: boolean
     created_at?: Date | string
     updated_at?: Date | string
     organizer?: OrganizerCreateNestedManyWithoutUserInput
     attendees_user?: Event_AttendeesCreateNestedManyWithoutUser_attendeesInput
-    referral_user?: Referral_CodeCreateNestedOneWithoutUser_referralInput
+    referral_user?: Referral_CodeCreateNestedManyWithoutUser_referralInput
     usageReferral_user?: Referral_UsageCreateNestedManyWithoutUser_referralUsageInput
     transactions?: Transactions_detailCreateNestedManyWithoutUserInput
     user_voucher?: VoucherCreateNestedManyWithoutVoucher_userInput
@@ -23380,13 +23661,14 @@ export namespace Prisma {
     birthdate: Date | string
     phone_number: string
     avatar?: string | null
-    referral_code?: string | null
+    refferal_code?: string | null
+    referrer_code?: string | null
     isVerified?: boolean
     created_at?: Date | string
     updated_at?: Date | string
     organizer?: OrganizerUncheckedCreateNestedManyWithoutUserInput
     attendees_user?: Event_AttendeesUncheckedCreateNestedManyWithoutUser_attendeesInput
-    referral_user?: Referral_CodeUncheckedCreateNestedOneWithoutUser_referralInput
+    referral_user?: Referral_CodeUncheckedCreateNestedManyWithoutUser_referralInput
     usageReferral_user?: Referral_UsageUncheckedCreateNestedManyWithoutUser_referralUsageInput
     transactions?: Transactions_detailUncheckedCreateNestedManyWithoutUserInput
     user_voucher?: VoucherUncheckedCreateNestedManyWithoutVoucher_userInput
@@ -23459,13 +23741,14 @@ export namespace Prisma {
     birthdate?: DateTimeFieldUpdateOperationsInput | Date | string
     phone_number?: StringFieldUpdateOperationsInput | string
     avatar?: NullableStringFieldUpdateOperationsInput | string | null
-    referral_code?: NullableStringFieldUpdateOperationsInput | string | null
+    refferal_code?: NullableStringFieldUpdateOperationsInput | string | null
+    referrer_code?: NullableStringFieldUpdateOperationsInput | string | null
     isVerified?: BoolFieldUpdateOperationsInput | boolean
     created_at?: DateTimeFieldUpdateOperationsInput | Date | string
     updated_at?: DateTimeFieldUpdateOperationsInput | Date | string
     organizer?: OrganizerUpdateManyWithoutUserNestedInput
     attendees_user?: Event_AttendeesUpdateManyWithoutUser_attendeesNestedInput
-    referral_user?: Referral_CodeUpdateOneWithoutUser_referralNestedInput
+    referral_user?: Referral_CodeUpdateManyWithoutUser_referralNestedInput
     usageReferral_user?: Referral_UsageUpdateManyWithoutUser_referralUsageNestedInput
     transactions?: Transactions_detailUpdateManyWithoutUserNestedInput
     user_voucher?: VoucherUpdateManyWithoutVoucher_userNestedInput
@@ -23481,13 +23764,14 @@ export namespace Prisma {
     birthdate?: DateTimeFieldUpdateOperationsInput | Date | string
     phone_number?: StringFieldUpdateOperationsInput | string
     avatar?: NullableStringFieldUpdateOperationsInput | string | null
-    referral_code?: NullableStringFieldUpdateOperationsInput | string | null
+    refferal_code?: NullableStringFieldUpdateOperationsInput | string | null
+    referrer_code?: NullableStringFieldUpdateOperationsInput | string | null
     isVerified?: BoolFieldUpdateOperationsInput | boolean
     created_at?: DateTimeFieldUpdateOperationsInput | Date | string
     updated_at?: DateTimeFieldUpdateOperationsInput | Date | string
     organizer?: OrganizerUncheckedUpdateManyWithoutUserNestedInput
     attendees_user?: Event_AttendeesUncheckedUpdateManyWithoutUser_attendeesNestedInput
-    referral_user?: Referral_CodeUncheckedUpdateOneWithoutUser_referralNestedInput
+    referral_user?: Referral_CodeUncheckedUpdateManyWithoutUser_referralNestedInput
     usageReferral_user?: Referral_UsageUncheckedUpdateManyWithoutUser_referralUsageNestedInput
     transactions?: Transactions_detailUncheckedUpdateManyWithoutUserNestedInput
     user_voucher?: VoucherUncheckedUpdateManyWithoutVoucher_userNestedInput
@@ -23550,13 +23834,14 @@ export namespace Prisma {
     birthdate: Date | string
     phone_number: string
     avatar?: string | null
-    referral_code?: string | null
+    refferal_code?: string | null
+    referrer_code?: string | null
     isVerified?: boolean
     created_at?: Date | string
     updated_at?: Date | string
     organizer?: OrganizerCreateNestedManyWithoutUserInput
     reviews_user?: Event_ReviewsCreateNestedManyWithoutReviews_userInput
-    referral_user?: Referral_CodeCreateNestedOneWithoutUser_referralInput
+    referral_user?: Referral_CodeCreateNestedManyWithoutUser_referralInput
     usageReferral_user?: Referral_UsageCreateNestedManyWithoutUser_referralUsageInput
     transactions?: Transactions_detailCreateNestedManyWithoutUserInput
     user_voucher?: VoucherCreateNestedManyWithoutVoucher_userInput
@@ -23572,13 +23857,14 @@ export namespace Prisma {
     birthdate: Date | string
     phone_number: string
     avatar?: string | null
-    referral_code?: string | null
+    refferal_code?: string | null
+    referrer_code?: string | null
     isVerified?: boolean
     created_at?: Date | string
     updated_at?: Date | string
     organizer?: OrganizerUncheckedCreateNestedManyWithoutUserInput
     reviews_user?: Event_ReviewsUncheckedCreateNestedManyWithoutReviews_userInput
-    referral_user?: Referral_CodeUncheckedCreateNestedOneWithoutUser_referralInput
+    referral_user?: Referral_CodeUncheckedCreateNestedManyWithoutUser_referralInput
     usageReferral_user?: Referral_UsageUncheckedCreateNestedManyWithoutUser_referralUsageInput
     transactions?: Transactions_detailUncheckedCreateNestedManyWithoutUserInput
     user_voucher?: VoucherUncheckedCreateNestedManyWithoutVoucher_userInput
@@ -23651,13 +23937,14 @@ export namespace Prisma {
     birthdate?: DateTimeFieldUpdateOperationsInput | Date | string
     phone_number?: StringFieldUpdateOperationsInput | string
     avatar?: NullableStringFieldUpdateOperationsInput | string | null
-    referral_code?: NullableStringFieldUpdateOperationsInput | string | null
+    refferal_code?: NullableStringFieldUpdateOperationsInput | string | null
+    referrer_code?: NullableStringFieldUpdateOperationsInput | string | null
     isVerified?: BoolFieldUpdateOperationsInput | boolean
     created_at?: DateTimeFieldUpdateOperationsInput | Date | string
     updated_at?: DateTimeFieldUpdateOperationsInput | Date | string
     organizer?: OrganizerUpdateManyWithoutUserNestedInput
     reviews_user?: Event_ReviewsUpdateManyWithoutReviews_userNestedInput
-    referral_user?: Referral_CodeUpdateOneWithoutUser_referralNestedInput
+    referral_user?: Referral_CodeUpdateManyWithoutUser_referralNestedInput
     usageReferral_user?: Referral_UsageUpdateManyWithoutUser_referralUsageNestedInput
     transactions?: Transactions_detailUpdateManyWithoutUserNestedInput
     user_voucher?: VoucherUpdateManyWithoutVoucher_userNestedInput
@@ -23673,13 +23960,14 @@ export namespace Prisma {
     birthdate?: DateTimeFieldUpdateOperationsInput | Date | string
     phone_number?: StringFieldUpdateOperationsInput | string
     avatar?: NullableStringFieldUpdateOperationsInput | string | null
-    referral_code?: NullableStringFieldUpdateOperationsInput | string | null
+    refferal_code?: NullableStringFieldUpdateOperationsInput | string | null
+    referrer_code?: NullableStringFieldUpdateOperationsInput | string | null
     isVerified?: BoolFieldUpdateOperationsInput | boolean
     created_at?: DateTimeFieldUpdateOperationsInput | Date | string
     updated_at?: DateTimeFieldUpdateOperationsInput | Date | string
     organizer?: OrganizerUncheckedUpdateManyWithoutUserNestedInput
     reviews_user?: Event_ReviewsUncheckedUpdateManyWithoutReviews_userNestedInput
-    referral_user?: Referral_CodeUncheckedUpdateOneWithoutUser_referralNestedInput
+    referral_user?: Referral_CodeUncheckedUpdateManyWithoutUser_referralNestedInput
     usageReferral_user?: Referral_UsageUncheckedUpdateManyWithoutUser_referralUsageNestedInput
     transactions?: Transactions_detailUncheckedUpdateManyWithoutUserNestedInput
     user_voucher?: VoucherUncheckedUpdateManyWithoutVoucher_userNestedInput
@@ -23742,7 +24030,8 @@ export namespace Prisma {
     birthdate: Date | string
     phone_number: string
     avatar?: string | null
-    referral_code?: string | null
+    refferal_code?: string | null
+    referrer_code?: string | null
     isVerified?: boolean
     created_at?: Date | string
     updated_at?: Date | string
@@ -23764,7 +24053,8 @@ export namespace Prisma {
     birthdate: Date | string
     phone_number: string
     avatar?: string | null
-    referral_code?: string | null
+    refferal_code?: string | null
+    referrer_code?: string | null
     isVerified?: boolean
     created_at?: Date | string
     updated_at?: Date | string
@@ -23824,7 +24114,8 @@ export namespace Prisma {
     birthdate?: DateTimeFieldUpdateOperationsInput | Date | string
     phone_number?: StringFieldUpdateOperationsInput | string
     avatar?: NullableStringFieldUpdateOperationsInput | string | null
-    referral_code?: NullableStringFieldUpdateOperationsInput | string | null
+    refferal_code?: NullableStringFieldUpdateOperationsInput | string | null
+    referrer_code?: NullableStringFieldUpdateOperationsInput | string | null
     isVerified?: BoolFieldUpdateOperationsInput | boolean
     created_at?: DateTimeFieldUpdateOperationsInput | Date | string
     updated_at?: DateTimeFieldUpdateOperationsInput | Date | string
@@ -23846,7 +24137,8 @@ export namespace Prisma {
     birthdate?: DateTimeFieldUpdateOperationsInput | Date | string
     phone_number?: StringFieldUpdateOperationsInput | string
     avatar?: NullableStringFieldUpdateOperationsInput | string | null
-    referral_code?: NullableStringFieldUpdateOperationsInput | string | null
+    refferal_code?: NullableStringFieldUpdateOperationsInput | string | null
+    referrer_code?: NullableStringFieldUpdateOperationsInput | string | null
     isVerified?: BoolFieldUpdateOperationsInput | boolean
     created_at?: DateTimeFieldUpdateOperationsInput | Date | string
     updated_at?: DateTimeFieldUpdateOperationsInput | Date | string
@@ -23884,14 +24176,15 @@ export namespace Prisma {
     birthdate: Date | string
     phone_number: string
     avatar?: string | null
-    referral_code?: string | null
+    refferal_code?: string | null
+    referrer_code?: string | null
     isVerified?: boolean
     created_at?: Date | string
     updated_at?: Date | string
     organizer?: OrganizerCreateNestedManyWithoutUserInput
     reviews_user?: Event_ReviewsCreateNestedManyWithoutReviews_userInput
     attendees_user?: Event_AttendeesCreateNestedManyWithoutUser_attendeesInput
-    referral_user?: Referral_CodeCreateNestedOneWithoutUser_referralInput
+    referral_user?: Referral_CodeCreateNestedManyWithoutUser_referralInput
     transactions?: Transactions_detailCreateNestedManyWithoutUserInput
     user_voucher?: VoucherCreateNestedManyWithoutVoucher_userInput
   }
@@ -23906,14 +24199,15 @@ export namespace Prisma {
     birthdate: Date | string
     phone_number: string
     avatar?: string | null
-    referral_code?: string | null
+    refferal_code?: string | null
+    referrer_code?: string | null
     isVerified?: boolean
     created_at?: Date | string
     updated_at?: Date | string
     organizer?: OrganizerUncheckedCreateNestedManyWithoutUserInput
     reviews_user?: Event_ReviewsUncheckedCreateNestedManyWithoutReviews_userInput
     attendees_user?: Event_AttendeesUncheckedCreateNestedManyWithoutUser_attendeesInput
-    referral_user?: Referral_CodeUncheckedCreateNestedOneWithoutUser_referralInput
+    referral_user?: Referral_CodeUncheckedCreateNestedManyWithoutUser_referralInput
     transactions?: Transactions_detailUncheckedCreateNestedManyWithoutUserInput
     user_voucher?: VoucherUncheckedCreateNestedManyWithoutVoucher_userInput
   }
@@ -23926,7 +24220,9 @@ export namespace Prisma {
   export type Referral_CodeCreateWithoutUser_referralUsageInput = {
     id?: string
     code: string
-    points: number
+    points?: number | null
+    created_at?: Date | string
+    expired_at?: Date | string | null
     user_referral: UsersCreateNestedOneWithoutReferral_userInput
   }
 
@@ -23934,7 +24230,9 @@ export namespace Prisma {
     id?: string
     user_id: string
     code: string
-    points: number
+    points?: number | null
+    created_at?: Date | string
+    expired_at?: Date | string | null
   }
 
   export type Referral_CodeCreateOrConnectWithoutUser_referralUsageInput = {
@@ -23963,14 +24261,15 @@ export namespace Prisma {
     birthdate?: DateTimeFieldUpdateOperationsInput | Date | string
     phone_number?: StringFieldUpdateOperationsInput | string
     avatar?: NullableStringFieldUpdateOperationsInput | string | null
-    referral_code?: NullableStringFieldUpdateOperationsInput | string | null
+    refferal_code?: NullableStringFieldUpdateOperationsInput | string | null
+    referrer_code?: NullableStringFieldUpdateOperationsInput | string | null
     isVerified?: BoolFieldUpdateOperationsInput | boolean
     created_at?: DateTimeFieldUpdateOperationsInput | Date | string
     updated_at?: DateTimeFieldUpdateOperationsInput | Date | string
     organizer?: OrganizerUpdateManyWithoutUserNestedInput
     reviews_user?: Event_ReviewsUpdateManyWithoutReviews_userNestedInput
     attendees_user?: Event_AttendeesUpdateManyWithoutUser_attendeesNestedInput
-    referral_user?: Referral_CodeUpdateOneWithoutUser_referralNestedInput
+    referral_user?: Referral_CodeUpdateManyWithoutUser_referralNestedInput
     transactions?: Transactions_detailUpdateManyWithoutUserNestedInput
     user_voucher?: VoucherUpdateManyWithoutVoucher_userNestedInput
   }
@@ -23985,14 +24284,15 @@ export namespace Prisma {
     birthdate?: DateTimeFieldUpdateOperationsInput | Date | string
     phone_number?: StringFieldUpdateOperationsInput | string
     avatar?: NullableStringFieldUpdateOperationsInput | string | null
-    referral_code?: NullableStringFieldUpdateOperationsInput | string | null
+    refferal_code?: NullableStringFieldUpdateOperationsInput | string | null
+    referrer_code?: NullableStringFieldUpdateOperationsInput | string | null
     isVerified?: BoolFieldUpdateOperationsInput | boolean
     created_at?: DateTimeFieldUpdateOperationsInput | Date | string
     updated_at?: DateTimeFieldUpdateOperationsInput | Date | string
     organizer?: OrganizerUncheckedUpdateManyWithoutUserNestedInput
     reviews_user?: Event_ReviewsUncheckedUpdateManyWithoutReviews_userNestedInput
     attendees_user?: Event_AttendeesUncheckedUpdateManyWithoutUser_attendeesNestedInput
-    referral_user?: Referral_CodeUncheckedUpdateOneWithoutUser_referralNestedInput
+    referral_user?: Referral_CodeUncheckedUpdateManyWithoutUser_referralNestedInput
     transactions?: Transactions_detailUncheckedUpdateManyWithoutUserNestedInput
     user_voucher?: VoucherUncheckedUpdateManyWithoutVoucher_userNestedInput
   }
@@ -24011,7 +24311,9 @@ export namespace Prisma {
   export type Referral_CodeUpdateWithoutUser_referralUsageInput = {
     id?: StringFieldUpdateOperationsInput | string
     code?: StringFieldUpdateOperationsInput | string
-    points?: IntFieldUpdateOperationsInput | number
+    points?: NullableIntFieldUpdateOperationsInput | number | null
+    created_at?: DateTimeFieldUpdateOperationsInput | Date | string
+    expired_at?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     user_referral?: UsersUpdateOneRequiredWithoutReferral_userNestedInput
   }
 
@@ -24019,7 +24321,9 @@ export namespace Prisma {
     id?: StringFieldUpdateOperationsInput | string
     user_id?: StringFieldUpdateOperationsInput | string
     code?: StringFieldUpdateOperationsInput | string
-    points?: IntFieldUpdateOperationsInput | number
+    points?: NullableIntFieldUpdateOperationsInput | number | null
+    created_at?: DateTimeFieldUpdateOperationsInput | Date | string
+    expired_at?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   }
 
   export type OrganizerCreateWithoutOrganizer_voucherInput = {
@@ -24039,6 +24343,57 @@ export namespace Prisma {
   export type OrganizerCreateOrConnectWithoutOrganizer_voucherInput = {
     where: OrganizerWhereUniqueInput
     create: XOR<OrganizerCreateWithoutOrganizer_voucherInput, OrganizerUncheckedCreateWithoutOrganizer_voucherInput>
+  }
+
+  export type UsersCreateWithoutUser_voucherInput = {
+    id?: string
+    first_name: string
+    last_name: string
+    email: string
+    password: string
+    country: string
+    birthdate: Date | string
+    phone_number: string
+    avatar?: string | null
+    refferal_code?: string | null
+    referrer_code?: string | null
+    isVerified?: boolean
+    created_at?: Date | string
+    updated_at?: Date | string
+    organizer?: OrganizerCreateNestedManyWithoutUserInput
+    reviews_user?: Event_ReviewsCreateNestedManyWithoutReviews_userInput
+    attendees_user?: Event_AttendeesCreateNestedManyWithoutUser_attendeesInput
+    referral_user?: Referral_CodeCreateNestedManyWithoutUser_referralInput
+    usageReferral_user?: Referral_UsageCreateNestedManyWithoutUser_referralUsageInput
+    transactions?: Transactions_detailCreateNestedManyWithoutUserInput
+  }
+
+  export type UsersUncheckedCreateWithoutUser_voucherInput = {
+    id?: string
+    first_name: string
+    last_name: string
+    email: string
+    password: string
+    country: string
+    birthdate: Date | string
+    phone_number: string
+    avatar?: string | null
+    refferal_code?: string | null
+    referrer_code?: string | null
+    isVerified?: boolean
+    created_at?: Date | string
+    updated_at?: Date | string
+    organizer?: OrganizerUncheckedCreateNestedManyWithoutUserInput
+    reviews_user?: Event_ReviewsUncheckedCreateNestedManyWithoutReviews_userInput
+    attendees_user?: Event_AttendeesUncheckedCreateNestedManyWithoutUser_attendeesInput
+    referral_user?: Referral_CodeUncheckedCreateNestedManyWithoutUser_referralInput
+    usageReferral_user?: Referral_UsageUncheckedCreateNestedManyWithoutUser_referralUsageInput
+    transactions?: Transactions_detailUncheckedCreateNestedManyWithoutUserInput
+  }
+
+  export type UsersCreateOrConnectWithoutUser_voucherInput = {
+    where: UsersWhereUniqueInput
+    create: XOR<UsersCreateWithoutUser_voucherInput, UsersUncheckedCreateWithoutUser_voucherInput>
   }
 
   export type TransactionsCreateWithoutTransaction_voucherInput = {
@@ -24065,55 +24420,6 @@ export namespace Prisma {
     skipDuplicates?: boolean
   }
 
-  export type UsersCreateWithoutUser_voucherInput = {
-    id?: string
-    first_name: string
-    last_name: string
-    email: string
-    password: string
-    country: string
-    birthdate: Date | string
-    phone_number: string
-    avatar?: string | null
-    referral_code?: string | null
-    isVerified?: boolean
-    created_at?: Date | string
-    updated_at?: Date | string
-    organizer?: OrganizerCreateNestedManyWithoutUserInput
-    reviews_user?: Event_ReviewsCreateNestedManyWithoutReviews_userInput
-    attendees_user?: Event_AttendeesCreateNestedManyWithoutUser_attendeesInput
-    referral_user?: Referral_CodeCreateNestedOneWithoutUser_referralInput
-    usageReferral_user?: Referral_UsageCreateNestedManyWithoutUser_referralUsageInput
-    transactions?: Transactions_detailCreateNestedManyWithoutUserInput
-  }
-
-  export type UsersUncheckedCreateWithoutUser_voucherInput = {
-    id?: string
-    first_name: string
-    last_name: string
-    email: string
-    password: string
-    country: string
-    birthdate: Date | string
-    phone_number: string
-    avatar?: string | null
-    referral_code?: string | null
-    isVerified?: boolean
-    created_at?: Date | string
-    updated_at?: Date | string
-    organizer?: OrganizerUncheckedCreateNestedManyWithoutUserInput
-    reviews_user?: Event_ReviewsUncheckedCreateNestedManyWithoutReviews_userInput
-    attendees_user?: Event_AttendeesUncheckedCreateNestedManyWithoutUser_attendeesInput
-    referral_user?: Referral_CodeUncheckedCreateNestedOneWithoutUser_referralInput
-    usageReferral_user?: Referral_UsageUncheckedCreateNestedManyWithoutUser_referralUsageInput
-    transactions?: Transactions_detailUncheckedCreateNestedManyWithoutUserInput
-  }
-
-  export type UsersCreateOrConnectWithoutUser_voucherInput = {
-    where: UsersWhereUniqueInput
-    create: XOR<UsersCreateWithoutUser_voucherInput, UsersUncheckedCreateWithoutUser_voucherInput>
-  }
-
   export type OrganizerUpsertWithoutOrganizer_voucherInput = {
     update: XOR<OrganizerUpdateWithoutOrganizer_voucherInput, OrganizerUncheckedUpdateWithoutOrganizer_voucherInput>
     create: XOR<OrganizerCreateWithoutOrganizer_voucherInput, OrganizerUncheckedCreateWithoutOrganizer_voucherInput>
@@ -24137,6 +24443,63 @@ export namespace Prisma {
     user_id?: StringFieldUpdateOperationsInput | string
     event?: EventsUncheckedUpdateManyWithoutOrganizerNestedInput
     organizer_transactionDetails?: Transactions_detailUncheckedUpdateManyWithoutDetail_organizerNestedInput
+  }
+
+  export type UsersUpsertWithoutUser_voucherInput = {
+    update: XOR<UsersUpdateWithoutUser_voucherInput, UsersUncheckedUpdateWithoutUser_voucherInput>
+    create: XOR<UsersCreateWithoutUser_voucherInput, UsersUncheckedCreateWithoutUser_voucherInput>
+    where?: UsersWhereInput
+  }
+
+  export type UsersUpdateToOneWithWhereWithoutUser_voucherInput = {
+    where?: UsersWhereInput
+    data: XOR<UsersUpdateWithoutUser_voucherInput, UsersUncheckedUpdateWithoutUser_voucherInput>
+  }
+
+  export type UsersUpdateWithoutUser_voucherInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    first_name?: StringFieldUpdateOperationsInput | string
+    last_name?: StringFieldUpdateOperationsInput | string
+    email?: StringFieldUpdateOperationsInput | string
+    password?: StringFieldUpdateOperationsInput | string
+    country?: StringFieldUpdateOperationsInput | string
+    birthdate?: DateTimeFieldUpdateOperationsInput | Date | string
+    phone_number?: StringFieldUpdateOperationsInput | string
+    avatar?: NullableStringFieldUpdateOperationsInput | string | null
+    refferal_code?: NullableStringFieldUpdateOperationsInput | string | null
+    referrer_code?: NullableStringFieldUpdateOperationsInput | string | null
+    isVerified?: BoolFieldUpdateOperationsInput | boolean
+    created_at?: DateTimeFieldUpdateOperationsInput | Date | string
+    updated_at?: DateTimeFieldUpdateOperationsInput | Date | string
+    organizer?: OrganizerUpdateManyWithoutUserNestedInput
+    reviews_user?: Event_ReviewsUpdateManyWithoutReviews_userNestedInput
+    attendees_user?: Event_AttendeesUpdateManyWithoutUser_attendeesNestedInput
+    referral_user?: Referral_CodeUpdateManyWithoutUser_referralNestedInput
+    usageReferral_user?: Referral_UsageUpdateManyWithoutUser_referralUsageNestedInput
+    transactions?: Transactions_detailUpdateManyWithoutUserNestedInput
+  }
+
+  export type UsersUncheckedUpdateWithoutUser_voucherInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    first_name?: StringFieldUpdateOperationsInput | string
+    last_name?: StringFieldUpdateOperationsInput | string
+    email?: StringFieldUpdateOperationsInput | string
+    password?: StringFieldUpdateOperationsInput | string
+    country?: StringFieldUpdateOperationsInput | string
+    birthdate?: DateTimeFieldUpdateOperationsInput | Date | string
+    phone_number?: StringFieldUpdateOperationsInput | string
+    avatar?: NullableStringFieldUpdateOperationsInput | string | null
+    refferal_code?: NullableStringFieldUpdateOperationsInput | string | null
+    referrer_code?: NullableStringFieldUpdateOperationsInput | string | null
+    isVerified?: BoolFieldUpdateOperationsInput | boolean
+    created_at?: DateTimeFieldUpdateOperationsInput | Date | string
+    updated_at?: DateTimeFieldUpdateOperationsInput | Date | string
+    organizer?: OrganizerUncheckedUpdateManyWithoutUserNestedInput
+    reviews_user?: Event_ReviewsUncheckedUpdateManyWithoutReviews_userNestedInput
+    attendees_user?: Event_AttendeesUncheckedUpdateManyWithoutUser_attendeesNestedInput
+    referral_user?: Referral_CodeUncheckedUpdateManyWithoutUser_referralNestedInput
+    usageReferral_user?: Referral_UsageUncheckedUpdateManyWithoutUser_referralUsageNestedInput
+    transactions?: Transactions_detailUncheckedUpdateManyWithoutUserNestedInput
   }
 
   export type TransactionsUpsertWithWhereUniqueWithoutTransaction_voucherInput = {
@@ -24165,78 +24528,25 @@ export namespace Prisma {
     proof?: StringFilter<"Transactions"> | string
   }
 
-  export type UsersUpsertWithoutUser_voucherInput = {
-    update: XOR<UsersUpdateWithoutUser_voucherInput, UsersUncheckedUpdateWithoutUser_voucherInput>
-    create: XOR<UsersCreateWithoutUser_voucherInput, UsersUncheckedCreateWithoutUser_voucherInput>
-    where?: UsersWhereInput
-  }
-
-  export type UsersUpdateToOneWithWhereWithoutUser_voucherInput = {
-    where?: UsersWhereInput
-    data: XOR<UsersUpdateWithoutUser_voucherInput, UsersUncheckedUpdateWithoutUser_voucherInput>
-  }
-
-  export type UsersUpdateWithoutUser_voucherInput = {
-    id?: StringFieldUpdateOperationsInput | string
-    first_name?: StringFieldUpdateOperationsInput | string
-    last_name?: StringFieldUpdateOperationsInput | string
-    email?: StringFieldUpdateOperationsInput | string
-    password?: StringFieldUpdateOperationsInput | string
-    country?: StringFieldUpdateOperationsInput | string
-    birthdate?: DateTimeFieldUpdateOperationsInput | Date | string
-    phone_number?: StringFieldUpdateOperationsInput | string
-    avatar?: NullableStringFieldUpdateOperationsInput | string | null
-    referral_code?: NullableStringFieldUpdateOperationsInput | string | null
-    isVerified?: BoolFieldUpdateOperationsInput | boolean
-    created_at?: DateTimeFieldUpdateOperationsInput | Date | string
-    updated_at?: DateTimeFieldUpdateOperationsInput | Date | string
-    organizer?: OrganizerUpdateManyWithoutUserNestedInput
-    reviews_user?: Event_ReviewsUpdateManyWithoutReviews_userNestedInput
-    attendees_user?: Event_AttendeesUpdateManyWithoutUser_attendeesNestedInput
-    referral_user?: Referral_CodeUpdateOneWithoutUser_referralNestedInput
-    usageReferral_user?: Referral_UsageUpdateManyWithoutUser_referralUsageNestedInput
-    transactions?: Transactions_detailUpdateManyWithoutUserNestedInput
-  }
-
-  export type UsersUncheckedUpdateWithoutUser_voucherInput = {
-    id?: StringFieldUpdateOperationsInput | string
-    first_name?: StringFieldUpdateOperationsInput | string
-    last_name?: StringFieldUpdateOperationsInput | string
-    email?: StringFieldUpdateOperationsInput | string
-    password?: StringFieldUpdateOperationsInput | string
-    country?: StringFieldUpdateOperationsInput | string
-    birthdate?: DateTimeFieldUpdateOperationsInput | Date | string
-    phone_number?: StringFieldUpdateOperationsInput | string
-    avatar?: NullableStringFieldUpdateOperationsInput | string | null
-    referral_code?: NullableStringFieldUpdateOperationsInput | string | null
-    isVerified?: BoolFieldUpdateOperationsInput | boolean
-    created_at?: DateTimeFieldUpdateOperationsInput | Date | string
-    updated_at?: DateTimeFieldUpdateOperationsInput | Date | string
-    organizer?: OrganizerUncheckedUpdateManyWithoutUserNestedInput
-    reviews_user?: Event_ReviewsUncheckedUpdateManyWithoutReviews_userNestedInput
-    attendees_user?: Event_AttendeesUncheckedUpdateManyWithoutUser_attendeesNestedInput
-    referral_user?: Referral_CodeUncheckedUpdateOneWithoutUser_referralNestedInput
-    usageReferral_user?: Referral_UsageUncheckedUpdateManyWithoutUser_referralUsageNestedInput
-    transactions?: Transactions_detailUncheckedUpdateManyWithoutUserNestedInput
-  }
-
   export type VoucherCreateWithoutVoucher_transactionInput = {
     id?: string
     code: string
-    amount: number
-    limit: number
+    percentage?: number | null
+    amount?: number | null
+    created_at?: Date | string
     expired_at: Date | string
-    voucher_organizer: OrganizerCreateNestedOneWithoutOrganizer_voucherInput
-    voucher_user: UsersCreateNestedOneWithoutUser_voucherInput
+    voucher_organizer?: OrganizerCreateNestedOneWithoutOrganizer_voucherInput
+    voucher_user?: UsersCreateNestedOneWithoutUser_voucherInput
   }
 
   export type VoucherUncheckedCreateWithoutVoucher_transactionInput = {
     id?: string
-    user_id: string
-    organizer_id: string
+    user_id?: string | null
+    organizer_id?: string | null
     code: string
-    amount: number
-    limit: number
+    percentage?: number | null
+    amount?: number | null
+    created_at?: Date | string
     expired_at: Date | string
   }
 
@@ -24291,20 +24601,22 @@ export namespace Prisma {
   export type VoucherUpdateWithoutVoucher_transactionInput = {
     id?: StringFieldUpdateOperationsInput | string
     code?: StringFieldUpdateOperationsInput | string
-    amount?: IntFieldUpdateOperationsInput | number
-    limit?: IntFieldUpdateOperationsInput | number
+    percentage?: NullableIntFieldUpdateOperationsInput | number | null
+    amount?: NullableIntFieldUpdateOperationsInput | number | null
+    created_at?: DateTimeFieldUpdateOperationsInput | Date | string
     expired_at?: DateTimeFieldUpdateOperationsInput | Date | string
-    voucher_organizer?: OrganizerUpdateOneRequiredWithoutOrganizer_voucherNestedInput
-    voucher_user?: UsersUpdateOneRequiredWithoutUser_voucherNestedInput
+    voucher_organizer?: OrganizerUpdateOneWithoutOrganizer_voucherNestedInput
+    voucher_user?: UsersUpdateOneWithoutUser_voucherNestedInput
   }
 
   export type VoucherUncheckedUpdateWithoutVoucher_transactionInput = {
     id?: StringFieldUpdateOperationsInput | string
-    user_id?: StringFieldUpdateOperationsInput | string
-    organizer_id?: StringFieldUpdateOperationsInput | string
+    user_id?: NullableStringFieldUpdateOperationsInput | string | null
+    organizer_id?: NullableStringFieldUpdateOperationsInput | string | null
     code?: StringFieldUpdateOperationsInput | string
-    amount?: IntFieldUpdateOperationsInput | number
-    limit?: IntFieldUpdateOperationsInput | number
+    percentage?: NullableIntFieldUpdateOperationsInput | number | null
+    amount?: NullableIntFieldUpdateOperationsInput | number | null
+    created_at?: DateTimeFieldUpdateOperationsInput | Date | string
     expired_at?: DateTimeFieldUpdateOperationsInput | Date | string
   }
 
@@ -24334,14 +24646,15 @@ export namespace Prisma {
     birthdate: Date | string
     phone_number: string
     avatar?: string | null
-    referral_code?: string | null
+    refferal_code?: string | null
+    referrer_code?: string | null
     isVerified?: boolean
     created_at?: Date | string
     updated_at?: Date | string
     organizer?: OrganizerCreateNestedManyWithoutUserInput
     reviews_user?: Event_ReviewsCreateNestedManyWithoutReviews_userInput
     attendees_user?: Event_AttendeesCreateNestedManyWithoutUser_attendeesInput
-    referral_user?: Referral_CodeCreateNestedOneWithoutUser_referralInput
+    referral_user?: Referral_CodeCreateNestedManyWithoutUser_referralInput
     usageReferral_user?: Referral_UsageCreateNestedManyWithoutUser_referralUsageInput
     user_voucher?: VoucherCreateNestedManyWithoutVoucher_userInput
   }
@@ -24356,14 +24669,15 @@ export namespace Prisma {
     birthdate: Date | string
     phone_number: string
     avatar?: string | null
-    referral_code?: string | null
+    refferal_code?: string | null
+    referrer_code?: string | null
     isVerified?: boolean
     created_at?: Date | string
     updated_at?: Date | string
     organizer?: OrganizerUncheckedCreateNestedManyWithoutUserInput
     reviews_user?: Event_ReviewsUncheckedCreateNestedManyWithoutReviews_userInput
     attendees_user?: Event_AttendeesUncheckedCreateNestedManyWithoutUser_attendeesInput
-    referral_user?: Referral_CodeUncheckedCreateNestedOneWithoutUser_referralInput
+    referral_user?: Referral_CodeUncheckedCreateNestedManyWithoutUser_referralInput
     usageReferral_user?: Referral_UsageUncheckedCreateNestedManyWithoutUser_referralUsageInput
     user_voucher?: VoucherUncheckedCreateNestedManyWithoutVoucher_userInput
   }
@@ -24473,14 +24787,15 @@ export namespace Prisma {
     birthdate?: DateTimeFieldUpdateOperationsInput | Date | string
     phone_number?: StringFieldUpdateOperationsInput | string
     avatar?: NullableStringFieldUpdateOperationsInput | string | null
-    referral_code?: NullableStringFieldUpdateOperationsInput | string | null
+    refferal_code?: NullableStringFieldUpdateOperationsInput | string | null
+    referrer_code?: NullableStringFieldUpdateOperationsInput | string | null
     isVerified?: BoolFieldUpdateOperationsInput | boolean
     created_at?: DateTimeFieldUpdateOperationsInput | Date | string
     updated_at?: DateTimeFieldUpdateOperationsInput | Date | string
     organizer?: OrganizerUpdateManyWithoutUserNestedInput
     reviews_user?: Event_ReviewsUpdateManyWithoutReviews_userNestedInput
     attendees_user?: Event_AttendeesUpdateManyWithoutUser_attendeesNestedInput
-    referral_user?: Referral_CodeUpdateOneWithoutUser_referralNestedInput
+    referral_user?: Referral_CodeUpdateManyWithoutUser_referralNestedInput
     usageReferral_user?: Referral_UsageUpdateManyWithoutUser_referralUsageNestedInput
     user_voucher?: VoucherUpdateManyWithoutVoucher_userNestedInput
   }
@@ -24495,14 +24810,15 @@ export namespace Prisma {
     birthdate?: DateTimeFieldUpdateOperationsInput | Date | string
     phone_number?: StringFieldUpdateOperationsInput | string
     avatar?: NullableStringFieldUpdateOperationsInput | string | null
-    referral_code?: NullableStringFieldUpdateOperationsInput | string | null
+    refferal_code?: NullableStringFieldUpdateOperationsInput | string | null
+    referrer_code?: NullableStringFieldUpdateOperationsInput | string | null
     isVerified?: BoolFieldUpdateOperationsInput | boolean
     created_at?: DateTimeFieldUpdateOperationsInput | Date | string
     updated_at?: DateTimeFieldUpdateOperationsInput | Date | string
     organizer?: OrganizerUncheckedUpdateManyWithoutUserNestedInput
     reviews_user?: Event_ReviewsUncheckedUpdateManyWithoutReviews_userNestedInput
     attendees_user?: Event_AttendeesUncheckedUpdateManyWithoutUser_attendeesNestedInput
-    referral_user?: Referral_CodeUncheckedUpdateOneWithoutUser_referralNestedInput
+    referral_user?: Referral_CodeUncheckedUpdateManyWithoutUser_referralNestedInput
     usageReferral_user?: Referral_UsageUncheckedUpdateManyWithoutUser_referralUsageNestedInput
     user_voucher?: VoucherUncheckedUpdateManyWithoutVoucher_userNestedInput
   }
@@ -24622,6 +24938,14 @@ export namespace Prisma {
     status: $Enums.Status
   }
 
+  export type Referral_CodeCreateManyUser_referralInput = {
+    id?: string
+    code: string
+    points?: number | null
+    created_at?: Date | string
+    expired_at?: Date | string | null
+  }
+
   export type Referral_UsageCreateManyUser_referralUsageInput = {
     id?: string
     referral_code_id: string
@@ -24641,10 +24965,11 @@ export namespace Prisma {
 
   export type VoucherCreateManyVoucher_userInput = {
     id?: string
-    organizer_id: string
+    organizer_id?: string | null
     code: string
-    amount: number
-    limit: number
+    percentage?: number | null
+    amount?: number | null
+    created_at?: Date | string
     expired_at: Date | string
   }
 
@@ -24708,6 +25033,32 @@ export namespace Prisma {
     status?: EnumStatusFieldUpdateOperationsInput | $Enums.Status
   }
 
+  export type Referral_CodeUpdateWithoutUser_referralInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    code?: StringFieldUpdateOperationsInput | string
+    points?: NullableIntFieldUpdateOperationsInput | number | null
+    created_at?: DateTimeFieldUpdateOperationsInput | Date | string
+    expired_at?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    user_referralUsage?: Referral_UsageUpdateManyWithoutCode_referralUsageNestedInput
+  }
+
+  export type Referral_CodeUncheckedUpdateWithoutUser_referralInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    code?: StringFieldUpdateOperationsInput | string
+    points?: NullableIntFieldUpdateOperationsInput | number | null
+    created_at?: DateTimeFieldUpdateOperationsInput | Date | string
+    expired_at?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    user_referralUsage?: Referral_UsageUncheckedUpdateManyWithoutCode_referralUsageNestedInput
+  }
+
+  export type Referral_CodeUncheckedUpdateManyWithoutUser_referralInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    code?: StringFieldUpdateOperationsInput | string
+    points?: NullableIntFieldUpdateOperationsInput | number | null
+    created_at?: DateTimeFieldUpdateOperationsInput | Date | string
+    expired_at?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  }
+
   export type Referral_UsageUpdateWithoutUser_referralUsageInput = {
     id?: StringFieldUpdateOperationsInput | string
     used_at?: DateTimeFieldUpdateOperationsInput | Date | string
@@ -24762,29 +25113,32 @@ export namespace Prisma {
   export type VoucherUpdateWithoutVoucher_userInput = {
     id?: StringFieldUpdateOperationsInput | string
     code?: StringFieldUpdateOperationsInput | string
-    amount?: IntFieldUpdateOperationsInput | number
-    limit?: IntFieldUpdateOperationsInput | number
+    percentage?: NullableIntFieldUpdateOperationsInput | number | null
+    amount?: NullableIntFieldUpdateOperationsInput | number | null
+    created_at?: DateTimeFieldUpdateOperationsInput | Date | string
     expired_at?: DateTimeFieldUpdateOperationsInput | Date | string
-    voucher_organizer?: OrganizerUpdateOneRequiredWithoutOrganizer_voucherNestedInput
+    voucher_organizer?: OrganizerUpdateOneWithoutOrganizer_voucherNestedInput
     voucher_transaction?: TransactionsUpdateManyWithoutTransaction_voucherNestedInput
   }
 
   export type VoucherUncheckedUpdateWithoutVoucher_userInput = {
     id?: StringFieldUpdateOperationsInput | string
-    organizer_id?: StringFieldUpdateOperationsInput | string
+    organizer_id?: NullableStringFieldUpdateOperationsInput | string | null
     code?: StringFieldUpdateOperationsInput | string
-    amount?: IntFieldUpdateOperationsInput | number
-    limit?: IntFieldUpdateOperationsInput | number
+    percentage?: NullableIntFieldUpdateOperationsInput | number | null
+    amount?: NullableIntFieldUpdateOperationsInput | number | null
+    created_at?: DateTimeFieldUpdateOperationsInput | Date | string
     expired_at?: DateTimeFieldUpdateOperationsInput | Date | string
     voucher_transaction?: TransactionsUncheckedUpdateManyWithoutTransaction_voucherNestedInput
   }
 
   export type VoucherUncheckedUpdateManyWithoutVoucher_userInput = {
     id?: StringFieldUpdateOperationsInput | string
-    organizer_id?: StringFieldUpdateOperationsInput | string
+    organizer_id?: NullableStringFieldUpdateOperationsInput | string | null
     code?: StringFieldUpdateOperationsInput | string
-    amount?: IntFieldUpdateOperationsInput | number
-    limit?: IntFieldUpdateOperationsInput | number
+    percentage?: NullableIntFieldUpdateOperationsInput | number | null
+    amount?: NullableIntFieldUpdateOperationsInput | number | null
+    created_at?: DateTimeFieldUpdateOperationsInput | Date | string
     expired_at?: DateTimeFieldUpdateOperationsInput | Date | string
   }
 
@@ -24804,10 +25158,11 @@ export namespace Prisma {
 
   export type VoucherCreateManyVoucher_organizerInput = {
     id?: string
-    user_id: string
+    user_id?: string | null
     code: string
-    amount: number
-    limit: number
+    percentage?: number | null
+    amount?: number | null
+    created_at?: Date | string
     expired_at: Date | string
   }
 
@@ -24875,29 +25230,32 @@ export namespace Prisma {
   export type VoucherUpdateWithoutVoucher_organizerInput = {
     id?: StringFieldUpdateOperationsInput | string
     code?: StringFieldUpdateOperationsInput | string
-    amount?: IntFieldUpdateOperationsInput | number
-    limit?: IntFieldUpdateOperationsInput | number
+    percentage?: NullableIntFieldUpdateOperationsInput | number | null
+    amount?: NullableIntFieldUpdateOperationsInput | number | null
+    created_at?: DateTimeFieldUpdateOperationsInput | Date | string
     expired_at?: DateTimeFieldUpdateOperationsInput | Date | string
+    voucher_user?: UsersUpdateOneWithoutUser_voucherNestedInput
     voucher_transaction?: TransactionsUpdateManyWithoutTransaction_voucherNestedInput
-    voucher_user?: UsersUpdateOneRequiredWithoutUser_voucherNestedInput
   }
 
   export type VoucherUncheckedUpdateWithoutVoucher_organizerInput = {
     id?: StringFieldUpdateOperationsInput | string
-    user_id?: StringFieldUpdateOperationsInput | string
+    user_id?: NullableStringFieldUpdateOperationsInput | string | null
     code?: StringFieldUpdateOperationsInput | string
-    amount?: IntFieldUpdateOperationsInput | number
-    limit?: IntFieldUpdateOperationsInput | number
+    percentage?: NullableIntFieldUpdateOperationsInput | number | null
+    amount?: NullableIntFieldUpdateOperationsInput | number | null
+    created_at?: DateTimeFieldUpdateOperationsInput | Date | string
     expired_at?: DateTimeFieldUpdateOperationsInput | Date | string
     voucher_transaction?: TransactionsUncheckedUpdateManyWithoutTransaction_voucherNestedInput
   }
 
   export type VoucherUncheckedUpdateManyWithoutVoucher_organizerInput = {
     id?: StringFieldUpdateOperationsInput | string
-    user_id?: StringFieldUpdateOperationsInput | string
+    user_id?: NullableStringFieldUpdateOperationsInput | string | null
     code?: StringFieldUpdateOperationsInput | string
-    amount?: IntFieldUpdateOperationsInput | number
-    limit?: IntFieldUpdateOperationsInput | number
+    percentage?: NullableIntFieldUpdateOperationsInput | number | null
+    amount?: NullableIntFieldUpdateOperationsInput | number | null
+    created_at?: DateTimeFieldUpdateOperationsInput | Date | string
     expired_at?: DateTimeFieldUpdateOperationsInput | Date | string
   }
 
