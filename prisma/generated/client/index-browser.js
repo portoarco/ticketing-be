@@ -130,7 +130,8 @@ exports.Prisma.UsersScalarFieldEnum = {
   birthdate: 'birthdate',
   phone_number: 'phone_number',
   avatar: 'avatar',
-  referral_code: 'referral_code',
+  refferal_code: 'refferal_code',
+  referrer_code: 'referrer_code',
   isVerified: 'isVerified',
   created_at: 'created_at',
   updated_at: 'updated_at'
@@ -201,7 +202,9 @@ exports.Prisma.Referral_CodeScalarFieldEnum = {
   id: 'id',
   user_id: 'user_id',
   code: 'code',
-  points: 'points'
+  points: 'points',
+  created_at: 'created_at',
+  expired_at: 'expired_at'
 };
 
 exports.Prisma.Referral_UsageScalarFieldEnum = {
@@ -216,8 +219,9 @@ exports.Prisma.VoucherScalarFieldEnum = {
   user_id: 'user_id',
   organizer_id: 'organizer_id',
   code: 'code',
+  percentage: 'percentage',
   amount: 'amount',
-  limit: 'limit',
+  created_at: 'created_at',
   expired_at: 'expired_at'
 };
 

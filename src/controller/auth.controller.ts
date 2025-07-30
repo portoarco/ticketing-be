@@ -6,21 +6,38 @@ import { transport } from "../config/nodemailer";
 import { regisTemplateMail } from "../templates/registemplate";
 import { compare } from "bcrypt";
 import { sign } from "jsonwebtoken";
+import { generateKey } from "crypto";
+import { generateRefferalCode } from "../../utils/generateCode";
 
 class AuthController {
   public async register(req: Request, res: Response, next: NextFunction) {
-    const {
-      first_name,
-      last_name,
-      email,
-      password,
-      country,
-      birthdate,
-      phone_number,
-    } = req.body;
-
     try {
+      const {
+        first_name,
+        last_name,
+        email,
+        password,
+        country,
+        birthdate,
+        phone_number,
+        referrer_code,
+      } = req.body;
+
       const hashedPassword = await hashPassword(password);
+
+      let findReferrer = null;
+
+      if (referrer_code) {
+        findReferrer = await prisma.users.findUnique({
+          where: { refferal_code: referrer_code },
+        });
+
+        if (!findReferrer) {
+          throw new AppError("Referrer Data Not Found", 404);
+        }
+      }
+
+      // if ok, create new user
       const newUser = await prisma.users.create({
         data: {
           first_name,
@@ -30,8 +47,32 @@ class AuthController {
           country,
           birthdate,
           phone_number,
+          referrer_code,
+          refferal_code: generateRefferalCode(first_name),
         },
       });
+
+      if (findReferrer) {
+        // generate points for referrer
+        const reffererPoints = await prisma.referral_Code.create({
+          data: {
+            user_id: findReferrer.id,
+            code: findReferrer?.refferal_code || "null",
+            points: 10000,
+            expired_at: new Date(Date.now() + 90 * 24 * 60 * 60 * 1000),
+          },
+        });
+
+        // generate voucher discount for new user
+        const newUserVoucher = await prisma.voucher.create({
+          data: {
+            user_id: newUser.id,
+            code: "NEWUSER",
+            percentage: 25,
+            expired_at: new Date(Date.now() + 90 * 24 * 60 * 60 * 1000),
+          },
+        });
+      }
 
       // token isVerified (in register function)
       const token = sign(
@@ -51,7 +92,7 @@ class AuthController {
 
       res.status(201).send({ success: true, data: newUser });
     } catch (error) {
-      throw new AppError("Something went wrong", 500);
+      next(error);
     }
   }
 
@@ -93,7 +134,7 @@ class AuthController {
         },
       });
     } catch (error) {
-      throw new AppError("Something went wrong", 500);
+      next(error);
     }
   }
 
@@ -113,7 +154,7 @@ class AuthController {
         message: "Verification Success!",
       });
     } catch (error) {
-      throw new AppError("Something went wrong", 500);
+      next(error);
     }
   }
 }
