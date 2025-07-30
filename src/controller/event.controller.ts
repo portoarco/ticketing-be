@@ -31,6 +31,22 @@ class EventController {
     }
   }
 
+  public async getEventsById(req: Request, res: Response, next: NextFunction) {
+    try {
+      const organizer_id: string = req.params.organizer_id;
+
+      const eventsbyid = await prisma.events.findMany({
+        where: { organizer_id },
+      });
+
+      console.log(eventsbyid);
+
+      res.status(200).send(eventsbyid);
+    } catch (error) {
+      next(error);
+    }
+  }
+
   public async deleteEvent(req: Request, res: Response, next: NextFunction) {
     try {
       await prisma.events.delete({

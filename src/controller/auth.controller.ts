@@ -117,8 +117,10 @@ class AuthController {
       const token = sign(
         { id: login.id, isVerified: login.isVerified },
         process.env.TOKEN_KEY || "minprosecret",
-        { expiresIn: "1h" }
+        { expiresIn: "10s" }
       );
+
+      // console.log(token);
 
       res.status(200).send({
         success: true,
@@ -153,6 +155,18 @@ class AuthController {
         success: true,
         message: "Verification Success!",
       });
+    } catch (error) {
+      next(error);
+    }
+  }
+
+  public async verifyOrganizer(
+    req: Request,
+    res: Response,
+    next: NextFunction
+  ) {
+    try {
+      await prisma;
     } catch (error) {
       next(error);
     }
