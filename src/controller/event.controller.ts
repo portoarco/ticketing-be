@@ -6,9 +6,35 @@ import { randomUUID } from "crypto";
 class EventController {
   public async getAllEvents(req: Request, res: Response, next: NextFunction) {
     try {
-      const events = await prisma.events.findMany();
+      const events = await prisma.events.findMany({
+        orderBy: {
+          start_date: "desc",
+        },
+        include: {
+          organizer: {
+            include: {
+              user: { select: { first_name: true, last_name: true } },
+            },
+          },
+
+          event_category: true,
+          event_location: true,
+        },
+      });
 
       res.status(200).send(events);
+    } catch (error) {
+      console.log(error);
+      res.status(500).send(error);
+    }
+  }
+
+  public async deleteEvent(req: Request, res: Response, next: NextFunction) {
+    try {
+      await prisma.events.delete({
+        where: { id: req.params.id },
+      });
+      res.status(204).send({ message: "Delete success" });
     } catch (error) {
       console.log(error);
       res.status(500).send(error);
@@ -23,8 +49,8 @@ class EventController {
       const newEvent = await prisma.events.create({
         data: {
           organizer_id: randomUUID(),
-          event_category_id: 1, // temporary
-          event_location_id: 1, //
+          event_category_id: "", // temporary
+          event_location_id: "", //
           name,
           description,
           price,
