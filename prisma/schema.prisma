@@ -185,8 +185,8 @@ model Transactions_detail {
   details_transaction Transactions @relation(fields: [transaction_id],references: [id],onDelete: Cascade)
   detail_event Events @relation(fields: [event_id],references: [id],onDelete: Cascade)
   detail_organizer Organizer @relation(fields: [organizer_id],references: [id],onDelete: Cascade)
-
   }
+
 
 
 
