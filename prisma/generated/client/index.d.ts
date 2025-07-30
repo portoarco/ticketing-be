@@ -3609,6 +3609,7 @@ export namespace Prisma {
     price: number | null
     start_date: Date | null
     end_date: Date | null
+    image: string | null
     created_at: Date | null
     updated_at: Date | null
   }
@@ -3623,6 +3624,7 @@ export namespace Prisma {
     price: number | null
     start_date: Date | null
     end_date: Date | null
+    image: string | null
     created_at: Date | null
     updated_at: Date | null
   }
@@ -3637,6 +3639,7 @@ export namespace Prisma {
     price: number
     start_date: number
     end_date: number
+    image: number
     created_at: number
     updated_at: number
     _all: number
@@ -3661,6 +3664,7 @@ export namespace Prisma {
     price?: true
     start_date?: true
     end_date?: true
+    image?: true
     created_at?: true
     updated_at?: true
   }
@@ -3675,6 +3679,7 @@ export namespace Prisma {
     price?: true
     start_date?: true
     end_date?: true
+    image?: true
     created_at?: true
     updated_at?: true
   }
@@ -3689,6 +3694,7 @@ export namespace Prisma {
     price?: true
     start_date?: true
     end_date?: true
+    image?: true
     created_at?: true
     updated_at?: true
     _all?: true
@@ -3790,6 +3796,7 @@ export namespace Prisma {
     price: number
     start_date: Date
     end_date: Date | null
+    image: string | null
     created_at: Date
     updated_at: Date
     _count: EventsCountAggregateOutputType | null
@@ -3823,6 +3830,7 @@ export namespace Prisma {
     price?: boolean
     start_date?: boolean
     end_date?: boolean
+    image?: boolean
     created_at?: boolean
     updated_at?: boolean
     organizer?: boolean | OrganizerDefaultArgs<ExtArgs>
@@ -3840,6 +3848,7 @@ export namespace Prisma {
     price?: boolean
     start_date?: boolean
     end_date?: boolean
+    image?: boolean
     created_at?: boolean
     updated_at?: boolean
     organizer?: boolean | OrganizerDefaultArgs<ExtArgs>
@@ -3857,6 +3866,7 @@ export namespace Prisma {
     price?: boolean
     start_date?: boolean
     end_date?: boolean
+    image?: boolean
     created_at?: boolean
     updated_at?: boolean
     organizer?: boolean | OrganizerDefaultArgs<ExtArgs>
@@ -3874,11 +3884,12 @@ export namespace Prisma {
     price?: boolean
     start_date?: boolean
     end_date?: boolean
+    image?: boolean
     created_at?: boolean
     updated_at?: boolean
   }
 
-  export type EventsOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "organizer_id" | "event_category_id" | "event_location_id" | "name" | "description" | "price" | "start_date" | "end_date" | "created_at" | "updated_at", ExtArgs["result"]["events"]>
+  export type EventsOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "organizer_id" | "event_category_id" | "event_location_id" | "name" | "description" | "price" | "start_date" | "end_date" | "image" | "created_at" | "updated_at", ExtArgs["result"]["events"]>
   export type EventsInclude<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     organizer?: boolean | OrganizerDefaultArgs<ExtArgs>
     event_category?: boolean | Event_CategoryDefaultArgs<ExtArgs>
@@ -3912,6 +3923,7 @@ export namespace Prisma {
       price: number
       start_date: Date
       end_date: Date | null
+      image: string | null
       created_at: Date
       updated_at: Date
     }, ExtArgs["result"]["events"]>
@@ -4349,6 +4361,7 @@ export namespace Prisma {
     readonly price: FieldRef<"Events", 'Int'>
     readonly start_date: FieldRef<"Events", 'DateTime'>
     readonly end_date: FieldRef<"Events", 'DateTime'>
+    readonly image: FieldRef<"Events", 'String'>
     readonly created_at: FieldRef<"Events", 'DateTime'>
     readonly updated_at: FieldRef<"Events", 'DateTime'>
   }
@@ -6904,6 +6917,7 @@ export namespace Prisma {
     price: 'price',
     start_date: 'start_date',
     end_date: 'end_date',
+    image: 'image',
     created_at: 'created_at',
     updated_at: 'updated_at'
   };
@@ -7175,6 +7189,7 @@ export namespace Prisma {
     price?: IntFilter<"Events"> | number
     start_date?: DateTimeFilter<"Events"> | Date | string
     end_date?: DateTimeNullableFilter<"Events"> | Date | string | null
+    image?: StringNullableFilter<"Events"> | string | null
     created_at?: DateTimeFilter<"Events"> | Date | string
     updated_at?: DateTimeFilter<"Events"> | Date | string
     organizer?: XOR<OrganizerScalarRelationFilter, OrganizerWhereInput>
@@ -7192,6 +7207,7 @@ export namespace Prisma {
     price?: SortOrder
     start_date?: SortOrder
     end_date?: SortOrderInput | SortOrder
+    image?: SortOrderInput | SortOrder
     created_at?: SortOrder
     updated_at?: SortOrder
     organizer?: OrganizerOrderByWithRelationInput
@@ -7212,6 +7228,7 @@ export namespace Prisma {
     price?: IntFilter<"Events"> | number
     start_date?: DateTimeFilter<"Events"> | Date | string
     end_date?: DateTimeNullableFilter<"Events"> | Date | string | null
+    image?: StringNullableFilter<"Events"> | string | null
     created_at?: DateTimeFilter<"Events"> | Date | string
     updated_at?: DateTimeFilter<"Events"> | Date | string
     organizer?: XOR<OrganizerScalarRelationFilter, OrganizerWhereInput>
@@ -7229,6 +7246,7 @@ export namespace Prisma {
     price?: SortOrder
     start_date?: SortOrder
     end_date?: SortOrderInput | SortOrder
+    image?: SortOrderInput | SortOrder
     created_at?: SortOrder
     updated_at?: SortOrder
     _count?: EventsCountOrderByAggregateInput
@@ -7251,6 +7269,7 @@ export namespace Prisma {
     price?: IntWithAggregatesFilter<"Events"> | number
     start_date?: DateTimeWithAggregatesFilter<"Events"> | Date | string
     end_date?: DateTimeNullableWithAggregatesFilter<"Events"> | Date | string | null
+    image?: StringNullableWithAggregatesFilter<"Events"> | string | null
     created_at?: DateTimeWithAggregatesFilter<"Events"> | Date | string
     updated_at?: DateTimeWithAggregatesFilter<"Events"> | Date | string
   }
@@ -7506,6 +7525,7 @@ export namespace Prisma {
     price: number
     start_date: Date | string
     end_date?: Date | string | null
+    image?: string | null
     created_at?: Date | string
     updated_at?: Date | string
     organizer: OrganizerCreateNestedOneWithoutEventInput
@@ -7523,6 +7543,7 @@ export namespace Prisma {
     price: number
     start_date: Date | string
     end_date?: Date | string | null
+    image?: string | null
     created_at?: Date | string
     updated_at?: Date | string
   }
@@ -7534,6 +7555,7 @@ export namespace Prisma {
     price?: IntFieldUpdateOperationsInput | number
     start_date?: DateTimeFieldUpdateOperationsInput | Date | string
     end_date?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    image?: NullableStringFieldUpdateOperationsInput | string | null
     created_at?: DateTimeFieldUpdateOperationsInput | Date | string
     updated_at?: DateTimeFieldUpdateOperationsInput | Date | string
     organizer?: OrganizerUpdateOneRequiredWithoutEventNestedInput
@@ -7551,6 +7573,7 @@ export namespace Prisma {
     price?: IntFieldUpdateOperationsInput | number
     start_date?: DateTimeFieldUpdateOperationsInput | Date | string
     end_date?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    image?: NullableStringFieldUpdateOperationsInput | string | null
     created_at?: DateTimeFieldUpdateOperationsInput | Date | string
     updated_at?: DateTimeFieldUpdateOperationsInput | Date | string
   }
@@ -7565,6 +7588,7 @@ export namespace Prisma {
     price: number
     start_date: Date | string
     end_date?: Date | string | null
+    image?: string | null
     created_at?: Date | string
     updated_at?: Date | string
   }
@@ -7576,6 +7600,7 @@ export namespace Prisma {
     price?: IntFieldUpdateOperationsInput | number
     start_date?: DateTimeFieldUpdateOperationsInput | Date | string
     end_date?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    image?: NullableStringFieldUpdateOperationsInput | string | null
     created_at?: DateTimeFieldUpdateOperationsInput | Date | string
     updated_at?: DateTimeFieldUpdateOperationsInput | Date | string
   }
@@ -7590,6 +7615,7 @@ export namespace Prisma {
     price?: IntFieldUpdateOperationsInput | number
     start_date?: DateTimeFieldUpdateOperationsInput | Date | string
     end_date?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    image?: NullableStringFieldUpdateOperationsInput | string | null
     created_at?: DateTimeFieldUpdateOperationsInput | Date | string
     updated_at?: DateTimeFieldUpdateOperationsInput | Date | string
   }
@@ -7930,6 +7956,7 @@ export namespace Prisma {
     price?: SortOrder
     start_date?: SortOrder
     end_date?: SortOrder
+    image?: SortOrder
     created_at?: SortOrder
     updated_at?: SortOrder
   }
@@ -7948,6 +7975,7 @@ export namespace Prisma {
     price?: SortOrder
     start_date?: SortOrder
     end_date?: SortOrder
+    image?: SortOrder
     created_at?: SortOrder
     updated_at?: SortOrder
   }
@@ -7962,6 +7990,7 @@ export namespace Prisma {
     price?: SortOrder
     start_date?: SortOrder
     end_date?: SortOrder
+    image?: SortOrder
     created_at?: SortOrder
     updated_at?: SortOrder
   }
@@ -8550,6 +8579,7 @@ export namespace Prisma {
     price: number
     start_date: Date | string
     end_date?: Date | string | null
+    image?: string | null
     created_at?: Date | string
     updated_at?: Date | string
     event_category: Event_CategoryCreateNestedOneWithoutEventInput
@@ -8565,6 +8595,7 @@ export namespace Prisma {
     price: number
     start_date: Date | string
     end_date?: Date | string | null
+    image?: string | null
     created_at?: Date | string
     updated_at?: Date | string
   }
@@ -8651,6 +8682,7 @@ export namespace Prisma {
     price?: IntFilter<"Events"> | number
     start_date?: DateTimeFilter<"Events"> | Date | string
     end_date?: DateTimeNullableFilter<"Events"> | Date | string | null
+    image?: StringNullableFilter<"Events"> | string | null
     created_at?: DateTimeFilter<"Events"> | Date | string
     updated_at?: DateTimeFilter<"Events"> | Date | string
   }
@@ -8778,6 +8810,7 @@ export namespace Prisma {
     price: number
     start_date: Date | string
     end_date?: Date | string | null
+    image?: string | null
     created_at?: Date | string
     updated_at?: Date | string
     organizer: OrganizerCreateNestedOneWithoutEventInput
@@ -8793,6 +8826,7 @@ export namespace Prisma {
     price: number
     start_date: Date | string
     end_date?: Date | string | null
+    image?: string | null
     created_at?: Date | string
     updated_at?: Date | string
   }
@@ -8830,6 +8864,7 @@ export namespace Prisma {
     price: number
     start_date: Date | string
     end_date?: Date | string | null
+    image?: string | null
     created_at?: Date | string
     updated_at?: Date | string
     organizer: OrganizerCreateNestedOneWithoutEventInput
@@ -8845,6 +8880,7 @@ export namespace Prisma {
     price: number
     start_date: Date | string
     end_date?: Date | string | null
+    image?: string | null
     created_at?: Date | string
     updated_at?: Date | string
   }
@@ -8902,6 +8938,7 @@ export namespace Prisma {
     price: number
     start_date: Date | string
     end_date?: Date | string | null
+    image?: string | null
     created_at?: Date | string
     updated_at?: Date | string
   }
@@ -8913,6 +8950,7 @@ export namespace Prisma {
     price?: IntFieldUpdateOperationsInput | number
     start_date?: DateTimeFieldUpdateOperationsInput | Date | string
     end_date?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    image?: NullableStringFieldUpdateOperationsInput | string | null
     created_at?: DateTimeFieldUpdateOperationsInput | Date | string
     updated_at?: DateTimeFieldUpdateOperationsInput | Date | string
     event_category?: Event_CategoryUpdateOneRequiredWithoutEventNestedInput
@@ -8928,6 +8966,7 @@ export namespace Prisma {
     price?: IntFieldUpdateOperationsInput | number
     start_date?: DateTimeFieldUpdateOperationsInput | Date | string
     end_date?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    image?: NullableStringFieldUpdateOperationsInput | string | null
     created_at?: DateTimeFieldUpdateOperationsInput | Date | string
     updated_at?: DateTimeFieldUpdateOperationsInput | Date | string
   }
@@ -8941,6 +8980,7 @@ export namespace Prisma {
     price?: IntFieldUpdateOperationsInput | number
     start_date?: DateTimeFieldUpdateOperationsInput | Date | string
     end_date?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    image?: NullableStringFieldUpdateOperationsInput | string | null
     created_at?: DateTimeFieldUpdateOperationsInput | Date | string
     updated_at?: DateTimeFieldUpdateOperationsInput | Date | string
   }
@@ -8954,6 +8994,7 @@ export namespace Prisma {
     price: number
     start_date: Date | string
     end_date?: Date | string | null
+    image?: string | null
     created_at?: Date | string
     updated_at?: Date | string
   }
@@ -8965,6 +9006,7 @@ export namespace Prisma {
     price?: IntFieldUpdateOperationsInput | number
     start_date?: DateTimeFieldUpdateOperationsInput | Date | string
     end_date?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    image?: NullableStringFieldUpdateOperationsInput | string | null
     created_at?: DateTimeFieldUpdateOperationsInput | Date | string
     updated_at?: DateTimeFieldUpdateOperationsInput | Date | string
     organizer?: OrganizerUpdateOneRequiredWithoutEventNestedInput
@@ -8980,6 +9022,7 @@ export namespace Prisma {
     price?: IntFieldUpdateOperationsInput | number
     start_date?: DateTimeFieldUpdateOperationsInput | Date | string
     end_date?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    image?: NullableStringFieldUpdateOperationsInput | string | null
     created_at?: DateTimeFieldUpdateOperationsInput | Date | string
     updated_at?: DateTimeFieldUpdateOperationsInput | Date | string
   }
@@ -8993,6 +9036,7 @@ export namespace Prisma {
     price?: IntFieldUpdateOperationsInput | number
     start_date?: DateTimeFieldUpdateOperationsInput | Date | string
     end_date?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    image?: NullableStringFieldUpdateOperationsInput | string | null
     created_at?: DateTimeFieldUpdateOperationsInput | Date | string
     updated_at?: DateTimeFieldUpdateOperationsInput | Date | string
   }
@@ -9006,6 +9050,7 @@ export namespace Prisma {
     price: number
     start_date: Date | string
     end_date?: Date | string | null
+    image?: string | null
     created_at?: Date | string
     updated_at?: Date | string
   }
@@ -9017,6 +9062,7 @@ export namespace Prisma {
     price?: IntFieldUpdateOperationsInput | number
     start_date?: DateTimeFieldUpdateOperationsInput | Date | string
     end_date?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    image?: NullableStringFieldUpdateOperationsInput | string | null
     created_at?: DateTimeFieldUpdateOperationsInput | Date | string
     updated_at?: DateTimeFieldUpdateOperationsInput | Date | string
     organizer?: OrganizerUpdateOneRequiredWithoutEventNestedInput
@@ -9032,6 +9078,7 @@ export namespace Prisma {
     price?: IntFieldUpdateOperationsInput | number
     start_date?: DateTimeFieldUpdateOperationsInput | Date | string
     end_date?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    image?: NullableStringFieldUpdateOperationsInput | string | null
     created_at?: DateTimeFieldUpdateOperationsInput | Date | string
     updated_at?: DateTimeFieldUpdateOperationsInput | Date | string
   }
@@ -9045,6 +9092,7 @@ export namespace Prisma {
     price?: IntFieldUpdateOperationsInput | number
     start_date?: DateTimeFieldUpdateOperationsInput | Date | string
     end_date?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    image?: NullableStringFieldUpdateOperationsInput | string | null
     created_at?: DateTimeFieldUpdateOperationsInput | Date | string
     updated_at?: DateTimeFieldUpdateOperationsInput | Date | string
   }

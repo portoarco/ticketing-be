@@ -46,6 +46,7 @@ model Events {
   price             Int
   start_date        DateTime
   end_date          DateTime?
+  image             String?
   created_at        DateTime  @default(now())
   updated_at        DateTime  @updatedAt
 
@@ -62,10 +63,10 @@ model Event_Category {
 }
 
 model Event_Location {
-  id   String @id @default(uuid())
+  id       String @id @default(uuid())
   event_id String
-  city String 
-  address String
+  city     String
+  address  String
 
   event Events[]
 }

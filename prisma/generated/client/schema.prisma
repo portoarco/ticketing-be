@@ -46,6 +46,7 @@ model Events {
   price             Int
   start_date        DateTime
   end_date          DateTime?
+  image             String?
   created_at        DateTime  @default(now())
   updated_at        DateTime  @updatedAt
 

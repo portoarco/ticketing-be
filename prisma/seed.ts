@@ -9,7 +9,6 @@ async function seed() {
     // await prisma.events.deleteMany();
     await prisma.organizer.deleteMany();
 
-    // Eky --start
     const categories = [
       "Music",
       "Art & Culture",
@@ -24,7 +23,6 @@ async function seed() {
     );
 
     const createdPromises = await Promise.all(createCategories);
-    //Eky --end
 
     // Create Users Data
     for (let i = 0; i < 10; i++) {
@@ -67,38 +65,70 @@ async function seed() {
       });
     }
 
-    // Create Events - Eky - start
+    // Create event location - start
 
-    const event_name = faker.lorem.sentence();
-    const event_description = faker.lorem.text();
-    const event_price = faker.number.int({ min: 10, max: 300 });
-    const event_startDate = faker.date.between({
-      from: new Date("2025-01-01"),
-      to: new Date("2026-01-01"),
-    });
-    const oneDayInMilis = 86400000;
-    let event_endDate;
-    if (Math.floor(Math.random() * 2) == 1 && event_startDate) {
-      event_endDate = new Date(
-        event_startDate.getTime() +
-          oneDayInMilis * Math.floor(Math.random() * 3 + 1)
-      );
+    const city = [
+      "Ardenleigh",
+      "Stoneford",
+      "Bridgemont",
+      "Lakeshore",
+      "Halcyon City",
+    ];
+
+    for (let index = 0; index < 10; index++) {
+      const address = faker.location.streetAddress();
+      const randomCity = faker.helpers.arrayElement(city);
+      await prisma.event_Location.create({
+        data: { address, city: randomCity, event_id: "test" },
+      });
     }
 
-    // Eky - end
+    //
 
-    // Create Event Locations
-    // const city = faker.location.city();
-    // const address = faker.location.streetAddress();
+    // Create Event
 
-    // for(let i = 0; i<users.length;i++){
-    //   await prisma.events.create({
-    //     data:{
-    //       user
-    //     }
-    //   })
+    const organizers = await prisma.organizer.findMany();
+    console.log("Organizers : ", organizers);
+    const location = await prisma.event_Location.findMany();
 
-    // }
+    for (let index = 0; index < 10; index++) {
+      const oneDayInMilis = 86400000;
+      const selectedOrganizer = faker.helpers.arrayElement(organizers);
+      const selectedLocation = faker.helpers.arrayElement(location);
+      const selectedCategory = faker.helpers.arrayElement(createdPromises);
+      console.log(selectedCategory);
+      const event_name = faker.lorem.sentence();
+      const event_description = faker.lorem.text();
+      const event_price = faker.number.int({ min: 100000, max: 400000 });
+      const event_startDate = faker.date.between({
+        from: new Date("2025-01-01"),
+        to: new Date("2026-01-01"),
+      });
+      let event_endDate;
+      if (Math.floor(Math.random() * 2) == 1 && event_startDate) {
+        event_endDate = new Date(
+          event_startDate.getTime() +
+            oneDayInMilis * Math.floor(Math.random() * 3 + 1)
+        );
+      }
+      const event_image = faker.image.urlPicsumPhotos();
+      console.log(event_image);
+      await prisma.events.create({
+        data: {
+          event_category_id: selectedCategory.id,
+          event_location_id: selectedLocation.id,
+          organizer_id: selectedOrganizer.id,
+          name: event_name,
+          description: event_description,
+          price: event_price,
+          start_date: event_startDate,
+          end_date: event_endDate,
+          image: event_image,
+        },
+      });
+    }
+
+    //
 
     console.info(`\n Create All Dummy Data Success ✅`);
   } catch (error) {
