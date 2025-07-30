@@ -17,8 +17,8 @@ class EventController {
             },
           },
 
-          event_category: true,
-          event_location: true,
+          // event_category: true,
+          // event_location: true,
         },
       });
 

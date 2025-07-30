@@ -19,7 +19,8 @@ model Users {
   birthdate     DateTime
   phone_number  String
   avatar        String?
-  referral_code String?  @unique
+  refferal_code String?  @unique
+  referrer_code String?
   isVerified    Boolean  @default(false)
   created_at    DateTime @default(now())
   updated_at    DateTime @updatedAt
@@ -28,7 +29,7 @@ model Users {
   organizer          Organizer[]
   reviews_user       Event_Reviews[]
   attendees_user     Event_Attendees[]
-  referral_user      Referral_Code?
+  referral_user      Referral_Code[]
   usageReferral_user Referral_Usage[]
   transactions       Transactions_detail[]
   user_voucher       Voucher[]
@@ -123,10 +124,12 @@ model Event_Attendees {
 }
 
 model Referral_Code {
-  id      String @id @default(uuid())
-  user_id String @unique
-  code    String
-  points  Int
+  id         String    @id @default(uuid())
+  user_id    String
+  code       String
+  points     Int?
+  created_at DateTime  @default(now())
+  expired_at DateTime?
 
   user_referral      Users            @relation(fields: [user_id], references: [id], onDelete: Cascade)
   user_referralUsage Referral_Usage[]
@@ -144,16 +147,17 @@ model Referral_Usage {
 
 model Voucher {
   id           String   @id @default(uuid())
-  user_id      String
-  organizer_id String
+  user_id      String?
+  organizer_id String?
   code         String
-  amount       Int
-  limit        Int
+  percentage   Int?
+  amount       Int?
+  created_at   DateTime @default(now())
   expired_at   DateTime
 
-  voucher_organizer   Organizer      @relation(fields: [organizer_id], references: [id], onDelete: Cascade)
+  voucher_organizer   Organizer?     @relation(fields: [organizer_id], references: [id], onDelete: Cascade)
+  voucher_user        Users?         @relation(fields: [user_id], references: [id], onDelete: Cascade)
   voucher_transaction Transactions[]
-  voucher_user        Users          @relation(fields: [user_id], references: [id], onDelete: Cascade)
 }
 
 model Transactions {
