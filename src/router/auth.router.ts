@@ -17,10 +17,16 @@ class AuthRouter {
   private initializeRoutes(): void {
     this.route.post("/register", regisValidator, this.authController.register);
     this.route.post("/login", this.authController.login);
+    this.route.post("/forget-password", this.authController.forgetPass);
     //
     this.route.use(verifyToken);
     //
-    this.route.get("/verify", this.authController.verifyAccount);
+    this.route.patch("/verify", this.authController.verifyAccount);
+    this.route.post(
+      "/register-organizer",
+      this.authController.registerOrganizer
+    );
+    this.route.patch("/reset-password", this.authController.resetPass);
   }
   public getRouter(): Router {
     return this.route;
