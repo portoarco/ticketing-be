@@ -1,6 +1,8 @@
 import { NextFunction, Request, Response } from "express";
 import { prisma } from "../config/prisma";
 import { randomUUID } from "crypto";
+import { E } from "@faker-js/faker/dist/airline-CLphikKp";
+import AppError from "../errors/AppError";
 
 // Eky - Start
 class EventController {
@@ -17,17 +19,46 @@ class EventController {
             },
           },
 
-
           category_event: true,
           location_Event: true,
-
         },
       });
 
+      if (!events) {
+        throw new AppError("Data not found", 404);
+      }
+
       res.status(200).send(events);
     } catch (error) {
-      console.log(error);
-      res.status(500).send(error);
+      next(error);
+    }
+  }
+
+  public async getEvent(req: Request, res: Response, next: NextFunction) {
+    try {
+      const id = req.params.id;
+
+      const event = await prisma.events.findUnique({
+        where: { id },
+        include: {
+          organizer: {
+            include: {
+              user: { select: { first_name: true, last_name: true } },
+            },
+          },
+
+          category_event: true,
+          location_Event: true,
+        },
+      });
+
+      if (!event) {
+        throw new AppError("Data not found", 404);
+      }
+
+      res.status(200).send({ success: true, data: event });
+    } catch (error) {
+      next(error);
     }
   }
 
@@ -60,7 +91,9 @@ class EventController {
           end_date,
         },
       });
-    } catch (error) {}
+    } catch (error) {
+      next(error);
+    }
   }
 }
 

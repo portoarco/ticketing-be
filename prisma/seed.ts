@@ -253,7 +253,7 @@ async function seed() {
     ];
 
     const categoryMap = new Map(
-      createdCategoryPromises.map((category) => [category.id, category.name])
+      createdCategoryPromises.map((category) => [category.name, category.id])
     );
 
     const organizers = await prisma.organizer.findMany();
