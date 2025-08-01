@@ -1,5 +1,6 @@
 import { Router } from "express";
 import UserController from "../controller/user.controller";
+import { verifyToken } from "../middlewares/verifyToken";
 
 class UserRouter {
   private route: Router;
@@ -12,7 +13,8 @@ class UserRouter {
   }
 
   private initializeRoutes(): void {
-    // this.route.<methods>()
+    this.route.use(verifyToken);
+    this.route.get("/profile", this.userController.getUser);
   }
 
   public getRouter(): Router {

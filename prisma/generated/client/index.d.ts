@@ -133,7 +133,7 @@ export const TransactionStatus: typeof $Enums.TransactionStatus
  */
 export class PrismaClient<
   ClientOptions extends Prisma.PrismaClientOptions = Prisma.PrismaClientOptions,
-  U = 'log' extends keyof ClientOptions ? ClientOptions['log'] extends Array<Prisma.LogLevel | Prisma.LogDefinition> ? Prisma.GetEvents<ClientOptions['log']> : never : never,
+  const U = 'log' extends keyof ClientOptions ? ClientOptions['log'] extends Array<Prisma.LogLevel | Prisma.LogDefinition> ? Prisma.GetEvents<ClientOptions['log']> : never : never,
   ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs
 > {
   [K: symbol]: { types: Prisma.TypeMap<ExtArgs>['other'] }
@@ -439,8 +439,8 @@ export namespace Prisma {
   export import Exact = $Public.Exact
 
   /**
-   * Prisma Client JS version: 6.12.0
-   * Query Engine version: 8047c96bbd92db98a2abc7c9323ce77c02c89dbc
+   * Prisma Client JS version: 6.13.0
+   * Query Engine version: 361e86d0ea4987e9f53a565309b3eed797a6bcbd
    */
   export type PrismaVersion = {
     client: string
@@ -1936,16 +1936,24 @@ export namespace Prisma {
     /**
      * @example
      * ```
-     * // Defaults to stdout
+     * // Shorthand for `emit: 'stdout'`
      * log: ['query', 'info', 'warn', 'error']
      * 
-     * // Emit as events
+     * // Emit as events only
      * log: [
-     *   { emit: 'stdout', level: 'query' },
-     *   { emit: 'stdout', level: 'info' },
-     *   { emit: 'stdout', level: 'warn' }
-     *   { emit: 'stdout', level: 'error' }
+     *   { emit: 'event', level: 'query' },
+     *   { emit: 'event', level: 'info' },
+     *   { emit: 'event', level: 'warn' }
+     *   { emit: 'event', level: 'error' }
      * ]
+     * 
+     * / Emit as events and log to stdout
+     * og: [
+     *  { emit: 'stdout', level: 'query' },
+     *  { emit: 'stdout', level: 'info' },
+     *  { emit: 'stdout', level: 'warn' }
+     *  { emit: 'stdout', level: 'error' }
+     * 
      * ```
      * Read more in our [docs](https://www.prisma.io/docs/reference/tools-and-interfaces/prisma-client/logging#the-log-option).
      */
@@ -2000,10 +2008,15 @@ export namespace Prisma {
     emit: 'stdout' | 'event'
   }
 
-  export type GetLogType<T extends LogLevel | LogDefinition> = T extends LogDefinition ? T['emit'] extends 'event' ? T['level'] : never : never
-  export type GetEvents<T extends any> = T extends Array<LogLevel | LogDefinition> ?
-    GetLogType<T[0]> | GetLogType<T[1]> | GetLogType<T[2]> | GetLogType<T[3]>
-    : never
+  export type CheckIsLogLevel<T> = T extends LogLevel ? T : never;
+
+  export type GetLogType<T> = CheckIsLogLevel<
+    T extends LogDefinition ? T['level'] : T
+  >;
+
+  export type GetEvents<T extends any[]> = T extends Array<LogLevel | LogDefinition>
+    ? GetLogType<T[number]>
+    : never;
 
   export type QueryEvent = {
     timestamp: Date
@@ -3790,16 +3803,19 @@ export namespace Prisma {
   export type OrganizerMinAggregateOutputType = {
     id: string | null
     user_id: string | null
+    organizer_name: string | null
   }
 
   export type OrganizerMaxAggregateOutputType = {
     id: string | null
     user_id: string | null
+    organizer_name: string | null
   }
 
   export type OrganizerCountAggregateOutputType = {
     id: number
     user_id: number
+    organizer_name: number
     _all: number
   }
 
@@ -3807,16 +3823,19 @@ export namespace Prisma {
   export type OrganizerMinAggregateInputType = {
     id?: true
     user_id?: true
+    organizer_name?: true
   }
 
   export type OrganizerMaxAggregateInputType = {
     id?: true
     user_id?: true
+    organizer_name?: true
   }
 
   export type OrganizerCountAggregateInputType = {
     id?: true
     user_id?: true
+    organizer_name?: true
     _all?: true
   }
 
@@ -3895,6 +3914,7 @@ export namespace Prisma {
   export type OrganizerGroupByOutputType = {
     id: string
     user_id: string
+    organizer_name: string
     _count: OrganizerCountAggregateOutputType | null
     _min: OrganizerMinAggregateOutputType | null
     _max: OrganizerMaxAggregateOutputType | null
@@ -3917,6 +3937,7 @@ export namespace Prisma {
   export type OrganizerSelect<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
     id?: boolean
     user_id?: boolean
+    organizer_name?: boolean
     user?: boolean | UsersDefaultArgs<ExtArgs>
     event?: boolean | Organizer$eventArgs<ExtArgs>
     organizer_voucher?: boolean | Organizer$organizer_voucherArgs<ExtArgs>
@@ -3927,21 +3948,24 @@ export namespace Prisma {
   export type OrganizerSelectCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
     id?: boolean
     user_id?: boolean
+    organizer_name?: boolean
     user?: boolean | UsersDefaultArgs<ExtArgs>
   }, ExtArgs["result"]["organizer"]>
 
   export type OrganizerSelectUpdateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
     id?: boolean
     user_id?: boolean
+    organizer_name?: boolean
     user?: boolean | UsersDefaultArgs<ExtArgs>
   }, ExtArgs["result"]["organizer"]>
 
   export type OrganizerSelectScalar = {
     id?: boolean
     user_id?: boolean
+    organizer_name?: boolean
   }
 
-  export type OrganizerOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "user_id", ExtArgs["result"]["organizer"]>
+  export type OrganizerOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "user_id" | "organizer_name", ExtArgs["result"]["organizer"]>
   export type OrganizerInclude<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     user?: boolean | UsersDefaultArgs<ExtArgs>
     event?: boolean | Organizer$eventArgs<ExtArgs>
@@ -3967,6 +3991,7 @@ export namespace Prisma {
     scalars: $Extensions.GetPayloadResult<{
       id: string
       user_id: string
+      organizer_name: string
     }, ExtArgs["result"]["organizer"]>
     composites: {}
   }
@@ -4396,6 +4421,7 @@ export namespace Prisma {
   interface OrganizerFieldRefs {
     readonly id: FieldRef<"Organizer", 'String'>
     readonly user_id: FieldRef<"Organizer", 'String'>
+    readonly organizer_name: FieldRef<"Organizer", 'String'>
   }
     
 
@@ -18208,7 +18234,8 @@ export namespace Prisma {
 
   export const OrganizerScalarFieldEnum: {
     id: 'id',
-    user_id: 'user_id'
+    user_id: 'user_id',
+    organizer_name: 'organizer_name'
   };
 
   export type OrganizerScalarFieldEnum = (typeof OrganizerScalarFieldEnum)[keyof typeof OrganizerScalarFieldEnum]
@@ -18599,6 +18626,7 @@ export namespace Prisma {
     NOT?: OrganizerWhereInput | OrganizerWhereInput[]
     id?: StringFilter<"Organizer"> | string
     user_id?: StringFilter<"Organizer"> | string
+    organizer_name?: StringFilter<"Organizer"> | string
     user?: XOR<UsersScalarRelationFilter, UsersWhereInput>
     event?: EventsListRelationFilter
     organizer_voucher?: VoucherListRelationFilter
@@ -18608,6 +18636,7 @@ export namespace Prisma {
   export type OrganizerOrderByWithRelationInput = {
     id?: SortOrder
     user_id?: SortOrder
+    organizer_name?: SortOrder
     user?: UsersOrderByWithRelationInput
     event?: EventsOrderByRelationAggregateInput
     organizer_voucher?: VoucherOrderByRelationAggregateInput
@@ -18616,19 +18645,21 @@ export namespace Prisma {
 
   export type OrganizerWhereUniqueInput = Prisma.AtLeast<{
     id?: string
+    user_id?: string
     AND?: OrganizerWhereInput | OrganizerWhereInput[]
     OR?: OrganizerWhereInput[]
     NOT?: OrganizerWhereInput | OrganizerWhereInput[]
-    user_id?: StringFilter<"Organizer"> | string
+    organizer_name?: StringFilter<"Organizer"> | string
     user?: XOR<UsersScalarRelationFilter, UsersWhereInput>
     event?: EventsListRelationFilter
     organizer_voucher?: VoucherListRelationFilter
     organizer_transactionDetails?: Transactions_detailListRelationFilter
-  }, "id">
+  }, "id" | "user_id">
 
   export type OrganizerOrderByWithAggregationInput = {
     id?: SortOrder
     user_id?: SortOrder
+    organizer_name?: SortOrder
     _count?: OrganizerCountOrderByAggregateInput
     _max?: OrganizerMaxOrderByAggregateInput
     _min?: OrganizerMinOrderByAggregateInput
@@ -18640,6 +18671,7 @@ export namespace Prisma {
     NOT?: OrganizerScalarWhereWithAggregatesInput | OrganizerScalarWhereWithAggregatesInput[]
     id?: StringWithAggregatesFilter<"Organizer"> | string
     user_id?: StringWithAggregatesFilter<"Organizer"> | string
+    organizer_name?: StringWithAggregatesFilter<"Organizer"> | string
   }
 
   export type ArticlesWhereInput = {
@@ -19540,6 +19572,7 @@ export namespace Prisma {
 
   export type OrganizerCreateInput = {
     id?: string
+    organizer_name?: string
     user: UsersCreateNestedOneWithoutOrganizerInput
     event?: EventsCreateNestedManyWithoutOrganizerInput
     organizer_voucher?: VoucherCreateNestedManyWithoutVoucher_organizerInput
@@ -19549,6 +19582,7 @@ export namespace Prisma {
   export type OrganizerUncheckedCreateInput = {
     id?: string
     user_id: string
+    organizer_name?: string
     event?: EventsUncheckedCreateNestedManyWithoutOrganizerInput
     organizer_voucher?: VoucherUncheckedCreateNestedManyWithoutVoucher_organizerInput
     organizer_transactionDetails?: Transactions_detailUncheckedCreateNestedManyWithoutDetail_organizerInput
@@ -19556,6 +19590,7 @@ export namespace Prisma {
 
   export type OrganizerUpdateInput = {
     id?: StringFieldUpdateOperationsInput | string
+    organizer_name?: StringFieldUpdateOperationsInput | string
     user?: UsersUpdateOneRequiredWithoutOrganizerNestedInput
     event?: EventsUpdateManyWithoutOrganizerNestedInput
     organizer_voucher?: VoucherUpdateManyWithoutVoucher_organizerNestedInput
@@ -19565,6 +19600,7 @@ export namespace Prisma {
   export type OrganizerUncheckedUpdateInput = {
     id?: StringFieldUpdateOperationsInput | string
     user_id?: StringFieldUpdateOperationsInput | string
+    organizer_name?: StringFieldUpdateOperationsInput | string
     event?: EventsUncheckedUpdateManyWithoutOrganizerNestedInput
     organizer_voucher?: VoucherUncheckedUpdateManyWithoutVoucher_organizerNestedInput
     organizer_transactionDetails?: Transactions_detailUncheckedUpdateManyWithoutDetail_organizerNestedInput
@@ -19573,15 +19609,18 @@ export namespace Prisma {
   export type OrganizerCreateManyInput = {
     id?: string
     user_id: string
+    organizer_name?: string
   }
 
   export type OrganizerUpdateManyMutationInput = {
     id?: StringFieldUpdateOperationsInput | string
+    organizer_name?: StringFieldUpdateOperationsInput | string
   }
 
   export type OrganizerUncheckedUpdateManyInput = {
     id?: StringFieldUpdateOperationsInput | string
     user_id?: StringFieldUpdateOperationsInput | string
+    organizer_name?: StringFieldUpdateOperationsInput | string
   }
 
   export type ArticlesCreateInput = {
@@ -20564,16 +20603,19 @@ export namespace Prisma {
   export type OrganizerCountOrderByAggregateInput = {
     id?: SortOrder
     user_id?: SortOrder
+    organizer_name?: SortOrder
   }
 
   export type OrganizerMaxOrderByAggregateInput = {
     id?: SortOrder
     user_id?: SortOrder
+    organizer_name?: SortOrder
   }
 
   export type OrganizerMinOrderByAggregateInput = {
     id?: SortOrder
     user_id?: SortOrder
+    organizer_name?: SortOrder
   }
 
   export type ArticlesCountOrderByAggregateInput = {
@@ -22454,6 +22496,7 @@ export namespace Prisma {
 
   export type OrganizerCreateWithoutUserInput = {
     id?: string
+    organizer_name?: string
     event?: EventsCreateNestedManyWithoutOrganizerInput
     organizer_voucher?: VoucherCreateNestedManyWithoutVoucher_organizerInput
     organizer_transactionDetails?: Transactions_detailCreateNestedManyWithoutDetail_organizerInput
@@ -22461,6 +22504,7 @@ export namespace Prisma {
 
   export type OrganizerUncheckedCreateWithoutUserInput = {
     id?: string
+    organizer_name?: string
     event?: EventsUncheckedCreateNestedManyWithoutOrganizerInput
     organizer_voucher?: VoucherUncheckedCreateNestedManyWithoutVoucher_organizerInput
     organizer_transactionDetails?: Transactions_detailUncheckedCreateNestedManyWithoutDetail_organizerInput
@@ -22660,6 +22704,7 @@ export namespace Prisma {
     NOT?: OrganizerScalarWhereInput | OrganizerScalarWhereInput[]
     id?: StringFilter<"Organizer"> | string
     user_id?: StringFilter<"Organizer"> | string
+    organizer_name?: StringFilter<"Organizer"> | string
   }
 
   export type Event_ReviewsUpsertWithWhereUniqueWithoutReviews_userInput = {
@@ -23117,6 +23162,7 @@ export namespace Prisma {
 
   export type OrganizerCreateWithoutEventInput = {
     id?: string
+    organizer_name?: string
     user: UsersCreateNestedOneWithoutOrganizerInput
     organizer_voucher?: VoucherCreateNestedManyWithoutVoucher_organizerInput
     organizer_transactionDetails?: Transactions_detailCreateNestedManyWithoutDetail_organizerInput
@@ -23125,6 +23171,7 @@ export namespace Prisma {
   export type OrganizerUncheckedCreateWithoutEventInput = {
     id?: string
     user_id: string
+    organizer_name?: string
     organizer_voucher?: VoucherUncheckedCreateNestedManyWithoutVoucher_organizerInput
     organizer_transactionDetails?: Transactions_detailUncheckedCreateNestedManyWithoutDetail_organizerInput
   }
@@ -23276,6 +23323,7 @@ export namespace Prisma {
 
   export type OrganizerUpdateWithoutEventInput = {
     id?: StringFieldUpdateOperationsInput | string
+    organizer_name?: StringFieldUpdateOperationsInput | string
     user?: UsersUpdateOneRequiredWithoutOrganizerNestedInput
     organizer_voucher?: VoucherUpdateManyWithoutVoucher_organizerNestedInput
     organizer_transactionDetails?: Transactions_detailUpdateManyWithoutDetail_organizerNestedInput
@@ -23284,6 +23332,7 @@ export namespace Prisma {
   export type OrganizerUncheckedUpdateWithoutEventInput = {
     id?: StringFieldUpdateOperationsInput | string
     user_id?: StringFieldUpdateOperationsInput | string
+    organizer_name?: StringFieldUpdateOperationsInput | string
     organizer_voucher?: VoucherUncheckedUpdateManyWithoutVoucher_organizerNestedInput
     organizer_transactionDetails?: Transactions_detailUncheckedUpdateManyWithoutDetail_organizerNestedInput
   }
@@ -24315,6 +24364,7 @@ export namespace Prisma {
 
   export type OrganizerCreateWithoutOrganizer_voucherInput = {
     id?: string
+    organizer_name?: string
     user: UsersCreateNestedOneWithoutOrganizerInput
     event?: EventsCreateNestedManyWithoutOrganizerInput
     organizer_transactionDetails?: Transactions_detailCreateNestedManyWithoutDetail_organizerInput
@@ -24323,6 +24373,7 @@ export namespace Prisma {
   export type OrganizerUncheckedCreateWithoutOrganizer_voucherInput = {
     id?: string
     user_id: string
+    organizer_name?: string
     event?: EventsUncheckedCreateNestedManyWithoutOrganizerInput
     organizer_transactionDetails?: Transactions_detailUncheckedCreateNestedManyWithoutDetail_organizerInput
   }
@@ -24420,6 +24471,7 @@ export namespace Prisma {
 
   export type OrganizerUpdateWithoutOrganizer_voucherInput = {
     id?: StringFieldUpdateOperationsInput | string
+    organizer_name?: StringFieldUpdateOperationsInput | string
     user?: UsersUpdateOneRequiredWithoutOrganizerNestedInput
     event?: EventsUpdateManyWithoutOrganizerNestedInput
     organizer_transactionDetails?: Transactions_detailUpdateManyWithoutDetail_organizerNestedInput
@@ -24428,6 +24480,7 @@ export namespace Prisma {
   export type OrganizerUncheckedUpdateWithoutOrganizer_voucherInput = {
     id?: StringFieldUpdateOperationsInput | string
     user_id?: StringFieldUpdateOperationsInput | string
+    organizer_name?: StringFieldUpdateOperationsInput | string
     event?: EventsUncheckedUpdateManyWithoutOrganizerNestedInput
     organizer_transactionDetails?: Transactions_detailUncheckedUpdateManyWithoutDetail_organizerNestedInput
   }
@@ -24736,6 +24789,7 @@ export namespace Prisma {
 
   export type OrganizerCreateWithoutOrganizer_transactionDetailsInput = {
     id?: string
+    organizer_name?: string
     user: UsersCreateNestedOneWithoutOrganizerInput
     event?: EventsCreateNestedManyWithoutOrganizerInput
     organizer_voucher?: VoucherCreateNestedManyWithoutVoucher_organizerInput
@@ -24744,6 +24798,7 @@ export namespace Prisma {
   export type OrganizerUncheckedCreateWithoutOrganizer_transactionDetailsInput = {
     id?: string
     user_id: string
+    organizer_name?: string
     event?: EventsUncheckedCreateNestedManyWithoutOrganizerInput
     organizer_voucher?: VoucherUncheckedCreateNestedManyWithoutVoucher_organizerInput
   }
@@ -24895,6 +24950,7 @@ export namespace Prisma {
 
   export type OrganizerUpdateWithoutOrganizer_transactionDetailsInput = {
     id?: StringFieldUpdateOperationsInput | string
+    organizer_name?: StringFieldUpdateOperationsInput | string
     user?: UsersUpdateOneRequiredWithoutOrganizerNestedInput
     event?: EventsUpdateManyWithoutOrganizerNestedInput
     organizer_voucher?: VoucherUpdateManyWithoutVoucher_organizerNestedInput
@@ -24903,12 +24959,14 @@ export namespace Prisma {
   export type OrganizerUncheckedUpdateWithoutOrganizer_transactionDetailsInput = {
     id?: StringFieldUpdateOperationsInput | string
     user_id?: StringFieldUpdateOperationsInput | string
+    organizer_name?: StringFieldUpdateOperationsInput | string
     event?: EventsUncheckedUpdateManyWithoutOrganizerNestedInput
     organizer_voucher?: VoucherUncheckedUpdateManyWithoutVoucher_organizerNestedInput
   }
 
   export type OrganizerCreateManyUserInput = {
     id?: string
+    organizer_name?: string
   }
 
   export type Event_ReviewsCreateManyReviews_userInput = {
@@ -24962,6 +25020,7 @@ export namespace Prisma {
 
   export type OrganizerUpdateWithoutUserInput = {
     id?: StringFieldUpdateOperationsInput | string
+    organizer_name?: StringFieldUpdateOperationsInput | string
     event?: EventsUpdateManyWithoutOrganizerNestedInput
     organizer_voucher?: VoucherUpdateManyWithoutVoucher_organizerNestedInput
     organizer_transactionDetails?: Transactions_detailUpdateManyWithoutDetail_organizerNestedInput
@@ -24969,6 +25028,7 @@ export namespace Prisma {
 
   export type OrganizerUncheckedUpdateWithoutUserInput = {
     id?: StringFieldUpdateOperationsInput | string
+    organizer_name?: StringFieldUpdateOperationsInput | string
     event?: EventsUncheckedUpdateManyWithoutOrganizerNestedInput
     organizer_voucher?: VoucherUncheckedUpdateManyWithoutVoucher_organizerNestedInput
     organizer_transactionDetails?: Transactions_detailUncheckedUpdateManyWithoutDetail_organizerNestedInput
@@ -24976,6 +25036,7 @@ export namespace Prisma {
 
   export type OrganizerUncheckedUpdateManyWithoutUserInput = {
     id?: StringFieldUpdateOperationsInput | string
+    organizer_name?: StringFieldUpdateOperationsInput | string
   }
 
   export type Event_ReviewsUpdateWithoutReviews_userInput = {

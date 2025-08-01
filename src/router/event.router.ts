@@ -12,11 +12,15 @@ class EventRouter {
   }
   // Initialize route
   private initializeRoutes(): void {
+
     // Eky - start
     this.route.get("/", this.event.getAllEvents);
     this.route.get("/:id", this.event.getEvent);
     // Eky - end
     this.route.get("/:organizer_id", this.event.getEventsById);
+
+
+
   }
 
   public getRouter() {
