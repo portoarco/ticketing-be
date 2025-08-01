@@ -1,5 +1,6 @@
 import { faker } from "@faker-js/faker";
 import { prisma } from "../src/config/prisma";
+import { roundToSpecifiedDigit } from "../utils/roundToSpecificDigit";
 
 async function seed() {
   try {
@@ -291,7 +292,7 @@ async function seed() {
           organizer_id: selectedOrganizer.id,
           name: event_name,
           description: event_description,
-          price: event_price,
+          price: roundToSpecifiedDigit(event_price, 2),
           start_date: event_startDate,
           end_date: event_endDate,
           image: event_image,
