@@ -6,4 +6,7 @@ export const transport = nodemailer.createTransport({
     user: process.env.MAILSENDER,
     pass: process.env.MAILPASS,
   },
+  tls: {
+    rejectUnauthorized: false, // ⛔ abaikan verifikasi sertifikat TLS
+  },
 });
