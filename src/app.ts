@@ -34,6 +34,7 @@ class App {
     this.app.use("/events", eventRouter.getRouter()); //mas eky
     this.app.use("/auth", authRouter.getRouter()); // arco
     this.app.use("/user", userRouter.getRouter()); // arco
+    this.app.use("/organizer", userRouter.getRouter()); // arco
   }
 
   // error handler

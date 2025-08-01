@@ -15,6 +15,7 @@ class UserController {
           last_name: true,
           email: true,
           phone_number: true,
+          avatar: true,
         },
       });
 
