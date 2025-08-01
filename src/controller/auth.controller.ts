@@ -121,7 +121,7 @@ class AuthController {
           isVerified: login.isVerified,
         },
         process.env.TOKEN_KEY || "minprosecret",
-        { expiresIn: "15m" }
+        { expiresIn: "25h" }
       );
 
       // console.log(token);
