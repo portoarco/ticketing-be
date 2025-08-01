@@ -1,6 +1,6 @@
 import { Request, Response, NextFunction } from "express";
 import AppError from "../errors/AppError";
-import { verify } from "jsonwebtoken";
+import { verify, JsonWebTokenError, TokenExpiredError } from "jsonwebtoken";
 
 export const verifyToken = (
   req: Request,
@@ -16,6 +16,12 @@ export const verifyToken = (
     res.locals.decrypt = checkToken;
     next();
   } catch (error) {
-    next(error);
+    if (error instanceof TokenExpiredError) {
+      next(new AppError("Token Expired", 401));
+    } else if (error instanceof JsonWebTokenError) {
+      next(new AppError("Invalid Token!", 401));
+    } else {
+      next(error);
+    }
   }
 };

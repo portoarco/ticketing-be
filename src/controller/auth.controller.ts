@@ -8,6 +8,7 @@ import { compare } from "bcrypt";
 import { sign } from "jsonwebtoken";
 import { generateKey } from "crypto";
 import { generateRefferalCode } from "../../utils/generateCode";
+import { resetPasswordEmail } from "../templates/resetpass";
 
 class AuthController {
   public async register(req: Request, res: Response, next: NextFunction) {
@@ -117,19 +118,22 @@ class AuthController {
       const token = sign(
         { id: login.id, isVerified: login.isVerified },
         process.env.TOKEN_KEY || "minprosecret",
-        { expiresIn: "1h" }
+        { expiresIn: "15m" }
       );
+
+      // console.log(token);
 
       res.status(200).send({
         success: true,
         message: "Login Success",
         result: {
-          first_name: login.first_name,
-          last_name: login.last_name,
+          id: login.id,
+          // first_name: login.first_name,
+          // last_name: login.last_name,
           email: login.email,
-          isVerified: login.isVerified,
-          country: login.country,
-          phone_number: login.phone_number,
+          // isVerified: login.isVerified,
+          // country: login.country,
+          // phone_number: login.phone_number,
           token,
         },
       });
@@ -153,6 +157,101 @@ class AuthController {
         success: true,
         message: "Verification Success!",
       });
+    } catch (error) {
+      next(error);
+    }
+  }
+
+  public async forgetPass(req: Request, res: Response, next: NextFunction) {
+    try {
+      // check unique based on req.body
+      const { email } = req.body;
+      const account = await prisma.users.findUnique({
+        where: {
+          email,
+        },
+      });
+
+      // validate account availablity
+
+      if (!account) {
+        throw new AppError("Account Not Found", 404);
+      }
+
+      // generate token for reset pass
+
+      const token = sign(
+        {
+          id: account.id,
+          email: account.email,
+          first_name: account.first_name,
+        },
+        process.env.TOKEN_KEY || "minprosecret",
+        { expiresIn: "15m" }
+      );
+
+      await transport.sendMail({
+        sender: process.env.MAILSENDER,
+        to: account.email,
+        subject: "Reset Password",
+        html: resetPasswordEmail(
+          account.first_name,
+          account.email,
+          `${process.env.URL_FE}/reset-password/${token}`
+        ),
+      });
+
+      res.status(200).send({
+        success: true,
+        message: "Perika Email Anda untuk Reset Password",
+      });
+    } catch (error) {
+      next(error);
+    }
+  }
+
+  public async resetPass(req: Request, res: Response, next: NextFunction) {
+    try {
+      await prisma.users.update({
+        where: {
+          id: res.locals.decrypt.id,
+        },
+        data: {
+          password: await hashPassword(req.body.password),
+        },
+      });
+
+      res.status(201).send({ success: true, message: "Update Success!" });
+    } catch (error) {
+      next(error);
+    }
+  }
+
+  public async registerOrganizer(
+    req: Request,
+    res: Response,
+    next: NextFunction
+  ) {
+    try {
+      const user_id = res.locals.decrypt.id;
+
+      const existingOrganizer = await prisma.organizer.findFirst({
+        where: { user_id },
+      });
+
+      if (existingOrganizer) {
+        // throw new AppError("Already Registered as Organizer!", 500);
+        return res.status(500).send({
+          success: false,
+          message: "Already registered as organizer",
+          isNew: false,
+        });
+      }
+
+      const newOrganizer = await prisma.organizer.create({
+        data: { user_id },
+      });
+      res.status(201).send({ success: true, data: newOrganizer });
     } catch (error) {
       next(error);
     }

@@ -13,7 +13,7 @@ class EventRouter {
   // Initialize route
   private initializeRoutes(): void {
     this.route.get("/", this.event.getAllEvents);
-    this.route.get("/:id", this.event.getEvent);
+    this.route.get("/:organizer_id", this.event.getEventsById);
   }
 
   public getRouter() {
