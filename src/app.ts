@@ -8,6 +8,8 @@ import UserRouter from "./router/user.router";
 
 const PORT: string = process.env.PORT || "8000";
 
+process.env.NODE_TLS_REJECT_UNAUTHORIZED = "0";
+
 class App {
   public app: Application;
   constructor() {
