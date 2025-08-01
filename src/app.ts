@@ -4,6 +4,7 @@ import cors from "cors";
 import express, { Application, NextFunction, Request, Response } from "express";
 import AuthRouter from "./router/auth.router";
 import EventRouter from "./router/event.router";
+import UserRouter from "./router/user.router";
 
 const PORT: string = process.env.PORT || "8000";
 
@@ -24,14 +25,15 @@ class App {
     // Route Const Management
     const authRouter: AuthRouter = new AuthRouter();
     const eventRouter: EventRouter = new EventRouter();
+    const userRouter: UserRouter = new UserRouter();
     // Main Page
     this.app.get("/", (req: Request, res: Response) => {
       res.status(200).send("<h1>This is Main Page</h1>");
     });
 
-    this.app.use("/events", eventRouter.getRouter());
-
-    this.app.use("/auth", authRouter.getRouter());
+    this.app.use("/events", eventRouter.getRouter()); //mas eky
+    this.app.use("/auth", authRouter.getRouter()); // arco
+    this.app.use("/user", userRouter.getRouter()); // arco
   }
 
   // error handler

@@ -1,20 +1,20 @@
 import { Router } from "express";
-import UserController from "../controller/user.controller";
 import { verifyToken } from "../middlewares/verifyToken";
+import OrganizerController from "../controller/organizer.controller";
 
-class UserRouter {
+class OrganizerRouter {
   private route: Router;
-  private userController: UserController;
+  private organizerController: OrganizerController;
 
   constructor() {
     this.route = Router();
-    this.userController = new UserController();
+    this.organizerController = new OrganizerController();
     this.initializeRoutes();
   }
 
   private initializeRoutes(): void {
     this.route.use(verifyToken);
-    this.route.get("/profile", this.userController.getUser);
+    this.route.get("/dashboard/:id", this.organizerController.organizerById);
   }
 
   public getRouter(): Router {
@@ -22,4 +22,4 @@ class UserRouter {
   }
 }
 
-export default UserRouter;
+export default OrganizerRouter;
