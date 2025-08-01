@@ -14,7 +14,7 @@ class OrganizerRouter {
 
   private initializeRoutes(): void {
     this.route.use(verifyToken);
-    this.route.get("/dashboard/:id", this.organizerController.organizerById);
+    this.route.get("/profile", this.organizerController.organizersById);
   }
 
   public getRouter(): Router {
