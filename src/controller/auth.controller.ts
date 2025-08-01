@@ -116,7 +116,10 @@ class AuthController {
 
       // token
       const token = sign(
-        { id: login.id, isVerified: login.isVerified },
+        {
+          id: login.id,
+          isVerified: login.isVerified,
+        },
         process.env.TOKEN_KEY || "minprosecret",
         { expiresIn: "15m" }
       );
@@ -128,7 +131,7 @@ class AuthController {
         message: "Login Success",
         result: {
           id: login.id,
-          // first_name: login.first_name,
+          first_name: login.first_name,
           // last_name: login.last_name,
           email: login.email,
           // isVerified: login.isVerified,
