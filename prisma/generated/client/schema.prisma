@@ -127,7 +127,7 @@ model Referral_Code {
   id         String    @id @default(uuid())
   user_id    String
   code       String
-  points     Int?
+  points     Int?      @default(0)
   created_at DateTime  @default(now())
   expired_at DateTime?
 
