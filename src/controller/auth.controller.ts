@@ -9,8 +9,16 @@ import { sign } from "jsonwebtoken";
 import { generateKey } from "crypto";
 import { generateRefferalCode } from "../../utils/generateCode";
 import { resetPasswordEmail } from "../templates/resetpass";
+import { createToken } from "../../utils/createToken";
 
 class AuthController {
+  public async getUserData(req: Request, res: Response, next: NextFunction) {
+    try {
+    } catch (error) {
+      next(error);
+    }
+  }
+
   public async register(req: Request, res: Response, next: NextFunction) {
     try {
       const {
@@ -115,15 +123,16 @@ class AuthController {
       }
 
       // token
-      const token = sign(
-        {
-          id: login.id,
-          isVerified: login.isVerified,
-        },
-        process.env.TOKEN_KEY || "minprosecret",
-        { expiresIn: "25h" }
-      );
+      // const token = sign(
+      //   {
+      //     id: login.id,
+      //     isVerified: login.isVerified,
+      //   },
+      //   process.env.TOKEN_KEY || "minprosecret",
+      //   { expiresIn: "25h" }
+      // );
 
+      const token = createToken(login, "2h");
       // console.log(token);
 
       res.status(200).send({
