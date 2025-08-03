@@ -22,10 +22,11 @@ class AuthRouter {
     this.route.use(verifyToken); // arco
     //
     this.route.get("/verify", this.authController.verifyAccount); // arco
-    this.route.post(
+    this.route.post("/check-organizer", this.authController.checkOrganizer); // arco
+    this.route.patch(
       "/register-organizer",
       this.authController.registerOrganizer
-    ); // arco
+    ); //arco
     this.route.patch("/reset-password", this.authController.resetPass); // arco
   }
   public getRouter(): Router {

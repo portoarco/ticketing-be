@@ -239,31 +239,71 @@ class AuthController {
     }
   }
 
-  public async registerOrganizer(
-    req: Request,
-    res: Response,
-    next: NextFunction
-  ) {
+  public async checkOrganizer(req: Request, res: Response, next: NextFunction) {
     try {
       const user_id = res.locals.decrypt.id;
 
       const existingOrganizer = await prisma.organizer.findFirst({
         where: { user_id },
       });
+      const isVerified = await prisma.users.findFirst({
+        where: { id: user_id, isVerified: true },
+      });
 
-      if (existingOrganizer) {
-        // throw new AppError("Already Registered as Organizer!", 500);
+      console.log(isVerified);
+      if (!isVerified) {
         return res.status(500).send({
           success: false,
-          message: "Already registered as organizer",
-          isNew: false,
+          message: "You have to verify your account before create event!s",
+          isVerified: false,
         });
       }
+      if (!existingOrganizer) {
+        return res.status(404).send({ message: "No existing organizers" });
+      }
+      res.status(200).send({
+        success: true,
+        message: "User and Organizer name already registered",
+      });
+    } catch (error) {
+      next(error);
+    }
+  }
 
+  public async registerOrganizer(
+    req: Request,
+    res: Response,
+    next: NextFunction
+  ) {
+    const user_id = res.locals.decrypt.id;
+    const { organizer_name } = req.body;
+    console.log(organizer_name);
+    try {
+      if (!user_id) {
+        throw new AppError("Invalid Data", 500);
+      }
+      // add to organizer
       const newOrganizer = await prisma.organizer.create({
         data: { user_id },
       });
-      res.status(201).send({ success: true, data: newOrganizer });
+      // update organizer name
+      if (!organizer_name || !user_id) {
+        throw new AppError("Error, check console", 500);
+      }
+
+      const organizerName = await prisma.organizer.update({
+        where: { user_id },
+        data: {
+          organizer_name,
+        },
+      });
+      res.status(201).send({
+        message: "Organizer id successfuly created",
+        data: {
+          newOrganizer,
+          organizerName,
+        },
+      });
     } catch (error) {
       next(error);
     }
