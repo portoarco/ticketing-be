@@ -2,6 +2,7 @@ import { Response, Request, NextFunction } from "express";
 import { prisma } from "../config/prisma";
 import AppError from "../errors/AppError";
 import { createToken } from "../../utils/createToken";
+import { cloudinaryUpload } from "../config/cloudinary";
 
 class UserController {
   public async getUser(req: Request, res: Response, next: NextFunction) {
@@ -39,6 +40,56 @@ class UserController {
       res
         .status(200)
         .send({ success: true, result: { ...user, token }, token: token });
+    } catch (error) {
+      next(error);
+    }
+  }
+
+  public async editUserProfile(
+    req: Request,
+    res: Response,
+    next: NextFunction
+  ) {
+    try {
+      const id = res.locals.decrypt.id;
+      let { first_name, last_name, email, password, phone_number, avatar } =
+        req.body;
+
+      // convert to uppercase all user input
+      if (typeof first_name === "string") {
+        first_name = first_name.toUpperCase();
+      }
+      if (typeof last_name === "string") {
+        last_name = last_name.toUpperCase();
+      }
+      // // check file
+      // if (!req.file) {
+      //   throw new AppError("No File Exist ", 404);
+      // }
+
+      let uploadedAvatarUrl = avatar;
+
+      if (req.file) {
+        // upload cloudinary
+        const upload = await cloudinaryUpload(req.file);
+        uploadedAvatarUrl = upload.secure_url;
+      }
+
+      const updateUser = await prisma.users.update({
+        where: { id },
+        data: {
+          first_name,
+          last_name,
+          email,
+          password,
+          phone_number,
+          avatar: uploadedAvatarUrl,
+        },
+      });
+
+      res
+        .status(200)
+        .send({ success: true, message: "update success", data: updateUser });
     } catch (error) {
       next(error);
     }
