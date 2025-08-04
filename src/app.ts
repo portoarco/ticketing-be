@@ -5,6 +5,7 @@ import express, { Application, NextFunction, Request, Response } from "express";
 import AuthRouter from "./router/auth.router";
 import EventRouter from "./router/event.router";
 import UserRouter from "./router/user.router";
+import TransactionRouter from "./router/transaction.router";
 
 const PORT: string = process.env.PORT || "8000";
 
@@ -28,6 +29,7 @@ class App {
     const authRouter: AuthRouter = new AuthRouter();
     const eventRouter: EventRouter = new EventRouter();
     const userRouter: UserRouter = new UserRouter();
+    const transactionRouter: TransactionRouter = new TransactionRouter();
     // Main Page
     this.app.get("/", (req: Request, res: Response) => {
       res.status(200).send("<h1>This is Main Page</h1>");
@@ -36,7 +38,8 @@ class App {
     this.app.use("/events", eventRouter.getRouter()); //mas eky
     this.app.use("/auth", authRouter.getRouter()); // arco
     this.app.use("/user", userRouter.getRouter()); // arco
-    this.app.use("/organizer", userRouter.getRouter()); // arco
+    // this.app.use("/organizer", userRouter.getRouter()); // arco
+    this.app.use("/transaction", transactionRouter.getRouter()); // arco
   }
 
   // error handler

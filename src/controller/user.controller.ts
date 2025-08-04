@@ -52,8 +52,15 @@ class UserController {
   ) {
     try {
       const id = res.locals.decrypt.id;
-      let { first_name, last_name, email, password, phone_number, avatar } =
-        req.body;
+      let {
+        first_name,
+        last_name,
+        email,
+        password,
+        phone_number,
+        organizer_name,
+        avatar,
+      } = req.body;
 
       // convert to uppercase all user input
       if (typeof first_name === "string") {
@@ -86,6 +93,17 @@ class UserController {
           avatar: uploadedAvatarUrl,
         },
       });
+
+      if (organizer_name) {
+        await prisma.organizer.update({
+          where: { user_id: id },
+          data: {
+            organizer_name,
+          },
+        });
+      }
+
+      console.log(updateUser);
 
       res
         .status(200)

@@ -16,6 +16,7 @@ class OrganizerController {
         },
       });
       console.log(organizer);
+
       if (!organizer) {
         throw new AppError("Organizer Not Found", 404);
       }
