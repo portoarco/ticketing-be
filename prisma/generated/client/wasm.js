@@ -226,23 +226,20 @@ exports.Prisma.VoucherScalarFieldEnum = {
   expired_at: 'expired_at'
 };
 
-exports.Prisma.TransactionsScalarFieldEnum = {
-  id: 'id',
-  voucher_id: 'voucher_id',
-  amount: 'amount',
-  proof: 'proof'
-};
-
 exports.Prisma.Transactions_detailScalarFieldEnum = {
   id: 'id',
-  transaction_id: 'transaction_id',
   user_id: 'user_id',
   event_id: 'event_id',
   organizer_id: 'organizer_id',
   quantity: 'quantity',
-  price: 'price',
+  voucher_id: 'voucher_id',
+  amount: 'amount',
+  proof: 'proof',
   isConfirmed: 'isConfirmed',
-  transaction_status: 'transaction_status'
+  transaction_status: 'transaction_status',
+  paid_at: 'paid_at',
+  created_at: 'created_at',
+  updated_at: 'updated_at'
 };
 
 exports.Prisma.SortOrder = {
@@ -262,15 +259,13 @@ exports.Prisma.NullsOrder = {
 exports.Status = exports.$Enums.Status = {
   PENDING: 'PENDING',
   CONFIRMED: 'CONFIRMED',
-  COMPLETED: 'COMPLETED',
   CANCELED: 'CANCELED'
 };
 
 exports.TransactionStatus = exports.$Enums.TransactionStatus = {
   PENDING: 'PENDING',
   PAID: 'PAID',
-  REJECTED: 'REJECTED',
-  CANCELED: 'CANCELED'
+  REJECTED: 'REJECTED'
 };
 
 exports.Prisma.ModelName = {
@@ -286,7 +281,6 @@ exports.Prisma.ModelName = {
   Referral_Code: 'Referral_Code',
   Referral_Usage: 'Referral_Usage',
   Voucher: 'Voucher',
-  Transactions: 'Transactions',
   Transactions_detail: 'Transactions_detail'
 };
 

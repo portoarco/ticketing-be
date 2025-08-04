@@ -1,19 +1,24 @@
 import { Router } from "express";
+import TransactionController from "../controller/transaction.controller";
+import { verifyToken } from "../middlewares/verifyToken";
 
-// class TransactionRouter {
-// private route : Router;
+class TransactionRouter {
+  private route: Router;
+  private transactionController: TransactionController;
 
-// constructor() {
-//     this.route = Router()
+  constructor() {
+    this.route = Router();
+    this.transactionController = new TransactionController();
+    this.initializeRoutes();
+  }
 
-//     this.initializeRoutes();
-// }
+  private initializeRoutes(): void {
+    this.route.use(verifyToken); //arco
 
-// private async initializeRoutes (): void {
-//     this.route.get("")
-// }
-// public getRouter () : Router {
-// return this.route
-// }
-
-// }
+    this.route.get("/detail", this.transactionController.getTransactionDetail); //arco
+  }
+  public getRouter(): Router {
+    return this.route;
+  }
+}
+export default TransactionRouter;
