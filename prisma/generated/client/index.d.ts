@@ -74,11 +74,6 @@ export type Referral_Usage = $Result.DefaultSelection<Prisma.$Referral_UsagePayl
  */
 export type Voucher = $Result.DefaultSelection<Prisma.$VoucherPayload>
 /**
- * Model Transactions
- * 
- */
-export type Transactions = $Result.DefaultSelection<Prisma.$TransactionsPayload>
-/**
  * Model Transactions_detail
  * 
  */
@@ -91,7 +86,6 @@ export namespace $Enums {
   export const Status: {
   PENDING: 'PENDING',
   CONFIRMED: 'CONFIRMED',
-  COMPLETED: 'COMPLETED',
   CANCELED: 'CANCELED'
 };
 
@@ -101,8 +95,7 @@ export type Status = (typeof Status)[keyof typeof Status]
 export const TransactionStatus: {
   PENDING: 'PENDING',
   PAID: 'PAID',
-  REJECTED: 'REJECTED',
-  CANCELED: 'CANCELED'
+  REJECTED: 'REJECTED'
 };
 
 export type TransactionStatus = (typeof TransactionStatus)[keyof typeof TransactionStatus]
@@ -361,16 +354,6 @@ export class PrismaClient<
     * ```
     */
   get voucher(): Prisma.VoucherDelegate<ExtArgs, ClientOptions>;
-
-  /**
-   * `prisma.transactions`: Exposes CRUD operations for the **Transactions** model.
-    * Example usage:
-    * ```ts
-    * // Fetch zero or more Transactions
-    * const transactions = await prisma.transactions.findMany()
-    * ```
-    */
-  get transactions(): Prisma.TransactionsDelegate<ExtArgs, ClientOptions>;
 
   /**
    * `prisma.transactions_detail`: Exposes CRUD operations for the **Transactions_detail** model.
@@ -833,7 +816,6 @@ export namespace Prisma {
     Referral_Code: 'Referral_Code',
     Referral_Usage: 'Referral_Usage',
     Voucher: 'Voucher',
-    Transactions: 'Transactions',
     Transactions_detail: 'Transactions_detail'
   };
 
@@ -853,7 +835,7 @@ export namespace Prisma {
       omit: GlobalOmitOptions
     }
     meta: {
-      modelProps: "users" | "organizer" | "articles" | "events" | "event_Category" | "event_Location" | "event_Seat" | "event_Reviews" | "event_Attendees" | "referral_Code" | "referral_Usage" | "voucher" | "transactions" | "transactions_detail"
+      modelProps: "users" | "organizer" | "articles" | "events" | "event_Category" | "event_Location" | "event_Seat" | "event_Reviews" | "event_Attendees" | "referral_Code" | "referral_Usage" | "voucher" | "transactions_detail"
       txIsolationLevel: Prisma.TransactionIsolationLevel
     }
     model: {
@@ -1745,80 +1727,6 @@ export namespace Prisma {
           }
         }
       }
-      Transactions: {
-        payload: Prisma.$TransactionsPayload<ExtArgs>
-        fields: Prisma.TransactionsFieldRefs
-        operations: {
-          findUnique: {
-            args: Prisma.TransactionsFindUniqueArgs<ExtArgs>
-            result: $Utils.PayloadToResult<Prisma.$TransactionsPayload> | null
-          }
-          findUniqueOrThrow: {
-            args: Prisma.TransactionsFindUniqueOrThrowArgs<ExtArgs>
-            result: $Utils.PayloadToResult<Prisma.$TransactionsPayload>
-          }
-          findFirst: {
-            args: Prisma.TransactionsFindFirstArgs<ExtArgs>
-            result: $Utils.PayloadToResult<Prisma.$TransactionsPayload> | null
-          }
-          findFirstOrThrow: {
-            args: Prisma.TransactionsFindFirstOrThrowArgs<ExtArgs>
-            result: $Utils.PayloadToResult<Prisma.$TransactionsPayload>
-          }
-          findMany: {
-            args: Prisma.TransactionsFindManyArgs<ExtArgs>
-            result: $Utils.PayloadToResult<Prisma.$TransactionsPayload>[]
-          }
-          create: {
-            args: Prisma.TransactionsCreateArgs<ExtArgs>
-            result: $Utils.PayloadToResult<Prisma.$TransactionsPayload>
-          }
-          createMany: {
-            args: Prisma.TransactionsCreateManyArgs<ExtArgs>
-            result: BatchPayload
-          }
-          createManyAndReturn: {
-            args: Prisma.TransactionsCreateManyAndReturnArgs<ExtArgs>
-            result: $Utils.PayloadToResult<Prisma.$TransactionsPayload>[]
-          }
-          delete: {
-            args: Prisma.TransactionsDeleteArgs<ExtArgs>
-            result: $Utils.PayloadToResult<Prisma.$TransactionsPayload>
-          }
-          update: {
-            args: Prisma.TransactionsUpdateArgs<ExtArgs>
-            result: $Utils.PayloadToResult<Prisma.$TransactionsPayload>
-          }
-          deleteMany: {
-            args: Prisma.TransactionsDeleteManyArgs<ExtArgs>
-            result: BatchPayload
-          }
-          updateMany: {
-            args: Prisma.TransactionsUpdateManyArgs<ExtArgs>
-            result: BatchPayload
-          }
-          updateManyAndReturn: {
-            args: Prisma.TransactionsUpdateManyAndReturnArgs<ExtArgs>
-            result: $Utils.PayloadToResult<Prisma.$TransactionsPayload>[]
-          }
-          upsert: {
-            args: Prisma.TransactionsUpsertArgs<ExtArgs>
-            result: $Utils.PayloadToResult<Prisma.$TransactionsPayload>
-          }
-          aggregate: {
-            args: Prisma.TransactionsAggregateArgs<ExtArgs>
-            result: $Utils.Optional<AggregateTransactions>
-          }
-          groupBy: {
-            args: Prisma.TransactionsGroupByArgs<ExtArgs>
-            result: $Utils.Optional<TransactionsGroupByOutputType>[]
-          }
-          count: {
-            args: Prisma.TransactionsCountArgs<ExtArgs>
-            result: $Utils.Optional<TransactionsCountAggregateOutputType> | number
-          }
-        }
-      }
       Transactions_detail: {
         payload: Prisma.$Transactions_detailPayload<ExtArgs>
         fields: Prisma.Transactions_detailFieldRefs
@@ -1997,7 +1905,6 @@ export namespace Prisma {
     referral_Code?: Referral_CodeOmit
     referral_Usage?: Referral_UsageOmit
     voucher?: VoucherOmit
-    transactions?: TransactionsOmit
     transactions_detail?: Transactions_detailOmit
   }
 
@@ -2186,12 +2093,14 @@ export namespace Prisma {
     event: number
     organizer_voucher: number
     organizer_transactionDetails: number
+    organizer_articles: number
   }
 
   export type OrganizerCountOutputTypeSelect<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     event?: boolean | OrganizerCountOutputTypeCountEventArgs
     organizer_voucher?: boolean | OrganizerCountOutputTypeCountOrganizer_voucherArgs
     organizer_transactionDetails?: boolean | OrganizerCountOutputTypeCountOrganizer_transactionDetailsArgs
+    organizer_articles?: boolean | OrganizerCountOutputTypeCountOrganizer_articlesArgs
   }
 
   // Custom InputTypes
@@ -2224,6 +2133,13 @@ export namespace Prisma {
    */
   export type OrganizerCountOutputTypeCountOrganizer_transactionDetailsArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     where?: Transactions_detailWhereInput
+  }
+
+  /**
+   * OrganizerCountOutputType without action
+   */
+  export type OrganizerCountOutputTypeCountOrganizer_articlesArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    where?: ArticlesWhereInput
   }
 
 
@@ -2374,11 +2290,11 @@ export namespace Prisma {
    */
 
   export type VoucherCountOutputType = {
-    voucher_transaction: number
+    voucher_transaction_details: number
   }
 
   export type VoucherCountOutputTypeSelect<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    voucher_transaction?: boolean | VoucherCountOutputTypeCountVoucher_transactionArgs
+    voucher_transaction_details?: boolean | VoucherCountOutputTypeCountVoucher_transaction_detailsArgs
   }
 
   // Custom InputTypes
@@ -2395,38 +2311,7 @@ export namespace Prisma {
   /**
    * VoucherCountOutputType without action
    */
-  export type VoucherCountOutputTypeCountVoucher_transactionArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    where?: TransactionsWhereInput
-  }
-
-
-  /**
-   * Count Type TransactionsCountOutputType
-   */
-
-  export type TransactionsCountOutputType = {
-    transaction_details: number
-  }
-
-  export type TransactionsCountOutputTypeSelect<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    transaction_details?: boolean | TransactionsCountOutputTypeCountTransaction_detailsArgs
-  }
-
-  // Custom InputTypes
-  /**
-   * TransactionsCountOutputType without action
-   */
-  export type TransactionsCountOutputTypeDefaultArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    /**
-     * Select specific fields to fetch from the TransactionsCountOutputType
-     */
-    select?: TransactionsCountOutputTypeSelect<ExtArgs> | null
-  }
-
-  /**
-   * TransactionsCountOutputType without action
-   */
-  export type TransactionsCountOutputTypeCountTransaction_detailsArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+  export type VoucherCountOutputTypeCountVoucher_transaction_detailsArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     where?: Transactions_detailWhereInput
   }
 
@@ -3942,6 +3827,7 @@ export namespace Prisma {
     event?: boolean | Organizer$eventArgs<ExtArgs>
     organizer_voucher?: boolean | Organizer$organizer_voucherArgs<ExtArgs>
     organizer_transactionDetails?: boolean | Organizer$organizer_transactionDetailsArgs<ExtArgs>
+    organizer_articles?: boolean | Organizer$organizer_articlesArgs<ExtArgs>
     _count?: boolean | OrganizerCountOutputTypeDefaultArgs<ExtArgs>
   }, ExtArgs["result"]["organizer"]>
 
@@ -3971,6 +3857,7 @@ export namespace Prisma {
     event?: boolean | Organizer$eventArgs<ExtArgs>
     organizer_voucher?: boolean | Organizer$organizer_voucherArgs<ExtArgs>
     organizer_transactionDetails?: boolean | Organizer$organizer_transactionDetailsArgs<ExtArgs>
+    organizer_articles?: boolean | Organizer$organizer_articlesArgs<ExtArgs>
     _count?: boolean | OrganizerCountOutputTypeDefaultArgs<ExtArgs>
   }
   export type OrganizerIncludeCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
@@ -3987,6 +3874,7 @@ export namespace Prisma {
       event: Prisma.$EventsPayload<ExtArgs>[]
       organizer_voucher: Prisma.$VoucherPayload<ExtArgs>[]
       organizer_transactionDetails: Prisma.$Transactions_detailPayload<ExtArgs>[]
+      organizer_articles: Prisma.$ArticlesPayload<ExtArgs>[]
     }
     scalars: $Extensions.GetPayloadResult<{
       id: string
@@ -4390,6 +4278,7 @@ export namespace Prisma {
     event<T extends Organizer$eventArgs<ExtArgs> = {}>(args?: Subset<T, Organizer$eventArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$EventsPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
     organizer_voucher<T extends Organizer$organizer_voucherArgs<ExtArgs> = {}>(args?: Subset<T, Organizer$organizer_voucherArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$VoucherPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
     organizer_transactionDetails<T extends Organizer$organizer_transactionDetailsArgs<ExtArgs> = {}>(args?: Subset<T, Organizer$organizer_transactionDetailsArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$Transactions_detailPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
+    organizer_articles<T extends Organizer$organizer_articlesArgs<ExtArgs> = {}>(args?: Subset<T, Organizer$organizer_articlesArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$ArticlesPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
     /**
      * Attaches callbacks for the resolution and/or rejection of the Promise.
      * @param onfulfilled The callback to execute when the Promise is resolved.
@@ -4890,6 +4779,30 @@ export namespace Prisma {
   }
 
   /**
+   * Organizer.organizer_articles
+   */
+  export type Organizer$organizer_articlesArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Articles
+     */
+    select?: ArticlesSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the Articles
+     */
+    omit?: ArticlesOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: ArticlesInclude<ExtArgs> | null
+    where?: ArticlesWhereInput
+    orderBy?: ArticlesOrderByWithRelationInput | ArticlesOrderByWithRelationInput[]
+    cursor?: ArticlesWhereUniqueInput
+    take?: number
+    skip?: number
+    distinct?: ArticlesScalarFieldEnum | ArticlesScalarFieldEnum[]
+  }
+
+  /**
    * Organizer without action
    */
   export type OrganizerDefaultArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
@@ -5064,6 +4977,7 @@ export namespace Prisma {
     organizer_id?: boolean
     title?: boolean
     created_at?: boolean
+    organizer?: boolean | OrganizerDefaultArgs<ExtArgs>
   }, ExtArgs["result"]["articles"]>
 
   export type ArticlesSelectCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
@@ -5071,6 +4985,7 @@ export namespace Prisma {
     organizer_id?: boolean
     title?: boolean
     created_at?: boolean
+    organizer?: boolean | OrganizerDefaultArgs<ExtArgs>
   }, ExtArgs["result"]["articles"]>
 
   export type ArticlesSelectUpdateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
@@ -5078,6 +4993,7 @@ export namespace Prisma {
     organizer_id?: boolean
     title?: boolean
     created_at?: boolean
+    organizer?: boolean | OrganizerDefaultArgs<ExtArgs>
   }, ExtArgs["result"]["articles"]>
 
   export type ArticlesSelectScalar = {
@@ -5088,10 +5004,21 @@ export namespace Prisma {
   }
 
   export type ArticlesOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "organizer_id" | "title" | "created_at", ExtArgs["result"]["articles"]>
+  export type ArticlesInclude<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    organizer?: boolean | OrganizerDefaultArgs<ExtArgs>
+  }
+  export type ArticlesIncludeCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    organizer?: boolean | OrganizerDefaultArgs<ExtArgs>
+  }
+  export type ArticlesIncludeUpdateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    organizer?: boolean | OrganizerDefaultArgs<ExtArgs>
+  }
 
   export type $ArticlesPayload<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     name: "Articles"
-    objects: {}
+    objects: {
+      organizer: Prisma.$OrganizerPayload<ExtArgs>
+    }
     scalars: $Extensions.GetPayloadResult<{
       id: string
       organizer_id: string
@@ -5491,6 +5418,7 @@ export namespace Prisma {
    */
   export interface Prisma__ArticlesClient<T, Null = never, ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs, GlobalOmitOptions = {}> extends Prisma.PrismaPromise<T> {
     readonly [Symbol.toStringTag]: "PrismaPromise"
+    organizer<T extends OrganizerDefaultArgs<ExtArgs> = {}>(args?: Subset<T, OrganizerDefaultArgs<ExtArgs>>): Prisma__OrganizerClient<$Result.GetResult<Prisma.$OrganizerPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | Null, Null, ExtArgs, GlobalOmitOptions>
     /**
      * Attaches callbacks for the resolution and/or rejection of the Promise.
      * @param onfulfilled The callback to execute when the Promise is resolved.
@@ -5541,6 +5469,10 @@ export namespace Prisma {
      */
     omit?: ArticlesOmit<ExtArgs> | null
     /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: ArticlesInclude<ExtArgs> | null
+    /**
      * Filter, which Articles to fetch.
      */
     where: ArticlesWhereUniqueInput
@@ -5559,6 +5491,10 @@ export namespace Prisma {
      */
     omit?: ArticlesOmit<ExtArgs> | null
     /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: ArticlesInclude<ExtArgs> | null
+    /**
      * Filter, which Articles to fetch.
      */
     where: ArticlesWhereUniqueInput
@@ -5576,6 +5512,10 @@ export namespace Prisma {
      * Omit specific fields from the Articles
      */
     omit?: ArticlesOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: ArticlesInclude<ExtArgs> | null
     /**
      * Filter, which Articles to fetch.
      */
@@ -5625,6 +5565,10 @@ export namespace Prisma {
      */
     omit?: ArticlesOmit<ExtArgs> | null
     /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: ArticlesInclude<ExtArgs> | null
+    /**
      * Filter, which Articles to fetch.
      */
     where?: ArticlesWhereInput
@@ -5673,6 +5617,10 @@ export namespace Prisma {
      */
     omit?: ArticlesOmit<ExtArgs> | null
     /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: ArticlesInclude<ExtArgs> | null
+    /**
      * Filter, which Articles to fetch.
      */
     where?: ArticlesWhereInput
@@ -5716,6 +5664,10 @@ export namespace Prisma {
      */
     omit?: ArticlesOmit<ExtArgs> | null
     /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: ArticlesInclude<ExtArgs> | null
+    /**
      * The data needed to create a Articles.
      */
     data: XOR<ArticlesCreateInput, ArticlesUncheckedCreateInput>
@@ -5749,6 +5701,10 @@ export namespace Prisma {
      */
     data: ArticlesCreateManyInput | ArticlesCreateManyInput[]
     skipDuplicates?: boolean
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: ArticlesIncludeCreateManyAndReturn<ExtArgs> | null
   }
 
   /**
@@ -5763,6 +5719,10 @@ export namespace Prisma {
      * Omit specific fields from the Articles
      */
     omit?: ArticlesOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: ArticlesInclude<ExtArgs> | null
     /**
      * The data needed to update a Articles.
      */
@@ -5815,6 +5775,10 @@ export namespace Prisma {
      * Limit how many Articles to update.
      */
     limit?: number
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: ArticlesIncludeUpdateManyAndReturn<ExtArgs> | null
   }
 
   /**
@@ -5829,6 +5793,10 @@ export namespace Prisma {
      * Omit specific fields from the Articles
      */
     omit?: ArticlesOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: ArticlesInclude<ExtArgs> | null
     /**
      * The filter to search for the Articles to update in case it exists.
      */
@@ -5855,6 +5823,10 @@ export namespace Prisma {
      * Omit specific fields from the Articles
      */
     omit?: ArticlesOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: ArticlesInclude<ExtArgs> | null
     /**
      * Filter which Articles to delete.
      */
@@ -5887,6 +5859,10 @@ export namespace Prisma {
      * Omit specific fields from the Articles
      */
     omit?: ArticlesOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: ArticlesInclude<ExtArgs> | null
   }
 
 
@@ -10527,8 +10503,8 @@ export namespace Prisma {
     id: string
     user_id: string
     events_id: string
-    review: string
-    rating: number
+    review: string | null
+    rating: number | null
     created_at: Date
     _count: Event_ReviewsCountAggregateOutputType | null
     _avg: Event_ReviewsAvgAggregateOutputType | null
@@ -10617,8 +10593,8 @@ export namespace Prisma {
       id: string
       user_id: string
       events_id: string
-      review: string
-      rating: number
+      review: string | null
+      rating: number | null
       created_at: Date
     }, ExtArgs["result"]["event_Reviews"]>
     composites: {}
@@ -14934,7 +14910,7 @@ export namespace Prisma {
     expired_at?: boolean
     voucher_organizer?: boolean | Voucher$voucher_organizerArgs<ExtArgs>
     voucher_user?: boolean | Voucher$voucher_userArgs<ExtArgs>
-    voucher_transaction?: boolean | Voucher$voucher_transactionArgs<ExtArgs>
+    voucher_transaction_details?: boolean | Voucher$voucher_transaction_detailsArgs<ExtArgs>
     _count?: boolean | VoucherCountOutputTypeDefaultArgs<ExtArgs>
   }, ExtArgs["result"]["voucher"]>
 
@@ -14979,7 +14955,7 @@ export namespace Prisma {
   export type VoucherInclude<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     voucher_organizer?: boolean | Voucher$voucher_organizerArgs<ExtArgs>
     voucher_user?: boolean | Voucher$voucher_userArgs<ExtArgs>
-    voucher_transaction?: boolean | Voucher$voucher_transactionArgs<ExtArgs>
+    voucher_transaction_details?: boolean | Voucher$voucher_transaction_detailsArgs<ExtArgs>
     _count?: boolean | VoucherCountOutputTypeDefaultArgs<ExtArgs>
   }
   export type VoucherIncludeCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
@@ -14996,7 +14972,7 @@ export namespace Prisma {
     objects: {
       voucher_organizer: Prisma.$OrganizerPayload<ExtArgs> | null
       voucher_user: Prisma.$UsersPayload<ExtArgs> | null
-      voucher_transaction: Prisma.$TransactionsPayload<ExtArgs>[]
+      voucher_transaction_details: Prisma.$Transactions_detailPayload<ExtArgs>[]
     }
     scalars: $Extensions.GetPayloadResult<{
       id: string
@@ -15403,7 +15379,7 @@ export namespace Prisma {
     readonly [Symbol.toStringTag]: "PrismaPromise"
     voucher_organizer<T extends Voucher$voucher_organizerArgs<ExtArgs> = {}>(args?: Subset<T, Voucher$voucher_organizerArgs<ExtArgs>>): Prisma__OrganizerClient<$Result.GetResult<Prisma.$OrganizerPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
     voucher_user<T extends Voucher$voucher_userArgs<ExtArgs> = {}>(args?: Subset<T, Voucher$voucher_userArgs<ExtArgs>>): Prisma__UsersClient<$Result.GetResult<Prisma.$UsersPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
-    voucher_transaction<T extends Voucher$voucher_transactionArgs<ExtArgs> = {}>(args?: Subset<T, Voucher$voucher_transactionArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$TransactionsPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
+    voucher_transaction_details<T extends Voucher$voucher_transaction_detailsArgs<ExtArgs> = {}>(args?: Subset<T, Voucher$voucher_transaction_detailsArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$Transactions_detailPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
     /**
      * Attaches callbacks for the resolution and/or rejection of the Promise.
      * @param onfulfilled The callback to execute when the Promise is resolved.
@@ -15875,27 +15851,27 @@ export namespace Prisma {
   }
 
   /**
-   * Voucher.voucher_transaction
+   * Voucher.voucher_transaction_details
    */
-  export type Voucher$voucher_transactionArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+  export type Voucher$voucher_transaction_detailsArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     /**
-     * Select specific fields to fetch from the Transactions
+     * Select specific fields to fetch from the Transactions_detail
      */
-    select?: TransactionsSelect<ExtArgs> | null
+    select?: Transactions_detailSelect<ExtArgs> | null
     /**
-     * Omit specific fields from the Transactions
+     * Omit specific fields from the Transactions_detail
      */
-    omit?: TransactionsOmit<ExtArgs> | null
+    omit?: Transactions_detailOmit<ExtArgs> | null
     /**
      * Choose, which related nodes to fetch as well
      */
-    include?: TransactionsInclude<ExtArgs> | null
-    where?: TransactionsWhereInput
-    orderBy?: TransactionsOrderByWithRelationInput | TransactionsOrderByWithRelationInput[]
-    cursor?: TransactionsWhereUniqueInput
+    include?: Transactions_detailInclude<ExtArgs> | null
+    where?: Transactions_detailWhereInput
+    orderBy?: Transactions_detailOrderByWithRelationInput | Transactions_detailOrderByWithRelationInput[]
+    cursor?: Transactions_detailWhereUniqueInput
     take?: number
     skip?: number
-    distinct?: TransactionsScalarFieldEnum | TransactionsScalarFieldEnum[]
+    distinct?: Transactions_detailScalarFieldEnum | Transactions_detailScalarFieldEnum[]
   }
 
   /**
@@ -15918,1115 +15894,6 @@ export namespace Prisma {
 
 
   /**
-   * Model Transactions
-   */
-
-  export type AggregateTransactions = {
-    _count: TransactionsCountAggregateOutputType | null
-    _avg: TransactionsAvgAggregateOutputType | null
-    _sum: TransactionsSumAggregateOutputType | null
-    _min: TransactionsMinAggregateOutputType | null
-    _max: TransactionsMaxAggregateOutputType | null
-  }
-
-  export type TransactionsAvgAggregateOutputType = {
-    amount: number | null
-  }
-
-  export type TransactionsSumAggregateOutputType = {
-    amount: number | null
-  }
-
-  export type TransactionsMinAggregateOutputType = {
-    id: string | null
-    voucher_id: string | null
-    amount: number | null
-    proof: string | null
-  }
-
-  export type TransactionsMaxAggregateOutputType = {
-    id: string | null
-    voucher_id: string | null
-    amount: number | null
-    proof: string | null
-  }
-
-  export type TransactionsCountAggregateOutputType = {
-    id: number
-    voucher_id: number
-    amount: number
-    proof: number
-    _all: number
-  }
-
-
-  export type TransactionsAvgAggregateInputType = {
-    amount?: true
-  }
-
-  export type TransactionsSumAggregateInputType = {
-    amount?: true
-  }
-
-  export type TransactionsMinAggregateInputType = {
-    id?: true
-    voucher_id?: true
-    amount?: true
-    proof?: true
-  }
-
-  export type TransactionsMaxAggregateInputType = {
-    id?: true
-    voucher_id?: true
-    amount?: true
-    proof?: true
-  }
-
-  export type TransactionsCountAggregateInputType = {
-    id?: true
-    voucher_id?: true
-    amount?: true
-    proof?: true
-    _all?: true
-  }
-
-  export type TransactionsAggregateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    /**
-     * Filter which Transactions to aggregate.
-     */
-    where?: TransactionsWhereInput
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
-     * 
-     * Determine the order of Transactions to fetch.
-     */
-    orderBy?: TransactionsOrderByWithRelationInput | TransactionsOrderByWithRelationInput[]
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
-     * 
-     * Sets the start position
-     */
-    cursor?: TransactionsWhereUniqueInput
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
-     * 
-     * Take `±n` Transactions from the position of the cursor.
-     */
-    take?: number
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
-     * 
-     * Skip the first `n` Transactions.
-     */
-    skip?: number
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
-     * 
-     * Count returned Transactions
-    **/
-    _count?: true | TransactionsCountAggregateInputType
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
-     * 
-     * Select which fields to average
-    **/
-    _avg?: TransactionsAvgAggregateInputType
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
-     * 
-     * Select which fields to sum
-    **/
-    _sum?: TransactionsSumAggregateInputType
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
-     * 
-     * Select which fields to find the minimum value
-    **/
-    _min?: TransactionsMinAggregateInputType
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
-     * 
-     * Select which fields to find the maximum value
-    **/
-    _max?: TransactionsMaxAggregateInputType
-  }
-
-  export type GetTransactionsAggregateType<T extends TransactionsAggregateArgs> = {
-        [P in keyof T & keyof AggregateTransactions]: P extends '_count' | 'count'
-      ? T[P] extends true
-        ? number
-        : GetScalarType<T[P], AggregateTransactions[P]>
-      : GetScalarType<T[P], AggregateTransactions[P]>
-  }
-
-
-
-
-  export type TransactionsGroupByArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    where?: TransactionsWhereInput
-    orderBy?: TransactionsOrderByWithAggregationInput | TransactionsOrderByWithAggregationInput[]
-    by: TransactionsScalarFieldEnum[] | TransactionsScalarFieldEnum
-    having?: TransactionsScalarWhereWithAggregatesInput
-    take?: number
-    skip?: number
-    _count?: TransactionsCountAggregateInputType | true
-    _avg?: TransactionsAvgAggregateInputType
-    _sum?: TransactionsSumAggregateInputType
-    _min?: TransactionsMinAggregateInputType
-    _max?: TransactionsMaxAggregateInputType
-  }
-
-  export type TransactionsGroupByOutputType = {
-    id: string
-    voucher_id: string
-    amount: number
-    proof: string
-    _count: TransactionsCountAggregateOutputType | null
-    _avg: TransactionsAvgAggregateOutputType | null
-    _sum: TransactionsSumAggregateOutputType | null
-    _min: TransactionsMinAggregateOutputType | null
-    _max: TransactionsMaxAggregateOutputType | null
-  }
-
-  type GetTransactionsGroupByPayload<T extends TransactionsGroupByArgs> = Prisma.PrismaPromise<
-    Array<
-      PickEnumerable<TransactionsGroupByOutputType, T['by']> &
-        {
-          [P in ((keyof T) & (keyof TransactionsGroupByOutputType))]: P extends '_count'
-            ? T[P] extends boolean
-              ? number
-              : GetScalarType<T[P], TransactionsGroupByOutputType[P]>
-            : GetScalarType<T[P], TransactionsGroupByOutputType[P]>
-        }
-      >
-    >
-
-
-  export type TransactionsSelect<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
-    id?: boolean
-    voucher_id?: boolean
-    amount?: boolean
-    proof?: boolean
-    transaction_voucher?: boolean | VoucherDefaultArgs<ExtArgs>
-    transaction_details?: boolean | Transactions$transaction_detailsArgs<ExtArgs>
-    _count?: boolean | TransactionsCountOutputTypeDefaultArgs<ExtArgs>
-  }, ExtArgs["result"]["transactions"]>
-
-  export type TransactionsSelectCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
-    id?: boolean
-    voucher_id?: boolean
-    amount?: boolean
-    proof?: boolean
-    transaction_voucher?: boolean | VoucherDefaultArgs<ExtArgs>
-  }, ExtArgs["result"]["transactions"]>
-
-  export type TransactionsSelectUpdateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
-    id?: boolean
-    voucher_id?: boolean
-    amount?: boolean
-    proof?: boolean
-    transaction_voucher?: boolean | VoucherDefaultArgs<ExtArgs>
-  }, ExtArgs["result"]["transactions"]>
-
-  export type TransactionsSelectScalar = {
-    id?: boolean
-    voucher_id?: boolean
-    amount?: boolean
-    proof?: boolean
-  }
-
-  export type TransactionsOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "voucher_id" | "amount" | "proof", ExtArgs["result"]["transactions"]>
-  export type TransactionsInclude<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    transaction_voucher?: boolean | VoucherDefaultArgs<ExtArgs>
-    transaction_details?: boolean | Transactions$transaction_detailsArgs<ExtArgs>
-    _count?: boolean | TransactionsCountOutputTypeDefaultArgs<ExtArgs>
-  }
-  export type TransactionsIncludeCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    transaction_voucher?: boolean | VoucherDefaultArgs<ExtArgs>
-  }
-  export type TransactionsIncludeUpdateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    transaction_voucher?: boolean | VoucherDefaultArgs<ExtArgs>
-  }
-
-  export type $TransactionsPayload<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    name: "Transactions"
-    objects: {
-      transaction_voucher: Prisma.$VoucherPayload<ExtArgs>
-      transaction_details: Prisma.$Transactions_detailPayload<ExtArgs>[]
-    }
-    scalars: $Extensions.GetPayloadResult<{
-      id: string
-      voucher_id: string
-      amount: number
-      proof: string
-    }, ExtArgs["result"]["transactions"]>
-    composites: {}
-  }
-
-  type TransactionsGetPayload<S extends boolean | null | undefined | TransactionsDefaultArgs> = $Result.GetResult<Prisma.$TransactionsPayload, S>
-
-  type TransactionsCountArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> =
-    Omit<TransactionsFindManyArgs, 'select' | 'include' | 'distinct' | 'omit'> & {
-      select?: TransactionsCountAggregateInputType | true
-    }
-
-  export interface TransactionsDelegate<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs, GlobalOmitOptions = {}> {
-    [K: symbol]: { types: Prisma.TypeMap<ExtArgs>['model']['Transactions'], meta: { name: 'Transactions' } }
-    /**
-     * Find zero or one Transactions that matches the filter.
-     * @param {TransactionsFindUniqueArgs} args - Arguments to find a Transactions
-     * @example
-     * // Get one Transactions
-     * const transactions = await prisma.transactions.findUnique({
-     *   where: {
-     *     // ... provide filter here
-     *   }
-     * })
-     */
-    findUnique<T extends TransactionsFindUniqueArgs>(args: SelectSubset<T, TransactionsFindUniqueArgs<ExtArgs>>): Prisma__TransactionsClient<$Result.GetResult<Prisma.$TransactionsPayload<ExtArgs>, T, "findUnique", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
-
-    /**
-     * Find one Transactions that matches the filter or throw an error with `error.code='P2025'`
-     * if no matches were found.
-     * @param {TransactionsFindUniqueOrThrowArgs} args - Arguments to find a Transactions
-     * @example
-     * // Get one Transactions
-     * const transactions = await prisma.transactions.findUniqueOrThrow({
-     *   where: {
-     *     // ... provide filter here
-     *   }
-     * })
-     */
-    findUniqueOrThrow<T extends TransactionsFindUniqueOrThrowArgs>(args: SelectSubset<T, TransactionsFindUniqueOrThrowArgs<ExtArgs>>): Prisma__TransactionsClient<$Result.GetResult<Prisma.$TransactionsPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
-
-    /**
-     * Find the first Transactions that matches the filter.
-     * Note, that providing `undefined` is treated as the value not being there.
-     * Read more here: https://pris.ly/d/null-undefined
-     * @param {TransactionsFindFirstArgs} args - Arguments to find a Transactions
-     * @example
-     * // Get one Transactions
-     * const transactions = await prisma.transactions.findFirst({
-     *   where: {
-     *     // ... provide filter here
-     *   }
-     * })
-     */
-    findFirst<T extends TransactionsFindFirstArgs>(args?: SelectSubset<T, TransactionsFindFirstArgs<ExtArgs>>): Prisma__TransactionsClient<$Result.GetResult<Prisma.$TransactionsPayload<ExtArgs>, T, "findFirst", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
-
-    /**
-     * Find the first Transactions that matches the filter or
-     * throw `PrismaKnownClientError` with `P2025` code if no matches were found.
-     * Note, that providing `undefined` is treated as the value not being there.
-     * Read more here: https://pris.ly/d/null-undefined
-     * @param {TransactionsFindFirstOrThrowArgs} args - Arguments to find a Transactions
-     * @example
-     * // Get one Transactions
-     * const transactions = await prisma.transactions.findFirstOrThrow({
-     *   where: {
-     *     // ... provide filter here
-     *   }
-     * })
-     */
-    findFirstOrThrow<T extends TransactionsFindFirstOrThrowArgs>(args?: SelectSubset<T, TransactionsFindFirstOrThrowArgs<ExtArgs>>): Prisma__TransactionsClient<$Result.GetResult<Prisma.$TransactionsPayload<ExtArgs>, T, "findFirstOrThrow", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
-
-    /**
-     * Find zero or more Transactions that matches the filter.
-     * Note, that providing `undefined` is treated as the value not being there.
-     * Read more here: https://pris.ly/d/null-undefined
-     * @param {TransactionsFindManyArgs} args - Arguments to filter and select certain fields only.
-     * @example
-     * // Get all Transactions
-     * const transactions = await prisma.transactions.findMany()
-     * 
-     * // Get first 10 Transactions
-     * const transactions = await prisma.transactions.findMany({ take: 10 })
-     * 
-     * // Only select the `id`
-     * const transactionsWithIdOnly = await prisma.transactions.findMany({ select: { id: true } })
-     * 
-     */
-    findMany<T extends TransactionsFindManyArgs>(args?: SelectSubset<T, TransactionsFindManyArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$TransactionsPayload<ExtArgs>, T, "findMany", GlobalOmitOptions>>
-
-    /**
-     * Create a Transactions.
-     * @param {TransactionsCreateArgs} args - Arguments to create a Transactions.
-     * @example
-     * // Create one Transactions
-     * const Transactions = await prisma.transactions.create({
-     *   data: {
-     *     // ... data to create a Transactions
-     *   }
-     * })
-     * 
-     */
-    create<T extends TransactionsCreateArgs>(args: SelectSubset<T, TransactionsCreateArgs<ExtArgs>>): Prisma__TransactionsClient<$Result.GetResult<Prisma.$TransactionsPayload<ExtArgs>, T, "create", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
-
-    /**
-     * Create many Transactions.
-     * @param {TransactionsCreateManyArgs} args - Arguments to create many Transactions.
-     * @example
-     * // Create many Transactions
-     * const transactions = await prisma.transactions.createMany({
-     *   data: [
-     *     // ... provide data here
-     *   ]
-     * })
-     *     
-     */
-    createMany<T extends TransactionsCreateManyArgs>(args?: SelectSubset<T, TransactionsCreateManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
-
-    /**
-     * Create many Transactions and returns the data saved in the database.
-     * @param {TransactionsCreateManyAndReturnArgs} args - Arguments to create many Transactions.
-     * @example
-     * // Create many Transactions
-     * const transactions = await prisma.transactions.createManyAndReturn({
-     *   data: [
-     *     // ... provide data here
-     *   ]
-     * })
-     * 
-     * // Create many Transactions and only return the `id`
-     * const transactionsWithIdOnly = await prisma.transactions.createManyAndReturn({
-     *   select: { id: true },
-     *   data: [
-     *     // ... provide data here
-     *   ]
-     * })
-     * Note, that providing `undefined` is treated as the value not being there.
-     * Read more here: https://pris.ly/d/null-undefined
-     * 
-     */
-    createManyAndReturn<T extends TransactionsCreateManyAndReturnArgs>(args?: SelectSubset<T, TransactionsCreateManyAndReturnArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$TransactionsPayload<ExtArgs>, T, "createManyAndReturn", GlobalOmitOptions>>
-
-    /**
-     * Delete a Transactions.
-     * @param {TransactionsDeleteArgs} args - Arguments to delete one Transactions.
-     * @example
-     * // Delete one Transactions
-     * const Transactions = await prisma.transactions.delete({
-     *   where: {
-     *     // ... filter to delete one Transactions
-     *   }
-     * })
-     * 
-     */
-    delete<T extends TransactionsDeleteArgs>(args: SelectSubset<T, TransactionsDeleteArgs<ExtArgs>>): Prisma__TransactionsClient<$Result.GetResult<Prisma.$TransactionsPayload<ExtArgs>, T, "delete", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
-
-    /**
-     * Update one Transactions.
-     * @param {TransactionsUpdateArgs} args - Arguments to update one Transactions.
-     * @example
-     * // Update one Transactions
-     * const transactions = await prisma.transactions.update({
-     *   where: {
-     *     // ... provide filter here
-     *   },
-     *   data: {
-     *     // ... provide data here
-     *   }
-     * })
-     * 
-     */
-    update<T extends TransactionsUpdateArgs>(args: SelectSubset<T, TransactionsUpdateArgs<ExtArgs>>): Prisma__TransactionsClient<$Result.GetResult<Prisma.$TransactionsPayload<ExtArgs>, T, "update", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
-
-    /**
-     * Delete zero or more Transactions.
-     * @param {TransactionsDeleteManyArgs} args - Arguments to filter Transactions to delete.
-     * @example
-     * // Delete a few Transactions
-     * const { count } = await prisma.transactions.deleteMany({
-     *   where: {
-     *     // ... provide filter here
-     *   }
-     * })
-     * 
-     */
-    deleteMany<T extends TransactionsDeleteManyArgs>(args?: SelectSubset<T, TransactionsDeleteManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
-
-    /**
-     * Update zero or more Transactions.
-     * Note, that providing `undefined` is treated as the value not being there.
-     * Read more here: https://pris.ly/d/null-undefined
-     * @param {TransactionsUpdateManyArgs} args - Arguments to update one or more rows.
-     * @example
-     * // Update many Transactions
-     * const transactions = await prisma.transactions.updateMany({
-     *   where: {
-     *     // ... provide filter here
-     *   },
-     *   data: {
-     *     // ... provide data here
-     *   }
-     * })
-     * 
-     */
-    updateMany<T extends TransactionsUpdateManyArgs>(args: SelectSubset<T, TransactionsUpdateManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
-
-    /**
-     * Update zero or more Transactions and returns the data updated in the database.
-     * @param {TransactionsUpdateManyAndReturnArgs} args - Arguments to update many Transactions.
-     * @example
-     * // Update many Transactions
-     * const transactions = await prisma.transactions.updateManyAndReturn({
-     *   where: {
-     *     // ... provide filter here
-     *   },
-     *   data: [
-     *     // ... provide data here
-     *   ]
-     * })
-     * 
-     * // Update zero or more Transactions and only return the `id`
-     * const transactionsWithIdOnly = await prisma.transactions.updateManyAndReturn({
-     *   select: { id: true },
-     *   where: {
-     *     // ... provide filter here
-     *   },
-     *   data: [
-     *     // ... provide data here
-     *   ]
-     * })
-     * Note, that providing `undefined` is treated as the value not being there.
-     * Read more here: https://pris.ly/d/null-undefined
-     * 
-     */
-    updateManyAndReturn<T extends TransactionsUpdateManyAndReturnArgs>(args: SelectSubset<T, TransactionsUpdateManyAndReturnArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$TransactionsPayload<ExtArgs>, T, "updateManyAndReturn", GlobalOmitOptions>>
-
-    /**
-     * Create or update one Transactions.
-     * @param {TransactionsUpsertArgs} args - Arguments to update or create a Transactions.
-     * @example
-     * // Update or create a Transactions
-     * const transactions = await prisma.transactions.upsert({
-     *   create: {
-     *     // ... data to create a Transactions
-     *   },
-     *   update: {
-     *     // ... in case it already exists, update
-     *   },
-     *   where: {
-     *     // ... the filter for the Transactions we want to update
-     *   }
-     * })
-     */
-    upsert<T extends TransactionsUpsertArgs>(args: SelectSubset<T, TransactionsUpsertArgs<ExtArgs>>): Prisma__TransactionsClient<$Result.GetResult<Prisma.$TransactionsPayload<ExtArgs>, T, "upsert", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
-
-
-    /**
-     * Count the number of Transactions.
-     * Note, that providing `undefined` is treated as the value not being there.
-     * Read more here: https://pris.ly/d/null-undefined
-     * @param {TransactionsCountArgs} args - Arguments to filter Transactions to count.
-     * @example
-     * // Count the number of Transactions
-     * const count = await prisma.transactions.count({
-     *   where: {
-     *     // ... the filter for the Transactions we want to count
-     *   }
-     * })
-    **/
-    count<T extends TransactionsCountArgs>(
-      args?: Subset<T, TransactionsCountArgs>,
-    ): Prisma.PrismaPromise<
-      T extends $Utils.Record<'select', any>
-        ? T['select'] extends true
-          ? number
-          : GetScalarType<T['select'], TransactionsCountAggregateOutputType>
-        : number
-    >
-
-    /**
-     * Allows you to perform aggregations operations on a Transactions.
-     * Note, that providing `undefined` is treated as the value not being there.
-     * Read more here: https://pris.ly/d/null-undefined
-     * @param {TransactionsAggregateArgs} args - Select which aggregations you would like to apply and on what fields.
-     * @example
-     * // Ordered by age ascending
-     * // Where email contains prisma.io
-     * // Limited to the 10 users
-     * const aggregations = await prisma.user.aggregate({
-     *   _avg: {
-     *     age: true,
-     *   },
-     *   where: {
-     *     email: {
-     *       contains: "prisma.io",
-     *     },
-     *   },
-     *   orderBy: {
-     *     age: "asc",
-     *   },
-     *   take: 10,
-     * })
-    **/
-    aggregate<T extends TransactionsAggregateArgs>(args: Subset<T, TransactionsAggregateArgs>): Prisma.PrismaPromise<GetTransactionsAggregateType<T>>
-
-    /**
-     * Group by Transactions.
-     * Note, that providing `undefined` is treated as the value not being there.
-     * Read more here: https://pris.ly/d/null-undefined
-     * @param {TransactionsGroupByArgs} args - Group by arguments.
-     * @example
-     * // Group by city, order by createdAt, get count
-     * const result = await prisma.user.groupBy({
-     *   by: ['city', 'createdAt'],
-     *   orderBy: {
-     *     createdAt: true
-     *   },
-     *   _count: {
-     *     _all: true
-     *   },
-     * })
-     * 
-    **/
-    groupBy<
-      T extends TransactionsGroupByArgs,
-      HasSelectOrTake extends Or<
-        Extends<'skip', Keys<T>>,
-        Extends<'take', Keys<T>>
-      >,
-      OrderByArg extends True extends HasSelectOrTake
-        ? { orderBy: TransactionsGroupByArgs['orderBy'] }
-        : { orderBy?: TransactionsGroupByArgs['orderBy'] },
-      OrderFields extends ExcludeUnderscoreKeys<Keys<MaybeTupleToUnion<T['orderBy']>>>,
-      ByFields extends MaybeTupleToUnion<T['by']>,
-      ByValid extends Has<ByFields, OrderFields>,
-      HavingFields extends GetHavingFields<T['having']>,
-      HavingValid extends Has<ByFields, HavingFields>,
-      ByEmpty extends T['by'] extends never[] ? True : False,
-      InputErrors extends ByEmpty extends True
-      ? `Error: "by" must not be empty.`
-      : HavingValid extends False
-      ? {
-          [P in HavingFields]: P extends ByFields
-            ? never
-            : P extends string
-            ? `Error: Field "${P}" used in "having" needs to be provided in "by".`
-            : [
-                Error,
-                'Field ',
-                P,
-                ` in "having" needs to be provided in "by"`,
-              ]
-        }[HavingFields]
-      : 'take' extends Keys<T>
-      ? 'orderBy' extends Keys<T>
-        ? ByValid extends True
-          ? {}
-          : {
-              [P in OrderFields]: P extends ByFields
-                ? never
-                : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
-            }[OrderFields]
-        : 'Error: If you provide "take", you also need to provide "orderBy"'
-      : 'skip' extends Keys<T>
-      ? 'orderBy' extends Keys<T>
-        ? ByValid extends True
-          ? {}
-          : {
-              [P in OrderFields]: P extends ByFields
-                ? never
-                : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
-            }[OrderFields]
-        : 'Error: If you provide "skip", you also need to provide "orderBy"'
-      : ByValid extends True
-      ? {}
-      : {
-          [P in OrderFields]: P extends ByFields
-            ? never
-            : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
-        }[OrderFields]
-    >(args: SubsetIntersection<T, TransactionsGroupByArgs, OrderByArg> & InputErrors): {} extends InputErrors ? GetTransactionsGroupByPayload<T> : Prisma.PrismaPromise<InputErrors>
-  /**
-   * Fields of the Transactions model
-   */
-  readonly fields: TransactionsFieldRefs;
-  }
-
-  /**
-   * The delegate class that acts as a "Promise-like" for Transactions.
-   * Why is this prefixed with `Prisma__`?
-   * Because we want to prevent naming conflicts as mentioned in
-   * https://github.com/prisma/prisma-client-js/issues/707
-   */
-  export interface Prisma__TransactionsClient<T, Null = never, ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs, GlobalOmitOptions = {}> extends Prisma.PrismaPromise<T> {
-    readonly [Symbol.toStringTag]: "PrismaPromise"
-    transaction_voucher<T extends VoucherDefaultArgs<ExtArgs> = {}>(args?: Subset<T, VoucherDefaultArgs<ExtArgs>>): Prisma__VoucherClient<$Result.GetResult<Prisma.$VoucherPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | Null, Null, ExtArgs, GlobalOmitOptions>
-    transaction_details<T extends Transactions$transaction_detailsArgs<ExtArgs> = {}>(args?: Subset<T, Transactions$transaction_detailsArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$Transactions_detailPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
-    /**
-     * Attaches callbacks for the resolution and/or rejection of the Promise.
-     * @param onfulfilled The callback to execute when the Promise is resolved.
-     * @param onrejected The callback to execute when the Promise is rejected.
-     * @returns A Promise for the completion of which ever callback is executed.
-     */
-    then<TResult1 = T, TResult2 = never>(onfulfilled?: ((value: T) => TResult1 | PromiseLike<TResult1>) | undefined | null, onrejected?: ((reason: any) => TResult2 | PromiseLike<TResult2>) | undefined | null): $Utils.JsPromise<TResult1 | TResult2>
-    /**
-     * Attaches a callback for only the rejection of the Promise.
-     * @param onrejected The callback to execute when the Promise is rejected.
-     * @returns A Promise for the completion of the callback.
-     */
-    catch<TResult = never>(onrejected?: ((reason: any) => TResult | PromiseLike<TResult>) | undefined | null): $Utils.JsPromise<T | TResult>
-    /**
-     * Attaches a callback that is invoked when the Promise is settled (fulfilled or rejected). The
-     * resolved value cannot be modified from the callback.
-     * @param onfinally The callback to execute when the Promise is settled (fulfilled or rejected).
-     * @returns A Promise for the completion of the callback.
-     */
-    finally(onfinally?: (() => void) | undefined | null): $Utils.JsPromise<T>
-  }
-
-
-
-
-  /**
-   * Fields of the Transactions model
-   */
-  interface TransactionsFieldRefs {
-    readonly id: FieldRef<"Transactions", 'String'>
-    readonly voucher_id: FieldRef<"Transactions", 'String'>
-    readonly amount: FieldRef<"Transactions", 'Int'>
-    readonly proof: FieldRef<"Transactions", 'String'>
-  }
-    
-
-  // Custom InputTypes
-  /**
-   * Transactions findUnique
-   */
-  export type TransactionsFindUniqueArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    /**
-     * Select specific fields to fetch from the Transactions
-     */
-    select?: TransactionsSelect<ExtArgs> | null
-    /**
-     * Omit specific fields from the Transactions
-     */
-    omit?: TransactionsOmit<ExtArgs> | null
-    /**
-     * Choose, which related nodes to fetch as well
-     */
-    include?: TransactionsInclude<ExtArgs> | null
-    /**
-     * Filter, which Transactions to fetch.
-     */
-    where: TransactionsWhereUniqueInput
-  }
-
-  /**
-   * Transactions findUniqueOrThrow
-   */
-  export type TransactionsFindUniqueOrThrowArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    /**
-     * Select specific fields to fetch from the Transactions
-     */
-    select?: TransactionsSelect<ExtArgs> | null
-    /**
-     * Omit specific fields from the Transactions
-     */
-    omit?: TransactionsOmit<ExtArgs> | null
-    /**
-     * Choose, which related nodes to fetch as well
-     */
-    include?: TransactionsInclude<ExtArgs> | null
-    /**
-     * Filter, which Transactions to fetch.
-     */
-    where: TransactionsWhereUniqueInput
-  }
-
-  /**
-   * Transactions findFirst
-   */
-  export type TransactionsFindFirstArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    /**
-     * Select specific fields to fetch from the Transactions
-     */
-    select?: TransactionsSelect<ExtArgs> | null
-    /**
-     * Omit specific fields from the Transactions
-     */
-    omit?: TransactionsOmit<ExtArgs> | null
-    /**
-     * Choose, which related nodes to fetch as well
-     */
-    include?: TransactionsInclude<ExtArgs> | null
-    /**
-     * Filter, which Transactions to fetch.
-     */
-    where?: TransactionsWhereInput
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
-     * 
-     * Determine the order of Transactions to fetch.
-     */
-    orderBy?: TransactionsOrderByWithRelationInput | TransactionsOrderByWithRelationInput[]
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
-     * 
-     * Sets the position for searching for Transactions.
-     */
-    cursor?: TransactionsWhereUniqueInput
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
-     * 
-     * Take `±n` Transactions from the position of the cursor.
-     */
-    take?: number
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
-     * 
-     * Skip the first `n` Transactions.
-     */
-    skip?: number
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
-     * 
-     * Filter by unique combinations of Transactions.
-     */
-    distinct?: TransactionsScalarFieldEnum | TransactionsScalarFieldEnum[]
-  }
-
-  /**
-   * Transactions findFirstOrThrow
-   */
-  export type TransactionsFindFirstOrThrowArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    /**
-     * Select specific fields to fetch from the Transactions
-     */
-    select?: TransactionsSelect<ExtArgs> | null
-    /**
-     * Omit specific fields from the Transactions
-     */
-    omit?: TransactionsOmit<ExtArgs> | null
-    /**
-     * Choose, which related nodes to fetch as well
-     */
-    include?: TransactionsInclude<ExtArgs> | null
-    /**
-     * Filter, which Transactions to fetch.
-     */
-    where?: TransactionsWhereInput
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
-     * 
-     * Determine the order of Transactions to fetch.
-     */
-    orderBy?: TransactionsOrderByWithRelationInput | TransactionsOrderByWithRelationInput[]
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
-     * 
-     * Sets the position for searching for Transactions.
-     */
-    cursor?: TransactionsWhereUniqueInput
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
-     * 
-     * Take `±n` Transactions from the position of the cursor.
-     */
-    take?: number
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
-     * 
-     * Skip the first `n` Transactions.
-     */
-    skip?: number
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
-     * 
-     * Filter by unique combinations of Transactions.
-     */
-    distinct?: TransactionsScalarFieldEnum | TransactionsScalarFieldEnum[]
-  }
-
-  /**
-   * Transactions findMany
-   */
-  export type TransactionsFindManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    /**
-     * Select specific fields to fetch from the Transactions
-     */
-    select?: TransactionsSelect<ExtArgs> | null
-    /**
-     * Omit specific fields from the Transactions
-     */
-    omit?: TransactionsOmit<ExtArgs> | null
-    /**
-     * Choose, which related nodes to fetch as well
-     */
-    include?: TransactionsInclude<ExtArgs> | null
-    /**
-     * Filter, which Transactions to fetch.
-     */
-    where?: TransactionsWhereInput
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
-     * 
-     * Determine the order of Transactions to fetch.
-     */
-    orderBy?: TransactionsOrderByWithRelationInput | TransactionsOrderByWithRelationInput[]
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
-     * 
-     * Sets the position for listing Transactions.
-     */
-    cursor?: TransactionsWhereUniqueInput
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
-     * 
-     * Take `±n` Transactions from the position of the cursor.
-     */
-    take?: number
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
-     * 
-     * Skip the first `n` Transactions.
-     */
-    skip?: number
-    distinct?: TransactionsScalarFieldEnum | TransactionsScalarFieldEnum[]
-  }
-
-  /**
-   * Transactions create
-   */
-  export type TransactionsCreateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    /**
-     * Select specific fields to fetch from the Transactions
-     */
-    select?: TransactionsSelect<ExtArgs> | null
-    /**
-     * Omit specific fields from the Transactions
-     */
-    omit?: TransactionsOmit<ExtArgs> | null
-    /**
-     * Choose, which related nodes to fetch as well
-     */
-    include?: TransactionsInclude<ExtArgs> | null
-    /**
-     * The data needed to create a Transactions.
-     */
-    data: XOR<TransactionsCreateInput, TransactionsUncheckedCreateInput>
-  }
-
-  /**
-   * Transactions createMany
-   */
-  export type TransactionsCreateManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    /**
-     * The data used to create many Transactions.
-     */
-    data: TransactionsCreateManyInput | TransactionsCreateManyInput[]
-    skipDuplicates?: boolean
-  }
-
-  /**
-   * Transactions createManyAndReturn
-   */
-  export type TransactionsCreateManyAndReturnArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    /**
-     * Select specific fields to fetch from the Transactions
-     */
-    select?: TransactionsSelectCreateManyAndReturn<ExtArgs> | null
-    /**
-     * Omit specific fields from the Transactions
-     */
-    omit?: TransactionsOmit<ExtArgs> | null
-    /**
-     * The data used to create many Transactions.
-     */
-    data: TransactionsCreateManyInput | TransactionsCreateManyInput[]
-    skipDuplicates?: boolean
-    /**
-     * Choose, which related nodes to fetch as well
-     */
-    include?: TransactionsIncludeCreateManyAndReturn<ExtArgs> | null
-  }
-
-  /**
-   * Transactions update
-   */
-  export type TransactionsUpdateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    /**
-     * Select specific fields to fetch from the Transactions
-     */
-    select?: TransactionsSelect<ExtArgs> | null
-    /**
-     * Omit specific fields from the Transactions
-     */
-    omit?: TransactionsOmit<ExtArgs> | null
-    /**
-     * Choose, which related nodes to fetch as well
-     */
-    include?: TransactionsInclude<ExtArgs> | null
-    /**
-     * The data needed to update a Transactions.
-     */
-    data: XOR<TransactionsUpdateInput, TransactionsUncheckedUpdateInput>
-    /**
-     * Choose, which Transactions to update.
-     */
-    where: TransactionsWhereUniqueInput
-  }
-
-  /**
-   * Transactions updateMany
-   */
-  export type TransactionsUpdateManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    /**
-     * The data used to update Transactions.
-     */
-    data: XOR<TransactionsUpdateManyMutationInput, TransactionsUncheckedUpdateManyInput>
-    /**
-     * Filter which Transactions to update
-     */
-    where?: TransactionsWhereInput
-    /**
-     * Limit how many Transactions to update.
-     */
-    limit?: number
-  }
-
-  /**
-   * Transactions updateManyAndReturn
-   */
-  export type TransactionsUpdateManyAndReturnArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    /**
-     * Select specific fields to fetch from the Transactions
-     */
-    select?: TransactionsSelectUpdateManyAndReturn<ExtArgs> | null
-    /**
-     * Omit specific fields from the Transactions
-     */
-    omit?: TransactionsOmit<ExtArgs> | null
-    /**
-     * The data used to update Transactions.
-     */
-    data: XOR<TransactionsUpdateManyMutationInput, TransactionsUncheckedUpdateManyInput>
-    /**
-     * Filter which Transactions to update
-     */
-    where?: TransactionsWhereInput
-    /**
-     * Limit how many Transactions to update.
-     */
-    limit?: number
-    /**
-     * Choose, which related nodes to fetch as well
-     */
-    include?: TransactionsIncludeUpdateManyAndReturn<ExtArgs> | null
-  }
-
-  /**
-   * Transactions upsert
-   */
-  export type TransactionsUpsertArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    /**
-     * Select specific fields to fetch from the Transactions
-     */
-    select?: TransactionsSelect<ExtArgs> | null
-    /**
-     * Omit specific fields from the Transactions
-     */
-    omit?: TransactionsOmit<ExtArgs> | null
-    /**
-     * Choose, which related nodes to fetch as well
-     */
-    include?: TransactionsInclude<ExtArgs> | null
-    /**
-     * The filter to search for the Transactions to update in case it exists.
-     */
-    where: TransactionsWhereUniqueInput
-    /**
-     * In case the Transactions found by the `where` argument doesn't exist, create a new Transactions with this data.
-     */
-    create: XOR<TransactionsCreateInput, TransactionsUncheckedCreateInput>
-    /**
-     * In case the Transactions was found with the provided `where` argument, update it with this data.
-     */
-    update: XOR<TransactionsUpdateInput, TransactionsUncheckedUpdateInput>
-  }
-
-  /**
-   * Transactions delete
-   */
-  export type TransactionsDeleteArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    /**
-     * Select specific fields to fetch from the Transactions
-     */
-    select?: TransactionsSelect<ExtArgs> | null
-    /**
-     * Omit specific fields from the Transactions
-     */
-    omit?: TransactionsOmit<ExtArgs> | null
-    /**
-     * Choose, which related nodes to fetch as well
-     */
-    include?: TransactionsInclude<ExtArgs> | null
-    /**
-     * Filter which Transactions to delete.
-     */
-    where: TransactionsWhereUniqueInput
-  }
-
-  /**
-   * Transactions deleteMany
-   */
-  export type TransactionsDeleteManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    /**
-     * Filter which Transactions to delete
-     */
-    where?: TransactionsWhereInput
-    /**
-     * Limit how many Transactions to delete.
-     */
-    limit?: number
-  }
-
-  /**
-   * Transactions.transaction_details
-   */
-  export type Transactions$transaction_detailsArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    /**
-     * Select specific fields to fetch from the Transactions_detail
-     */
-    select?: Transactions_detailSelect<ExtArgs> | null
-    /**
-     * Omit specific fields from the Transactions_detail
-     */
-    omit?: Transactions_detailOmit<ExtArgs> | null
-    /**
-     * Choose, which related nodes to fetch as well
-     */
-    include?: Transactions_detailInclude<ExtArgs> | null
-    where?: Transactions_detailWhereInput
-    orderBy?: Transactions_detailOrderByWithRelationInput | Transactions_detailOrderByWithRelationInput[]
-    cursor?: Transactions_detailWhereUniqueInput
-    take?: number
-    skip?: number
-    distinct?: Transactions_detailScalarFieldEnum | Transactions_detailScalarFieldEnum[]
-  }
-
-  /**
-   * Transactions without action
-   */
-  export type TransactionsDefaultArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    /**
-     * Select specific fields to fetch from the Transactions
-     */
-    select?: TransactionsSelect<ExtArgs> | null
-    /**
-     * Omit specific fields from the Transactions
-     */
-    omit?: TransactionsOmit<ExtArgs> | null
-    /**
-     * Choose, which related nodes to fetch as well
-     */
-    include?: TransactionsInclude<ExtArgs> | null
-  }
-
-
-  /**
    * Model Transactions_detail
    */
 
@@ -17040,96 +15907,120 @@ export namespace Prisma {
 
   export type Transactions_detailAvgAggregateOutputType = {
     quantity: number | null
-    price: number | null
+    amount: number | null
   }
 
   export type Transactions_detailSumAggregateOutputType = {
     quantity: number | null
-    price: number | null
+    amount: number | null
   }
 
   export type Transactions_detailMinAggregateOutputType = {
     id: string | null
-    transaction_id: string | null
     user_id: string | null
     event_id: string | null
     organizer_id: string | null
     quantity: number | null
-    price: number | null
+    voucher_id: string | null
+    amount: number | null
+    proof: string | null
     isConfirmed: boolean | null
     transaction_status: $Enums.TransactionStatus | null
+    paid_at: Date | null
+    created_at: Date | null
+    updated_at: Date | null
   }
 
   export type Transactions_detailMaxAggregateOutputType = {
     id: string | null
-    transaction_id: string | null
     user_id: string | null
     event_id: string | null
     organizer_id: string | null
     quantity: number | null
-    price: number | null
+    voucher_id: string | null
+    amount: number | null
+    proof: string | null
     isConfirmed: boolean | null
     transaction_status: $Enums.TransactionStatus | null
+    paid_at: Date | null
+    created_at: Date | null
+    updated_at: Date | null
   }
 
   export type Transactions_detailCountAggregateOutputType = {
     id: number
-    transaction_id: number
     user_id: number
     event_id: number
     organizer_id: number
     quantity: number
-    price: number
+    voucher_id: number
+    amount: number
+    proof: number
     isConfirmed: number
     transaction_status: number
+    paid_at: number
+    created_at: number
+    updated_at: number
     _all: number
   }
 
 
   export type Transactions_detailAvgAggregateInputType = {
     quantity?: true
-    price?: true
+    amount?: true
   }
 
   export type Transactions_detailSumAggregateInputType = {
     quantity?: true
-    price?: true
+    amount?: true
   }
 
   export type Transactions_detailMinAggregateInputType = {
     id?: true
-    transaction_id?: true
     user_id?: true
     event_id?: true
     organizer_id?: true
     quantity?: true
-    price?: true
+    voucher_id?: true
+    amount?: true
+    proof?: true
     isConfirmed?: true
     transaction_status?: true
+    paid_at?: true
+    created_at?: true
+    updated_at?: true
   }
 
   export type Transactions_detailMaxAggregateInputType = {
     id?: true
-    transaction_id?: true
     user_id?: true
     event_id?: true
     organizer_id?: true
     quantity?: true
-    price?: true
+    voucher_id?: true
+    amount?: true
+    proof?: true
     isConfirmed?: true
     transaction_status?: true
+    paid_at?: true
+    created_at?: true
+    updated_at?: true
   }
 
   export type Transactions_detailCountAggregateInputType = {
     id?: true
-    transaction_id?: true
     user_id?: true
     event_id?: true
     organizer_id?: true
     quantity?: true
-    price?: true
+    voucher_id?: true
+    amount?: true
+    proof?: true
     isConfirmed?: true
     transaction_status?: true
+    paid_at?: true
+    created_at?: true
+    updated_at?: true
     _all?: true
   }
 
@@ -17221,14 +16112,18 @@ export namespace Prisma {
 
   export type Transactions_detailGroupByOutputType = {
     id: string
-    transaction_id: string
     user_id: string
     event_id: string
     organizer_id: string
     quantity: number
-    price: number
+    voucher_id: string | null
+    amount: number
+    proof: string
     isConfirmed: boolean
     transaction_status: $Enums.TransactionStatus
+    paid_at: Date | null
+    created_at: Date
+    updated_at: Date
     _count: Transactions_detailCountAggregateOutputType | null
     _avg: Transactions_detailAvgAggregateOutputType | null
     _sum: Transactions_detailSumAggregateOutputType | null
@@ -17252,102 +16147,122 @@ export namespace Prisma {
 
   export type Transactions_detailSelect<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
     id?: boolean
-    transaction_id?: boolean
     user_id?: boolean
     event_id?: boolean
     organizer_id?: boolean
     quantity?: boolean
-    price?: boolean
+    voucher_id?: boolean
+    amount?: boolean
+    proof?: boolean
     isConfirmed?: boolean
     transaction_status?: boolean
+    paid_at?: boolean
+    created_at?: boolean
+    updated_at?: boolean
     user?: boolean | UsersDefaultArgs<ExtArgs>
-    details_transaction?: boolean | TransactionsDefaultArgs<ExtArgs>
     detail_event?: boolean | EventsDefaultArgs<ExtArgs>
     detail_organizer?: boolean | OrganizerDefaultArgs<ExtArgs>
+    transaction_voucher_details?: boolean | Transactions_detail$transaction_voucher_detailsArgs<ExtArgs>
   }, ExtArgs["result"]["transactions_detail"]>
 
   export type Transactions_detailSelectCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
     id?: boolean
-    transaction_id?: boolean
     user_id?: boolean
     event_id?: boolean
     organizer_id?: boolean
     quantity?: boolean
-    price?: boolean
+    voucher_id?: boolean
+    amount?: boolean
+    proof?: boolean
     isConfirmed?: boolean
     transaction_status?: boolean
+    paid_at?: boolean
+    created_at?: boolean
+    updated_at?: boolean
     user?: boolean | UsersDefaultArgs<ExtArgs>
-    details_transaction?: boolean | TransactionsDefaultArgs<ExtArgs>
     detail_event?: boolean | EventsDefaultArgs<ExtArgs>
     detail_organizer?: boolean | OrganizerDefaultArgs<ExtArgs>
+    transaction_voucher_details?: boolean | Transactions_detail$transaction_voucher_detailsArgs<ExtArgs>
   }, ExtArgs["result"]["transactions_detail"]>
 
   export type Transactions_detailSelectUpdateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
     id?: boolean
-    transaction_id?: boolean
     user_id?: boolean
     event_id?: boolean
     organizer_id?: boolean
     quantity?: boolean
-    price?: boolean
+    voucher_id?: boolean
+    amount?: boolean
+    proof?: boolean
     isConfirmed?: boolean
     transaction_status?: boolean
+    paid_at?: boolean
+    created_at?: boolean
+    updated_at?: boolean
     user?: boolean | UsersDefaultArgs<ExtArgs>
-    details_transaction?: boolean | TransactionsDefaultArgs<ExtArgs>
     detail_event?: boolean | EventsDefaultArgs<ExtArgs>
     detail_organizer?: boolean | OrganizerDefaultArgs<ExtArgs>
+    transaction_voucher_details?: boolean | Transactions_detail$transaction_voucher_detailsArgs<ExtArgs>
   }, ExtArgs["result"]["transactions_detail"]>
 
   export type Transactions_detailSelectScalar = {
     id?: boolean
-    transaction_id?: boolean
     user_id?: boolean
     event_id?: boolean
     organizer_id?: boolean
     quantity?: boolean
-    price?: boolean
+    voucher_id?: boolean
+    amount?: boolean
+    proof?: boolean
     isConfirmed?: boolean
     transaction_status?: boolean
+    paid_at?: boolean
+    created_at?: boolean
+    updated_at?: boolean
   }
 
-  export type Transactions_detailOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "transaction_id" | "user_id" | "event_id" | "organizer_id" | "quantity" | "price" | "isConfirmed" | "transaction_status", ExtArgs["result"]["transactions_detail"]>
+  export type Transactions_detailOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "user_id" | "event_id" | "organizer_id" | "quantity" | "voucher_id" | "amount" | "proof" | "isConfirmed" | "transaction_status" | "paid_at" | "created_at" | "updated_at", ExtArgs["result"]["transactions_detail"]>
   export type Transactions_detailInclude<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     user?: boolean | UsersDefaultArgs<ExtArgs>
-    details_transaction?: boolean | TransactionsDefaultArgs<ExtArgs>
     detail_event?: boolean | EventsDefaultArgs<ExtArgs>
     detail_organizer?: boolean | OrganizerDefaultArgs<ExtArgs>
+    transaction_voucher_details?: boolean | Transactions_detail$transaction_voucher_detailsArgs<ExtArgs>
   }
   export type Transactions_detailIncludeCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     user?: boolean | UsersDefaultArgs<ExtArgs>
-    details_transaction?: boolean | TransactionsDefaultArgs<ExtArgs>
     detail_event?: boolean | EventsDefaultArgs<ExtArgs>
     detail_organizer?: boolean | OrganizerDefaultArgs<ExtArgs>
+    transaction_voucher_details?: boolean | Transactions_detail$transaction_voucher_detailsArgs<ExtArgs>
   }
   export type Transactions_detailIncludeUpdateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     user?: boolean | UsersDefaultArgs<ExtArgs>
-    details_transaction?: boolean | TransactionsDefaultArgs<ExtArgs>
     detail_event?: boolean | EventsDefaultArgs<ExtArgs>
     detail_organizer?: boolean | OrganizerDefaultArgs<ExtArgs>
+    transaction_voucher_details?: boolean | Transactions_detail$transaction_voucher_detailsArgs<ExtArgs>
   }
 
   export type $Transactions_detailPayload<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     name: "Transactions_detail"
     objects: {
       user: Prisma.$UsersPayload<ExtArgs>
-      details_transaction: Prisma.$TransactionsPayload<ExtArgs>
       detail_event: Prisma.$EventsPayload<ExtArgs>
       detail_organizer: Prisma.$OrganizerPayload<ExtArgs>
+      transaction_voucher_details: Prisma.$VoucherPayload<ExtArgs> | null
     }
     scalars: $Extensions.GetPayloadResult<{
       id: string
-      transaction_id: string
       user_id: string
       event_id: string
       organizer_id: string
       quantity: number
-      price: number
+      voucher_id: string | null
+      amount: number
+      proof: string
       isConfirmed: boolean
       transaction_status: $Enums.TransactionStatus
+      paid_at: Date | null
+      created_at: Date
+      updated_at: Date
     }, ExtArgs["result"]["transactions_detail"]>
     composites: {}
   }
@@ -17743,9 +16658,9 @@ export namespace Prisma {
   export interface Prisma__Transactions_detailClient<T, Null = never, ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs, GlobalOmitOptions = {}> extends Prisma.PrismaPromise<T> {
     readonly [Symbol.toStringTag]: "PrismaPromise"
     user<T extends UsersDefaultArgs<ExtArgs> = {}>(args?: Subset<T, UsersDefaultArgs<ExtArgs>>): Prisma__UsersClient<$Result.GetResult<Prisma.$UsersPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | Null, Null, ExtArgs, GlobalOmitOptions>
-    details_transaction<T extends TransactionsDefaultArgs<ExtArgs> = {}>(args?: Subset<T, TransactionsDefaultArgs<ExtArgs>>): Prisma__TransactionsClient<$Result.GetResult<Prisma.$TransactionsPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | Null, Null, ExtArgs, GlobalOmitOptions>
     detail_event<T extends EventsDefaultArgs<ExtArgs> = {}>(args?: Subset<T, EventsDefaultArgs<ExtArgs>>): Prisma__EventsClient<$Result.GetResult<Prisma.$EventsPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | Null, Null, ExtArgs, GlobalOmitOptions>
     detail_organizer<T extends OrganizerDefaultArgs<ExtArgs> = {}>(args?: Subset<T, OrganizerDefaultArgs<ExtArgs>>): Prisma__OrganizerClient<$Result.GetResult<Prisma.$OrganizerPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | Null, Null, ExtArgs, GlobalOmitOptions>
+    transaction_voucher_details<T extends Transactions_detail$transaction_voucher_detailsArgs<ExtArgs> = {}>(args?: Subset<T, Transactions_detail$transaction_voucher_detailsArgs<ExtArgs>>): Prisma__VoucherClient<$Result.GetResult<Prisma.$VoucherPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
     /**
      * Attaches callbacks for the resolution and/or rejection of the Promise.
      * @param onfulfilled The callback to execute when the Promise is resolved.
@@ -17776,14 +16691,18 @@ export namespace Prisma {
    */
   interface Transactions_detailFieldRefs {
     readonly id: FieldRef<"Transactions_detail", 'String'>
-    readonly transaction_id: FieldRef<"Transactions_detail", 'String'>
     readonly user_id: FieldRef<"Transactions_detail", 'String'>
     readonly event_id: FieldRef<"Transactions_detail", 'String'>
     readonly organizer_id: FieldRef<"Transactions_detail", 'String'>
     readonly quantity: FieldRef<"Transactions_detail", 'Int'>
-    readonly price: FieldRef<"Transactions_detail", 'Int'>
+    readonly voucher_id: FieldRef<"Transactions_detail", 'String'>
+    readonly amount: FieldRef<"Transactions_detail", 'Int'>
+    readonly proof: FieldRef<"Transactions_detail", 'String'>
     readonly isConfirmed: FieldRef<"Transactions_detail", 'Boolean'>
     readonly transaction_status: FieldRef<"Transactions_detail", 'TransactionStatus'>
+    readonly paid_at: FieldRef<"Transactions_detail", 'DateTime'>
+    readonly created_at: FieldRef<"Transactions_detail", 'DateTime'>
+    readonly updated_at: FieldRef<"Transactions_detail", 'DateTime'>
   }
     
 
@@ -18180,6 +17099,25 @@ export namespace Prisma {
   }
 
   /**
+   * Transactions_detail.transaction_voucher_details
+   */
+  export type Transactions_detail$transaction_voucher_detailsArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Voucher
+     */
+    select?: VoucherSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the Voucher
+     */
+    omit?: VoucherOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: VoucherInclude<ExtArgs> | null
+    where?: VoucherWhereInput
+  }
+
+  /**
    * Transactions_detail without action
    */
   export type Transactions_detailDefaultArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
@@ -18354,26 +17292,20 @@ export namespace Prisma {
   export type VoucherScalarFieldEnum = (typeof VoucherScalarFieldEnum)[keyof typeof VoucherScalarFieldEnum]
 
 
-  export const TransactionsScalarFieldEnum: {
-    id: 'id',
-    voucher_id: 'voucher_id',
-    amount: 'amount',
-    proof: 'proof'
-  };
-
-  export type TransactionsScalarFieldEnum = (typeof TransactionsScalarFieldEnum)[keyof typeof TransactionsScalarFieldEnum]
-
-
   export const Transactions_detailScalarFieldEnum: {
     id: 'id',
-    transaction_id: 'transaction_id',
     user_id: 'user_id',
     event_id: 'event_id',
     organizer_id: 'organizer_id',
     quantity: 'quantity',
-    price: 'price',
+    voucher_id: 'voucher_id',
+    amount: 'amount',
+    proof: 'proof',
     isConfirmed: 'isConfirmed',
-    transaction_status: 'transaction_status'
+    transaction_status: 'transaction_status',
+    paid_at: 'paid_at',
+    created_at: 'created_at',
+    updated_at: 'updated_at'
   };
 
   export type Transactions_detailScalarFieldEnum = (typeof Transactions_detailScalarFieldEnum)[keyof typeof Transactions_detailScalarFieldEnum]
@@ -18631,6 +17563,7 @@ export namespace Prisma {
     event?: EventsListRelationFilter
     organizer_voucher?: VoucherListRelationFilter
     organizer_transactionDetails?: Transactions_detailListRelationFilter
+    organizer_articles?: ArticlesListRelationFilter
   }
 
   export type OrganizerOrderByWithRelationInput = {
@@ -18641,6 +17574,7 @@ export namespace Prisma {
     event?: EventsOrderByRelationAggregateInput
     organizer_voucher?: VoucherOrderByRelationAggregateInput
     organizer_transactionDetails?: Transactions_detailOrderByRelationAggregateInput
+    organizer_articles?: ArticlesOrderByRelationAggregateInput
   }
 
   export type OrganizerWhereUniqueInput = Prisma.AtLeast<{
@@ -18654,6 +17588,7 @@ export namespace Prisma {
     event?: EventsListRelationFilter
     organizer_voucher?: VoucherListRelationFilter
     organizer_transactionDetails?: Transactions_detailListRelationFilter
+    organizer_articles?: ArticlesListRelationFilter
   }, "id" | "user_id">
 
   export type OrganizerOrderByWithAggregationInput = {
@@ -18682,6 +17617,7 @@ export namespace Prisma {
     organizer_id?: StringFilter<"Articles"> | string
     title?: StringFilter<"Articles"> | string
     created_at?: DateTimeFilter<"Articles"> | Date | string
+    organizer?: XOR<OrganizerScalarRelationFilter, OrganizerWhereInput>
   }
 
   export type ArticlesOrderByWithRelationInput = {
@@ -18689,6 +17625,7 @@ export namespace Prisma {
     organizer_id?: SortOrder
     title?: SortOrder
     created_at?: SortOrder
+    organizer?: OrganizerOrderByWithRelationInput
   }
 
   export type ArticlesWhereUniqueInput = Prisma.AtLeast<{
@@ -18699,6 +17636,7 @@ export namespace Prisma {
     organizer_id?: StringFilter<"Articles"> | string
     title?: StringFilter<"Articles"> | string
     created_at?: DateTimeFilter<"Articles"> | Date | string
+    organizer?: XOR<OrganizerScalarRelationFilter, OrganizerWhereInput>
   }, "id">
 
   export type ArticlesOrderByWithAggregationInput = {
@@ -18975,8 +17913,8 @@ export namespace Prisma {
     id?: StringFilter<"Event_Reviews"> | string
     user_id?: StringFilter<"Event_Reviews"> | string
     events_id?: StringFilter<"Event_Reviews"> | string
-    review?: StringFilter<"Event_Reviews"> | string
-    rating?: IntFilter<"Event_Reviews"> | number
+    review?: StringNullableFilter<"Event_Reviews"> | string | null
+    rating?: IntNullableFilter<"Event_Reviews"> | number | null
     created_at?: DateTimeFilter<"Event_Reviews"> | Date | string
     reviews_user?: XOR<UsersScalarRelationFilter, UsersWhereInput>
     reviews_event?: XOR<EventsScalarRelationFilter, EventsWhereInput>
@@ -18986,8 +17924,8 @@ export namespace Prisma {
     id?: SortOrder
     user_id?: SortOrder
     events_id?: SortOrder
-    review?: SortOrder
-    rating?: SortOrder
+    review?: SortOrderInput | SortOrder
+    rating?: SortOrderInput | SortOrder
     created_at?: SortOrder
     reviews_user?: UsersOrderByWithRelationInput
     reviews_event?: EventsOrderByWithRelationInput
@@ -19000,8 +17938,8 @@ export namespace Prisma {
     NOT?: Event_ReviewsWhereInput | Event_ReviewsWhereInput[]
     user_id?: StringFilter<"Event_Reviews"> | string
     events_id?: StringFilter<"Event_Reviews"> | string
-    review?: StringFilter<"Event_Reviews"> | string
-    rating?: IntFilter<"Event_Reviews"> | number
+    review?: StringNullableFilter<"Event_Reviews"> | string | null
+    rating?: IntNullableFilter<"Event_Reviews"> | number | null
     created_at?: DateTimeFilter<"Event_Reviews"> | Date | string
     reviews_user?: XOR<UsersScalarRelationFilter, UsersWhereInput>
     reviews_event?: XOR<EventsScalarRelationFilter, EventsWhereInput>
@@ -19011,8 +17949,8 @@ export namespace Prisma {
     id?: SortOrder
     user_id?: SortOrder
     events_id?: SortOrder
-    review?: SortOrder
-    rating?: SortOrder
+    review?: SortOrderInput | SortOrder
+    rating?: SortOrderInput | SortOrder
     created_at?: SortOrder
     _count?: Event_ReviewsCountOrderByAggregateInput
     _avg?: Event_ReviewsAvgOrderByAggregateInput
@@ -19028,8 +17966,8 @@ export namespace Prisma {
     id?: StringWithAggregatesFilter<"Event_Reviews"> | string
     user_id?: StringWithAggregatesFilter<"Event_Reviews"> | string
     events_id?: StringWithAggregatesFilter<"Event_Reviews"> | string
-    review?: StringWithAggregatesFilter<"Event_Reviews"> | string
-    rating?: IntWithAggregatesFilter<"Event_Reviews"> | number
+    review?: StringNullableWithAggregatesFilter<"Event_Reviews"> | string | null
+    rating?: IntNullableWithAggregatesFilter<"Event_Reviews"> | number | null
     created_at?: DateTimeWithAggregatesFilter<"Event_Reviews"> | Date | string
   }
 
@@ -19218,7 +18156,7 @@ export namespace Prisma {
     expired_at?: DateTimeFilter<"Voucher"> | Date | string
     voucher_organizer?: XOR<OrganizerNullableScalarRelationFilter, OrganizerWhereInput> | null
     voucher_user?: XOR<UsersNullableScalarRelationFilter, UsersWhereInput> | null
-    voucher_transaction?: TransactionsListRelationFilter
+    voucher_transaction_details?: Transactions_detailListRelationFilter
   }
 
   export type VoucherOrderByWithRelationInput = {
@@ -19232,7 +18170,7 @@ export namespace Prisma {
     expired_at?: SortOrder
     voucher_organizer?: OrganizerOrderByWithRelationInput
     voucher_user?: UsersOrderByWithRelationInput
-    voucher_transaction?: TransactionsOrderByRelationAggregateInput
+    voucher_transaction_details?: Transactions_detailOrderByRelationAggregateInput
   }
 
   export type VoucherWhereUniqueInput = Prisma.AtLeast<{
@@ -19249,7 +18187,7 @@ export namespace Prisma {
     expired_at?: DateTimeFilter<"Voucher"> | Date | string
     voucher_organizer?: XOR<OrganizerNullableScalarRelationFilter, OrganizerWhereInput> | null
     voucher_user?: XOR<UsersNullableScalarRelationFilter, UsersWhereInput> | null
-    voucher_transaction?: TransactionsListRelationFilter
+    voucher_transaction_details?: Transactions_detailListRelationFilter
   }, "id">
 
   export type VoucherOrderByWithAggregationInput = {
@@ -19282,94 +18220,47 @@ export namespace Prisma {
     expired_at?: DateTimeWithAggregatesFilter<"Voucher"> | Date | string
   }
 
-  export type TransactionsWhereInput = {
-    AND?: TransactionsWhereInput | TransactionsWhereInput[]
-    OR?: TransactionsWhereInput[]
-    NOT?: TransactionsWhereInput | TransactionsWhereInput[]
-    id?: StringFilter<"Transactions"> | string
-    voucher_id?: StringFilter<"Transactions"> | string
-    amount?: IntFilter<"Transactions"> | number
-    proof?: StringFilter<"Transactions"> | string
-    transaction_voucher?: XOR<VoucherScalarRelationFilter, VoucherWhereInput>
-    transaction_details?: Transactions_detailListRelationFilter
-  }
-
-  export type TransactionsOrderByWithRelationInput = {
-    id?: SortOrder
-    voucher_id?: SortOrder
-    amount?: SortOrder
-    proof?: SortOrder
-    transaction_voucher?: VoucherOrderByWithRelationInput
-    transaction_details?: Transactions_detailOrderByRelationAggregateInput
-  }
-
-  export type TransactionsWhereUniqueInput = Prisma.AtLeast<{
-    id?: string
-    AND?: TransactionsWhereInput | TransactionsWhereInput[]
-    OR?: TransactionsWhereInput[]
-    NOT?: TransactionsWhereInput | TransactionsWhereInput[]
-    voucher_id?: StringFilter<"Transactions"> | string
-    amount?: IntFilter<"Transactions"> | number
-    proof?: StringFilter<"Transactions"> | string
-    transaction_voucher?: XOR<VoucherScalarRelationFilter, VoucherWhereInput>
-    transaction_details?: Transactions_detailListRelationFilter
-  }, "id">
-
-  export type TransactionsOrderByWithAggregationInput = {
-    id?: SortOrder
-    voucher_id?: SortOrder
-    amount?: SortOrder
-    proof?: SortOrder
-    _count?: TransactionsCountOrderByAggregateInput
-    _avg?: TransactionsAvgOrderByAggregateInput
-    _max?: TransactionsMaxOrderByAggregateInput
-    _min?: TransactionsMinOrderByAggregateInput
-    _sum?: TransactionsSumOrderByAggregateInput
-  }
-
-  export type TransactionsScalarWhereWithAggregatesInput = {
-    AND?: TransactionsScalarWhereWithAggregatesInput | TransactionsScalarWhereWithAggregatesInput[]
-    OR?: TransactionsScalarWhereWithAggregatesInput[]
-    NOT?: TransactionsScalarWhereWithAggregatesInput | TransactionsScalarWhereWithAggregatesInput[]
-    id?: StringWithAggregatesFilter<"Transactions"> | string
-    voucher_id?: StringWithAggregatesFilter<"Transactions"> | string
-    amount?: IntWithAggregatesFilter<"Transactions"> | number
-    proof?: StringWithAggregatesFilter<"Transactions"> | string
-  }
-
   export type Transactions_detailWhereInput = {
     AND?: Transactions_detailWhereInput | Transactions_detailWhereInput[]
     OR?: Transactions_detailWhereInput[]
     NOT?: Transactions_detailWhereInput | Transactions_detailWhereInput[]
     id?: StringFilter<"Transactions_detail"> | string
-    transaction_id?: StringFilter<"Transactions_detail"> | string
     user_id?: StringFilter<"Transactions_detail"> | string
     event_id?: StringFilter<"Transactions_detail"> | string
     organizer_id?: StringFilter<"Transactions_detail"> | string
     quantity?: IntFilter<"Transactions_detail"> | number
-    price?: IntFilter<"Transactions_detail"> | number
+    voucher_id?: StringNullableFilter<"Transactions_detail"> | string | null
+    amount?: IntFilter<"Transactions_detail"> | number
+    proof?: StringFilter<"Transactions_detail"> | string
     isConfirmed?: BoolFilter<"Transactions_detail"> | boolean
     transaction_status?: EnumTransactionStatusFilter<"Transactions_detail"> | $Enums.TransactionStatus
+    paid_at?: DateTimeNullableFilter<"Transactions_detail"> | Date | string | null
+    created_at?: DateTimeFilter<"Transactions_detail"> | Date | string
+    updated_at?: DateTimeFilter<"Transactions_detail"> | Date | string
     user?: XOR<UsersScalarRelationFilter, UsersWhereInput>
-    details_transaction?: XOR<TransactionsScalarRelationFilter, TransactionsWhereInput>
     detail_event?: XOR<EventsScalarRelationFilter, EventsWhereInput>
     detail_organizer?: XOR<OrganizerScalarRelationFilter, OrganizerWhereInput>
+    transaction_voucher_details?: XOR<VoucherNullableScalarRelationFilter, VoucherWhereInput> | null
   }
 
   export type Transactions_detailOrderByWithRelationInput = {
     id?: SortOrder
-    transaction_id?: SortOrder
     user_id?: SortOrder
     event_id?: SortOrder
     organizer_id?: SortOrder
     quantity?: SortOrder
-    price?: SortOrder
+    voucher_id?: SortOrderInput | SortOrder
+    amount?: SortOrder
+    proof?: SortOrder
     isConfirmed?: SortOrder
     transaction_status?: SortOrder
+    paid_at?: SortOrderInput | SortOrder
+    created_at?: SortOrder
+    updated_at?: SortOrder
     user?: UsersOrderByWithRelationInput
-    details_transaction?: TransactionsOrderByWithRelationInput
     detail_event?: EventsOrderByWithRelationInput
     detail_organizer?: OrganizerOrderByWithRelationInput
+    transaction_voucher_details?: VoucherOrderByWithRelationInput
   }
 
   export type Transactions_detailWhereUniqueInput = Prisma.AtLeast<{
@@ -19377,30 +18268,38 @@ export namespace Prisma {
     AND?: Transactions_detailWhereInput | Transactions_detailWhereInput[]
     OR?: Transactions_detailWhereInput[]
     NOT?: Transactions_detailWhereInput | Transactions_detailWhereInput[]
-    transaction_id?: StringFilter<"Transactions_detail"> | string
     user_id?: StringFilter<"Transactions_detail"> | string
     event_id?: StringFilter<"Transactions_detail"> | string
     organizer_id?: StringFilter<"Transactions_detail"> | string
     quantity?: IntFilter<"Transactions_detail"> | number
-    price?: IntFilter<"Transactions_detail"> | number
+    voucher_id?: StringNullableFilter<"Transactions_detail"> | string | null
+    amount?: IntFilter<"Transactions_detail"> | number
+    proof?: StringFilter<"Transactions_detail"> | string
     isConfirmed?: BoolFilter<"Transactions_detail"> | boolean
     transaction_status?: EnumTransactionStatusFilter<"Transactions_detail"> | $Enums.TransactionStatus
+    paid_at?: DateTimeNullableFilter<"Transactions_detail"> | Date | string | null
+    created_at?: DateTimeFilter<"Transactions_detail"> | Date | string
+    updated_at?: DateTimeFilter<"Transactions_detail"> | Date | string
     user?: XOR<UsersScalarRelationFilter, UsersWhereInput>
-    details_transaction?: XOR<TransactionsScalarRelationFilter, TransactionsWhereInput>
     detail_event?: XOR<EventsScalarRelationFilter, EventsWhereInput>
     detail_organizer?: XOR<OrganizerScalarRelationFilter, OrganizerWhereInput>
+    transaction_voucher_details?: XOR<VoucherNullableScalarRelationFilter, VoucherWhereInput> | null
   }, "id">
 
   export type Transactions_detailOrderByWithAggregationInput = {
     id?: SortOrder
-    transaction_id?: SortOrder
     user_id?: SortOrder
     event_id?: SortOrder
     organizer_id?: SortOrder
     quantity?: SortOrder
-    price?: SortOrder
+    voucher_id?: SortOrderInput | SortOrder
+    amount?: SortOrder
+    proof?: SortOrder
     isConfirmed?: SortOrder
     transaction_status?: SortOrder
+    paid_at?: SortOrderInput | SortOrder
+    created_at?: SortOrder
+    updated_at?: SortOrder
     _count?: Transactions_detailCountOrderByAggregateInput
     _avg?: Transactions_detailAvgOrderByAggregateInput
     _max?: Transactions_detailMaxOrderByAggregateInput
@@ -19413,14 +18312,18 @@ export namespace Prisma {
     OR?: Transactions_detailScalarWhereWithAggregatesInput[]
     NOT?: Transactions_detailScalarWhereWithAggregatesInput | Transactions_detailScalarWhereWithAggregatesInput[]
     id?: StringWithAggregatesFilter<"Transactions_detail"> | string
-    transaction_id?: StringWithAggregatesFilter<"Transactions_detail"> | string
     user_id?: StringWithAggregatesFilter<"Transactions_detail"> | string
     event_id?: StringWithAggregatesFilter<"Transactions_detail"> | string
     organizer_id?: StringWithAggregatesFilter<"Transactions_detail"> | string
     quantity?: IntWithAggregatesFilter<"Transactions_detail"> | number
-    price?: IntWithAggregatesFilter<"Transactions_detail"> | number
+    voucher_id?: StringNullableWithAggregatesFilter<"Transactions_detail"> | string | null
+    amount?: IntWithAggregatesFilter<"Transactions_detail"> | number
+    proof?: StringWithAggregatesFilter<"Transactions_detail"> | string
     isConfirmed?: BoolWithAggregatesFilter<"Transactions_detail"> | boolean
     transaction_status?: EnumTransactionStatusWithAggregatesFilter<"Transactions_detail"> | $Enums.TransactionStatus
+    paid_at?: DateTimeNullableWithAggregatesFilter<"Transactions_detail"> | Date | string | null
+    created_at?: DateTimeWithAggregatesFilter<"Transactions_detail"> | Date | string
+    updated_at?: DateTimeWithAggregatesFilter<"Transactions_detail"> | Date | string
   }
 
   export type UsersCreateInput = {
@@ -19577,6 +18480,7 @@ export namespace Prisma {
     event?: EventsCreateNestedManyWithoutOrganizerInput
     organizer_voucher?: VoucherCreateNestedManyWithoutVoucher_organizerInput
     organizer_transactionDetails?: Transactions_detailCreateNestedManyWithoutDetail_organizerInput
+    organizer_articles?: ArticlesCreateNestedManyWithoutOrganizerInput
   }
 
   export type OrganizerUncheckedCreateInput = {
@@ -19586,6 +18490,7 @@ export namespace Prisma {
     event?: EventsUncheckedCreateNestedManyWithoutOrganizerInput
     organizer_voucher?: VoucherUncheckedCreateNestedManyWithoutVoucher_organizerInput
     organizer_transactionDetails?: Transactions_detailUncheckedCreateNestedManyWithoutDetail_organizerInput
+    organizer_articles?: ArticlesUncheckedCreateNestedManyWithoutOrganizerInput
   }
 
   export type OrganizerUpdateInput = {
@@ -19595,6 +18500,7 @@ export namespace Prisma {
     event?: EventsUpdateManyWithoutOrganizerNestedInput
     organizer_voucher?: VoucherUpdateManyWithoutVoucher_organizerNestedInput
     organizer_transactionDetails?: Transactions_detailUpdateManyWithoutDetail_organizerNestedInput
+    organizer_articles?: ArticlesUpdateManyWithoutOrganizerNestedInput
   }
 
   export type OrganizerUncheckedUpdateInput = {
@@ -19604,6 +18510,7 @@ export namespace Prisma {
     event?: EventsUncheckedUpdateManyWithoutOrganizerNestedInput
     organizer_voucher?: VoucherUncheckedUpdateManyWithoutVoucher_organizerNestedInput
     organizer_transactionDetails?: Transactions_detailUncheckedUpdateManyWithoutDetail_organizerNestedInput
+    organizer_articles?: ArticlesUncheckedUpdateManyWithoutOrganizerNestedInput
   }
 
   export type OrganizerCreateManyInput = {
@@ -19625,9 +18532,9 @@ export namespace Prisma {
 
   export type ArticlesCreateInput = {
     id?: string
-    organizer_id: string
     title: string
     created_at?: Date | string
+    organizer: OrganizerCreateNestedOneWithoutOrganizer_articlesInput
   }
 
   export type ArticlesUncheckedCreateInput = {
@@ -19639,9 +18546,9 @@ export namespace Prisma {
 
   export type ArticlesUpdateInput = {
     id?: StringFieldUpdateOperationsInput | string
-    organizer_id?: StringFieldUpdateOperationsInput | string
     title?: StringFieldUpdateOperationsInput | string
     created_at?: DateTimeFieldUpdateOperationsInput | Date | string
+    organizer?: OrganizerUpdateOneRequiredWithoutOrganizer_articlesNestedInput
   }
 
   export type ArticlesUncheckedUpdateInput = {
@@ -19660,7 +18567,6 @@ export namespace Prisma {
 
   export type ArticlesUpdateManyMutationInput = {
     id?: StringFieldUpdateOperationsInput | string
-    organizer_id?: StringFieldUpdateOperationsInput | string
     title?: StringFieldUpdateOperationsInput | string
     created_at?: DateTimeFieldUpdateOperationsInput | Date | string
   }
@@ -19925,8 +18831,8 @@ export namespace Prisma {
 
   export type Event_ReviewsCreateInput = {
     id?: string
-    review: string
-    rating: number
+    review?: string | null
+    rating?: number | null
     created_at?: Date | string
     reviews_user: UsersCreateNestedOneWithoutReviews_userInput
     reviews_event: EventsCreateNestedOneWithoutReviews_eventInput
@@ -19936,15 +18842,15 @@ export namespace Prisma {
     id?: string
     user_id: string
     events_id: string
-    review: string
-    rating: number
+    review?: string | null
+    rating?: number | null
     created_at?: Date | string
   }
 
   export type Event_ReviewsUpdateInput = {
     id?: StringFieldUpdateOperationsInput | string
-    review?: StringFieldUpdateOperationsInput | string
-    rating?: IntFieldUpdateOperationsInput | number
+    review?: NullableStringFieldUpdateOperationsInput | string | null
+    rating?: NullableIntFieldUpdateOperationsInput | number | null
     created_at?: DateTimeFieldUpdateOperationsInput | Date | string
     reviews_user?: UsersUpdateOneRequiredWithoutReviews_userNestedInput
     reviews_event?: EventsUpdateOneRequiredWithoutReviews_eventNestedInput
@@ -19954,8 +18860,8 @@ export namespace Prisma {
     id?: StringFieldUpdateOperationsInput | string
     user_id?: StringFieldUpdateOperationsInput | string
     events_id?: StringFieldUpdateOperationsInput | string
-    review?: StringFieldUpdateOperationsInput | string
-    rating?: IntFieldUpdateOperationsInput | number
+    review?: NullableStringFieldUpdateOperationsInput | string | null
+    rating?: NullableIntFieldUpdateOperationsInput | number | null
     created_at?: DateTimeFieldUpdateOperationsInput | Date | string
   }
 
@@ -19963,15 +18869,15 @@ export namespace Prisma {
     id?: string
     user_id: string
     events_id: string
-    review: string
-    rating: number
+    review?: string | null
+    rating?: number | null
     created_at?: Date | string
   }
 
   export type Event_ReviewsUpdateManyMutationInput = {
     id?: StringFieldUpdateOperationsInput | string
-    review?: StringFieldUpdateOperationsInput | string
-    rating?: IntFieldUpdateOperationsInput | number
+    review?: NullableStringFieldUpdateOperationsInput | string | null
+    rating?: NullableIntFieldUpdateOperationsInput | number | null
     created_at?: DateTimeFieldUpdateOperationsInput | Date | string
   }
 
@@ -19979,8 +18885,8 @@ export namespace Prisma {
     id?: StringFieldUpdateOperationsInput | string
     user_id?: StringFieldUpdateOperationsInput | string
     events_id?: StringFieldUpdateOperationsInput | string
-    review?: StringFieldUpdateOperationsInput | string
-    rating?: IntFieldUpdateOperationsInput | number
+    review?: NullableStringFieldUpdateOperationsInput | string | null
+    rating?: NullableIntFieldUpdateOperationsInput | number | null
     created_at?: DateTimeFieldUpdateOperationsInput | Date | string
   }
 
@@ -20153,7 +19059,7 @@ export namespace Prisma {
     expired_at: Date | string
     voucher_organizer?: OrganizerCreateNestedOneWithoutOrganizer_voucherInput
     voucher_user?: UsersCreateNestedOneWithoutUser_voucherInput
-    voucher_transaction?: TransactionsCreateNestedManyWithoutTransaction_voucherInput
+    voucher_transaction_details?: Transactions_detailCreateNestedManyWithoutTransaction_voucher_detailsInput
   }
 
   export type VoucherUncheckedCreateInput = {
@@ -20165,7 +19071,7 @@ export namespace Prisma {
     amount?: number | null
     created_at?: Date | string
     expired_at: Date | string
-    voucher_transaction?: TransactionsUncheckedCreateNestedManyWithoutTransaction_voucherInput
+    voucher_transaction_details?: Transactions_detailUncheckedCreateNestedManyWithoutTransaction_voucher_detailsInput
   }
 
   export type VoucherUpdateInput = {
@@ -20177,7 +19083,7 @@ export namespace Prisma {
     expired_at?: DateTimeFieldUpdateOperationsInput | Date | string
     voucher_organizer?: OrganizerUpdateOneWithoutOrganizer_voucherNestedInput
     voucher_user?: UsersUpdateOneWithoutUser_voucherNestedInput
-    voucher_transaction?: TransactionsUpdateManyWithoutTransaction_voucherNestedInput
+    voucher_transaction_details?: Transactions_detailUpdateManyWithoutTransaction_voucher_detailsNestedInput
   }
 
   export type VoucherUncheckedUpdateInput = {
@@ -20189,7 +19095,7 @@ export namespace Prisma {
     amount?: NullableIntFieldUpdateOperationsInput | number | null
     created_at?: DateTimeFieldUpdateOperationsInput | Date | string
     expired_at?: DateTimeFieldUpdateOperationsInput | Date | string
-    voucher_transaction?: TransactionsUncheckedUpdateManyWithoutTransaction_voucherNestedInput
+    voucher_transaction_details?: Transactions_detailUncheckedUpdateManyWithoutTransaction_voucher_detailsNestedInput
   }
 
   export type VoucherCreateManyInput = {
@@ -20223,136 +19129,112 @@ export namespace Prisma {
     expired_at?: DateTimeFieldUpdateOperationsInput | Date | string
   }
 
-  export type TransactionsCreateInput = {
-    id?: string
-    amount: number
-    proof: string
-    transaction_voucher: VoucherCreateNestedOneWithoutVoucher_transactionInput
-    transaction_details?: Transactions_detailCreateNestedManyWithoutDetails_transactionInput
-  }
-
-  export type TransactionsUncheckedCreateInput = {
-    id?: string
-    voucher_id: string
-    amount: number
-    proof: string
-    transaction_details?: Transactions_detailUncheckedCreateNestedManyWithoutDetails_transactionInput
-  }
-
-  export type TransactionsUpdateInput = {
-    id?: StringFieldUpdateOperationsInput | string
-    amount?: IntFieldUpdateOperationsInput | number
-    proof?: StringFieldUpdateOperationsInput | string
-    transaction_voucher?: VoucherUpdateOneRequiredWithoutVoucher_transactionNestedInput
-    transaction_details?: Transactions_detailUpdateManyWithoutDetails_transactionNestedInput
-  }
-
-  export type TransactionsUncheckedUpdateInput = {
-    id?: StringFieldUpdateOperationsInput | string
-    voucher_id?: StringFieldUpdateOperationsInput | string
-    amount?: IntFieldUpdateOperationsInput | number
-    proof?: StringFieldUpdateOperationsInput | string
-    transaction_details?: Transactions_detailUncheckedUpdateManyWithoutDetails_transactionNestedInput
-  }
-
-  export type TransactionsCreateManyInput = {
-    id?: string
-    voucher_id: string
-    amount: number
-    proof: string
-  }
-
-  export type TransactionsUpdateManyMutationInput = {
-    id?: StringFieldUpdateOperationsInput | string
-    amount?: IntFieldUpdateOperationsInput | number
-    proof?: StringFieldUpdateOperationsInput | string
-  }
-
-  export type TransactionsUncheckedUpdateManyInput = {
-    id?: StringFieldUpdateOperationsInput | string
-    voucher_id?: StringFieldUpdateOperationsInput | string
-    amount?: IntFieldUpdateOperationsInput | number
-    proof?: StringFieldUpdateOperationsInput | string
-  }
-
   export type Transactions_detailCreateInput = {
     id?: string
     quantity: number
-    price: number
+    amount?: number
+    proof?: string
     isConfirmed?: boolean
     transaction_status: $Enums.TransactionStatus
+    paid_at?: Date | string | null
+    created_at?: Date | string
+    updated_at?: Date | string
     user: UsersCreateNestedOneWithoutTransactionsInput
-    details_transaction: TransactionsCreateNestedOneWithoutTransaction_detailsInput
     detail_event: EventsCreateNestedOneWithoutEvent_transactionDetailInput
     detail_organizer: OrganizerCreateNestedOneWithoutOrganizer_transactionDetailsInput
+    transaction_voucher_details?: VoucherCreateNestedOneWithoutVoucher_transaction_detailsInput
   }
 
   export type Transactions_detailUncheckedCreateInput = {
     id?: string
-    transaction_id: string
     user_id: string
     event_id: string
     organizer_id: string
     quantity: number
-    price: number
+    voucher_id?: string | null
+    amount?: number
+    proof?: string
     isConfirmed?: boolean
     transaction_status: $Enums.TransactionStatus
+    paid_at?: Date | string | null
+    created_at?: Date | string
+    updated_at?: Date | string
   }
 
   export type Transactions_detailUpdateInput = {
     id?: StringFieldUpdateOperationsInput | string
     quantity?: IntFieldUpdateOperationsInput | number
-    price?: IntFieldUpdateOperationsInput | number
+    amount?: IntFieldUpdateOperationsInput | number
+    proof?: StringFieldUpdateOperationsInput | string
     isConfirmed?: BoolFieldUpdateOperationsInput | boolean
     transaction_status?: EnumTransactionStatusFieldUpdateOperationsInput | $Enums.TransactionStatus
+    paid_at?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    created_at?: DateTimeFieldUpdateOperationsInput | Date | string
+    updated_at?: DateTimeFieldUpdateOperationsInput | Date | string
     user?: UsersUpdateOneRequiredWithoutTransactionsNestedInput
-    details_transaction?: TransactionsUpdateOneRequiredWithoutTransaction_detailsNestedInput
     detail_event?: EventsUpdateOneRequiredWithoutEvent_transactionDetailNestedInput
     detail_organizer?: OrganizerUpdateOneRequiredWithoutOrganizer_transactionDetailsNestedInput
+    transaction_voucher_details?: VoucherUpdateOneWithoutVoucher_transaction_detailsNestedInput
   }
 
   export type Transactions_detailUncheckedUpdateInput = {
     id?: StringFieldUpdateOperationsInput | string
-    transaction_id?: StringFieldUpdateOperationsInput | string
     user_id?: StringFieldUpdateOperationsInput | string
     event_id?: StringFieldUpdateOperationsInput | string
     organizer_id?: StringFieldUpdateOperationsInput | string
     quantity?: IntFieldUpdateOperationsInput | number
-    price?: IntFieldUpdateOperationsInput | number
+    voucher_id?: NullableStringFieldUpdateOperationsInput | string | null
+    amount?: IntFieldUpdateOperationsInput | number
+    proof?: StringFieldUpdateOperationsInput | string
     isConfirmed?: BoolFieldUpdateOperationsInput | boolean
     transaction_status?: EnumTransactionStatusFieldUpdateOperationsInput | $Enums.TransactionStatus
+    paid_at?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    created_at?: DateTimeFieldUpdateOperationsInput | Date | string
+    updated_at?: DateTimeFieldUpdateOperationsInput | Date | string
   }
 
   export type Transactions_detailCreateManyInput = {
     id?: string
-    transaction_id: string
     user_id: string
     event_id: string
     organizer_id: string
     quantity: number
-    price: number
+    voucher_id?: string | null
+    amount?: number
+    proof?: string
     isConfirmed?: boolean
     transaction_status: $Enums.TransactionStatus
+    paid_at?: Date | string | null
+    created_at?: Date | string
+    updated_at?: Date | string
   }
 
   export type Transactions_detailUpdateManyMutationInput = {
     id?: StringFieldUpdateOperationsInput | string
     quantity?: IntFieldUpdateOperationsInput | number
-    price?: IntFieldUpdateOperationsInput | number
+    amount?: IntFieldUpdateOperationsInput | number
+    proof?: StringFieldUpdateOperationsInput | string
     isConfirmed?: BoolFieldUpdateOperationsInput | boolean
     transaction_status?: EnumTransactionStatusFieldUpdateOperationsInput | $Enums.TransactionStatus
+    paid_at?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    created_at?: DateTimeFieldUpdateOperationsInput | Date | string
+    updated_at?: DateTimeFieldUpdateOperationsInput | Date | string
   }
 
   export type Transactions_detailUncheckedUpdateManyInput = {
     id?: StringFieldUpdateOperationsInput | string
-    transaction_id?: StringFieldUpdateOperationsInput | string
     user_id?: StringFieldUpdateOperationsInput | string
     event_id?: StringFieldUpdateOperationsInput | string
     organizer_id?: StringFieldUpdateOperationsInput | string
     quantity?: IntFieldUpdateOperationsInput | number
-    price?: IntFieldUpdateOperationsInput | number
+    voucher_id?: NullableStringFieldUpdateOperationsInput | string | null
+    amount?: IntFieldUpdateOperationsInput | number
+    proof?: StringFieldUpdateOperationsInput | string
     isConfirmed?: BoolFieldUpdateOperationsInput | boolean
     transaction_status?: EnumTransactionStatusFieldUpdateOperationsInput | $Enums.TransactionStatus
+    paid_at?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    created_at?: DateTimeFieldUpdateOperationsInput | Date | string
+    updated_at?: DateTimeFieldUpdateOperationsInput | Date | string
   }
 
   export type StringFilter<$PrismaModel = never> = {
@@ -20596,7 +19478,17 @@ export namespace Prisma {
     none?: EventsWhereInput
   }
 
+  export type ArticlesListRelationFilter = {
+    every?: ArticlesWhereInput
+    some?: ArticlesWhereInput
+    none?: ArticlesWhereInput
+  }
+
   export type EventsOrderByRelationAggregateInput = {
+    _count?: SortOrder
+  }
+
+  export type ArticlesOrderByRelationAggregateInput = {
     _count?: SortOrder
   }
 
@@ -20616,6 +19508,11 @@ export namespace Prisma {
     id?: SortOrder
     user_id?: SortOrder
     organizer_name?: SortOrder
+  }
+
+  export type OrganizerScalarRelationFilter = {
+    is?: OrganizerWhereInput
+    isNot?: OrganizerWhereInput
   }
 
   export type ArticlesCountOrderByAggregateInput = {
@@ -20659,11 +19556,6 @@ export namespace Prisma {
     gt?: Date | string | DateTimeFieldRefInput<$PrismaModel>
     gte?: Date | string | DateTimeFieldRefInput<$PrismaModel>
     not?: NestedDateTimeNullableFilter<$PrismaModel> | Date | string | null
-  }
-
-  export type OrganizerScalarRelationFilter = {
-    is?: OrganizerWhereInput
-    isNot?: OrganizerWhereInput
   }
 
   export type Event_CategoryScalarRelationFilter = {
@@ -20831,6 +19723,17 @@ export namespace Prisma {
     total?: SortOrder
   }
 
+  export type IntNullableFilter<$PrismaModel = never> = {
+    equals?: number | IntFieldRefInput<$PrismaModel> | null
+    in?: number[] | ListIntFieldRefInput<$PrismaModel> | null
+    notIn?: number[] | ListIntFieldRefInput<$PrismaModel> | null
+    lt?: number | IntFieldRefInput<$PrismaModel>
+    lte?: number | IntFieldRefInput<$PrismaModel>
+    gt?: number | IntFieldRefInput<$PrismaModel>
+    gte?: number | IntFieldRefInput<$PrismaModel>
+    not?: NestedIntNullableFilter<$PrismaModel> | number | null
+  }
+
   export type Event_ReviewsCountOrderByAggregateInput = {
     id?: SortOrder
     user_id?: SortOrder
@@ -20864,6 +19767,22 @@ export namespace Prisma {
 
   export type Event_ReviewsSumOrderByAggregateInput = {
     rating?: SortOrder
+  }
+
+  export type IntNullableWithAggregatesFilter<$PrismaModel = never> = {
+    equals?: number | IntFieldRefInput<$PrismaModel> | null
+    in?: number[] | ListIntFieldRefInput<$PrismaModel> | null
+    notIn?: number[] | ListIntFieldRefInput<$PrismaModel> | null
+    lt?: number | IntFieldRefInput<$PrismaModel>
+    lte?: number | IntFieldRefInput<$PrismaModel>
+    gt?: number | IntFieldRefInput<$PrismaModel>
+    gte?: number | IntFieldRefInput<$PrismaModel>
+    not?: NestedIntNullableWithAggregatesFilter<$PrismaModel> | number | null
+    _count?: NestedIntNullableFilter<$PrismaModel>
+    _avg?: NestedFloatNullableFilter<$PrismaModel>
+    _sum?: NestedIntNullableFilter<$PrismaModel>
+    _min?: NestedIntNullableFilter<$PrismaModel>
+    _max?: NestedIntNullableFilter<$PrismaModel>
   }
 
   export type EnumStatusFilter<$PrismaModel = never> = {
@@ -20904,17 +19823,6 @@ export namespace Prisma {
     _max?: NestedEnumStatusFilter<$PrismaModel>
   }
 
-  export type IntNullableFilter<$PrismaModel = never> = {
-    equals?: number | IntFieldRefInput<$PrismaModel> | null
-    in?: number[] | ListIntFieldRefInput<$PrismaModel> | null
-    notIn?: number[] | ListIntFieldRefInput<$PrismaModel> | null
-    lt?: number | IntFieldRefInput<$PrismaModel>
-    lte?: number | IntFieldRefInput<$PrismaModel>
-    gt?: number | IntFieldRefInput<$PrismaModel>
-    gte?: number | IntFieldRefInput<$PrismaModel>
-    not?: NestedIntNullableFilter<$PrismaModel> | number | null
-  }
-
   export type Referral_CodeCountOrderByAggregateInput = {
     id?: SortOrder
     user_id?: SortOrder
@@ -20948,22 +19856,6 @@ export namespace Prisma {
 
   export type Referral_CodeSumOrderByAggregateInput = {
     points?: SortOrder
-  }
-
-  export type IntNullableWithAggregatesFilter<$PrismaModel = never> = {
-    equals?: number | IntFieldRefInput<$PrismaModel> | null
-    in?: number[] | ListIntFieldRefInput<$PrismaModel> | null
-    notIn?: number[] | ListIntFieldRefInput<$PrismaModel> | null
-    lt?: number | IntFieldRefInput<$PrismaModel>
-    lte?: number | IntFieldRefInput<$PrismaModel>
-    gt?: number | IntFieldRefInput<$PrismaModel>
-    gte?: number | IntFieldRefInput<$PrismaModel>
-    not?: NestedIntNullableWithAggregatesFilter<$PrismaModel> | number | null
-    _count?: NestedIntNullableFilter<$PrismaModel>
-    _avg?: NestedFloatNullableFilter<$PrismaModel>
-    _sum?: NestedIntNullableFilter<$PrismaModel>
-    _min?: NestedIntNullableFilter<$PrismaModel>
-    _max?: NestedIntNullableFilter<$PrismaModel>
   }
 
   export type Referral_CodeScalarRelationFilter = {
@@ -21000,16 +19892,6 @@ export namespace Prisma {
   export type UsersNullableScalarRelationFilter = {
     is?: UsersWhereInput | null
     isNot?: UsersWhereInput | null
-  }
-
-  export type TransactionsListRelationFilter = {
-    every?: TransactionsWhereInput
-    some?: TransactionsWhereInput
-    none?: TransactionsWhereInput
-  }
-
-  export type TransactionsOrderByRelationAggregateInput = {
-    _count?: SortOrder
   }
 
   export type VoucherCountOrderByAggregateInput = {
@@ -21055,40 +19937,6 @@ export namespace Prisma {
     amount?: SortOrder
   }
 
-  export type VoucherScalarRelationFilter = {
-    is?: VoucherWhereInput
-    isNot?: VoucherWhereInput
-  }
-
-  export type TransactionsCountOrderByAggregateInput = {
-    id?: SortOrder
-    voucher_id?: SortOrder
-    amount?: SortOrder
-    proof?: SortOrder
-  }
-
-  export type TransactionsAvgOrderByAggregateInput = {
-    amount?: SortOrder
-  }
-
-  export type TransactionsMaxOrderByAggregateInput = {
-    id?: SortOrder
-    voucher_id?: SortOrder
-    amount?: SortOrder
-    proof?: SortOrder
-  }
-
-  export type TransactionsMinOrderByAggregateInput = {
-    id?: SortOrder
-    voucher_id?: SortOrder
-    amount?: SortOrder
-    proof?: SortOrder
-  }
-
-  export type TransactionsSumOrderByAggregateInput = {
-    amount?: SortOrder
-  }
-
   export type EnumTransactionStatusFilter<$PrismaModel = never> = {
     equals?: $Enums.TransactionStatus | EnumTransactionStatusFieldRefInput<$PrismaModel>
     in?: $Enums.TransactionStatus[] | ListEnumTransactionStatusFieldRefInput<$PrismaModel>
@@ -21096,55 +19944,67 @@ export namespace Prisma {
     not?: NestedEnumTransactionStatusFilter<$PrismaModel> | $Enums.TransactionStatus
   }
 
-  export type TransactionsScalarRelationFilter = {
-    is?: TransactionsWhereInput
-    isNot?: TransactionsWhereInput
+  export type VoucherNullableScalarRelationFilter = {
+    is?: VoucherWhereInput | null
+    isNot?: VoucherWhereInput | null
   }
 
   export type Transactions_detailCountOrderByAggregateInput = {
     id?: SortOrder
-    transaction_id?: SortOrder
     user_id?: SortOrder
     event_id?: SortOrder
     organizer_id?: SortOrder
     quantity?: SortOrder
-    price?: SortOrder
+    voucher_id?: SortOrder
+    amount?: SortOrder
+    proof?: SortOrder
     isConfirmed?: SortOrder
     transaction_status?: SortOrder
+    paid_at?: SortOrder
+    created_at?: SortOrder
+    updated_at?: SortOrder
   }
 
   export type Transactions_detailAvgOrderByAggregateInput = {
     quantity?: SortOrder
-    price?: SortOrder
+    amount?: SortOrder
   }
 
   export type Transactions_detailMaxOrderByAggregateInput = {
     id?: SortOrder
-    transaction_id?: SortOrder
     user_id?: SortOrder
     event_id?: SortOrder
     organizer_id?: SortOrder
     quantity?: SortOrder
-    price?: SortOrder
+    voucher_id?: SortOrder
+    amount?: SortOrder
+    proof?: SortOrder
     isConfirmed?: SortOrder
     transaction_status?: SortOrder
+    paid_at?: SortOrder
+    created_at?: SortOrder
+    updated_at?: SortOrder
   }
 
   export type Transactions_detailMinOrderByAggregateInput = {
     id?: SortOrder
-    transaction_id?: SortOrder
     user_id?: SortOrder
     event_id?: SortOrder
     organizer_id?: SortOrder
     quantity?: SortOrder
-    price?: SortOrder
+    voucher_id?: SortOrder
+    amount?: SortOrder
+    proof?: SortOrder
     isConfirmed?: SortOrder
     transaction_status?: SortOrder
+    paid_at?: SortOrder
+    created_at?: SortOrder
+    updated_at?: SortOrder
   }
 
   export type Transactions_detailSumOrderByAggregateInput = {
     quantity?: SortOrder
-    price?: SortOrder
+    amount?: SortOrder
   }
 
   export type EnumTransactionStatusWithAggregatesFilter<$PrismaModel = never> = {
@@ -21494,6 +20354,13 @@ export namespace Prisma {
     connect?: Transactions_detailWhereUniqueInput | Transactions_detailWhereUniqueInput[]
   }
 
+  export type ArticlesCreateNestedManyWithoutOrganizerInput = {
+    create?: XOR<ArticlesCreateWithoutOrganizerInput, ArticlesUncheckedCreateWithoutOrganizerInput> | ArticlesCreateWithoutOrganizerInput[] | ArticlesUncheckedCreateWithoutOrganizerInput[]
+    connectOrCreate?: ArticlesCreateOrConnectWithoutOrganizerInput | ArticlesCreateOrConnectWithoutOrganizerInput[]
+    createMany?: ArticlesCreateManyOrganizerInputEnvelope
+    connect?: ArticlesWhereUniqueInput | ArticlesWhereUniqueInput[]
+  }
+
   export type EventsUncheckedCreateNestedManyWithoutOrganizerInput = {
     create?: XOR<EventsCreateWithoutOrganizerInput, EventsUncheckedCreateWithoutOrganizerInput> | EventsCreateWithoutOrganizerInput[] | EventsUncheckedCreateWithoutOrganizerInput[]
     connectOrCreate?: EventsCreateOrConnectWithoutOrganizerInput | EventsCreateOrConnectWithoutOrganizerInput[]
@@ -21513,6 +20380,13 @@ export namespace Prisma {
     connectOrCreate?: Transactions_detailCreateOrConnectWithoutDetail_organizerInput | Transactions_detailCreateOrConnectWithoutDetail_organizerInput[]
     createMany?: Transactions_detailCreateManyDetail_organizerInputEnvelope
     connect?: Transactions_detailWhereUniqueInput | Transactions_detailWhereUniqueInput[]
+  }
+
+  export type ArticlesUncheckedCreateNestedManyWithoutOrganizerInput = {
+    create?: XOR<ArticlesCreateWithoutOrganizerInput, ArticlesUncheckedCreateWithoutOrganizerInput> | ArticlesCreateWithoutOrganizerInput[] | ArticlesUncheckedCreateWithoutOrganizerInput[]
+    connectOrCreate?: ArticlesCreateOrConnectWithoutOrganizerInput | ArticlesCreateOrConnectWithoutOrganizerInput[]
+    createMany?: ArticlesCreateManyOrganizerInputEnvelope
+    connect?: ArticlesWhereUniqueInput | ArticlesWhereUniqueInput[]
   }
 
   export type UsersUpdateOneRequiredWithoutOrganizerNestedInput = {
@@ -21565,6 +20439,20 @@ export namespace Prisma {
     deleteMany?: Transactions_detailScalarWhereInput | Transactions_detailScalarWhereInput[]
   }
 
+  export type ArticlesUpdateManyWithoutOrganizerNestedInput = {
+    create?: XOR<ArticlesCreateWithoutOrganizerInput, ArticlesUncheckedCreateWithoutOrganizerInput> | ArticlesCreateWithoutOrganizerInput[] | ArticlesUncheckedCreateWithoutOrganizerInput[]
+    connectOrCreate?: ArticlesCreateOrConnectWithoutOrganizerInput | ArticlesCreateOrConnectWithoutOrganizerInput[]
+    upsert?: ArticlesUpsertWithWhereUniqueWithoutOrganizerInput | ArticlesUpsertWithWhereUniqueWithoutOrganizerInput[]
+    createMany?: ArticlesCreateManyOrganizerInputEnvelope
+    set?: ArticlesWhereUniqueInput | ArticlesWhereUniqueInput[]
+    disconnect?: ArticlesWhereUniqueInput | ArticlesWhereUniqueInput[]
+    delete?: ArticlesWhereUniqueInput | ArticlesWhereUniqueInput[]
+    connect?: ArticlesWhereUniqueInput | ArticlesWhereUniqueInput[]
+    update?: ArticlesUpdateWithWhereUniqueWithoutOrganizerInput | ArticlesUpdateWithWhereUniqueWithoutOrganizerInput[]
+    updateMany?: ArticlesUpdateManyWithWhereWithoutOrganizerInput | ArticlesUpdateManyWithWhereWithoutOrganizerInput[]
+    deleteMany?: ArticlesScalarWhereInput | ArticlesScalarWhereInput[]
+  }
+
   export type EventsUncheckedUpdateManyWithoutOrganizerNestedInput = {
     create?: XOR<EventsCreateWithoutOrganizerInput, EventsUncheckedCreateWithoutOrganizerInput> | EventsCreateWithoutOrganizerInput[] | EventsUncheckedCreateWithoutOrganizerInput[]
     connectOrCreate?: EventsCreateOrConnectWithoutOrganizerInput | EventsCreateOrConnectWithoutOrganizerInput[]
@@ -21605,6 +20493,34 @@ export namespace Prisma {
     update?: Transactions_detailUpdateWithWhereUniqueWithoutDetail_organizerInput | Transactions_detailUpdateWithWhereUniqueWithoutDetail_organizerInput[]
     updateMany?: Transactions_detailUpdateManyWithWhereWithoutDetail_organizerInput | Transactions_detailUpdateManyWithWhereWithoutDetail_organizerInput[]
     deleteMany?: Transactions_detailScalarWhereInput | Transactions_detailScalarWhereInput[]
+  }
+
+  export type ArticlesUncheckedUpdateManyWithoutOrganizerNestedInput = {
+    create?: XOR<ArticlesCreateWithoutOrganizerInput, ArticlesUncheckedCreateWithoutOrganizerInput> | ArticlesCreateWithoutOrganizerInput[] | ArticlesUncheckedCreateWithoutOrganizerInput[]
+    connectOrCreate?: ArticlesCreateOrConnectWithoutOrganizerInput | ArticlesCreateOrConnectWithoutOrganizerInput[]
+    upsert?: ArticlesUpsertWithWhereUniqueWithoutOrganizerInput | ArticlesUpsertWithWhereUniqueWithoutOrganizerInput[]
+    createMany?: ArticlesCreateManyOrganizerInputEnvelope
+    set?: ArticlesWhereUniqueInput | ArticlesWhereUniqueInput[]
+    disconnect?: ArticlesWhereUniqueInput | ArticlesWhereUniqueInput[]
+    delete?: ArticlesWhereUniqueInput | ArticlesWhereUniqueInput[]
+    connect?: ArticlesWhereUniqueInput | ArticlesWhereUniqueInput[]
+    update?: ArticlesUpdateWithWhereUniqueWithoutOrganizerInput | ArticlesUpdateWithWhereUniqueWithoutOrganizerInput[]
+    updateMany?: ArticlesUpdateManyWithWhereWithoutOrganizerInput | ArticlesUpdateManyWithWhereWithoutOrganizerInput[]
+    deleteMany?: ArticlesScalarWhereInput | ArticlesScalarWhereInput[]
+  }
+
+  export type OrganizerCreateNestedOneWithoutOrganizer_articlesInput = {
+    create?: XOR<OrganizerCreateWithoutOrganizer_articlesInput, OrganizerUncheckedCreateWithoutOrganizer_articlesInput>
+    connectOrCreate?: OrganizerCreateOrConnectWithoutOrganizer_articlesInput
+    connect?: OrganizerWhereUniqueInput
+  }
+
+  export type OrganizerUpdateOneRequiredWithoutOrganizer_articlesNestedInput = {
+    create?: XOR<OrganizerCreateWithoutOrganizer_articlesInput, OrganizerUncheckedCreateWithoutOrganizer_articlesInput>
+    connectOrCreate?: OrganizerCreateOrConnectWithoutOrganizer_articlesInput
+    upsert?: OrganizerUpsertWithoutOrganizer_articlesInput
+    connect?: OrganizerWhereUniqueInput
+    update?: XOR<XOR<OrganizerUpdateToOneWithWhereWithoutOrganizer_articlesInput, OrganizerUpdateWithoutOrganizer_articlesInput>, OrganizerUncheckedUpdateWithoutOrganizer_articlesInput>
   }
 
   export type OrganizerCreateNestedOneWithoutEventInput = {
@@ -21929,6 +20845,14 @@ export namespace Prisma {
     connect?: EventsWhereUniqueInput
   }
 
+  export type NullableIntFieldUpdateOperationsInput = {
+    set?: number | null
+    increment?: number
+    decrement?: number
+    multiply?: number
+    divide?: number
+  }
+
   export type UsersUpdateOneRequiredWithoutReviews_userNestedInput = {
     create?: XOR<UsersCreateWithoutReviews_userInput, UsersUncheckedCreateWithoutReviews_userInput>
     connectOrCreate?: UsersCreateOrConnectWithoutReviews_userInput
@@ -21995,14 +20919,6 @@ export namespace Prisma {
     connectOrCreate?: Referral_UsageCreateOrConnectWithoutCode_referralUsageInput | Referral_UsageCreateOrConnectWithoutCode_referralUsageInput[]
     createMany?: Referral_UsageCreateManyCode_referralUsageInputEnvelope
     connect?: Referral_UsageWhereUniqueInput | Referral_UsageWhereUniqueInput[]
-  }
-
-  export type NullableIntFieldUpdateOperationsInput = {
-    set?: number | null
-    increment?: number
-    decrement?: number
-    multiply?: number
-    divide?: number
   }
 
   export type UsersUpdateOneRequiredWithoutReferral_userNestedInput = {
@@ -22081,18 +20997,18 @@ export namespace Prisma {
     connect?: UsersWhereUniqueInput
   }
 
-  export type TransactionsCreateNestedManyWithoutTransaction_voucherInput = {
-    create?: XOR<TransactionsCreateWithoutTransaction_voucherInput, TransactionsUncheckedCreateWithoutTransaction_voucherInput> | TransactionsCreateWithoutTransaction_voucherInput[] | TransactionsUncheckedCreateWithoutTransaction_voucherInput[]
-    connectOrCreate?: TransactionsCreateOrConnectWithoutTransaction_voucherInput | TransactionsCreateOrConnectWithoutTransaction_voucherInput[]
-    createMany?: TransactionsCreateManyTransaction_voucherInputEnvelope
-    connect?: TransactionsWhereUniqueInput | TransactionsWhereUniqueInput[]
+  export type Transactions_detailCreateNestedManyWithoutTransaction_voucher_detailsInput = {
+    create?: XOR<Transactions_detailCreateWithoutTransaction_voucher_detailsInput, Transactions_detailUncheckedCreateWithoutTransaction_voucher_detailsInput> | Transactions_detailCreateWithoutTransaction_voucher_detailsInput[] | Transactions_detailUncheckedCreateWithoutTransaction_voucher_detailsInput[]
+    connectOrCreate?: Transactions_detailCreateOrConnectWithoutTransaction_voucher_detailsInput | Transactions_detailCreateOrConnectWithoutTransaction_voucher_detailsInput[]
+    createMany?: Transactions_detailCreateManyTransaction_voucher_detailsInputEnvelope
+    connect?: Transactions_detailWhereUniqueInput | Transactions_detailWhereUniqueInput[]
   }
 
-  export type TransactionsUncheckedCreateNestedManyWithoutTransaction_voucherInput = {
-    create?: XOR<TransactionsCreateWithoutTransaction_voucherInput, TransactionsUncheckedCreateWithoutTransaction_voucherInput> | TransactionsCreateWithoutTransaction_voucherInput[] | TransactionsUncheckedCreateWithoutTransaction_voucherInput[]
-    connectOrCreate?: TransactionsCreateOrConnectWithoutTransaction_voucherInput | TransactionsCreateOrConnectWithoutTransaction_voucherInput[]
-    createMany?: TransactionsCreateManyTransaction_voucherInputEnvelope
-    connect?: TransactionsWhereUniqueInput | TransactionsWhereUniqueInput[]
+  export type Transactions_detailUncheckedCreateNestedManyWithoutTransaction_voucher_detailsInput = {
+    create?: XOR<Transactions_detailCreateWithoutTransaction_voucher_detailsInput, Transactions_detailUncheckedCreateWithoutTransaction_voucher_detailsInput> | Transactions_detailCreateWithoutTransaction_voucher_detailsInput[] | Transactions_detailUncheckedCreateWithoutTransaction_voucher_detailsInput[]
+    connectOrCreate?: Transactions_detailCreateOrConnectWithoutTransaction_voucher_detailsInput | Transactions_detailCreateOrConnectWithoutTransaction_voucher_detailsInput[]
+    createMany?: Transactions_detailCreateManyTransaction_voucher_detailsInputEnvelope
+    connect?: Transactions_detailWhereUniqueInput | Transactions_detailWhereUniqueInput[]
   }
 
   export type OrganizerUpdateOneWithoutOrganizer_voucherNestedInput = {
@@ -22115,87 +21031,31 @@ export namespace Prisma {
     update?: XOR<XOR<UsersUpdateToOneWithWhereWithoutUser_voucherInput, UsersUpdateWithoutUser_voucherInput>, UsersUncheckedUpdateWithoutUser_voucherInput>
   }
 
-  export type TransactionsUpdateManyWithoutTransaction_voucherNestedInput = {
-    create?: XOR<TransactionsCreateWithoutTransaction_voucherInput, TransactionsUncheckedCreateWithoutTransaction_voucherInput> | TransactionsCreateWithoutTransaction_voucherInput[] | TransactionsUncheckedCreateWithoutTransaction_voucherInput[]
-    connectOrCreate?: TransactionsCreateOrConnectWithoutTransaction_voucherInput | TransactionsCreateOrConnectWithoutTransaction_voucherInput[]
-    upsert?: TransactionsUpsertWithWhereUniqueWithoutTransaction_voucherInput | TransactionsUpsertWithWhereUniqueWithoutTransaction_voucherInput[]
-    createMany?: TransactionsCreateManyTransaction_voucherInputEnvelope
-    set?: TransactionsWhereUniqueInput | TransactionsWhereUniqueInput[]
-    disconnect?: TransactionsWhereUniqueInput | TransactionsWhereUniqueInput[]
-    delete?: TransactionsWhereUniqueInput | TransactionsWhereUniqueInput[]
-    connect?: TransactionsWhereUniqueInput | TransactionsWhereUniqueInput[]
-    update?: TransactionsUpdateWithWhereUniqueWithoutTransaction_voucherInput | TransactionsUpdateWithWhereUniqueWithoutTransaction_voucherInput[]
-    updateMany?: TransactionsUpdateManyWithWhereWithoutTransaction_voucherInput | TransactionsUpdateManyWithWhereWithoutTransaction_voucherInput[]
-    deleteMany?: TransactionsScalarWhereInput | TransactionsScalarWhereInput[]
-  }
-
-  export type TransactionsUncheckedUpdateManyWithoutTransaction_voucherNestedInput = {
-    create?: XOR<TransactionsCreateWithoutTransaction_voucherInput, TransactionsUncheckedCreateWithoutTransaction_voucherInput> | TransactionsCreateWithoutTransaction_voucherInput[] | TransactionsUncheckedCreateWithoutTransaction_voucherInput[]
-    connectOrCreate?: TransactionsCreateOrConnectWithoutTransaction_voucherInput | TransactionsCreateOrConnectWithoutTransaction_voucherInput[]
-    upsert?: TransactionsUpsertWithWhereUniqueWithoutTransaction_voucherInput | TransactionsUpsertWithWhereUniqueWithoutTransaction_voucherInput[]
-    createMany?: TransactionsCreateManyTransaction_voucherInputEnvelope
-    set?: TransactionsWhereUniqueInput | TransactionsWhereUniqueInput[]
-    disconnect?: TransactionsWhereUniqueInput | TransactionsWhereUniqueInput[]
-    delete?: TransactionsWhereUniqueInput | TransactionsWhereUniqueInput[]
-    connect?: TransactionsWhereUniqueInput | TransactionsWhereUniqueInput[]
-    update?: TransactionsUpdateWithWhereUniqueWithoutTransaction_voucherInput | TransactionsUpdateWithWhereUniqueWithoutTransaction_voucherInput[]
-    updateMany?: TransactionsUpdateManyWithWhereWithoutTransaction_voucherInput | TransactionsUpdateManyWithWhereWithoutTransaction_voucherInput[]
-    deleteMany?: TransactionsScalarWhereInput | TransactionsScalarWhereInput[]
-  }
-
-  export type VoucherCreateNestedOneWithoutVoucher_transactionInput = {
-    create?: XOR<VoucherCreateWithoutVoucher_transactionInput, VoucherUncheckedCreateWithoutVoucher_transactionInput>
-    connectOrCreate?: VoucherCreateOrConnectWithoutVoucher_transactionInput
-    connect?: VoucherWhereUniqueInput
-  }
-
-  export type Transactions_detailCreateNestedManyWithoutDetails_transactionInput = {
-    create?: XOR<Transactions_detailCreateWithoutDetails_transactionInput, Transactions_detailUncheckedCreateWithoutDetails_transactionInput> | Transactions_detailCreateWithoutDetails_transactionInput[] | Transactions_detailUncheckedCreateWithoutDetails_transactionInput[]
-    connectOrCreate?: Transactions_detailCreateOrConnectWithoutDetails_transactionInput | Transactions_detailCreateOrConnectWithoutDetails_transactionInput[]
-    createMany?: Transactions_detailCreateManyDetails_transactionInputEnvelope
-    connect?: Transactions_detailWhereUniqueInput | Transactions_detailWhereUniqueInput[]
-  }
-
-  export type Transactions_detailUncheckedCreateNestedManyWithoutDetails_transactionInput = {
-    create?: XOR<Transactions_detailCreateWithoutDetails_transactionInput, Transactions_detailUncheckedCreateWithoutDetails_transactionInput> | Transactions_detailCreateWithoutDetails_transactionInput[] | Transactions_detailUncheckedCreateWithoutDetails_transactionInput[]
-    connectOrCreate?: Transactions_detailCreateOrConnectWithoutDetails_transactionInput | Transactions_detailCreateOrConnectWithoutDetails_transactionInput[]
-    createMany?: Transactions_detailCreateManyDetails_transactionInputEnvelope
-    connect?: Transactions_detailWhereUniqueInput | Transactions_detailWhereUniqueInput[]
-  }
-
-  export type VoucherUpdateOneRequiredWithoutVoucher_transactionNestedInput = {
-    create?: XOR<VoucherCreateWithoutVoucher_transactionInput, VoucherUncheckedCreateWithoutVoucher_transactionInput>
-    connectOrCreate?: VoucherCreateOrConnectWithoutVoucher_transactionInput
-    upsert?: VoucherUpsertWithoutVoucher_transactionInput
-    connect?: VoucherWhereUniqueInput
-    update?: XOR<XOR<VoucherUpdateToOneWithWhereWithoutVoucher_transactionInput, VoucherUpdateWithoutVoucher_transactionInput>, VoucherUncheckedUpdateWithoutVoucher_transactionInput>
-  }
-
-  export type Transactions_detailUpdateManyWithoutDetails_transactionNestedInput = {
-    create?: XOR<Transactions_detailCreateWithoutDetails_transactionInput, Transactions_detailUncheckedCreateWithoutDetails_transactionInput> | Transactions_detailCreateWithoutDetails_transactionInput[] | Transactions_detailUncheckedCreateWithoutDetails_transactionInput[]
-    connectOrCreate?: Transactions_detailCreateOrConnectWithoutDetails_transactionInput | Transactions_detailCreateOrConnectWithoutDetails_transactionInput[]
-    upsert?: Transactions_detailUpsertWithWhereUniqueWithoutDetails_transactionInput | Transactions_detailUpsertWithWhereUniqueWithoutDetails_transactionInput[]
-    createMany?: Transactions_detailCreateManyDetails_transactionInputEnvelope
+  export type Transactions_detailUpdateManyWithoutTransaction_voucher_detailsNestedInput = {
+    create?: XOR<Transactions_detailCreateWithoutTransaction_voucher_detailsInput, Transactions_detailUncheckedCreateWithoutTransaction_voucher_detailsInput> | Transactions_detailCreateWithoutTransaction_voucher_detailsInput[] | Transactions_detailUncheckedCreateWithoutTransaction_voucher_detailsInput[]
+    connectOrCreate?: Transactions_detailCreateOrConnectWithoutTransaction_voucher_detailsInput | Transactions_detailCreateOrConnectWithoutTransaction_voucher_detailsInput[]
+    upsert?: Transactions_detailUpsertWithWhereUniqueWithoutTransaction_voucher_detailsInput | Transactions_detailUpsertWithWhereUniqueWithoutTransaction_voucher_detailsInput[]
+    createMany?: Transactions_detailCreateManyTransaction_voucher_detailsInputEnvelope
     set?: Transactions_detailWhereUniqueInput | Transactions_detailWhereUniqueInput[]
     disconnect?: Transactions_detailWhereUniqueInput | Transactions_detailWhereUniqueInput[]
     delete?: Transactions_detailWhereUniqueInput | Transactions_detailWhereUniqueInput[]
     connect?: Transactions_detailWhereUniqueInput | Transactions_detailWhereUniqueInput[]
-    update?: Transactions_detailUpdateWithWhereUniqueWithoutDetails_transactionInput | Transactions_detailUpdateWithWhereUniqueWithoutDetails_transactionInput[]
-    updateMany?: Transactions_detailUpdateManyWithWhereWithoutDetails_transactionInput | Transactions_detailUpdateManyWithWhereWithoutDetails_transactionInput[]
+    update?: Transactions_detailUpdateWithWhereUniqueWithoutTransaction_voucher_detailsInput | Transactions_detailUpdateWithWhereUniqueWithoutTransaction_voucher_detailsInput[]
+    updateMany?: Transactions_detailUpdateManyWithWhereWithoutTransaction_voucher_detailsInput | Transactions_detailUpdateManyWithWhereWithoutTransaction_voucher_detailsInput[]
     deleteMany?: Transactions_detailScalarWhereInput | Transactions_detailScalarWhereInput[]
   }
 
-  export type Transactions_detailUncheckedUpdateManyWithoutDetails_transactionNestedInput = {
-    create?: XOR<Transactions_detailCreateWithoutDetails_transactionInput, Transactions_detailUncheckedCreateWithoutDetails_transactionInput> | Transactions_detailCreateWithoutDetails_transactionInput[] | Transactions_detailUncheckedCreateWithoutDetails_transactionInput[]
-    connectOrCreate?: Transactions_detailCreateOrConnectWithoutDetails_transactionInput | Transactions_detailCreateOrConnectWithoutDetails_transactionInput[]
-    upsert?: Transactions_detailUpsertWithWhereUniqueWithoutDetails_transactionInput | Transactions_detailUpsertWithWhereUniqueWithoutDetails_transactionInput[]
-    createMany?: Transactions_detailCreateManyDetails_transactionInputEnvelope
+  export type Transactions_detailUncheckedUpdateManyWithoutTransaction_voucher_detailsNestedInput = {
+    create?: XOR<Transactions_detailCreateWithoutTransaction_voucher_detailsInput, Transactions_detailUncheckedCreateWithoutTransaction_voucher_detailsInput> | Transactions_detailCreateWithoutTransaction_voucher_detailsInput[] | Transactions_detailUncheckedCreateWithoutTransaction_voucher_detailsInput[]
+    connectOrCreate?: Transactions_detailCreateOrConnectWithoutTransaction_voucher_detailsInput | Transactions_detailCreateOrConnectWithoutTransaction_voucher_detailsInput[]
+    upsert?: Transactions_detailUpsertWithWhereUniqueWithoutTransaction_voucher_detailsInput | Transactions_detailUpsertWithWhereUniqueWithoutTransaction_voucher_detailsInput[]
+    createMany?: Transactions_detailCreateManyTransaction_voucher_detailsInputEnvelope
     set?: Transactions_detailWhereUniqueInput | Transactions_detailWhereUniqueInput[]
     disconnect?: Transactions_detailWhereUniqueInput | Transactions_detailWhereUniqueInput[]
     delete?: Transactions_detailWhereUniqueInput | Transactions_detailWhereUniqueInput[]
     connect?: Transactions_detailWhereUniqueInput | Transactions_detailWhereUniqueInput[]
-    update?: Transactions_detailUpdateWithWhereUniqueWithoutDetails_transactionInput | Transactions_detailUpdateWithWhereUniqueWithoutDetails_transactionInput[]
-    updateMany?: Transactions_detailUpdateManyWithWhereWithoutDetails_transactionInput | Transactions_detailUpdateManyWithWhereWithoutDetails_transactionInput[]
+    update?: Transactions_detailUpdateWithWhereUniqueWithoutTransaction_voucher_detailsInput | Transactions_detailUpdateWithWhereUniqueWithoutTransaction_voucher_detailsInput[]
+    updateMany?: Transactions_detailUpdateManyWithWhereWithoutTransaction_voucher_detailsInput | Transactions_detailUpdateManyWithWhereWithoutTransaction_voucher_detailsInput[]
     deleteMany?: Transactions_detailScalarWhereInput | Transactions_detailScalarWhereInput[]
   }
 
@@ -22203,12 +21063,6 @@ export namespace Prisma {
     create?: XOR<UsersCreateWithoutTransactionsInput, UsersUncheckedCreateWithoutTransactionsInput>
     connectOrCreate?: UsersCreateOrConnectWithoutTransactionsInput
     connect?: UsersWhereUniqueInput
-  }
-
-  export type TransactionsCreateNestedOneWithoutTransaction_detailsInput = {
-    create?: XOR<TransactionsCreateWithoutTransaction_detailsInput, TransactionsUncheckedCreateWithoutTransaction_detailsInput>
-    connectOrCreate?: TransactionsCreateOrConnectWithoutTransaction_detailsInput
-    connect?: TransactionsWhereUniqueInput
   }
 
   export type EventsCreateNestedOneWithoutEvent_transactionDetailInput = {
@@ -22223,6 +21077,12 @@ export namespace Prisma {
     connect?: OrganizerWhereUniqueInput
   }
 
+  export type VoucherCreateNestedOneWithoutVoucher_transaction_detailsInput = {
+    create?: XOR<VoucherCreateWithoutVoucher_transaction_detailsInput, VoucherUncheckedCreateWithoutVoucher_transaction_detailsInput>
+    connectOrCreate?: VoucherCreateOrConnectWithoutVoucher_transaction_detailsInput
+    connect?: VoucherWhereUniqueInput
+  }
+
   export type EnumTransactionStatusFieldUpdateOperationsInput = {
     set?: $Enums.TransactionStatus
   }
@@ -22233,14 +21093,6 @@ export namespace Prisma {
     upsert?: UsersUpsertWithoutTransactionsInput
     connect?: UsersWhereUniqueInput
     update?: XOR<XOR<UsersUpdateToOneWithWhereWithoutTransactionsInput, UsersUpdateWithoutTransactionsInput>, UsersUncheckedUpdateWithoutTransactionsInput>
-  }
-
-  export type TransactionsUpdateOneRequiredWithoutTransaction_detailsNestedInput = {
-    create?: XOR<TransactionsCreateWithoutTransaction_detailsInput, TransactionsUncheckedCreateWithoutTransaction_detailsInput>
-    connectOrCreate?: TransactionsCreateOrConnectWithoutTransaction_detailsInput
-    upsert?: TransactionsUpsertWithoutTransaction_detailsInput
-    connect?: TransactionsWhereUniqueInput
-    update?: XOR<XOR<TransactionsUpdateToOneWithWhereWithoutTransaction_detailsInput, TransactionsUpdateWithoutTransaction_detailsInput>, TransactionsUncheckedUpdateWithoutTransaction_detailsInput>
   }
 
   export type EventsUpdateOneRequiredWithoutEvent_transactionDetailNestedInput = {
@@ -22257,6 +21109,16 @@ export namespace Prisma {
     upsert?: OrganizerUpsertWithoutOrganizer_transactionDetailsInput
     connect?: OrganizerWhereUniqueInput
     update?: XOR<XOR<OrganizerUpdateToOneWithWhereWithoutOrganizer_transactionDetailsInput, OrganizerUpdateWithoutOrganizer_transactionDetailsInput>, OrganizerUncheckedUpdateWithoutOrganizer_transactionDetailsInput>
+  }
+
+  export type VoucherUpdateOneWithoutVoucher_transaction_detailsNestedInput = {
+    create?: XOR<VoucherCreateWithoutVoucher_transaction_detailsInput, VoucherUncheckedCreateWithoutVoucher_transaction_detailsInput>
+    connectOrCreate?: VoucherCreateOrConnectWithoutVoucher_transaction_detailsInput
+    upsert?: VoucherUpsertWithoutVoucher_transaction_detailsInput
+    disconnect?: VoucherWhereInput | boolean
+    delete?: VoucherWhereInput | boolean
+    connect?: VoucherWhereUniqueInput
+    update?: XOR<XOR<VoucherUpdateToOneWithWhereWithoutVoucher_transaction_detailsInput, VoucherUpdateWithoutVoucher_transaction_detailsInput>, VoucherUncheckedUpdateWithoutVoucher_transaction_detailsInput>
   }
 
   export type NestedStringFilter<$PrismaModel = never> = {
@@ -22433,23 +21295,6 @@ export namespace Prisma {
     _max?: NestedDateTimeNullableFilter<$PrismaModel>
   }
 
-  export type NestedEnumStatusFilter<$PrismaModel = never> = {
-    equals?: $Enums.Status | EnumStatusFieldRefInput<$PrismaModel>
-    in?: $Enums.Status[] | ListEnumStatusFieldRefInput<$PrismaModel>
-    notIn?: $Enums.Status[] | ListEnumStatusFieldRefInput<$PrismaModel>
-    not?: NestedEnumStatusFilter<$PrismaModel> | $Enums.Status
-  }
-
-  export type NestedEnumStatusWithAggregatesFilter<$PrismaModel = never> = {
-    equals?: $Enums.Status | EnumStatusFieldRefInput<$PrismaModel>
-    in?: $Enums.Status[] | ListEnumStatusFieldRefInput<$PrismaModel>
-    notIn?: $Enums.Status[] | ListEnumStatusFieldRefInput<$PrismaModel>
-    not?: NestedEnumStatusWithAggregatesFilter<$PrismaModel> | $Enums.Status
-    _count?: NestedIntFilter<$PrismaModel>
-    _min?: NestedEnumStatusFilter<$PrismaModel>
-    _max?: NestedEnumStatusFilter<$PrismaModel>
-  }
-
   export type NestedIntNullableWithAggregatesFilter<$PrismaModel = never> = {
     equals?: number | IntFieldRefInput<$PrismaModel> | null
     in?: number[] | ListIntFieldRefInput<$PrismaModel> | null
@@ -22477,6 +21322,23 @@ export namespace Prisma {
     not?: NestedFloatNullableFilter<$PrismaModel> | number | null
   }
 
+  export type NestedEnumStatusFilter<$PrismaModel = never> = {
+    equals?: $Enums.Status | EnumStatusFieldRefInput<$PrismaModel>
+    in?: $Enums.Status[] | ListEnumStatusFieldRefInput<$PrismaModel>
+    notIn?: $Enums.Status[] | ListEnumStatusFieldRefInput<$PrismaModel>
+    not?: NestedEnumStatusFilter<$PrismaModel> | $Enums.Status
+  }
+
+  export type NestedEnumStatusWithAggregatesFilter<$PrismaModel = never> = {
+    equals?: $Enums.Status | EnumStatusFieldRefInput<$PrismaModel>
+    in?: $Enums.Status[] | ListEnumStatusFieldRefInput<$PrismaModel>
+    notIn?: $Enums.Status[] | ListEnumStatusFieldRefInput<$PrismaModel>
+    not?: NestedEnumStatusWithAggregatesFilter<$PrismaModel> | $Enums.Status
+    _count?: NestedIntFilter<$PrismaModel>
+    _min?: NestedEnumStatusFilter<$PrismaModel>
+    _max?: NestedEnumStatusFilter<$PrismaModel>
+  }
+
   export type NestedEnumTransactionStatusFilter<$PrismaModel = never> = {
     equals?: $Enums.TransactionStatus | EnumTransactionStatusFieldRefInput<$PrismaModel>
     in?: $Enums.TransactionStatus[] | ListEnumTransactionStatusFieldRefInput<$PrismaModel>
@@ -22500,6 +21362,7 @@ export namespace Prisma {
     event?: EventsCreateNestedManyWithoutOrganizerInput
     organizer_voucher?: VoucherCreateNestedManyWithoutVoucher_organizerInput
     organizer_transactionDetails?: Transactions_detailCreateNestedManyWithoutDetail_organizerInput
+    organizer_articles?: ArticlesCreateNestedManyWithoutOrganizerInput
   }
 
   export type OrganizerUncheckedCreateWithoutUserInput = {
@@ -22508,6 +21371,7 @@ export namespace Prisma {
     event?: EventsUncheckedCreateNestedManyWithoutOrganizerInput
     organizer_voucher?: VoucherUncheckedCreateNestedManyWithoutVoucher_organizerInput
     organizer_transactionDetails?: Transactions_detailUncheckedCreateNestedManyWithoutDetail_organizerInput
+    organizer_articles?: ArticlesUncheckedCreateNestedManyWithoutOrganizerInput
   }
 
   export type OrganizerCreateOrConnectWithoutUserInput = {
@@ -22522,8 +21386,8 @@ export namespace Prisma {
 
   export type Event_ReviewsCreateWithoutReviews_userInput = {
     id?: string
-    review: string
-    rating: number
+    review?: string | null
+    rating?: number | null
     created_at?: Date | string
     reviews_event: EventsCreateNestedOneWithoutReviews_eventInput
   }
@@ -22531,8 +21395,8 @@ export namespace Prisma {
   export type Event_ReviewsUncheckedCreateWithoutReviews_userInput = {
     id?: string
     events_id: string
-    review: string
-    rating: number
+    review?: string | null
+    rating?: number | null
     created_at?: Date | string
   }
 
@@ -22621,23 +21485,31 @@ export namespace Prisma {
   export type Transactions_detailCreateWithoutUserInput = {
     id?: string
     quantity: number
-    price: number
+    amount?: number
+    proof?: string
     isConfirmed?: boolean
     transaction_status: $Enums.TransactionStatus
-    details_transaction: TransactionsCreateNestedOneWithoutTransaction_detailsInput
+    paid_at?: Date | string | null
+    created_at?: Date | string
+    updated_at?: Date | string
     detail_event: EventsCreateNestedOneWithoutEvent_transactionDetailInput
     detail_organizer: OrganizerCreateNestedOneWithoutOrganizer_transactionDetailsInput
+    transaction_voucher_details?: VoucherCreateNestedOneWithoutVoucher_transaction_detailsInput
   }
 
   export type Transactions_detailUncheckedCreateWithoutUserInput = {
     id?: string
-    transaction_id: string
     event_id: string
     organizer_id: string
     quantity: number
-    price: number
+    voucher_id?: string | null
+    amount?: number
+    proof?: string
     isConfirmed?: boolean
     transaction_status: $Enums.TransactionStatus
+    paid_at?: Date | string | null
+    created_at?: Date | string
+    updated_at?: Date | string
   }
 
   export type Transactions_detailCreateOrConnectWithoutUserInput = {
@@ -22658,7 +21530,7 @@ export namespace Prisma {
     created_at?: Date | string
     expired_at: Date | string
     voucher_organizer?: OrganizerCreateNestedOneWithoutOrganizer_voucherInput
-    voucher_transaction?: TransactionsCreateNestedManyWithoutTransaction_voucherInput
+    voucher_transaction_details?: Transactions_detailCreateNestedManyWithoutTransaction_voucher_detailsInput
   }
 
   export type VoucherUncheckedCreateWithoutVoucher_userInput = {
@@ -22669,7 +21541,7 @@ export namespace Prisma {
     amount?: number | null
     created_at?: Date | string
     expired_at: Date | string
-    voucher_transaction?: TransactionsUncheckedCreateNestedManyWithoutTransaction_voucherInput
+    voucher_transaction_details?: Transactions_detailUncheckedCreateNestedManyWithoutTransaction_voucher_detailsInput
   }
 
   export type VoucherCreateOrConnectWithoutVoucher_userInput = {
@@ -22730,8 +21602,8 @@ export namespace Prisma {
     id?: StringFilter<"Event_Reviews"> | string
     user_id?: StringFilter<"Event_Reviews"> | string
     events_id?: StringFilter<"Event_Reviews"> | string
-    review?: StringFilter<"Event_Reviews"> | string
-    rating?: IntFilter<"Event_Reviews"> | number
+    review?: StringNullableFilter<"Event_Reviews"> | string | null
+    rating?: IntNullableFilter<"Event_Reviews"> | number | null
     created_at?: DateTimeFilter<"Event_Reviews"> | Date | string
   }
 
@@ -22836,14 +21708,18 @@ export namespace Prisma {
     OR?: Transactions_detailScalarWhereInput[]
     NOT?: Transactions_detailScalarWhereInput | Transactions_detailScalarWhereInput[]
     id?: StringFilter<"Transactions_detail"> | string
-    transaction_id?: StringFilter<"Transactions_detail"> | string
     user_id?: StringFilter<"Transactions_detail"> | string
     event_id?: StringFilter<"Transactions_detail"> | string
     organizer_id?: StringFilter<"Transactions_detail"> | string
     quantity?: IntFilter<"Transactions_detail"> | number
-    price?: IntFilter<"Transactions_detail"> | number
+    voucher_id?: StringNullableFilter<"Transactions_detail"> | string | null
+    amount?: IntFilter<"Transactions_detail"> | number
+    proof?: StringFilter<"Transactions_detail"> | string
     isConfirmed?: BoolFilter<"Transactions_detail"> | boolean
     transaction_status?: EnumTransactionStatusFilter<"Transactions_detail"> | $Enums.TransactionStatus
+    paid_at?: DateTimeNullableFilter<"Transactions_detail"> | Date | string | null
+    created_at?: DateTimeFilter<"Transactions_detail"> | Date | string
+    updated_at?: DateTimeFilter<"Transactions_detail"> | Date | string
   }
 
   export type VoucherUpsertWithWhereUniqueWithoutVoucher_userInput = {
@@ -22981,7 +21857,7 @@ export namespace Prisma {
     created_at?: Date | string
     expired_at: Date | string
     voucher_user?: UsersCreateNestedOneWithoutUser_voucherInput
-    voucher_transaction?: TransactionsCreateNestedManyWithoutTransaction_voucherInput
+    voucher_transaction_details?: Transactions_detailCreateNestedManyWithoutTransaction_voucher_detailsInput
   }
 
   export type VoucherUncheckedCreateWithoutVoucher_organizerInput = {
@@ -22992,7 +21868,7 @@ export namespace Prisma {
     amount?: number | null
     created_at?: Date | string
     expired_at: Date | string
-    voucher_transaction?: TransactionsUncheckedCreateNestedManyWithoutTransaction_voucherInput
+    voucher_transaction_details?: Transactions_detailUncheckedCreateNestedManyWithoutTransaction_voucher_detailsInput
   }
 
   export type VoucherCreateOrConnectWithoutVoucher_organizerInput = {
@@ -23008,23 +21884,31 @@ export namespace Prisma {
   export type Transactions_detailCreateWithoutDetail_organizerInput = {
     id?: string
     quantity: number
-    price: number
+    amount?: number
+    proof?: string
     isConfirmed?: boolean
     transaction_status: $Enums.TransactionStatus
+    paid_at?: Date | string | null
+    created_at?: Date | string
+    updated_at?: Date | string
     user: UsersCreateNestedOneWithoutTransactionsInput
-    details_transaction: TransactionsCreateNestedOneWithoutTransaction_detailsInput
     detail_event: EventsCreateNestedOneWithoutEvent_transactionDetailInput
+    transaction_voucher_details?: VoucherCreateNestedOneWithoutVoucher_transaction_detailsInput
   }
 
   export type Transactions_detailUncheckedCreateWithoutDetail_organizerInput = {
     id?: string
-    transaction_id: string
     user_id: string
     event_id: string
     quantity: number
-    price: number
+    voucher_id?: string | null
+    amount?: number
+    proof?: string
     isConfirmed?: boolean
     transaction_status: $Enums.TransactionStatus
+    paid_at?: Date | string | null
+    created_at?: Date | string
+    updated_at?: Date | string
   }
 
   export type Transactions_detailCreateOrConnectWithoutDetail_organizerInput = {
@@ -23034,6 +21918,28 @@ export namespace Prisma {
 
   export type Transactions_detailCreateManyDetail_organizerInputEnvelope = {
     data: Transactions_detailCreateManyDetail_organizerInput | Transactions_detailCreateManyDetail_organizerInput[]
+    skipDuplicates?: boolean
+  }
+
+  export type ArticlesCreateWithoutOrganizerInput = {
+    id?: string
+    title: string
+    created_at?: Date | string
+  }
+
+  export type ArticlesUncheckedCreateWithoutOrganizerInput = {
+    id?: string
+    title: string
+    created_at?: Date | string
+  }
+
+  export type ArticlesCreateOrConnectWithoutOrganizerInput = {
+    where: ArticlesWhereUniqueInput
+    create: XOR<ArticlesCreateWithoutOrganizerInput, ArticlesUncheckedCreateWithoutOrganizerInput>
+  }
+
+  export type ArticlesCreateManyOrganizerInputEnvelope = {
+    data: ArticlesCreateManyOrganizerInput | ArticlesCreateManyOrganizerInput[]
     skipDuplicates?: boolean
   }
 
@@ -23160,12 +22066,91 @@ export namespace Prisma {
     data: XOR<Transactions_detailUpdateManyMutationInput, Transactions_detailUncheckedUpdateManyWithoutDetail_organizerInput>
   }
 
+  export type ArticlesUpsertWithWhereUniqueWithoutOrganizerInput = {
+    where: ArticlesWhereUniqueInput
+    update: XOR<ArticlesUpdateWithoutOrganizerInput, ArticlesUncheckedUpdateWithoutOrganizerInput>
+    create: XOR<ArticlesCreateWithoutOrganizerInput, ArticlesUncheckedCreateWithoutOrganizerInput>
+  }
+
+  export type ArticlesUpdateWithWhereUniqueWithoutOrganizerInput = {
+    where: ArticlesWhereUniqueInput
+    data: XOR<ArticlesUpdateWithoutOrganizerInput, ArticlesUncheckedUpdateWithoutOrganizerInput>
+  }
+
+  export type ArticlesUpdateManyWithWhereWithoutOrganizerInput = {
+    where: ArticlesScalarWhereInput
+    data: XOR<ArticlesUpdateManyMutationInput, ArticlesUncheckedUpdateManyWithoutOrganizerInput>
+  }
+
+  export type ArticlesScalarWhereInput = {
+    AND?: ArticlesScalarWhereInput | ArticlesScalarWhereInput[]
+    OR?: ArticlesScalarWhereInput[]
+    NOT?: ArticlesScalarWhereInput | ArticlesScalarWhereInput[]
+    id?: StringFilter<"Articles"> | string
+    organizer_id?: StringFilter<"Articles"> | string
+    title?: StringFilter<"Articles"> | string
+    created_at?: DateTimeFilter<"Articles"> | Date | string
+  }
+
+  export type OrganizerCreateWithoutOrganizer_articlesInput = {
+    id?: string
+    organizer_name?: string
+    user: UsersCreateNestedOneWithoutOrganizerInput
+    event?: EventsCreateNestedManyWithoutOrganizerInput
+    organizer_voucher?: VoucherCreateNestedManyWithoutVoucher_organizerInput
+    organizer_transactionDetails?: Transactions_detailCreateNestedManyWithoutDetail_organizerInput
+  }
+
+  export type OrganizerUncheckedCreateWithoutOrganizer_articlesInput = {
+    id?: string
+    user_id: string
+    organizer_name?: string
+    event?: EventsUncheckedCreateNestedManyWithoutOrganizerInput
+    organizer_voucher?: VoucherUncheckedCreateNestedManyWithoutVoucher_organizerInput
+    organizer_transactionDetails?: Transactions_detailUncheckedCreateNestedManyWithoutDetail_organizerInput
+  }
+
+  export type OrganizerCreateOrConnectWithoutOrganizer_articlesInput = {
+    where: OrganizerWhereUniqueInput
+    create: XOR<OrganizerCreateWithoutOrganizer_articlesInput, OrganizerUncheckedCreateWithoutOrganizer_articlesInput>
+  }
+
+  export type OrganizerUpsertWithoutOrganizer_articlesInput = {
+    update: XOR<OrganizerUpdateWithoutOrganizer_articlesInput, OrganizerUncheckedUpdateWithoutOrganizer_articlesInput>
+    create: XOR<OrganizerCreateWithoutOrganizer_articlesInput, OrganizerUncheckedCreateWithoutOrganizer_articlesInput>
+    where?: OrganizerWhereInput
+  }
+
+  export type OrganizerUpdateToOneWithWhereWithoutOrganizer_articlesInput = {
+    where?: OrganizerWhereInput
+    data: XOR<OrganizerUpdateWithoutOrganizer_articlesInput, OrganizerUncheckedUpdateWithoutOrganizer_articlesInput>
+  }
+
+  export type OrganizerUpdateWithoutOrganizer_articlesInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    organizer_name?: StringFieldUpdateOperationsInput | string
+    user?: UsersUpdateOneRequiredWithoutOrganizerNestedInput
+    event?: EventsUpdateManyWithoutOrganizerNestedInput
+    organizer_voucher?: VoucherUpdateManyWithoutVoucher_organizerNestedInput
+    organizer_transactionDetails?: Transactions_detailUpdateManyWithoutDetail_organizerNestedInput
+  }
+
+  export type OrganizerUncheckedUpdateWithoutOrganizer_articlesInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    user_id?: StringFieldUpdateOperationsInput | string
+    organizer_name?: StringFieldUpdateOperationsInput | string
+    event?: EventsUncheckedUpdateManyWithoutOrganizerNestedInput
+    organizer_voucher?: VoucherUncheckedUpdateManyWithoutVoucher_organizerNestedInput
+    organizer_transactionDetails?: Transactions_detailUncheckedUpdateManyWithoutDetail_organizerNestedInput
+  }
+
   export type OrganizerCreateWithoutEventInput = {
     id?: string
     organizer_name?: string
     user: UsersCreateNestedOneWithoutOrganizerInput
     organizer_voucher?: VoucherCreateNestedManyWithoutVoucher_organizerInput
     organizer_transactionDetails?: Transactions_detailCreateNestedManyWithoutDetail_organizerInput
+    organizer_articles?: ArticlesCreateNestedManyWithoutOrganizerInput
   }
 
   export type OrganizerUncheckedCreateWithoutEventInput = {
@@ -23174,6 +22159,7 @@ export namespace Prisma {
     organizer_name?: string
     organizer_voucher?: VoucherUncheckedCreateNestedManyWithoutVoucher_organizerInput
     organizer_transactionDetails?: Transactions_detailUncheckedCreateNestedManyWithoutDetail_organizerInput
+    organizer_articles?: ArticlesUncheckedCreateNestedManyWithoutOrganizerInput
   }
 
   export type OrganizerCreateOrConnectWithoutEventInput = {
@@ -23232,8 +22218,8 @@ export namespace Prisma {
 
   export type Event_ReviewsCreateWithoutReviews_eventInput = {
     id?: string
-    review: string
-    rating: number
+    review?: string | null
+    rating?: number | null
     created_at?: Date | string
     reviews_user: UsersCreateNestedOneWithoutReviews_userInput
   }
@@ -23241,8 +22227,8 @@ export namespace Prisma {
   export type Event_ReviewsUncheckedCreateWithoutReviews_eventInput = {
     id?: string
     user_id: string
-    review: string
-    rating: number
+    review?: string | null
+    rating?: number | null
     created_at?: Date | string
   }
 
@@ -23281,23 +22267,31 @@ export namespace Prisma {
   export type Transactions_detailCreateWithoutDetail_eventInput = {
     id?: string
     quantity: number
-    price: number
+    amount?: number
+    proof?: string
     isConfirmed?: boolean
     transaction_status: $Enums.TransactionStatus
+    paid_at?: Date | string | null
+    created_at?: Date | string
+    updated_at?: Date | string
     user: UsersCreateNestedOneWithoutTransactionsInput
-    details_transaction: TransactionsCreateNestedOneWithoutTransaction_detailsInput
     detail_organizer: OrganizerCreateNestedOneWithoutOrganizer_transactionDetailsInput
+    transaction_voucher_details?: VoucherCreateNestedOneWithoutVoucher_transaction_detailsInput
   }
 
   export type Transactions_detailUncheckedCreateWithoutDetail_eventInput = {
     id?: string
-    transaction_id: string
     user_id: string
     organizer_id: string
     quantity: number
-    price: number
+    voucher_id?: string | null
+    amount?: number
+    proof?: string
     isConfirmed?: boolean
     transaction_status: $Enums.TransactionStatus
+    paid_at?: Date | string | null
+    created_at?: Date | string
+    updated_at?: Date | string
   }
 
   export type Transactions_detailCreateOrConnectWithoutDetail_eventInput = {
@@ -23327,6 +22321,7 @@ export namespace Prisma {
     user?: UsersUpdateOneRequiredWithoutOrganizerNestedInput
     organizer_voucher?: VoucherUpdateManyWithoutVoucher_organizerNestedInput
     organizer_transactionDetails?: Transactions_detailUpdateManyWithoutDetail_organizerNestedInput
+    organizer_articles?: ArticlesUpdateManyWithoutOrganizerNestedInput
   }
 
   export type OrganizerUncheckedUpdateWithoutEventInput = {
@@ -23335,6 +22330,7 @@ export namespace Prisma {
     organizer_name?: StringFieldUpdateOperationsInput | string
     organizer_voucher?: VoucherUncheckedUpdateManyWithoutVoucher_organizerNestedInput
     organizer_transactionDetails?: Transactions_detailUncheckedUpdateManyWithoutDetail_organizerNestedInput
+    organizer_articles?: ArticlesUncheckedUpdateManyWithoutOrganizerNestedInput
   }
 
   export type Event_CategoryUpsertWithoutEventInput = {
@@ -24368,6 +23364,7 @@ export namespace Prisma {
     user: UsersCreateNestedOneWithoutOrganizerInput
     event?: EventsCreateNestedManyWithoutOrganizerInput
     organizer_transactionDetails?: Transactions_detailCreateNestedManyWithoutDetail_organizerInput
+    organizer_articles?: ArticlesCreateNestedManyWithoutOrganizerInput
   }
 
   export type OrganizerUncheckedCreateWithoutOrganizer_voucherInput = {
@@ -24376,6 +23373,7 @@ export namespace Prisma {
     organizer_name?: string
     event?: EventsUncheckedCreateNestedManyWithoutOrganizerInput
     organizer_transactionDetails?: Transactions_detailUncheckedCreateNestedManyWithoutDetail_organizerInput
+    organizer_articles?: ArticlesUncheckedCreateNestedManyWithoutOrganizerInput
   }
 
   export type OrganizerCreateOrConnectWithoutOrganizer_voucherInput = {
@@ -24434,27 +23432,43 @@ export namespace Prisma {
     create: XOR<UsersCreateWithoutUser_voucherInput, UsersUncheckedCreateWithoutUser_voucherInput>
   }
 
-  export type TransactionsCreateWithoutTransaction_voucherInput = {
+  export type Transactions_detailCreateWithoutTransaction_voucher_detailsInput = {
     id?: string
-    amount: number
-    proof: string
-    transaction_details?: Transactions_detailCreateNestedManyWithoutDetails_transactionInput
+    quantity: number
+    amount?: number
+    proof?: string
+    isConfirmed?: boolean
+    transaction_status: $Enums.TransactionStatus
+    paid_at?: Date | string | null
+    created_at?: Date | string
+    updated_at?: Date | string
+    user: UsersCreateNestedOneWithoutTransactionsInput
+    detail_event: EventsCreateNestedOneWithoutEvent_transactionDetailInput
+    detail_organizer: OrganizerCreateNestedOneWithoutOrganizer_transactionDetailsInput
   }
 
-  export type TransactionsUncheckedCreateWithoutTransaction_voucherInput = {
+  export type Transactions_detailUncheckedCreateWithoutTransaction_voucher_detailsInput = {
     id?: string
-    amount: number
-    proof: string
-    transaction_details?: Transactions_detailUncheckedCreateNestedManyWithoutDetails_transactionInput
+    user_id: string
+    event_id: string
+    organizer_id: string
+    quantity: number
+    amount?: number
+    proof?: string
+    isConfirmed?: boolean
+    transaction_status: $Enums.TransactionStatus
+    paid_at?: Date | string | null
+    created_at?: Date | string
+    updated_at?: Date | string
   }
 
-  export type TransactionsCreateOrConnectWithoutTransaction_voucherInput = {
-    where: TransactionsWhereUniqueInput
-    create: XOR<TransactionsCreateWithoutTransaction_voucherInput, TransactionsUncheckedCreateWithoutTransaction_voucherInput>
+  export type Transactions_detailCreateOrConnectWithoutTransaction_voucher_detailsInput = {
+    where: Transactions_detailWhereUniqueInput
+    create: XOR<Transactions_detailCreateWithoutTransaction_voucher_detailsInput, Transactions_detailUncheckedCreateWithoutTransaction_voucher_detailsInput>
   }
 
-  export type TransactionsCreateManyTransaction_voucherInputEnvelope = {
-    data: TransactionsCreateManyTransaction_voucherInput | TransactionsCreateManyTransaction_voucherInput[]
+  export type Transactions_detailCreateManyTransaction_voucher_detailsInputEnvelope = {
+    data: Transactions_detailCreateManyTransaction_voucher_detailsInput | Transactions_detailCreateManyTransaction_voucher_detailsInput[]
     skipDuplicates?: boolean
   }
 
@@ -24475,6 +23489,7 @@ export namespace Prisma {
     user?: UsersUpdateOneRequiredWithoutOrganizerNestedInput
     event?: EventsUpdateManyWithoutOrganizerNestedInput
     organizer_transactionDetails?: Transactions_detailUpdateManyWithoutDetail_organizerNestedInput
+    organizer_articles?: ArticlesUpdateManyWithoutOrganizerNestedInput
   }
 
   export type OrganizerUncheckedUpdateWithoutOrganizer_voucherInput = {
@@ -24483,6 +23498,7 @@ export namespace Prisma {
     organizer_name?: StringFieldUpdateOperationsInput | string
     event?: EventsUncheckedUpdateManyWithoutOrganizerNestedInput
     organizer_transactionDetails?: Transactions_detailUncheckedUpdateManyWithoutDetail_organizerNestedInput
+    organizer_articles?: ArticlesUncheckedUpdateManyWithoutOrganizerNestedInput
   }
 
   export type UsersUpsertWithoutUser_voucherInput = {
@@ -24542,138 +23558,20 @@ export namespace Prisma {
     transactions?: Transactions_detailUncheckedUpdateManyWithoutUserNestedInput
   }
 
-  export type TransactionsUpsertWithWhereUniqueWithoutTransaction_voucherInput = {
-    where: TransactionsWhereUniqueInput
-    update: XOR<TransactionsUpdateWithoutTransaction_voucherInput, TransactionsUncheckedUpdateWithoutTransaction_voucherInput>
-    create: XOR<TransactionsCreateWithoutTransaction_voucherInput, TransactionsUncheckedCreateWithoutTransaction_voucherInput>
-  }
-
-  export type TransactionsUpdateWithWhereUniqueWithoutTransaction_voucherInput = {
-    where: TransactionsWhereUniqueInput
-    data: XOR<TransactionsUpdateWithoutTransaction_voucherInput, TransactionsUncheckedUpdateWithoutTransaction_voucherInput>
-  }
-
-  export type TransactionsUpdateManyWithWhereWithoutTransaction_voucherInput = {
-    where: TransactionsScalarWhereInput
-    data: XOR<TransactionsUpdateManyMutationInput, TransactionsUncheckedUpdateManyWithoutTransaction_voucherInput>
-  }
-
-  export type TransactionsScalarWhereInput = {
-    AND?: TransactionsScalarWhereInput | TransactionsScalarWhereInput[]
-    OR?: TransactionsScalarWhereInput[]
-    NOT?: TransactionsScalarWhereInput | TransactionsScalarWhereInput[]
-    id?: StringFilter<"Transactions"> | string
-    voucher_id?: StringFilter<"Transactions"> | string
-    amount?: IntFilter<"Transactions"> | number
-    proof?: StringFilter<"Transactions"> | string
-  }
-
-  export type VoucherCreateWithoutVoucher_transactionInput = {
-    id?: string
-    code: string
-    percentage?: number | null
-    amount?: number | null
-    created_at?: Date | string
-    expired_at: Date | string
-    voucher_organizer?: OrganizerCreateNestedOneWithoutOrganizer_voucherInput
-    voucher_user?: UsersCreateNestedOneWithoutUser_voucherInput
-  }
-
-  export type VoucherUncheckedCreateWithoutVoucher_transactionInput = {
-    id?: string
-    user_id?: string | null
-    organizer_id?: string | null
-    code: string
-    percentage?: number | null
-    amount?: number | null
-    created_at?: Date | string
-    expired_at: Date | string
-  }
-
-  export type VoucherCreateOrConnectWithoutVoucher_transactionInput = {
-    where: VoucherWhereUniqueInput
-    create: XOR<VoucherCreateWithoutVoucher_transactionInput, VoucherUncheckedCreateWithoutVoucher_transactionInput>
-  }
-
-  export type Transactions_detailCreateWithoutDetails_transactionInput = {
-    id?: string
-    quantity: number
-    price: number
-    isConfirmed?: boolean
-    transaction_status: $Enums.TransactionStatus
-    user: UsersCreateNestedOneWithoutTransactionsInput
-    detail_event: EventsCreateNestedOneWithoutEvent_transactionDetailInput
-    detail_organizer: OrganizerCreateNestedOneWithoutOrganizer_transactionDetailsInput
-  }
-
-  export type Transactions_detailUncheckedCreateWithoutDetails_transactionInput = {
-    id?: string
-    user_id: string
-    event_id: string
-    organizer_id: string
-    quantity: number
-    price: number
-    isConfirmed?: boolean
-    transaction_status: $Enums.TransactionStatus
-  }
-
-  export type Transactions_detailCreateOrConnectWithoutDetails_transactionInput = {
+  export type Transactions_detailUpsertWithWhereUniqueWithoutTransaction_voucher_detailsInput = {
     where: Transactions_detailWhereUniqueInput
-    create: XOR<Transactions_detailCreateWithoutDetails_transactionInput, Transactions_detailUncheckedCreateWithoutDetails_transactionInput>
+    update: XOR<Transactions_detailUpdateWithoutTransaction_voucher_detailsInput, Transactions_detailUncheckedUpdateWithoutTransaction_voucher_detailsInput>
+    create: XOR<Transactions_detailCreateWithoutTransaction_voucher_detailsInput, Transactions_detailUncheckedCreateWithoutTransaction_voucher_detailsInput>
   }
 
-  export type Transactions_detailCreateManyDetails_transactionInputEnvelope = {
-    data: Transactions_detailCreateManyDetails_transactionInput | Transactions_detailCreateManyDetails_transactionInput[]
-    skipDuplicates?: boolean
-  }
-
-  export type VoucherUpsertWithoutVoucher_transactionInput = {
-    update: XOR<VoucherUpdateWithoutVoucher_transactionInput, VoucherUncheckedUpdateWithoutVoucher_transactionInput>
-    create: XOR<VoucherCreateWithoutVoucher_transactionInput, VoucherUncheckedCreateWithoutVoucher_transactionInput>
-    where?: VoucherWhereInput
-  }
-
-  export type VoucherUpdateToOneWithWhereWithoutVoucher_transactionInput = {
-    where?: VoucherWhereInput
-    data: XOR<VoucherUpdateWithoutVoucher_transactionInput, VoucherUncheckedUpdateWithoutVoucher_transactionInput>
-  }
-
-  export type VoucherUpdateWithoutVoucher_transactionInput = {
-    id?: StringFieldUpdateOperationsInput | string
-    code?: StringFieldUpdateOperationsInput | string
-    percentage?: NullableIntFieldUpdateOperationsInput | number | null
-    amount?: NullableIntFieldUpdateOperationsInput | number | null
-    created_at?: DateTimeFieldUpdateOperationsInput | Date | string
-    expired_at?: DateTimeFieldUpdateOperationsInput | Date | string
-    voucher_organizer?: OrganizerUpdateOneWithoutOrganizer_voucherNestedInput
-    voucher_user?: UsersUpdateOneWithoutUser_voucherNestedInput
-  }
-
-  export type VoucherUncheckedUpdateWithoutVoucher_transactionInput = {
-    id?: StringFieldUpdateOperationsInput | string
-    user_id?: NullableStringFieldUpdateOperationsInput | string | null
-    organizer_id?: NullableStringFieldUpdateOperationsInput | string | null
-    code?: StringFieldUpdateOperationsInput | string
-    percentage?: NullableIntFieldUpdateOperationsInput | number | null
-    amount?: NullableIntFieldUpdateOperationsInput | number | null
-    created_at?: DateTimeFieldUpdateOperationsInput | Date | string
-    expired_at?: DateTimeFieldUpdateOperationsInput | Date | string
-  }
-
-  export type Transactions_detailUpsertWithWhereUniqueWithoutDetails_transactionInput = {
+  export type Transactions_detailUpdateWithWhereUniqueWithoutTransaction_voucher_detailsInput = {
     where: Transactions_detailWhereUniqueInput
-    update: XOR<Transactions_detailUpdateWithoutDetails_transactionInput, Transactions_detailUncheckedUpdateWithoutDetails_transactionInput>
-    create: XOR<Transactions_detailCreateWithoutDetails_transactionInput, Transactions_detailUncheckedCreateWithoutDetails_transactionInput>
+    data: XOR<Transactions_detailUpdateWithoutTransaction_voucher_detailsInput, Transactions_detailUncheckedUpdateWithoutTransaction_voucher_detailsInput>
   }
 
-  export type Transactions_detailUpdateWithWhereUniqueWithoutDetails_transactionInput = {
-    where: Transactions_detailWhereUniqueInput
-    data: XOR<Transactions_detailUpdateWithoutDetails_transactionInput, Transactions_detailUncheckedUpdateWithoutDetails_transactionInput>
-  }
-
-  export type Transactions_detailUpdateManyWithWhereWithoutDetails_transactionInput = {
+  export type Transactions_detailUpdateManyWithWhereWithoutTransaction_voucher_detailsInput = {
     where: Transactions_detailScalarWhereInput
-    data: XOR<Transactions_detailUpdateManyMutationInput, Transactions_detailUncheckedUpdateManyWithoutDetails_transactionInput>
+    data: XOR<Transactions_detailUpdateManyMutationInput, Transactions_detailUncheckedUpdateManyWithoutTransaction_voucher_detailsInput>
   }
 
   export type UsersCreateWithoutTransactionsInput = {
@@ -24727,25 +23625,6 @@ export namespace Prisma {
     create: XOR<UsersCreateWithoutTransactionsInput, UsersUncheckedCreateWithoutTransactionsInput>
   }
 
-  export type TransactionsCreateWithoutTransaction_detailsInput = {
-    id?: string
-    amount: number
-    proof: string
-    transaction_voucher: VoucherCreateNestedOneWithoutVoucher_transactionInput
-  }
-
-  export type TransactionsUncheckedCreateWithoutTransaction_detailsInput = {
-    id?: string
-    voucher_id: string
-    amount: number
-    proof: string
-  }
-
-  export type TransactionsCreateOrConnectWithoutTransaction_detailsInput = {
-    where: TransactionsWhereUniqueInput
-    create: XOR<TransactionsCreateWithoutTransaction_detailsInput, TransactionsUncheckedCreateWithoutTransaction_detailsInput>
-  }
-
   export type EventsCreateWithoutEvent_transactionDetailInput = {
     id?: string
     name: string
@@ -24793,6 +23672,7 @@ export namespace Prisma {
     user: UsersCreateNestedOneWithoutOrganizerInput
     event?: EventsCreateNestedManyWithoutOrganizerInput
     organizer_voucher?: VoucherCreateNestedManyWithoutVoucher_organizerInput
+    organizer_articles?: ArticlesCreateNestedManyWithoutOrganizerInput
   }
 
   export type OrganizerUncheckedCreateWithoutOrganizer_transactionDetailsInput = {
@@ -24801,11 +23681,39 @@ export namespace Prisma {
     organizer_name?: string
     event?: EventsUncheckedCreateNestedManyWithoutOrganizerInput
     organizer_voucher?: VoucherUncheckedCreateNestedManyWithoutVoucher_organizerInput
+    organizer_articles?: ArticlesUncheckedCreateNestedManyWithoutOrganizerInput
   }
 
   export type OrganizerCreateOrConnectWithoutOrganizer_transactionDetailsInput = {
     where: OrganizerWhereUniqueInput
     create: XOR<OrganizerCreateWithoutOrganizer_transactionDetailsInput, OrganizerUncheckedCreateWithoutOrganizer_transactionDetailsInput>
+  }
+
+  export type VoucherCreateWithoutVoucher_transaction_detailsInput = {
+    id?: string
+    code: string
+    percentage?: number | null
+    amount?: number | null
+    created_at?: Date | string
+    expired_at: Date | string
+    voucher_organizer?: OrganizerCreateNestedOneWithoutOrganizer_voucherInput
+    voucher_user?: UsersCreateNestedOneWithoutUser_voucherInput
+  }
+
+  export type VoucherUncheckedCreateWithoutVoucher_transaction_detailsInput = {
+    id?: string
+    user_id?: string | null
+    organizer_id?: string | null
+    code: string
+    percentage?: number | null
+    amount?: number | null
+    created_at?: Date | string
+    expired_at: Date | string
+  }
+
+  export type VoucherCreateOrConnectWithoutVoucher_transaction_detailsInput = {
+    where: VoucherWhereUniqueInput
+    create: XOR<VoucherCreateWithoutVoucher_transaction_detailsInput, VoucherUncheckedCreateWithoutVoucher_transaction_detailsInput>
   }
 
   export type UsersUpsertWithoutTransactionsInput = {
@@ -24863,31 +23771,6 @@ export namespace Prisma {
     referral_user?: Referral_CodeUncheckedUpdateManyWithoutUser_referralNestedInput
     usageReferral_user?: Referral_UsageUncheckedUpdateManyWithoutUser_referralUsageNestedInput
     user_voucher?: VoucherUncheckedUpdateManyWithoutVoucher_userNestedInput
-  }
-
-  export type TransactionsUpsertWithoutTransaction_detailsInput = {
-    update: XOR<TransactionsUpdateWithoutTransaction_detailsInput, TransactionsUncheckedUpdateWithoutTransaction_detailsInput>
-    create: XOR<TransactionsCreateWithoutTransaction_detailsInput, TransactionsUncheckedCreateWithoutTransaction_detailsInput>
-    where?: TransactionsWhereInput
-  }
-
-  export type TransactionsUpdateToOneWithWhereWithoutTransaction_detailsInput = {
-    where?: TransactionsWhereInput
-    data: XOR<TransactionsUpdateWithoutTransaction_detailsInput, TransactionsUncheckedUpdateWithoutTransaction_detailsInput>
-  }
-
-  export type TransactionsUpdateWithoutTransaction_detailsInput = {
-    id?: StringFieldUpdateOperationsInput | string
-    amount?: IntFieldUpdateOperationsInput | number
-    proof?: StringFieldUpdateOperationsInput | string
-    transaction_voucher?: VoucherUpdateOneRequiredWithoutVoucher_transactionNestedInput
-  }
-
-  export type TransactionsUncheckedUpdateWithoutTransaction_detailsInput = {
-    id?: StringFieldUpdateOperationsInput | string
-    voucher_id?: StringFieldUpdateOperationsInput | string
-    amount?: IntFieldUpdateOperationsInput | number
-    proof?: StringFieldUpdateOperationsInput | string
   }
 
   export type EventsUpsertWithoutEvent_transactionDetailInput = {
@@ -24954,6 +23837,7 @@ export namespace Prisma {
     user?: UsersUpdateOneRequiredWithoutOrganizerNestedInput
     event?: EventsUpdateManyWithoutOrganizerNestedInput
     organizer_voucher?: VoucherUpdateManyWithoutVoucher_organizerNestedInput
+    organizer_articles?: ArticlesUpdateManyWithoutOrganizerNestedInput
   }
 
   export type OrganizerUncheckedUpdateWithoutOrganizer_transactionDetailsInput = {
@@ -24962,6 +23846,40 @@ export namespace Prisma {
     organizer_name?: StringFieldUpdateOperationsInput | string
     event?: EventsUncheckedUpdateManyWithoutOrganizerNestedInput
     organizer_voucher?: VoucherUncheckedUpdateManyWithoutVoucher_organizerNestedInput
+    organizer_articles?: ArticlesUncheckedUpdateManyWithoutOrganizerNestedInput
+  }
+
+  export type VoucherUpsertWithoutVoucher_transaction_detailsInput = {
+    update: XOR<VoucherUpdateWithoutVoucher_transaction_detailsInput, VoucherUncheckedUpdateWithoutVoucher_transaction_detailsInput>
+    create: XOR<VoucherCreateWithoutVoucher_transaction_detailsInput, VoucherUncheckedCreateWithoutVoucher_transaction_detailsInput>
+    where?: VoucherWhereInput
+  }
+
+  export type VoucherUpdateToOneWithWhereWithoutVoucher_transaction_detailsInput = {
+    where?: VoucherWhereInput
+    data: XOR<VoucherUpdateWithoutVoucher_transaction_detailsInput, VoucherUncheckedUpdateWithoutVoucher_transaction_detailsInput>
+  }
+
+  export type VoucherUpdateWithoutVoucher_transaction_detailsInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    code?: StringFieldUpdateOperationsInput | string
+    percentage?: NullableIntFieldUpdateOperationsInput | number | null
+    amount?: NullableIntFieldUpdateOperationsInput | number | null
+    created_at?: DateTimeFieldUpdateOperationsInput | Date | string
+    expired_at?: DateTimeFieldUpdateOperationsInput | Date | string
+    voucher_organizer?: OrganizerUpdateOneWithoutOrganizer_voucherNestedInput
+    voucher_user?: UsersUpdateOneWithoutUser_voucherNestedInput
+  }
+
+  export type VoucherUncheckedUpdateWithoutVoucher_transaction_detailsInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    user_id?: NullableStringFieldUpdateOperationsInput | string | null
+    organizer_id?: NullableStringFieldUpdateOperationsInput | string | null
+    code?: StringFieldUpdateOperationsInput | string
+    percentage?: NullableIntFieldUpdateOperationsInput | number | null
+    amount?: NullableIntFieldUpdateOperationsInput | number | null
+    created_at?: DateTimeFieldUpdateOperationsInput | Date | string
+    expired_at?: DateTimeFieldUpdateOperationsInput | Date | string
   }
 
   export type OrganizerCreateManyUserInput = {
@@ -24972,8 +23890,8 @@ export namespace Prisma {
   export type Event_ReviewsCreateManyReviews_userInput = {
     id?: string
     events_id: string
-    review: string
-    rating: number
+    review?: string | null
+    rating?: number | null
     created_at?: Date | string
   }
 
@@ -24999,13 +23917,17 @@ export namespace Prisma {
 
   export type Transactions_detailCreateManyUserInput = {
     id?: string
-    transaction_id: string
     event_id: string
     organizer_id: string
     quantity: number
-    price: number
+    voucher_id?: string | null
+    amount?: number
+    proof?: string
     isConfirmed?: boolean
     transaction_status: $Enums.TransactionStatus
+    paid_at?: Date | string | null
+    created_at?: Date | string
+    updated_at?: Date | string
   }
 
   export type VoucherCreateManyVoucher_userInput = {
@@ -25024,6 +23946,7 @@ export namespace Prisma {
     event?: EventsUpdateManyWithoutOrganizerNestedInput
     organizer_voucher?: VoucherUpdateManyWithoutVoucher_organizerNestedInput
     organizer_transactionDetails?: Transactions_detailUpdateManyWithoutDetail_organizerNestedInput
+    organizer_articles?: ArticlesUpdateManyWithoutOrganizerNestedInput
   }
 
   export type OrganizerUncheckedUpdateWithoutUserInput = {
@@ -25032,6 +23955,7 @@ export namespace Prisma {
     event?: EventsUncheckedUpdateManyWithoutOrganizerNestedInput
     organizer_voucher?: VoucherUncheckedUpdateManyWithoutVoucher_organizerNestedInput
     organizer_transactionDetails?: Transactions_detailUncheckedUpdateManyWithoutDetail_organizerNestedInput
+    organizer_articles?: ArticlesUncheckedUpdateManyWithoutOrganizerNestedInput
   }
 
   export type OrganizerUncheckedUpdateManyWithoutUserInput = {
@@ -25041,8 +23965,8 @@ export namespace Prisma {
 
   export type Event_ReviewsUpdateWithoutReviews_userInput = {
     id?: StringFieldUpdateOperationsInput | string
-    review?: StringFieldUpdateOperationsInput | string
-    rating?: IntFieldUpdateOperationsInput | number
+    review?: NullableStringFieldUpdateOperationsInput | string | null
+    rating?: NullableIntFieldUpdateOperationsInput | number | null
     created_at?: DateTimeFieldUpdateOperationsInput | Date | string
     reviews_event?: EventsUpdateOneRequiredWithoutReviews_eventNestedInput
   }
@@ -25050,16 +23974,16 @@ export namespace Prisma {
   export type Event_ReviewsUncheckedUpdateWithoutReviews_userInput = {
     id?: StringFieldUpdateOperationsInput | string
     events_id?: StringFieldUpdateOperationsInput | string
-    review?: StringFieldUpdateOperationsInput | string
-    rating?: IntFieldUpdateOperationsInput | number
+    review?: NullableStringFieldUpdateOperationsInput | string | null
+    rating?: NullableIntFieldUpdateOperationsInput | number | null
     created_at?: DateTimeFieldUpdateOperationsInput | Date | string
   }
 
   export type Event_ReviewsUncheckedUpdateManyWithoutReviews_userInput = {
     id?: StringFieldUpdateOperationsInput | string
     events_id?: StringFieldUpdateOperationsInput | string
-    review?: StringFieldUpdateOperationsInput | string
-    rating?: IntFieldUpdateOperationsInput | number
+    review?: NullableStringFieldUpdateOperationsInput | string | null
+    rating?: NullableIntFieldUpdateOperationsInput | number | null
     created_at?: DateTimeFieldUpdateOperationsInput | Date | string
   }
 
@@ -25128,34 +24052,46 @@ export namespace Prisma {
   export type Transactions_detailUpdateWithoutUserInput = {
     id?: StringFieldUpdateOperationsInput | string
     quantity?: IntFieldUpdateOperationsInput | number
-    price?: IntFieldUpdateOperationsInput | number
+    amount?: IntFieldUpdateOperationsInput | number
+    proof?: StringFieldUpdateOperationsInput | string
     isConfirmed?: BoolFieldUpdateOperationsInput | boolean
     transaction_status?: EnumTransactionStatusFieldUpdateOperationsInput | $Enums.TransactionStatus
-    details_transaction?: TransactionsUpdateOneRequiredWithoutTransaction_detailsNestedInput
+    paid_at?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    created_at?: DateTimeFieldUpdateOperationsInput | Date | string
+    updated_at?: DateTimeFieldUpdateOperationsInput | Date | string
     detail_event?: EventsUpdateOneRequiredWithoutEvent_transactionDetailNestedInput
     detail_organizer?: OrganizerUpdateOneRequiredWithoutOrganizer_transactionDetailsNestedInput
+    transaction_voucher_details?: VoucherUpdateOneWithoutVoucher_transaction_detailsNestedInput
   }
 
   export type Transactions_detailUncheckedUpdateWithoutUserInput = {
     id?: StringFieldUpdateOperationsInput | string
-    transaction_id?: StringFieldUpdateOperationsInput | string
     event_id?: StringFieldUpdateOperationsInput | string
     organizer_id?: StringFieldUpdateOperationsInput | string
     quantity?: IntFieldUpdateOperationsInput | number
-    price?: IntFieldUpdateOperationsInput | number
+    voucher_id?: NullableStringFieldUpdateOperationsInput | string | null
+    amount?: IntFieldUpdateOperationsInput | number
+    proof?: StringFieldUpdateOperationsInput | string
     isConfirmed?: BoolFieldUpdateOperationsInput | boolean
     transaction_status?: EnumTransactionStatusFieldUpdateOperationsInput | $Enums.TransactionStatus
+    paid_at?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    created_at?: DateTimeFieldUpdateOperationsInput | Date | string
+    updated_at?: DateTimeFieldUpdateOperationsInput | Date | string
   }
 
   export type Transactions_detailUncheckedUpdateManyWithoutUserInput = {
     id?: StringFieldUpdateOperationsInput | string
-    transaction_id?: StringFieldUpdateOperationsInput | string
     event_id?: StringFieldUpdateOperationsInput | string
     organizer_id?: StringFieldUpdateOperationsInput | string
     quantity?: IntFieldUpdateOperationsInput | number
-    price?: IntFieldUpdateOperationsInput | number
+    voucher_id?: NullableStringFieldUpdateOperationsInput | string | null
+    amount?: IntFieldUpdateOperationsInput | number
+    proof?: StringFieldUpdateOperationsInput | string
     isConfirmed?: BoolFieldUpdateOperationsInput | boolean
     transaction_status?: EnumTransactionStatusFieldUpdateOperationsInput | $Enums.TransactionStatus
+    paid_at?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    created_at?: DateTimeFieldUpdateOperationsInput | Date | string
+    updated_at?: DateTimeFieldUpdateOperationsInput | Date | string
   }
 
   export type VoucherUpdateWithoutVoucher_userInput = {
@@ -25166,7 +24102,7 @@ export namespace Prisma {
     created_at?: DateTimeFieldUpdateOperationsInput | Date | string
     expired_at?: DateTimeFieldUpdateOperationsInput | Date | string
     voucher_organizer?: OrganizerUpdateOneWithoutOrganizer_voucherNestedInput
-    voucher_transaction?: TransactionsUpdateManyWithoutTransaction_voucherNestedInput
+    voucher_transaction_details?: Transactions_detailUpdateManyWithoutTransaction_voucher_detailsNestedInput
   }
 
   export type VoucherUncheckedUpdateWithoutVoucher_userInput = {
@@ -25177,7 +24113,7 @@ export namespace Prisma {
     amount?: NullableIntFieldUpdateOperationsInput | number | null
     created_at?: DateTimeFieldUpdateOperationsInput | Date | string
     expired_at?: DateTimeFieldUpdateOperationsInput | Date | string
-    voucher_transaction?: TransactionsUncheckedUpdateManyWithoutTransaction_voucherNestedInput
+    voucher_transaction_details?: Transactions_detailUncheckedUpdateManyWithoutTransaction_voucher_detailsNestedInput
   }
 
   export type VoucherUncheckedUpdateManyWithoutVoucher_userInput = {
@@ -25216,13 +24152,23 @@ export namespace Prisma {
 
   export type Transactions_detailCreateManyDetail_organizerInput = {
     id?: string
-    transaction_id: string
     user_id: string
     event_id: string
     quantity: number
-    price: number
+    voucher_id?: string | null
+    amount?: number
+    proof?: string
     isConfirmed?: boolean
     transaction_status: $Enums.TransactionStatus
+    paid_at?: Date | string | null
+    created_at?: Date | string
+    updated_at?: Date | string
+  }
+
+  export type ArticlesCreateManyOrganizerInput = {
+    id?: string
+    title: string
+    created_at?: Date | string
   }
 
   export type EventsUpdateWithoutOrganizerInput = {
@@ -25283,7 +24229,7 @@ export namespace Prisma {
     created_at?: DateTimeFieldUpdateOperationsInput | Date | string
     expired_at?: DateTimeFieldUpdateOperationsInput | Date | string
     voucher_user?: UsersUpdateOneWithoutUser_voucherNestedInput
-    voucher_transaction?: TransactionsUpdateManyWithoutTransaction_voucherNestedInput
+    voucher_transaction_details?: Transactions_detailUpdateManyWithoutTransaction_voucher_detailsNestedInput
   }
 
   export type VoucherUncheckedUpdateWithoutVoucher_organizerInput = {
@@ -25294,7 +24240,7 @@ export namespace Prisma {
     amount?: NullableIntFieldUpdateOperationsInput | number | null
     created_at?: DateTimeFieldUpdateOperationsInput | Date | string
     expired_at?: DateTimeFieldUpdateOperationsInput | Date | string
-    voucher_transaction?: TransactionsUncheckedUpdateManyWithoutTransaction_voucherNestedInput
+    voucher_transaction_details?: Transactions_detailUncheckedUpdateManyWithoutTransaction_voucher_detailsNestedInput
   }
 
   export type VoucherUncheckedUpdateManyWithoutVoucher_organizerInput = {
@@ -25310,41 +24256,71 @@ export namespace Prisma {
   export type Transactions_detailUpdateWithoutDetail_organizerInput = {
     id?: StringFieldUpdateOperationsInput | string
     quantity?: IntFieldUpdateOperationsInput | number
-    price?: IntFieldUpdateOperationsInput | number
+    amount?: IntFieldUpdateOperationsInput | number
+    proof?: StringFieldUpdateOperationsInput | string
     isConfirmed?: BoolFieldUpdateOperationsInput | boolean
     transaction_status?: EnumTransactionStatusFieldUpdateOperationsInput | $Enums.TransactionStatus
+    paid_at?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    created_at?: DateTimeFieldUpdateOperationsInput | Date | string
+    updated_at?: DateTimeFieldUpdateOperationsInput | Date | string
     user?: UsersUpdateOneRequiredWithoutTransactionsNestedInput
-    details_transaction?: TransactionsUpdateOneRequiredWithoutTransaction_detailsNestedInput
     detail_event?: EventsUpdateOneRequiredWithoutEvent_transactionDetailNestedInput
+    transaction_voucher_details?: VoucherUpdateOneWithoutVoucher_transaction_detailsNestedInput
   }
 
   export type Transactions_detailUncheckedUpdateWithoutDetail_organizerInput = {
     id?: StringFieldUpdateOperationsInput | string
-    transaction_id?: StringFieldUpdateOperationsInput | string
     user_id?: StringFieldUpdateOperationsInput | string
     event_id?: StringFieldUpdateOperationsInput | string
     quantity?: IntFieldUpdateOperationsInput | number
-    price?: IntFieldUpdateOperationsInput | number
+    voucher_id?: NullableStringFieldUpdateOperationsInput | string | null
+    amount?: IntFieldUpdateOperationsInput | number
+    proof?: StringFieldUpdateOperationsInput | string
     isConfirmed?: BoolFieldUpdateOperationsInput | boolean
     transaction_status?: EnumTransactionStatusFieldUpdateOperationsInput | $Enums.TransactionStatus
+    paid_at?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    created_at?: DateTimeFieldUpdateOperationsInput | Date | string
+    updated_at?: DateTimeFieldUpdateOperationsInput | Date | string
   }
 
   export type Transactions_detailUncheckedUpdateManyWithoutDetail_organizerInput = {
     id?: StringFieldUpdateOperationsInput | string
-    transaction_id?: StringFieldUpdateOperationsInput | string
     user_id?: StringFieldUpdateOperationsInput | string
     event_id?: StringFieldUpdateOperationsInput | string
     quantity?: IntFieldUpdateOperationsInput | number
-    price?: IntFieldUpdateOperationsInput | number
+    voucher_id?: NullableStringFieldUpdateOperationsInput | string | null
+    amount?: IntFieldUpdateOperationsInput | number
+    proof?: StringFieldUpdateOperationsInput | string
     isConfirmed?: BoolFieldUpdateOperationsInput | boolean
     transaction_status?: EnumTransactionStatusFieldUpdateOperationsInput | $Enums.TransactionStatus
+    paid_at?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    created_at?: DateTimeFieldUpdateOperationsInput | Date | string
+    updated_at?: DateTimeFieldUpdateOperationsInput | Date | string
+  }
+
+  export type ArticlesUpdateWithoutOrganizerInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    title?: StringFieldUpdateOperationsInput | string
+    created_at?: DateTimeFieldUpdateOperationsInput | Date | string
+  }
+
+  export type ArticlesUncheckedUpdateWithoutOrganizerInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    title?: StringFieldUpdateOperationsInput | string
+    created_at?: DateTimeFieldUpdateOperationsInput | Date | string
+  }
+
+  export type ArticlesUncheckedUpdateManyWithoutOrganizerInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    title?: StringFieldUpdateOperationsInput | string
+    created_at?: DateTimeFieldUpdateOperationsInput | Date | string
   }
 
   export type Event_ReviewsCreateManyReviews_eventInput = {
     id?: string
     user_id: string
-    review: string
-    rating: number
+    review?: string | null
+    rating?: number | null
     created_at?: Date | string
   }
 
@@ -25356,19 +24332,23 @@ export namespace Prisma {
 
   export type Transactions_detailCreateManyDetail_eventInput = {
     id?: string
-    transaction_id: string
     user_id: string
     organizer_id: string
     quantity: number
-    price: number
+    voucher_id?: string | null
+    amount?: number
+    proof?: string
     isConfirmed?: boolean
     transaction_status: $Enums.TransactionStatus
+    paid_at?: Date | string | null
+    created_at?: Date | string
+    updated_at?: Date | string
   }
 
   export type Event_ReviewsUpdateWithoutReviews_eventInput = {
     id?: StringFieldUpdateOperationsInput | string
-    review?: StringFieldUpdateOperationsInput | string
-    rating?: IntFieldUpdateOperationsInput | number
+    review?: NullableStringFieldUpdateOperationsInput | string | null
+    rating?: NullableIntFieldUpdateOperationsInput | number | null
     created_at?: DateTimeFieldUpdateOperationsInput | Date | string
     reviews_user?: UsersUpdateOneRequiredWithoutReviews_userNestedInput
   }
@@ -25376,16 +24356,16 @@ export namespace Prisma {
   export type Event_ReviewsUncheckedUpdateWithoutReviews_eventInput = {
     id?: StringFieldUpdateOperationsInput | string
     user_id?: StringFieldUpdateOperationsInput | string
-    review?: StringFieldUpdateOperationsInput | string
-    rating?: IntFieldUpdateOperationsInput | number
+    review?: NullableStringFieldUpdateOperationsInput | string | null
+    rating?: NullableIntFieldUpdateOperationsInput | number | null
     created_at?: DateTimeFieldUpdateOperationsInput | Date | string
   }
 
   export type Event_ReviewsUncheckedUpdateManyWithoutReviews_eventInput = {
     id?: StringFieldUpdateOperationsInput | string
     user_id?: StringFieldUpdateOperationsInput | string
-    review?: StringFieldUpdateOperationsInput | string
-    rating?: IntFieldUpdateOperationsInput | number
+    review?: NullableStringFieldUpdateOperationsInput | string | null
+    rating?: NullableIntFieldUpdateOperationsInput | number | null
     created_at?: DateTimeFieldUpdateOperationsInput | Date | string
   }
 
@@ -25410,34 +24390,46 @@ export namespace Prisma {
   export type Transactions_detailUpdateWithoutDetail_eventInput = {
     id?: StringFieldUpdateOperationsInput | string
     quantity?: IntFieldUpdateOperationsInput | number
-    price?: IntFieldUpdateOperationsInput | number
+    amount?: IntFieldUpdateOperationsInput | number
+    proof?: StringFieldUpdateOperationsInput | string
     isConfirmed?: BoolFieldUpdateOperationsInput | boolean
     transaction_status?: EnumTransactionStatusFieldUpdateOperationsInput | $Enums.TransactionStatus
+    paid_at?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    created_at?: DateTimeFieldUpdateOperationsInput | Date | string
+    updated_at?: DateTimeFieldUpdateOperationsInput | Date | string
     user?: UsersUpdateOneRequiredWithoutTransactionsNestedInput
-    details_transaction?: TransactionsUpdateOneRequiredWithoutTransaction_detailsNestedInput
     detail_organizer?: OrganizerUpdateOneRequiredWithoutOrganizer_transactionDetailsNestedInput
+    transaction_voucher_details?: VoucherUpdateOneWithoutVoucher_transaction_detailsNestedInput
   }
 
   export type Transactions_detailUncheckedUpdateWithoutDetail_eventInput = {
     id?: StringFieldUpdateOperationsInput | string
-    transaction_id?: StringFieldUpdateOperationsInput | string
     user_id?: StringFieldUpdateOperationsInput | string
     organizer_id?: StringFieldUpdateOperationsInput | string
     quantity?: IntFieldUpdateOperationsInput | number
-    price?: IntFieldUpdateOperationsInput | number
+    voucher_id?: NullableStringFieldUpdateOperationsInput | string | null
+    amount?: IntFieldUpdateOperationsInput | number
+    proof?: StringFieldUpdateOperationsInput | string
     isConfirmed?: BoolFieldUpdateOperationsInput | boolean
     transaction_status?: EnumTransactionStatusFieldUpdateOperationsInput | $Enums.TransactionStatus
+    paid_at?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    created_at?: DateTimeFieldUpdateOperationsInput | Date | string
+    updated_at?: DateTimeFieldUpdateOperationsInput | Date | string
   }
 
   export type Transactions_detailUncheckedUpdateManyWithoutDetail_eventInput = {
     id?: StringFieldUpdateOperationsInput | string
-    transaction_id?: StringFieldUpdateOperationsInput | string
     user_id?: StringFieldUpdateOperationsInput | string
     organizer_id?: StringFieldUpdateOperationsInput | string
     quantity?: IntFieldUpdateOperationsInput | number
-    price?: IntFieldUpdateOperationsInput | number
+    voucher_id?: NullableStringFieldUpdateOperationsInput | string | null
+    amount?: IntFieldUpdateOperationsInput | number
+    proof?: StringFieldUpdateOperationsInput | string
     isConfirmed?: BoolFieldUpdateOperationsInput | boolean
     transaction_status?: EnumTransactionStatusFieldUpdateOperationsInput | $Enums.TransactionStatus
+    paid_at?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    created_at?: DateTimeFieldUpdateOperationsInput | Date | string
+    updated_at?: DateTimeFieldUpdateOperationsInput | Date | string
   }
 
   export type EventsCreateManyCategory_eventInput = {
@@ -25592,74 +24584,64 @@ export namespace Prisma {
     used_at?: DateTimeFieldUpdateOperationsInput | Date | string
   }
 
-  export type TransactionsCreateManyTransaction_voucherInput = {
-    id?: string
-    amount: number
-    proof: string
-  }
-
-  export type TransactionsUpdateWithoutTransaction_voucherInput = {
-    id?: StringFieldUpdateOperationsInput | string
-    amount?: IntFieldUpdateOperationsInput | number
-    proof?: StringFieldUpdateOperationsInput | string
-    transaction_details?: Transactions_detailUpdateManyWithoutDetails_transactionNestedInput
-  }
-
-  export type TransactionsUncheckedUpdateWithoutTransaction_voucherInput = {
-    id?: StringFieldUpdateOperationsInput | string
-    amount?: IntFieldUpdateOperationsInput | number
-    proof?: StringFieldUpdateOperationsInput | string
-    transaction_details?: Transactions_detailUncheckedUpdateManyWithoutDetails_transactionNestedInput
-  }
-
-  export type TransactionsUncheckedUpdateManyWithoutTransaction_voucherInput = {
-    id?: StringFieldUpdateOperationsInput | string
-    amount?: IntFieldUpdateOperationsInput | number
-    proof?: StringFieldUpdateOperationsInput | string
-  }
-
-  export type Transactions_detailCreateManyDetails_transactionInput = {
+  export type Transactions_detailCreateManyTransaction_voucher_detailsInput = {
     id?: string
     user_id: string
     event_id: string
     organizer_id: string
     quantity: number
-    price: number
+    amount?: number
+    proof?: string
     isConfirmed?: boolean
     transaction_status: $Enums.TransactionStatus
+    paid_at?: Date | string | null
+    created_at?: Date | string
+    updated_at?: Date | string
   }
 
-  export type Transactions_detailUpdateWithoutDetails_transactionInput = {
+  export type Transactions_detailUpdateWithoutTransaction_voucher_detailsInput = {
     id?: StringFieldUpdateOperationsInput | string
     quantity?: IntFieldUpdateOperationsInput | number
-    price?: IntFieldUpdateOperationsInput | number
+    amount?: IntFieldUpdateOperationsInput | number
+    proof?: StringFieldUpdateOperationsInput | string
     isConfirmed?: BoolFieldUpdateOperationsInput | boolean
     transaction_status?: EnumTransactionStatusFieldUpdateOperationsInput | $Enums.TransactionStatus
+    paid_at?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    created_at?: DateTimeFieldUpdateOperationsInput | Date | string
+    updated_at?: DateTimeFieldUpdateOperationsInput | Date | string
     user?: UsersUpdateOneRequiredWithoutTransactionsNestedInput
     detail_event?: EventsUpdateOneRequiredWithoutEvent_transactionDetailNestedInput
     detail_organizer?: OrganizerUpdateOneRequiredWithoutOrganizer_transactionDetailsNestedInput
   }
 
-  export type Transactions_detailUncheckedUpdateWithoutDetails_transactionInput = {
+  export type Transactions_detailUncheckedUpdateWithoutTransaction_voucher_detailsInput = {
     id?: StringFieldUpdateOperationsInput | string
     user_id?: StringFieldUpdateOperationsInput | string
     event_id?: StringFieldUpdateOperationsInput | string
     organizer_id?: StringFieldUpdateOperationsInput | string
     quantity?: IntFieldUpdateOperationsInput | number
-    price?: IntFieldUpdateOperationsInput | number
+    amount?: IntFieldUpdateOperationsInput | number
+    proof?: StringFieldUpdateOperationsInput | string
     isConfirmed?: BoolFieldUpdateOperationsInput | boolean
     transaction_status?: EnumTransactionStatusFieldUpdateOperationsInput | $Enums.TransactionStatus
+    paid_at?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    created_at?: DateTimeFieldUpdateOperationsInput | Date | string
+    updated_at?: DateTimeFieldUpdateOperationsInput | Date | string
   }
 
-  export type Transactions_detailUncheckedUpdateManyWithoutDetails_transactionInput = {
+  export type Transactions_detailUncheckedUpdateManyWithoutTransaction_voucher_detailsInput = {
     id?: StringFieldUpdateOperationsInput | string
     user_id?: StringFieldUpdateOperationsInput | string
     event_id?: StringFieldUpdateOperationsInput | string
     organizer_id?: StringFieldUpdateOperationsInput | string
     quantity?: IntFieldUpdateOperationsInput | number
-    price?: IntFieldUpdateOperationsInput | number
+    amount?: IntFieldUpdateOperationsInput | number
+    proof?: StringFieldUpdateOperationsInput | string
     isConfirmed?: BoolFieldUpdateOperationsInput | boolean
     transaction_status?: EnumTransactionStatusFieldUpdateOperationsInput | $Enums.TransactionStatus
+    paid_at?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    created_at?: DateTimeFieldUpdateOperationsInput | Date | string
+    updated_at?: DateTimeFieldUpdateOperationsInput | Date | string
   }
 
 
