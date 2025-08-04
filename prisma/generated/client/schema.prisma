@@ -64,7 +64,7 @@ model Events {
   name              String
   description       String
   image             String?
-  price             Int
+  price             Int?
   start_date        DateTime
   end_date          DateTime?
   created_at        DateTime  @default(now())
@@ -74,7 +74,7 @@ model Events {
   organizer               Organizer             @relation(fields: [organizer_id], references: [id], onDelete: Cascade)
   category_event          Event_Category        @relation(fields: [event_category_id], references: [id], onDelete: Cascade)
   location_Event          Event_Location        @relation(fields: [event_location_id], references: [id], onDelete: Cascade)
-  seat_event              Event_Seat?
+  ticketType              TicketType[]
   reviews_event           Event_Reviews[]
   attendees_event         Event_Attendees[]
   event_transactionDetail Transactions_detail[]
@@ -96,12 +96,14 @@ model Event_Location {
   event Events[]
 }
 
-model Event_Seat {
-  id        String @id @default(uuid())
-  events_id String @unique
-  total     Int
+model TicketType {
+  id       String @id @default(uuid())
+  event_id String
+  name     String
+  price    Int
+  quantity Int
 
-  event Events @relation(fields: [events_id], references: [id], onDelete: Cascade)
+  event Events @relation(fields: [event_id], references: [id], onDelete: Cascade)
 }
 
 model Event_Reviews {

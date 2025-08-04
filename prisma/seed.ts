@@ -253,6 +253,23 @@ async function seed() {
       },
     ];
 
+    const ticketTypeTemplates = [
+      "General Admission",
+      "VIP Access",
+      "Early Bird General Admission",
+      "Student / Senior Discount",
+
+      "Front Row Seating",
+      "Balcony Seating",
+      "Orchestra Level",
+      "Standing Room Only",
+
+      "Meet & Greet Package",
+      "All-Access Pass",
+      "Weekend Pass",
+      "Dinner & Show Package",
+    ];
+
     const categoryMap = new Map(
       createdCategoryPromises.map((category) => [category.name, category.id])
     );
@@ -265,13 +282,14 @@ async function seed() {
     for (let index = 0; index < 10; index++) {
       const selectedOrganizer = faker.helpers.arrayElement(organizers);
       const selectedLocation = faker.helpers.arrayElement(location);
+
       // const selectedCategory = faker.helpers.arrayElement(createdCategoryPromises);
       const selectedEventTemplate = faker.helpers.arrayElement(eventTemplates);
       console.log(selectedEventTemplate);
       const categoryId = categoryMap.get(selectedEventTemplate.categoryName);
       const event_name = selectedEventTemplate.name;
       const event_description = selectedEventTemplate.description;
-      const event_price = faker.number.int({ min: 100000, max: 400000 });
+
       const event_startDate = faker.date.between({
         from: new Date("2025-01-01"),
         to: new Date("2026-01-01"),
@@ -285,19 +303,35 @@ async function seed() {
       }
       const event_image = faker.image.urlPicsumPhotos();
       console.log(event_image);
-      await prisma.events.create({
+      const newEvent = await prisma.events.create({
         data: {
           event_category_id: categoryId as string,
           event_location_id: selectedLocation.id,
           organizer_id: selectedOrganizer.id,
           name: event_name,
           description: event_description,
-          price: roundToSpecifiedDigit(event_price, 2),
+
           start_date: event_startDate,
           end_date: event_endDate,
           image: event_image,
         },
       });
+
+      const numberOfTicketTypes = Math.floor(Math.random() * 4) + 1;
+
+      for (let i = 0; i < numberOfTicketTypes; i++) {
+        const selectedName = faker.helpers.arrayElement(ticketTypeTemplates);
+        const randomPrice = faker.number.int({ min: 100000, max: 400000 });
+        const randomQuantity = faker.number.int({ min: 10, max: 400 });
+        const newTicket = await prisma.ticketType.create({
+          data: {
+            event_id: newEvent.id,
+            price: randomPrice,
+            quantity: randomQuantity,
+            name: selectedName,
+          },
+        });
+      }
     }
 
     //

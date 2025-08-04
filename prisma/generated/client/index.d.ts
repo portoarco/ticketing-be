@@ -44,10 +44,10 @@ export type Event_Category = $Result.DefaultSelection<Prisma.$Event_CategoryPayl
  */
 export type Event_Location = $Result.DefaultSelection<Prisma.$Event_LocationPayload>
 /**
- * Model Event_Seat
+ * Model TicketType
  * 
  */
-export type Event_Seat = $Result.DefaultSelection<Prisma.$Event_SeatPayload>
+export type TicketType = $Result.DefaultSelection<Prisma.$TicketTypePayload>
 /**
  * Model Event_Reviews
  * 
@@ -296,14 +296,14 @@ export class PrismaClient<
   get event_Location(): Prisma.Event_LocationDelegate<ExtArgs, ClientOptions>;
 
   /**
-   * `prisma.event_Seat`: Exposes CRUD operations for the **Event_Seat** model.
+   * `prisma.ticketType`: Exposes CRUD operations for the **TicketType** model.
     * Example usage:
     * ```ts
-    * // Fetch zero or more Event_Seats
-    * const event_Seats = await prisma.event_Seat.findMany()
+    * // Fetch zero or more TicketTypes
+    * const ticketTypes = await prisma.ticketType.findMany()
     * ```
     */
-  get event_Seat(): Prisma.Event_SeatDelegate<ExtArgs, ClientOptions>;
+  get ticketType(): Prisma.TicketTypeDelegate<ExtArgs, ClientOptions>;
 
   /**
    * `prisma.event_Reviews`: Exposes CRUD operations for the **Event_Reviews** model.
@@ -810,7 +810,7 @@ export namespace Prisma {
     Events: 'Events',
     Event_Category: 'Event_Category',
     Event_Location: 'Event_Location',
-    Event_Seat: 'Event_Seat',
+    TicketType: 'TicketType',
     Event_Reviews: 'Event_Reviews',
     Event_Attendees: 'Event_Attendees',
     Referral_Code: 'Referral_Code',
@@ -835,7 +835,7 @@ export namespace Prisma {
       omit: GlobalOmitOptions
     }
     meta: {
-      modelProps: "users" | "organizer" | "articles" | "events" | "event_Category" | "event_Location" | "event_Seat" | "event_Reviews" | "event_Attendees" | "referral_Code" | "referral_Usage" | "voucher" | "transactions_detail"
+      modelProps: "users" | "organizer" | "articles" | "events" | "event_Category" | "event_Location" | "ticketType" | "event_Reviews" | "event_Attendees" | "referral_Code" | "referral_Usage" | "voucher" | "transactions_detail"
       txIsolationLevel: Prisma.TransactionIsolationLevel
     }
     model: {
@@ -1283,77 +1283,77 @@ export namespace Prisma {
           }
         }
       }
-      Event_Seat: {
-        payload: Prisma.$Event_SeatPayload<ExtArgs>
-        fields: Prisma.Event_SeatFieldRefs
+      TicketType: {
+        payload: Prisma.$TicketTypePayload<ExtArgs>
+        fields: Prisma.TicketTypeFieldRefs
         operations: {
           findUnique: {
-            args: Prisma.Event_SeatFindUniqueArgs<ExtArgs>
-            result: $Utils.PayloadToResult<Prisma.$Event_SeatPayload> | null
+            args: Prisma.TicketTypeFindUniqueArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$TicketTypePayload> | null
           }
           findUniqueOrThrow: {
-            args: Prisma.Event_SeatFindUniqueOrThrowArgs<ExtArgs>
-            result: $Utils.PayloadToResult<Prisma.$Event_SeatPayload>
+            args: Prisma.TicketTypeFindUniqueOrThrowArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$TicketTypePayload>
           }
           findFirst: {
-            args: Prisma.Event_SeatFindFirstArgs<ExtArgs>
-            result: $Utils.PayloadToResult<Prisma.$Event_SeatPayload> | null
+            args: Prisma.TicketTypeFindFirstArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$TicketTypePayload> | null
           }
           findFirstOrThrow: {
-            args: Prisma.Event_SeatFindFirstOrThrowArgs<ExtArgs>
-            result: $Utils.PayloadToResult<Prisma.$Event_SeatPayload>
+            args: Prisma.TicketTypeFindFirstOrThrowArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$TicketTypePayload>
           }
           findMany: {
-            args: Prisma.Event_SeatFindManyArgs<ExtArgs>
-            result: $Utils.PayloadToResult<Prisma.$Event_SeatPayload>[]
+            args: Prisma.TicketTypeFindManyArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$TicketTypePayload>[]
           }
           create: {
-            args: Prisma.Event_SeatCreateArgs<ExtArgs>
-            result: $Utils.PayloadToResult<Prisma.$Event_SeatPayload>
+            args: Prisma.TicketTypeCreateArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$TicketTypePayload>
           }
           createMany: {
-            args: Prisma.Event_SeatCreateManyArgs<ExtArgs>
+            args: Prisma.TicketTypeCreateManyArgs<ExtArgs>
             result: BatchPayload
           }
           createManyAndReturn: {
-            args: Prisma.Event_SeatCreateManyAndReturnArgs<ExtArgs>
-            result: $Utils.PayloadToResult<Prisma.$Event_SeatPayload>[]
+            args: Prisma.TicketTypeCreateManyAndReturnArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$TicketTypePayload>[]
           }
           delete: {
-            args: Prisma.Event_SeatDeleteArgs<ExtArgs>
-            result: $Utils.PayloadToResult<Prisma.$Event_SeatPayload>
+            args: Prisma.TicketTypeDeleteArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$TicketTypePayload>
           }
           update: {
-            args: Prisma.Event_SeatUpdateArgs<ExtArgs>
-            result: $Utils.PayloadToResult<Prisma.$Event_SeatPayload>
+            args: Prisma.TicketTypeUpdateArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$TicketTypePayload>
           }
           deleteMany: {
-            args: Prisma.Event_SeatDeleteManyArgs<ExtArgs>
+            args: Prisma.TicketTypeDeleteManyArgs<ExtArgs>
             result: BatchPayload
           }
           updateMany: {
-            args: Prisma.Event_SeatUpdateManyArgs<ExtArgs>
+            args: Prisma.TicketTypeUpdateManyArgs<ExtArgs>
             result: BatchPayload
           }
           updateManyAndReturn: {
-            args: Prisma.Event_SeatUpdateManyAndReturnArgs<ExtArgs>
-            result: $Utils.PayloadToResult<Prisma.$Event_SeatPayload>[]
+            args: Prisma.TicketTypeUpdateManyAndReturnArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$TicketTypePayload>[]
           }
           upsert: {
-            args: Prisma.Event_SeatUpsertArgs<ExtArgs>
-            result: $Utils.PayloadToResult<Prisma.$Event_SeatPayload>
+            args: Prisma.TicketTypeUpsertArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$TicketTypePayload>
           }
           aggregate: {
-            args: Prisma.Event_SeatAggregateArgs<ExtArgs>
-            result: $Utils.Optional<AggregateEvent_Seat>
+            args: Prisma.TicketTypeAggregateArgs<ExtArgs>
+            result: $Utils.Optional<AggregateTicketType>
           }
           groupBy: {
-            args: Prisma.Event_SeatGroupByArgs<ExtArgs>
-            result: $Utils.Optional<Event_SeatGroupByOutputType>[]
+            args: Prisma.TicketTypeGroupByArgs<ExtArgs>
+            result: $Utils.Optional<TicketTypeGroupByOutputType>[]
           }
           count: {
-            args: Prisma.Event_SeatCountArgs<ExtArgs>
-            result: $Utils.Optional<Event_SeatCountAggregateOutputType> | number
+            args: Prisma.TicketTypeCountArgs<ExtArgs>
+            result: $Utils.Optional<TicketTypeCountAggregateOutputType> | number
           }
         }
       }
@@ -1899,7 +1899,7 @@ export namespace Prisma {
     events?: EventsOmit
     event_Category?: Event_CategoryOmit
     event_Location?: Event_LocationOmit
-    event_Seat?: Event_SeatOmit
+    ticketType?: TicketTypeOmit
     event_Reviews?: Event_ReviewsOmit
     event_Attendees?: Event_AttendeesOmit
     referral_Code?: Referral_CodeOmit
@@ -2148,12 +2148,14 @@ export namespace Prisma {
    */
 
   export type EventsCountOutputType = {
+    ticketType: number
     reviews_event: number
     attendees_event: number
     event_transactionDetail: number
   }
 
   export type EventsCountOutputTypeSelect<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    ticketType?: boolean | EventsCountOutputTypeCountTicketTypeArgs
     reviews_event?: boolean | EventsCountOutputTypeCountReviews_eventArgs
     attendees_event?: boolean | EventsCountOutputTypeCountAttendees_eventArgs
     event_transactionDetail?: boolean | EventsCountOutputTypeCountEvent_transactionDetailArgs
@@ -2168,6 +2170,13 @@ export namespace Prisma {
      * Select specific fields to fetch from the EventsCountOutputType
      */
     select?: EventsCountOutputTypeSelect<ExtArgs> | null
+  }
+
+  /**
+   * EventsCountOutputType without action
+   */
+  export type EventsCountOutputTypeCountTicketTypeArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    where?: TicketTypeWhereInput
   }
 
   /**
@@ -6081,7 +6090,7 @@ export namespace Prisma {
     name: string
     description: string
     image: string | null
-    price: number
+    price: number | null
     start_date: Date
     end_date: Date | null
     created_at: Date
@@ -6123,7 +6132,7 @@ export namespace Prisma {
     organizer?: boolean | OrganizerDefaultArgs<ExtArgs>
     category_event?: boolean | Event_CategoryDefaultArgs<ExtArgs>
     location_Event?: boolean | Event_LocationDefaultArgs<ExtArgs>
-    seat_event?: boolean | Events$seat_eventArgs<ExtArgs>
+    ticketType?: boolean | Events$ticketTypeArgs<ExtArgs>
     reviews_event?: boolean | Events$reviews_eventArgs<ExtArgs>
     attendees_event?: boolean | Events$attendees_eventArgs<ExtArgs>
     event_transactionDetail?: boolean | Events$event_transactionDetailArgs<ExtArgs>
@@ -6186,7 +6195,7 @@ export namespace Prisma {
     organizer?: boolean | OrganizerDefaultArgs<ExtArgs>
     category_event?: boolean | Event_CategoryDefaultArgs<ExtArgs>
     location_Event?: boolean | Event_LocationDefaultArgs<ExtArgs>
-    seat_event?: boolean | Events$seat_eventArgs<ExtArgs>
+    ticketType?: boolean | Events$ticketTypeArgs<ExtArgs>
     reviews_event?: boolean | Events$reviews_eventArgs<ExtArgs>
     attendees_event?: boolean | Events$attendees_eventArgs<ExtArgs>
     event_transactionDetail?: boolean | Events$event_transactionDetailArgs<ExtArgs>
@@ -6209,7 +6218,7 @@ export namespace Prisma {
       organizer: Prisma.$OrganizerPayload<ExtArgs>
       category_event: Prisma.$Event_CategoryPayload<ExtArgs>
       location_Event: Prisma.$Event_LocationPayload<ExtArgs>
-      seat_event: Prisma.$Event_SeatPayload<ExtArgs> | null
+      ticketType: Prisma.$TicketTypePayload<ExtArgs>[]
       reviews_event: Prisma.$Event_ReviewsPayload<ExtArgs>[]
       attendees_event: Prisma.$Event_AttendeesPayload<ExtArgs>[]
       event_transactionDetail: Prisma.$Transactions_detailPayload<ExtArgs>[]
@@ -6222,7 +6231,7 @@ export namespace Prisma {
       name: string
       description: string
       image: string | null
-      price: number
+      price: number | null
       start_date: Date
       end_date: Date | null
       created_at: Date
@@ -6624,7 +6633,7 @@ export namespace Prisma {
     organizer<T extends OrganizerDefaultArgs<ExtArgs> = {}>(args?: Subset<T, OrganizerDefaultArgs<ExtArgs>>): Prisma__OrganizerClient<$Result.GetResult<Prisma.$OrganizerPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | Null, Null, ExtArgs, GlobalOmitOptions>
     category_event<T extends Event_CategoryDefaultArgs<ExtArgs> = {}>(args?: Subset<T, Event_CategoryDefaultArgs<ExtArgs>>): Prisma__Event_CategoryClient<$Result.GetResult<Prisma.$Event_CategoryPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | Null, Null, ExtArgs, GlobalOmitOptions>
     location_Event<T extends Event_LocationDefaultArgs<ExtArgs> = {}>(args?: Subset<T, Event_LocationDefaultArgs<ExtArgs>>): Prisma__Event_LocationClient<$Result.GetResult<Prisma.$Event_LocationPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | Null, Null, ExtArgs, GlobalOmitOptions>
-    seat_event<T extends Events$seat_eventArgs<ExtArgs> = {}>(args?: Subset<T, Events$seat_eventArgs<ExtArgs>>): Prisma__Event_SeatClient<$Result.GetResult<Prisma.$Event_SeatPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
+    ticketType<T extends Events$ticketTypeArgs<ExtArgs> = {}>(args?: Subset<T, Events$ticketTypeArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$TicketTypePayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
     reviews_event<T extends Events$reviews_eventArgs<ExtArgs> = {}>(args?: Subset<T, Events$reviews_eventArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$Event_ReviewsPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
     attendees_event<T extends Events$attendees_eventArgs<ExtArgs> = {}>(args?: Subset<T, Events$attendees_eventArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$Event_AttendeesPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
     event_transactionDetail<T extends Events$event_transactionDetailArgs<ExtArgs> = {}>(args?: Subset<T, Events$event_transactionDetailArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$Transactions_detailPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
@@ -7065,22 +7074,27 @@ export namespace Prisma {
   }
 
   /**
-   * Events.seat_event
+   * Events.ticketType
    */
-  export type Events$seat_eventArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+  export type Events$ticketTypeArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     /**
-     * Select specific fields to fetch from the Event_Seat
+     * Select specific fields to fetch from the TicketType
      */
-    select?: Event_SeatSelect<ExtArgs> | null
+    select?: TicketTypeSelect<ExtArgs> | null
     /**
-     * Omit specific fields from the Event_Seat
+     * Omit specific fields from the TicketType
      */
-    omit?: Event_SeatOmit<ExtArgs> | null
+    omit?: TicketTypeOmit<ExtArgs> | null
     /**
      * Choose, which related nodes to fetch as well
      */
-    include?: Event_SeatInclude<ExtArgs> | null
-    where?: Event_SeatWhereInput
+    include?: TicketTypeInclude<ExtArgs> | null
+    where?: TicketTypeWhereInput
+    orderBy?: TicketTypeOrderByWithRelationInput | TicketTypeOrderByWithRelationInput[]
+    cursor?: TicketTypeWhereUniqueInput
+    take?: number
+    skip?: number
+    distinct?: TicketTypeScalarFieldEnum | TicketTypeScalarFieldEnum[]
   }
 
   /**
@@ -9263,360 +9277,388 @@ export namespace Prisma {
 
 
   /**
-   * Model Event_Seat
+   * Model TicketType
    */
 
-  export type AggregateEvent_Seat = {
-    _count: Event_SeatCountAggregateOutputType | null
-    _avg: Event_SeatAvgAggregateOutputType | null
-    _sum: Event_SeatSumAggregateOutputType | null
-    _min: Event_SeatMinAggregateOutputType | null
-    _max: Event_SeatMaxAggregateOutputType | null
+  export type AggregateTicketType = {
+    _count: TicketTypeCountAggregateOutputType | null
+    _avg: TicketTypeAvgAggregateOutputType | null
+    _sum: TicketTypeSumAggregateOutputType | null
+    _min: TicketTypeMinAggregateOutputType | null
+    _max: TicketTypeMaxAggregateOutputType | null
   }
 
-  export type Event_SeatAvgAggregateOutputType = {
-    total: number | null
+  export type TicketTypeAvgAggregateOutputType = {
+    price: number | null
+    quantity: number | null
   }
 
-  export type Event_SeatSumAggregateOutputType = {
-    total: number | null
+  export type TicketTypeSumAggregateOutputType = {
+    price: number | null
+    quantity: number | null
   }
 
-  export type Event_SeatMinAggregateOutputType = {
+  export type TicketTypeMinAggregateOutputType = {
     id: string | null
-    events_id: string | null
-    total: number | null
+    event_id: string | null
+    name: string | null
+    price: number | null
+    quantity: number | null
   }
 
-  export type Event_SeatMaxAggregateOutputType = {
+  export type TicketTypeMaxAggregateOutputType = {
     id: string | null
-    events_id: string | null
-    total: number | null
+    event_id: string | null
+    name: string | null
+    price: number | null
+    quantity: number | null
   }
 
-  export type Event_SeatCountAggregateOutputType = {
+  export type TicketTypeCountAggregateOutputType = {
     id: number
-    events_id: number
-    total: number
+    event_id: number
+    name: number
+    price: number
+    quantity: number
     _all: number
   }
 
 
-  export type Event_SeatAvgAggregateInputType = {
-    total?: true
+  export type TicketTypeAvgAggregateInputType = {
+    price?: true
+    quantity?: true
   }
 
-  export type Event_SeatSumAggregateInputType = {
-    total?: true
+  export type TicketTypeSumAggregateInputType = {
+    price?: true
+    quantity?: true
   }
 
-  export type Event_SeatMinAggregateInputType = {
+  export type TicketTypeMinAggregateInputType = {
     id?: true
-    events_id?: true
-    total?: true
+    event_id?: true
+    name?: true
+    price?: true
+    quantity?: true
   }
 
-  export type Event_SeatMaxAggregateInputType = {
+  export type TicketTypeMaxAggregateInputType = {
     id?: true
-    events_id?: true
-    total?: true
+    event_id?: true
+    name?: true
+    price?: true
+    quantity?: true
   }
 
-  export type Event_SeatCountAggregateInputType = {
+  export type TicketTypeCountAggregateInputType = {
     id?: true
-    events_id?: true
-    total?: true
+    event_id?: true
+    name?: true
+    price?: true
+    quantity?: true
     _all?: true
   }
 
-  export type Event_SeatAggregateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+  export type TicketTypeAggregateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     /**
-     * Filter which Event_Seat to aggregate.
+     * Filter which TicketType to aggregate.
      */
-    where?: Event_SeatWhereInput
+    where?: TicketTypeWhereInput
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
      * 
-     * Determine the order of Event_Seats to fetch.
+     * Determine the order of TicketTypes to fetch.
      */
-    orderBy?: Event_SeatOrderByWithRelationInput | Event_SeatOrderByWithRelationInput[]
+    orderBy?: TicketTypeOrderByWithRelationInput | TicketTypeOrderByWithRelationInput[]
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
      * 
      * Sets the start position
      */
-    cursor?: Event_SeatWhereUniqueInput
+    cursor?: TicketTypeWhereUniqueInput
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
      * 
-     * Take `±n` Event_Seats from the position of the cursor.
+     * Take `±n` TicketTypes from the position of the cursor.
      */
     take?: number
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
      * 
-     * Skip the first `n` Event_Seats.
+     * Skip the first `n` TicketTypes.
      */
     skip?: number
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
      * 
-     * Count returned Event_Seats
+     * Count returned TicketTypes
     **/
-    _count?: true | Event_SeatCountAggregateInputType
+    _count?: true | TicketTypeCountAggregateInputType
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
      * 
      * Select which fields to average
     **/
-    _avg?: Event_SeatAvgAggregateInputType
+    _avg?: TicketTypeAvgAggregateInputType
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
      * 
      * Select which fields to sum
     **/
-    _sum?: Event_SeatSumAggregateInputType
+    _sum?: TicketTypeSumAggregateInputType
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
      * 
      * Select which fields to find the minimum value
     **/
-    _min?: Event_SeatMinAggregateInputType
+    _min?: TicketTypeMinAggregateInputType
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
      * 
      * Select which fields to find the maximum value
     **/
-    _max?: Event_SeatMaxAggregateInputType
+    _max?: TicketTypeMaxAggregateInputType
   }
 
-  export type GetEvent_SeatAggregateType<T extends Event_SeatAggregateArgs> = {
-        [P in keyof T & keyof AggregateEvent_Seat]: P extends '_count' | 'count'
+  export type GetTicketTypeAggregateType<T extends TicketTypeAggregateArgs> = {
+        [P in keyof T & keyof AggregateTicketType]: P extends '_count' | 'count'
       ? T[P] extends true
         ? number
-        : GetScalarType<T[P], AggregateEvent_Seat[P]>
-      : GetScalarType<T[P], AggregateEvent_Seat[P]>
+        : GetScalarType<T[P], AggregateTicketType[P]>
+      : GetScalarType<T[P], AggregateTicketType[P]>
   }
 
 
 
 
-  export type Event_SeatGroupByArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    where?: Event_SeatWhereInput
-    orderBy?: Event_SeatOrderByWithAggregationInput | Event_SeatOrderByWithAggregationInput[]
-    by: Event_SeatScalarFieldEnum[] | Event_SeatScalarFieldEnum
-    having?: Event_SeatScalarWhereWithAggregatesInput
+  export type TicketTypeGroupByArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    where?: TicketTypeWhereInput
+    orderBy?: TicketTypeOrderByWithAggregationInput | TicketTypeOrderByWithAggregationInput[]
+    by: TicketTypeScalarFieldEnum[] | TicketTypeScalarFieldEnum
+    having?: TicketTypeScalarWhereWithAggregatesInput
     take?: number
     skip?: number
-    _count?: Event_SeatCountAggregateInputType | true
-    _avg?: Event_SeatAvgAggregateInputType
-    _sum?: Event_SeatSumAggregateInputType
-    _min?: Event_SeatMinAggregateInputType
-    _max?: Event_SeatMaxAggregateInputType
+    _count?: TicketTypeCountAggregateInputType | true
+    _avg?: TicketTypeAvgAggregateInputType
+    _sum?: TicketTypeSumAggregateInputType
+    _min?: TicketTypeMinAggregateInputType
+    _max?: TicketTypeMaxAggregateInputType
   }
 
-  export type Event_SeatGroupByOutputType = {
+  export type TicketTypeGroupByOutputType = {
     id: string
-    events_id: string
-    total: number
-    _count: Event_SeatCountAggregateOutputType | null
-    _avg: Event_SeatAvgAggregateOutputType | null
-    _sum: Event_SeatSumAggregateOutputType | null
-    _min: Event_SeatMinAggregateOutputType | null
-    _max: Event_SeatMaxAggregateOutputType | null
+    event_id: string
+    name: string
+    price: number
+    quantity: number
+    _count: TicketTypeCountAggregateOutputType | null
+    _avg: TicketTypeAvgAggregateOutputType | null
+    _sum: TicketTypeSumAggregateOutputType | null
+    _min: TicketTypeMinAggregateOutputType | null
+    _max: TicketTypeMaxAggregateOutputType | null
   }
 
-  type GetEvent_SeatGroupByPayload<T extends Event_SeatGroupByArgs> = Prisma.PrismaPromise<
+  type GetTicketTypeGroupByPayload<T extends TicketTypeGroupByArgs> = Prisma.PrismaPromise<
     Array<
-      PickEnumerable<Event_SeatGroupByOutputType, T['by']> &
+      PickEnumerable<TicketTypeGroupByOutputType, T['by']> &
         {
-          [P in ((keyof T) & (keyof Event_SeatGroupByOutputType))]: P extends '_count'
+          [P in ((keyof T) & (keyof TicketTypeGroupByOutputType))]: P extends '_count'
             ? T[P] extends boolean
               ? number
-              : GetScalarType<T[P], Event_SeatGroupByOutputType[P]>
-            : GetScalarType<T[P], Event_SeatGroupByOutputType[P]>
+              : GetScalarType<T[P], TicketTypeGroupByOutputType[P]>
+            : GetScalarType<T[P], TicketTypeGroupByOutputType[P]>
         }
       >
     >
 
 
-  export type Event_SeatSelect<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
+  export type TicketTypeSelect<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
     id?: boolean
-    events_id?: boolean
-    total?: boolean
+    event_id?: boolean
+    name?: boolean
+    price?: boolean
+    quantity?: boolean
     event?: boolean | EventsDefaultArgs<ExtArgs>
-  }, ExtArgs["result"]["event_Seat"]>
+  }, ExtArgs["result"]["ticketType"]>
 
-  export type Event_SeatSelectCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
+  export type TicketTypeSelectCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
     id?: boolean
-    events_id?: boolean
-    total?: boolean
+    event_id?: boolean
+    name?: boolean
+    price?: boolean
+    quantity?: boolean
     event?: boolean | EventsDefaultArgs<ExtArgs>
-  }, ExtArgs["result"]["event_Seat"]>
+  }, ExtArgs["result"]["ticketType"]>
 
-  export type Event_SeatSelectUpdateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
+  export type TicketTypeSelectUpdateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
     id?: boolean
-    events_id?: boolean
-    total?: boolean
+    event_id?: boolean
+    name?: boolean
+    price?: boolean
+    quantity?: boolean
     event?: boolean | EventsDefaultArgs<ExtArgs>
-  }, ExtArgs["result"]["event_Seat"]>
+  }, ExtArgs["result"]["ticketType"]>
 
-  export type Event_SeatSelectScalar = {
+  export type TicketTypeSelectScalar = {
     id?: boolean
-    events_id?: boolean
-    total?: boolean
+    event_id?: boolean
+    name?: boolean
+    price?: boolean
+    quantity?: boolean
   }
 
-  export type Event_SeatOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "events_id" | "total", ExtArgs["result"]["event_Seat"]>
-  export type Event_SeatInclude<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+  export type TicketTypeOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "event_id" | "name" | "price" | "quantity", ExtArgs["result"]["ticketType"]>
+  export type TicketTypeInclude<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     event?: boolean | EventsDefaultArgs<ExtArgs>
   }
-  export type Event_SeatIncludeCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+  export type TicketTypeIncludeCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     event?: boolean | EventsDefaultArgs<ExtArgs>
   }
-  export type Event_SeatIncludeUpdateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+  export type TicketTypeIncludeUpdateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     event?: boolean | EventsDefaultArgs<ExtArgs>
   }
 
-  export type $Event_SeatPayload<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    name: "Event_Seat"
+  export type $TicketTypePayload<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    name: "TicketType"
     objects: {
       event: Prisma.$EventsPayload<ExtArgs>
     }
     scalars: $Extensions.GetPayloadResult<{
       id: string
-      events_id: string
-      total: number
-    }, ExtArgs["result"]["event_Seat"]>
+      event_id: string
+      name: string
+      price: number
+      quantity: number
+    }, ExtArgs["result"]["ticketType"]>
     composites: {}
   }
 
-  type Event_SeatGetPayload<S extends boolean | null | undefined | Event_SeatDefaultArgs> = $Result.GetResult<Prisma.$Event_SeatPayload, S>
+  type TicketTypeGetPayload<S extends boolean | null | undefined | TicketTypeDefaultArgs> = $Result.GetResult<Prisma.$TicketTypePayload, S>
 
-  type Event_SeatCountArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> =
-    Omit<Event_SeatFindManyArgs, 'select' | 'include' | 'distinct' | 'omit'> & {
-      select?: Event_SeatCountAggregateInputType | true
+  type TicketTypeCountArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> =
+    Omit<TicketTypeFindManyArgs, 'select' | 'include' | 'distinct' | 'omit'> & {
+      select?: TicketTypeCountAggregateInputType | true
     }
 
-  export interface Event_SeatDelegate<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs, GlobalOmitOptions = {}> {
-    [K: symbol]: { types: Prisma.TypeMap<ExtArgs>['model']['Event_Seat'], meta: { name: 'Event_Seat' } }
+  export interface TicketTypeDelegate<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs, GlobalOmitOptions = {}> {
+    [K: symbol]: { types: Prisma.TypeMap<ExtArgs>['model']['TicketType'], meta: { name: 'TicketType' } }
     /**
-     * Find zero or one Event_Seat that matches the filter.
-     * @param {Event_SeatFindUniqueArgs} args - Arguments to find a Event_Seat
+     * Find zero or one TicketType that matches the filter.
+     * @param {TicketTypeFindUniqueArgs} args - Arguments to find a TicketType
      * @example
-     * // Get one Event_Seat
-     * const event_Seat = await prisma.event_Seat.findUnique({
+     * // Get one TicketType
+     * const ticketType = await prisma.ticketType.findUnique({
      *   where: {
      *     // ... provide filter here
      *   }
      * })
      */
-    findUnique<T extends Event_SeatFindUniqueArgs>(args: SelectSubset<T, Event_SeatFindUniqueArgs<ExtArgs>>): Prisma__Event_SeatClient<$Result.GetResult<Prisma.$Event_SeatPayload<ExtArgs>, T, "findUnique", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
+    findUnique<T extends TicketTypeFindUniqueArgs>(args: SelectSubset<T, TicketTypeFindUniqueArgs<ExtArgs>>): Prisma__TicketTypeClient<$Result.GetResult<Prisma.$TicketTypePayload<ExtArgs>, T, "findUnique", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
 
     /**
-     * Find one Event_Seat that matches the filter or throw an error with `error.code='P2025'`
+     * Find one TicketType that matches the filter or throw an error with `error.code='P2025'`
      * if no matches were found.
-     * @param {Event_SeatFindUniqueOrThrowArgs} args - Arguments to find a Event_Seat
+     * @param {TicketTypeFindUniqueOrThrowArgs} args - Arguments to find a TicketType
      * @example
-     * // Get one Event_Seat
-     * const event_Seat = await prisma.event_Seat.findUniqueOrThrow({
+     * // Get one TicketType
+     * const ticketType = await prisma.ticketType.findUniqueOrThrow({
      *   where: {
      *     // ... provide filter here
      *   }
      * })
      */
-    findUniqueOrThrow<T extends Event_SeatFindUniqueOrThrowArgs>(args: SelectSubset<T, Event_SeatFindUniqueOrThrowArgs<ExtArgs>>): Prisma__Event_SeatClient<$Result.GetResult<Prisma.$Event_SeatPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+    findUniqueOrThrow<T extends TicketTypeFindUniqueOrThrowArgs>(args: SelectSubset<T, TicketTypeFindUniqueOrThrowArgs<ExtArgs>>): Prisma__TicketTypeClient<$Result.GetResult<Prisma.$TicketTypePayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
 
     /**
-     * Find the first Event_Seat that matches the filter.
+     * Find the first TicketType that matches the filter.
      * Note, that providing `undefined` is treated as the value not being there.
      * Read more here: https://pris.ly/d/null-undefined
-     * @param {Event_SeatFindFirstArgs} args - Arguments to find a Event_Seat
+     * @param {TicketTypeFindFirstArgs} args - Arguments to find a TicketType
      * @example
-     * // Get one Event_Seat
-     * const event_Seat = await prisma.event_Seat.findFirst({
+     * // Get one TicketType
+     * const ticketType = await prisma.ticketType.findFirst({
      *   where: {
      *     // ... provide filter here
      *   }
      * })
      */
-    findFirst<T extends Event_SeatFindFirstArgs>(args?: SelectSubset<T, Event_SeatFindFirstArgs<ExtArgs>>): Prisma__Event_SeatClient<$Result.GetResult<Prisma.$Event_SeatPayload<ExtArgs>, T, "findFirst", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
+    findFirst<T extends TicketTypeFindFirstArgs>(args?: SelectSubset<T, TicketTypeFindFirstArgs<ExtArgs>>): Prisma__TicketTypeClient<$Result.GetResult<Prisma.$TicketTypePayload<ExtArgs>, T, "findFirst", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
 
     /**
-     * Find the first Event_Seat that matches the filter or
+     * Find the first TicketType that matches the filter or
      * throw `PrismaKnownClientError` with `P2025` code if no matches were found.
      * Note, that providing `undefined` is treated as the value not being there.
      * Read more here: https://pris.ly/d/null-undefined
-     * @param {Event_SeatFindFirstOrThrowArgs} args - Arguments to find a Event_Seat
+     * @param {TicketTypeFindFirstOrThrowArgs} args - Arguments to find a TicketType
      * @example
-     * // Get one Event_Seat
-     * const event_Seat = await prisma.event_Seat.findFirstOrThrow({
+     * // Get one TicketType
+     * const ticketType = await prisma.ticketType.findFirstOrThrow({
      *   where: {
      *     // ... provide filter here
      *   }
      * })
      */
-    findFirstOrThrow<T extends Event_SeatFindFirstOrThrowArgs>(args?: SelectSubset<T, Event_SeatFindFirstOrThrowArgs<ExtArgs>>): Prisma__Event_SeatClient<$Result.GetResult<Prisma.$Event_SeatPayload<ExtArgs>, T, "findFirstOrThrow", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+    findFirstOrThrow<T extends TicketTypeFindFirstOrThrowArgs>(args?: SelectSubset<T, TicketTypeFindFirstOrThrowArgs<ExtArgs>>): Prisma__TicketTypeClient<$Result.GetResult<Prisma.$TicketTypePayload<ExtArgs>, T, "findFirstOrThrow", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
 
     /**
-     * Find zero or more Event_Seats that matches the filter.
+     * Find zero or more TicketTypes that matches the filter.
      * Note, that providing `undefined` is treated as the value not being there.
      * Read more here: https://pris.ly/d/null-undefined
-     * @param {Event_SeatFindManyArgs} args - Arguments to filter and select certain fields only.
+     * @param {TicketTypeFindManyArgs} args - Arguments to filter and select certain fields only.
      * @example
-     * // Get all Event_Seats
-     * const event_Seats = await prisma.event_Seat.findMany()
+     * // Get all TicketTypes
+     * const ticketTypes = await prisma.ticketType.findMany()
      * 
-     * // Get first 10 Event_Seats
-     * const event_Seats = await prisma.event_Seat.findMany({ take: 10 })
+     * // Get first 10 TicketTypes
+     * const ticketTypes = await prisma.ticketType.findMany({ take: 10 })
      * 
      * // Only select the `id`
-     * const event_SeatWithIdOnly = await prisma.event_Seat.findMany({ select: { id: true } })
+     * const ticketTypeWithIdOnly = await prisma.ticketType.findMany({ select: { id: true } })
      * 
      */
-    findMany<T extends Event_SeatFindManyArgs>(args?: SelectSubset<T, Event_SeatFindManyArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$Event_SeatPayload<ExtArgs>, T, "findMany", GlobalOmitOptions>>
+    findMany<T extends TicketTypeFindManyArgs>(args?: SelectSubset<T, TicketTypeFindManyArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$TicketTypePayload<ExtArgs>, T, "findMany", GlobalOmitOptions>>
 
     /**
-     * Create a Event_Seat.
-     * @param {Event_SeatCreateArgs} args - Arguments to create a Event_Seat.
+     * Create a TicketType.
+     * @param {TicketTypeCreateArgs} args - Arguments to create a TicketType.
      * @example
-     * // Create one Event_Seat
-     * const Event_Seat = await prisma.event_Seat.create({
+     * // Create one TicketType
+     * const TicketType = await prisma.ticketType.create({
      *   data: {
-     *     // ... data to create a Event_Seat
+     *     // ... data to create a TicketType
      *   }
      * })
      * 
      */
-    create<T extends Event_SeatCreateArgs>(args: SelectSubset<T, Event_SeatCreateArgs<ExtArgs>>): Prisma__Event_SeatClient<$Result.GetResult<Prisma.$Event_SeatPayload<ExtArgs>, T, "create", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+    create<T extends TicketTypeCreateArgs>(args: SelectSubset<T, TicketTypeCreateArgs<ExtArgs>>): Prisma__TicketTypeClient<$Result.GetResult<Prisma.$TicketTypePayload<ExtArgs>, T, "create", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
 
     /**
-     * Create many Event_Seats.
-     * @param {Event_SeatCreateManyArgs} args - Arguments to create many Event_Seats.
+     * Create many TicketTypes.
+     * @param {TicketTypeCreateManyArgs} args - Arguments to create many TicketTypes.
      * @example
-     * // Create many Event_Seats
-     * const event_Seat = await prisma.event_Seat.createMany({
+     * // Create many TicketTypes
+     * const ticketType = await prisma.ticketType.createMany({
      *   data: [
      *     // ... provide data here
      *   ]
      * })
      *     
      */
-    createMany<T extends Event_SeatCreateManyArgs>(args?: SelectSubset<T, Event_SeatCreateManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+    createMany<T extends TicketTypeCreateManyArgs>(args?: SelectSubset<T, TicketTypeCreateManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
 
     /**
-     * Create many Event_Seats and returns the data saved in the database.
-     * @param {Event_SeatCreateManyAndReturnArgs} args - Arguments to create many Event_Seats.
+     * Create many TicketTypes and returns the data saved in the database.
+     * @param {TicketTypeCreateManyAndReturnArgs} args - Arguments to create many TicketTypes.
      * @example
-     * // Create many Event_Seats
-     * const event_Seat = await prisma.event_Seat.createManyAndReturn({
+     * // Create many TicketTypes
+     * const ticketType = await prisma.ticketType.createManyAndReturn({
      *   data: [
      *     // ... provide data here
      *   ]
      * })
      * 
-     * // Create many Event_Seats and only return the `id`
-     * const event_SeatWithIdOnly = await prisma.event_Seat.createManyAndReturn({
+     * // Create many TicketTypes and only return the `id`
+     * const ticketTypeWithIdOnly = await prisma.ticketType.createManyAndReturn({
      *   select: { id: true },
      *   data: [
      *     // ... provide data here
@@ -9626,28 +9668,28 @@ export namespace Prisma {
      * Read more here: https://pris.ly/d/null-undefined
      * 
      */
-    createManyAndReturn<T extends Event_SeatCreateManyAndReturnArgs>(args?: SelectSubset<T, Event_SeatCreateManyAndReturnArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$Event_SeatPayload<ExtArgs>, T, "createManyAndReturn", GlobalOmitOptions>>
+    createManyAndReturn<T extends TicketTypeCreateManyAndReturnArgs>(args?: SelectSubset<T, TicketTypeCreateManyAndReturnArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$TicketTypePayload<ExtArgs>, T, "createManyAndReturn", GlobalOmitOptions>>
 
     /**
-     * Delete a Event_Seat.
-     * @param {Event_SeatDeleteArgs} args - Arguments to delete one Event_Seat.
+     * Delete a TicketType.
+     * @param {TicketTypeDeleteArgs} args - Arguments to delete one TicketType.
      * @example
-     * // Delete one Event_Seat
-     * const Event_Seat = await prisma.event_Seat.delete({
+     * // Delete one TicketType
+     * const TicketType = await prisma.ticketType.delete({
      *   where: {
-     *     // ... filter to delete one Event_Seat
+     *     // ... filter to delete one TicketType
      *   }
      * })
      * 
      */
-    delete<T extends Event_SeatDeleteArgs>(args: SelectSubset<T, Event_SeatDeleteArgs<ExtArgs>>): Prisma__Event_SeatClient<$Result.GetResult<Prisma.$Event_SeatPayload<ExtArgs>, T, "delete", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+    delete<T extends TicketTypeDeleteArgs>(args: SelectSubset<T, TicketTypeDeleteArgs<ExtArgs>>): Prisma__TicketTypeClient<$Result.GetResult<Prisma.$TicketTypePayload<ExtArgs>, T, "delete", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
 
     /**
-     * Update one Event_Seat.
-     * @param {Event_SeatUpdateArgs} args - Arguments to update one Event_Seat.
+     * Update one TicketType.
+     * @param {TicketTypeUpdateArgs} args - Arguments to update one TicketType.
      * @example
-     * // Update one Event_Seat
-     * const event_Seat = await prisma.event_Seat.update({
+     * // Update one TicketType
+     * const ticketType = await prisma.ticketType.update({
      *   where: {
      *     // ... provide filter here
      *   },
@@ -9657,30 +9699,30 @@ export namespace Prisma {
      * })
      * 
      */
-    update<T extends Event_SeatUpdateArgs>(args: SelectSubset<T, Event_SeatUpdateArgs<ExtArgs>>): Prisma__Event_SeatClient<$Result.GetResult<Prisma.$Event_SeatPayload<ExtArgs>, T, "update", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+    update<T extends TicketTypeUpdateArgs>(args: SelectSubset<T, TicketTypeUpdateArgs<ExtArgs>>): Prisma__TicketTypeClient<$Result.GetResult<Prisma.$TicketTypePayload<ExtArgs>, T, "update", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
 
     /**
-     * Delete zero or more Event_Seats.
-     * @param {Event_SeatDeleteManyArgs} args - Arguments to filter Event_Seats to delete.
+     * Delete zero or more TicketTypes.
+     * @param {TicketTypeDeleteManyArgs} args - Arguments to filter TicketTypes to delete.
      * @example
-     * // Delete a few Event_Seats
-     * const { count } = await prisma.event_Seat.deleteMany({
+     * // Delete a few TicketTypes
+     * const { count } = await prisma.ticketType.deleteMany({
      *   where: {
      *     // ... provide filter here
      *   }
      * })
      * 
      */
-    deleteMany<T extends Event_SeatDeleteManyArgs>(args?: SelectSubset<T, Event_SeatDeleteManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+    deleteMany<T extends TicketTypeDeleteManyArgs>(args?: SelectSubset<T, TicketTypeDeleteManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
 
     /**
-     * Update zero or more Event_Seats.
+     * Update zero or more TicketTypes.
      * Note, that providing `undefined` is treated as the value not being there.
      * Read more here: https://pris.ly/d/null-undefined
-     * @param {Event_SeatUpdateManyArgs} args - Arguments to update one or more rows.
+     * @param {TicketTypeUpdateManyArgs} args - Arguments to update one or more rows.
      * @example
-     * // Update many Event_Seats
-     * const event_Seat = await prisma.event_Seat.updateMany({
+     * // Update many TicketTypes
+     * const ticketType = await prisma.ticketType.updateMany({
      *   where: {
      *     // ... provide filter here
      *   },
@@ -9690,14 +9732,14 @@ export namespace Prisma {
      * })
      * 
      */
-    updateMany<T extends Event_SeatUpdateManyArgs>(args: SelectSubset<T, Event_SeatUpdateManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+    updateMany<T extends TicketTypeUpdateManyArgs>(args: SelectSubset<T, TicketTypeUpdateManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
 
     /**
-     * Update zero or more Event_Seats and returns the data updated in the database.
-     * @param {Event_SeatUpdateManyAndReturnArgs} args - Arguments to update many Event_Seats.
+     * Update zero or more TicketTypes and returns the data updated in the database.
+     * @param {TicketTypeUpdateManyAndReturnArgs} args - Arguments to update many TicketTypes.
      * @example
-     * // Update many Event_Seats
-     * const event_Seat = await prisma.event_Seat.updateManyAndReturn({
+     * // Update many TicketTypes
+     * const ticketType = await prisma.ticketType.updateManyAndReturn({
      *   where: {
      *     // ... provide filter here
      *   },
@@ -9706,8 +9748,8 @@ export namespace Prisma {
      *   ]
      * })
      * 
-     * // Update zero or more Event_Seats and only return the `id`
-     * const event_SeatWithIdOnly = await prisma.event_Seat.updateManyAndReturn({
+     * // Update zero or more TicketTypes and only return the `id`
+     * const ticketTypeWithIdOnly = await prisma.ticketType.updateManyAndReturn({
      *   select: { id: true },
      *   where: {
      *     // ... provide filter here
@@ -9720,56 +9762,56 @@ export namespace Prisma {
      * Read more here: https://pris.ly/d/null-undefined
      * 
      */
-    updateManyAndReturn<T extends Event_SeatUpdateManyAndReturnArgs>(args: SelectSubset<T, Event_SeatUpdateManyAndReturnArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$Event_SeatPayload<ExtArgs>, T, "updateManyAndReturn", GlobalOmitOptions>>
+    updateManyAndReturn<T extends TicketTypeUpdateManyAndReturnArgs>(args: SelectSubset<T, TicketTypeUpdateManyAndReturnArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$TicketTypePayload<ExtArgs>, T, "updateManyAndReturn", GlobalOmitOptions>>
 
     /**
-     * Create or update one Event_Seat.
-     * @param {Event_SeatUpsertArgs} args - Arguments to update or create a Event_Seat.
+     * Create or update one TicketType.
+     * @param {TicketTypeUpsertArgs} args - Arguments to update or create a TicketType.
      * @example
-     * // Update or create a Event_Seat
-     * const event_Seat = await prisma.event_Seat.upsert({
+     * // Update or create a TicketType
+     * const ticketType = await prisma.ticketType.upsert({
      *   create: {
-     *     // ... data to create a Event_Seat
+     *     // ... data to create a TicketType
      *   },
      *   update: {
      *     // ... in case it already exists, update
      *   },
      *   where: {
-     *     // ... the filter for the Event_Seat we want to update
+     *     // ... the filter for the TicketType we want to update
      *   }
      * })
      */
-    upsert<T extends Event_SeatUpsertArgs>(args: SelectSubset<T, Event_SeatUpsertArgs<ExtArgs>>): Prisma__Event_SeatClient<$Result.GetResult<Prisma.$Event_SeatPayload<ExtArgs>, T, "upsert", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+    upsert<T extends TicketTypeUpsertArgs>(args: SelectSubset<T, TicketTypeUpsertArgs<ExtArgs>>): Prisma__TicketTypeClient<$Result.GetResult<Prisma.$TicketTypePayload<ExtArgs>, T, "upsert", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
 
 
     /**
-     * Count the number of Event_Seats.
+     * Count the number of TicketTypes.
      * Note, that providing `undefined` is treated as the value not being there.
      * Read more here: https://pris.ly/d/null-undefined
-     * @param {Event_SeatCountArgs} args - Arguments to filter Event_Seats to count.
+     * @param {TicketTypeCountArgs} args - Arguments to filter TicketTypes to count.
      * @example
-     * // Count the number of Event_Seats
-     * const count = await prisma.event_Seat.count({
+     * // Count the number of TicketTypes
+     * const count = await prisma.ticketType.count({
      *   where: {
-     *     // ... the filter for the Event_Seats we want to count
+     *     // ... the filter for the TicketTypes we want to count
      *   }
      * })
     **/
-    count<T extends Event_SeatCountArgs>(
-      args?: Subset<T, Event_SeatCountArgs>,
+    count<T extends TicketTypeCountArgs>(
+      args?: Subset<T, TicketTypeCountArgs>,
     ): Prisma.PrismaPromise<
       T extends $Utils.Record<'select', any>
         ? T['select'] extends true
           ? number
-          : GetScalarType<T['select'], Event_SeatCountAggregateOutputType>
+          : GetScalarType<T['select'], TicketTypeCountAggregateOutputType>
         : number
     >
 
     /**
-     * Allows you to perform aggregations operations on a Event_Seat.
+     * Allows you to perform aggregations operations on a TicketType.
      * Note, that providing `undefined` is treated as the value not being there.
      * Read more here: https://pris.ly/d/null-undefined
-     * @param {Event_SeatAggregateArgs} args - Select which aggregations you would like to apply and on what fields.
+     * @param {TicketTypeAggregateArgs} args - Select which aggregations you would like to apply and on what fields.
      * @example
      * // Ordered by age ascending
      * // Where email contains prisma.io
@@ -9789,13 +9831,13 @@ export namespace Prisma {
      *   take: 10,
      * })
     **/
-    aggregate<T extends Event_SeatAggregateArgs>(args: Subset<T, Event_SeatAggregateArgs>): Prisma.PrismaPromise<GetEvent_SeatAggregateType<T>>
+    aggregate<T extends TicketTypeAggregateArgs>(args: Subset<T, TicketTypeAggregateArgs>): Prisma.PrismaPromise<GetTicketTypeAggregateType<T>>
 
     /**
-     * Group by Event_Seat.
+     * Group by TicketType.
      * Note, that providing `undefined` is treated as the value not being there.
      * Read more here: https://pris.ly/d/null-undefined
-     * @param {Event_SeatGroupByArgs} args - Group by arguments.
+     * @param {TicketTypeGroupByArgs} args - Group by arguments.
      * @example
      * // Group by city, order by createdAt, get count
      * const result = await prisma.user.groupBy({
@@ -9810,14 +9852,14 @@ export namespace Prisma {
      * 
     **/
     groupBy<
-      T extends Event_SeatGroupByArgs,
+      T extends TicketTypeGroupByArgs,
       HasSelectOrTake extends Or<
         Extends<'skip', Keys<T>>,
         Extends<'take', Keys<T>>
       >,
       OrderByArg extends True extends HasSelectOrTake
-        ? { orderBy: Event_SeatGroupByArgs['orderBy'] }
-        : { orderBy?: Event_SeatGroupByArgs['orderBy'] },
+        ? { orderBy: TicketTypeGroupByArgs['orderBy'] }
+        : { orderBy?: TicketTypeGroupByArgs['orderBy'] },
       OrderFields extends ExcludeUnderscoreKeys<Keys<MaybeTupleToUnion<T['orderBy']>>>,
       ByFields extends MaybeTupleToUnion<T['by']>,
       ByValid extends Has<ByFields, OrderFields>,
@@ -9866,20 +9908,20 @@ export namespace Prisma {
             ? never
             : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
         }[OrderFields]
-    >(args: SubsetIntersection<T, Event_SeatGroupByArgs, OrderByArg> & InputErrors): {} extends InputErrors ? GetEvent_SeatGroupByPayload<T> : Prisma.PrismaPromise<InputErrors>
+    >(args: SubsetIntersection<T, TicketTypeGroupByArgs, OrderByArg> & InputErrors): {} extends InputErrors ? GetTicketTypeGroupByPayload<T> : Prisma.PrismaPromise<InputErrors>
   /**
-   * Fields of the Event_Seat model
+   * Fields of the TicketType model
    */
-  readonly fields: Event_SeatFieldRefs;
+  readonly fields: TicketTypeFieldRefs;
   }
 
   /**
-   * The delegate class that acts as a "Promise-like" for Event_Seat.
+   * The delegate class that acts as a "Promise-like" for TicketType.
    * Why is this prefixed with `Prisma__`?
    * Because we want to prevent naming conflicts as mentioned in
    * https://github.com/prisma/prisma-client-js/issues/707
    */
-  export interface Prisma__Event_SeatClient<T, Null = never, ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs, GlobalOmitOptions = {}> extends Prisma.PrismaPromise<T> {
+  export interface Prisma__TicketTypeClient<T, Null = never, ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs, GlobalOmitOptions = {}> extends Prisma.PrismaPromise<T> {
     readonly [Symbol.toStringTag]: "PrismaPromise"
     event<T extends EventsDefaultArgs<ExtArgs> = {}>(args?: Subset<T, EventsDefaultArgs<ExtArgs>>): Prisma__EventsClient<$Result.GetResult<Prisma.$EventsPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | Null, Null, ExtArgs, GlobalOmitOptions>
     /**
@@ -9908,423 +9950,425 @@ export namespace Prisma {
 
 
   /**
-   * Fields of the Event_Seat model
+   * Fields of the TicketType model
    */
-  interface Event_SeatFieldRefs {
-    readonly id: FieldRef<"Event_Seat", 'String'>
-    readonly events_id: FieldRef<"Event_Seat", 'String'>
-    readonly total: FieldRef<"Event_Seat", 'Int'>
+  interface TicketTypeFieldRefs {
+    readonly id: FieldRef<"TicketType", 'String'>
+    readonly event_id: FieldRef<"TicketType", 'String'>
+    readonly name: FieldRef<"TicketType", 'String'>
+    readonly price: FieldRef<"TicketType", 'Int'>
+    readonly quantity: FieldRef<"TicketType", 'Int'>
   }
     
 
   // Custom InputTypes
   /**
-   * Event_Seat findUnique
+   * TicketType findUnique
    */
-  export type Event_SeatFindUniqueArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+  export type TicketTypeFindUniqueArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     /**
-     * Select specific fields to fetch from the Event_Seat
+     * Select specific fields to fetch from the TicketType
      */
-    select?: Event_SeatSelect<ExtArgs> | null
+    select?: TicketTypeSelect<ExtArgs> | null
     /**
-     * Omit specific fields from the Event_Seat
+     * Omit specific fields from the TicketType
      */
-    omit?: Event_SeatOmit<ExtArgs> | null
+    omit?: TicketTypeOmit<ExtArgs> | null
     /**
      * Choose, which related nodes to fetch as well
      */
-    include?: Event_SeatInclude<ExtArgs> | null
+    include?: TicketTypeInclude<ExtArgs> | null
     /**
-     * Filter, which Event_Seat to fetch.
+     * Filter, which TicketType to fetch.
      */
-    where: Event_SeatWhereUniqueInput
+    where: TicketTypeWhereUniqueInput
   }
 
   /**
-   * Event_Seat findUniqueOrThrow
+   * TicketType findUniqueOrThrow
    */
-  export type Event_SeatFindUniqueOrThrowArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+  export type TicketTypeFindUniqueOrThrowArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     /**
-     * Select specific fields to fetch from the Event_Seat
+     * Select specific fields to fetch from the TicketType
      */
-    select?: Event_SeatSelect<ExtArgs> | null
+    select?: TicketTypeSelect<ExtArgs> | null
     /**
-     * Omit specific fields from the Event_Seat
+     * Omit specific fields from the TicketType
      */
-    omit?: Event_SeatOmit<ExtArgs> | null
+    omit?: TicketTypeOmit<ExtArgs> | null
     /**
      * Choose, which related nodes to fetch as well
      */
-    include?: Event_SeatInclude<ExtArgs> | null
+    include?: TicketTypeInclude<ExtArgs> | null
     /**
-     * Filter, which Event_Seat to fetch.
+     * Filter, which TicketType to fetch.
      */
-    where: Event_SeatWhereUniqueInput
+    where: TicketTypeWhereUniqueInput
   }
 
   /**
-   * Event_Seat findFirst
+   * TicketType findFirst
    */
-  export type Event_SeatFindFirstArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+  export type TicketTypeFindFirstArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     /**
-     * Select specific fields to fetch from the Event_Seat
+     * Select specific fields to fetch from the TicketType
      */
-    select?: Event_SeatSelect<ExtArgs> | null
+    select?: TicketTypeSelect<ExtArgs> | null
     /**
-     * Omit specific fields from the Event_Seat
+     * Omit specific fields from the TicketType
      */
-    omit?: Event_SeatOmit<ExtArgs> | null
+    omit?: TicketTypeOmit<ExtArgs> | null
     /**
      * Choose, which related nodes to fetch as well
      */
-    include?: Event_SeatInclude<ExtArgs> | null
+    include?: TicketTypeInclude<ExtArgs> | null
     /**
-     * Filter, which Event_Seat to fetch.
+     * Filter, which TicketType to fetch.
      */
-    where?: Event_SeatWhereInput
+    where?: TicketTypeWhereInput
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
      * 
-     * Determine the order of Event_Seats to fetch.
+     * Determine the order of TicketTypes to fetch.
      */
-    orderBy?: Event_SeatOrderByWithRelationInput | Event_SeatOrderByWithRelationInput[]
+    orderBy?: TicketTypeOrderByWithRelationInput | TicketTypeOrderByWithRelationInput[]
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
      * 
-     * Sets the position for searching for Event_Seats.
+     * Sets the position for searching for TicketTypes.
      */
-    cursor?: Event_SeatWhereUniqueInput
+    cursor?: TicketTypeWhereUniqueInput
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
      * 
-     * Take `±n` Event_Seats from the position of the cursor.
+     * Take `±n` TicketTypes from the position of the cursor.
      */
     take?: number
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
      * 
-     * Skip the first `n` Event_Seats.
+     * Skip the first `n` TicketTypes.
      */
     skip?: number
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
      * 
-     * Filter by unique combinations of Event_Seats.
+     * Filter by unique combinations of TicketTypes.
      */
-    distinct?: Event_SeatScalarFieldEnum | Event_SeatScalarFieldEnum[]
+    distinct?: TicketTypeScalarFieldEnum | TicketTypeScalarFieldEnum[]
   }
 
   /**
-   * Event_Seat findFirstOrThrow
+   * TicketType findFirstOrThrow
    */
-  export type Event_SeatFindFirstOrThrowArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+  export type TicketTypeFindFirstOrThrowArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     /**
-     * Select specific fields to fetch from the Event_Seat
+     * Select specific fields to fetch from the TicketType
      */
-    select?: Event_SeatSelect<ExtArgs> | null
+    select?: TicketTypeSelect<ExtArgs> | null
     /**
-     * Omit specific fields from the Event_Seat
+     * Omit specific fields from the TicketType
      */
-    omit?: Event_SeatOmit<ExtArgs> | null
+    omit?: TicketTypeOmit<ExtArgs> | null
     /**
      * Choose, which related nodes to fetch as well
      */
-    include?: Event_SeatInclude<ExtArgs> | null
+    include?: TicketTypeInclude<ExtArgs> | null
     /**
-     * Filter, which Event_Seat to fetch.
+     * Filter, which TicketType to fetch.
      */
-    where?: Event_SeatWhereInput
+    where?: TicketTypeWhereInput
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
      * 
-     * Determine the order of Event_Seats to fetch.
+     * Determine the order of TicketTypes to fetch.
      */
-    orderBy?: Event_SeatOrderByWithRelationInput | Event_SeatOrderByWithRelationInput[]
+    orderBy?: TicketTypeOrderByWithRelationInput | TicketTypeOrderByWithRelationInput[]
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
      * 
-     * Sets the position for searching for Event_Seats.
+     * Sets the position for searching for TicketTypes.
      */
-    cursor?: Event_SeatWhereUniqueInput
+    cursor?: TicketTypeWhereUniqueInput
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
      * 
-     * Take `±n` Event_Seats from the position of the cursor.
+     * Take `±n` TicketTypes from the position of the cursor.
      */
     take?: number
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
      * 
-     * Skip the first `n` Event_Seats.
+     * Skip the first `n` TicketTypes.
      */
     skip?: number
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
      * 
-     * Filter by unique combinations of Event_Seats.
+     * Filter by unique combinations of TicketTypes.
      */
-    distinct?: Event_SeatScalarFieldEnum | Event_SeatScalarFieldEnum[]
+    distinct?: TicketTypeScalarFieldEnum | TicketTypeScalarFieldEnum[]
   }
 
   /**
-   * Event_Seat findMany
+   * TicketType findMany
    */
-  export type Event_SeatFindManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+  export type TicketTypeFindManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     /**
-     * Select specific fields to fetch from the Event_Seat
+     * Select specific fields to fetch from the TicketType
      */
-    select?: Event_SeatSelect<ExtArgs> | null
+    select?: TicketTypeSelect<ExtArgs> | null
     /**
-     * Omit specific fields from the Event_Seat
+     * Omit specific fields from the TicketType
      */
-    omit?: Event_SeatOmit<ExtArgs> | null
+    omit?: TicketTypeOmit<ExtArgs> | null
     /**
      * Choose, which related nodes to fetch as well
      */
-    include?: Event_SeatInclude<ExtArgs> | null
+    include?: TicketTypeInclude<ExtArgs> | null
     /**
-     * Filter, which Event_Seats to fetch.
+     * Filter, which TicketTypes to fetch.
      */
-    where?: Event_SeatWhereInput
+    where?: TicketTypeWhereInput
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
      * 
-     * Determine the order of Event_Seats to fetch.
+     * Determine the order of TicketTypes to fetch.
      */
-    orderBy?: Event_SeatOrderByWithRelationInput | Event_SeatOrderByWithRelationInput[]
+    orderBy?: TicketTypeOrderByWithRelationInput | TicketTypeOrderByWithRelationInput[]
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
      * 
-     * Sets the position for listing Event_Seats.
+     * Sets the position for listing TicketTypes.
      */
-    cursor?: Event_SeatWhereUniqueInput
+    cursor?: TicketTypeWhereUniqueInput
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
      * 
-     * Take `±n` Event_Seats from the position of the cursor.
+     * Take `±n` TicketTypes from the position of the cursor.
      */
     take?: number
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
      * 
-     * Skip the first `n` Event_Seats.
+     * Skip the first `n` TicketTypes.
      */
     skip?: number
-    distinct?: Event_SeatScalarFieldEnum | Event_SeatScalarFieldEnum[]
+    distinct?: TicketTypeScalarFieldEnum | TicketTypeScalarFieldEnum[]
   }
 
   /**
-   * Event_Seat create
+   * TicketType create
    */
-  export type Event_SeatCreateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+  export type TicketTypeCreateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     /**
-     * Select specific fields to fetch from the Event_Seat
+     * Select specific fields to fetch from the TicketType
      */
-    select?: Event_SeatSelect<ExtArgs> | null
+    select?: TicketTypeSelect<ExtArgs> | null
     /**
-     * Omit specific fields from the Event_Seat
+     * Omit specific fields from the TicketType
      */
-    omit?: Event_SeatOmit<ExtArgs> | null
+    omit?: TicketTypeOmit<ExtArgs> | null
     /**
      * Choose, which related nodes to fetch as well
      */
-    include?: Event_SeatInclude<ExtArgs> | null
+    include?: TicketTypeInclude<ExtArgs> | null
     /**
-     * The data needed to create a Event_Seat.
+     * The data needed to create a TicketType.
      */
-    data: XOR<Event_SeatCreateInput, Event_SeatUncheckedCreateInput>
+    data: XOR<TicketTypeCreateInput, TicketTypeUncheckedCreateInput>
   }
 
   /**
-   * Event_Seat createMany
+   * TicketType createMany
    */
-  export type Event_SeatCreateManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+  export type TicketTypeCreateManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     /**
-     * The data used to create many Event_Seats.
+     * The data used to create many TicketTypes.
      */
-    data: Event_SeatCreateManyInput | Event_SeatCreateManyInput[]
+    data: TicketTypeCreateManyInput | TicketTypeCreateManyInput[]
     skipDuplicates?: boolean
   }
 
   /**
-   * Event_Seat createManyAndReturn
+   * TicketType createManyAndReturn
    */
-  export type Event_SeatCreateManyAndReturnArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+  export type TicketTypeCreateManyAndReturnArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     /**
-     * Select specific fields to fetch from the Event_Seat
+     * Select specific fields to fetch from the TicketType
      */
-    select?: Event_SeatSelectCreateManyAndReturn<ExtArgs> | null
+    select?: TicketTypeSelectCreateManyAndReturn<ExtArgs> | null
     /**
-     * Omit specific fields from the Event_Seat
+     * Omit specific fields from the TicketType
      */
-    omit?: Event_SeatOmit<ExtArgs> | null
+    omit?: TicketTypeOmit<ExtArgs> | null
     /**
-     * The data used to create many Event_Seats.
+     * The data used to create many TicketTypes.
      */
-    data: Event_SeatCreateManyInput | Event_SeatCreateManyInput[]
+    data: TicketTypeCreateManyInput | TicketTypeCreateManyInput[]
     skipDuplicates?: boolean
     /**
      * Choose, which related nodes to fetch as well
      */
-    include?: Event_SeatIncludeCreateManyAndReturn<ExtArgs> | null
+    include?: TicketTypeIncludeCreateManyAndReturn<ExtArgs> | null
   }
 
   /**
-   * Event_Seat update
+   * TicketType update
    */
-  export type Event_SeatUpdateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+  export type TicketTypeUpdateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     /**
-     * Select specific fields to fetch from the Event_Seat
+     * Select specific fields to fetch from the TicketType
      */
-    select?: Event_SeatSelect<ExtArgs> | null
+    select?: TicketTypeSelect<ExtArgs> | null
     /**
-     * Omit specific fields from the Event_Seat
+     * Omit specific fields from the TicketType
      */
-    omit?: Event_SeatOmit<ExtArgs> | null
+    omit?: TicketTypeOmit<ExtArgs> | null
     /**
      * Choose, which related nodes to fetch as well
      */
-    include?: Event_SeatInclude<ExtArgs> | null
+    include?: TicketTypeInclude<ExtArgs> | null
     /**
-     * The data needed to update a Event_Seat.
+     * The data needed to update a TicketType.
      */
-    data: XOR<Event_SeatUpdateInput, Event_SeatUncheckedUpdateInput>
+    data: XOR<TicketTypeUpdateInput, TicketTypeUncheckedUpdateInput>
     /**
-     * Choose, which Event_Seat to update.
+     * Choose, which TicketType to update.
      */
-    where: Event_SeatWhereUniqueInput
+    where: TicketTypeWhereUniqueInput
   }
 
   /**
-   * Event_Seat updateMany
+   * TicketType updateMany
    */
-  export type Event_SeatUpdateManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+  export type TicketTypeUpdateManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     /**
-     * The data used to update Event_Seats.
+     * The data used to update TicketTypes.
      */
-    data: XOR<Event_SeatUpdateManyMutationInput, Event_SeatUncheckedUpdateManyInput>
+    data: XOR<TicketTypeUpdateManyMutationInput, TicketTypeUncheckedUpdateManyInput>
     /**
-     * Filter which Event_Seats to update
+     * Filter which TicketTypes to update
      */
-    where?: Event_SeatWhereInput
+    where?: TicketTypeWhereInput
     /**
-     * Limit how many Event_Seats to update.
+     * Limit how many TicketTypes to update.
      */
     limit?: number
   }
 
   /**
-   * Event_Seat updateManyAndReturn
+   * TicketType updateManyAndReturn
    */
-  export type Event_SeatUpdateManyAndReturnArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+  export type TicketTypeUpdateManyAndReturnArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     /**
-     * Select specific fields to fetch from the Event_Seat
+     * Select specific fields to fetch from the TicketType
      */
-    select?: Event_SeatSelectUpdateManyAndReturn<ExtArgs> | null
+    select?: TicketTypeSelectUpdateManyAndReturn<ExtArgs> | null
     /**
-     * Omit specific fields from the Event_Seat
+     * Omit specific fields from the TicketType
      */
-    omit?: Event_SeatOmit<ExtArgs> | null
+    omit?: TicketTypeOmit<ExtArgs> | null
     /**
-     * The data used to update Event_Seats.
+     * The data used to update TicketTypes.
      */
-    data: XOR<Event_SeatUpdateManyMutationInput, Event_SeatUncheckedUpdateManyInput>
+    data: XOR<TicketTypeUpdateManyMutationInput, TicketTypeUncheckedUpdateManyInput>
     /**
-     * Filter which Event_Seats to update
+     * Filter which TicketTypes to update
      */
-    where?: Event_SeatWhereInput
+    where?: TicketTypeWhereInput
     /**
-     * Limit how many Event_Seats to update.
+     * Limit how many TicketTypes to update.
      */
     limit?: number
     /**
      * Choose, which related nodes to fetch as well
      */
-    include?: Event_SeatIncludeUpdateManyAndReturn<ExtArgs> | null
+    include?: TicketTypeIncludeUpdateManyAndReturn<ExtArgs> | null
   }
 
   /**
-   * Event_Seat upsert
+   * TicketType upsert
    */
-  export type Event_SeatUpsertArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+  export type TicketTypeUpsertArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     /**
-     * Select specific fields to fetch from the Event_Seat
+     * Select specific fields to fetch from the TicketType
      */
-    select?: Event_SeatSelect<ExtArgs> | null
+    select?: TicketTypeSelect<ExtArgs> | null
     /**
-     * Omit specific fields from the Event_Seat
+     * Omit specific fields from the TicketType
      */
-    omit?: Event_SeatOmit<ExtArgs> | null
+    omit?: TicketTypeOmit<ExtArgs> | null
     /**
      * Choose, which related nodes to fetch as well
      */
-    include?: Event_SeatInclude<ExtArgs> | null
+    include?: TicketTypeInclude<ExtArgs> | null
     /**
-     * The filter to search for the Event_Seat to update in case it exists.
+     * The filter to search for the TicketType to update in case it exists.
      */
-    where: Event_SeatWhereUniqueInput
+    where: TicketTypeWhereUniqueInput
     /**
-     * In case the Event_Seat found by the `where` argument doesn't exist, create a new Event_Seat with this data.
+     * In case the TicketType found by the `where` argument doesn't exist, create a new TicketType with this data.
      */
-    create: XOR<Event_SeatCreateInput, Event_SeatUncheckedCreateInput>
+    create: XOR<TicketTypeCreateInput, TicketTypeUncheckedCreateInput>
     /**
-     * In case the Event_Seat was found with the provided `where` argument, update it with this data.
+     * In case the TicketType was found with the provided `where` argument, update it with this data.
      */
-    update: XOR<Event_SeatUpdateInput, Event_SeatUncheckedUpdateInput>
+    update: XOR<TicketTypeUpdateInput, TicketTypeUncheckedUpdateInput>
   }
 
   /**
-   * Event_Seat delete
+   * TicketType delete
    */
-  export type Event_SeatDeleteArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+  export type TicketTypeDeleteArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     /**
-     * Select specific fields to fetch from the Event_Seat
+     * Select specific fields to fetch from the TicketType
      */
-    select?: Event_SeatSelect<ExtArgs> | null
+    select?: TicketTypeSelect<ExtArgs> | null
     /**
-     * Omit specific fields from the Event_Seat
+     * Omit specific fields from the TicketType
      */
-    omit?: Event_SeatOmit<ExtArgs> | null
+    omit?: TicketTypeOmit<ExtArgs> | null
     /**
      * Choose, which related nodes to fetch as well
      */
-    include?: Event_SeatInclude<ExtArgs> | null
+    include?: TicketTypeInclude<ExtArgs> | null
     /**
-     * Filter which Event_Seat to delete.
+     * Filter which TicketType to delete.
      */
-    where: Event_SeatWhereUniqueInput
+    where: TicketTypeWhereUniqueInput
   }
 
   /**
-   * Event_Seat deleteMany
+   * TicketType deleteMany
    */
-  export type Event_SeatDeleteManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+  export type TicketTypeDeleteManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     /**
-     * Filter which Event_Seats to delete
+     * Filter which TicketTypes to delete
      */
-    where?: Event_SeatWhereInput
+    where?: TicketTypeWhereInput
     /**
-     * Limit how many Event_Seats to delete.
+     * Limit how many TicketTypes to delete.
      */
     limit?: number
   }
 
   /**
-   * Event_Seat without action
+   * TicketType without action
    */
-  export type Event_SeatDefaultArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+  export type TicketTypeDefaultArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     /**
-     * Select specific fields to fetch from the Event_Seat
+     * Select specific fields to fetch from the TicketType
      */
-    select?: Event_SeatSelect<ExtArgs> | null
+    select?: TicketTypeSelect<ExtArgs> | null
     /**
-     * Omit specific fields from the Event_Seat
+     * Omit specific fields from the TicketType
      */
-    omit?: Event_SeatOmit<ExtArgs> | null
+    omit?: TicketTypeOmit<ExtArgs> | null
     /**
      * Choose, which related nodes to fetch as well
      */
-    include?: Event_SeatInclude<ExtArgs> | null
+    include?: TicketTypeInclude<ExtArgs> | null
   }
 
 
@@ -17225,13 +17269,15 @@ export namespace Prisma {
   export type Event_LocationScalarFieldEnum = (typeof Event_LocationScalarFieldEnum)[keyof typeof Event_LocationScalarFieldEnum]
 
 
-  export const Event_SeatScalarFieldEnum: {
+  export const TicketTypeScalarFieldEnum: {
     id: 'id',
-    events_id: 'events_id',
-    total: 'total'
+    event_id: 'event_id',
+    name: 'name',
+    price: 'price',
+    quantity: 'quantity'
   };
 
-  export type Event_SeatScalarFieldEnum = (typeof Event_SeatScalarFieldEnum)[keyof typeof Event_SeatScalarFieldEnum]
+  export type TicketTypeScalarFieldEnum = (typeof TicketTypeScalarFieldEnum)[keyof typeof TicketTypeScalarFieldEnum]
 
 
   export const Event_ReviewsScalarFieldEnum: {
@@ -17670,7 +17716,7 @@ export namespace Prisma {
     name?: StringFilter<"Events"> | string
     description?: StringFilter<"Events"> | string
     image?: StringNullableFilter<"Events"> | string | null
-    price?: IntFilter<"Events"> | number
+    price?: IntNullableFilter<"Events"> | number | null
     start_date?: DateTimeFilter<"Events"> | Date | string
     end_date?: DateTimeNullableFilter<"Events"> | Date | string | null
     created_at?: DateTimeFilter<"Events"> | Date | string
@@ -17678,7 +17724,7 @@ export namespace Prisma {
     organizer?: XOR<OrganizerScalarRelationFilter, OrganizerWhereInput>
     category_event?: XOR<Event_CategoryScalarRelationFilter, Event_CategoryWhereInput>
     location_Event?: XOR<Event_LocationScalarRelationFilter, Event_LocationWhereInput>
-    seat_event?: XOR<Event_SeatNullableScalarRelationFilter, Event_SeatWhereInput> | null
+    ticketType?: TicketTypeListRelationFilter
     reviews_event?: Event_ReviewsListRelationFilter
     attendees_event?: Event_AttendeesListRelationFilter
     event_transactionDetail?: Transactions_detailListRelationFilter
@@ -17692,7 +17738,7 @@ export namespace Prisma {
     name?: SortOrder
     description?: SortOrder
     image?: SortOrderInput | SortOrder
-    price?: SortOrder
+    price?: SortOrderInput | SortOrder
     start_date?: SortOrder
     end_date?: SortOrderInput | SortOrder
     created_at?: SortOrder
@@ -17700,7 +17746,7 @@ export namespace Prisma {
     organizer?: OrganizerOrderByWithRelationInput
     category_event?: Event_CategoryOrderByWithRelationInput
     location_Event?: Event_LocationOrderByWithRelationInput
-    seat_event?: Event_SeatOrderByWithRelationInput
+    ticketType?: TicketTypeOrderByRelationAggregateInput
     reviews_event?: Event_ReviewsOrderByRelationAggregateInput
     attendees_event?: Event_AttendeesOrderByRelationAggregateInput
     event_transactionDetail?: Transactions_detailOrderByRelationAggregateInput
@@ -17717,7 +17763,7 @@ export namespace Prisma {
     name?: StringFilter<"Events"> | string
     description?: StringFilter<"Events"> | string
     image?: StringNullableFilter<"Events"> | string | null
-    price?: IntFilter<"Events"> | number
+    price?: IntNullableFilter<"Events"> | number | null
     start_date?: DateTimeFilter<"Events"> | Date | string
     end_date?: DateTimeNullableFilter<"Events"> | Date | string | null
     created_at?: DateTimeFilter<"Events"> | Date | string
@@ -17725,7 +17771,7 @@ export namespace Prisma {
     organizer?: XOR<OrganizerScalarRelationFilter, OrganizerWhereInput>
     category_event?: XOR<Event_CategoryScalarRelationFilter, Event_CategoryWhereInput>
     location_Event?: XOR<Event_LocationScalarRelationFilter, Event_LocationWhereInput>
-    seat_event?: XOR<Event_SeatNullableScalarRelationFilter, Event_SeatWhereInput> | null
+    ticketType?: TicketTypeListRelationFilter
     reviews_event?: Event_ReviewsListRelationFilter
     attendees_event?: Event_AttendeesListRelationFilter
     event_transactionDetail?: Transactions_detailListRelationFilter
@@ -17739,7 +17785,7 @@ export namespace Prisma {
     name?: SortOrder
     description?: SortOrder
     image?: SortOrderInput | SortOrder
-    price?: SortOrder
+    price?: SortOrderInput | SortOrder
     start_date?: SortOrder
     end_date?: SortOrderInput | SortOrder
     created_at?: SortOrder
@@ -17762,7 +17808,7 @@ export namespace Prisma {
     name?: StringWithAggregatesFilter<"Events"> | string
     description?: StringWithAggregatesFilter<"Events"> | string
     image?: StringNullableWithAggregatesFilter<"Events"> | string | null
-    price?: IntWithAggregatesFilter<"Events"> | number
+    price?: IntNullableWithAggregatesFilter<"Events"> | number | null
     start_date?: DateTimeWithAggregatesFilter<"Events"> | Date | string
     end_date?: DateTimeNullableWithAggregatesFilter<"Events"> | Date | string | null
     created_at?: DateTimeWithAggregatesFilter<"Events"> | Date | string
@@ -17859,51 +17905,61 @@ export namespace Prisma {
     address?: StringWithAggregatesFilter<"Event_Location"> | string
   }
 
-  export type Event_SeatWhereInput = {
-    AND?: Event_SeatWhereInput | Event_SeatWhereInput[]
-    OR?: Event_SeatWhereInput[]
-    NOT?: Event_SeatWhereInput | Event_SeatWhereInput[]
-    id?: StringFilter<"Event_Seat"> | string
-    events_id?: StringFilter<"Event_Seat"> | string
-    total?: IntFilter<"Event_Seat"> | number
+  export type TicketTypeWhereInput = {
+    AND?: TicketTypeWhereInput | TicketTypeWhereInput[]
+    OR?: TicketTypeWhereInput[]
+    NOT?: TicketTypeWhereInput | TicketTypeWhereInput[]
+    id?: StringFilter<"TicketType"> | string
+    event_id?: StringFilter<"TicketType"> | string
+    name?: StringFilter<"TicketType"> | string
+    price?: IntFilter<"TicketType"> | number
+    quantity?: IntFilter<"TicketType"> | number
     event?: XOR<EventsScalarRelationFilter, EventsWhereInput>
   }
 
-  export type Event_SeatOrderByWithRelationInput = {
+  export type TicketTypeOrderByWithRelationInput = {
     id?: SortOrder
-    events_id?: SortOrder
-    total?: SortOrder
+    event_id?: SortOrder
+    name?: SortOrder
+    price?: SortOrder
+    quantity?: SortOrder
     event?: EventsOrderByWithRelationInput
   }
 
-  export type Event_SeatWhereUniqueInput = Prisma.AtLeast<{
+  export type TicketTypeWhereUniqueInput = Prisma.AtLeast<{
     id?: string
-    events_id?: string
-    AND?: Event_SeatWhereInput | Event_SeatWhereInput[]
-    OR?: Event_SeatWhereInput[]
-    NOT?: Event_SeatWhereInput | Event_SeatWhereInput[]
-    total?: IntFilter<"Event_Seat"> | number
+    AND?: TicketTypeWhereInput | TicketTypeWhereInput[]
+    OR?: TicketTypeWhereInput[]
+    NOT?: TicketTypeWhereInput | TicketTypeWhereInput[]
+    event_id?: StringFilter<"TicketType"> | string
+    name?: StringFilter<"TicketType"> | string
+    price?: IntFilter<"TicketType"> | number
+    quantity?: IntFilter<"TicketType"> | number
     event?: XOR<EventsScalarRelationFilter, EventsWhereInput>
-  }, "id" | "events_id">
+  }, "id">
 
-  export type Event_SeatOrderByWithAggregationInput = {
+  export type TicketTypeOrderByWithAggregationInput = {
     id?: SortOrder
-    events_id?: SortOrder
-    total?: SortOrder
-    _count?: Event_SeatCountOrderByAggregateInput
-    _avg?: Event_SeatAvgOrderByAggregateInput
-    _max?: Event_SeatMaxOrderByAggregateInput
-    _min?: Event_SeatMinOrderByAggregateInput
-    _sum?: Event_SeatSumOrderByAggregateInput
+    event_id?: SortOrder
+    name?: SortOrder
+    price?: SortOrder
+    quantity?: SortOrder
+    _count?: TicketTypeCountOrderByAggregateInput
+    _avg?: TicketTypeAvgOrderByAggregateInput
+    _max?: TicketTypeMaxOrderByAggregateInput
+    _min?: TicketTypeMinOrderByAggregateInput
+    _sum?: TicketTypeSumOrderByAggregateInput
   }
 
-  export type Event_SeatScalarWhereWithAggregatesInput = {
-    AND?: Event_SeatScalarWhereWithAggregatesInput | Event_SeatScalarWhereWithAggregatesInput[]
-    OR?: Event_SeatScalarWhereWithAggregatesInput[]
-    NOT?: Event_SeatScalarWhereWithAggregatesInput | Event_SeatScalarWhereWithAggregatesInput[]
-    id?: StringWithAggregatesFilter<"Event_Seat"> | string
-    events_id?: StringWithAggregatesFilter<"Event_Seat"> | string
-    total?: IntWithAggregatesFilter<"Event_Seat"> | number
+  export type TicketTypeScalarWhereWithAggregatesInput = {
+    AND?: TicketTypeScalarWhereWithAggregatesInput | TicketTypeScalarWhereWithAggregatesInput[]
+    OR?: TicketTypeScalarWhereWithAggregatesInput[]
+    NOT?: TicketTypeScalarWhereWithAggregatesInput | TicketTypeScalarWhereWithAggregatesInput[]
+    id?: StringWithAggregatesFilter<"TicketType"> | string
+    event_id?: StringWithAggregatesFilter<"TicketType"> | string
+    name?: StringWithAggregatesFilter<"TicketType"> | string
+    price?: IntWithAggregatesFilter<"TicketType"> | number
+    quantity?: IntWithAggregatesFilter<"TicketType"> | number
   }
 
   export type Event_ReviewsWhereInput = {
@@ -18583,7 +18639,7 @@ export namespace Prisma {
     name: string
     description: string
     image?: string | null
-    price: number
+    price?: number | null
     start_date: Date | string
     end_date?: Date | string | null
     created_at?: Date | string
@@ -18591,7 +18647,7 @@ export namespace Prisma {
     organizer: OrganizerCreateNestedOneWithoutEventInput
     category_event: Event_CategoryCreateNestedOneWithoutEventInput
     location_Event: Event_LocationCreateNestedOneWithoutEventInput
-    seat_event?: Event_SeatCreateNestedOneWithoutEventInput
+    ticketType?: TicketTypeCreateNestedManyWithoutEventInput
     reviews_event?: Event_ReviewsCreateNestedManyWithoutReviews_eventInput
     attendees_event?: Event_AttendeesCreateNestedManyWithoutUser_eventInput
     event_transactionDetail?: Transactions_detailCreateNestedManyWithoutDetail_eventInput
@@ -18605,12 +18661,12 @@ export namespace Prisma {
     name: string
     description: string
     image?: string | null
-    price: number
+    price?: number | null
     start_date: Date | string
     end_date?: Date | string | null
     created_at?: Date | string
     updated_at?: Date | string
-    seat_event?: Event_SeatUncheckedCreateNestedOneWithoutEventInput
+    ticketType?: TicketTypeUncheckedCreateNestedManyWithoutEventInput
     reviews_event?: Event_ReviewsUncheckedCreateNestedManyWithoutReviews_eventInput
     attendees_event?: Event_AttendeesUncheckedCreateNestedManyWithoutUser_eventInput
     event_transactionDetail?: Transactions_detailUncheckedCreateNestedManyWithoutDetail_eventInput
@@ -18621,7 +18677,7 @@ export namespace Prisma {
     name?: StringFieldUpdateOperationsInput | string
     description?: StringFieldUpdateOperationsInput | string
     image?: NullableStringFieldUpdateOperationsInput | string | null
-    price?: IntFieldUpdateOperationsInput | number
+    price?: NullableIntFieldUpdateOperationsInput | number | null
     start_date?: DateTimeFieldUpdateOperationsInput | Date | string
     end_date?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     created_at?: DateTimeFieldUpdateOperationsInput | Date | string
@@ -18629,7 +18685,7 @@ export namespace Prisma {
     organizer?: OrganizerUpdateOneRequiredWithoutEventNestedInput
     category_event?: Event_CategoryUpdateOneRequiredWithoutEventNestedInput
     location_Event?: Event_LocationUpdateOneRequiredWithoutEventNestedInput
-    seat_event?: Event_SeatUpdateOneWithoutEventNestedInput
+    ticketType?: TicketTypeUpdateManyWithoutEventNestedInput
     reviews_event?: Event_ReviewsUpdateManyWithoutReviews_eventNestedInput
     attendees_event?: Event_AttendeesUpdateManyWithoutUser_eventNestedInput
     event_transactionDetail?: Transactions_detailUpdateManyWithoutDetail_eventNestedInput
@@ -18643,12 +18699,12 @@ export namespace Prisma {
     name?: StringFieldUpdateOperationsInput | string
     description?: StringFieldUpdateOperationsInput | string
     image?: NullableStringFieldUpdateOperationsInput | string | null
-    price?: IntFieldUpdateOperationsInput | number
+    price?: NullableIntFieldUpdateOperationsInput | number | null
     start_date?: DateTimeFieldUpdateOperationsInput | Date | string
     end_date?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     created_at?: DateTimeFieldUpdateOperationsInput | Date | string
     updated_at?: DateTimeFieldUpdateOperationsInput | Date | string
-    seat_event?: Event_SeatUncheckedUpdateOneWithoutEventNestedInput
+    ticketType?: TicketTypeUncheckedUpdateManyWithoutEventNestedInput
     reviews_event?: Event_ReviewsUncheckedUpdateManyWithoutReviews_eventNestedInput
     attendees_event?: Event_AttendeesUncheckedUpdateManyWithoutUser_eventNestedInput
     event_transactionDetail?: Transactions_detailUncheckedUpdateManyWithoutDetail_eventNestedInput
@@ -18662,7 +18718,7 @@ export namespace Prisma {
     name: string
     description: string
     image?: string | null
-    price: number
+    price?: number | null
     start_date: Date | string
     end_date?: Date | string | null
     created_at?: Date | string
@@ -18674,7 +18730,7 @@ export namespace Prisma {
     name?: StringFieldUpdateOperationsInput | string
     description?: StringFieldUpdateOperationsInput | string
     image?: NullableStringFieldUpdateOperationsInput | string | null
-    price?: IntFieldUpdateOperationsInput | number
+    price?: NullableIntFieldUpdateOperationsInput | number | null
     start_date?: DateTimeFieldUpdateOperationsInput | Date | string
     end_date?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     created_at?: DateTimeFieldUpdateOperationsInput | Date | string
@@ -18689,7 +18745,7 @@ export namespace Prisma {
     name?: StringFieldUpdateOperationsInput | string
     description?: StringFieldUpdateOperationsInput | string
     image?: NullableStringFieldUpdateOperationsInput | string | null
-    price?: IntFieldUpdateOperationsInput | number
+    price?: NullableIntFieldUpdateOperationsInput | number | null
     start_date?: DateTimeFieldUpdateOperationsInput | Date | string
     end_date?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     created_at?: DateTimeFieldUpdateOperationsInput | Date | string
@@ -18788,45 +18844,59 @@ export namespace Prisma {
     address?: StringFieldUpdateOperationsInput | string
   }
 
-  export type Event_SeatCreateInput = {
+  export type TicketTypeCreateInput = {
     id?: string
-    total: number
-    event: EventsCreateNestedOneWithoutSeat_eventInput
+    name: string
+    price: number
+    quantity: number
+    event: EventsCreateNestedOneWithoutTicketTypeInput
   }
 
-  export type Event_SeatUncheckedCreateInput = {
+  export type TicketTypeUncheckedCreateInput = {
     id?: string
-    events_id: string
-    total: number
+    event_id: string
+    name: string
+    price: number
+    quantity: number
   }
 
-  export type Event_SeatUpdateInput = {
+  export type TicketTypeUpdateInput = {
     id?: StringFieldUpdateOperationsInput | string
-    total?: IntFieldUpdateOperationsInput | number
-    event?: EventsUpdateOneRequiredWithoutSeat_eventNestedInput
+    name?: StringFieldUpdateOperationsInput | string
+    price?: IntFieldUpdateOperationsInput | number
+    quantity?: IntFieldUpdateOperationsInput | number
+    event?: EventsUpdateOneRequiredWithoutTicketTypeNestedInput
   }
 
-  export type Event_SeatUncheckedUpdateInput = {
+  export type TicketTypeUncheckedUpdateInput = {
     id?: StringFieldUpdateOperationsInput | string
-    events_id?: StringFieldUpdateOperationsInput | string
-    total?: IntFieldUpdateOperationsInput | number
+    event_id?: StringFieldUpdateOperationsInput | string
+    name?: StringFieldUpdateOperationsInput | string
+    price?: IntFieldUpdateOperationsInput | number
+    quantity?: IntFieldUpdateOperationsInput | number
   }
 
-  export type Event_SeatCreateManyInput = {
+  export type TicketTypeCreateManyInput = {
     id?: string
-    events_id: string
-    total: number
+    event_id: string
+    name: string
+    price: number
+    quantity: number
   }
 
-  export type Event_SeatUpdateManyMutationInput = {
+  export type TicketTypeUpdateManyMutationInput = {
     id?: StringFieldUpdateOperationsInput | string
-    total?: IntFieldUpdateOperationsInput | number
+    name?: StringFieldUpdateOperationsInput | string
+    price?: IntFieldUpdateOperationsInput | number
+    quantity?: IntFieldUpdateOperationsInput | number
   }
 
-  export type Event_SeatUncheckedUpdateManyInput = {
+  export type TicketTypeUncheckedUpdateManyInput = {
     id?: StringFieldUpdateOperationsInput | string
-    events_id?: StringFieldUpdateOperationsInput | string
-    total?: IntFieldUpdateOperationsInput | number
+    event_id?: StringFieldUpdateOperationsInput | string
+    name?: StringFieldUpdateOperationsInput | string
+    price?: IntFieldUpdateOperationsInput | number
+    quantity?: IntFieldUpdateOperationsInput | number
   }
 
   export type Event_ReviewsCreateInput = {
@@ -19536,15 +19606,15 @@ export namespace Prisma {
     created_at?: SortOrder
   }
 
-  export type IntFilter<$PrismaModel = never> = {
-    equals?: number | IntFieldRefInput<$PrismaModel>
-    in?: number[] | ListIntFieldRefInput<$PrismaModel>
-    notIn?: number[] | ListIntFieldRefInput<$PrismaModel>
+  export type IntNullableFilter<$PrismaModel = never> = {
+    equals?: number | IntFieldRefInput<$PrismaModel> | null
+    in?: number[] | ListIntFieldRefInput<$PrismaModel> | null
+    notIn?: number[] | ListIntFieldRefInput<$PrismaModel> | null
     lt?: number | IntFieldRefInput<$PrismaModel>
     lte?: number | IntFieldRefInput<$PrismaModel>
     gt?: number | IntFieldRefInput<$PrismaModel>
     gte?: number | IntFieldRefInput<$PrismaModel>
-    not?: NestedIntFilter<$PrismaModel> | number
+    not?: NestedIntNullableFilter<$PrismaModel> | number | null
   }
 
   export type DateTimeNullableFilter<$PrismaModel = never> = {
@@ -19568,9 +19638,14 @@ export namespace Prisma {
     isNot?: Event_LocationWhereInput
   }
 
-  export type Event_SeatNullableScalarRelationFilter = {
-    is?: Event_SeatWhereInput | null
-    isNot?: Event_SeatWhereInput | null
+  export type TicketTypeListRelationFilter = {
+    every?: TicketTypeWhereInput
+    some?: TicketTypeWhereInput
+    none?: TicketTypeWhereInput
+  }
+
+  export type TicketTypeOrderByRelationAggregateInput = {
+    _count?: SortOrder
   }
 
   export type EventsCountOrderByAggregateInput = {
@@ -19626,20 +19701,20 @@ export namespace Prisma {
     price?: SortOrder
   }
 
-  export type IntWithAggregatesFilter<$PrismaModel = never> = {
-    equals?: number | IntFieldRefInput<$PrismaModel>
-    in?: number[] | ListIntFieldRefInput<$PrismaModel>
-    notIn?: number[] | ListIntFieldRefInput<$PrismaModel>
+  export type IntNullableWithAggregatesFilter<$PrismaModel = never> = {
+    equals?: number | IntFieldRefInput<$PrismaModel> | null
+    in?: number[] | ListIntFieldRefInput<$PrismaModel> | null
+    notIn?: number[] | ListIntFieldRefInput<$PrismaModel> | null
     lt?: number | IntFieldRefInput<$PrismaModel>
     lte?: number | IntFieldRefInput<$PrismaModel>
     gt?: number | IntFieldRefInput<$PrismaModel>
     gte?: number | IntFieldRefInput<$PrismaModel>
-    not?: NestedIntWithAggregatesFilter<$PrismaModel> | number
-    _count?: NestedIntFilter<$PrismaModel>
-    _avg?: NestedFloatFilter<$PrismaModel>
-    _sum?: NestedIntFilter<$PrismaModel>
-    _min?: NestedIntFilter<$PrismaModel>
-    _max?: NestedIntFilter<$PrismaModel>
+    not?: NestedIntNullableWithAggregatesFilter<$PrismaModel> | number | null
+    _count?: NestedIntNullableFilter<$PrismaModel>
+    _avg?: NestedFloatNullableFilter<$PrismaModel>
+    _sum?: NestedIntNullableFilter<$PrismaModel>
+    _min?: NestedIntNullableFilter<$PrismaModel>
+    _max?: NestedIntNullableFilter<$PrismaModel>
   }
 
   export type DateTimeNullableWithAggregatesFilter<$PrismaModel = never> = {
@@ -19692,46 +19767,70 @@ export namespace Prisma {
     address?: SortOrder
   }
 
+  export type IntFilter<$PrismaModel = never> = {
+    equals?: number | IntFieldRefInput<$PrismaModel>
+    in?: number[] | ListIntFieldRefInput<$PrismaModel>
+    notIn?: number[] | ListIntFieldRefInput<$PrismaModel>
+    lt?: number | IntFieldRefInput<$PrismaModel>
+    lte?: number | IntFieldRefInput<$PrismaModel>
+    gt?: number | IntFieldRefInput<$PrismaModel>
+    gte?: number | IntFieldRefInput<$PrismaModel>
+    not?: NestedIntFilter<$PrismaModel> | number
+  }
+
   export type EventsScalarRelationFilter = {
     is?: EventsWhereInput
     isNot?: EventsWhereInput
   }
 
-  export type Event_SeatCountOrderByAggregateInput = {
+  export type TicketTypeCountOrderByAggregateInput = {
     id?: SortOrder
-    events_id?: SortOrder
-    total?: SortOrder
+    event_id?: SortOrder
+    name?: SortOrder
+    price?: SortOrder
+    quantity?: SortOrder
   }
 
-  export type Event_SeatAvgOrderByAggregateInput = {
-    total?: SortOrder
+  export type TicketTypeAvgOrderByAggregateInput = {
+    price?: SortOrder
+    quantity?: SortOrder
   }
 
-  export type Event_SeatMaxOrderByAggregateInput = {
+  export type TicketTypeMaxOrderByAggregateInput = {
     id?: SortOrder
-    events_id?: SortOrder
-    total?: SortOrder
+    event_id?: SortOrder
+    name?: SortOrder
+    price?: SortOrder
+    quantity?: SortOrder
   }
 
-  export type Event_SeatMinOrderByAggregateInput = {
+  export type TicketTypeMinOrderByAggregateInput = {
     id?: SortOrder
-    events_id?: SortOrder
-    total?: SortOrder
+    event_id?: SortOrder
+    name?: SortOrder
+    price?: SortOrder
+    quantity?: SortOrder
   }
 
-  export type Event_SeatSumOrderByAggregateInput = {
-    total?: SortOrder
+  export type TicketTypeSumOrderByAggregateInput = {
+    price?: SortOrder
+    quantity?: SortOrder
   }
 
-  export type IntNullableFilter<$PrismaModel = never> = {
-    equals?: number | IntFieldRefInput<$PrismaModel> | null
-    in?: number[] | ListIntFieldRefInput<$PrismaModel> | null
-    notIn?: number[] | ListIntFieldRefInput<$PrismaModel> | null
+  export type IntWithAggregatesFilter<$PrismaModel = never> = {
+    equals?: number | IntFieldRefInput<$PrismaModel>
+    in?: number[] | ListIntFieldRefInput<$PrismaModel>
+    notIn?: number[] | ListIntFieldRefInput<$PrismaModel>
     lt?: number | IntFieldRefInput<$PrismaModel>
     lte?: number | IntFieldRefInput<$PrismaModel>
     gt?: number | IntFieldRefInput<$PrismaModel>
     gte?: number | IntFieldRefInput<$PrismaModel>
-    not?: NestedIntNullableFilter<$PrismaModel> | number | null
+    not?: NestedIntWithAggregatesFilter<$PrismaModel> | number
+    _count?: NestedIntFilter<$PrismaModel>
+    _avg?: NestedFloatFilter<$PrismaModel>
+    _sum?: NestedIntFilter<$PrismaModel>
+    _min?: NestedIntFilter<$PrismaModel>
+    _max?: NestedIntFilter<$PrismaModel>
   }
 
   export type Event_ReviewsCountOrderByAggregateInput = {
@@ -19767,22 +19866,6 @@ export namespace Prisma {
 
   export type Event_ReviewsSumOrderByAggregateInput = {
     rating?: SortOrder
-  }
-
-  export type IntNullableWithAggregatesFilter<$PrismaModel = never> = {
-    equals?: number | IntFieldRefInput<$PrismaModel> | null
-    in?: number[] | ListIntFieldRefInput<$PrismaModel> | null
-    notIn?: number[] | ListIntFieldRefInput<$PrismaModel> | null
-    lt?: number | IntFieldRefInput<$PrismaModel>
-    lte?: number | IntFieldRefInput<$PrismaModel>
-    gt?: number | IntFieldRefInput<$PrismaModel>
-    gte?: number | IntFieldRefInput<$PrismaModel>
-    not?: NestedIntNullableWithAggregatesFilter<$PrismaModel> | number | null
-    _count?: NestedIntNullableFilter<$PrismaModel>
-    _avg?: NestedFloatNullableFilter<$PrismaModel>
-    _sum?: NestedIntNullableFilter<$PrismaModel>
-    _min?: NestedIntNullableFilter<$PrismaModel>
-    _max?: NestedIntNullableFilter<$PrismaModel>
   }
 
   export type EnumStatusFilter<$PrismaModel = never> = {
@@ -20541,10 +20624,11 @@ export namespace Prisma {
     connect?: Event_LocationWhereUniqueInput
   }
 
-  export type Event_SeatCreateNestedOneWithoutEventInput = {
-    create?: XOR<Event_SeatCreateWithoutEventInput, Event_SeatUncheckedCreateWithoutEventInput>
-    connectOrCreate?: Event_SeatCreateOrConnectWithoutEventInput
-    connect?: Event_SeatWhereUniqueInput
+  export type TicketTypeCreateNestedManyWithoutEventInput = {
+    create?: XOR<TicketTypeCreateWithoutEventInput, TicketTypeUncheckedCreateWithoutEventInput> | TicketTypeCreateWithoutEventInput[] | TicketTypeUncheckedCreateWithoutEventInput[]
+    connectOrCreate?: TicketTypeCreateOrConnectWithoutEventInput | TicketTypeCreateOrConnectWithoutEventInput[]
+    createMany?: TicketTypeCreateManyEventInputEnvelope
+    connect?: TicketTypeWhereUniqueInput | TicketTypeWhereUniqueInput[]
   }
 
   export type Event_ReviewsCreateNestedManyWithoutReviews_eventInput = {
@@ -20568,10 +20652,11 @@ export namespace Prisma {
     connect?: Transactions_detailWhereUniqueInput | Transactions_detailWhereUniqueInput[]
   }
 
-  export type Event_SeatUncheckedCreateNestedOneWithoutEventInput = {
-    create?: XOR<Event_SeatCreateWithoutEventInput, Event_SeatUncheckedCreateWithoutEventInput>
-    connectOrCreate?: Event_SeatCreateOrConnectWithoutEventInput
-    connect?: Event_SeatWhereUniqueInput
+  export type TicketTypeUncheckedCreateNestedManyWithoutEventInput = {
+    create?: XOR<TicketTypeCreateWithoutEventInput, TicketTypeUncheckedCreateWithoutEventInput> | TicketTypeCreateWithoutEventInput[] | TicketTypeUncheckedCreateWithoutEventInput[]
+    connectOrCreate?: TicketTypeCreateOrConnectWithoutEventInput | TicketTypeCreateOrConnectWithoutEventInput[]
+    createMany?: TicketTypeCreateManyEventInputEnvelope
+    connect?: TicketTypeWhereUniqueInput | TicketTypeWhereUniqueInput[]
   }
 
   export type Event_ReviewsUncheckedCreateNestedManyWithoutReviews_eventInput = {
@@ -20595,8 +20680,8 @@ export namespace Prisma {
     connect?: Transactions_detailWhereUniqueInput | Transactions_detailWhereUniqueInput[]
   }
 
-  export type IntFieldUpdateOperationsInput = {
-    set?: number
+  export type NullableIntFieldUpdateOperationsInput = {
+    set?: number | null
     increment?: number
     decrement?: number
     multiply?: number
@@ -20631,14 +20716,18 @@ export namespace Prisma {
     update?: XOR<XOR<Event_LocationUpdateToOneWithWhereWithoutEventInput, Event_LocationUpdateWithoutEventInput>, Event_LocationUncheckedUpdateWithoutEventInput>
   }
 
-  export type Event_SeatUpdateOneWithoutEventNestedInput = {
-    create?: XOR<Event_SeatCreateWithoutEventInput, Event_SeatUncheckedCreateWithoutEventInput>
-    connectOrCreate?: Event_SeatCreateOrConnectWithoutEventInput
-    upsert?: Event_SeatUpsertWithoutEventInput
-    disconnect?: Event_SeatWhereInput | boolean
-    delete?: Event_SeatWhereInput | boolean
-    connect?: Event_SeatWhereUniqueInput
-    update?: XOR<XOR<Event_SeatUpdateToOneWithWhereWithoutEventInput, Event_SeatUpdateWithoutEventInput>, Event_SeatUncheckedUpdateWithoutEventInput>
+  export type TicketTypeUpdateManyWithoutEventNestedInput = {
+    create?: XOR<TicketTypeCreateWithoutEventInput, TicketTypeUncheckedCreateWithoutEventInput> | TicketTypeCreateWithoutEventInput[] | TicketTypeUncheckedCreateWithoutEventInput[]
+    connectOrCreate?: TicketTypeCreateOrConnectWithoutEventInput | TicketTypeCreateOrConnectWithoutEventInput[]
+    upsert?: TicketTypeUpsertWithWhereUniqueWithoutEventInput | TicketTypeUpsertWithWhereUniqueWithoutEventInput[]
+    createMany?: TicketTypeCreateManyEventInputEnvelope
+    set?: TicketTypeWhereUniqueInput | TicketTypeWhereUniqueInput[]
+    disconnect?: TicketTypeWhereUniqueInput | TicketTypeWhereUniqueInput[]
+    delete?: TicketTypeWhereUniqueInput | TicketTypeWhereUniqueInput[]
+    connect?: TicketTypeWhereUniqueInput | TicketTypeWhereUniqueInput[]
+    update?: TicketTypeUpdateWithWhereUniqueWithoutEventInput | TicketTypeUpdateWithWhereUniqueWithoutEventInput[]
+    updateMany?: TicketTypeUpdateManyWithWhereWithoutEventInput | TicketTypeUpdateManyWithWhereWithoutEventInput[]
+    deleteMany?: TicketTypeScalarWhereInput | TicketTypeScalarWhereInput[]
   }
 
   export type Event_ReviewsUpdateManyWithoutReviews_eventNestedInput = {
@@ -20683,14 +20772,18 @@ export namespace Prisma {
     deleteMany?: Transactions_detailScalarWhereInput | Transactions_detailScalarWhereInput[]
   }
 
-  export type Event_SeatUncheckedUpdateOneWithoutEventNestedInput = {
-    create?: XOR<Event_SeatCreateWithoutEventInput, Event_SeatUncheckedCreateWithoutEventInput>
-    connectOrCreate?: Event_SeatCreateOrConnectWithoutEventInput
-    upsert?: Event_SeatUpsertWithoutEventInput
-    disconnect?: Event_SeatWhereInput | boolean
-    delete?: Event_SeatWhereInput | boolean
-    connect?: Event_SeatWhereUniqueInput
-    update?: XOR<XOR<Event_SeatUpdateToOneWithWhereWithoutEventInput, Event_SeatUpdateWithoutEventInput>, Event_SeatUncheckedUpdateWithoutEventInput>
+  export type TicketTypeUncheckedUpdateManyWithoutEventNestedInput = {
+    create?: XOR<TicketTypeCreateWithoutEventInput, TicketTypeUncheckedCreateWithoutEventInput> | TicketTypeCreateWithoutEventInput[] | TicketTypeUncheckedCreateWithoutEventInput[]
+    connectOrCreate?: TicketTypeCreateOrConnectWithoutEventInput | TicketTypeCreateOrConnectWithoutEventInput[]
+    upsert?: TicketTypeUpsertWithWhereUniqueWithoutEventInput | TicketTypeUpsertWithWhereUniqueWithoutEventInput[]
+    createMany?: TicketTypeCreateManyEventInputEnvelope
+    set?: TicketTypeWhereUniqueInput | TicketTypeWhereUniqueInput[]
+    disconnect?: TicketTypeWhereUniqueInput | TicketTypeWhereUniqueInput[]
+    delete?: TicketTypeWhereUniqueInput | TicketTypeWhereUniqueInput[]
+    connect?: TicketTypeWhereUniqueInput | TicketTypeWhereUniqueInput[]
+    update?: TicketTypeUpdateWithWhereUniqueWithoutEventInput | TicketTypeUpdateWithWhereUniqueWithoutEventInput[]
+    updateMany?: TicketTypeUpdateManyWithWhereWithoutEventInput | TicketTypeUpdateManyWithWhereWithoutEventInput[]
+    deleteMany?: TicketTypeScalarWhereInput | TicketTypeScalarWhereInput[]
   }
 
   export type Event_ReviewsUncheckedUpdateManyWithoutReviews_eventNestedInput = {
@@ -20819,18 +20912,26 @@ export namespace Prisma {
     deleteMany?: EventsScalarWhereInput | EventsScalarWhereInput[]
   }
 
-  export type EventsCreateNestedOneWithoutSeat_eventInput = {
-    create?: XOR<EventsCreateWithoutSeat_eventInput, EventsUncheckedCreateWithoutSeat_eventInput>
-    connectOrCreate?: EventsCreateOrConnectWithoutSeat_eventInput
+  export type EventsCreateNestedOneWithoutTicketTypeInput = {
+    create?: XOR<EventsCreateWithoutTicketTypeInput, EventsUncheckedCreateWithoutTicketTypeInput>
+    connectOrCreate?: EventsCreateOrConnectWithoutTicketTypeInput
     connect?: EventsWhereUniqueInput
   }
 
-  export type EventsUpdateOneRequiredWithoutSeat_eventNestedInput = {
-    create?: XOR<EventsCreateWithoutSeat_eventInput, EventsUncheckedCreateWithoutSeat_eventInput>
-    connectOrCreate?: EventsCreateOrConnectWithoutSeat_eventInput
-    upsert?: EventsUpsertWithoutSeat_eventInput
+  export type IntFieldUpdateOperationsInput = {
+    set?: number
+    increment?: number
+    decrement?: number
+    multiply?: number
+    divide?: number
+  }
+
+  export type EventsUpdateOneRequiredWithoutTicketTypeNestedInput = {
+    create?: XOR<EventsCreateWithoutTicketTypeInput, EventsUncheckedCreateWithoutTicketTypeInput>
+    connectOrCreate?: EventsCreateOrConnectWithoutTicketTypeInput
+    upsert?: EventsUpsertWithoutTicketTypeInput
     connect?: EventsWhereUniqueInput
-    update?: XOR<XOR<EventsUpdateToOneWithWhereWithoutSeat_eventInput, EventsUpdateWithoutSeat_eventInput>, EventsUncheckedUpdateWithoutSeat_eventInput>
+    update?: XOR<XOR<EventsUpdateToOneWithWhereWithoutTicketTypeInput, EventsUpdateWithoutTicketTypeInput>, EventsUncheckedUpdateWithoutTicketTypeInput>
   }
 
   export type UsersCreateNestedOneWithoutReviews_userInput = {
@@ -20843,14 +20944,6 @@ export namespace Prisma {
     create?: XOR<EventsCreateWithoutReviews_eventInput, EventsUncheckedCreateWithoutReviews_eventInput>
     connectOrCreate?: EventsCreateOrConnectWithoutReviews_eventInput
     connect?: EventsWhereUniqueInput
-  }
-
-  export type NullableIntFieldUpdateOperationsInput = {
-    set?: number | null
-    increment?: number
-    decrement?: number
-    multiply?: number
-    divide?: number
   }
 
   export type UsersUpdateOneRequiredWithoutReviews_userNestedInput = {
@@ -21254,47 +21347,6 @@ export namespace Prisma {
     not?: NestedDateTimeNullableFilter<$PrismaModel> | Date | string | null
   }
 
-  export type NestedIntWithAggregatesFilter<$PrismaModel = never> = {
-    equals?: number | IntFieldRefInput<$PrismaModel>
-    in?: number[] | ListIntFieldRefInput<$PrismaModel>
-    notIn?: number[] | ListIntFieldRefInput<$PrismaModel>
-    lt?: number | IntFieldRefInput<$PrismaModel>
-    lte?: number | IntFieldRefInput<$PrismaModel>
-    gt?: number | IntFieldRefInput<$PrismaModel>
-    gte?: number | IntFieldRefInput<$PrismaModel>
-    not?: NestedIntWithAggregatesFilter<$PrismaModel> | number
-    _count?: NestedIntFilter<$PrismaModel>
-    _avg?: NestedFloatFilter<$PrismaModel>
-    _sum?: NestedIntFilter<$PrismaModel>
-    _min?: NestedIntFilter<$PrismaModel>
-    _max?: NestedIntFilter<$PrismaModel>
-  }
-
-  export type NestedFloatFilter<$PrismaModel = never> = {
-    equals?: number | FloatFieldRefInput<$PrismaModel>
-    in?: number[] | ListFloatFieldRefInput<$PrismaModel>
-    notIn?: number[] | ListFloatFieldRefInput<$PrismaModel>
-    lt?: number | FloatFieldRefInput<$PrismaModel>
-    lte?: number | FloatFieldRefInput<$PrismaModel>
-    gt?: number | FloatFieldRefInput<$PrismaModel>
-    gte?: number | FloatFieldRefInput<$PrismaModel>
-    not?: NestedFloatFilter<$PrismaModel> | number
-  }
-
-  export type NestedDateTimeNullableWithAggregatesFilter<$PrismaModel = never> = {
-    equals?: Date | string | DateTimeFieldRefInput<$PrismaModel> | null
-    in?: Date[] | string[] | ListDateTimeFieldRefInput<$PrismaModel> | null
-    notIn?: Date[] | string[] | ListDateTimeFieldRefInput<$PrismaModel> | null
-    lt?: Date | string | DateTimeFieldRefInput<$PrismaModel>
-    lte?: Date | string | DateTimeFieldRefInput<$PrismaModel>
-    gt?: Date | string | DateTimeFieldRefInput<$PrismaModel>
-    gte?: Date | string | DateTimeFieldRefInput<$PrismaModel>
-    not?: NestedDateTimeNullableWithAggregatesFilter<$PrismaModel> | Date | string | null
-    _count?: NestedIntNullableFilter<$PrismaModel>
-    _min?: NestedDateTimeNullableFilter<$PrismaModel>
-    _max?: NestedDateTimeNullableFilter<$PrismaModel>
-  }
-
   export type NestedIntNullableWithAggregatesFilter<$PrismaModel = never> = {
     equals?: number | IntFieldRefInput<$PrismaModel> | null
     in?: number[] | ListIntFieldRefInput<$PrismaModel> | null
@@ -21320,6 +21372,47 @@ export namespace Prisma {
     gt?: number | FloatFieldRefInput<$PrismaModel>
     gte?: number | FloatFieldRefInput<$PrismaModel>
     not?: NestedFloatNullableFilter<$PrismaModel> | number | null
+  }
+
+  export type NestedDateTimeNullableWithAggregatesFilter<$PrismaModel = never> = {
+    equals?: Date | string | DateTimeFieldRefInput<$PrismaModel> | null
+    in?: Date[] | string[] | ListDateTimeFieldRefInput<$PrismaModel> | null
+    notIn?: Date[] | string[] | ListDateTimeFieldRefInput<$PrismaModel> | null
+    lt?: Date | string | DateTimeFieldRefInput<$PrismaModel>
+    lte?: Date | string | DateTimeFieldRefInput<$PrismaModel>
+    gt?: Date | string | DateTimeFieldRefInput<$PrismaModel>
+    gte?: Date | string | DateTimeFieldRefInput<$PrismaModel>
+    not?: NestedDateTimeNullableWithAggregatesFilter<$PrismaModel> | Date | string | null
+    _count?: NestedIntNullableFilter<$PrismaModel>
+    _min?: NestedDateTimeNullableFilter<$PrismaModel>
+    _max?: NestedDateTimeNullableFilter<$PrismaModel>
+  }
+
+  export type NestedIntWithAggregatesFilter<$PrismaModel = never> = {
+    equals?: number | IntFieldRefInput<$PrismaModel>
+    in?: number[] | ListIntFieldRefInput<$PrismaModel>
+    notIn?: number[] | ListIntFieldRefInput<$PrismaModel>
+    lt?: number | IntFieldRefInput<$PrismaModel>
+    lte?: number | IntFieldRefInput<$PrismaModel>
+    gt?: number | IntFieldRefInput<$PrismaModel>
+    gte?: number | IntFieldRefInput<$PrismaModel>
+    not?: NestedIntWithAggregatesFilter<$PrismaModel> | number
+    _count?: NestedIntFilter<$PrismaModel>
+    _avg?: NestedFloatFilter<$PrismaModel>
+    _sum?: NestedIntFilter<$PrismaModel>
+    _min?: NestedIntFilter<$PrismaModel>
+    _max?: NestedIntFilter<$PrismaModel>
+  }
+
+  export type NestedFloatFilter<$PrismaModel = never> = {
+    equals?: number | FloatFieldRefInput<$PrismaModel>
+    in?: number[] | ListFloatFieldRefInput<$PrismaModel>
+    notIn?: number[] | ListFloatFieldRefInput<$PrismaModel>
+    lt?: number | FloatFieldRefInput<$PrismaModel>
+    lte?: number | FloatFieldRefInput<$PrismaModel>
+    gt?: number | FloatFieldRefInput<$PrismaModel>
+    gte?: number | FloatFieldRefInput<$PrismaModel>
+    not?: NestedFloatFilter<$PrismaModel> | number
   }
 
   export type NestedEnumStatusFilter<$PrismaModel = never> = {
@@ -21808,14 +21901,14 @@ export namespace Prisma {
     name: string
     description: string
     image?: string | null
-    price: number
+    price?: number | null
     start_date: Date | string
     end_date?: Date | string | null
     created_at?: Date | string
     updated_at?: Date | string
     category_event: Event_CategoryCreateNestedOneWithoutEventInput
     location_Event: Event_LocationCreateNestedOneWithoutEventInput
-    seat_event?: Event_SeatCreateNestedOneWithoutEventInput
+    ticketType?: TicketTypeCreateNestedManyWithoutEventInput
     reviews_event?: Event_ReviewsCreateNestedManyWithoutReviews_eventInput
     attendees_event?: Event_AttendeesCreateNestedManyWithoutUser_eventInput
     event_transactionDetail?: Transactions_detailCreateNestedManyWithoutDetail_eventInput
@@ -21828,12 +21921,12 @@ export namespace Prisma {
     name: string
     description: string
     image?: string | null
-    price: number
+    price?: number | null
     start_date: Date | string
     end_date?: Date | string | null
     created_at?: Date | string
     updated_at?: Date | string
-    seat_event?: Event_SeatUncheckedCreateNestedOneWithoutEventInput
+    ticketType?: TicketTypeUncheckedCreateNestedManyWithoutEventInput
     reviews_event?: Event_ReviewsUncheckedCreateNestedManyWithoutReviews_eventInput
     attendees_event?: Event_AttendeesUncheckedCreateNestedManyWithoutUser_eventInput
     event_transactionDetail?: Transactions_detailUncheckedCreateNestedManyWithoutDetail_eventInput
@@ -22027,7 +22120,7 @@ export namespace Prisma {
     name?: StringFilter<"Events"> | string
     description?: StringFilter<"Events"> | string
     image?: StringNullableFilter<"Events"> | string | null
-    price?: IntFilter<"Events"> | number
+    price?: IntNullableFilter<"Events"> | number | null
     start_date?: DateTimeFilter<"Events"> | Date | string
     end_date?: DateTimeNullableFilter<"Events"> | Date | string | null
     created_at?: DateTimeFilter<"Events"> | Date | string
@@ -22201,19 +22294,28 @@ export namespace Prisma {
     create: XOR<Event_LocationCreateWithoutEventInput, Event_LocationUncheckedCreateWithoutEventInput>
   }
 
-  export type Event_SeatCreateWithoutEventInput = {
+  export type TicketTypeCreateWithoutEventInput = {
     id?: string
-    total: number
+    name: string
+    price: number
+    quantity: number
   }
 
-  export type Event_SeatUncheckedCreateWithoutEventInput = {
+  export type TicketTypeUncheckedCreateWithoutEventInput = {
     id?: string
-    total: number
+    name: string
+    price: number
+    quantity: number
   }
 
-  export type Event_SeatCreateOrConnectWithoutEventInput = {
-    where: Event_SeatWhereUniqueInput
-    create: XOR<Event_SeatCreateWithoutEventInput, Event_SeatUncheckedCreateWithoutEventInput>
+  export type TicketTypeCreateOrConnectWithoutEventInput = {
+    where: TicketTypeWhereUniqueInput
+    create: XOR<TicketTypeCreateWithoutEventInput, TicketTypeUncheckedCreateWithoutEventInput>
+  }
+
+  export type TicketTypeCreateManyEventInputEnvelope = {
+    data: TicketTypeCreateManyEventInput | TicketTypeCreateManyEventInput[]
+    skipDuplicates?: boolean
   }
 
   export type Event_ReviewsCreateWithoutReviews_eventInput = {
@@ -22379,25 +22481,31 @@ export namespace Prisma {
     address?: StringFieldUpdateOperationsInput | string
   }
 
-  export type Event_SeatUpsertWithoutEventInput = {
-    update: XOR<Event_SeatUpdateWithoutEventInput, Event_SeatUncheckedUpdateWithoutEventInput>
-    create: XOR<Event_SeatCreateWithoutEventInput, Event_SeatUncheckedCreateWithoutEventInput>
-    where?: Event_SeatWhereInput
+  export type TicketTypeUpsertWithWhereUniqueWithoutEventInput = {
+    where: TicketTypeWhereUniqueInput
+    update: XOR<TicketTypeUpdateWithoutEventInput, TicketTypeUncheckedUpdateWithoutEventInput>
+    create: XOR<TicketTypeCreateWithoutEventInput, TicketTypeUncheckedCreateWithoutEventInput>
   }
 
-  export type Event_SeatUpdateToOneWithWhereWithoutEventInput = {
-    where?: Event_SeatWhereInput
-    data: XOR<Event_SeatUpdateWithoutEventInput, Event_SeatUncheckedUpdateWithoutEventInput>
+  export type TicketTypeUpdateWithWhereUniqueWithoutEventInput = {
+    where: TicketTypeWhereUniqueInput
+    data: XOR<TicketTypeUpdateWithoutEventInput, TicketTypeUncheckedUpdateWithoutEventInput>
   }
 
-  export type Event_SeatUpdateWithoutEventInput = {
-    id?: StringFieldUpdateOperationsInput | string
-    total?: IntFieldUpdateOperationsInput | number
+  export type TicketTypeUpdateManyWithWhereWithoutEventInput = {
+    where: TicketTypeScalarWhereInput
+    data: XOR<TicketTypeUpdateManyMutationInput, TicketTypeUncheckedUpdateManyWithoutEventInput>
   }
 
-  export type Event_SeatUncheckedUpdateWithoutEventInput = {
-    id?: StringFieldUpdateOperationsInput | string
-    total?: IntFieldUpdateOperationsInput | number
+  export type TicketTypeScalarWhereInput = {
+    AND?: TicketTypeScalarWhereInput | TicketTypeScalarWhereInput[]
+    OR?: TicketTypeScalarWhereInput[]
+    NOT?: TicketTypeScalarWhereInput | TicketTypeScalarWhereInput[]
+    id?: StringFilter<"TicketType"> | string
+    event_id?: StringFilter<"TicketType"> | string
+    name?: StringFilter<"TicketType"> | string
+    price?: IntFilter<"TicketType"> | number
+    quantity?: IntFilter<"TicketType"> | number
   }
 
   export type Event_ReviewsUpsertWithWhereUniqueWithoutReviews_eventInput = {
@@ -22453,14 +22561,14 @@ export namespace Prisma {
     name: string
     description: string
     image?: string | null
-    price: number
+    price?: number | null
     start_date: Date | string
     end_date?: Date | string | null
     created_at?: Date | string
     updated_at?: Date | string
     organizer: OrganizerCreateNestedOneWithoutEventInput
     location_Event: Event_LocationCreateNestedOneWithoutEventInput
-    seat_event?: Event_SeatCreateNestedOneWithoutEventInput
+    ticketType?: TicketTypeCreateNestedManyWithoutEventInput
     reviews_event?: Event_ReviewsCreateNestedManyWithoutReviews_eventInput
     attendees_event?: Event_AttendeesCreateNestedManyWithoutUser_eventInput
     event_transactionDetail?: Transactions_detailCreateNestedManyWithoutDetail_eventInput
@@ -22473,12 +22581,12 @@ export namespace Prisma {
     name: string
     description: string
     image?: string | null
-    price: number
+    price?: number | null
     start_date: Date | string
     end_date?: Date | string | null
     created_at?: Date | string
     updated_at?: Date | string
-    seat_event?: Event_SeatUncheckedCreateNestedOneWithoutEventInput
+    ticketType?: TicketTypeUncheckedCreateNestedManyWithoutEventInput
     reviews_event?: Event_ReviewsUncheckedCreateNestedManyWithoutReviews_eventInput
     attendees_event?: Event_AttendeesUncheckedCreateNestedManyWithoutUser_eventInput
     event_transactionDetail?: Transactions_detailUncheckedCreateNestedManyWithoutDetail_eventInput
@@ -22515,14 +22623,14 @@ export namespace Prisma {
     name: string
     description: string
     image?: string | null
-    price: number
+    price?: number | null
     start_date: Date | string
     end_date?: Date | string | null
     created_at?: Date | string
     updated_at?: Date | string
     organizer: OrganizerCreateNestedOneWithoutEventInput
     category_event: Event_CategoryCreateNestedOneWithoutEventInput
-    seat_event?: Event_SeatCreateNestedOneWithoutEventInput
+    ticketType?: TicketTypeCreateNestedManyWithoutEventInput
     reviews_event?: Event_ReviewsCreateNestedManyWithoutReviews_eventInput
     attendees_event?: Event_AttendeesCreateNestedManyWithoutUser_eventInput
     event_transactionDetail?: Transactions_detailCreateNestedManyWithoutDetail_eventInput
@@ -22535,12 +22643,12 @@ export namespace Prisma {
     name: string
     description: string
     image?: string | null
-    price: number
+    price?: number | null
     start_date: Date | string
     end_date?: Date | string | null
     created_at?: Date | string
     updated_at?: Date | string
-    seat_event?: Event_SeatUncheckedCreateNestedOneWithoutEventInput
+    ticketType?: TicketTypeUncheckedCreateNestedManyWithoutEventInput
     reviews_event?: Event_ReviewsUncheckedCreateNestedManyWithoutReviews_eventInput
     attendees_event?: Event_AttendeesUncheckedCreateNestedManyWithoutUser_eventInput
     event_transactionDetail?: Transactions_detailUncheckedCreateNestedManyWithoutDetail_eventInput
@@ -22572,12 +22680,12 @@ export namespace Prisma {
     data: XOR<EventsUpdateManyMutationInput, EventsUncheckedUpdateManyWithoutLocation_EventInput>
   }
 
-  export type EventsCreateWithoutSeat_eventInput = {
+  export type EventsCreateWithoutTicketTypeInput = {
     id?: string
     name: string
     description: string
     image?: string | null
-    price: number
+    price?: number | null
     start_date: Date | string
     end_date?: Date | string | null
     created_at?: Date | string
@@ -22590,7 +22698,7 @@ export namespace Prisma {
     event_transactionDetail?: Transactions_detailCreateNestedManyWithoutDetail_eventInput
   }
 
-  export type EventsUncheckedCreateWithoutSeat_eventInput = {
+  export type EventsUncheckedCreateWithoutTicketTypeInput = {
     id?: string
     organizer_id: string
     event_category_id: string
@@ -22598,7 +22706,7 @@ export namespace Prisma {
     name: string
     description: string
     image?: string | null
-    price: number
+    price?: number | null
     start_date: Date | string
     end_date?: Date | string | null
     created_at?: Date | string
@@ -22608,28 +22716,28 @@ export namespace Prisma {
     event_transactionDetail?: Transactions_detailUncheckedCreateNestedManyWithoutDetail_eventInput
   }
 
-  export type EventsCreateOrConnectWithoutSeat_eventInput = {
+  export type EventsCreateOrConnectWithoutTicketTypeInput = {
     where: EventsWhereUniqueInput
-    create: XOR<EventsCreateWithoutSeat_eventInput, EventsUncheckedCreateWithoutSeat_eventInput>
+    create: XOR<EventsCreateWithoutTicketTypeInput, EventsUncheckedCreateWithoutTicketTypeInput>
   }
 
-  export type EventsUpsertWithoutSeat_eventInput = {
-    update: XOR<EventsUpdateWithoutSeat_eventInput, EventsUncheckedUpdateWithoutSeat_eventInput>
-    create: XOR<EventsCreateWithoutSeat_eventInput, EventsUncheckedCreateWithoutSeat_eventInput>
+  export type EventsUpsertWithoutTicketTypeInput = {
+    update: XOR<EventsUpdateWithoutTicketTypeInput, EventsUncheckedUpdateWithoutTicketTypeInput>
+    create: XOR<EventsCreateWithoutTicketTypeInput, EventsUncheckedCreateWithoutTicketTypeInput>
     where?: EventsWhereInput
   }
 
-  export type EventsUpdateToOneWithWhereWithoutSeat_eventInput = {
+  export type EventsUpdateToOneWithWhereWithoutTicketTypeInput = {
     where?: EventsWhereInput
-    data: XOR<EventsUpdateWithoutSeat_eventInput, EventsUncheckedUpdateWithoutSeat_eventInput>
+    data: XOR<EventsUpdateWithoutTicketTypeInput, EventsUncheckedUpdateWithoutTicketTypeInput>
   }
 
-  export type EventsUpdateWithoutSeat_eventInput = {
+  export type EventsUpdateWithoutTicketTypeInput = {
     id?: StringFieldUpdateOperationsInput | string
     name?: StringFieldUpdateOperationsInput | string
     description?: StringFieldUpdateOperationsInput | string
     image?: NullableStringFieldUpdateOperationsInput | string | null
-    price?: IntFieldUpdateOperationsInput | number
+    price?: NullableIntFieldUpdateOperationsInput | number | null
     start_date?: DateTimeFieldUpdateOperationsInput | Date | string
     end_date?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     created_at?: DateTimeFieldUpdateOperationsInput | Date | string
@@ -22642,7 +22750,7 @@ export namespace Prisma {
     event_transactionDetail?: Transactions_detailUpdateManyWithoutDetail_eventNestedInput
   }
 
-  export type EventsUncheckedUpdateWithoutSeat_eventInput = {
+  export type EventsUncheckedUpdateWithoutTicketTypeInput = {
     id?: StringFieldUpdateOperationsInput | string
     organizer_id?: StringFieldUpdateOperationsInput | string
     event_category_id?: StringFieldUpdateOperationsInput | string
@@ -22650,7 +22758,7 @@ export namespace Prisma {
     name?: StringFieldUpdateOperationsInput | string
     description?: StringFieldUpdateOperationsInput | string
     image?: NullableStringFieldUpdateOperationsInput | string | null
-    price?: IntFieldUpdateOperationsInput | number
+    price?: NullableIntFieldUpdateOperationsInput | number | null
     start_date?: DateTimeFieldUpdateOperationsInput | Date | string
     end_date?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     created_at?: DateTimeFieldUpdateOperationsInput | Date | string
@@ -22716,7 +22824,7 @@ export namespace Prisma {
     name: string
     description: string
     image?: string | null
-    price: number
+    price?: number | null
     start_date: Date | string
     end_date?: Date | string | null
     created_at?: Date | string
@@ -22724,7 +22832,7 @@ export namespace Prisma {
     organizer: OrganizerCreateNestedOneWithoutEventInput
     category_event: Event_CategoryCreateNestedOneWithoutEventInput
     location_Event: Event_LocationCreateNestedOneWithoutEventInput
-    seat_event?: Event_SeatCreateNestedOneWithoutEventInput
+    ticketType?: TicketTypeCreateNestedManyWithoutEventInput
     attendees_event?: Event_AttendeesCreateNestedManyWithoutUser_eventInput
     event_transactionDetail?: Transactions_detailCreateNestedManyWithoutDetail_eventInput
   }
@@ -22737,12 +22845,12 @@ export namespace Prisma {
     name: string
     description: string
     image?: string | null
-    price: number
+    price?: number | null
     start_date: Date | string
     end_date?: Date | string | null
     created_at?: Date | string
     updated_at?: Date | string
-    seat_event?: Event_SeatUncheckedCreateNestedOneWithoutEventInput
+    ticketType?: TicketTypeUncheckedCreateNestedManyWithoutEventInput
     attendees_event?: Event_AttendeesUncheckedCreateNestedManyWithoutUser_eventInput
     event_transactionDetail?: Transactions_detailUncheckedCreateNestedManyWithoutDetail_eventInput
   }
@@ -22825,7 +22933,7 @@ export namespace Prisma {
     name?: StringFieldUpdateOperationsInput | string
     description?: StringFieldUpdateOperationsInput | string
     image?: NullableStringFieldUpdateOperationsInput | string | null
-    price?: IntFieldUpdateOperationsInput | number
+    price?: NullableIntFieldUpdateOperationsInput | number | null
     start_date?: DateTimeFieldUpdateOperationsInput | Date | string
     end_date?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     created_at?: DateTimeFieldUpdateOperationsInput | Date | string
@@ -22833,7 +22941,7 @@ export namespace Prisma {
     organizer?: OrganizerUpdateOneRequiredWithoutEventNestedInput
     category_event?: Event_CategoryUpdateOneRequiredWithoutEventNestedInput
     location_Event?: Event_LocationUpdateOneRequiredWithoutEventNestedInput
-    seat_event?: Event_SeatUpdateOneWithoutEventNestedInput
+    ticketType?: TicketTypeUpdateManyWithoutEventNestedInput
     attendees_event?: Event_AttendeesUpdateManyWithoutUser_eventNestedInput
     event_transactionDetail?: Transactions_detailUpdateManyWithoutDetail_eventNestedInput
   }
@@ -22846,12 +22954,12 @@ export namespace Prisma {
     name?: StringFieldUpdateOperationsInput | string
     description?: StringFieldUpdateOperationsInput | string
     image?: NullableStringFieldUpdateOperationsInput | string | null
-    price?: IntFieldUpdateOperationsInput | number
+    price?: NullableIntFieldUpdateOperationsInput | number | null
     start_date?: DateTimeFieldUpdateOperationsInput | Date | string
     end_date?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     created_at?: DateTimeFieldUpdateOperationsInput | Date | string
     updated_at?: DateTimeFieldUpdateOperationsInput | Date | string
-    seat_event?: Event_SeatUncheckedUpdateOneWithoutEventNestedInput
+    ticketType?: TicketTypeUncheckedUpdateManyWithoutEventNestedInput
     attendees_event?: Event_AttendeesUncheckedUpdateManyWithoutUser_eventNestedInput
     event_transactionDetail?: Transactions_detailUncheckedUpdateManyWithoutDetail_eventNestedInput
   }
@@ -22912,7 +23020,7 @@ export namespace Prisma {
     name: string
     description: string
     image?: string | null
-    price: number
+    price?: number | null
     start_date: Date | string
     end_date?: Date | string | null
     created_at?: Date | string
@@ -22920,7 +23028,7 @@ export namespace Prisma {
     organizer: OrganizerCreateNestedOneWithoutEventInput
     category_event: Event_CategoryCreateNestedOneWithoutEventInput
     location_Event: Event_LocationCreateNestedOneWithoutEventInput
-    seat_event?: Event_SeatCreateNestedOneWithoutEventInput
+    ticketType?: TicketTypeCreateNestedManyWithoutEventInput
     reviews_event?: Event_ReviewsCreateNestedManyWithoutReviews_eventInput
     event_transactionDetail?: Transactions_detailCreateNestedManyWithoutDetail_eventInput
   }
@@ -22933,12 +23041,12 @@ export namespace Prisma {
     name: string
     description: string
     image?: string | null
-    price: number
+    price?: number | null
     start_date: Date | string
     end_date?: Date | string | null
     created_at?: Date | string
     updated_at?: Date | string
-    seat_event?: Event_SeatUncheckedCreateNestedOneWithoutEventInput
+    ticketType?: TicketTypeUncheckedCreateNestedManyWithoutEventInput
     reviews_event?: Event_ReviewsUncheckedCreateNestedManyWithoutReviews_eventInput
     event_transactionDetail?: Transactions_detailUncheckedCreateNestedManyWithoutDetail_eventInput
   }
@@ -23021,7 +23129,7 @@ export namespace Prisma {
     name?: StringFieldUpdateOperationsInput | string
     description?: StringFieldUpdateOperationsInput | string
     image?: NullableStringFieldUpdateOperationsInput | string | null
-    price?: IntFieldUpdateOperationsInput | number
+    price?: NullableIntFieldUpdateOperationsInput | number | null
     start_date?: DateTimeFieldUpdateOperationsInput | Date | string
     end_date?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     created_at?: DateTimeFieldUpdateOperationsInput | Date | string
@@ -23029,7 +23137,7 @@ export namespace Prisma {
     organizer?: OrganizerUpdateOneRequiredWithoutEventNestedInput
     category_event?: Event_CategoryUpdateOneRequiredWithoutEventNestedInput
     location_Event?: Event_LocationUpdateOneRequiredWithoutEventNestedInput
-    seat_event?: Event_SeatUpdateOneWithoutEventNestedInput
+    ticketType?: TicketTypeUpdateManyWithoutEventNestedInput
     reviews_event?: Event_ReviewsUpdateManyWithoutReviews_eventNestedInput
     event_transactionDetail?: Transactions_detailUpdateManyWithoutDetail_eventNestedInput
   }
@@ -23042,12 +23150,12 @@ export namespace Prisma {
     name?: StringFieldUpdateOperationsInput | string
     description?: StringFieldUpdateOperationsInput | string
     image?: NullableStringFieldUpdateOperationsInput | string | null
-    price?: IntFieldUpdateOperationsInput | number
+    price?: NullableIntFieldUpdateOperationsInput | number | null
     start_date?: DateTimeFieldUpdateOperationsInput | Date | string
     end_date?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     created_at?: DateTimeFieldUpdateOperationsInput | Date | string
     updated_at?: DateTimeFieldUpdateOperationsInput | Date | string
-    seat_event?: Event_SeatUncheckedUpdateOneWithoutEventNestedInput
+    ticketType?: TicketTypeUncheckedUpdateManyWithoutEventNestedInput
     reviews_event?: Event_ReviewsUncheckedUpdateManyWithoutReviews_eventNestedInput
     event_transactionDetail?: Transactions_detailUncheckedUpdateManyWithoutDetail_eventNestedInput
   }
@@ -23630,7 +23738,7 @@ export namespace Prisma {
     name: string
     description: string
     image?: string | null
-    price: number
+    price?: number | null
     start_date: Date | string
     end_date?: Date | string | null
     created_at?: Date | string
@@ -23638,7 +23746,7 @@ export namespace Prisma {
     organizer: OrganizerCreateNestedOneWithoutEventInput
     category_event: Event_CategoryCreateNestedOneWithoutEventInput
     location_Event: Event_LocationCreateNestedOneWithoutEventInput
-    seat_event?: Event_SeatCreateNestedOneWithoutEventInput
+    ticketType?: TicketTypeCreateNestedManyWithoutEventInput
     reviews_event?: Event_ReviewsCreateNestedManyWithoutReviews_eventInput
     attendees_event?: Event_AttendeesCreateNestedManyWithoutUser_eventInput
   }
@@ -23651,12 +23759,12 @@ export namespace Prisma {
     name: string
     description: string
     image?: string | null
-    price: number
+    price?: number | null
     start_date: Date | string
     end_date?: Date | string | null
     created_at?: Date | string
     updated_at?: Date | string
-    seat_event?: Event_SeatUncheckedCreateNestedOneWithoutEventInput
+    ticketType?: TicketTypeUncheckedCreateNestedManyWithoutEventInput
     reviews_event?: Event_ReviewsUncheckedCreateNestedManyWithoutReviews_eventInput
     attendees_event?: Event_AttendeesUncheckedCreateNestedManyWithoutUser_eventInput
   }
@@ -23789,7 +23897,7 @@ export namespace Prisma {
     name?: StringFieldUpdateOperationsInput | string
     description?: StringFieldUpdateOperationsInput | string
     image?: NullableStringFieldUpdateOperationsInput | string | null
-    price?: IntFieldUpdateOperationsInput | number
+    price?: NullableIntFieldUpdateOperationsInput | number | null
     start_date?: DateTimeFieldUpdateOperationsInput | Date | string
     end_date?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     created_at?: DateTimeFieldUpdateOperationsInput | Date | string
@@ -23797,7 +23905,7 @@ export namespace Prisma {
     organizer?: OrganizerUpdateOneRequiredWithoutEventNestedInput
     category_event?: Event_CategoryUpdateOneRequiredWithoutEventNestedInput
     location_Event?: Event_LocationUpdateOneRequiredWithoutEventNestedInput
-    seat_event?: Event_SeatUpdateOneWithoutEventNestedInput
+    ticketType?: TicketTypeUpdateManyWithoutEventNestedInput
     reviews_event?: Event_ReviewsUpdateManyWithoutReviews_eventNestedInput
     attendees_event?: Event_AttendeesUpdateManyWithoutUser_eventNestedInput
   }
@@ -23810,12 +23918,12 @@ export namespace Prisma {
     name?: StringFieldUpdateOperationsInput | string
     description?: StringFieldUpdateOperationsInput | string
     image?: NullableStringFieldUpdateOperationsInput | string | null
-    price?: IntFieldUpdateOperationsInput | number
+    price?: NullableIntFieldUpdateOperationsInput | number | null
     start_date?: DateTimeFieldUpdateOperationsInput | Date | string
     end_date?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     created_at?: DateTimeFieldUpdateOperationsInput | Date | string
     updated_at?: DateTimeFieldUpdateOperationsInput | Date | string
-    seat_event?: Event_SeatUncheckedUpdateOneWithoutEventNestedInput
+    ticketType?: TicketTypeUncheckedUpdateManyWithoutEventNestedInput
     reviews_event?: Event_ReviewsUncheckedUpdateManyWithoutReviews_eventNestedInput
     attendees_event?: Event_AttendeesUncheckedUpdateManyWithoutUser_eventNestedInput
   }
@@ -24133,7 +24241,7 @@ export namespace Prisma {
     name: string
     description: string
     image?: string | null
-    price: number
+    price?: number | null
     start_date: Date | string
     end_date?: Date | string | null
     created_at?: Date | string
@@ -24176,14 +24284,14 @@ export namespace Prisma {
     name?: StringFieldUpdateOperationsInput | string
     description?: StringFieldUpdateOperationsInput | string
     image?: NullableStringFieldUpdateOperationsInput | string | null
-    price?: IntFieldUpdateOperationsInput | number
+    price?: NullableIntFieldUpdateOperationsInput | number | null
     start_date?: DateTimeFieldUpdateOperationsInput | Date | string
     end_date?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     created_at?: DateTimeFieldUpdateOperationsInput | Date | string
     updated_at?: DateTimeFieldUpdateOperationsInput | Date | string
     category_event?: Event_CategoryUpdateOneRequiredWithoutEventNestedInput
     location_Event?: Event_LocationUpdateOneRequiredWithoutEventNestedInput
-    seat_event?: Event_SeatUpdateOneWithoutEventNestedInput
+    ticketType?: TicketTypeUpdateManyWithoutEventNestedInput
     reviews_event?: Event_ReviewsUpdateManyWithoutReviews_eventNestedInput
     attendees_event?: Event_AttendeesUpdateManyWithoutUser_eventNestedInput
     event_transactionDetail?: Transactions_detailUpdateManyWithoutDetail_eventNestedInput
@@ -24196,12 +24304,12 @@ export namespace Prisma {
     name?: StringFieldUpdateOperationsInput | string
     description?: StringFieldUpdateOperationsInput | string
     image?: NullableStringFieldUpdateOperationsInput | string | null
-    price?: IntFieldUpdateOperationsInput | number
+    price?: NullableIntFieldUpdateOperationsInput | number | null
     start_date?: DateTimeFieldUpdateOperationsInput | Date | string
     end_date?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     created_at?: DateTimeFieldUpdateOperationsInput | Date | string
     updated_at?: DateTimeFieldUpdateOperationsInput | Date | string
-    seat_event?: Event_SeatUncheckedUpdateOneWithoutEventNestedInput
+    ticketType?: TicketTypeUncheckedUpdateManyWithoutEventNestedInput
     reviews_event?: Event_ReviewsUncheckedUpdateManyWithoutReviews_eventNestedInput
     attendees_event?: Event_AttendeesUncheckedUpdateManyWithoutUser_eventNestedInput
     event_transactionDetail?: Transactions_detailUncheckedUpdateManyWithoutDetail_eventNestedInput
@@ -24214,7 +24322,7 @@ export namespace Prisma {
     name?: StringFieldUpdateOperationsInput | string
     description?: StringFieldUpdateOperationsInput | string
     image?: NullableStringFieldUpdateOperationsInput | string | null
-    price?: IntFieldUpdateOperationsInput | number
+    price?: NullableIntFieldUpdateOperationsInput | number | null
     start_date?: DateTimeFieldUpdateOperationsInput | Date | string
     end_date?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     created_at?: DateTimeFieldUpdateOperationsInput | Date | string
@@ -24316,6 +24424,13 @@ export namespace Prisma {
     created_at?: DateTimeFieldUpdateOperationsInput | Date | string
   }
 
+  export type TicketTypeCreateManyEventInput = {
+    id?: string
+    name: string
+    price: number
+    quantity: number
+  }
+
   export type Event_ReviewsCreateManyReviews_eventInput = {
     id?: string
     user_id: string
@@ -24343,6 +24458,27 @@ export namespace Prisma {
     paid_at?: Date | string | null
     created_at?: Date | string
     updated_at?: Date | string
+  }
+
+  export type TicketTypeUpdateWithoutEventInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    name?: StringFieldUpdateOperationsInput | string
+    price?: IntFieldUpdateOperationsInput | number
+    quantity?: IntFieldUpdateOperationsInput | number
+  }
+
+  export type TicketTypeUncheckedUpdateWithoutEventInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    name?: StringFieldUpdateOperationsInput | string
+    price?: IntFieldUpdateOperationsInput | number
+    quantity?: IntFieldUpdateOperationsInput | number
+  }
+
+  export type TicketTypeUncheckedUpdateManyWithoutEventInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    name?: StringFieldUpdateOperationsInput | string
+    price?: IntFieldUpdateOperationsInput | number
+    quantity?: IntFieldUpdateOperationsInput | number
   }
 
   export type Event_ReviewsUpdateWithoutReviews_eventInput = {
@@ -24439,7 +24575,7 @@ export namespace Prisma {
     name: string
     description: string
     image?: string | null
-    price: number
+    price?: number | null
     start_date: Date | string
     end_date?: Date | string | null
     created_at?: Date | string
@@ -24451,14 +24587,14 @@ export namespace Prisma {
     name?: StringFieldUpdateOperationsInput | string
     description?: StringFieldUpdateOperationsInput | string
     image?: NullableStringFieldUpdateOperationsInput | string | null
-    price?: IntFieldUpdateOperationsInput | number
+    price?: NullableIntFieldUpdateOperationsInput | number | null
     start_date?: DateTimeFieldUpdateOperationsInput | Date | string
     end_date?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     created_at?: DateTimeFieldUpdateOperationsInput | Date | string
     updated_at?: DateTimeFieldUpdateOperationsInput | Date | string
     organizer?: OrganizerUpdateOneRequiredWithoutEventNestedInput
     location_Event?: Event_LocationUpdateOneRequiredWithoutEventNestedInput
-    seat_event?: Event_SeatUpdateOneWithoutEventNestedInput
+    ticketType?: TicketTypeUpdateManyWithoutEventNestedInput
     reviews_event?: Event_ReviewsUpdateManyWithoutReviews_eventNestedInput
     attendees_event?: Event_AttendeesUpdateManyWithoutUser_eventNestedInput
     event_transactionDetail?: Transactions_detailUpdateManyWithoutDetail_eventNestedInput
@@ -24471,12 +24607,12 @@ export namespace Prisma {
     name?: StringFieldUpdateOperationsInput | string
     description?: StringFieldUpdateOperationsInput | string
     image?: NullableStringFieldUpdateOperationsInput | string | null
-    price?: IntFieldUpdateOperationsInput | number
+    price?: NullableIntFieldUpdateOperationsInput | number | null
     start_date?: DateTimeFieldUpdateOperationsInput | Date | string
     end_date?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     created_at?: DateTimeFieldUpdateOperationsInput | Date | string
     updated_at?: DateTimeFieldUpdateOperationsInput | Date | string
-    seat_event?: Event_SeatUncheckedUpdateOneWithoutEventNestedInput
+    ticketType?: TicketTypeUncheckedUpdateManyWithoutEventNestedInput
     reviews_event?: Event_ReviewsUncheckedUpdateManyWithoutReviews_eventNestedInput
     attendees_event?: Event_AttendeesUncheckedUpdateManyWithoutUser_eventNestedInput
     event_transactionDetail?: Transactions_detailUncheckedUpdateManyWithoutDetail_eventNestedInput
@@ -24489,7 +24625,7 @@ export namespace Prisma {
     name?: StringFieldUpdateOperationsInput | string
     description?: StringFieldUpdateOperationsInput | string
     image?: NullableStringFieldUpdateOperationsInput | string | null
-    price?: IntFieldUpdateOperationsInput | number
+    price?: NullableIntFieldUpdateOperationsInput | number | null
     start_date?: DateTimeFieldUpdateOperationsInput | Date | string
     end_date?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     created_at?: DateTimeFieldUpdateOperationsInput | Date | string
@@ -24503,7 +24639,7 @@ export namespace Prisma {
     name: string
     description: string
     image?: string | null
-    price: number
+    price?: number | null
     start_date: Date | string
     end_date?: Date | string | null
     created_at?: Date | string
@@ -24515,14 +24651,14 @@ export namespace Prisma {
     name?: StringFieldUpdateOperationsInput | string
     description?: StringFieldUpdateOperationsInput | string
     image?: NullableStringFieldUpdateOperationsInput | string | null
-    price?: IntFieldUpdateOperationsInput | number
+    price?: NullableIntFieldUpdateOperationsInput | number | null
     start_date?: DateTimeFieldUpdateOperationsInput | Date | string
     end_date?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     created_at?: DateTimeFieldUpdateOperationsInput | Date | string
     updated_at?: DateTimeFieldUpdateOperationsInput | Date | string
     organizer?: OrganizerUpdateOneRequiredWithoutEventNestedInput
     category_event?: Event_CategoryUpdateOneRequiredWithoutEventNestedInput
-    seat_event?: Event_SeatUpdateOneWithoutEventNestedInput
+    ticketType?: TicketTypeUpdateManyWithoutEventNestedInput
     reviews_event?: Event_ReviewsUpdateManyWithoutReviews_eventNestedInput
     attendees_event?: Event_AttendeesUpdateManyWithoutUser_eventNestedInput
     event_transactionDetail?: Transactions_detailUpdateManyWithoutDetail_eventNestedInput
@@ -24535,12 +24671,12 @@ export namespace Prisma {
     name?: StringFieldUpdateOperationsInput | string
     description?: StringFieldUpdateOperationsInput | string
     image?: NullableStringFieldUpdateOperationsInput | string | null
-    price?: IntFieldUpdateOperationsInput | number
+    price?: NullableIntFieldUpdateOperationsInput | number | null
     start_date?: DateTimeFieldUpdateOperationsInput | Date | string
     end_date?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     created_at?: DateTimeFieldUpdateOperationsInput | Date | string
     updated_at?: DateTimeFieldUpdateOperationsInput | Date | string
-    seat_event?: Event_SeatUncheckedUpdateOneWithoutEventNestedInput
+    ticketType?: TicketTypeUncheckedUpdateManyWithoutEventNestedInput
     reviews_event?: Event_ReviewsUncheckedUpdateManyWithoutReviews_eventNestedInput
     attendees_event?: Event_AttendeesUncheckedUpdateManyWithoutUser_eventNestedInput
     event_transactionDetail?: Transactions_detailUncheckedUpdateManyWithoutDetail_eventNestedInput
@@ -24553,7 +24689,7 @@ export namespace Prisma {
     name?: StringFieldUpdateOperationsInput | string
     description?: StringFieldUpdateOperationsInput | string
     image?: NullableStringFieldUpdateOperationsInput | string | null
-    price?: IntFieldUpdateOperationsInput | number
+    price?: NullableIntFieldUpdateOperationsInput | number | null
     start_date?: DateTimeFieldUpdateOperationsInput | Date | string
     end_date?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     created_at?: DateTimeFieldUpdateOperationsInput | Date | string

@@ -177,10 +177,12 @@ exports.Prisma.Event_LocationScalarFieldEnum = {
   address: 'address'
 };
 
-exports.Prisma.Event_SeatScalarFieldEnum = {
+exports.Prisma.TicketTypeScalarFieldEnum = {
   id: 'id',
-  events_id: 'events_id',
-  total: 'total'
+  event_id: 'event_id',
+  name: 'name',
+  price: 'price',
+  quantity: 'quantity'
 };
 
 exports.Prisma.Event_ReviewsScalarFieldEnum = {
@@ -275,7 +277,7 @@ exports.Prisma.ModelName = {
   Events: 'Events',
   Event_Category: 'Event_Category',
   Event_Location: 'Event_Location',
-  Event_Seat: 'Event_Seat',
+  TicketType: 'TicketType',
   Event_Reviews: 'Event_Reviews',
   Event_Attendees: 'Event_Attendees',
   Referral_Code: 'Referral_Code',
