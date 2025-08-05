@@ -4,17 +4,19 @@ export const regisTemplateMail = (username: string, urlFE: string) => {
   <head>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-    <title>Simple Transactional Email</title>
+    <title>Account Verification Required</title>
     <style media="all" type="text/css">
     /* -------------------------------------
-    GLOBAL RESETS
-------------------------------------- */
+        GLOBAL RESETS
+    ------------------------------------- */
     
     body {
-      font-family: Helvetica, sans-serif;
+      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
       -webkit-font-smoothing: antialiased;
       font-size: 16px;
-      line-height: 1.3;
+      line-height: 1.4;
+      margin: 0;
+      padding: 0;
       -ms-text-size-adjust: 100%;
       -webkit-text-size-adjust: 100%;
     }
@@ -27,59 +29,68 @@ export const regisTemplateMail = (username: string, urlFE: string) => {
     }
     
     table td {
-      font-family: Helvetica, sans-serif;
+      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
       font-size: 16px;
       vertical-align: top;
     }
+    
     /* -------------------------------------
-    BODY & CONTAINER
-------------------------------------- */
+        BODY & CONTAINER
+    ------------------------------------- */
     
     body {
-      background-color: #f4f5f6;
+      background-color: #f6f9fc;
+      width: 100% !important;
+      height: 100%;
       margin: 0;
       padding: 0;
     }
     
     .body {
-      background-color: #f4f5f6;
+      background-color: #f6f9fc;
       width: 100%;
     }
     
     .container {
+      display: block;
       margin: 0 auto !important;
-      max-width: 600px;
-      padding: 0;
-      padding-top: 24px;
-      width: 600px;
+      max-width: 580px;
+      padding: 10px;
+      width: 580px;
     }
     
     .content {
       box-sizing: border-box;
       display: block;
       margin: 0 auto;
-      max-width: 600px;
-      padding: 0;
+      max-width: 580px;
+      padding: 10px;
     }
+    
     /* -------------------------------------
-    HEADER, FOOTER, MAIN
-------------------------------------- */
+        HEADER, FOOTER, MAIN
+    ------------------------------------- */
     
     .main {
       background: #ffffff;
-      border: 1px solid #eaebed;
-      border-radius: 16px;
+      border-radius: 8px;
       width: 100%;
+      box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
     }
     
     .wrapper {
       box-sizing: border-box;
-      padding: 24px;
+      padding: 32px;
+    }
+    
+    .content-block {
+      padding-bottom: 10px;
+      padding-top: 10px;
     }
     
     .footer {
       clear: both;
-      padding-top: 24px;
+      margin-top: 10px;
       text-align: center;
       width: 100%;
     }
@@ -88,34 +99,50 @@ export const regisTemplateMail = (username: string, urlFE: string) => {
     .footer p,
     .footer span,
     .footer a {
-      color: #9a9ea6;
-      font-size: 16px;
+      color: #8898aa;
+      font-size: 14px;
       text-align: center;
     }
-    /* -------------------------------------
-    TYPOGRAPHY
-------------------------------------- */
     
-    p {
-      font-family: Helvetica, sans-serif;
+    /* -------------------------------------
+        TYPOGRAPHY
+    ------------------------------------- */
+    
+    h1 {
+      color: #2d3748;
+      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+      font-weight: 600;
+      line-height: 1.4;
+      margin: 0;
+      margin-bottom: 24px;
+      font-size: 24px;
+    }
+    
+    p,
+    ul,
+    ol {
+      color: #4a5568;
+      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
       font-size: 16px;
       font-weight: normal;
       margin: 0;
       margin-bottom: 16px;
+      line-height: 1.5;
     }
     
     a {
-      color: #0867ec;
+      color: #3182ce;
       text-decoration: underline;
     }
+    
     /* -------------------------------------
-    BUTTONS
-------------------------------------- */
+        BUTTONS
+    ------------------------------------- */
     
     .btn {
       box-sizing: border-box;
-      min-width: 100% !important;
       width: 100%;
+      margin-bottom: 16px;
     }
     
     .btn > tbody > tr > td {
@@ -128,49 +155,49 @@ export const regisTemplateMail = (username: string, urlFE: string) => {
     
     .btn table td {
       background-color: #ffffff;
-      border-radius: 4px;
+      border-radius: 6px;
       text-align: center;
     }
     
     .btn a {
-      background-color: #ffffff;
-      border: solid 2px #0867ec;
-      border-radius: 4px;
+      background-color: #3182ce;
+      border: solid 1px #3182ce;
+      border-radius: 6px;
       box-sizing: border-box;
-      color: #0867ec;
+      color: #ffffff;
       cursor: pointer;
       display: inline-block;
       font-size: 16px;
-      font-weight: bold;
+      font-weight: 600;
       margin: 0;
-      padding: 12px 24px;
+      padding: 14px 28px;
       text-decoration: none;
-      text-transform: capitalize;
+      text-transform: none;
+      transition: all 0.2s ease;
     }
     
     .btn-primary table td {
-      background-color: #0867ec;
+      background-color: #3182ce;
     }
     
     .btn-primary a {
-      background-color: #0867ec;
-      border-color: #0867ec;
+      background-color: #3182ce;
+      border-color: #3182ce;
       color: #ffffff;
     }
     
-    @media all {
-      .btn-primary table td:hover {
-        background-color: #ec0867 !important;
-      }
-      .btn-primary a:hover {
-        background-color: #ec0867 !important;
-        border-color: #ec0867 !important;
-      }
+    .btn-primary table td:hover {
+      background-color: #2c5aa0 !important;
+    }
+    
+    .btn-primary a:hover {
+      background-color: #2c5aa0 !important;
+      border-color: #2c5aa0 !important;
     }
     
     /* -------------------------------------
-    OTHER STYLES THAT MIGHT BE USEFUL
-------------------------------------- */
+        OTHER STYLES THAT MIGHT BE USEFUL
+    ------------------------------------- */
     
     .last {
       margin-bottom: 0;
@@ -190,11 +217,6 @@ export const regisTemplateMail = (username: string, urlFE: string) => {
     
     .align-left {
       text-align: left;
-    }
-    
-    .text-link {
-      color: #0867ec !important;
-      text-decoration: underline !important;
     }
     
     .clear {
@@ -226,50 +248,82 @@ export const regisTemplateMail = (username: string, urlFE: string) => {
       text-decoration: none;
     }
     
-    /* -------------------------------------
-    RESPONSIVE AND MOBILE FRIENDLY STYLES
-------------------------------------- */
+    .verification-code {
+      background-color: #f7fafc;
+      border: 1px solid #e2e8f0;
+      border-radius: 4px;
+      padding: 16px;
+      margin: 16px 0;
+      text-align: center;
+      font-family: 'Courier New', monospace;
+      font-size: 18px;
+      font-weight: bold;
+      color: #2d3748;
+    }
     
-    @media only screen and (max-width: 640px) {
-      .main p,
-      .main td,
-      .main span {
+    /* -------------------------------------
+        RESPONSIVE AND MOBILE FRIENDLY STYLES
+    ------------------------------------- */
+    
+    @media only screen and (max-width: 620px) {
+      table.body h1 {
+        font-size: 28px !important;
+        margin-bottom: 10px !important;
+      }
+      
+      table.body p,
+      table.body ul,
+      table.body ol,
+      table.body td,
+      table.body span,
+      table.body a {
         font-size: 16px !important;
       }
-      .wrapper {
-        padding: 8px !important;
+      
+      table.body .wrapper,
+      table.body .article {
+        padding: 10px !important;
       }
-      .content {
+      
+      table.body .content {
         padding: 0 !important;
       }
-      .container {
+      
+      table.body .container {
         padding: 0 !important;
-        padding-top: 8px !important;
         width: 100% !important;
       }
-      .main {
+      
+      table.body .main {
         border-left-width: 0 !important;
         border-radius: 0 !important;
         border-right-width: 0 !important;
       }
-      .btn table {
-        max-width: 100% !important;
+      
+      table.body .btn table {
         width: 100% !important;
       }
-      .btn a {
-        font-size: 16px !important;
-        max-width: 100% !important;
+      
+      table.body .btn a {
         width: 100% !important;
+      }
+      
+      table.body .img-responsive {
+        height: auto !important;
+        max-width: 100% !important;
+        width: auto !important;
       }
     }
+    
     /* -------------------------------------
-    PRESERVE THESE STYLES IN THE HEAD
-------------------------------------- */
+        PRESERVE THESE STYLES IN THE HEAD
+    ------------------------------------- */
     
     @media all {
       .ExternalClass {
         width: 100%;
       }
+      
       .ExternalClass,
       .ExternalClass p,
       .ExternalClass span,
@@ -278,6 +332,7 @@ export const regisTemplateMail = (username: string, urlFE: string) => {
       .ExternalClass div {
         line-height: 100%;
       }
+      
       .apple-link a {
         color: inherit !important;
         font-family: inherit !important;
@@ -286,6 +341,7 @@ export const regisTemplateMail = (username: string, urlFE: string) => {
         line-height: inherit !important;
         text-decoration: none !important;
       }
+      
       #MessageViewBody a {
         color: inherit;
         text-decoration: none;
@@ -294,68 +350,94 @@ export const regisTemplateMail = (username: string, urlFE: string) => {
         font-weight: inherit;
         line-height: inherit;
       }
+      
+      .btn-primary table td:hover {
+        background-color: #2c5aa0 !important;
+      }
+      
+      .btn-primary a:hover {
+        background-color: #2c5aa0 !important;
+        border-color: #2c5aa0 !important;
+      }
     }
     </style>
   </head>
   <body>
+    <span class="preheader">Please verify your email address to complete your registration.</span>
     <table role="presentation" border="0" cellpadding="0" cellspacing="0" class="body">
       <tr>
         <td>&nbsp;</td>
         <td class="container">
           <div class="content">
-
             <!-- START CENTERED WHITE CONTAINER -->
-            <span class="preheader">This is preheader text. Some clients will show this text as a preview.</span>
-            <table role="presentation" border="0" cellpadding="0" cellspacing="0" class="main">
-
+            <table role="presentation" class="main">
               <!-- START MAIN CONTENT AREA -->
               <tr>
                 <td class="wrapper">
-                  <h1>Welcome, ${username}</h1>
-                  <p>Sometimes you just want to send a simple HTML email with a simple design and clear call to action. This is it.</p>
-                  <table role="presentation" border="0" cellpadding="0" cellspacing="0" class="btn btn-primary">
-                    <tbody>
-                      <tr>
-                        <td align="left">
-                          <table role="presentation" border="0" cellpadding="0" cellspacing="0">
-                            <tbody>
-                              <tr>
-                                <td> <a href="${urlFE}" target="_blank">Verify</a> </td>
-                              </tr>
-                            </tbody>
-                          </table>
-                        </td>
-                      </tr>
-                    </tbody>
+                  <table role="presentation" border="0" cellpadding="0" cellspacing="0">
+                    <tr>
+                      <td>
+                        <h1>Welcome to our platform, ${username}!</h1>
+                        <p>Thank you for creating an account with us. To complete your registration and secure your account, please verify your email address by clicking the button below.</p>
+                        
+                        <table role="presentation" border="0" cellpadding="0" cellspacing="0" class="btn btn-primary">
+                          <tbody>
+                            <tr>
+                              <td align="center">
+                                <table role="presentation" border="0" cellpadding="0" cellspacing="0">
+                                  <tbody>
+                                    <tr>
+                                      <td>
+                                        <a href="${urlFE}" target="_blank">Verify Email Address</a>
+                                      </td>
+                                    </tr>
+                                  </tbody>
+                                </table>
+                              </td>
+                            </tr>
+                          </tbody>
+                        </table>
+                        
+                        <p>If the button above doesn't work, you can also copy and paste the following link into your browser:</p>
+                        <p><a href="${urlFE}" target="_blank">${urlFE}</a></p>
+                        
+                        <p><strong>Important:</strong> This verification link will expire in 24 hours for security reasons. If you don't verify your email within this time, you'll need to request a new verification email.</p>
+                        
+                        <p>If you didn't create an account with us, please ignore this email or contact our support team if you have concerns.</p>
+                        
+                        <p>Best regards,<br>The Support Team</p>
+                      </td>
+                    </tr>
                   </table>
-                  <p>This is a really simple email template. It's sole purpose is to get the recipient to click the button with no distractions.</p>
-                  <p>Good luck! Hope it works.</p>
                 </td>
               </tr>
-
               <!-- END MAIN CONTENT AREA -->
-              </table>
+            </table>
+            <!-- END MAIN CONTENT AREA -->
 
             <!-- START FOOTER -->
             <div class="footer">
               <table role="presentation" border="0" cellpadding="0" cellspacing="0">
                 <tr>
                   <td class="content-block">
-                    <span class="apple-link">Company Inc, 7-11 Commercial Ct, Belfast BT1 2NB</span>
-                    <br> Don't like these emails? <a href="http://htmlemail.io/blog">Unsubscribe</a>.
+                    <span class="apple-link">© 2024 Your Company Name. All rights reserved.</span>
                   </td>
                 </tr>
                 <tr>
-                  <td class="content-block powered-by">
-                    Powered by <a href="http://htmlemail.io">HTMLemail.io</a>
+                  <td class="content-block">
+                    <span>Need help? <a href="mailto:support@yourcompany.com">Contact Support</a></span>
+                  </td>
+                </tr>
+                <tr>
+                  <td class="content-block">
+                    <span>Don't want to receive these emails? <a href="#">Unsubscribe</a></span>
                   </td>
                 </tr>
               </table>
             </div>
-
             <!-- END FOOTER -->
             
-<!-- END CENTERED WHITE CONTAINER --></div>
+          </div>
         </td>
         <td>&nbsp;</td>
       </tr>

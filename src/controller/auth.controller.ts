@@ -14,6 +14,30 @@ import { createToken } from "../../utils/createToken";
 class AuthController {
   public async getUserData(req: Request, res: Response, next: NextFunction) {
     try {
+      const id = res.locals.decrypt.id;
+
+      const user = await prisma.users.findUnique({
+        where: { id },
+        select: {
+          id: true,
+          first_name: true,
+          last_name: true,
+          email: true,
+          isVerified: true,
+        },
+      });
+
+      if (!user) {
+        throw new AppError("User not found", 404);
+      }
+      if (!user.isVerified) {
+        throw new AppError("Account not verified", 403);
+      }
+      res.status(200).send({
+        success: true,
+        message: "Fetch user data success",
+        data: user,
+      });
     } catch (error) {
       next(error);
     }

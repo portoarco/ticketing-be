@@ -15,7 +15,8 @@ class TransactionRouter {
   private initializeRoutes(): void {
     this.route.use(verifyToken); //arco
 
-    this.route.get("/detail", this.transactionController.getTransactionDetail); //arco
+    this.route.get("/detail", this.transactionController.getAllTransactions); //arco
+    this.route.patch("/detail", this.transactionController.getAllTransactions); //arco
   }
   public getRouter(): Router {
     return this.route;
