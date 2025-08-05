@@ -18,6 +18,7 @@ class AuthRouter {
     this.route.post("/register", regisValidator, this.authController.register); //arco
     this.route.post("/login", this.authController.login); // arco
     this.route.post("/forget-password", this.authController.forgetPass); // arco
+    this.route.get("/me", verifyToken, this.authController.getUserData);
     //
     this.route.use(verifyToken); // arco
     //
