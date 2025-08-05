@@ -1,4 +1,4 @@
-export const paymentConfirmationMail = (
+export const paymentRejectedMail = (
   transactionid: string,
   status: string,
   amount: number,
@@ -24,8 +24,8 @@ export const paymentConfirmationMail = (
   });
 
   const statusHTML =
-    status.toUpperCase() === "PAID"
-      ? `<strong style="color:#28a745;">${status}</strong>`
+    status.toUpperCase() === "REJECTED"
+      ? `<strong style="color:#d93025;">${status}</strong>`
       : `<strong>${status}</strong>`;
 
   return `<!doctype html>
@@ -33,7 +33,7 @@ export const paymentConfirmationMail = (
   <head>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-    <title>Payment Confirmation</title>
+    <title>Payment Rejection</title>
     <style media="all" type="text/css">
       body {
         font-family: Helvetica, sans-serif;
@@ -135,9 +135,9 @@ export const paymentConfirmationMail = (
               <!-- START MAIN CONTENT AREA -->
               <tr>
                 <td class="wrapper">
-                  <h1>Payment Confirmation</h1>
+                  <h1>Payment Rejected</h1>
                   <p>Hi ${fullName},</p>
-                  <p>Thank you for your payment for the event <strong>${event_name}</strong>. We have successfully received your payment with the following details:</p>
+                  <p>We regret to inform you that your payment for the event <strong>${event_name}</strong> has been <strong>rejected</strong>. Please find the details below:</p>
                   <ul>
                     <li><strong>Transaction ID:</strong> ${transactionid}</li>
                     <li><strong>Payment Date:</strong> ${paymentDate}</li>
@@ -147,9 +147,10 @@ export const paymentConfirmationMail = (
                     <li><strong>Event Dates:</strong> ${start_date} to ${end_date}</li>
                     <li><strong>Location:</strong> ${city}, ${address}</li>
                   </ul>
-                  
-                  <p>If you have any questions, feel free to contact our support team.</p>
-                  <p>Thank you for choosing our service!</p>
+                  <p>“Voucher and points have been returned to your account, and the money has been refunded to your bank account</p>
+                  </br>
+                  <p>If you believe this is an error or need assistance, please contact our support team.</p>
+                  <p>Thank you for your understanding.</p>
                 </td>
               </tr>
 
@@ -172,4 +173,5 @@ export const paymentConfirmationMail = (
   </body>
 </html>`;
 };
-export default paymentConfirmationMail;
+
+export default paymentRejectedMail;
