@@ -99,7 +99,8 @@ model TicketType {
   price    Int
   quantity Int
 
-  event Events @relation(fields: [event_id], references: [id], onDelete: Cascade)
+  event      Events      @relation(fields: [event_id], references: [id], onDelete: Cascade)
+  ticketType TicketType?
 }
 
 model Event_Reviews {
@@ -178,6 +179,7 @@ model Transactions_detail {
   user_id                     String
   event_id                    String
   organizer_id                String
+  ticketType_id               String
   quantity                    Int
   isConfirmed                 Boolean           @default(false)
   transaction_status          TransactionStatus
@@ -191,6 +193,7 @@ model Transactions_detail {
   detail_organizer            Organizer         @relation(fields: [organizer_id], references: [id], onDelete: Cascade)
   user                        Users             @relation(fields: [user_id], references: [id], onDelete: Cascade)
   transaction_voucher_details Voucher?          @relation(fields: [voucher_id], references: [id], onDelete: Cascade)
+  ticketType                  TicketType        @relation(fields: [ticketType_id], references: [id], onDelete: Cascade)
 }
 
 enum Status {
