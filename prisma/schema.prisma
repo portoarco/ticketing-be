@@ -139,6 +139,7 @@ model Referral_Usage {
   user_id            String
   referral_code_id   String
   used_at            DateTime      @default(now())
+  isUsed             Boolean       @default(false)
   code_referralUsage Referral_Code @relation(fields: [referral_code_id], references: [id], onDelete: Cascade)
   user_referralUsage Users         @relation(fields: [user_id], references: [id], onDelete: Cascade)
 }
@@ -150,6 +151,7 @@ model Voucher {
   event_id     String?
   code         String
   percentage   Int?
+  isUsed       Boolean   @default(false)
   amount       Int?
   created_at   DateTime  @default(now())
   start_date   DateTime?
