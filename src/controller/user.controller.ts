@@ -26,6 +26,7 @@ class UserController {
               organizer_name: true,
             },
           },
+          referral_user: true,
         },
       });
 
