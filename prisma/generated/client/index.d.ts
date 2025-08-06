@@ -44,10 +44,10 @@ export type Event_Category = $Result.DefaultSelection<Prisma.$Event_CategoryPayl
  */
 export type Event_Location = $Result.DefaultSelection<Prisma.$Event_LocationPayload>
 /**
- * Model Event_Seat
+ * Model TicketType
  * 
  */
-export type Event_Seat = $Result.DefaultSelection<Prisma.$Event_SeatPayload>
+export type TicketType = $Result.DefaultSelection<Prisma.$TicketTypePayload>
 /**
  * Model Event_Reviews
  * 
@@ -296,14 +296,14 @@ export class PrismaClient<
   get event_Location(): Prisma.Event_LocationDelegate<ExtArgs, ClientOptions>;
 
   /**
-   * `prisma.event_Seat`: Exposes CRUD operations for the **Event_Seat** model.
+   * `prisma.ticketType`: Exposes CRUD operations for the **TicketType** model.
     * Example usage:
     * ```ts
-    * // Fetch zero or more Event_Seats
-    * const event_Seats = await prisma.event_Seat.findMany()
+    * // Fetch zero or more TicketTypes
+    * const ticketTypes = await prisma.ticketType.findMany()
     * ```
     */
-  get event_Seat(): Prisma.Event_SeatDelegate<ExtArgs, ClientOptions>;
+  get ticketType(): Prisma.TicketTypeDelegate<ExtArgs, ClientOptions>;
 
   /**
    * `prisma.event_Reviews`: Exposes CRUD operations for the **Event_Reviews** model.
@@ -810,7 +810,7 @@ export namespace Prisma {
     Events: 'Events',
     Event_Category: 'Event_Category',
     Event_Location: 'Event_Location',
-    Event_Seat: 'Event_Seat',
+    TicketType: 'TicketType',
     Event_Reviews: 'Event_Reviews',
     Event_Attendees: 'Event_Attendees',
     Referral_Code: 'Referral_Code',
@@ -835,7 +835,7 @@ export namespace Prisma {
       omit: GlobalOmitOptions
     }
     meta: {
-      modelProps: "users" | "organizer" | "articles" | "events" | "event_Category" | "event_Location" | "event_Seat" | "event_Reviews" | "event_Attendees" | "referral_Code" | "referral_Usage" | "voucher" | "transactions_detail"
+      modelProps: "users" | "organizer" | "articles" | "events" | "event_Category" | "event_Location" | "ticketType" | "event_Reviews" | "event_Attendees" | "referral_Code" | "referral_Usage" | "voucher" | "transactions_detail"
       txIsolationLevel: Prisma.TransactionIsolationLevel
     }
     model: {
@@ -1283,77 +1283,77 @@ export namespace Prisma {
           }
         }
       }
-      Event_Seat: {
-        payload: Prisma.$Event_SeatPayload<ExtArgs>
-        fields: Prisma.Event_SeatFieldRefs
+      TicketType: {
+        payload: Prisma.$TicketTypePayload<ExtArgs>
+        fields: Prisma.TicketTypeFieldRefs
         operations: {
           findUnique: {
-            args: Prisma.Event_SeatFindUniqueArgs<ExtArgs>
-            result: $Utils.PayloadToResult<Prisma.$Event_SeatPayload> | null
+            args: Prisma.TicketTypeFindUniqueArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$TicketTypePayload> | null
           }
           findUniqueOrThrow: {
-            args: Prisma.Event_SeatFindUniqueOrThrowArgs<ExtArgs>
-            result: $Utils.PayloadToResult<Prisma.$Event_SeatPayload>
+            args: Prisma.TicketTypeFindUniqueOrThrowArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$TicketTypePayload>
           }
           findFirst: {
-            args: Prisma.Event_SeatFindFirstArgs<ExtArgs>
-            result: $Utils.PayloadToResult<Prisma.$Event_SeatPayload> | null
+            args: Prisma.TicketTypeFindFirstArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$TicketTypePayload> | null
           }
           findFirstOrThrow: {
-            args: Prisma.Event_SeatFindFirstOrThrowArgs<ExtArgs>
-            result: $Utils.PayloadToResult<Prisma.$Event_SeatPayload>
+            args: Prisma.TicketTypeFindFirstOrThrowArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$TicketTypePayload>
           }
           findMany: {
-            args: Prisma.Event_SeatFindManyArgs<ExtArgs>
-            result: $Utils.PayloadToResult<Prisma.$Event_SeatPayload>[]
+            args: Prisma.TicketTypeFindManyArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$TicketTypePayload>[]
           }
           create: {
-            args: Prisma.Event_SeatCreateArgs<ExtArgs>
-            result: $Utils.PayloadToResult<Prisma.$Event_SeatPayload>
+            args: Prisma.TicketTypeCreateArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$TicketTypePayload>
           }
           createMany: {
-            args: Prisma.Event_SeatCreateManyArgs<ExtArgs>
+            args: Prisma.TicketTypeCreateManyArgs<ExtArgs>
             result: BatchPayload
           }
           createManyAndReturn: {
-            args: Prisma.Event_SeatCreateManyAndReturnArgs<ExtArgs>
-            result: $Utils.PayloadToResult<Prisma.$Event_SeatPayload>[]
+            args: Prisma.TicketTypeCreateManyAndReturnArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$TicketTypePayload>[]
           }
           delete: {
-            args: Prisma.Event_SeatDeleteArgs<ExtArgs>
-            result: $Utils.PayloadToResult<Prisma.$Event_SeatPayload>
+            args: Prisma.TicketTypeDeleteArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$TicketTypePayload>
           }
           update: {
-            args: Prisma.Event_SeatUpdateArgs<ExtArgs>
-            result: $Utils.PayloadToResult<Prisma.$Event_SeatPayload>
+            args: Prisma.TicketTypeUpdateArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$TicketTypePayload>
           }
           deleteMany: {
-            args: Prisma.Event_SeatDeleteManyArgs<ExtArgs>
+            args: Prisma.TicketTypeDeleteManyArgs<ExtArgs>
             result: BatchPayload
           }
           updateMany: {
-            args: Prisma.Event_SeatUpdateManyArgs<ExtArgs>
+            args: Prisma.TicketTypeUpdateManyArgs<ExtArgs>
             result: BatchPayload
           }
           updateManyAndReturn: {
-            args: Prisma.Event_SeatUpdateManyAndReturnArgs<ExtArgs>
-            result: $Utils.PayloadToResult<Prisma.$Event_SeatPayload>[]
+            args: Prisma.TicketTypeUpdateManyAndReturnArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$TicketTypePayload>[]
           }
           upsert: {
-            args: Prisma.Event_SeatUpsertArgs<ExtArgs>
-            result: $Utils.PayloadToResult<Prisma.$Event_SeatPayload>
+            args: Prisma.TicketTypeUpsertArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$TicketTypePayload>
           }
           aggregate: {
-            args: Prisma.Event_SeatAggregateArgs<ExtArgs>
-            result: $Utils.Optional<AggregateEvent_Seat>
+            args: Prisma.TicketTypeAggregateArgs<ExtArgs>
+            result: $Utils.Optional<AggregateTicketType>
           }
           groupBy: {
-            args: Prisma.Event_SeatGroupByArgs<ExtArgs>
-            result: $Utils.Optional<Event_SeatGroupByOutputType>[]
+            args: Prisma.TicketTypeGroupByArgs<ExtArgs>
+            result: $Utils.Optional<TicketTypeGroupByOutputType>[]
           }
           count: {
-            args: Prisma.Event_SeatCountArgs<ExtArgs>
-            result: $Utils.Optional<Event_SeatCountAggregateOutputType> | number
+            args: Prisma.TicketTypeCountArgs<ExtArgs>
+            result: $Utils.Optional<TicketTypeCountAggregateOutputType> | number
           }
         }
       }
@@ -1899,7 +1899,7 @@ export namespace Prisma {
     events?: EventsOmit
     event_Category?: Event_CategoryOmit
     event_Location?: Event_LocationOmit
-    event_Seat?: Event_SeatOmit
+    ticketType?: TicketTypeOmit
     event_Reviews?: Event_ReviewsOmit
     event_Attendees?: Event_AttendeesOmit
     referral_Code?: Referral_CodeOmit
@@ -2005,9 +2005,8 @@ export namespace Prisma {
    */
 
   export type UsersCountOutputType = {
-    organizer: number
-    reviews_user: number
     attendees_user: number
+    reviews_user: number
     referral_user: number
     usageReferral_user: number
     transactions: number
@@ -2015,9 +2014,8 @@ export namespace Prisma {
   }
 
   export type UsersCountOutputTypeSelect<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    organizer?: boolean | UsersCountOutputTypeCountOrganizerArgs
-    reviews_user?: boolean | UsersCountOutputTypeCountReviews_userArgs
     attendees_user?: boolean | UsersCountOutputTypeCountAttendees_userArgs
+    reviews_user?: boolean | UsersCountOutputTypeCountReviews_userArgs
     referral_user?: boolean | UsersCountOutputTypeCountReferral_userArgs
     usageReferral_user?: boolean | UsersCountOutputTypeCountUsageReferral_userArgs
     transactions?: boolean | UsersCountOutputTypeCountTransactionsArgs
@@ -2038,8 +2036,8 @@ export namespace Prisma {
   /**
    * UsersCountOutputType without action
    */
-  export type UsersCountOutputTypeCountOrganizerArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    where?: OrganizerWhereInput
+  export type UsersCountOutputTypeCountAttendees_userArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    where?: Event_AttendeesWhereInput
   }
 
   /**
@@ -2047,13 +2045,6 @@ export namespace Prisma {
    */
   export type UsersCountOutputTypeCountReviews_userArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     where?: Event_ReviewsWhereInput
-  }
-
-  /**
-   * UsersCountOutputType without action
-   */
-  export type UsersCountOutputTypeCountAttendees_userArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    where?: Event_AttendeesWhereInput
   }
 
   /**
@@ -2090,17 +2081,17 @@ export namespace Prisma {
    */
 
   export type OrganizerCountOutputType = {
-    event: number
-    organizer_voucher: number
-    organizer_transactionDetails: number
     organizer_articles: number
+    event: number
+    organizer_transactionDetails: number
+    organizer_voucher: number
   }
 
   export type OrganizerCountOutputTypeSelect<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    event?: boolean | OrganizerCountOutputTypeCountEventArgs
-    organizer_voucher?: boolean | OrganizerCountOutputTypeCountOrganizer_voucherArgs
-    organizer_transactionDetails?: boolean | OrganizerCountOutputTypeCountOrganizer_transactionDetailsArgs
     organizer_articles?: boolean | OrganizerCountOutputTypeCountOrganizer_articlesArgs
+    event?: boolean | OrganizerCountOutputTypeCountEventArgs
+    organizer_transactionDetails?: boolean | OrganizerCountOutputTypeCountOrganizer_transactionDetailsArgs
+    organizer_voucher?: boolean | OrganizerCountOutputTypeCountOrganizer_voucherArgs
   }
 
   // Custom InputTypes
@@ -2117,15 +2108,15 @@ export namespace Prisma {
   /**
    * OrganizerCountOutputType without action
    */
-  export type OrganizerCountOutputTypeCountEventArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    where?: EventsWhereInput
+  export type OrganizerCountOutputTypeCountOrganizer_articlesArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    where?: ArticlesWhereInput
   }
 
   /**
    * OrganizerCountOutputType without action
    */
-  export type OrganizerCountOutputTypeCountOrganizer_voucherArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    where?: VoucherWhereInput
+  export type OrganizerCountOutputTypeCountEventArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    where?: EventsWhereInput
   }
 
   /**
@@ -2138,8 +2129,8 @@ export namespace Prisma {
   /**
    * OrganizerCountOutputType without action
    */
-  export type OrganizerCountOutputTypeCountOrganizer_articlesArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    where?: ArticlesWhereInput
+  export type OrganizerCountOutputTypeCountOrganizer_voucherArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    where?: VoucherWhereInput
   }
 
 
@@ -2148,12 +2139,16 @@ export namespace Prisma {
    */
 
   export type EventsCountOutputType = {
+    ticketType: number
+    voucher_event: number
     reviews_event: number
     attendees_event: number
     event_transactionDetail: number
   }
 
   export type EventsCountOutputTypeSelect<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    ticketType?: boolean | EventsCountOutputTypeCountTicketTypeArgs
+    voucher_event?: boolean | EventsCountOutputTypeCountVoucher_eventArgs
     reviews_event?: boolean | EventsCountOutputTypeCountReviews_eventArgs
     attendees_event?: boolean | EventsCountOutputTypeCountAttendees_eventArgs
     event_transactionDetail?: boolean | EventsCountOutputTypeCountEvent_transactionDetailArgs
@@ -2168,6 +2163,20 @@ export namespace Prisma {
      * Select specific fields to fetch from the EventsCountOutputType
      */
     select?: EventsCountOutputTypeSelect<ExtArgs> | null
+  }
+
+  /**
+   * EventsCountOutputType without action
+   */
+  export type EventsCountOutputTypeCountTicketTypeArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    where?: TicketTypeWhereInput
+  }
+
+  /**
+   * EventsCountOutputType without action
+   */
+  export type EventsCountOutputTypeCountVoucher_eventArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    where?: VoucherWhereInput
   }
 
   /**
@@ -2340,11 +2349,11 @@ export namespace Prisma {
     birthdate: Date | null
     phone_number: string | null
     avatar: string | null
-    refferal_code: string | null
-    referrer_code: string | null
     isVerified: boolean | null
     created_at: Date | null
     updated_at: Date | null
+    referrer_code: string | null
+    refferal_code: string | null
   }
 
   export type UsersMaxAggregateOutputType = {
@@ -2357,11 +2366,11 @@ export namespace Prisma {
     birthdate: Date | null
     phone_number: string | null
     avatar: string | null
-    refferal_code: string | null
-    referrer_code: string | null
     isVerified: boolean | null
     created_at: Date | null
     updated_at: Date | null
+    referrer_code: string | null
+    refferal_code: string | null
   }
 
   export type UsersCountAggregateOutputType = {
@@ -2374,11 +2383,11 @@ export namespace Prisma {
     birthdate: number
     phone_number: number
     avatar: number
-    refferal_code: number
-    referrer_code: number
     isVerified: number
     created_at: number
     updated_at: number
+    referrer_code: number
+    refferal_code: number
     _all: number
   }
 
@@ -2393,11 +2402,11 @@ export namespace Prisma {
     birthdate?: true
     phone_number?: true
     avatar?: true
-    refferal_code?: true
-    referrer_code?: true
     isVerified?: true
     created_at?: true
     updated_at?: true
+    referrer_code?: true
+    refferal_code?: true
   }
 
   export type UsersMaxAggregateInputType = {
@@ -2410,11 +2419,11 @@ export namespace Prisma {
     birthdate?: true
     phone_number?: true
     avatar?: true
-    refferal_code?: true
-    referrer_code?: true
     isVerified?: true
     created_at?: true
     updated_at?: true
+    referrer_code?: true
+    refferal_code?: true
   }
 
   export type UsersCountAggregateInputType = {
@@ -2427,11 +2436,11 @@ export namespace Prisma {
     birthdate?: true
     phone_number?: true
     avatar?: true
-    refferal_code?: true
-    referrer_code?: true
     isVerified?: true
     created_at?: true
     updated_at?: true
+    referrer_code?: true
+    refferal_code?: true
     _all?: true
   }
 
@@ -2517,11 +2526,11 @@ export namespace Prisma {
     birthdate: Date
     phone_number: string
     avatar: string | null
-    refferal_code: string | null
-    referrer_code: string | null
     isVerified: boolean
     created_at: Date
     updated_at: Date
+    referrer_code: string | null
+    refferal_code: string | null
     _count: UsersCountAggregateOutputType | null
     _min: UsersMinAggregateOutputType | null
     _max: UsersMaxAggregateOutputType | null
@@ -2551,14 +2560,14 @@ export namespace Prisma {
     birthdate?: boolean
     phone_number?: boolean
     avatar?: boolean
-    refferal_code?: boolean
-    referrer_code?: boolean
     isVerified?: boolean
     created_at?: boolean
     updated_at?: boolean
-    organizer?: boolean | Users$organizerArgs<ExtArgs>
-    reviews_user?: boolean | Users$reviews_userArgs<ExtArgs>
+    referrer_code?: boolean
+    refferal_code?: boolean
     attendees_user?: boolean | Users$attendees_userArgs<ExtArgs>
+    reviews_user?: boolean | Users$reviews_userArgs<ExtArgs>
+    organizer?: boolean | Users$organizerArgs<ExtArgs>
     referral_user?: boolean | Users$referral_userArgs<ExtArgs>
     usageReferral_user?: boolean | Users$usageReferral_userArgs<ExtArgs>
     transactions?: boolean | Users$transactionsArgs<ExtArgs>
@@ -2576,11 +2585,11 @@ export namespace Prisma {
     birthdate?: boolean
     phone_number?: boolean
     avatar?: boolean
-    refferal_code?: boolean
-    referrer_code?: boolean
     isVerified?: boolean
     created_at?: boolean
     updated_at?: boolean
+    referrer_code?: boolean
+    refferal_code?: boolean
   }, ExtArgs["result"]["users"]>
 
   export type UsersSelectUpdateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
@@ -2593,11 +2602,11 @@ export namespace Prisma {
     birthdate?: boolean
     phone_number?: boolean
     avatar?: boolean
-    refferal_code?: boolean
-    referrer_code?: boolean
     isVerified?: boolean
     created_at?: boolean
     updated_at?: boolean
+    referrer_code?: boolean
+    refferal_code?: boolean
   }, ExtArgs["result"]["users"]>
 
   export type UsersSelectScalar = {
@@ -2610,18 +2619,18 @@ export namespace Prisma {
     birthdate?: boolean
     phone_number?: boolean
     avatar?: boolean
-    refferal_code?: boolean
-    referrer_code?: boolean
     isVerified?: boolean
     created_at?: boolean
     updated_at?: boolean
+    referrer_code?: boolean
+    refferal_code?: boolean
   }
 
-  export type UsersOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "first_name" | "last_name" | "email" | "password" | "country" | "birthdate" | "phone_number" | "avatar" | "refferal_code" | "referrer_code" | "isVerified" | "created_at" | "updated_at", ExtArgs["result"]["users"]>
+  export type UsersOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "first_name" | "last_name" | "email" | "password" | "country" | "birthdate" | "phone_number" | "avatar" | "isVerified" | "created_at" | "updated_at" | "referrer_code" | "refferal_code", ExtArgs["result"]["users"]>
   export type UsersInclude<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    organizer?: boolean | Users$organizerArgs<ExtArgs>
-    reviews_user?: boolean | Users$reviews_userArgs<ExtArgs>
     attendees_user?: boolean | Users$attendees_userArgs<ExtArgs>
+    reviews_user?: boolean | Users$reviews_userArgs<ExtArgs>
+    organizer?: boolean | Users$organizerArgs<ExtArgs>
     referral_user?: boolean | Users$referral_userArgs<ExtArgs>
     usageReferral_user?: boolean | Users$usageReferral_userArgs<ExtArgs>
     transactions?: boolean | Users$transactionsArgs<ExtArgs>
@@ -2634,9 +2643,9 @@ export namespace Prisma {
   export type $UsersPayload<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     name: "Users"
     objects: {
-      organizer: Prisma.$OrganizerPayload<ExtArgs>[]
-      reviews_user: Prisma.$Event_ReviewsPayload<ExtArgs>[]
       attendees_user: Prisma.$Event_AttendeesPayload<ExtArgs>[]
+      reviews_user: Prisma.$Event_ReviewsPayload<ExtArgs>[]
+      organizer: Prisma.$OrganizerPayload<ExtArgs> | null
       referral_user: Prisma.$Referral_CodePayload<ExtArgs>[]
       usageReferral_user: Prisma.$Referral_UsagePayload<ExtArgs>[]
       transactions: Prisma.$Transactions_detailPayload<ExtArgs>[]
@@ -2652,11 +2661,11 @@ export namespace Prisma {
       birthdate: Date
       phone_number: string
       avatar: string | null
-      refferal_code: string | null
-      referrer_code: string | null
       isVerified: boolean
       created_at: Date
       updated_at: Date
+      referrer_code: string | null
+      refferal_code: string | null
     }, ExtArgs["result"]["users"]>
     composites: {}
   }
@@ -3051,9 +3060,9 @@ export namespace Prisma {
    */
   export interface Prisma__UsersClient<T, Null = never, ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs, GlobalOmitOptions = {}> extends Prisma.PrismaPromise<T> {
     readonly [Symbol.toStringTag]: "PrismaPromise"
-    organizer<T extends Users$organizerArgs<ExtArgs> = {}>(args?: Subset<T, Users$organizerArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$OrganizerPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
-    reviews_user<T extends Users$reviews_userArgs<ExtArgs> = {}>(args?: Subset<T, Users$reviews_userArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$Event_ReviewsPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
     attendees_user<T extends Users$attendees_userArgs<ExtArgs> = {}>(args?: Subset<T, Users$attendees_userArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$Event_AttendeesPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
+    reviews_user<T extends Users$reviews_userArgs<ExtArgs> = {}>(args?: Subset<T, Users$reviews_userArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$Event_ReviewsPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
+    organizer<T extends Users$organizerArgs<ExtArgs> = {}>(args?: Subset<T, Users$organizerArgs<ExtArgs>>): Prisma__OrganizerClient<$Result.GetResult<Prisma.$OrganizerPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
     referral_user<T extends Users$referral_userArgs<ExtArgs> = {}>(args?: Subset<T, Users$referral_userArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$Referral_CodePayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
     usageReferral_user<T extends Users$usageReferral_userArgs<ExtArgs> = {}>(args?: Subset<T, Users$usageReferral_userArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$Referral_UsagePayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
     transactions<T extends Users$transactionsArgs<ExtArgs> = {}>(args?: Subset<T, Users$transactionsArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$Transactions_detailPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
@@ -3096,11 +3105,11 @@ export namespace Prisma {
     readonly birthdate: FieldRef<"Users", 'DateTime'>
     readonly phone_number: FieldRef<"Users", 'String'>
     readonly avatar: FieldRef<"Users", 'String'>
-    readonly refferal_code: FieldRef<"Users", 'String'>
-    readonly referrer_code: FieldRef<"Users", 'String'>
     readonly isVerified: FieldRef<"Users", 'Boolean'>
     readonly created_at: FieldRef<"Users", 'DateTime'>
     readonly updated_at: FieldRef<"Users", 'DateTime'>
+    readonly referrer_code: FieldRef<"Users", 'String'>
+    readonly refferal_code: FieldRef<"Users", 'String'>
   }
     
 
@@ -3489,27 +3498,27 @@ export namespace Prisma {
   }
 
   /**
-   * Users.organizer
+   * Users.attendees_user
    */
-  export type Users$organizerArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+  export type Users$attendees_userArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     /**
-     * Select specific fields to fetch from the Organizer
+     * Select specific fields to fetch from the Event_Attendees
      */
-    select?: OrganizerSelect<ExtArgs> | null
+    select?: Event_AttendeesSelect<ExtArgs> | null
     /**
-     * Omit specific fields from the Organizer
+     * Omit specific fields from the Event_Attendees
      */
-    omit?: OrganizerOmit<ExtArgs> | null
+    omit?: Event_AttendeesOmit<ExtArgs> | null
     /**
      * Choose, which related nodes to fetch as well
      */
-    include?: OrganizerInclude<ExtArgs> | null
-    where?: OrganizerWhereInput
-    orderBy?: OrganizerOrderByWithRelationInput | OrganizerOrderByWithRelationInput[]
-    cursor?: OrganizerWhereUniqueInput
+    include?: Event_AttendeesInclude<ExtArgs> | null
+    where?: Event_AttendeesWhereInput
+    orderBy?: Event_AttendeesOrderByWithRelationInput | Event_AttendeesOrderByWithRelationInput[]
+    cursor?: Event_AttendeesWhereUniqueInput
     take?: number
     skip?: number
-    distinct?: OrganizerScalarFieldEnum | OrganizerScalarFieldEnum[]
+    distinct?: Event_AttendeesScalarFieldEnum | Event_AttendeesScalarFieldEnum[]
   }
 
   /**
@@ -3537,27 +3546,22 @@ export namespace Prisma {
   }
 
   /**
-   * Users.attendees_user
+   * Users.organizer
    */
-  export type Users$attendees_userArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+  export type Users$organizerArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     /**
-     * Select specific fields to fetch from the Event_Attendees
+     * Select specific fields to fetch from the Organizer
      */
-    select?: Event_AttendeesSelect<ExtArgs> | null
+    select?: OrganizerSelect<ExtArgs> | null
     /**
-     * Omit specific fields from the Event_Attendees
+     * Omit specific fields from the Organizer
      */
-    omit?: Event_AttendeesOmit<ExtArgs> | null
+    omit?: OrganizerOmit<ExtArgs> | null
     /**
      * Choose, which related nodes to fetch as well
      */
-    include?: Event_AttendeesInclude<ExtArgs> | null
-    where?: Event_AttendeesWhereInput
-    orderBy?: Event_AttendeesOrderByWithRelationInput | Event_AttendeesOrderByWithRelationInput[]
-    cursor?: Event_AttendeesWhereUniqueInput
-    take?: number
-    skip?: number
-    distinct?: Event_AttendeesScalarFieldEnum | Event_AttendeesScalarFieldEnum[]
+    include?: OrganizerInclude<ExtArgs> | null
+    where?: OrganizerWhereInput
   }
 
   /**
@@ -3823,11 +3827,11 @@ export namespace Prisma {
     id?: boolean
     user_id?: boolean
     organizer_name?: boolean
-    user?: boolean | UsersDefaultArgs<ExtArgs>
-    event?: boolean | Organizer$eventArgs<ExtArgs>
-    organizer_voucher?: boolean | Organizer$organizer_voucherArgs<ExtArgs>
-    organizer_transactionDetails?: boolean | Organizer$organizer_transactionDetailsArgs<ExtArgs>
     organizer_articles?: boolean | Organizer$organizer_articlesArgs<ExtArgs>
+    event?: boolean | Organizer$eventArgs<ExtArgs>
+    user?: boolean | UsersDefaultArgs<ExtArgs>
+    organizer_transactionDetails?: boolean | Organizer$organizer_transactionDetailsArgs<ExtArgs>
+    organizer_voucher?: boolean | Organizer$organizer_voucherArgs<ExtArgs>
     _count?: boolean | OrganizerCountOutputTypeDefaultArgs<ExtArgs>
   }, ExtArgs["result"]["organizer"]>
 
@@ -3853,11 +3857,11 @@ export namespace Prisma {
 
   export type OrganizerOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "user_id" | "organizer_name", ExtArgs["result"]["organizer"]>
   export type OrganizerInclude<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    user?: boolean | UsersDefaultArgs<ExtArgs>
-    event?: boolean | Organizer$eventArgs<ExtArgs>
-    organizer_voucher?: boolean | Organizer$organizer_voucherArgs<ExtArgs>
-    organizer_transactionDetails?: boolean | Organizer$organizer_transactionDetailsArgs<ExtArgs>
     organizer_articles?: boolean | Organizer$organizer_articlesArgs<ExtArgs>
+    event?: boolean | Organizer$eventArgs<ExtArgs>
+    user?: boolean | UsersDefaultArgs<ExtArgs>
+    organizer_transactionDetails?: boolean | Organizer$organizer_transactionDetailsArgs<ExtArgs>
+    organizer_voucher?: boolean | Organizer$organizer_voucherArgs<ExtArgs>
     _count?: boolean | OrganizerCountOutputTypeDefaultArgs<ExtArgs>
   }
   export type OrganizerIncludeCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
@@ -3870,11 +3874,11 @@ export namespace Prisma {
   export type $OrganizerPayload<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     name: "Organizer"
     objects: {
-      user: Prisma.$UsersPayload<ExtArgs>
-      event: Prisma.$EventsPayload<ExtArgs>[]
-      organizer_voucher: Prisma.$VoucherPayload<ExtArgs>[]
-      organizer_transactionDetails: Prisma.$Transactions_detailPayload<ExtArgs>[]
       organizer_articles: Prisma.$ArticlesPayload<ExtArgs>[]
+      event: Prisma.$EventsPayload<ExtArgs>[]
+      user: Prisma.$UsersPayload<ExtArgs>
+      organizer_transactionDetails: Prisma.$Transactions_detailPayload<ExtArgs>[]
+      organizer_voucher: Prisma.$VoucherPayload<ExtArgs>[]
     }
     scalars: $Extensions.GetPayloadResult<{
       id: string
@@ -4274,11 +4278,11 @@ export namespace Prisma {
    */
   export interface Prisma__OrganizerClient<T, Null = never, ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs, GlobalOmitOptions = {}> extends Prisma.PrismaPromise<T> {
     readonly [Symbol.toStringTag]: "PrismaPromise"
-    user<T extends UsersDefaultArgs<ExtArgs> = {}>(args?: Subset<T, UsersDefaultArgs<ExtArgs>>): Prisma__UsersClient<$Result.GetResult<Prisma.$UsersPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | Null, Null, ExtArgs, GlobalOmitOptions>
-    event<T extends Organizer$eventArgs<ExtArgs> = {}>(args?: Subset<T, Organizer$eventArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$EventsPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
-    organizer_voucher<T extends Organizer$organizer_voucherArgs<ExtArgs> = {}>(args?: Subset<T, Organizer$organizer_voucherArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$VoucherPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
-    organizer_transactionDetails<T extends Organizer$organizer_transactionDetailsArgs<ExtArgs> = {}>(args?: Subset<T, Organizer$organizer_transactionDetailsArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$Transactions_detailPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
     organizer_articles<T extends Organizer$organizer_articlesArgs<ExtArgs> = {}>(args?: Subset<T, Organizer$organizer_articlesArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$ArticlesPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
+    event<T extends Organizer$eventArgs<ExtArgs> = {}>(args?: Subset<T, Organizer$eventArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$EventsPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
+    user<T extends UsersDefaultArgs<ExtArgs> = {}>(args?: Subset<T, UsersDefaultArgs<ExtArgs>>): Prisma__UsersClient<$Result.GetResult<Prisma.$UsersPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | Null, Null, ExtArgs, GlobalOmitOptions>
+    organizer_transactionDetails<T extends Organizer$organizer_transactionDetailsArgs<ExtArgs> = {}>(args?: Subset<T, Organizer$organizer_transactionDetailsArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$Transactions_detailPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
+    organizer_voucher<T extends Organizer$organizer_voucherArgs<ExtArgs> = {}>(args?: Subset<T, Organizer$organizer_voucherArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$VoucherPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
     /**
      * Attaches callbacks for the resolution and/or rejection of the Promise.
      * @param onfulfilled The callback to execute when the Promise is resolved.
@@ -4707,6 +4711,30 @@ export namespace Prisma {
   }
 
   /**
+   * Organizer.organizer_articles
+   */
+  export type Organizer$organizer_articlesArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Articles
+     */
+    select?: ArticlesSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the Articles
+     */
+    omit?: ArticlesOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: ArticlesInclude<ExtArgs> | null
+    where?: ArticlesWhereInput
+    orderBy?: ArticlesOrderByWithRelationInput | ArticlesOrderByWithRelationInput[]
+    cursor?: ArticlesWhereUniqueInput
+    take?: number
+    skip?: number
+    distinct?: ArticlesScalarFieldEnum | ArticlesScalarFieldEnum[]
+  }
+
+  /**
    * Organizer.event
    */
   export type Organizer$eventArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
@@ -4728,30 +4756,6 @@ export namespace Prisma {
     take?: number
     skip?: number
     distinct?: EventsScalarFieldEnum | EventsScalarFieldEnum[]
-  }
-
-  /**
-   * Organizer.organizer_voucher
-   */
-  export type Organizer$organizer_voucherArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    /**
-     * Select specific fields to fetch from the Voucher
-     */
-    select?: VoucherSelect<ExtArgs> | null
-    /**
-     * Omit specific fields from the Voucher
-     */
-    omit?: VoucherOmit<ExtArgs> | null
-    /**
-     * Choose, which related nodes to fetch as well
-     */
-    include?: VoucherInclude<ExtArgs> | null
-    where?: VoucherWhereInput
-    orderBy?: VoucherOrderByWithRelationInput | VoucherOrderByWithRelationInput[]
-    cursor?: VoucherWhereUniqueInput
-    take?: number
-    skip?: number
-    distinct?: VoucherScalarFieldEnum | VoucherScalarFieldEnum[]
   }
 
   /**
@@ -4779,27 +4783,27 @@ export namespace Prisma {
   }
 
   /**
-   * Organizer.organizer_articles
+   * Organizer.organizer_voucher
    */
-  export type Organizer$organizer_articlesArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+  export type Organizer$organizer_voucherArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     /**
-     * Select specific fields to fetch from the Articles
+     * Select specific fields to fetch from the Voucher
      */
-    select?: ArticlesSelect<ExtArgs> | null
+    select?: VoucherSelect<ExtArgs> | null
     /**
-     * Omit specific fields from the Articles
+     * Omit specific fields from the Voucher
      */
-    omit?: ArticlesOmit<ExtArgs> | null
+    omit?: VoucherOmit<ExtArgs> | null
     /**
      * Choose, which related nodes to fetch as well
      */
-    include?: ArticlesInclude<ExtArgs> | null
-    where?: ArticlesWhereInput
-    orderBy?: ArticlesOrderByWithRelationInput | ArticlesOrderByWithRelationInput[]
-    cursor?: ArticlesWhereUniqueInput
+    include?: VoucherInclude<ExtArgs> | null
+    where?: VoucherWhereInput
+    orderBy?: VoucherOrderByWithRelationInput | VoucherOrderByWithRelationInput[]
+    cursor?: VoucherWhereUniqueInput
     take?: number
     skip?: number
-    distinct?: ArticlesScalarFieldEnum | ArticlesScalarFieldEnum[]
+    distinct?: VoucherScalarFieldEnum | VoucherScalarFieldEnum[]
   }
 
   /**
@@ -6081,7 +6085,7 @@ export namespace Prisma {
     name: string
     description: string
     image: string | null
-    price: number
+    price: number | null
     start_date: Date
     end_date: Date | null
     created_at: Date
@@ -6123,7 +6127,8 @@ export namespace Prisma {
     organizer?: boolean | OrganizerDefaultArgs<ExtArgs>
     category_event?: boolean | Event_CategoryDefaultArgs<ExtArgs>
     location_Event?: boolean | Event_LocationDefaultArgs<ExtArgs>
-    seat_event?: boolean | Events$seat_eventArgs<ExtArgs>
+    ticketType?: boolean | Events$ticketTypeArgs<ExtArgs>
+    voucher_event?: boolean | Events$voucher_eventArgs<ExtArgs>
     reviews_event?: boolean | Events$reviews_eventArgs<ExtArgs>
     attendees_event?: boolean | Events$attendees_eventArgs<ExtArgs>
     event_transactionDetail?: boolean | Events$event_transactionDetailArgs<ExtArgs>
@@ -6186,7 +6191,8 @@ export namespace Prisma {
     organizer?: boolean | OrganizerDefaultArgs<ExtArgs>
     category_event?: boolean | Event_CategoryDefaultArgs<ExtArgs>
     location_Event?: boolean | Event_LocationDefaultArgs<ExtArgs>
-    seat_event?: boolean | Events$seat_eventArgs<ExtArgs>
+    ticketType?: boolean | Events$ticketTypeArgs<ExtArgs>
+    voucher_event?: boolean | Events$voucher_eventArgs<ExtArgs>
     reviews_event?: boolean | Events$reviews_eventArgs<ExtArgs>
     attendees_event?: boolean | Events$attendees_eventArgs<ExtArgs>
     event_transactionDetail?: boolean | Events$event_transactionDetailArgs<ExtArgs>
@@ -6209,7 +6215,8 @@ export namespace Prisma {
       organizer: Prisma.$OrganizerPayload<ExtArgs>
       category_event: Prisma.$Event_CategoryPayload<ExtArgs>
       location_Event: Prisma.$Event_LocationPayload<ExtArgs>
-      seat_event: Prisma.$Event_SeatPayload<ExtArgs> | null
+      ticketType: Prisma.$TicketTypePayload<ExtArgs>[]
+      voucher_event: Prisma.$VoucherPayload<ExtArgs>[]
       reviews_event: Prisma.$Event_ReviewsPayload<ExtArgs>[]
       attendees_event: Prisma.$Event_AttendeesPayload<ExtArgs>[]
       event_transactionDetail: Prisma.$Transactions_detailPayload<ExtArgs>[]
@@ -6222,7 +6229,7 @@ export namespace Prisma {
       name: string
       description: string
       image: string | null
-      price: number
+      price: number | null
       start_date: Date
       end_date: Date | null
       created_at: Date
@@ -6624,7 +6631,8 @@ export namespace Prisma {
     organizer<T extends OrganizerDefaultArgs<ExtArgs> = {}>(args?: Subset<T, OrganizerDefaultArgs<ExtArgs>>): Prisma__OrganizerClient<$Result.GetResult<Prisma.$OrganizerPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | Null, Null, ExtArgs, GlobalOmitOptions>
     category_event<T extends Event_CategoryDefaultArgs<ExtArgs> = {}>(args?: Subset<T, Event_CategoryDefaultArgs<ExtArgs>>): Prisma__Event_CategoryClient<$Result.GetResult<Prisma.$Event_CategoryPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | Null, Null, ExtArgs, GlobalOmitOptions>
     location_Event<T extends Event_LocationDefaultArgs<ExtArgs> = {}>(args?: Subset<T, Event_LocationDefaultArgs<ExtArgs>>): Prisma__Event_LocationClient<$Result.GetResult<Prisma.$Event_LocationPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | Null, Null, ExtArgs, GlobalOmitOptions>
-    seat_event<T extends Events$seat_eventArgs<ExtArgs> = {}>(args?: Subset<T, Events$seat_eventArgs<ExtArgs>>): Prisma__Event_SeatClient<$Result.GetResult<Prisma.$Event_SeatPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
+    ticketType<T extends Events$ticketTypeArgs<ExtArgs> = {}>(args?: Subset<T, Events$ticketTypeArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$TicketTypePayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
+    voucher_event<T extends Events$voucher_eventArgs<ExtArgs> = {}>(args?: Subset<T, Events$voucher_eventArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$VoucherPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
     reviews_event<T extends Events$reviews_eventArgs<ExtArgs> = {}>(args?: Subset<T, Events$reviews_eventArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$Event_ReviewsPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
     attendees_event<T extends Events$attendees_eventArgs<ExtArgs> = {}>(args?: Subset<T, Events$attendees_eventArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$Event_AttendeesPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
     event_transactionDetail<T extends Events$event_transactionDetailArgs<ExtArgs> = {}>(args?: Subset<T, Events$event_transactionDetailArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$Transactions_detailPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
@@ -7065,22 +7073,51 @@ export namespace Prisma {
   }
 
   /**
-   * Events.seat_event
+   * Events.ticketType
    */
-  export type Events$seat_eventArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+  export type Events$ticketTypeArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     /**
-     * Select specific fields to fetch from the Event_Seat
+     * Select specific fields to fetch from the TicketType
      */
-    select?: Event_SeatSelect<ExtArgs> | null
+    select?: TicketTypeSelect<ExtArgs> | null
     /**
-     * Omit specific fields from the Event_Seat
+     * Omit specific fields from the TicketType
      */
-    omit?: Event_SeatOmit<ExtArgs> | null
+    omit?: TicketTypeOmit<ExtArgs> | null
     /**
      * Choose, which related nodes to fetch as well
      */
-    include?: Event_SeatInclude<ExtArgs> | null
-    where?: Event_SeatWhereInput
+    include?: TicketTypeInclude<ExtArgs> | null
+    where?: TicketTypeWhereInput
+    orderBy?: TicketTypeOrderByWithRelationInput | TicketTypeOrderByWithRelationInput[]
+    cursor?: TicketTypeWhereUniqueInput
+    take?: number
+    skip?: number
+    distinct?: TicketTypeScalarFieldEnum | TicketTypeScalarFieldEnum[]
+  }
+
+  /**
+   * Events.voucher_event
+   */
+  export type Events$voucher_eventArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Voucher
+     */
+    select?: VoucherSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the Voucher
+     */
+    omit?: VoucherOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: VoucherInclude<ExtArgs> | null
+    where?: VoucherWhereInput
+    orderBy?: VoucherOrderByWithRelationInput | VoucherOrderByWithRelationInput[]
+    cursor?: VoucherWhereUniqueInput
+    take?: number
+    skip?: number
+    distinct?: VoucherScalarFieldEnum | VoucherScalarFieldEnum[]
   }
 
   /**
@@ -9263,360 +9300,388 @@ export namespace Prisma {
 
 
   /**
-   * Model Event_Seat
+   * Model TicketType
    */
 
-  export type AggregateEvent_Seat = {
-    _count: Event_SeatCountAggregateOutputType | null
-    _avg: Event_SeatAvgAggregateOutputType | null
-    _sum: Event_SeatSumAggregateOutputType | null
-    _min: Event_SeatMinAggregateOutputType | null
-    _max: Event_SeatMaxAggregateOutputType | null
+  export type AggregateTicketType = {
+    _count: TicketTypeCountAggregateOutputType | null
+    _avg: TicketTypeAvgAggregateOutputType | null
+    _sum: TicketTypeSumAggregateOutputType | null
+    _min: TicketTypeMinAggregateOutputType | null
+    _max: TicketTypeMaxAggregateOutputType | null
   }
 
-  export type Event_SeatAvgAggregateOutputType = {
-    total: number | null
+  export type TicketTypeAvgAggregateOutputType = {
+    price: number | null
+    quantity: number | null
   }
 
-  export type Event_SeatSumAggregateOutputType = {
-    total: number | null
+  export type TicketTypeSumAggregateOutputType = {
+    price: number | null
+    quantity: number | null
   }
 
-  export type Event_SeatMinAggregateOutputType = {
+  export type TicketTypeMinAggregateOutputType = {
     id: string | null
-    events_id: string | null
-    total: number | null
+    event_id: string | null
+    name: string | null
+    price: number | null
+    quantity: number | null
   }
 
-  export type Event_SeatMaxAggregateOutputType = {
+  export type TicketTypeMaxAggregateOutputType = {
     id: string | null
-    events_id: string | null
-    total: number | null
+    event_id: string | null
+    name: string | null
+    price: number | null
+    quantity: number | null
   }
 
-  export type Event_SeatCountAggregateOutputType = {
+  export type TicketTypeCountAggregateOutputType = {
     id: number
-    events_id: number
-    total: number
+    event_id: number
+    name: number
+    price: number
+    quantity: number
     _all: number
   }
 
 
-  export type Event_SeatAvgAggregateInputType = {
-    total?: true
+  export type TicketTypeAvgAggregateInputType = {
+    price?: true
+    quantity?: true
   }
 
-  export type Event_SeatSumAggregateInputType = {
-    total?: true
+  export type TicketTypeSumAggregateInputType = {
+    price?: true
+    quantity?: true
   }
 
-  export type Event_SeatMinAggregateInputType = {
+  export type TicketTypeMinAggregateInputType = {
     id?: true
-    events_id?: true
-    total?: true
+    event_id?: true
+    name?: true
+    price?: true
+    quantity?: true
   }
 
-  export type Event_SeatMaxAggregateInputType = {
+  export type TicketTypeMaxAggregateInputType = {
     id?: true
-    events_id?: true
-    total?: true
+    event_id?: true
+    name?: true
+    price?: true
+    quantity?: true
   }
 
-  export type Event_SeatCountAggregateInputType = {
+  export type TicketTypeCountAggregateInputType = {
     id?: true
-    events_id?: true
-    total?: true
+    event_id?: true
+    name?: true
+    price?: true
+    quantity?: true
     _all?: true
   }
 
-  export type Event_SeatAggregateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+  export type TicketTypeAggregateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     /**
-     * Filter which Event_Seat to aggregate.
+     * Filter which TicketType to aggregate.
      */
-    where?: Event_SeatWhereInput
+    where?: TicketTypeWhereInput
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
      * 
-     * Determine the order of Event_Seats to fetch.
+     * Determine the order of TicketTypes to fetch.
      */
-    orderBy?: Event_SeatOrderByWithRelationInput | Event_SeatOrderByWithRelationInput[]
+    orderBy?: TicketTypeOrderByWithRelationInput | TicketTypeOrderByWithRelationInput[]
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
      * 
      * Sets the start position
      */
-    cursor?: Event_SeatWhereUniqueInput
+    cursor?: TicketTypeWhereUniqueInput
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
      * 
-     * Take `±n` Event_Seats from the position of the cursor.
+     * Take `±n` TicketTypes from the position of the cursor.
      */
     take?: number
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
      * 
-     * Skip the first `n` Event_Seats.
+     * Skip the first `n` TicketTypes.
      */
     skip?: number
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
      * 
-     * Count returned Event_Seats
+     * Count returned TicketTypes
     **/
-    _count?: true | Event_SeatCountAggregateInputType
+    _count?: true | TicketTypeCountAggregateInputType
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
      * 
      * Select which fields to average
     **/
-    _avg?: Event_SeatAvgAggregateInputType
+    _avg?: TicketTypeAvgAggregateInputType
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
      * 
      * Select which fields to sum
     **/
-    _sum?: Event_SeatSumAggregateInputType
+    _sum?: TicketTypeSumAggregateInputType
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
      * 
      * Select which fields to find the minimum value
     **/
-    _min?: Event_SeatMinAggregateInputType
+    _min?: TicketTypeMinAggregateInputType
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
      * 
      * Select which fields to find the maximum value
     **/
-    _max?: Event_SeatMaxAggregateInputType
+    _max?: TicketTypeMaxAggregateInputType
   }
 
-  export type GetEvent_SeatAggregateType<T extends Event_SeatAggregateArgs> = {
-        [P in keyof T & keyof AggregateEvent_Seat]: P extends '_count' | 'count'
+  export type GetTicketTypeAggregateType<T extends TicketTypeAggregateArgs> = {
+        [P in keyof T & keyof AggregateTicketType]: P extends '_count' | 'count'
       ? T[P] extends true
         ? number
-        : GetScalarType<T[P], AggregateEvent_Seat[P]>
-      : GetScalarType<T[P], AggregateEvent_Seat[P]>
+        : GetScalarType<T[P], AggregateTicketType[P]>
+      : GetScalarType<T[P], AggregateTicketType[P]>
   }
 
 
 
 
-  export type Event_SeatGroupByArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    where?: Event_SeatWhereInput
-    orderBy?: Event_SeatOrderByWithAggregationInput | Event_SeatOrderByWithAggregationInput[]
-    by: Event_SeatScalarFieldEnum[] | Event_SeatScalarFieldEnum
-    having?: Event_SeatScalarWhereWithAggregatesInput
+  export type TicketTypeGroupByArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    where?: TicketTypeWhereInput
+    orderBy?: TicketTypeOrderByWithAggregationInput | TicketTypeOrderByWithAggregationInput[]
+    by: TicketTypeScalarFieldEnum[] | TicketTypeScalarFieldEnum
+    having?: TicketTypeScalarWhereWithAggregatesInput
     take?: number
     skip?: number
-    _count?: Event_SeatCountAggregateInputType | true
-    _avg?: Event_SeatAvgAggregateInputType
-    _sum?: Event_SeatSumAggregateInputType
-    _min?: Event_SeatMinAggregateInputType
-    _max?: Event_SeatMaxAggregateInputType
+    _count?: TicketTypeCountAggregateInputType | true
+    _avg?: TicketTypeAvgAggregateInputType
+    _sum?: TicketTypeSumAggregateInputType
+    _min?: TicketTypeMinAggregateInputType
+    _max?: TicketTypeMaxAggregateInputType
   }
 
-  export type Event_SeatGroupByOutputType = {
+  export type TicketTypeGroupByOutputType = {
     id: string
-    events_id: string
-    total: number
-    _count: Event_SeatCountAggregateOutputType | null
-    _avg: Event_SeatAvgAggregateOutputType | null
-    _sum: Event_SeatSumAggregateOutputType | null
-    _min: Event_SeatMinAggregateOutputType | null
-    _max: Event_SeatMaxAggregateOutputType | null
+    event_id: string
+    name: string
+    price: number
+    quantity: number
+    _count: TicketTypeCountAggregateOutputType | null
+    _avg: TicketTypeAvgAggregateOutputType | null
+    _sum: TicketTypeSumAggregateOutputType | null
+    _min: TicketTypeMinAggregateOutputType | null
+    _max: TicketTypeMaxAggregateOutputType | null
   }
 
-  type GetEvent_SeatGroupByPayload<T extends Event_SeatGroupByArgs> = Prisma.PrismaPromise<
+  type GetTicketTypeGroupByPayload<T extends TicketTypeGroupByArgs> = Prisma.PrismaPromise<
     Array<
-      PickEnumerable<Event_SeatGroupByOutputType, T['by']> &
+      PickEnumerable<TicketTypeGroupByOutputType, T['by']> &
         {
-          [P in ((keyof T) & (keyof Event_SeatGroupByOutputType))]: P extends '_count'
+          [P in ((keyof T) & (keyof TicketTypeGroupByOutputType))]: P extends '_count'
             ? T[P] extends boolean
               ? number
-              : GetScalarType<T[P], Event_SeatGroupByOutputType[P]>
-            : GetScalarType<T[P], Event_SeatGroupByOutputType[P]>
+              : GetScalarType<T[P], TicketTypeGroupByOutputType[P]>
+            : GetScalarType<T[P], TicketTypeGroupByOutputType[P]>
         }
       >
     >
 
 
-  export type Event_SeatSelect<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
+  export type TicketTypeSelect<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
     id?: boolean
-    events_id?: boolean
-    total?: boolean
+    event_id?: boolean
+    name?: boolean
+    price?: boolean
+    quantity?: boolean
     event?: boolean | EventsDefaultArgs<ExtArgs>
-  }, ExtArgs["result"]["event_Seat"]>
+  }, ExtArgs["result"]["ticketType"]>
 
-  export type Event_SeatSelectCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
+  export type TicketTypeSelectCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
     id?: boolean
-    events_id?: boolean
-    total?: boolean
+    event_id?: boolean
+    name?: boolean
+    price?: boolean
+    quantity?: boolean
     event?: boolean | EventsDefaultArgs<ExtArgs>
-  }, ExtArgs["result"]["event_Seat"]>
+  }, ExtArgs["result"]["ticketType"]>
 
-  export type Event_SeatSelectUpdateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
+  export type TicketTypeSelectUpdateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
     id?: boolean
-    events_id?: boolean
-    total?: boolean
+    event_id?: boolean
+    name?: boolean
+    price?: boolean
+    quantity?: boolean
     event?: boolean | EventsDefaultArgs<ExtArgs>
-  }, ExtArgs["result"]["event_Seat"]>
+  }, ExtArgs["result"]["ticketType"]>
 
-  export type Event_SeatSelectScalar = {
+  export type TicketTypeSelectScalar = {
     id?: boolean
-    events_id?: boolean
-    total?: boolean
+    event_id?: boolean
+    name?: boolean
+    price?: boolean
+    quantity?: boolean
   }
 
-  export type Event_SeatOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "events_id" | "total", ExtArgs["result"]["event_Seat"]>
-  export type Event_SeatInclude<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+  export type TicketTypeOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "event_id" | "name" | "price" | "quantity", ExtArgs["result"]["ticketType"]>
+  export type TicketTypeInclude<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     event?: boolean | EventsDefaultArgs<ExtArgs>
   }
-  export type Event_SeatIncludeCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+  export type TicketTypeIncludeCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     event?: boolean | EventsDefaultArgs<ExtArgs>
   }
-  export type Event_SeatIncludeUpdateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+  export type TicketTypeIncludeUpdateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     event?: boolean | EventsDefaultArgs<ExtArgs>
   }
 
-  export type $Event_SeatPayload<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    name: "Event_Seat"
+  export type $TicketTypePayload<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    name: "TicketType"
     objects: {
       event: Prisma.$EventsPayload<ExtArgs>
     }
     scalars: $Extensions.GetPayloadResult<{
       id: string
-      events_id: string
-      total: number
-    }, ExtArgs["result"]["event_Seat"]>
+      event_id: string
+      name: string
+      price: number
+      quantity: number
+    }, ExtArgs["result"]["ticketType"]>
     composites: {}
   }
 
-  type Event_SeatGetPayload<S extends boolean | null | undefined | Event_SeatDefaultArgs> = $Result.GetResult<Prisma.$Event_SeatPayload, S>
+  type TicketTypeGetPayload<S extends boolean | null | undefined | TicketTypeDefaultArgs> = $Result.GetResult<Prisma.$TicketTypePayload, S>
 
-  type Event_SeatCountArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> =
-    Omit<Event_SeatFindManyArgs, 'select' | 'include' | 'distinct' | 'omit'> & {
-      select?: Event_SeatCountAggregateInputType | true
+  type TicketTypeCountArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> =
+    Omit<TicketTypeFindManyArgs, 'select' | 'include' | 'distinct' | 'omit'> & {
+      select?: TicketTypeCountAggregateInputType | true
     }
 
-  export interface Event_SeatDelegate<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs, GlobalOmitOptions = {}> {
-    [K: symbol]: { types: Prisma.TypeMap<ExtArgs>['model']['Event_Seat'], meta: { name: 'Event_Seat' } }
+  export interface TicketTypeDelegate<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs, GlobalOmitOptions = {}> {
+    [K: symbol]: { types: Prisma.TypeMap<ExtArgs>['model']['TicketType'], meta: { name: 'TicketType' } }
     /**
-     * Find zero or one Event_Seat that matches the filter.
-     * @param {Event_SeatFindUniqueArgs} args - Arguments to find a Event_Seat
+     * Find zero or one TicketType that matches the filter.
+     * @param {TicketTypeFindUniqueArgs} args - Arguments to find a TicketType
      * @example
-     * // Get one Event_Seat
-     * const event_Seat = await prisma.event_Seat.findUnique({
+     * // Get one TicketType
+     * const ticketType = await prisma.ticketType.findUnique({
      *   where: {
      *     // ... provide filter here
      *   }
      * })
      */
-    findUnique<T extends Event_SeatFindUniqueArgs>(args: SelectSubset<T, Event_SeatFindUniqueArgs<ExtArgs>>): Prisma__Event_SeatClient<$Result.GetResult<Prisma.$Event_SeatPayload<ExtArgs>, T, "findUnique", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
+    findUnique<T extends TicketTypeFindUniqueArgs>(args: SelectSubset<T, TicketTypeFindUniqueArgs<ExtArgs>>): Prisma__TicketTypeClient<$Result.GetResult<Prisma.$TicketTypePayload<ExtArgs>, T, "findUnique", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
 
     /**
-     * Find one Event_Seat that matches the filter or throw an error with `error.code='P2025'`
+     * Find one TicketType that matches the filter or throw an error with `error.code='P2025'`
      * if no matches were found.
-     * @param {Event_SeatFindUniqueOrThrowArgs} args - Arguments to find a Event_Seat
+     * @param {TicketTypeFindUniqueOrThrowArgs} args - Arguments to find a TicketType
      * @example
-     * // Get one Event_Seat
-     * const event_Seat = await prisma.event_Seat.findUniqueOrThrow({
+     * // Get one TicketType
+     * const ticketType = await prisma.ticketType.findUniqueOrThrow({
      *   where: {
      *     // ... provide filter here
      *   }
      * })
      */
-    findUniqueOrThrow<T extends Event_SeatFindUniqueOrThrowArgs>(args: SelectSubset<T, Event_SeatFindUniqueOrThrowArgs<ExtArgs>>): Prisma__Event_SeatClient<$Result.GetResult<Prisma.$Event_SeatPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+    findUniqueOrThrow<T extends TicketTypeFindUniqueOrThrowArgs>(args: SelectSubset<T, TicketTypeFindUniqueOrThrowArgs<ExtArgs>>): Prisma__TicketTypeClient<$Result.GetResult<Prisma.$TicketTypePayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
 
     /**
-     * Find the first Event_Seat that matches the filter.
+     * Find the first TicketType that matches the filter.
      * Note, that providing `undefined` is treated as the value not being there.
      * Read more here: https://pris.ly/d/null-undefined
-     * @param {Event_SeatFindFirstArgs} args - Arguments to find a Event_Seat
+     * @param {TicketTypeFindFirstArgs} args - Arguments to find a TicketType
      * @example
-     * // Get one Event_Seat
-     * const event_Seat = await prisma.event_Seat.findFirst({
+     * // Get one TicketType
+     * const ticketType = await prisma.ticketType.findFirst({
      *   where: {
      *     // ... provide filter here
      *   }
      * })
      */
-    findFirst<T extends Event_SeatFindFirstArgs>(args?: SelectSubset<T, Event_SeatFindFirstArgs<ExtArgs>>): Prisma__Event_SeatClient<$Result.GetResult<Prisma.$Event_SeatPayload<ExtArgs>, T, "findFirst", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
+    findFirst<T extends TicketTypeFindFirstArgs>(args?: SelectSubset<T, TicketTypeFindFirstArgs<ExtArgs>>): Prisma__TicketTypeClient<$Result.GetResult<Prisma.$TicketTypePayload<ExtArgs>, T, "findFirst", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
 
     /**
-     * Find the first Event_Seat that matches the filter or
+     * Find the first TicketType that matches the filter or
      * throw `PrismaKnownClientError` with `P2025` code if no matches were found.
      * Note, that providing `undefined` is treated as the value not being there.
      * Read more here: https://pris.ly/d/null-undefined
-     * @param {Event_SeatFindFirstOrThrowArgs} args - Arguments to find a Event_Seat
+     * @param {TicketTypeFindFirstOrThrowArgs} args - Arguments to find a TicketType
      * @example
-     * // Get one Event_Seat
-     * const event_Seat = await prisma.event_Seat.findFirstOrThrow({
+     * // Get one TicketType
+     * const ticketType = await prisma.ticketType.findFirstOrThrow({
      *   where: {
      *     // ... provide filter here
      *   }
      * })
      */
-    findFirstOrThrow<T extends Event_SeatFindFirstOrThrowArgs>(args?: SelectSubset<T, Event_SeatFindFirstOrThrowArgs<ExtArgs>>): Prisma__Event_SeatClient<$Result.GetResult<Prisma.$Event_SeatPayload<ExtArgs>, T, "findFirstOrThrow", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+    findFirstOrThrow<T extends TicketTypeFindFirstOrThrowArgs>(args?: SelectSubset<T, TicketTypeFindFirstOrThrowArgs<ExtArgs>>): Prisma__TicketTypeClient<$Result.GetResult<Prisma.$TicketTypePayload<ExtArgs>, T, "findFirstOrThrow", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
 
     /**
-     * Find zero or more Event_Seats that matches the filter.
+     * Find zero or more TicketTypes that matches the filter.
      * Note, that providing `undefined` is treated as the value not being there.
      * Read more here: https://pris.ly/d/null-undefined
-     * @param {Event_SeatFindManyArgs} args - Arguments to filter and select certain fields only.
+     * @param {TicketTypeFindManyArgs} args - Arguments to filter and select certain fields only.
      * @example
-     * // Get all Event_Seats
-     * const event_Seats = await prisma.event_Seat.findMany()
+     * // Get all TicketTypes
+     * const ticketTypes = await prisma.ticketType.findMany()
      * 
-     * // Get first 10 Event_Seats
-     * const event_Seats = await prisma.event_Seat.findMany({ take: 10 })
+     * // Get first 10 TicketTypes
+     * const ticketTypes = await prisma.ticketType.findMany({ take: 10 })
      * 
      * // Only select the `id`
-     * const event_SeatWithIdOnly = await prisma.event_Seat.findMany({ select: { id: true } })
+     * const ticketTypeWithIdOnly = await prisma.ticketType.findMany({ select: { id: true } })
      * 
      */
-    findMany<T extends Event_SeatFindManyArgs>(args?: SelectSubset<T, Event_SeatFindManyArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$Event_SeatPayload<ExtArgs>, T, "findMany", GlobalOmitOptions>>
+    findMany<T extends TicketTypeFindManyArgs>(args?: SelectSubset<T, TicketTypeFindManyArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$TicketTypePayload<ExtArgs>, T, "findMany", GlobalOmitOptions>>
 
     /**
-     * Create a Event_Seat.
-     * @param {Event_SeatCreateArgs} args - Arguments to create a Event_Seat.
+     * Create a TicketType.
+     * @param {TicketTypeCreateArgs} args - Arguments to create a TicketType.
      * @example
-     * // Create one Event_Seat
-     * const Event_Seat = await prisma.event_Seat.create({
+     * // Create one TicketType
+     * const TicketType = await prisma.ticketType.create({
      *   data: {
-     *     // ... data to create a Event_Seat
+     *     // ... data to create a TicketType
      *   }
      * })
      * 
      */
-    create<T extends Event_SeatCreateArgs>(args: SelectSubset<T, Event_SeatCreateArgs<ExtArgs>>): Prisma__Event_SeatClient<$Result.GetResult<Prisma.$Event_SeatPayload<ExtArgs>, T, "create", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+    create<T extends TicketTypeCreateArgs>(args: SelectSubset<T, TicketTypeCreateArgs<ExtArgs>>): Prisma__TicketTypeClient<$Result.GetResult<Prisma.$TicketTypePayload<ExtArgs>, T, "create", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
 
     /**
-     * Create many Event_Seats.
-     * @param {Event_SeatCreateManyArgs} args - Arguments to create many Event_Seats.
+     * Create many TicketTypes.
+     * @param {TicketTypeCreateManyArgs} args - Arguments to create many TicketTypes.
      * @example
-     * // Create many Event_Seats
-     * const event_Seat = await prisma.event_Seat.createMany({
+     * // Create many TicketTypes
+     * const ticketType = await prisma.ticketType.createMany({
      *   data: [
      *     // ... provide data here
      *   ]
      * })
      *     
      */
-    createMany<T extends Event_SeatCreateManyArgs>(args?: SelectSubset<T, Event_SeatCreateManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+    createMany<T extends TicketTypeCreateManyArgs>(args?: SelectSubset<T, TicketTypeCreateManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
 
     /**
-     * Create many Event_Seats and returns the data saved in the database.
-     * @param {Event_SeatCreateManyAndReturnArgs} args - Arguments to create many Event_Seats.
+     * Create many TicketTypes and returns the data saved in the database.
+     * @param {TicketTypeCreateManyAndReturnArgs} args - Arguments to create many TicketTypes.
      * @example
-     * // Create many Event_Seats
-     * const event_Seat = await prisma.event_Seat.createManyAndReturn({
+     * // Create many TicketTypes
+     * const ticketType = await prisma.ticketType.createManyAndReturn({
      *   data: [
      *     // ... provide data here
      *   ]
      * })
      * 
-     * // Create many Event_Seats and only return the `id`
-     * const event_SeatWithIdOnly = await prisma.event_Seat.createManyAndReturn({
+     * // Create many TicketTypes and only return the `id`
+     * const ticketTypeWithIdOnly = await prisma.ticketType.createManyAndReturn({
      *   select: { id: true },
      *   data: [
      *     // ... provide data here
@@ -9626,28 +9691,28 @@ export namespace Prisma {
      * Read more here: https://pris.ly/d/null-undefined
      * 
      */
-    createManyAndReturn<T extends Event_SeatCreateManyAndReturnArgs>(args?: SelectSubset<T, Event_SeatCreateManyAndReturnArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$Event_SeatPayload<ExtArgs>, T, "createManyAndReturn", GlobalOmitOptions>>
+    createManyAndReturn<T extends TicketTypeCreateManyAndReturnArgs>(args?: SelectSubset<T, TicketTypeCreateManyAndReturnArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$TicketTypePayload<ExtArgs>, T, "createManyAndReturn", GlobalOmitOptions>>
 
     /**
-     * Delete a Event_Seat.
-     * @param {Event_SeatDeleteArgs} args - Arguments to delete one Event_Seat.
+     * Delete a TicketType.
+     * @param {TicketTypeDeleteArgs} args - Arguments to delete one TicketType.
      * @example
-     * // Delete one Event_Seat
-     * const Event_Seat = await prisma.event_Seat.delete({
+     * // Delete one TicketType
+     * const TicketType = await prisma.ticketType.delete({
      *   where: {
-     *     // ... filter to delete one Event_Seat
+     *     // ... filter to delete one TicketType
      *   }
      * })
      * 
      */
-    delete<T extends Event_SeatDeleteArgs>(args: SelectSubset<T, Event_SeatDeleteArgs<ExtArgs>>): Prisma__Event_SeatClient<$Result.GetResult<Prisma.$Event_SeatPayload<ExtArgs>, T, "delete", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+    delete<T extends TicketTypeDeleteArgs>(args: SelectSubset<T, TicketTypeDeleteArgs<ExtArgs>>): Prisma__TicketTypeClient<$Result.GetResult<Prisma.$TicketTypePayload<ExtArgs>, T, "delete", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
 
     /**
-     * Update one Event_Seat.
-     * @param {Event_SeatUpdateArgs} args - Arguments to update one Event_Seat.
+     * Update one TicketType.
+     * @param {TicketTypeUpdateArgs} args - Arguments to update one TicketType.
      * @example
-     * // Update one Event_Seat
-     * const event_Seat = await prisma.event_Seat.update({
+     * // Update one TicketType
+     * const ticketType = await prisma.ticketType.update({
      *   where: {
      *     // ... provide filter here
      *   },
@@ -9657,30 +9722,30 @@ export namespace Prisma {
      * })
      * 
      */
-    update<T extends Event_SeatUpdateArgs>(args: SelectSubset<T, Event_SeatUpdateArgs<ExtArgs>>): Prisma__Event_SeatClient<$Result.GetResult<Prisma.$Event_SeatPayload<ExtArgs>, T, "update", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+    update<T extends TicketTypeUpdateArgs>(args: SelectSubset<T, TicketTypeUpdateArgs<ExtArgs>>): Prisma__TicketTypeClient<$Result.GetResult<Prisma.$TicketTypePayload<ExtArgs>, T, "update", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
 
     /**
-     * Delete zero or more Event_Seats.
-     * @param {Event_SeatDeleteManyArgs} args - Arguments to filter Event_Seats to delete.
+     * Delete zero or more TicketTypes.
+     * @param {TicketTypeDeleteManyArgs} args - Arguments to filter TicketTypes to delete.
      * @example
-     * // Delete a few Event_Seats
-     * const { count } = await prisma.event_Seat.deleteMany({
+     * // Delete a few TicketTypes
+     * const { count } = await prisma.ticketType.deleteMany({
      *   where: {
      *     // ... provide filter here
      *   }
      * })
      * 
      */
-    deleteMany<T extends Event_SeatDeleteManyArgs>(args?: SelectSubset<T, Event_SeatDeleteManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+    deleteMany<T extends TicketTypeDeleteManyArgs>(args?: SelectSubset<T, TicketTypeDeleteManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
 
     /**
-     * Update zero or more Event_Seats.
+     * Update zero or more TicketTypes.
      * Note, that providing `undefined` is treated as the value not being there.
      * Read more here: https://pris.ly/d/null-undefined
-     * @param {Event_SeatUpdateManyArgs} args - Arguments to update one or more rows.
+     * @param {TicketTypeUpdateManyArgs} args - Arguments to update one or more rows.
      * @example
-     * // Update many Event_Seats
-     * const event_Seat = await prisma.event_Seat.updateMany({
+     * // Update many TicketTypes
+     * const ticketType = await prisma.ticketType.updateMany({
      *   where: {
      *     // ... provide filter here
      *   },
@@ -9690,14 +9755,14 @@ export namespace Prisma {
      * })
      * 
      */
-    updateMany<T extends Event_SeatUpdateManyArgs>(args: SelectSubset<T, Event_SeatUpdateManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+    updateMany<T extends TicketTypeUpdateManyArgs>(args: SelectSubset<T, TicketTypeUpdateManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
 
     /**
-     * Update zero or more Event_Seats and returns the data updated in the database.
-     * @param {Event_SeatUpdateManyAndReturnArgs} args - Arguments to update many Event_Seats.
+     * Update zero or more TicketTypes and returns the data updated in the database.
+     * @param {TicketTypeUpdateManyAndReturnArgs} args - Arguments to update many TicketTypes.
      * @example
-     * // Update many Event_Seats
-     * const event_Seat = await prisma.event_Seat.updateManyAndReturn({
+     * // Update many TicketTypes
+     * const ticketType = await prisma.ticketType.updateManyAndReturn({
      *   where: {
      *     // ... provide filter here
      *   },
@@ -9706,8 +9771,8 @@ export namespace Prisma {
      *   ]
      * })
      * 
-     * // Update zero or more Event_Seats and only return the `id`
-     * const event_SeatWithIdOnly = await prisma.event_Seat.updateManyAndReturn({
+     * // Update zero or more TicketTypes and only return the `id`
+     * const ticketTypeWithIdOnly = await prisma.ticketType.updateManyAndReturn({
      *   select: { id: true },
      *   where: {
      *     // ... provide filter here
@@ -9720,56 +9785,56 @@ export namespace Prisma {
      * Read more here: https://pris.ly/d/null-undefined
      * 
      */
-    updateManyAndReturn<T extends Event_SeatUpdateManyAndReturnArgs>(args: SelectSubset<T, Event_SeatUpdateManyAndReturnArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$Event_SeatPayload<ExtArgs>, T, "updateManyAndReturn", GlobalOmitOptions>>
+    updateManyAndReturn<T extends TicketTypeUpdateManyAndReturnArgs>(args: SelectSubset<T, TicketTypeUpdateManyAndReturnArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$TicketTypePayload<ExtArgs>, T, "updateManyAndReturn", GlobalOmitOptions>>
 
     /**
-     * Create or update one Event_Seat.
-     * @param {Event_SeatUpsertArgs} args - Arguments to update or create a Event_Seat.
+     * Create or update one TicketType.
+     * @param {TicketTypeUpsertArgs} args - Arguments to update or create a TicketType.
      * @example
-     * // Update or create a Event_Seat
-     * const event_Seat = await prisma.event_Seat.upsert({
+     * // Update or create a TicketType
+     * const ticketType = await prisma.ticketType.upsert({
      *   create: {
-     *     // ... data to create a Event_Seat
+     *     // ... data to create a TicketType
      *   },
      *   update: {
      *     // ... in case it already exists, update
      *   },
      *   where: {
-     *     // ... the filter for the Event_Seat we want to update
+     *     // ... the filter for the TicketType we want to update
      *   }
      * })
      */
-    upsert<T extends Event_SeatUpsertArgs>(args: SelectSubset<T, Event_SeatUpsertArgs<ExtArgs>>): Prisma__Event_SeatClient<$Result.GetResult<Prisma.$Event_SeatPayload<ExtArgs>, T, "upsert", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+    upsert<T extends TicketTypeUpsertArgs>(args: SelectSubset<T, TicketTypeUpsertArgs<ExtArgs>>): Prisma__TicketTypeClient<$Result.GetResult<Prisma.$TicketTypePayload<ExtArgs>, T, "upsert", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
 
 
     /**
-     * Count the number of Event_Seats.
+     * Count the number of TicketTypes.
      * Note, that providing `undefined` is treated as the value not being there.
      * Read more here: https://pris.ly/d/null-undefined
-     * @param {Event_SeatCountArgs} args - Arguments to filter Event_Seats to count.
+     * @param {TicketTypeCountArgs} args - Arguments to filter TicketTypes to count.
      * @example
-     * // Count the number of Event_Seats
-     * const count = await prisma.event_Seat.count({
+     * // Count the number of TicketTypes
+     * const count = await prisma.ticketType.count({
      *   where: {
-     *     // ... the filter for the Event_Seats we want to count
+     *     // ... the filter for the TicketTypes we want to count
      *   }
      * })
     **/
-    count<T extends Event_SeatCountArgs>(
-      args?: Subset<T, Event_SeatCountArgs>,
+    count<T extends TicketTypeCountArgs>(
+      args?: Subset<T, TicketTypeCountArgs>,
     ): Prisma.PrismaPromise<
       T extends $Utils.Record<'select', any>
         ? T['select'] extends true
           ? number
-          : GetScalarType<T['select'], Event_SeatCountAggregateOutputType>
+          : GetScalarType<T['select'], TicketTypeCountAggregateOutputType>
         : number
     >
 
     /**
-     * Allows you to perform aggregations operations on a Event_Seat.
+     * Allows you to perform aggregations operations on a TicketType.
      * Note, that providing `undefined` is treated as the value not being there.
      * Read more here: https://pris.ly/d/null-undefined
-     * @param {Event_SeatAggregateArgs} args - Select which aggregations you would like to apply and on what fields.
+     * @param {TicketTypeAggregateArgs} args - Select which aggregations you would like to apply and on what fields.
      * @example
      * // Ordered by age ascending
      * // Where email contains prisma.io
@@ -9789,13 +9854,13 @@ export namespace Prisma {
      *   take: 10,
      * })
     **/
-    aggregate<T extends Event_SeatAggregateArgs>(args: Subset<T, Event_SeatAggregateArgs>): Prisma.PrismaPromise<GetEvent_SeatAggregateType<T>>
+    aggregate<T extends TicketTypeAggregateArgs>(args: Subset<T, TicketTypeAggregateArgs>): Prisma.PrismaPromise<GetTicketTypeAggregateType<T>>
 
     /**
-     * Group by Event_Seat.
+     * Group by TicketType.
      * Note, that providing `undefined` is treated as the value not being there.
      * Read more here: https://pris.ly/d/null-undefined
-     * @param {Event_SeatGroupByArgs} args - Group by arguments.
+     * @param {TicketTypeGroupByArgs} args - Group by arguments.
      * @example
      * // Group by city, order by createdAt, get count
      * const result = await prisma.user.groupBy({
@@ -9810,14 +9875,14 @@ export namespace Prisma {
      * 
     **/
     groupBy<
-      T extends Event_SeatGroupByArgs,
+      T extends TicketTypeGroupByArgs,
       HasSelectOrTake extends Or<
         Extends<'skip', Keys<T>>,
         Extends<'take', Keys<T>>
       >,
       OrderByArg extends True extends HasSelectOrTake
-        ? { orderBy: Event_SeatGroupByArgs['orderBy'] }
-        : { orderBy?: Event_SeatGroupByArgs['orderBy'] },
+        ? { orderBy: TicketTypeGroupByArgs['orderBy'] }
+        : { orderBy?: TicketTypeGroupByArgs['orderBy'] },
       OrderFields extends ExcludeUnderscoreKeys<Keys<MaybeTupleToUnion<T['orderBy']>>>,
       ByFields extends MaybeTupleToUnion<T['by']>,
       ByValid extends Has<ByFields, OrderFields>,
@@ -9866,20 +9931,20 @@ export namespace Prisma {
             ? never
             : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
         }[OrderFields]
-    >(args: SubsetIntersection<T, Event_SeatGroupByArgs, OrderByArg> & InputErrors): {} extends InputErrors ? GetEvent_SeatGroupByPayload<T> : Prisma.PrismaPromise<InputErrors>
+    >(args: SubsetIntersection<T, TicketTypeGroupByArgs, OrderByArg> & InputErrors): {} extends InputErrors ? GetTicketTypeGroupByPayload<T> : Prisma.PrismaPromise<InputErrors>
   /**
-   * Fields of the Event_Seat model
+   * Fields of the TicketType model
    */
-  readonly fields: Event_SeatFieldRefs;
+  readonly fields: TicketTypeFieldRefs;
   }
 
   /**
-   * The delegate class that acts as a "Promise-like" for Event_Seat.
+   * The delegate class that acts as a "Promise-like" for TicketType.
    * Why is this prefixed with `Prisma__`?
    * Because we want to prevent naming conflicts as mentioned in
    * https://github.com/prisma/prisma-client-js/issues/707
    */
-  export interface Prisma__Event_SeatClient<T, Null = never, ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs, GlobalOmitOptions = {}> extends Prisma.PrismaPromise<T> {
+  export interface Prisma__TicketTypeClient<T, Null = never, ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs, GlobalOmitOptions = {}> extends Prisma.PrismaPromise<T> {
     readonly [Symbol.toStringTag]: "PrismaPromise"
     event<T extends EventsDefaultArgs<ExtArgs> = {}>(args?: Subset<T, EventsDefaultArgs<ExtArgs>>): Prisma__EventsClient<$Result.GetResult<Prisma.$EventsPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | Null, Null, ExtArgs, GlobalOmitOptions>
     /**
@@ -9908,423 +9973,425 @@ export namespace Prisma {
 
 
   /**
-   * Fields of the Event_Seat model
+   * Fields of the TicketType model
    */
-  interface Event_SeatFieldRefs {
-    readonly id: FieldRef<"Event_Seat", 'String'>
-    readonly events_id: FieldRef<"Event_Seat", 'String'>
-    readonly total: FieldRef<"Event_Seat", 'Int'>
+  interface TicketTypeFieldRefs {
+    readonly id: FieldRef<"TicketType", 'String'>
+    readonly event_id: FieldRef<"TicketType", 'String'>
+    readonly name: FieldRef<"TicketType", 'String'>
+    readonly price: FieldRef<"TicketType", 'Int'>
+    readonly quantity: FieldRef<"TicketType", 'Int'>
   }
     
 
   // Custom InputTypes
   /**
-   * Event_Seat findUnique
+   * TicketType findUnique
    */
-  export type Event_SeatFindUniqueArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+  export type TicketTypeFindUniqueArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     /**
-     * Select specific fields to fetch from the Event_Seat
+     * Select specific fields to fetch from the TicketType
      */
-    select?: Event_SeatSelect<ExtArgs> | null
+    select?: TicketTypeSelect<ExtArgs> | null
     /**
-     * Omit specific fields from the Event_Seat
+     * Omit specific fields from the TicketType
      */
-    omit?: Event_SeatOmit<ExtArgs> | null
+    omit?: TicketTypeOmit<ExtArgs> | null
     /**
      * Choose, which related nodes to fetch as well
      */
-    include?: Event_SeatInclude<ExtArgs> | null
+    include?: TicketTypeInclude<ExtArgs> | null
     /**
-     * Filter, which Event_Seat to fetch.
+     * Filter, which TicketType to fetch.
      */
-    where: Event_SeatWhereUniqueInput
+    where: TicketTypeWhereUniqueInput
   }
 
   /**
-   * Event_Seat findUniqueOrThrow
+   * TicketType findUniqueOrThrow
    */
-  export type Event_SeatFindUniqueOrThrowArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+  export type TicketTypeFindUniqueOrThrowArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     /**
-     * Select specific fields to fetch from the Event_Seat
+     * Select specific fields to fetch from the TicketType
      */
-    select?: Event_SeatSelect<ExtArgs> | null
+    select?: TicketTypeSelect<ExtArgs> | null
     /**
-     * Omit specific fields from the Event_Seat
+     * Omit specific fields from the TicketType
      */
-    omit?: Event_SeatOmit<ExtArgs> | null
+    omit?: TicketTypeOmit<ExtArgs> | null
     /**
      * Choose, which related nodes to fetch as well
      */
-    include?: Event_SeatInclude<ExtArgs> | null
+    include?: TicketTypeInclude<ExtArgs> | null
     /**
-     * Filter, which Event_Seat to fetch.
+     * Filter, which TicketType to fetch.
      */
-    where: Event_SeatWhereUniqueInput
+    where: TicketTypeWhereUniqueInput
   }
 
   /**
-   * Event_Seat findFirst
+   * TicketType findFirst
    */
-  export type Event_SeatFindFirstArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+  export type TicketTypeFindFirstArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     /**
-     * Select specific fields to fetch from the Event_Seat
+     * Select specific fields to fetch from the TicketType
      */
-    select?: Event_SeatSelect<ExtArgs> | null
+    select?: TicketTypeSelect<ExtArgs> | null
     /**
-     * Omit specific fields from the Event_Seat
+     * Omit specific fields from the TicketType
      */
-    omit?: Event_SeatOmit<ExtArgs> | null
+    omit?: TicketTypeOmit<ExtArgs> | null
     /**
      * Choose, which related nodes to fetch as well
      */
-    include?: Event_SeatInclude<ExtArgs> | null
+    include?: TicketTypeInclude<ExtArgs> | null
     /**
-     * Filter, which Event_Seat to fetch.
+     * Filter, which TicketType to fetch.
      */
-    where?: Event_SeatWhereInput
+    where?: TicketTypeWhereInput
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
      * 
-     * Determine the order of Event_Seats to fetch.
+     * Determine the order of TicketTypes to fetch.
      */
-    orderBy?: Event_SeatOrderByWithRelationInput | Event_SeatOrderByWithRelationInput[]
+    orderBy?: TicketTypeOrderByWithRelationInput | TicketTypeOrderByWithRelationInput[]
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
      * 
-     * Sets the position for searching for Event_Seats.
+     * Sets the position for searching for TicketTypes.
      */
-    cursor?: Event_SeatWhereUniqueInput
+    cursor?: TicketTypeWhereUniqueInput
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
      * 
-     * Take `±n` Event_Seats from the position of the cursor.
+     * Take `±n` TicketTypes from the position of the cursor.
      */
     take?: number
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
      * 
-     * Skip the first `n` Event_Seats.
+     * Skip the first `n` TicketTypes.
      */
     skip?: number
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
      * 
-     * Filter by unique combinations of Event_Seats.
+     * Filter by unique combinations of TicketTypes.
      */
-    distinct?: Event_SeatScalarFieldEnum | Event_SeatScalarFieldEnum[]
+    distinct?: TicketTypeScalarFieldEnum | TicketTypeScalarFieldEnum[]
   }
 
   /**
-   * Event_Seat findFirstOrThrow
+   * TicketType findFirstOrThrow
    */
-  export type Event_SeatFindFirstOrThrowArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+  export type TicketTypeFindFirstOrThrowArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     /**
-     * Select specific fields to fetch from the Event_Seat
+     * Select specific fields to fetch from the TicketType
      */
-    select?: Event_SeatSelect<ExtArgs> | null
+    select?: TicketTypeSelect<ExtArgs> | null
     /**
-     * Omit specific fields from the Event_Seat
+     * Omit specific fields from the TicketType
      */
-    omit?: Event_SeatOmit<ExtArgs> | null
+    omit?: TicketTypeOmit<ExtArgs> | null
     /**
      * Choose, which related nodes to fetch as well
      */
-    include?: Event_SeatInclude<ExtArgs> | null
+    include?: TicketTypeInclude<ExtArgs> | null
     /**
-     * Filter, which Event_Seat to fetch.
+     * Filter, which TicketType to fetch.
      */
-    where?: Event_SeatWhereInput
+    where?: TicketTypeWhereInput
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
      * 
-     * Determine the order of Event_Seats to fetch.
+     * Determine the order of TicketTypes to fetch.
      */
-    orderBy?: Event_SeatOrderByWithRelationInput | Event_SeatOrderByWithRelationInput[]
+    orderBy?: TicketTypeOrderByWithRelationInput | TicketTypeOrderByWithRelationInput[]
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
      * 
-     * Sets the position for searching for Event_Seats.
+     * Sets the position for searching for TicketTypes.
      */
-    cursor?: Event_SeatWhereUniqueInput
+    cursor?: TicketTypeWhereUniqueInput
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
      * 
-     * Take `±n` Event_Seats from the position of the cursor.
+     * Take `±n` TicketTypes from the position of the cursor.
      */
     take?: number
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
      * 
-     * Skip the first `n` Event_Seats.
+     * Skip the first `n` TicketTypes.
      */
     skip?: number
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
      * 
-     * Filter by unique combinations of Event_Seats.
+     * Filter by unique combinations of TicketTypes.
      */
-    distinct?: Event_SeatScalarFieldEnum | Event_SeatScalarFieldEnum[]
+    distinct?: TicketTypeScalarFieldEnum | TicketTypeScalarFieldEnum[]
   }
 
   /**
-   * Event_Seat findMany
+   * TicketType findMany
    */
-  export type Event_SeatFindManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+  export type TicketTypeFindManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     /**
-     * Select specific fields to fetch from the Event_Seat
+     * Select specific fields to fetch from the TicketType
      */
-    select?: Event_SeatSelect<ExtArgs> | null
+    select?: TicketTypeSelect<ExtArgs> | null
     /**
-     * Omit specific fields from the Event_Seat
+     * Omit specific fields from the TicketType
      */
-    omit?: Event_SeatOmit<ExtArgs> | null
+    omit?: TicketTypeOmit<ExtArgs> | null
     /**
      * Choose, which related nodes to fetch as well
      */
-    include?: Event_SeatInclude<ExtArgs> | null
+    include?: TicketTypeInclude<ExtArgs> | null
     /**
-     * Filter, which Event_Seats to fetch.
+     * Filter, which TicketTypes to fetch.
      */
-    where?: Event_SeatWhereInput
+    where?: TicketTypeWhereInput
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
      * 
-     * Determine the order of Event_Seats to fetch.
+     * Determine the order of TicketTypes to fetch.
      */
-    orderBy?: Event_SeatOrderByWithRelationInput | Event_SeatOrderByWithRelationInput[]
+    orderBy?: TicketTypeOrderByWithRelationInput | TicketTypeOrderByWithRelationInput[]
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
      * 
-     * Sets the position for listing Event_Seats.
+     * Sets the position for listing TicketTypes.
      */
-    cursor?: Event_SeatWhereUniqueInput
+    cursor?: TicketTypeWhereUniqueInput
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
      * 
-     * Take `±n` Event_Seats from the position of the cursor.
+     * Take `±n` TicketTypes from the position of the cursor.
      */
     take?: number
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
      * 
-     * Skip the first `n` Event_Seats.
+     * Skip the first `n` TicketTypes.
      */
     skip?: number
-    distinct?: Event_SeatScalarFieldEnum | Event_SeatScalarFieldEnum[]
+    distinct?: TicketTypeScalarFieldEnum | TicketTypeScalarFieldEnum[]
   }
 
   /**
-   * Event_Seat create
+   * TicketType create
    */
-  export type Event_SeatCreateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+  export type TicketTypeCreateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     /**
-     * Select specific fields to fetch from the Event_Seat
+     * Select specific fields to fetch from the TicketType
      */
-    select?: Event_SeatSelect<ExtArgs> | null
+    select?: TicketTypeSelect<ExtArgs> | null
     /**
-     * Omit specific fields from the Event_Seat
+     * Omit specific fields from the TicketType
      */
-    omit?: Event_SeatOmit<ExtArgs> | null
+    omit?: TicketTypeOmit<ExtArgs> | null
     /**
      * Choose, which related nodes to fetch as well
      */
-    include?: Event_SeatInclude<ExtArgs> | null
+    include?: TicketTypeInclude<ExtArgs> | null
     /**
-     * The data needed to create a Event_Seat.
+     * The data needed to create a TicketType.
      */
-    data: XOR<Event_SeatCreateInput, Event_SeatUncheckedCreateInput>
+    data: XOR<TicketTypeCreateInput, TicketTypeUncheckedCreateInput>
   }
 
   /**
-   * Event_Seat createMany
+   * TicketType createMany
    */
-  export type Event_SeatCreateManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+  export type TicketTypeCreateManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     /**
-     * The data used to create many Event_Seats.
+     * The data used to create many TicketTypes.
      */
-    data: Event_SeatCreateManyInput | Event_SeatCreateManyInput[]
+    data: TicketTypeCreateManyInput | TicketTypeCreateManyInput[]
     skipDuplicates?: boolean
   }
 
   /**
-   * Event_Seat createManyAndReturn
+   * TicketType createManyAndReturn
    */
-  export type Event_SeatCreateManyAndReturnArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+  export type TicketTypeCreateManyAndReturnArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     /**
-     * Select specific fields to fetch from the Event_Seat
+     * Select specific fields to fetch from the TicketType
      */
-    select?: Event_SeatSelectCreateManyAndReturn<ExtArgs> | null
+    select?: TicketTypeSelectCreateManyAndReturn<ExtArgs> | null
     /**
-     * Omit specific fields from the Event_Seat
+     * Omit specific fields from the TicketType
      */
-    omit?: Event_SeatOmit<ExtArgs> | null
+    omit?: TicketTypeOmit<ExtArgs> | null
     /**
-     * The data used to create many Event_Seats.
+     * The data used to create many TicketTypes.
      */
-    data: Event_SeatCreateManyInput | Event_SeatCreateManyInput[]
+    data: TicketTypeCreateManyInput | TicketTypeCreateManyInput[]
     skipDuplicates?: boolean
     /**
      * Choose, which related nodes to fetch as well
      */
-    include?: Event_SeatIncludeCreateManyAndReturn<ExtArgs> | null
+    include?: TicketTypeIncludeCreateManyAndReturn<ExtArgs> | null
   }
 
   /**
-   * Event_Seat update
+   * TicketType update
    */
-  export type Event_SeatUpdateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+  export type TicketTypeUpdateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     /**
-     * Select specific fields to fetch from the Event_Seat
+     * Select specific fields to fetch from the TicketType
      */
-    select?: Event_SeatSelect<ExtArgs> | null
+    select?: TicketTypeSelect<ExtArgs> | null
     /**
-     * Omit specific fields from the Event_Seat
+     * Omit specific fields from the TicketType
      */
-    omit?: Event_SeatOmit<ExtArgs> | null
+    omit?: TicketTypeOmit<ExtArgs> | null
     /**
      * Choose, which related nodes to fetch as well
      */
-    include?: Event_SeatInclude<ExtArgs> | null
+    include?: TicketTypeInclude<ExtArgs> | null
     /**
-     * The data needed to update a Event_Seat.
+     * The data needed to update a TicketType.
      */
-    data: XOR<Event_SeatUpdateInput, Event_SeatUncheckedUpdateInput>
+    data: XOR<TicketTypeUpdateInput, TicketTypeUncheckedUpdateInput>
     /**
-     * Choose, which Event_Seat to update.
+     * Choose, which TicketType to update.
      */
-    where: Event_SeatWhereUniqueInput
+    where: TicketTypeWhereUniqueInput
   }
 
   /**
-   * Event_Seat updateMany
+   * TicketType updateMany
    */
-  export type Event_SeatUpdateManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+  export type TicketTypeUpdateManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     /**
-     * The data used to update Event_Seats.
+     * The data used to update TicketTypes.
      */
-    data: XOR<Event_SeatUpdateManyMutationInput, Event_SeatUncheckedUpdateManyInput>
+    data: XOR<TicketTypeUpdateManyMutationInput, TicketTypeUncheckedUpdateManyInput>
     /**
-     * Filter which Event_Seats to update
+     * Filter which TicketTypes to update
      */
-    where?: Event_SeatWhereInput
+    where?: TicketTypeWhereInput
     /**
-     * Limit how many Event_Seats to update.
+     * Limit how many TicketTypes to update.
      */
     limit?: number
   }
 
   /**
-   * Event_Seat updateManyAndReturn
+   * TicketType updateManyAndReturn
    */
-  export type Event_SeatUpdateManyAndReturnArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+  export type TicketTypeUpdateManyAndReturnArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     /**
-     * Select specific fields to fetch from the Event_Seat
+     * Select specific fields to fetch from the TicketType
      */
-    select?: Event_SeatSelectUpdateManyAndReturn<ExtArgs> | null
+    select?: TicketTypeSelectUpdateManyAndReturn<ExtArgs> | null
     /**
-     * Omit specific fields from the Event_Seat
+     * Omit specific fields from the TicketType
      */
-    omit?: Event_SeatOmit<ExtArgs> | null
+    omit?: TicketTypeOmit<ExtArgs> | null
     /**
-     * The data used to update Event_Seats.
+     * The data used to update TicketTypes.
      */
-    data: XOR<Event_SeatUpdateManyMutationInput, Event_SeatUncheckedUpdateManyInput>
+    data: XOR<TicketTypeUpdateManyMutationInput, TicketTypeUncheckedUpdateManyInput>
     /**
-     * Filter which Event_Seats to update
+     * Filter which TicketTypes to update
      */
-    where?: Event_SeatWhereInput
+    where?: TicketTypeWhereInput
     /**
-     * Limit how many Event_Seats to update.
+     * Limit how many TicketTypes to update.
      */
     limit?: number
     /**
      * Choose, which related nodes to fetch as well
      */
-    include?: Event_SeatIncludeUpdateManyAndReturn<ExtArgs> | null
+    include?: TicketTypeIncludeUpdateManyAndReturn<ExtArgs> | null
   }
 
   /**
-   * Event_Seat upsert
+   * TicketType upsert
    */
-  export type Event_SeatUpsertArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+  export type TicketTypeUpsertArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     /**
-     * Select specific fields to fetch from the Event_Seat
+     * Select specific fields to fetch from the TicketType
      */
-    select?: Event_SeatSelect<ExtArgs> | null
+    select?: TicketTypeSelect<ExtArgs> | null
     /**
-     * Omit specific fields from the Event_Seat
+     * Omit specific fields from the TicketType
      */
-    omit?: Event_SeatOmit<ExtArgs> | null
+    omit?: TicketTypeOmit<ExtArgs> | null
     /**
      * Choose, which related nodes to fetch as well
      */
-    include?: Event_SeatInclude<ExtArgs> | null
+    include?: TicketTypeInclude<ExtArgs> | null
     /**
-     * The filter to search for the Event_Seat to update in case it exists.
+     * The filter to search for the TicketType to update in case it exists.
      */
-    where: Event_SeatWhereUniqueInput
+    where: TicketTypeWhereUniqueInput
     /**
-     * In case the Event_Seat found by the `where` argument doesn't exist, create a new Event_Seat with this data.
+     * In case the TicketType found by the `where` argument doesn't exist, create a new TicketType with this data.
      */
-    create: XOR<Event_SeatCreateInput, Event_SeatUncheckedCreateInput>
+    create: XOR<TicketTypeCreateInput, TicketTypeUncheckedCreateInput>
     /**
-     * In case the Event_Seat was found with the provided `where` argument, update it with this data.
+     * In case the TicketType was found with the provided `where` argument, update it with this data.
      */
-    update: XOR<Event_SeatUpdateInput, Event_SeatUncheckedUpdateInput>
+    update: XOR<TicketTypeUpdateInput, TicketTypeUncheckedUpdateInput>
   }
 
   /**
-   * Event_Seat delete
+   * TicketType delete
    */
-  export type Event_SeatDeleteArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+  export type TicketTypeDeleteArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     /**
-     * Select specific fields to fetch from the Event_Seat
+     * Select specific fields to fetch from the TicketType
      */
-    select?: Event_SeatSelect<ExtArgs> | null
+    select?: TicketTypeSelect<ExtArgs> | null
     /**
-     * Omit specific fields from the Event_Seat
+     * Omit specific fields from the TicketType
      */
-    omit?: Event_SeatOmit<ExtArgs> | null
+    omit?: TicketTypeOmit<ExtArgs> | null
     /**
      * Choose, which related nodes to fetch as well
      */
-    include?: Event_SeatInclude<ExtArgs> | null
+    include?: TicketTypeInclude<ExtArgs> | null
     /**
-     * Filter which Event_Seat to delete.
+     * Filter which TicketType to delete.
      */
-    where: Event_SeatWhereUniqueInput
+    where: TicketTypeWhereUniqueInput
   }
 
   /**
-   * Event_Seat deleteMany
+   * TicketType deleteMany
    */
-  export type Event_SeatDeleteManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+  export type TicketTypeDeleteManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     /**
-     * Filter which Event_Seats to delete
+     * Filter which TicketTypes to delete
      */
-    where?: Event_SeatWhereInput
+    where?: TicketTypeWhereInput
     /**
-     * Limit how many Event_Seats to delete.
+     * Limit how many TicketTypes to delete.
      */
     limit?: number
   }
 
   /**
-   * Event_Seat without action
+   * TicketType without action
    */
-  export type Event_SeatDefaultArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+  export type TicketTypeDefaultArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     /**
-     * Select specific fields to fetch from the Event_Seat
+     * Select specific fields to fetch from the TicketType
      */
-    select?: Event_SeatSelect<ExtArgs> | null
+    select?: TicketTypeSelect<ExtArgs> | null
     /**
-     * Omit specific fields from the Event_Seat
+     * Omit specific fields from the TicketType
      */
-    omit?: Event_SeatOmit<ExtArgs> | null
+    omit?: TicketTypeOmit<ExtArgs> | null
     /**
      * Choose, which related nodes to fetch as well
      */
-    include?: Event_SeatInclude<ExtArgs> | null
+    include?: TicketTypeInclude<ExtArgs> | null
   }
 
 
@@ -11597,8 +11664,8 @@ export namespace Prisma {
     user_id?: boolean
     event_id?: boolean
     status?: boolean
-    user_attendees?: boolean | UsersDefaultArgs<ExtArgs>
     user_event?: boolean | EventsDefaultArgs<ExtArgs>
+    user_attendees?: boolean | UsersDefaultArgs<ExtArgs>
   }, ExtArgs["result"]["event_Attendees"]>
 
   export type Event_AttendeesSelectCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
@@ -11606,8 +11673,8 @@ export namespace Prisma {
     user_id?: boolean
     event_id?: boolean
     status?: boolean
-    user_attendees?: boolean | UsersDefaultArgs<ExtArgs>
     user_event?: boolean | EventsDefaultArgs<ExtArgs>
+    user_attendees?: boolean | UsersDefaultArgs<ExtArgs>
   }, ExtArgs["result"]["event_Attendees"]>
 
   export type Event_AttendeesSelectUpdateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
@@ -11615,8 +11682,8 @@ export namespace Prisma {
     user_id?: boolean
     event_id?: boolean
     status?: boolean
-    user_attendees?: boolean | UsersDefaultArgs<ExtArgs>
     user_event?: boolean | EventsDefaultArgs<ExtArgs>
+    user_attendees?: boolean | UsersDefaultArgs<ExtArgs>
   }, ExtArgs["result"]["event_Attendees"]>
 
   export type Event_AttendeesSelectScalar = {
@@ -11628,23 +11695,23 @@ export namespace Prisma {
 
   export type Event_AttendeesOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "user_id" | "event_id" | "status", ExtArgs["result"]["event_Attendees"]>
   export type Event_AttendeesInclude<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    user_attendees?: boolean | UsersDefaultArgs<ExtArgs>
     user_event?: boolean | EventsDefaultArgs<ExtArgs>
+    user_attendees?: boolean | UsersDefaultArgs<ExtArgs>
   }
   export type Event_AttendeesIncludeCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    user_attendees?: boolean | UsersDefaultArgs<ExtArgs>
     user_event?: boolean | EventsDefaultArgs<ExtArgs>
+    user_attendees?: boolean | UsersDefaultArgs<ExtArgs>
   }
   export type Event_AttendeesIncludeUpdateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    user_attendees?: boolean | UsersDefaultArgs<ExtArgs>
     user_event?: boolean | EventsDefaultArgs<ExtArgs>
+    user_attendees?: boolean | UsersDefaultArgs<ExtArgs>
   }
 
   export type $Event_AttendeesPayload<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     name: "Event_Attendees"
     objects: {
-      user_attendees: Prisma.$UsersPayload<ExtArgs>
       user_event: Prisma.$EventsPayload<ExtArgs>
+      user_attendees: Prisma.$UsersPayload<ExtArgs>
     }
     scalars: $Extensions.GetPayloadResult<{
       id: string
@@ -12045,8 +12112,8 @@ export namespace Prisma {
    */
   export interface Prisma__Event_AttendeesClient<T, Null = never, ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs, GlobalOmitOptions = {}> extends Prisma.PrismaPromise<T> {
     readonly [Symbol.toStringTag]: "PrismaPromise"
-    user_attendees<T extends UsersDefaultArgs<ExtArgs> = {}>(args?: Subset<T, UsersDefaultArgs<ExtArgs>>): Prisma__UsersClient<$Result.GetResult<Prisma.$UsersPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | Null, Null, ExtArgs, GlobalOmitOptions>
     user_event<T extends EventsDefaultArgs<ExtArgs> = {}>(args?: Subset<T, EventsDefaultArgs<ExtArgs>>): Prisma__EventsClient<$Result.GetResult<Prisma.$EventsPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | Null, Null, ExtArgs, GlobalOmitOptions>
+    user_attendees<T extends UsersDefaultArgs<ExtArgs> = {}>(args?: Subset<T, UsersDefaultArgs<ExtArgs>>): Prisma__UsersClient<$Result.GetResult<Prisma.$UsersPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | Null, Null, ExtArgs, GlobalOmitOptions>
     /**
      * Attaches callbacks for the resolution and/or rejection of the Promise.
      * @param onfulfilled The callback to execute when the Promise is resolved.
@@ -13785,8 +13852,8 @@ export namespace Prisma {
     user_id?: boolean
     referral_code_id?: boolean
     used_at?: boolean
-    user_referralUsage?: boolean | UsersDefaultArgs<ExtArgs>
     code_referralUsage?: boolean | Referral_CodeDefaultArgs<ExtArgs>
+    user_referralUsage?: boolean | UsersDefaultArgs<ExtArgs>
   }, ExtArgs["result"]["referral_Usage"]>
 
   export type Referral_UsageSelectCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
@@ -13794,8 +13861,8 @@ export namespace Prisma {
     user_id?: boolean
     referral_code_id?: boolean
     used_at?: boolean
-    user_referralUsage?: boolean | UsersDefaultArgs<ExtArgs>
     code_referralUsage?: boolean | Referral_CodeDefaultArgs<ExtArgs>
+    user_referralUsage?: boolean | UsersDefaultArgs<ExtArgs>
   }, ExtArgs["result"]["referral_Usage"]>
 
   export type Referral_UsageSelectUpdateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
@@ -13803,8 +13870,8 @@ export namespace Prisma {
     user_id?: boolean
     referral_code_id?: boolean
     used_at?: boolean
-    user_referralUsage?: boolean | UsersDefaultArgs<ExtArgs>
     code_referralUsage?: boolean | Referral_CodeDefaultArgs<ExtArgs>
+    user_referralUsage?: boolean | UsersDefaultArgs<ExtArgs>
   }, ExtArgs["result"]["referral_Usage"]>
 
   export type Referral_UsageSelectScalar = {
@@ -13816,23 +13883,23 @@ export namespace Prisma {
 
   export type Referral_UsageOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "user_id" | "referral_code_id" | "used_at", ExtArgs["result"]["referral_Usage"]>
   export type Referral_UsageInclude<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    user_referralUsage?: boolean | UsersDefaultArgs<ExtArgs>
     code_referralUsage?: boolean | Referral_CodeDefaultArgs<ExtArgs>
+    user_referralUsage?: boolean | UsersDefaultArgs<ExtArgs>
   }
   export type Referral_UsageIncludeCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    user_referralUsage?: boolean | UsersDefaultArgs<ExtArgs>
     code_referralUsage?: boolean | Referral_CodeDefaultArgs<ExtArgs>
+    user_referralUsage?: boolean | UsersDefaultArgs<ExtArgs>
   }
   export type Referral_UsageIncludeUpdateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    user_referralUsage?: boolean | UsersDefaultArgs<ExtArgs>
     code_referralUsage?: boolean | Referral_CodeDefaultArgs<ExtArgs>
+    user_referralUsage?: boolean | UsersDefaultArgs<ExtArgs>
   }
 
   export type $Referral_UsagePayload<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     name: "Referral_Usage"
     objects: {
-      user_referralUsage: Prisma.$UsersPayload<ExtArgs>
       code_referralUsage: Prisma.$Referral_CodePayload<ExtArgs>
+      user_referralUsage: Prisma.$UsersPayload<ExtArgs>
     }
     scalars: $Extensions.GetPayloadResult<{
       id: string
@@ -14233,8 +14300,8 @@ export namespace Prisma {
    */
   export interface Prisma__Referral_UsageClient<T, Null = never, ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs, GlobalOmitOptions = {}> extends Prisma.PrismaPromise<T> {
     readonly [Symbol.toStringTag]: "PrismaPromise"
-    user_referralUsage<T extends UsersDefaultArgs<ExtArgs> = {}>(args?: Subset<T, UsersDefaultArgs<ExtArgs>>): Prisma__UsersClient<$Result.GetResult<Prisma.$UsersPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | Null, Null, ExtArgs, GlobalOmitOptions>
     code_referralUsage<T extends Referral_CodeDefaultArgs<ExtArgs> = {}>(args?: Subset<T, Referral_CodeDefaultArgs<ExtArgs>>): Prisma__Referral_CodeClient<$Result.GetResult<Prisma.$Referral_CodePayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | Null, Null, ExtArgs, GlobalOmitOptions>
+    user_referralUsage<T extends UsersDefaultArgs<ExtArgs> = {}>(args?: Subset<T, UsersDefaultArgs<ExtArgs>>): Prisma__UsersClient<$Result.GetResult<Prisma.$UsersPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | Null, Null, ExtArgs, GlobalOmitOptions>
     /**
      * Attaches callbacks for the resolution and/or rejection of the Promise.
      * @param onfulfilled The callback to execute when the Promise is resolved.
@@ -14708,10 +14775,12 @@ export namespace Prisma {
     id: string | null
     user_id: string | null
     organizer_id: string | null
+    event_id: string | null
     code: string | null
     percentage: number | null
     amount: number | null
     created_at: Date | null
+    start_date: Date | null
     expired_at: Date | null
   }
 
@@ -14719,10 +14788,12 @@ export namespace Prisma {
     id: string | null
     user_id: string | null
     organizer_id: string | null
+    event_id: string | null
     code: string | null
     percentage: number | null
     amount: number | null
     created_at: Date | null
+    start_date: Date | null
     expired_at: Date | null
   }
 
@@ -14730,10 +14801,12 @@ export namespace Prisma {
     id: number
     user_id: number
     organizer_id: number
+    event_id: number
     code: number
     percentage: number
     amount: number
     created_at: number
+    start_date: number
     expired_at: number
     _all: number
   }
@@ -14753,10 +14826,12 @@ export namespace Prisma {
     id?: true
     user_id?: true
     organizer_id?: true
+    event_id?: true
     code?: true
     percentage?: true
     amount?: true
     created_at?: true
+    start_date?: true
     expired_at?: true
   }
 
@@ -14764,10 +14839,12 @@ export namespace Prisma {
     id?: true
     user_id?: true
     organizer_id?: true
+    event_id?: true
     code?: true
     percentage?: true
     amount?: true
     created_at?: true
+    start_date?: true
     expired_at?: true
   }
 
@@ -14775,10 +14852,12 @@ export namespace Prisma {
     id?: true
     user_id?: true
     organizer_id?: true
+    event_id?: true
     code?: true
     percentage?: true
     amount?: true
     created_at?: true
+    start_date?: true
     expired_at?: true
     _all?: true
   }
@@ -14873,10 +14952,12 @@ export namespace Prisma {
     id: string
     user_id: string | null
     organizer_id: string | null
+    event_id: string | null
     code: string
     percentage: number | null
     amount: number | null
     created_at: Date
+    start_date: Date | null
     expired_at: Date
     _count: VoucherCountAggregateOutputType | null
     _avg: VoucherAvgAggregateOutputType | null
@@ -14903,13 +14984,16 @@ export namespace Prisma {
     id?: boolean
     user_id?: boolean
     organizer_id?: boolean
+    event_id?: boolean
     code?: boolean
     percentage?: boolean
     amount?: boolean
     created_at?: boolean
+    start_date?: boolean
     expired_at?: boolean
     voucher_organizer?: boolean | Voucher$voucher_organizerArgs<ExtArgs>
     voucher_user?: boolean | Voucher$voucher_userArgs<ExtArgs>
+    voucher_event?: boolean | Voucher$voucher_eventArgs<ExtArgs>
     voucher_transaction_details?: boolean | Voucher$voucher_transaction_detailsArgs<ExtArgs>
     _count?: boolean | VoucherCountOutputTypeDefaultArgs<ExtArgs>
   }, ExtArgs["result"]["voucher"]>
@@ -14918,53 +15002,64 @@ export namespace Prisma {
     id?: boolean
     user_id?: boolean
     organizer_id?: boolean
+    event_id?: boolean
     code?: boolean
     percentage?: boolean
     amount?: boolean
     created_at?: boolean
+    start_date?: boolean
     expired_at?: boolean
     voucher_organizer?: boolean | Voucher$voucher_organizerArgs<ExtArgs>
     voucher_user?: boolean | Voucher$voucher_userArgs<ExtArgs>
+    voucher_event?: boolean | Voucher$voucher_eventArgs<ExtArgs>
   }, ExtArgs["result"]["voucher"]>
 
   export type VoucherSelectUpdateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
     id?: boolean
     user_id?: boolean
     organizer_id?: boolean
+    event_id?: boolean
     code?: boolean
     percentage?: boolean
     amount?: boolean
     created_at?: boolean
+    start_date?: boolean
     expired_at?: boolean
     voucher_organizer?: boolean | Voucher$voucher_organizerArgs<ExtArgs>
     voucher_user?: boolean | Voucher$voucher_userArgs<ExtArgs>
+    voucher_event?: boolean | Voucher$voucher_eventArgs<ExtArgs>
   }, ExtArgs["result"]["voucher"]>
 
   export type VoucherSelectScalar = {
     id?: boolean
     user_id?: boolean
     organizer_id?: boolean
+    event_id?: boolean
     code?: boolean
     percentage?: boolean
     amount?: boolean
     created_at?: boolean
+    start_date?: boolean
     expired_at?: boolean
   }
 
-  export type VoucherOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "user_id" | "organizer_id" | "code" | "percentage" | "amount" | "created_at" | "expired_at", ExtArgs["result"]["voucher"]>
+  export type VoucherOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "user_id" | "organizer_id" | "event_id" | "code" | "percentage" | "amount" | "created_at" | "start_date" | "expired_at", ExtArgs["result"]["voucher"]>
   export type VoucherInclude<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     voucher_organizer?: boolean | Voucher$voucher_organizerArgs<ExtArgs>
     voucher_user?: boolean | Voucher$voucher_userArgs<ExtArgs>
+    voucher_event?: boolean | Voucher$voucher_eventArgs<ExtArgs>
     voucher_transaction_details?: boolean | Voucher$voucher_transaction_detailsArgs<ExtArgs>
     _count?: boolean | VoucherCountOutputTypeDefaultArgs<ExtArgs>
   }
   export type VoucherIncludeCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     voucher_organizer?: boolean | Voucher$voucher_organizerArgs<ExtArgs>
     voucher_user?: boolean | Voucher$voucher_userArgs<ExtArgs>
+    voucher_event?: boolean | Voucher$voucher_eventArgs<ExtArgs>
   }
   export type VoucherIncludeUpdateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     voucher_organizer?: boolean | Voucher$voucher_organizerArgs<ExtArgs>
     voucher_user?: boolean | Voucher$voucher_userArgs<ExtArgs>
+    voucher_event?: boolean | Voucher$voucher_eventArgs<ExtArgs>
   }
 
   export type $VoucherPayload<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
@@ -14972,16 +15067,19 @@ export namespace Prisma {
     objects: {
       voucher_organizer: Prisma.$OrganizerPayload<ExtArgs> | null
       voucher_user: Prisma.$UsersPayload<ExtArgs> | null
+      voucher_event: Prisma.$EventsPayload<ExtArgs> | null
       voucher_transaction_details: Prisma.$Transactions_detailPayload<ExtArgs>[]
     }
     scalars: $Extensions.GetPayloadResult<{
       id: string
       user_id: string | null
       organizer_id: string | null
+      event_id: string | null
       code: string
       percentage: number | null
       amount: number | null
       created_at: Date
+      start_date: Date | null
       expired_at: Date
     }, ExtArgs["result"]["voucher"]>
     composites: {}
@@ -15379,6 +15477,7 @@ export namespace Prisma {
     readonly [Symbol.toStringTag]: "PrismaPromise"
     voucher_organizer<T extends Voucher$voucher_organizerArgs<ExtArgs> = {}>(args?: Subset<T, Voucher$voucher_organizerArgs<ExtArgs>>): Prisma__OrganizerClient<$Result.GetResult<Prisma.$OrganizerPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
     voucher_user<T extends Voucher$voucher_userArgs<ExtArgs> = {}>(args?: Subset<T, Voucher$voucher_userArgs<ExtArgs>>): Prisma__UsersClient<$Result.GetResult<Prisma.$UsersPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
+    voucher_event<T extends Voucher$voucher_eventArgs<ExtArgs> = {}>(args?: Subset<T, Voucher$voucher_eventArgs<ExtArgs>>): Prisma__EventsClient<$Result.GetResult<Prisma.$EventsPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
     voucher_transaction_details<T extends Voucher$voucher_transaction_detailsArgs<ExtArgs> = {}>(args?: Subset<T, Voucher$voucher_transaction_detailsArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$Transactions_detailPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
     /**
      * Attaches callbacks for the resolution and/or rejection of the Promise.
@@ -15412,10 +15511,12 @@ export namespace Prisma {
     readonly id: FieldRef<"Voucher", 'String'>
     readonly user_id: FieldRef<"Voucher", 'String'>
     readonly organizer_id: FieldRef<"Voucher", 'String'>
+    readonly event_id: FieldRef<"Voucher", 'String'>
     readonly code: FieldRef<"Voucher", 'String'>
     readonly percentage: FieldRef<"Voucher", 'Int'>
     readonly amount: FieldRef<"Voucher", 'Int'>
     readonly created_at: FieldRef<"Voucher", 'DateTime'>
+    readonly start_date: FieldRef<"Voucher", 'DateTime'>
     readonly expired_at: FieldRef<"Voucher", 'DateTime'>
   }
     
@@ -15851,6 +15952,25 @@ export namespace Prisma {
   }
 
   /**
+   * Voucher.voucher_event
+   */
+  export type Voucher$voucher_eventArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Events
+     */
+    select?: EventsSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the Events
+     */
+    omit?: EventsOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: EventsInclude<ExtArgs> | null
+    where?: EventsWhereInput
+  }
+
+  /**
    * Voucher.voucher_transaction_details
    */
   export type Voucher$voucher_transaction_detailsArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
@@ -15921,14 +16041,14 @@ export namespace Prisma {
     event_id: string | null
     organizer_id: string | null
     quantity: number | null
-    voucher_id: string | null
-    amount: number | null
-    proof: string | null
     isConfirmed: boolean | null
     transaction_status: $Enums.TransactionStatus | null
-    paid_at: Date | null
+    amount: number | null
     created_at: Date | null
+    paid_at: Date | null
+    proof: string | null
     updated_at: Date | null
+    voucher_id: string | null
   }
 
   export type Transactions_detailMaxAggregateOutputType = {
@@ -15937,14 +16057,14 @@ export namespace Prisma {
     event_id: string | null
     organizer_id: string | null
     quantity: number | null
-    voucher_id: string | null
-    amount: number | null
-    proof: string | null
     isConfirmed: boolean | null
     transaction_status: $Enums.TransactionStatus | null
-    paid_at: Date | null
+    amount: number | null
     created_at: Date | null
+    paid_at: Date | null
+    proof: string | null
     updated_at: Date | null
+    voucher_id: string | null
   }
 
   export type Transactions_detailCountAggregateOutputType = {
@@ -15953,14 +16073,14 @@ export namespace Prisma {
     event_id: number
     organizer_id: number
     quantity: number
-    voucher_id: number
-    amount: number
-    proof: number
     isConfirmed: number
     transaction_status: number
-    paid_at: number
+    amount: number
     created_at: number
+    paid_at: number
+    proof: number
     updated_at: number
+    voucher_id: number
     _all: number
   }
 
@@ -15981,14 +16101,14 @@ export namespace Prisma {
     event_id?: true
     organizer_id?: true
     quantity?: true
-    voucher_id?: true
-    amount?: true
-    proof?: true
     isConfirmed?: true
     transaction_status?: true
-    paid_at?: true
+    amount?: true
     created_at?: true
+    paid_at?: true
+    proof?: true
     updated_at?: true
+    voucher_id?: true
   }
 
   export type Transactions_detailMaxAggregateInputType = {
@@ -15997,14 +16117,14 @@ export namespace Prisma {
     event_id?: true
     organizer_id?: true
     quantity?: true
-    voucher_id?: true
-    amount?: true
-    proof?: true
     isConfirmed?: true
     transaction_status?: true
-    paid_at?: true
+    amount?: true
     created_at?: true
+    paid_at?: true
+    proof?: true
     updated_at?: true
+    voucher_id?: true
   }
 
   export type Transactions_detailCountAggregateInputType = {
@@ -16013,14 +16133,14 @@ export namespace Prisma {
     event_id?: true
     organizer_id?: true
     quantity?: true
-    voucher_id?: true
-    amount?: true
-    proof?: true
     isConfirmed?: true
     transaction_status?: true
-    paid_at?: true
+    amount?: true
     created_at?: true
+    paid_at?: true
+    proof?: true
     updated_at?: true
+    voucher_id?: true
     _all?: true
   }
 
@@ -16116,14 +16236,14 @@ export namespace Prisma {
     event_id: string
     organizer_id: string
     quantity: number
-    voucher_id: string | null
-    amount: number
-    proof: string
     isConfirmed: boolean
     transaction_status: $Enums.TransactionStatus
-    paid_at: Date | null
+    amount: number
     created_at: Date
+    paid_at: Date | null
+    proof: string
     updated_at: Date
+    voucher_id: string | null
     _count: Transactions_detailCountAggregateOutputType | null
     _avg: Transactions_detailAvgAggregateOutputType | null
     _sum: Transactions_detailSumAggregateOutputType | null
@@ -16151,17 +16271,17 @@ export namespace Prisma {
     event_id?: boolean
     organizer_id?: boolean
     quantity?: boolean
-    voucher_id?: boolean
-    amount?: boolean
-    proof?: boolean
     isConfirmed?: boolean
     transaction_status?: boolean
-    paid_at?: boolean
+    amount?: boolean
     created_at?: boolean
+    paid_at?: boolean
+    proof?: boolean
     updated_at?: boolean
-    user?: boolean | UsersDefaultArgs<ExtArgs>
+    voucher_id?: boolean
     detail_event?: boolean | EventsDefaultArgs<ExtArgs>
     detail_organizer?: boolean | OrganizerDefaultArgs<ExtArgs>
+    user?: boolean | UsersDefaultArgs<ExtArgs>
     transaction_voucher_details?: boolean | Transactions_detail$transaction_voucher_detailsArgs<ExtArgs>
   }, ExtArgs["result"]["transactions_detail"]>
 
@@ -16171,17 +16291,17 @@ export namespace Prisma {
     event_id?: boolean
     organizer_id?: boolean
     quantity?: boolean
-    voucher_id?: boolean
-    amount?: boolean
-    proof?: boolean
     isConfirmed?: boolean
     transaction_status?: boolean
-    paid_at?: boolean
+    amount?: boolean
     created_at?: boolean
+    paid_at?: boolean
+    proof?: boolean
     updated_at?: boolean
-    user?: boolean | UsersDefaultArgs<ExtArgs>
+    voucher_id?: boolean
     detail_event?: boolean | EventsDefaultArgs<ExtArgs>
     detail_organizer?: boolean | OrganizerDefaultArgs<ExtArgs>
+    user?: boolean | UsersDefaultArgs<ExtArgs>
     transaction_voucher_details?: boolean | Transactions_detail$transaction_voucher_detailsArgs<ExtArgs>
   }, ExtArgs["result"]["transactions_detail"]>
 
@@ -16191,17 +16311,17 @@ export namespace Prisma {
     event_id?: boolean
     organizer_id?: boolean
     quantity?: boolean
-    voucher_id?: boolean
-    amount?: boolean
-    proof?: boolean
     isConfirmed?: boolean
     transaction_status?: boolean
-    paid_at?: boolean
+    amount?: boolean
     created_at?: boolean
+    paid_at?: boolean
+    proof?: boolean
     updated_at?: boolean
-    user?: boolean | UsersDefaultArgs<ExtArgs>
+    voucher_id?: boolean
     detail_event?: boolean | EventsDefaultArgs<ExtArgs>
     detail_organizer?: boolean | OrganizerDefaultArgs<ExtArgs>
+    user?: boolean | UsersDefaultArgs<ExtArgs>
     transaction_voucher_details?: boolean | Transactions_detail$transaction_voucher_detailsArgs<ExtArgs>
   }, ExtArgs["result"]["transactions_detail"]>
 
@@ -16211,42 +16331,42 @@ export namespace Prisma {
     event_id?: boolean
     organizer_id?: boolean
     quantity?: boolean
-    voucher_id?: boolean
-    amount?: boolean
-    proof?: boolean
     isConfirmed?: boolean
     transaction_status?: boolean
-    paid_at?: boolean
+    amount?: boolean
     created_at?: boolean
+    paid_at?: boolean
+    proof?: boolean
     updated_at?: boolean
+    voucher_id?: boolean
   }
 
-  export type Transactions_detailOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "user_id" | "event_id" | "organizer_id" | "quantity" | "voucher_id" | "amount" | "proof" | "isConfirmed" | "transaction_status" | "paid_at" | "created_at" | "updated_at", ExtArgs["result"]["transactions_detail"]>
+  export type Transactions_detailOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "user_id" | "event_id" | "organizer_id" | "quantity" | "isConfirmed" | "transaction_status" | "amount" | "created_at" | "paid_at" | "proof" | "updated_at" | "voucher_id", ExtArgs["result"]["transactions_detail"]>
   export type Transactions_detailInclude<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    user?: boolean | UsersDefaultArgs<ExtArgs>
     detail_event?: boolean | EventsDefaultArgs<ExtArgs>
     detail_organizer?: boolean | OrganizerDefaultArgs<ExtArgs>
+    user?: boolean | UsersDefaultArgs<ExtArgs>
     transaction_voucher_details?: boolean | Transactions_detail$transaction_voucher_detailsArgs<ExtArgs>
   }
   export type Transactions_detailIncludeCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    user?: boolean | UsersDefaultArgs<ExtArgs>
     detail_event?: boolean | EventsDefaultArgs<ExtArgs>
     detail_organizer?: boolean | OrganizerDefaultArgs<ExtArgs>
+    user?: boolean | UsersDefaultArgs<ExtArgs>
     transaction_voucher_details?: boolean | Transactions_detail$transaction_voucher_detailsArgs<ExtArgs>
   }
   export type Transactions_detailIncludeUpdateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    user?: boolean | UsersDefaultArgs<ExtArgs>
     detail_event?: boolean | EventsDefaultArgs<ExtArgs>
     detail_organizer?: boolean | OrganizerDefaultArgs<ExtArgs>
+    user?: boolean | UsersDefaultArgs<ExtArgs>
     transaction_voucher_details?: boolean | Transactions_detail$transaction_voucher_detailsArgs<ExtArgs>
   }
 
   export type $Transactions_detailPayload<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     name: "Transactions_detail"
     objects: {
-      user: Prisma.$UsersPayload<ExtArgs>
       detail_event: Prisma.$EventsPayload<ExtArgs>
       detail_organizer: Prisma.$OrganizerPayload<ExtArgs>
+      user: Prisma.$UsersPayload<ExtArgs>
       transaction_voucher_details: Prisma.$VoucherPayload<ExtArgs> | null
     }
     scalars: $Extensions.GetPayloadResult<{
@@ -16255,14 +16375,14 @@ export namespace Prisma {
       event_id: string
       organizer_id: string
       quantity: number
-      voucher_id: string | null
-      amount: number
-      proof: string
       isConfirmed: boolean
       transaction_status: $Enums.TransactionStatus
-      paid_at: Date | null
+      amount: number
       created_at: Date
+      paid_at: Date | null
+      proof: string
       updated_at: Date
+      voucher_id: string | null
     }, ExtArgs["result"]["transactions_detail"]>
     composites: {}
   }
@@ -16657,9 +16777,9 @@ export namespace Prisma {
    */
   export interface Prisma__Transactions_detailClient<T, Null = never, ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs, GlobalOmitOptions = {}> extends Prisma.PrismaPromise<T> {
     readonly [Symbol.toStringTag]: "PrismaPromise"
-    user<T extends UsersDefaultArgs<ExtArgs> = {}>(args?: Subset<T, UsersDefaultArgs<ExtArgs>>): Prisma__UsersClient<$Result.GetResult<Prisma.$UsersPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | Null, Null, ExtArgs, GlobalOmitOptions>
     detail_event<T extends EventsDefaultArgs<ExtArgs> = {}>(args?: Subset<T, EventsDefaultArgs<ExtArgs>>): Prisma__EventsClient<$Result.GetResult<Prisma.$EventsPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | Null, Null, ExtArgs, GlobalOmitOptions>
     detail_organizer<T extends OrganizerDefaultArgs<ExtArgs> = {}>(args?: Subset<T, OrganizerDefaultArgs<ExtArgs>>): Prisma__OrganizerClient<$Result.GetResult<Prisma.$OrganizerPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | Null, Null, ExtArgs, GlobalOmitOptions>
+    user<T extends UsersDefaultArgs<ExtArgs> = {}>(args?: Subset<T, UsersDefaultArgs<ExtArgs>>): Prisma__UsersClient<$Result.GetResult<Prisma.$UsersPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | Null, Null, ExtArgs, GlobalOmitOptions>
     transaction_voucher_details<T extends Transactions_detail$transaction_voucher_detailsArgs<ExtArgs> = {}>(args?: Subset<T, Transactions_detail$transaction_voucher_detailsArgs<ExtArgs>>): Prisma__VoucherClient<$Result.GetResult<Prisma.$VoucherPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
     /**
      * Attaches callbacks for the resolution and/or rejection of the Promise.
@@ -16695,14 +16815,14 @@ export namespace Prisma {
     readonly event_id: FieldRef<"Transactions_detail", 'String'>
     readonly organizer_id: FieldRef<"Transactions_detail", 'String'>
     readonly quantity: FieldRef<"Transactions_detail", 'Int'>
-    readonly voucher_id: FieldRef<"Transactions_detail", 'String'>
-    readonly amount: FieldRef<"Transactions_detail", 'Int'>
-    readonly proof: FieldRef<"Transactions_detail", 'String'>
     readonly isConfirmed: FieldRef<"Transactions_detail", 'Boolean'>
     readonly transaction_status: FieldRef<"Transactions_detail", 'TransactionStatus'>
-    readonly paid_at: FieldRef<"Transactions_detail", 'DateTime'>
+    readonly amount: FieldRef<"Transactions_detail", 'Int'>
     readonly created_at: FieldRef<"Transactions_detail", 'DateTime'>
+    readonly paid_at: FieldRef<"Transactions_detail", 'DateTime'>
+    readonly proof: FieldRef<"Transactions_detail", 'String'>
     readonly updated_at: FieldRef<"Transactions_detail", 'DateTime'>
+    readonly voucher_id: FieldRef<"Transactions_detail", 'String'>
   }
     
 
@@ -17160,11 +17280,11 @@ export namespace Prisma {
     birthdate: 'birthdate',
     phone_number: 'phone_number',
     avatar: 'avatar',
-    refferal_code: 'refferal_code',
-    referrer_code: 'referrer_code',
     isVerified: 'isVerified',
     created_at: 'created_at',
-    updated_at: 'updated_at'
+    updated_at: 'updated_at',
+    referrer_code: 'referrer_code',
+    refferal_code: 'refferal_code'
   };
 
   export type UsersScalarFieldEnum = (typeof UsersScalarFieldEnum)[keyof typeof UsersScalarFieldEnum]
@@ -17225,13 +17345,15 @@ export namespace Prisma {
   export type Event_LocationScalarFieldEnum = (typeof Event_LocationScalarFieldEnum)[keyof typeof Event_LocationScalarFieldEnum]
 
 
-  export const Event_SeatScalarFieldEnum: {
+  export const TicketTypeScalarFieldEnum: {
     id: 'id',
-    events_id: 'events_id',
-    total: 'total'
+    event_id: 'event_id',
+    name: 'name',
+    price: 'price',
+    quantity: 'quantity'
   };
 
-  export type Event_SeatScalarFieldEnum = (typeof Event_SeatScalarFieldEnum)[keyof typeof Event_SeatScalarFieldEnum]
+  export type TicketTypeScalarFieldEnum = (typeof TicketTypeScalarFieldEnum)[keyof typeof TicketTypeScalarFieldEnum]
 
 
   export const Event_ReviewsScalarFieldEnum: {
@@ -17282,10 +17404,12 @@ export namespace Prisma {
     id: 'id',
     user_id: 'user_id',
     organizer_id: 'organizer_id',
+    event_id: 'event_id',
     code: 'code',
     percentage: 'percentage',
     amount: 'amount',
     created_at: 'created_at',
+    start_date: 'start_date',
     expired_at: 'expired_at'
   };
 
@@ -17298,14 +17422,14 @@ export namespace Prisma {
     event_id: 'event_id',
     organizer_id: 'organizer_id',
     quantity: 'quantity',
-    voucher_id: 'voucher_id',
-    amount: 'amount',
-    proof: 'proof',
     isConfirmed: 'isConfirmed',
     transaction_status: 'transaction_status',
-    paid_at: 'paid_at',
+    amount: 'amount',
     created_at: 'created_at',
-    updated_at: 'updated_at'
+    paid_at: 'paid_at',
+    proof: 'proof',
+    updated_at: 'updated_at',
+    voucher_id: 'voucher_id'
   };
 
   export type Transactions_detailScalarFieldEnum = (typeof Transactions_detailScalarFieldEnum)[keyof typeof Transactions_detailScalarFieldEnum]
@@ -17447,14 +17571,14 @@ export namespace Prisma {
     birthdate?: DateTimeFilter<"Users"> | Date | string
     phone_number?: StringFilter<"Users"> | string
     avatar?: StringNullableFilter<"Users"> | string | null
-    refferal_code?: StringNullableFilter<"Users"> | string | null
-    referrer_code?: StringNullableFilter<"Users"> | string | null
     isVerified?: BoolFilter<"Users"> | boolean
     created_at?: DateTimeFilter<"Users"> | Date | string
     updated_at?: DateTimeFilter<"Users"> | Date | string
-    organizer?: OrganizerListRelationFilter
-    reviews_user?: Event_ReviewsListRelationFilter
+    referrer_code?: StringNullableFilter<"Users"> | string | null
+    refferal_code?: StringNullableFilter<"Users"> | string | null
     attendees_user?: Event_AttendeesListRelationFilter
+    reviews_user?: Event_ReviewsListRelationFilter
+    organizer?: XOR<OrganizerNullableScalarRelationFilter, OrganizerWhereInput> | null
     referral_user?: Referral_CodeListRelationFilter
     usageReferral_user?: Referral_UsageListRelationFilter
     transactions?: Transactions_detailListRelationFilter
@@ -17471,14 +17595,14 @@ export namespace Prisma {
     birthdate?: SortOrder
     phone_number?: SortOrder
     avatar?: SortOrderInput | SortOrder
-    refferal_code?: SortOrderInput | SortOrder
-    referrer_code?: SortOrderInput | SortOrder
     isVerified?: SortOrder
     created_at?: SortOrder
     updated_at?: SortOrder
-    organizer?: OrganizerOrderByRelationAggregateInput
-    reviews_user?: Event_ReviewsOrderByRelationAggregateInput
+    referrer_code?: SortOrderInput | SortOrder
+    refferal_code?: SortOrderInput | SortOrder
     attendees_user?: Event_AttendeesOrderByRelationAggregateInput
+    reviews_user?: Event_ReviewsOrderByRelationAggregateInput
+    organizer?: OrganizerOrderByWithRelationInput
     referral_user?: Referral_CodeOrderByRelationAggregateInput
     usageReferral_user?: Referral_UsageOrderByRelationAggregateInput
     transactions?: Transactions_detailOrderByRelationAggregateInput
@@ -17499,13 +17623,13 @@ export namespace Prisma {
     birthdate?: DateTimeFilter<"Users"> | Date | string
     phone_number?: StringFilter<"Users"> | string
     avatar?: StringNullableFilter<"Users"> | string | null
-    referrer_code?: StringNullableFilter<"Users"> | string | null
     isVerified?: BoolFilter<"Users"> | boolean
     created_at?: DateTimeFilter<"Users"> | Date | string
     updated_at?: DateTimeFilter<"Users"> | Date | string
-    organizer?: OrganizerListRelationFilter
-    reviews_user?: Event_ReviewsListRelationFilter
+    referrer_code?: StringNullableFilter<"Users"> | string | null
     attendees_user?: Event_AttendeesListRelationFilter
+    reviews_user?: Event_ReviewsListRelationFilter
+    organizer?: XOR<OrganizerNullableScalarRelationFilter, OrganizerWhereInput> | null
     referral_user?: Referral_CodeListRelationFilter
     usageReferral_user?: Referral_UsageListRelationFilter
     transactions?: Transactions_detailListRelationFilter
@@ -17522,11 +17646,11 @@ export namespace Prisma {
     birthdate?: SortOrder
     phone_number?: SortOrder
     avatar?: SortOrderInput | SortOrder
-    refferal_code?: SortOrderInput | SortOrder
-    referrer_code?: SortOrderInput | SortOrder
     isVerified?: SortOrder
     created_at?: SortOrder
     updated_at?: SortOrder
+    referrer_code?: SortOrderInput | SortOrder
+    refferal_code?: SortOrderInput | SortOrder
     _count?: UsersCountOrderByAggregateInput
     _max?: UsersMaxOrderByAggregateInput
     _min?: UsersMinOrderByAggregateInput
@@ -17545,11 +17669,11 @@ export namespace Prisma {
     birthdate?: DateTimeWithAggregatesFilter<"Users"> | Date | string
     phone_number?: StringWithAggregatesFilter<"Users"> | string
     avatar?: StringNullableWithAggregatesFilter<"Users"> | string | null
-    refferal_code?: StringNullableWithAggregatesFilter<"Users"> | string | null
-    referrer_code?: StringNullableWithAggregatesFilter<"Users"> | string | null
     isVerified?: BoolWithAggregatesFilter<"Users"> | boolean
     created_at?: DateTimeWithAggregatesFilter<"Users"> | Date | string
     updated_at?: DateTimeWithAggregatesFilter<"Users"> | Date | string
+    referrer_code?: StringNullableWithAggregatesFilter<"Users"> | string | null
+    refferal_code?: StringNullableWithAggregatesFilter<"Users"> | string | null
   }
 
   export type OrganizerWhereInput = {
@@ -17559,22 +17683,22 @@ export namespace Prisma {
     id?: StringFilter<"Organizer"> | string
     user_id?: StringFilter<"Organizer"> | string
     organizer_name?: StringFilter<"Organizer"> | string
-    user?: XOR<UsersScalarRelationFilter, UsersWhereInput>
-    event?: EventsListRelationFilter
-    organizer_voucher?: VoucherListRelationFilter
-    organizer_transactionDetails?: Transactions_detailListRelationFilter
     organizer_articles?: ArticlesListRelationFilter
+    event?: EventsListRelationFilter
+    user?: XOR<UsersScalarRelationFilter, UsersWhereInput>
+    organizer_transactionDetails?: Transactions_detailListRelationFilter
+    organizer_voucher?: VoucherListRelationFilter
   }
 
   export type OrganizerOrderByWithRelationInput = {
     id?: SortOrder
     user_id?: SortOrder
     organizer_name?: SortOrder
-    user?: UsersOrderByWithRelationInput
-    event?: EventsOrderByRelationAggregateInput
-    organizer_voucher?: VoucherOrderByRelationAggregateInput
-    organizer_transactionDetails?: Transactions_detailOrderByRelationAggregateInput
     organizer_articles?: ArticlesOrderByRelationAggregateInput
+    event?: EventsOrderByRelationAggregateInput
+    user?: UsersOrderByWithRelationInput
+    organizer_transactionDetails?: Transactions_detailOrderByRelationAggregateInput
+    organizer_voucher?: VoucherOrderByRelationAggregateInput
   }
 
   export type OrganizerWhereUniqueInput = Prisma.AtLeast<{
@@ -17584,11 +17708,11 @@ export namespace Prisma {
     OR?: OrganizerWhereInput[]
     NOT?: OrganizerWhereInput | OrganizerWhereInput[]
     organizer_name?: StringFilter<"Organizer"> | string
-    user?: XOR<UsersScalarRelationFilter, UsersWhereInput>
-    event?: EventsListRelationFilter
-    organizer_voucher?: VoucherListRelationFilter
-    organizer_transactionDetails?: Transactions_detailListRelationFilter
     organizer_articles?: ArticlesListRelationFilter
+    event?: EventsListRelationFilter
+    user?: XOR<UsersScalarRelationFilter, UsersWhereInput>
+    organizer_transactionDetails?: Transactions_detailListRelationFilter
+    organizer_voucher?: VoucherListRelationFilter
   }, "id" | "user_id">
 
   export type OrganizerOrderByWithAggregationInput = {
@@ -17670,7 +17794,7 @@ export namespace Prisma {
     name?: StringFilter<"Events"> | string
     description?: StringFilter<"Events"> | string
     image?: StringNullableFilter<"Events"> | string | null
-    price?: IntFilter<"Events"> | number
+    price?: IntNullableFilter<"Events"> | number | null
     start_date?: DateTimeFilter<"Events"> | Date | string
     end_date?: DateTimeNullableFilter<"Events"> | Date | string | null
     created_at?: DateTimeFilter<"Events"> | Date | string
@@ -17678,7 +17802,8 @@ export namespace Prisma {
     organizer?: XOR<OrganizerScalarRelationFilter, OrganizerWhereInput>
     category_event?: XOR<Event_CategoryScalarRelationFilter, Event_CategoryWhereInput>
     location_Event?: XOR<Event_LocationScalarRelationFilter, Event_LocationWhereInput>
-    seat_event?: XOR<Event_SeatNullableScalarRelationFilter, Event_SeatWhereInput> | null
+    ticketType?: TicketTypeListRelationFilter
+    voucher_event?: VoucherListRelationFilter
     reviews_event?: Event_ReviewsListRelationFilter
     attendees_event?: Event_AttendeesListRelationFilter
     event_transactionDetail?: Transactions_detailListRelationFilter
@@ -17692,7 +17817,7 @@ export namespace Prisma {
     name?: SortOrder
     description?: SortOrder
     image?: SortOrderInput | SortOrder
-    price?: SortOrder
+    price?: SortOrderInput | SortOrder
     start_date?: SortOrder
     end_date?: SortOrderInput | SortOrder
     created_at?: SortOrder
@@ -17700,7 +17825,8 @@ export namespace Prisma {
     organizer?: OrganizerOrderByWithRelationInput
     category_event?: Event_CategoryOrderByWithRelationInput
     location_Event?: Event_LocationOrderByWithRelationInput
-    seat_event?: Event_SeatOrderByWithRelationInput
+    ticketType?: TicketTypeOrderByRelationAggregateInput
+    voucher_event?: VoucherOrderByRelationAggregateInput
     reviews_event?: Event_ReviewsOrderByRelationAggregateInput
     attendees_event?: Event_AttendeesOrderByRelationAggregateInput
     event_transactionDetail?: Transactions_detailOrderByRelationAggregateInput
@@ -17717,7 +17843,7 @@ export namespace Prisma {
     name?: StringFilter<"Events"> | string
     description?: StringFilter<"Events"> | string
     image?: StringNullableFilter<"Events"> | string | null
-    price?: IntFilter<"Events"> | number
+    price?: IntNullableFilter<"Events"> | number | null
     start_date?: DateTimeFilter<"Events"> | Date | string
     end_date?: DateTimeNullableFilter<"Events"> | Date | string | null
     created_at?: DateTimeFilter<"Events"> | Date | string
@@ -17725,7 +17851,8 @@ export namespace Prisma {
     organizer?: XOR<OrganizerScalarRelationFilter, OrganizerWhereInput>
     category_event?: XOR<Event_CategoryScalarRelationFilter, Event_CategoryWhereInput>
     location_Event?: XOR<Event_LocationScalarRelationFilter, Event_LocationWhereInput>
-    seat_event?: XOR<Event_SeatNullableScalarRelationFilter, Event_SeatWhereInput> | null
+    ticketType?: TicketTypeListRelationFilter
+    voucher_event?: VoucherListRelationFilter
     reviews_event?: Event_ReviewsListRelationFilter
     attendees_event?: Event_AttendeesListRelationFilter
     event_transactionDetail?: Transactions_detailListRelationFilter
@@ -17739,7 +17866,7 @@ export namespace Prisma {
     name?: SortOrder
     description?: SortOrder
     image?: SortOrderInput | SortOrder
-    price?: SortOrder
+    price?: SortOrderInput | SortOrder
     start_date?: SortOrder
     end_date?: SortOrderInput | SortOrder
     created_at?: SortOrder
@@ -17762,7 +17889,7 @@ export namespace Prisma {
     name?: StringWithAggregatesFilter<"Events"> | string
     description?: StringWithAggregatesFilter<"Events"> | string
     image?: StringNullableWithAggregatesFilter<"Events"> | string | null
-    price?: IntWithAggregatesFilter<"Events"> | number
+    price?: IntNullableWithAggregatesFilter<"Events"> | number | null
     start_date?: DateTimeWithAggregatesFilter<"Events"> | Date | string
     end_date?: DateTimeNullableWithAggregatesFilter<"Events"> | Date | string | null
     created_at?: DateTimeWithAggregatesFilter<"Events"> | Date | string
@@ -17859,51 +17986,61 @@ export namespace Prisma {
     address?: StringWithAggregatesFilter<"Event_Location"> | string
   }
 
-  export type Event_SeatWhereInput = {
-    AND?: Event_SeatWhereInput | Event_SeatWhereInput[]
-    OR?: Event_SeatWhereInput[]
-    NOT?: Event_SeatWhereInput | Event_SeatWhereInput[]
-    id?: StringFilter<"Event_Seat"> | string
-    events_id?: StringFilter<"Event_Seat"> | string
-    total?: IntFilter<"Event_Seat"> | number
+  export type TicketTypeWhereInput = {
+    AND?: TicketTypeWhereInput | TicketTypeWhereInput[]
+    OR?: TicketTypeWhereInput[]
+    NOT?: TicketTypeWhereInput | TicketTypeWhereInput[]
+    id?: StringFilter<"TicketType"> | string
+    event_id?: StringFilter<"TicketType"> | string
+    name?: StringFilter<"TicketType"> | string
+    price?: IntFilter<"TicketType"> | number
+    quantity?: IntFilter<"TicketType"> | number
     event?: XOR<EventsScalarRelationFilter, EventsWhereInput>
   }
 
-  export type Event_SeatOrderByWithRelationInput = {
+  export type TicketTypeOrderByWithRelationInput = {
     id?: SortOrder
-    events_id?: SortOrder
-    total?: SortOrder
+    event_id?: SortOrder
+    name?: SortOrder
+    price?: SortOrder
+    quantity?: SortOrder
     event?: EventsOrderByWithRelationInput
   }
 
-  export type Event_SeatWhereUniqueInput = Prisma.AtLeast<{
+  export type TicketTypeWhereUniqueInput = Prisma.AtLeast<{
     id?: string
-    events_id?: string
-    AND?: Event_SeatWhereInput | Event_SeatWhereInput[]
-    OR?: Event_SeatWhereInput[]
-    NOT?: Event_SeatWhereInput | Event_SeatWhereInput[]
-    total?: IntFilter<"Event_Seat"> | number
+    AND?: TicketTypeWhereInput | TicketTypeWhereInput[]
+    OR?: TicketTypeWhereInput[]
+    NOT?: TicketTypeWhereInput | TicketTypeWhereInput[]
+    event_id?: StringFilter<"TicketType"> | string
+    name?: StringFilter<"TicketType"> | string
+    price?: IntFilter<"TicketType"> | number
+    quantity?: IntFilter<"TicketType"> | number
     event?: XOR<EventsScalarRelationFilter, EventsWhereInput>
-  }, "id" | "events_id">
+  }, "id">
 
-  export type Event_SeatOrderByWithAggregationInput = {
+  export type TicketTypeOrderByWithAggregationInput = {
     id?: SortOrder
-    events_id?: SortOrder
-    total?: SortOrder
-    _count?: Event_SeatCountOrderByAggregateInput
-    _avg?: Event_SeatAvgOrderByAggregateInput
-    _max?: Event_SeatMaxOrderByAggregateInput
-    _min?: Event_SeatMinOrderByAggregateInput
-    _sum?: Event_SeatSumOrderByAggregateInput
+    event_id?: SortOrder
+    name?: SortOrder
+    price?: SortOrder
+    quantity?: SortOrder
+    _count?: TicketTypeCountOrderByAggregateInput
+    _avg?: TicketTypeAvgOrderByAggregateInput
+    _max?: TicketTypeMaxOrderByAggregateInput
+    _min?: TicketTypeMinOrderByAggregateInput
+    _sum?: TicketTypeSumOrderByAggregateInput
   }
 
-  export type Event_SeatScalarWhereWithAggregatesInput = {
-    AND?: Event_SeatScalarWhereWithAggregatesInput | Event_SeatScalarWhereWithAggregatesInput[]
-    OR?: Event_SeatScalarWhereWithAggregatesInput[]
-    NOT?: Event_SeatScalarWhereWithAggregatesInput | Event_SeatScalarWhereWithAggregatesInput[]
-    id?: StringWithAggregatesFilter<"Event_Seat"> | string
-    events_id?: StringWithAggregatesFilter<"Event_Seat"> | string
-    total?: IntWithAggregatesFilter<"Event_Seat"> | number
+  export type TicketTypeScalarWhereWithAggregatesInput = {
+    AND?: TicketTypeScalarWhereWithAggregatesInput | TicketTypeScalarWhereWithAggregatesInput[]
+    OR?: TicketTypeScalarWhereWithAggregatesInput[]
+    NOT?: TicketTypeScalarWhereWithAggregatesInput | TicketTypeScalarWhereWithAggregatesInput[]
+    id?: StringWithAggregatesFilter<"TicketType"> | string
+    event_id?: StringWithAggregatesFilter<"TicketType"> | string
+    name?: StringWithAggregatesFilter<"TicketType"> | string
+    price?: IntWithAggregatesFilter<"TicketType"> | number
+    quantity?: IntWithAggregatesFilter<"TicketType"> | number
   }
 
   export type Event_ReviewsWhereInput = {
@@ -17979,8 +18116,8 @@ export namespace Prisma {
     user_id?: StringFilter<"Event_Attendees"> | string
     event_id?: StringFilter<"Event_Attendees"> | string
     status?: EnumStatusFilter<"Event_Attendees"> | $Enums.Status
-    user_attendees?: XOR<UsersScalarRelationFilter, UsersWhereInput>
     user_event?: XOR<EventsScalarRelationFilter, EventsWhereInput>
+    user_attendees?: XOR<UsersScalarRelationFilter, UsersWhereInput>
   }
 
   export type Event_AttendeesOrderByWithRelationInput = {
@@ -17988,8 +18125,8 @@ export namespace Prisma {
     user_id?: SortOrder
     event_id?: SortOrder
     status?: SortOrder
-    user_attendees?: UsersOrderByWithRelationInput
     user_event?: EventsOrderByWithRelationInput
+    user_attendees?: UsersOrderByWithRelationInput
   }
 
   export type Event_AttendeesWhereUniqueInput = Prisma.AtLeast<{
@@ -18000,8 +18137,8 @@ export namespace Prisma {
     user_id?: StringFilter<"Event_Attendees"> | string
     event_id?: StringFilter<"Event_Attendees"> | string
     status?: EnumStatusFilter<"Event_Attendees"> | $Enums.Status
-    user_attendees?: XOR<UsersScalarRelationFilter, UsersWhereInput>
     user_event?: XOR<EventsScalarRelationFilter, EventsWhereInput>
+    user_attendees?: XOR<UsersScalarRelationFilter, UsersWhereInput>
   }, "id">
 
   export type Event_AttendeesOrderByWithAggregationInput = {
@@ -18097,8 +18234,8 @@ export namespace Prisma {
     user_id?: StringFilter<"Referral_Usage"> | string
     referral_code_id?: StringFilter<"Referral_Usage"> | string
     used_at?: DateTimeFilter<"Referral_Usage"> | Date | string
-    user_referralUsage?: XOR<UsersScalarRelationFilter, UsersWhereInput>
     code_referralUsage?: XOR<Referral_CodeScalarRelationFilter, Referral_CodeWhereInput>
+    user_referralUsage?: XOR<UsersScalarRelationFilter, UsersWhereInput>
   }
 
   export type Referral_UsageOrderByWithRelationInput = {
@@ -18106,8 +18243,8 @@ export namespace Prisma {
     user_id?: SortOrder
     referral_code_id?: SortOrder
     used_at?: SortOrder
-    user_referralUsage?: UsersOrderByWithRelationInput
     code_referralUsage?: Referral_CodeOrderByWithRelationInput
+    user_referralUsage?: UsersOrderByWithRelationInput
   }
 
   export type Referral_UsageWhereUniqueInput = Prisma.AtLeast<{
@@ -18118,8 +18255,8 @@ export namespace Prisma {
     user_id?: StringFilter<"Referral_Usage"> | string
     referral_code_id?: StringFilter<"Referral_Usage"> | string
     used_at?: DateTimeFilter<"Referral_Usage"> | Date | string
-    user_referralUsage?: XOR<UsersScalarRelationFilter, UsersWhereInput>
     code_referralUsage?: XOR<Referral_CodeScalarRelationFilter, Referral_CodeWhereInput>
+    user_referralUsage?: XOR<UsersScalarRelationFilter, UsersWhereInput>
   }, "id">
 
   export type Referral_UsageOrderByWithAggregationInput = {
@@ -18149,13 +18286,16 @@ export namespace Prisma {
     id?: StringFilter<"Voucher"> | string
     user_id?: StringNullableFilter<"Voucher"> | string | null
     organizer_id?: StringNullableFilter<"Voucher"> | string | null
+    event_id?: StringNullableFilter<"Voucher"> | string | null
     code?: StringFilter<"Voucher"> | string
     percentage?: IntNullableFilter<"Voucher"> | number | null
     amount?: IntNullableFilter<"Voucher"> | number | null
     created_at?: DateTimeFilter<"Voucher"> | Date | string
+    start_date?: DateTimeNullableFilter<"Voucher"> | Date | string | null
     expired_at?: DateTimeFilter<"Voucher"> | Date | string
     voucher_organizer?: XOR<OrganizerNullableScalarRelationFilter, OrganizerWhereInput> | null
     voucher_user?: XOR<UsersNullableScalarRelationFilter, UsersWhereInput> | null
+    voucher_event?: XOR<EventsNullableScalarRelationFilter, EventsWhereInput> | null
     voucher_transaction_details?: Transactions_detailListRelationFilter
   }
 
@@ -18163,13 +18303,16 @@ export namespace Prisma {
     id?: SortOrder
     user_id?: SortOrderInput | SortOrder
     organizer_id?: SortOrderInput | SortOrder
+    event_id?: SortOrderInput | SortOrder
     code?: SortOrder
     percentage?: SortOrderInput | SortOrder
     amount?: SortOrderInput | SortOrder
     created_at?: SortOrder
+    start_date?: SortOrderInput | SortOrder
     expired_at?: SortOrder
     voucher_organizer?: OrganizerOrderByWithRelationInput
     voucher_user?: UsersOrderByWithRelationInput
+    voucher_event?: EventsOrderByWithRelationInput
     voucher_transaction_details?: Transactions_detailOrderByRelationAggregateInput
   }
 
@@ -18180,13 +18323,16 @@ export namespace Prisma {
     NOT?: VoucherWhereInput | VoucherWhereInput[]
     user_id?: StringNullableFilter<"Voucher"> | string | null
     organizer_id?: StringNullableFilter<"Voucher"> | string | null
+    event_id?: StringNullableFilter<"Voucher"> | string | null
     code?: StringFilter<"Voucher"> | string
     percentage?: IntNullableFilter<"Voucher"> | number | null
     amount?: IntNullableFilter<"Voucher"> | number | null
     created_at?: DateTimeFilter<"Voucher"> | Date | string
+    start_date?: DateTimeNullableFilter<"Voucher"> | Date | string | null
     expired_at?: DateTimeFilter<"Voucher"> | Date | string
     voucher_organizer?: XOR<OrganizerNullableScalarRelationFilter, OrganizerWhereInput> | null
     voucher_user?: XOR<UsersNullableScalarRelationFilter, UsersWhereInput> | null
+    voucher_event?: XOR<EventsNullableScalarRelationFilter, EventsWhereInput> | null
     voucher_transaction_details?: Transactions_detailListRelationFilter
   }, "id">
 
@@ -18194,10 +18340,12 @@ export namespace Prisma {
     id?: SortOrder
     user_id?: SortOrderInput | SortOrder
     organizer_id?: SortOrderInput | SortOrder
+    event_id?: SortOrderInput | SortOrder
     code?: SortOrder
     percentage?: SortOrderInput | SortOrder
     amount?: SortOrderInput | SortOrder
     created_at?: SortOrder
+    start_date?: SortOrderInput | SortOrder
     expired_at?: SortOrder
     _count?: VoucherCountOrderByAggregateInput
     _avg?: VoucherAvgOrderByAggregateInput
@@ -18213,10 +18361,12 @@ export namespace Prisma {
     id?: StringWithAggregatesFilter<"Voucher"> | string
     user_id?: StringNullableWithAggregatesFilter<"Voucher"> | string | null
     organizer_id?: StringNullableWithAggregatesFilter<"Voucher"> | string | null
+    event_id?: StringNullableWithAggregatesFilter<"Voucher"> | string | null
     code?: StringWithAggregatesFilter<"Voucher"> | string
     percentage?: IntNullableWithAggregatesFilter<"Voucher"> | number | null
     amount?: IntNullableWithAggregatesFilter<"Voucher"> | number | null
     created_at?: DateTimeWithAggregatesFilter<"Voucher"> | Date | string
+    start_date?: DateTimeNullableWithAggregatesFilter<"Voucher"> | Date | string | null
     expired_at?: DateTimeWithAggregatesFilter<"Voucher"> | Date | string
   }
 
@@ -18229,17 +18379,17 @@ export namespace Prisma {
     event_id?: StringFilter<"Transactions_detail"> | string
     organizer_id?: StringFilter<"Transactions_detail"> | string
     quantity?: IntFilter<"Transactions_detail"> | number
-    voucher_id?: StringNullableFilter<"Transactions_detail"> | string | null
-    amount?: IntFilter<"Transactions_detail"> | number
-    proof?: StringFilter<"Transactions_detail"> | string
     isConfirmed?: BoolFilter<"Transactions_detail"> | boolean
     transaction_status?: EnumTransactionStatusFilter<"Transactions_detail"> | $Enums.TransactionStatus
-    paid_at?: DateTimeNullableFilter<"Transactions_detail"> | Date | string | null
+    amount?: IntFilter<"Transactions_detail"> | number
     created_at?: DateTimeFilter<"Transactions_detail"> | Date | string
+    paid_at?: DateTimeNullableFilter<"Transactions_detail"> | Date | string | null
+    proof?: StringFilter<"Transactions_detail"> | string
     updated_at?: DateTimeFilter<"Transactions_detail"> | Date | string
-    user?: XOR<UsersScalarRelationFilter, UsersWhereInput>
+    voucher_id?: StringNullableFilter<"Transactions_detail"> | string | null
     detail_event?: XOR<EventsScalarRelationFilter, EventsWhereInput>
     detail_organizer?: XOR<OrganizerScalarRelationFilter, OrganizerWhereInput>
+    user?: XOR<UsersScalarRelationFilter, UsersWhereInput>
     transaction_voucher_details?: XOR<VoucherNullableScalarRelationFilter, VoucherWhereInput> | null
   }
 
@@ -18249,17 +18399,17 @@ export namespace Prisma {
     event_id?: SortOrder
     organizer_id?: SortOrder
     quantity?: SortOrder
-    voucher_id?: SortOrderInput | SortOrder
-    amount?: SortOrder
-    proof?: SortOrder
     isConfirmed?: SortOrder
     transaction_status?: SortOrder
-    paid_at?: SortOrderInput | SortOrder
+    amount?: SortOrder
     created_at?: SortOrder
+    paid_at?: SortOrderInput | SortOrder
+    proof?: SortOrder
     updated_at?: SortOrder
-    user?: UsersOrderByWithRelationInput
+    voucher_id?: SortOrderInput | SortOrder
     detail_event?: EventsOrderByWithRelationInput
     detail_organizer?: OrganizerOrderByWithRelationInput
+    user?: UsersOrderByWithRelationInput
     transaction_voucher_details?: VoucherOrderByWithRelationInput
   }
 
@@ -18272,17 +18422,17 @@ export namespace Prisma {
     event_id?: StringFilter<"Transactions_detail"> | string
     organizer_id?: StringFilter<"Transactions_detail"> | string
     quantity?: IntFilter<"Transactions_detail"> | number
-    voucher_id?: StringNullableFilter<"Transactions_detail"> | string | null
-    amount?: IntFilter<"Transactions_detail"> | number
-    proof?: StringFilter<"Transactions_detail"> | string
     isConfirmed?: BoolFilter<"Transactions_detail"> | boolean
     transaction_status?: EnumTransactionStatusFilter<"Transactions_detail"> | $Enums.TransactionStatus
-    paid_at?: DateTimeNullableFilter<"Transactions_detail"> | Date | string | null
+    amount?: IntFilter<"Transactions_detail"> | number
     created_at?: DateTimeFilter<"Transactions_detail"> | Date | string
+    paid_at?: DateTimeNullableFilter<"Transactions_detail"> | Date | string | null
+    proof?: StringFilter<"Transactions_detail"> | string
     updated_at?: DateTimeFilter<"Transactions_detail"> | Date | string
-    user?: XOR<UsersScalarRelationFilter, UsersWhereInput>
+    voucher_id?: StringNullableFilter<"Transactions_detail"> | string | null
     detail_event?: XOR<EventsScalarRelationFilter, EventsWhereInput>
     detail_organizer?: XOR<OrganizerScalarRelationFilter, OrganizerWhereInput>
+    user?: XOR<UsersScalarRelationFilter, UsersWhereInput>
     transaction_voucher_details?: XOR<VoucherNullableScalarRelationFilter, VoucherWhereInput> | null
   }, "id">
 
@@ -18292,14 +18442,14 @@ export namespace Prisma {
     event_id?: SortOrder
     organizer_id?: SortOrder
     quantity?: SortOrder
-    voucher_id?: SortOrderInput | SortOrder
-    amount?: SortOrder
-    proof?: SortOrder
     isConfirmed?: SortOrder
     transaction_status?: SortOrder
-    paid_at?: SortOrderInput | SortOrder
+    amount?: SortOrder
     created_at?: SortOrder
+    paid_at?: SortOrderInput | SortOrder
+    proof?: SortOrder
     updated_at?: SortOrder
+    voucher_id?: SortOrderInput | SortOrder
     _count?: Transactions_detailCountOrderByAggregateInput
     _avg?: Transactions_detailAvgOrderByAggregateInput
     _max?: Transactions_detailMaxOrderByAggregateInput
@@ -18316,14 +18466,14 @@ export namespace Prisma {
     event_id?: StringWithAggregatesFilter<"Transactions_detail"> | string
     organizer_id?: StringWithAggregatesFilter<"Transactions_detail"> | string
     quantity?: IntWithAggregatesFilter<"Transactions_detail"> | number
-    voucher_id?: StringNullableWithAggregatesFilter<"Transactions_detail"> | string | null
-    amount?: IntWithAggregatesFilter<"Transactions_detail"> | number
-    proof?: StringWithAggregatesFilter<"Transactions_detail"> | string
     isConfirmed?: BoolWithAggregatesFilter<"Transactions_detail"> | boolean
     transaction_status?: EnumTransactionStatusWithAggregatesFilter<"Transactions_detail"> | $Enums.TransactionStatus
-    paid_at?: DateTimeNullableWithAggregatesFilter<"Transactions_detail"> | Date | string | null
+    amount?: IntWithAggregatesFilter<"Transactions_detail"> | number
     created_at?: DateTimeWithAggregatesFilter<"Transactions_detail"> | Date | string
+    paid_at?: DateTimeNullableWithAggregatesFilter<"Transactions_detail"> | Date | string | null
+    proof?: StringWithAggregatesFilter<"Transactions_detail"> | string
     updated_at?: DateTimeWithAggregatesFilter<"Transactions_detail"> | Date | string
+    voucher_id?: StringNullableWithAggregatesFilter<"Transactions_detail"> | string | null
   }
 
   export type UsersCreateInput = {
@@ -18336,14 +18486,14 @@ export namespace Prisma {
     birthdate: Date | string
     phone_number: string
     avatar?: string | null
-    refferal_code?: string | null
-    referrer_code?: string | null
     isVerified?: boolean
     created_at?: Date | string
     updated_at?: Date | string
-    organizer?: OrganizerCreateNestedManyWithoutUserInput
-    reviews_user?: Event_ReviewsCreateNestedManyWithoutReviews_userInput
+    referrer_code?: string | null
+    refferal_code?: string | null
     attendees_user?: Event_AttendeesCreateNestedManyWithoutUser_attendeesInput
+    reviews_user?: Event_ReviewsCreateNestedManyWithoutReviews_userInput
+    organizer?: OrganizerCreateNestedOneWithoutUserInput
     referral_user?: Referral_CodeCreateNestedManyWithoutUser_referralInput
     usageReferral_user?: Referral_UsageCreateNestedManyWithoutUser_referralUsageInput
     transactions?: Transactions_detailCreateNestedManyWithoutUserInput
@@ -18360,14 +18510,14 @@ export namespace Prisma {
     birthdate: Date | string
     phone_number: string
     avatar?: string | null
-    refferal_code?: string | null
-    referrer_code?: string | null
     isVerified?: boolean
     created_at?: Date | string
     updated_at?: Date | string
-    organizer?: OrganizerUncheckedCreateNestedManyWithoutUserInput
-    reviews_user?: Event_ReviewsUncheckedCreateNestedManyWithoutReviews_userInput
+    referrer_code?: string | null
+    refferal_code?: string | null
     attendees_user?: Event_AttendeesUncheckedCreateNestedManyWithoutUser_attendeesInput
+    reviews_user?: Event_ReviewsUncheckedCreateNestedManyWithoutReviews_userInput
+    organizer?: OrganizerUncheckedCreateNestedOneWithoutUserInput
     referral_user?: Referral_CodeUncheckedCreateNestedManyWithoutUser_referralInput
     usageReferral_user?: Referral_UsageUncheckedCreateNestedManyWithoutUser_referralUsageInput
     transactions?: Transactions_detailUncheckedCreateNestedManyWithoutUserInput
@@ -18384,14 +18534,14 @@ export namespace Prisma {
     birthdate?: DateTimeFieldUpdateOperationsInput | Date | string
     phone_number?: StringFieldUpdateOperationsInput | string
     avatar?: NullableStringFieldUpdateOperationsInput | string | null
-    refferal_code?: NullableStringFieldUpdateOperationsInput | string | null
-    referrer_code?: NullableStringFieldUpdateOperationsInput | string | null
     isVerified?: BoolFieldUpdateOperationsInput | boolean
     created_at?: DateTimeFieldUpdateOperationsInput | Date | string
     updated_at?: DateTimeFieldUpdateOperationsInput | Date | string
-    organizer?: OrganizerUpdateManyWithoutUserNestedInput
-    reviews_user?: Event_ReviewsUpdateManyWithoutReviews_userNestedInput
+    referrer_code?: NullableStringFieldUpdateOperationsInput | string | null
+    refferal_code?: NullableStringFieldUpdateOperationsInput | string | null
     attendees_user?: Event_AttendeesUpdateManyWithoutUser_attendeesNestedInput
+    reviews_user?: Event_ReviewsUpdateManyWithoutReviews_userNestedInput
+    organizer?: OrganizerUpdateOneWithoutUserNestedInput
     referral_user?: Referral_CodeUpdateManyWithoutUser_referralNestedInput
     usageReferral_user?: Referral_UsageUpdateManyWithoutUser_referralUsageNestedInput
     transactions?: Transactions_detailUpdateManyWithoutUserNestedInput
@@ -18408,14 +18558,14 @@ export namespace Prisma {
     birthdate?: DateTimeFieldUpdateOperationsInput | Date | string
     phone_number?: StringFieldUpdateOperationsInput | string
     avatar?: NullableStringFieldUpdateOperationsInput | string | null
-    refferal_code?: NullableStringFieldUpdateOperationsInput | string | null
-    referrer_code?: NullableStringFieldUpdateOperationsInput | string | null
     isVerified?: BoolFieldUpdateOperationsInput | boolean
     created_at?: DateTimeFieldUpdateOperationsInput | Date | string
     updated_at?: DateTimeFieldUpdateOperationsInput | Date | string
-    organizer?: OrganizerUncheckedUpdateManyWithoutUserNestedInput
-    reviews_user?: Event_ReviewsUncheckedUpdateManyWithoutReviews_userNestedInput
+    referrer_code?: NullableStringFieldUpdateOperationsInput | string | null
+    refferal_code?: NullableStringFieldUpdateOperationsInput | string | null
     attendees_user?: Event_AttendeesUncheckedUpdateManyWithoutUser_attendeesNestedInput
+    reviews_user?: Event_ReviewsUncheckedUpdateManyWithoutReviews_userNestedInput
+    organizer?: OrganizerUncheckedUpdateOneWithoutUserNestedInput
     referral_user?: Referral_CodeUncheckedUpdateManyWithoutUser_referralNestedInput
     usageReferral_user?: Referral_UsageUncheckedUpdateManyWithoutUser_referralUsageNestedInput
     transactions?: Transactions_detailUncheckedUpdateManyWithoutUserNestedInput
@@ -18432,11 +18582,11 @@ export namespace Prisma {
     birthdate: Date | string
     phone_number: string
     avatar?: string | null
-    refferal_code?: string | null
-    referrer_code?: string | null
     isVerified?: boolean
     created_at?: Date | string
     updated_at?: Date | string
+    referrer_code?: string | null
+    refferal_code?: string | null
   }
 
   export type UsersUpdateManyMutationInput = {
@@ -18449,11 +18599,11 @@ export namespace Prisma {
     birthdate?: DateTimeFieldUpdateOperationsInput | Date | string
     phone_number?: StringFieldUpdateOperationsInput | string
     avatar?: NullableStringFieldUpdateOperationsInput | string | null
-    refferal_code?: NullableStringFieldUpdateOperationsInput | string | null
-    referrer_code?: NullableStringFieldUpdateOperationsInput | string | null
     isVerified?: BoolFieldUpdateOperationsInput | boolean
     created_at?: DateTimeFieldUpdateOperationsInput | Date | string
     updated_at?: DateTimeFieldUpdateOperationsInput | Date | string
+    referrer_code?: NullableStringFieldUpdateOperationsInput | string | null
+    refferal_code?: NullableStringFieldUpdateOperationsInput | string | null
   }
 
   export type UsersUncheckedUpdateManyInput = {
@@ -18466,51 +18616,51 @@ export namespace Prisma {
     birthdate?: DateTimeFieldUpdateOperationsInput | Date | string
     phone_number?: StringFieldUpdateOperationsInput | string
     avatar?: NullableStringFieldUpdateOperationsInput | string | null
-    refferal_code?: NullableStringFieldUpdateOperationsInput | string | null
-    referrer_code?: NullableStringFieldUpdateOperationsInput | string | null
     isVerified?: BoolFieldUpdateOperationsInput | boolean
     created_at?: DateTimeFieldUpdateOperationsInput | Date | string
     updated_at?: DateTimeFieldUpdateOperationsInput | Date | string
+    referrer_code?: NullableStringFieldUpdateOperationsInput | string | null
+    refferal_code?: NullableStringFieldUpdateOperationsInput | string | null
   }
 
   export type OrganizerCreateInput = {
     id?: string
     organizer_name?: string
-    user: UsersCreateNestedOneWithoutOrganizerInput
-    event?: EventsCreateNestedManyWithoutOrganizerInput
-    organizer_voucher?: VoucherCreateNestedManyWithoutVoucher_organizerInput
-    organizer_transactionDetails?: Transactions_detailCreateNestedManyWithoutDetail_organizerInput
     organizer_articles?: ArticlesCreateNestedManyWithoutOrganizerInput
+    event?: EventsCreateNestedManyWithoutOrganizerInput
+    user: UsersCreateNestedOneWithoutOrganizerInput
+    organizer_transactionDetails?: Transactions_detailCreateNestedManyWithoutDetail_organizerInput
+    organizer_voucher?: VoucherCreateNestedManyWithoutVoucher_organizerInput
   }
 
   export type OrganizerUncheckedCreateInput = {
     id?: string
     user_id: string
     organizer_name?: string
-    event?: EventsUncheckedCreateNestedManyWithoutOrganizerInput
-    organizer_voucher?: VoucherUncheckedCreateNestedManyWithoutVoucher_organizerInput
-    organizer_transactionDetails?: Transactions_detailUncheckedCreateNestedManyWithoutDetail_organizerInput
     organizer_articles?: ArticlesUncheckedCreateNestedManyWithoutOrganizerInput
+    event?: EventsUncheckedCreateNestedManyWithoutOrganizerInput
+    organizer_transactionDetails?: Transactions_detailUncheckedCreateNestedManyWithoutDetail_organizerInput
+    organizer_voucher?: VoucherUncheckedCreateNestedManyWithoutVoucher_organizerInput
   }
 
   export type OrganizerUpdateInput = {
     id?: StringFieldUpdateOperationsInput | string
     organizer_name?: StringFieldUpdateOperationsInput | string
-    user?: UsersUpdateOneRequiredWithoutOrganizerNestedInput
-    event?: EventsUpdateManyWithoutOrganizerNestedInput
-    organizer_voucher?: VoucherUpdateManyWithoutVoucher_organizerNestedInput
-    organizer_transactionDetails?: Transactions_detailUpdateManyWithoutDetail_organizerNestedInput
     organizer_articles?: ArticlesUpdateManyWithoutOrganizerNestedInput
+    event?: EventsUpdateManyWithoutOrganizerNestedInput
+    user?: UsersUpdateOneRequiredWithoutOrganizerNestedInput
+    organizer_transactionDetails?: Transactions_detailUpdateManyWithoutDetail_organizerNestedInput
+    organizer_voucher?: VoucherUpdateManyWithoutVoucher_organizerNestedInput
   }
 
   export type OrganizerUncheckedUpdateInput = {
     id?: StringFieldUpdateOperationsInput | string
     user_id?: StringFieldUpdateOperationsInput | string
     organizer_name?: StringFieldUpdateOperationsInput | string
-    event?: EventsUncheckedUpdateManyWithoutOrganizerNestedInput
-    organizer_voucher?: VoucherUncheckedUpdateManyWithoutVoucher_organizerNestedInput
-    organizer_transactionDetails?: Transactions_detailUncheckedUpdateManyWithoutDetail_organizerNestedInput
     organizer_articles?: ArticlesUncheckedUpdateManyWithoutOrganizerNestedInput
+    event?: EventsUncheckedUpdateManyWithoutOrganizerNestedInput
+    organizer_transactionDetails?: Transactions_detailUncheckedUpdateManyWithoutDetail_organizerNestedInput
+    organizer_voucher?: VoucherUncheckedUpdateManyWithoutVoucher_organizerNestedInput
   }
 
   export type OrganizerCreateManyInput = {
@@ -18583,7 +18733,7 @@ export namespace Prisma {
     name: string
     description: string
     image?: string | null
-    price: number
+    price?: number | null
     start_date: Date | string
     end_date?: Date | string | null
     created_at?: Date | string
@@ -18591,7 +18741,8 @@ export namespace Prisma {
     organizer: OrganizerCreateNestedOneWithoutEventInput
     category_event: Event_CategoryCreateNestedOneWithoutEventInput
     location_Event: Event_LocationCreateNestedOneWithoutEventInput
-    seat_event?: Event_SeatCreateNestedOneWithoutEventInput
+    ticketType?: TicketTypeCreateNestedManyWithoutEventInput
+    voucher_event?: VoucherCreateNestedManyWithoutVoucher_eventInput
     reviews_event?: Event_ReviewsCreateNestedManyWithoutReviews_eventInput
     attendees_event?: Event_AttendeesCreateNestedManyWithoutUser_eventInput
     event_transactionDetail?: Transactions_detailCreateNestedManyWithoutDetail_eventInput
@@ -18605,12 +18756,13 @@ export namespace Prisma {
     name: string
     description: string
     image?: string | null
-    price: number
+    price?: number | null
     start_date: Date | string
     end_date?: Date | string | null
     created_at?: Date | string
     updated_at?: Date | string
-    seat_event?: Event_SeatUncheckedCreateNestedOneWithoutEventInput
+    ticketType?: TicketTypeUncheckedCreateNestedManyWithoutEventInput
+    voucher_event?: VoucherUncheckedCreateNestedManyWithoutVoucher_eventInput
     reviews_event?: Event_ReviewsUncheckedCreateNestedManyWithoutReviews_eventInput
     attendees_event?: Event_AttendeesUncheckedCreateNestedManyWithoutUser_eventInput
     event_transactionDetail?: Transactions_detailUncheckedCreateNestedManyWithoutDetail_eventInput
@@ -18621,7 +18773,7 @@ export namespace Prisma {
     name?: StringFieldUpdateOperationsInput | string
     description?: StringFieldUpdateOperationsInput | string
     image?: NullableStringFieldUpdateOperationsInput | string | null
-    price?: IntFieldUpdateOperationsInput | number
+    price?: NullableIntFieldUpdateOperationsInput | number | null
     start_date?: DateTimeFieldUpdateOperationsInput | Date | string
     end_date?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     created_at?: DateTimeFieldUpdateOperationsInput | Date | string
@@ -18629,7 +18781,8 @@ export namespace Prisma {
     organizer?: OrganizerUpdateOneRequiredWithoutEventNestedInput
     category_event?: Event_CategoryUpdateOneRequiredWithoutEventNestedInput
     location_Event?: Event_LocationUpdateOneRequiredWithoutEventNestedInput
-    seat_event?: Event_SeatUpdateOneWithoutEventNestedInput
+    ticketType?: TicketTypeUpdateManyWithoutEventNestedInput
+    voucher_event?: VoucherUpdateManyWithoutVoucher_eventNestedInput
     reviews_event?: Event_ReviewsUpdateManyWithoutReviews_eventNestedInput
     attendees_event?: Event_AttendeesUpdateManyWithoutUser_eventNestedInput
     event_transactionDetail?: Transactions_detailUpdateManyWithoutDetail_eventNestedInput
@@ -18643,12 +18796,13 @@ export namespace Prisma {
     name?: StringFieldUpdateOperationsInput | string
     description?: StringFieldUpdateOperationsInput | string
     image?: NullableStringFieldUpdateOperationsInput | string | null
-    price?: IntFieldUpdateOperationsInput | number
+    price?: NullableIntFieldUpdateOperationsInput | number | null
     start_date?: DateTimeFieldUpdateOperationsInput | Date | string
     end_date?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     created_at?: DateTimeFieldUpdateOperationsInput | Date | string
     updated_at?: DateTimeFieldUpdateOperationsInput | Date | string
-    seat_event?: Event_SeatUncheckedUpdateOneWithoutEventNestedInput
+    ticketType?: TicketTypeUncheckedUpdateManyWithoutEventNestedInput
+    voucher_event?: VoucherUncheckedUpdateManyWithoutVoucher_eventNestedInput
     reviews_event?: Event_ReviewsUncheckedUpdateManyWithoutReviews_eventNestedInput
     attendees_event?: Event_AttendeesUncheckedUpdateManyWithoutUser_eventNestedInput
     event_transactionDetail?: Transactions_detailUncheckedUpdateManyWithoutDetail_eventNestedInput
@@ -18662,7 +18816,7 @@ export namespace Prisma {
     name: string
     description: string
     image?: string | null
-    price: number
+    price?: number | null
     start_date: Date | string
     end_date?: Date | string | null
     created_at?: Date | string
@@ -18674,7 +18828,7 @@ export namespace Prisma {
     name?: StringFieldUpdateOperationsInput | string
     description?: StringFieldUpdateOperationsInput | string
     image?: NullableStringFieldUpdateOperationsInput | string | null
-    price?: IntFieldUpdateOperationsInput | number
+    price?: NullableIntFieldUpdateOperationsInput | number | null
     start_date?: DateTimeFieldUpdateOperationsInput | Date | string
     end_date?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     created_at?: DateTimeFieldUpdateOperationsInput | Date | string
@@ -18689,7 +18843,7 @@ export namespace Prisma {
     name?: StringFieldUpdateOperationsInput | string
     description?: StringFieldUpdateOperationsInput | string
     image?: NullableStringFieldUpdateOperationsInput | string | null
-    price?: IntFieldUpdateOperationsInput | number
+    price?: NullableIntFieldUpdateOperationsInput | number | null
     start_date?: DateTimeFieldUpdateOperationsInput | Date | string
     end_date?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     created_at?: DateTimeFieldUpdateOperationsInput | Date | string
@@ -18788,45 +18942,59 @@ export namespace Prisma {
     address?: StringFieldUpdateOperationsInput | string
   }
 
-  export type Event_SeatCreateInput = {
+  export type TicketTypeCreateInput = {
     id?: string
-    total: number
-    event: EventsCreateNestedOneWithoutSeat_eventInput
+    name: string
+    price: number
+    quantity: number
+    event: EventsCreateNestedOneWithoutTicketTypeInput
   }
 
-  export type Event_SeatUncheckedCreateInput = {
+  export type TicketTypeUncheckedCreateInput = {
     id?: string
-    events_id: string
-    total: number
+    event_id: string
+    name: string
+    price: number
+    quantity: number
   }
 
-  export type Event_SeatUpdateInput = {
+  export type TicketTypeUpdateInput = {
     id?: StringFieldUpdateOperationsInput | string
-    total?: IntFieldUpdateOperationsInput | number
-    event?: EventsUpdateOneRequiredWithoutSeat_eventNestedInput
+    name?: StringFieldUpdateOperationsInput | string
+    price?: IntFieldUpdateOperationsInput | number
+    quantity?: IntFieldUpdateOperationsInput | number
+    event?: EventsUpdateOneRequiredWithoutTicketTypeNestedInput
   }
 
-  export type Event_SeatUncheckedUpdateInput = {
+  export type TicketTypeUncheckedUpdateInput = {
     id?: StringFieldUpdateOperationsInput | string
-    events_id?: StringFieldUpdateOperationsInput | string
-    total?: IntFieldUpdateOperationsInput | number
+    event_id?: StringFieldUpdateOperationsInput | string
+    name?: StringFieldUpdateOperationsInput | string
+    price?: IntFieldUpdateOperationsInput | number
+    quantity?: IntFieldUpdateOperationsInput | number
   }
 
-  export type Event_SeatCreateManyInput = {
+  export type TicketTypeCreateManyInput = {
     id?: string
-    events_id: string
-    total: number
+    event_id: string
+    name: string
+    price: number
+    quantity: number
   }
 
-  export type Event_SeatUpdateManyMutationInput = {
+  export type TicketTypeUpdateManyMutationInput = {
     id?: StringFieldUpdateOperationsInput | string
-    total?: IntFieldUpdateOperationsInput | number
+    name?: StringFieldUpdateOperationsInput | string
+    price?: IntFieldUpdateOperationsInput | number
+    quantity?: IntFieldUpdateOperationsInput | number
   }
 
-  export type Event_SeatUncheckedUpdateManyInput = {
+  export type TicketTypeUncheckedUpdateManyInput = {
     id?: StringFieldUpdateOperationsInput | string
-    events_id?: StringFieldUpdateOperationsInput | string
-    total?: IntFieldUpdateOperationsInput | number
+    event_id?: StringFieldUpdateOperationsInput | string
+    name?: StringFieldUpdateOperationsInput | string
+    price?: IntFieldUpdateOperationsInput | number
+    quantity?: IntFieldUpdateOperationsInput | number
   }
 
   export type Event_ReviewsCreateInput = {
@@ -18893,8 +19061,8 @@ export namespace Prisma {
   export type Event_AttendeesCreateInput = {
     id?: string
     status: $Enums.Status
-    user_attendees: UsersCreateNestedOneWithoutAttendees_userInput
     user_event: EventsCreateNestedOneWithoutAttendees_eventInput
+    user_attendees: UsersCreateNestedOneWithoutAttendees_userInput
   }
 
   export type Event_AttendeesUncheckedCreateInput = {
@@ -18907,8 +19075,8 @@ export namespace Prisma {
   export type Event_AttendeesUpdateInput = {
     id?: StringFieldUpdateOperationsInput | string
     status?: EnumStatusFieldUpdateOperationsInput | $Enums.Status
-    user_attendees?: UsersUpdateOneRequiredWithoutAttendees_userNestedInput
     user_event?: EventsUpdateOneRequiredWithoutAttendees_eventNestedInput
+    user_attendees?: UsersUpdateOneRequiredWithoutAttendees_userNestedInput
   }
 
   export type Event_AttendeesUncheckedUpdateInput = {
@@ -19006,8 +19174,8 @@ export namespace Prisma {
   export type Referral_UsageCreateInput = {
     id?: string
     used_at?: Date | string
-    user_referralUsage: UsersCreateNestedOneWithoutUsageReferral_userInput
     code_referralUsage: Referral_CodeCreateNestedOneWithoutUser_referralUsageInput
+    user_referralUsage: UsersCreateNestedOneWithoutUsageReferral_userInput
   }
 
   export type Referral_UsageUncheckedCreateInput = {
@@ -19020,8 +19188,8 @@ export namespace Prisma {
   export type Referral_UsageUpdateInput = {
     id?: StringFieldUpdateOperationsInput | string
     used_at?: DateTimeFieldUpdateOperationsInput | Date | string
-    user_referralUsage?: UsersUpdateOneRequiredWithoutUsageReferral_userNestedInput
     code_referralUsage?: Referral_CodeUpdateOneRequiredWithoutUser_referralUsageNestedInput
+    user_referralUsage?: UsersUpdateOneRequiredWithoutUsageReferral_userNestedInput
   }
 
   export type Referral_UsageUncheckedUpdateInput = {
@@ -19056,9 +19224,11 @@ export namespace Prisma {
     percentage?: number | null
     amount?: number | null
     created_at?: Date | string
+    start_date?: Date | string | null
     expired_at: Date | string
     voucher_organizer?: OrganizerCreateNestedOneWithoutOrganizer_voucherInput
     voucher_user?: UsersCreateNestedOneWithoutUser_voucherInput
+    voucher_event?: EventsCreateNestedOneWithoutVoucher_eventInput
     voucher_transaction_details?: Transactions_detailCreateNestedManyWithoutTransaction_voucher_detailsInput
   }
 
@@ -19066,10 +19236,12 @@ export namespace Prisma {
     id?: string
     user_id?: string | null
     organizer_id?: string | null
+    event_id?: string | null
     code: string
     percentage?: number | null
     amount?: number | null
     created_at?: Date | string
+    start_date?: Date | string | null
     expired_at: Date | string
     voucher_transaction_details?: Transactions_detailUncheckedCreateNestedManyWithoutTransaction_voucher_detailsInput
   }
@@ -19080,9 +19252,11 @@ export namespace Prisma {
     percentage?: NullableIntFieldUpdateOperationsInput | number | null
     amount?: NullableIntFieldUpdateOperationsInput | number | null
     created_at?: DateTimeFieldUpdateOperationsInput | Date | string
+    start_date?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     expired_at?: DateTimeFieldUpdateOperationsInput | Date | string
     voucher_organizer?: OrganizerUpdateOneWithoutOrganizer_voucherNestedInput
     voucher_user?: UsersUpdateOneWithoutUser_voucherNestedInput
+    voucher_event?: EventsUpdateOneWithoutVoucher_eventNestedInput
     voucher_transaction_details?: Transactions_detailUpdateManyWithoutTransaction_voucher_detailsNestedInput
   }
 
@@ -19090,10 +19264,12 @@ export namespace Prisma {
     id?: StringFieldUpdateOperationsInput | string
     user_id?: NullableStringFieldUpdateOperationsInput | string | null
     organizer_id?: NullableStringFieldUpdateOperationsInput | string | null
+    event_id?: NullableStringFieldUpdateOperationsInput | string | null
     code?: StringFieldUpdateOperationsInput | string
     percentage?: NullableIntFieldUpdateOperationsInput | number | null
     amount?: NullableIntFieldUpdateOperationsInput | number | null
     created_at?: DateTimeFieldUpdateOperationsInput | Date | string
+    start_date?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     expired_at?: DateTimeFieldUpdateOperationsInput | Date | string
     voucher_transaction_details?: Transactions_detailUncheckedUpdateManyWithoutTransaction_voucher_detailsNestedInput
   }
@@ -19102,10 +19278,12 @@ export namespace Prisma {
     id?: string
     user_id?: string | null
     organizer_id?: string | null
+    event_id?: string | null
     code: string
     percentage?: number | null
     amount?: number | null
     created_at?: Date | string
+    start_date?: Date | string | null
     expired_at: Date | string
   }
 
@@ -19115,6 +19293,7 @@ export namespace Prisma {
     percentage?: NullableIntFieldUpdateOperationsInput | number | null
     amount?: NullableIntFieldUpdateOperationsInput | number | null
     created_at?: DateTimeFieldUpdateOperationsInput | Date | string
+    start_date?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     expired_at?: DateTimeFieldUpdateOperationsInput | Date | string
   }
 
@@ -19122,26 +19301,28 @@ export namespace Prisma {
     id?: StringFieldUpdateOperationsInput | string
     user_id?: NullableStringFieldUpdateOperationsInput | string | null
     organizer_id?: NullableStringFieldUpdateOperationsInput | string | null
+    event_id?: NullableStringFieldUpdateOperationsInput | string | null
     code?: StringFieldUpdateOperationsInput | string
     percentage?: NullableIntFieldUpdateOperationsInput | number | null
     amount?: NullableIntFieldUpdateOperationsInput | number | null
     created_at?: DateTimeFieldUpdateOperationsInput | Date | string
+    start_date?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     expired_at?: DateTimeFieldUpdateOperationsInput | Date | string
   }
 
   export type Transactions_detailCreateInput = {
     id?: string
     quantity: number
-    amount?: number
-    proof?: string
     isConfirmed?: boolean
     transaction_status: $Enums.TransactionStatus
-    paid_at?: Date | string | null
+    amount?: number
     created_at?: Date | string
+    paid_at?: Date | string | null
+    proof?: string
     updated_at?: Date | string
-    user: UsersCreateNestedOneWithoutTransactionsInput
     detail_event: EventsCreateNestedOneWithoutEvent_transactionDetailInput
     detail_organizer: OrganizerCreateNestedOneWithoutOrganizer_transactionDetailsInput
+    user: UsersCreateNestedOneWithoutTransactionsInput
     transaction_voucher_details?: VoucherCreateNestedOneWithoutVoucher_transaction_detailsInput
   }
 
@@ -19151,29 +19332,29 @@ export namespace Prisma {
     event_id: string
     organizer_id: string
     quantity: number
-    voucher_id?: string | null
-    amount?: number
-    proof?: string
     isConfirmed?: boolean
     transaction_status: $Enums.TransactionStatus
-    paid_at?: Date | string | null
+    amount?: number
     created_at?: Date | string
+    paid_at?: Date | string | null
+    proof?: string
     updated_at?: Date | string
+    voucher_id?: string | null
   }
 
   export type Transactions_detailUpdateInput = {
     id?: StringFieldUpdateOperationsInput | string
     quantity?: IntFieldUpdateOperationsInput | number
-    amount?: IntFieldUpdateOperationsInput | number
-    proof?: StringFieldUpdateOperationsInput | string
     isConfirmed?: BoolFieldUpdateOperationsInput | boolean
     transaction_status?: EnumTransactionStatusFieldUpdateOperationsInput | $Enums.TransactionStatus
-    paid_at?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    amount?: IntFieldUpdateOperationsInput | number
     created_at?: DateTimeFieldUpdateOperationsInput | Date | string
+    paid_at?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    proof?: StringFieldUpdateOperationsInput | string
     updated_at?: DateTimeFieldUpdateOperationsInput | Date | string
-    user?: UsersUpdateOneRequiredWithoutTransactionsNestedInput
     detail_event?: EventsUpdateOneRequiredWithoutEvent_transactionDetailNestedInput
     detail_organizer?: OrganizerUpdateOneRequiredWithoutOrganizer_transactionDetailsNestedInput
+    user?: UsersUpdateOneRequiredWithoutTransactionsNestedInput
     transaction_voucher_details?: VoucherUpdateOneWithoutVoucher_transaction_detailsNestedInput
   }
 
@@ -19183,14 +19364,14 @@ export namespace Prisma {
     event_id?: StringFieldUpdateOperationsInput | string
     organizer_id?: StringFieldUpdateOperationsInput | string
     quantity?: IntFieldUpdateOperationsInput | number
-    voucher_id?: NullableStringFieldUpdateOperationsInput | string | null
-    amount?: IntFieldUpdateOperationsInput | number
-    proof?: StringFieldUpdateOperationsInput | string
     isConfirmed?: BoolFieldUpdateOperationsInput | boolean
     transaction_status?: EnumTransactionStatusFieldUpdateOperationsInput | $Enums.TransactionStatus
-    paid_at?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    amount?: IntFieldUpdateOperationsInput | number
     created_at?: DateTimeFieldUpdateOperationsInput | Date | string
+    paid_at?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    proof?: StringFieldUpdateOperationsInput | string
     updated_at?: DateTimeFieldUpdateOperationsInput | Date | string
+    voucher_id?: NullableStringFieldUpdateOperationsInput | string | null
   }
 
   export type Transactions_detailCreateManyInput = {
@@ -19199,25 +19380,25 @@ export namespace Prisma {
     event_id: string
     organizer_id: string
     quantity: number
-    voucher_id?: string | null
-    amount?: number
-    proof?: string
     isConfirmed?: boolean
     transaction_status: $Enums.TransactionStatus
-    paid_at?: Date | string | null
+    amount?: number
     created_at?: Date | string
+    paid_at?: Date | string | null
+    proof?: string
     updated_at?: Date | string
+    voucher_id?: string | null
   }
 
   export type Transactions_detailUpdateManyMutationInput = {
     id?: StringFieldUpdateOperationsInput | string
     quantity?: IntFieldUpdateOperationsInput | number
-    amount?: IntFieldUpdateOperationsInput | number
-    proof?: StringFieldUpdateOperationsInput | string
     isConfirmed?: BoolFieldUpdateOperationsInput | boolean
     transaction_status?: EnumTransactionStatusFieldUpdateOperationsInput | $Enums.TransactionStatus
-    paid_at?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    amount?: IntFieldUpdateOperationsInput | number
     created_at?: DateTimeFieldUpdateOperationsInput | Date | string
+    paid_at?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    proof?: StringFieldUpdateOperationsInput | string
     updated_at?: DateTimeFieldUpdateOperationsInput | Date | string
   }
 
@@ -19227,14 +19408,14 @@ export namespace Prisma {
     event_id?: StringFieldUpdateOperationsInput | string
     organizer_id?: StringFieldUpdateOperationsInput | string
     quantity?: IntFieldUpdateOperationsInput | number
-    voucher_id?: NullableStringFieldUpdateOperationsInput | string | null
-    amount?: IntFieldUpdateOperationsInput | number
-    proof?: StringFieldUpdateOperationsInput | string
     isConfirmed?: BoolFieldUpdateOperationsInput | boolean
     transaction_status?: EnumTransactionStatusFieldUpdateOperationsInput | $Enums.TransactionStatus
-    paid_at?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    amount?: IntFieldUpdateOperationsInput | number
     created_at?: DateTimeFieldUpdateOperationsInput | Date | string
+    paid_at?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    proof?: StringFieldUpdateOperationsInput | string
     updated_at?: DateTimeFieldUpdateOperationsInput | Date | string
+    voucher_id?: NullableStringFieldUpdateOperationsInput | string | null
   }
 
   export type StringFilter<$PrismaModel = never> = {
@@ -19283,10 +19464,10 @@ export namespace Prisma {
     not?: NestedBoolFilter<$PrismaModel> | boolean
   }
 
-  export type OrganizerListRelationFilter = {
-    every?: OrganizerWhereInput
-    some?: OrganizerWhereInput
-    none?: OrganizerWhereInput
+  export type Event_AttendeesListRelationFilter = {
+    every?: Event_AttendeesWhereInput
+    some?: Event_AttendeesWhereInput
+    none?: Event_AttendeesWhereInput
   }
 
   export type Event_ReviewsListRelationFilter = {
@@ -19295,10 +19476,9 @@ export namespace Prisma {
     none?: Event_ReviewsWhereInput
   }
 
-  export type Event_AttendeesListRelationFilter = {
-    every?: Event_AttendeesWhereInput
-    some?: Event_AttendeesWhereInput
-    none?: Event_AttendeesWhereInput
+  export type OrganizerNullableScalarRelationFilter = {
+    is?: OrganizerWhereInput | null
+    isNot?: OrganizerWhereInput | null
   }
 
   export type Referral_CodeListRelationFilter = {
@@ -19330,15 +19510,11 @@ export namespace Prisma {
     nulls?: NullsOrder
   }
 
-  export type OrganizerOrderByRelationAggregateInput = {
+  export type Event_AttendeesOrderByRelationAggregateInput = {
     _count?: SortOrder
   }
 
   export type Event_ReviewsOrderByRelationAggregateInput = {
-    _count?: SortOrder
-  }
-
-  export type Event_AttendeesOrderByRelationAggregateInput = {
     _count?: SortOrder
   }
 
@@ -19368,11 +19544,11 @@ export namespace Prisma {
     birthdate?: SortOrder
     phone_number?: SortOrder
     avatar?: SortOrder
-    refferal_code?: SortOrder
-    referrer_code?: SortOrder
     isVerified?: SortOrder
     created_at?: SortOrder
     updated_at?: SortOrder
+    referrer_code?: SortOrder
+    refferal_code?: SortOrder
   }
 
   export type UsersMaxOrderByAggregateInput = {
@@ -19385,11 +19561,11 @@ export namespace Prisma {
     birthdate?: SortOrder
     phone_number?: SortOrder
     avatar?: SortOrder
-    refferal_code?: SortOrder
-    referrer_code?: SortOrder
     isVerified?: SortOrder
     created_at?: SortOrder
     updated_at?: SortOrder
+    referrer_code?: SortOrder
+    refferal_code?: SortOrder
   }
 
   export type UsersMinOrderByAggregateInput = {
@@ -19402,11 +19578,11 @@ export namespace Prisma {
     birthdate?: SortOrder
     phone_number?: SortOrder
     avatar?: SortOrder
-    refferal_code?: SortOrder
-    referrer_code?: SortOrder
     isVerified?: SortOrder
     created_at?: SortOrder
     updated_at?: SortOrder
+    referrer_code?: SortOrder
+    refferal_code?: SortOrder
   }
 
   export type StringWithAggregatesFilter<$PrismaModel = never> = {
@@ -19467,9 +19643,10 @@ export namespace Prisma {
     _max?: NestedBoolFilter<$PrismaModel>
   }
 
-  export type UsersScalarRelationFilter = {
-    is?: UsersWhereInput
-    isNot?: UsersWhereInput
+  export type ArticlesListRelationFilter = {
+    every?: ArticlesWhereInput
+    some?: ArticlesWhereInput
+    none?: ArticlesWhereInput
   }
 
   export type EventsListRelationFilter = {
@@ -19478,17 +19655,16 @@ export namespace Prisma {
     none?: EventsWhereInput
   }
 
-  export type ArticlesListRelationFilter = {
-    every?: ArticlesWhereInput
-    some?: ArticlesWhereInput
-    none?: ArticlesWhereInput
-  }
-
-  export type EventsOrderByRelationAggregateInput = {
-    _count?: SortOrder
+  export type UsersScalarRelationFilter = {
+    is?: UsersWhereInput
+    isNot?: UsersWhereInput
   }
 
   export type ArticlesOrderByRelationAggregateInput = {
+    _count?: SortOrder
+  }
+
+  export type EventsOrderByRelationAggregateInput = {
     _count?: SortOrder
   }
 
@@ -19536,15 +19712,15 @@ export namespace Prisma {
     created_at?: SortOrder
   }
 
-  export type IntFilter<$PrismaModel = never> = {
-    equals?: number | IntFieldRefInput<$PrismaModel>
-    in?: number[] | ListIntFieldRefInput<$PrismaModel>
-    notIn?: number[] | ListIntFieldRefInput<$PrismaModel>
+  export type IntNullableFilter<$PrismaModel = never> = {
+    equals?: number | IntFieldRefInput<$PrismaModel> | null
+    in?: number[] | ListIntFieldRefInput<$PrismaModel> | null
+    notIn?: number[] | ListIntFieldRefInput<$PrismaModel> | null
     lt?: number | IntFieldRefInput<$PrismaModel>
     lte?: number | IntFieldRefInput<$PrismaModel>
     gt?: number | IntFieldRefInput<$PrismaModel>
     gte?: number | IntFieldRefInput<$PrismaModel>
-    not?: NestedIntFilter<$PrismaModel> | number
+    not?: NestedIntNullableFilter<$PrismaModel> | number | null
   }
 
   export type DateTimeNullableFilter<$PrismaModel = never> = {
@@ -19568,9 +19744,14 @@ export namespace Prisma {
     isNot?: Event_LocationWhereInput
   }
 
-  export type Event_SeatNullableScalarRelationFilter = {
-    is?: Event_SeatWhereInput | null
-    isNot?: Event_SeatWhereInput | null
+  export type TicketTypeListRelationFilter = {
+    every?: TicketTypeWhereInput
+    some?: TicketTypeWhereInput
+    none?: TicketTypeWhereInput
+  }
+
+  export type TicketTypeOrderByRelationAggregateInput = {
+    _count?: SortOrder
   }
 
   export type EventsCountOrderByAggregateInput = {
@@ -19626,20 +19807,20 @@ export namespace Prisma {
     price?: SortOrder
   }
 
-  export type IntWithAggregatesFilter<$PrismaModel = never> = {
-    equals?: number | IntFieldRefInput<$PrismaModel>
-    in?: number[] | ListIntFieldRefInput<$PrismaModel>
-    notIn?: number[] | ListIntFieldRefInput<$PrismaModel>
+  export type IntNullableWithAggregatesFilter<$PrismaModel = never> = {
+    equals?: number | IntFieldRefInput<$PrismaModel> | null
+    in?: number[] | ListIntFieldRefInput<$PrismaModel> | null
+    notIn?: number[] | ListIntFieldRefInput<$PrismaModel> | null
     lt?: number | IntFieldRefInput<$PrismaModel>
     lte?: number | IntFieldRefInput<$PrismaModel>
     gt?: number | IntFieldRefInput<$PrismaModel>
     gte?: number | IntFieldRefInput<$PrismaModel>
-    not?: NestedIntWithAggregatesFilter<$PrismaModel> | number
-    _count?: NestedIntFilter<$PrismaModel>
-    _avg?: NestedFloatFilter<$PrismaModel>
-    _sum?: NestedIntFilter<$PrismaModel>
-    _min?: NestedIntFilter<$PrismaModel>
-    _max?: NestedIntFilter<$PrismaModel>
+    not?: NestedIntNullableWithAggregatesFilter<$PrismaModel> | number | null
+    _count?: NestedIntNullableFilter<$PrismaModel>
+    _avg?: NestedFloatNullableFilter<$PrismaModel>
+    _sum?: NestedIntNullableFilter<$PrismaModel>
+    _min?: NestedIntNullableFilter<$PrismaModel>
+    _max?: NestedIntNullableFilter<$PrismaModel>
   }
 
   export type DateTimeNullableWithAggregatesFilter<$PrismaModel = never> = {
@@ -19692,46 +19873,70 @@ export namespace Prisma {
     address?: SortOrder
   }
 
+  export type IntFilter<$PrismaModel = never> = {
+    equals?: number | IntFieldRefInput<$PrismaModel>
+    in?: number[] | ListIntFieldRefInput<$PrismaModel>
+    notIn?: number[] | ListIntFieldRefInput<$PrismaModel>
+    lt?: number | IntFieldRefInput<$PrismaModel>
+    lte?: number | IntFieldRefInput<$PrismaModel>
+    gt?: number | IntFieldRefInput<$PrismaModel>
+    gte?: number | IntFieldRefInput<$PrismaModel>
+    not?: NestedIntFilter<$PrismaModel> | number
+  }
+
   export type EventsScalarRelationFilter = {
     is?: EventsWhereInput
     isNot?: EventsWhereInput
   }
 
-  export type Event_SeatCountOrderByAggregateInput = {
+  export type TicketTypeCountOrderByAggregateInput = {
     id?: SortOrder
-    events_id?: SortOrder
-    total?: SortOrder
+    event_id?: SortOrder
+    name?: SortOrder
+    price?: SortOrder
+    quantity?: SortOrder
   }
 
-  export type Event_SeatAvgOrderByAggregateInput = {
-    total?: SortOrder
+  export type TicketTypeAvgOrderByAggregateInput = {
+    price?: SortOrder
+    quantity?: SortOrder
   }
 
-  export type Event_SeatMaxOrderByAggregateInput = {
+  export type TicketTypeMaxOrderByAggregateInput = {
     id?: SortOrder
-    events_id?: SortOrder
-    total?: SortOrder
+    event_id?: SortOrder
+    name?: SortOrder
+    price?: SortOrder
+    quantity?: SortOrder
   }
 
-  export type Event_SeatMinOrderByAggregateInput = {
+  export type TicketTypeMinOrderByAggregateInput = {
     id?: SortOrder
-    events_id?: SortOrder
-    total?: SortOrder
+    event_id?: SortOrder
+    name?: SortOrder
+    price?: SortOrder
+    quantity?: SortOrder
   }
 
-  export type Event_SeatSumOrderByAggregateInput = {
-    total?: SortOrder
+  export type TicketTypeSumOrderByAggregateInput = {
+    price?: SortOrder
+    quantity?: SortOrder
   }
 
-  export type IntNullableFilter<$PrismaModel = never> = {
-    equals?: number | IntFieldRefInput<$PrismaModel> | null
-    in?: number[] | ListIntFieldRefInput<$PrismaModel> | null
-    notIn?: number[] | ListIntFieldRefInput<$PrismaModel> | null
+  export type IntWithAggregatesFilter<$PrismaModel = never> = {
+    equals?: number | IntFieldRefInput<$PrismaModel>
+    in?: number[] | ListIntFieldRefInput<$PrismaModel>
+    notIn?: number[] | ListIntFieldRefInput<$PrismaModel>
     lt?: number | IntFieldRefInput<$PrismaModel>
     lte?: number | IntFieldRefInput<$PrismaModel>
     gt?: number | IntFieldRefInput<$PrismaModel>
     gte?: number | IntFieldRefInput<$PrismaModel>
-    not?: NestedIntNullableFilter<$PrismaModel> | number | null
+    not?: NestedIntWithAggregatesFilter<$PrismaModel> | number
+    _count?: NestedIntFilter<$PrismaModel>
+    _avg?: NestedFloatFilter<$PrismaModel>
+    _sum?: NestedIntFilter<$PrismaModel>
+    _min?: NestedIntFilter<$PrismaModel>
+    _max?: NestedIntFilter<$PrismaModel>
   }
 
   export type Event_ReviewsCountOrderByAggregateInput = {
@@ -19767,22 +19972,6 @@ export namespace Prisma {
 
   export type Event_ReviewsSumOrderByAggregateInput = {
     rating?: SortOrder
-  }
-
-  export type IntNullableWithAggregatesFilter<$PrismaModel = never> = {
-    equals?: number | IntFieldRefInput<$PrismaModel> | null
-    in?: number[] | ListIntFieldRefInput<$PrismaModel> | null
-    notIn?: number[] | ListIntFieldRefInput<$PrismaModel> | null
-    lt?: number | IntFieldRefInput<$PrismaModel>
-    lte?: number | IntFieldRefInput<$PrismaModel>
-    gt?: number | IntFieldRefInput<$PrismaModel>
-    gte?: number | IntFieldRefInput<$PrismaModel>
-    not?: NestedIntNullableWithAggregatesFilter<$PrismaModel> | number | null
-    _count?: NestedIntNullableFilter<$PrismaModel>
-    _avg?: NestedFloatNullableFilter<$PrismaModel>
-    _sum?: NestedIntNullableFilter<$PrismaModel>
-    _min?: NestedIntNullableFilter<$PrismaModel>
-    _max?: NestedIntNullableFilter<$PrismaModel>
   }
 
   export type EnumStatusFilter<$PrismaModel = never> = {
@@ -19884,24 +20073,26 @@ export namespace Prisma {
     used_at?: SortOrder
   }
 
-  export type OrganizerNullableScalarRelationFilter = {
-    is?: OrganizerWhereInput | null
-    isNot?: OrganizerWhereInput | null
-  }
-
   export type UsersNullableScalarRelationFilter = {
     is?: UsersWhereInput | null
     isNot?: UsersWhereInput | null
+  }
+
+  export type EventsNullableScalarRelationFilter = {
+    is?: EventsWhereInput | null
+    isNot?: EventsWhereInput | null
   }
 
   export type VoucherCountOrderByAggregateInput = {
     id?: SortOrder
     user_id?: SortOrder
     organizer_id?: SortOrder
+    event_id?: SortOrder
     code?: SortOrder
     percentage?: SortOrder
     amount?: SortOrder
     created_at?: SortOrder
+    start_date?: SortOrder
     expired_at?: SortOrder
   }
 
@@ -19914,10 +20105,12 @@ export namespace Prisma {
     id?: SortOrder
     user_id?: SortOrder
     organizer_id?: SortOrder
+    event_id?: SortOrder
     code?: SortOrder
     percentage?: SortOrder
     amount?: SortOrder
     created_at?: SortOrder
+    start_date?: SortOrder
     expired_at?: SortOrder
   }
 
@@ -19925,10 +20118,12 @@ export namespace Prisma {
     id?: SortOrder
     user_id?: SortOrder
     organizer_id?: SortOrder
+    event_id?: SortOrder
     code?: SortOrder
     percentage?: SortOrder
     amount?: SortOrder
     created_at?: SortOrder
+    start_date?: SortOrder
     expired_at?: SortOrder
   }
 
@@ -19955,14 +20150,14 @@ export namespace Prisma {
     event_id?: SortOrder
     organizer_id?: SortOrder
     quantity?: SortOrder
-    voucher_id?: SortOrder
-    amount?: SortOrder
-    proof?: SortOrder
     isConfirmed?: SortOrder
     transaction_status?: SortOrder
-    paid_at?: SortOrder
+    amount?: SortOrder
     created_at?: SortOrder
+    paid_at?: SortOrder
+    proof?: SortOrder
     updated_at?: SortOrder
+    voucher_id?: SortOrder
   }
 
   export type Transactions_detailAvgOrderByAggregateInput = {
@@ -19976,14 +20171,14 @@ export namespace Prisma {
     event_id?: SortOrder
     organizer_id?: SortOrder
     quantity?: SortOrder
-    voucher_id?: SortOrder
-    amount?: SortOrder
-    proof?: SortOrder
     isConfirmed?: SortOrder
     transaction_status?: SortOrder
-    paid_at?: SortOrder
+    amount?: SortOrder
     created_at?: SortOrder
+    paid_at?: SortOrder
+    proof?: SortOrder
     updated_at?: SortOrder
+    voucher_id?: SortOrder
   }
 
   export type Transactions_detailMinOrderByAggregateInput = {
@@ -19992,14 +20187,14 @@ export namespace Prisma {
     event_id?: SortOrder
     organizer_id?: SortOrder
     quantity?: SortOrder
-    voucher_id?: SortOrder
-    amount?: SortOrder
-    proof?: SortOrder
     isConfirmed?: SortOrder
     transaction_status?: SortOrder
-    paid_at?: SortOrder
+    amount?: SortOrder
     created_at?: SortOrder
+    paid_at?: SortOrder
+    proof?: SortOrder
     updated_at?: SortOrder
+    voucher_id?: SortOrder
   }
 
   export type Transactions_detailSumOrderByAggregateInput = {
@@ -20017,11 +20212,11 @@ export namespace Prisma {
     _max?: NestedEnumTransactionStatusFilter<$PrismaModel>
   }
 
-  export type OrganizerCreateNestedManyWithoutUserInput = {
-    create?: XOR<OrganizerCreateWithoutUserInput, OrganizerUncheckedCreateWithoutUserInput> | OrganizerCreateWithoutUserInput[] | OrganizerUncheckedCreateWithoutUserInput[]
-    connectOrCreate?: OrganizerCreateOrConnectWithoutUserInput | OrganizerCreateOrConnectWithoutUserInput[]
-    createMany?: OrganizerCreateManyUserInputEnvelope
-    connect?: OrganizerWhereUniqueInput | OrganizerWhereUniqueInput[]
+  export type Event_AttendeesCreateNestedManyWithoutUser_attendeesInput = {
+    create?: XOR<Event_AttendeesCreateWithoutUser_attendeesInput, Event_AttendeesUncheckedCreateWithoutUser_attendeesInput> | Event_AttendeesCreateWithoutUser_attendeesInput[] | Event_AttendeesUncheckedCreateWithoutUser_attendeesInput[]
+    connectOrCreate?: Event_AttendeesCreateOrConnectWithoutUser_attendeesInput | Event_AttendeesCreateOrConnectWithoutUser_attendeesInput[]
+    createMany?: Event_AttendeesCreateManyUser_attendeesInputEnvelope
+    connect?: Event_AttendeesWhereUniqueInput | Event_AttendeesWhereUniqueInput[]
   }
 
   export type Event_ReviewsCreateNestedManyWithoutReviews_userInput = {
@@ -20031,11 +20226,10 @@ export namespace Prisma {
     connect?: Event_ReviewsWhereUniqueInput | Event_ReviewsWhereUniqueInput[]
   }
 
-  export type Event_AttendeesCreateNestedManyWithoutUser_attendeesInput = {
-    create?: XOR<Event_AttendeesCreateWithoutUser_attendeesInput, Event_AttendeesUncheckedCreateWithoutUser_attendeesInput> | Event_AttendeesCreateWithoutUser_attendeesInput[] | Event_AttendeesUncheckedCreateWithoutUser_attendeesInput[]
-    connectOrCreate?: Event_AttendeesCreateOrConnectWithoutUser_attendeesInput | Event_AttendeesCreateOrConnectWithoutUser_attendeesInput[]
-    createMany?: Event_AttendeesCreateManyUser_attendeesInputEnvelope
-    connect?: Event_AttendeesWhereUniqueInput | Event_AttendeesWhereUniqueInput[]
+  export type OrganizerCreateNestedOneWithoutUserInput = {
+    create?: XOR<OrganizerCreateWithoutUserInput, OrganizerUncheckedCreateWithoutUserInput>
+    connectOrCreate?: OrganizerCreateOrConnectWithoutUserInput
+    connect?: OrganizerWhereUniqueInput
   }
 
   export type Referral_CodeCreateNestedManyWithoutUser_referralInput = {
@@ -20066,11 +20260,11 @@ export namespace Prisma {
     connect?: VoucherWhereUniqueInput | VoucherWhereUniqueInput[]
   }
 
-  export type OrganizerUncheckedCreateNestedManyWithoutUserInput = {
-    create?: XOR<OrganizerCreateWithoutUserInput, OrganizerUncheckedCreateWithoutUserInput> | OrganizerCreateWithoutUserInput[] | OrganizerUncheckedCreateWithoutUserInput[]
-    connectOrCreate?: OrganizerCreateOrConnectWithoutUserInput | OrganizerCreateOrConnectWithoutUserInput[]
-    createMany?: OrganizerCreateManyUserInputEnvelope
-    connect?: OrganizerWhereUniqueInput | OrganizerWhereUniqueInput[]
+  export type Event_AttendeesUncheckedCreateNestedManyWithoutUser_attendeesInput = {
+    create?: XOR<Event_AttendeesCreateWithoutUser_attendeesInput, Event_AttendeesUncheckedCreateWithoutUser_attendeesInput> | Event_AttendeesCreateWithoutUser_attendeesInput[] | Event_AttendeesUncheckedCreateWithoutUser_attendeesInput[]
+    connectOrCreate?: Event_AttendeesCreateOrConnectWithoutUser_attendeesInput | Event_AttendeesCreateOrConnectWithoutUser_attendeesInput[]
+    createMany?: Event_AttendeesCreateManyUser_attendeesInputEnvelope
+    connect?: Event_AttendeesWhereUniqueInput | Event_AttendeesWhereUniqueInput[]
   }
 
   export type Event_ReviewsUncheckedCreateNestedManyWithoutReviews_userInput = {
@@ -20080,11 +20274,10 @@ export namespace Prisma {
     connect?: Event_ReviewsWhereUniqueInput | Event_ReviewsWhereUniqueInput[]
   }
 
-  export type Event_AttendeesUncheckedCreateNestedManyWithoutUser_attendeesInput = {
-    create?: XOR<Event_AttendeesCreateWithoutUser_attendeesInput, Event_AttendeesUncheckedCreateWithoutUser_attendeesInput> | Event_AttendeesCreateWithoutUser_attendeesInput[] | Event_AttendeesUncheckedCreateWithoutUser_attendeesInput[]
-    connectOrCreate?: Event_AttendeesCreateOrConnectWithoutUser_attendeesInput | Event_AttendeesCreateOrConnectWithoutUser_attendeesInput[]
-    createMany?: Event_AttendeesCreateManyUser_attendeesInputEnvelope
-    connect?: Event_AttendeesWhereUniqueInput | Event_AttendeesWhereUniqueInput[]
+  export type OrganizerUncheckedCreateNestedOneWithoutUserInput = {
+    create?: XOR<OrganizerCreateWithoutUserInput, OrganizerUncheckedCreateWithoutUserInput>
+    connectOrCreate?: OrganizerCreateOrConnectWithoutUserInput
+    connect?: OrganizerWhereUniqueInput
   }
 
   export type Referral_CodeUncheckedCreateNestedManyWithoutUser_referralInput = {
@@ -20131,18 +20324,18 @@ export namespace Prisma {
     set?: boolean
   }
 
-  export type OrganizerUpdateManyWithoutUserNestedInput = {
-    create?: XOR<OrganizerCreateWithoutUserInput, OrganizerUncheckedCreateWithoutUserInput> | OrganizerCreateWithoutUserInput[] | OrganizerUncheckedCreateWithoutUserInput[]
-    connectOrCreate?: OrganizerCreateOrConnectWithoutUserInput | OrganizerCreateOrConnectWithoutUserInput[]
-    upsert?: OrganizerUpsertWithWhereUniqueWithoutUserInput | OrganizerUpsertWithWhereUniqueWithoutUserInput[]
-    createMany?: OrganizerCreateManyUserInputEnvelope
-    set?: OrganizerWhereUniqueInput | OrganizerWhereUniqueInput[]
-    disconnect?: OrganizerWhereUniqueInput | OrganizerWhereUniqueInput[]
-    delete?: OrganizerWhereUniqueInput | OrganizerWhereUniqueInput[]
-    connect?: OrganizerWhereUniqueInput | OrganizerWhereUniqueInput[]
-    update?: OrganizerUpdateWithWhereUniqueWithoutUserInput | OrganizerUpdateWithWhereUniqueWithoutUserInput[]
-    updateMany?: OrganizerUpdateManyWithWhereWithoutUserInput | OrganizerUpdateManyWithWhereWithoutUserInput[]
-    deleteMany?: OrganizerScalarWhereInput | OrganizerScalarWhereInput[]
+  export type Event_AttendeesUpdateManyWithoutUser_attendeesNestedInput = {
+    create?: XOR<Event_AttendeesCreateWithoutUser_attendeesInput, Event_AttendeesUncheckedCreateWithoutUser_attendeesInput> | Event_AttendeesCreateWithoutUser_attendeesInput[] | Event_AttendeesUncheckedCreateWithoutUser_attendeesInput[]
+    connectOrCreate?: Event_AttendeesCreateOrConnectWithoutUser_attendeesInput | Event_AttendeesCreateOrConnectWithoutUser_attendeesInput[]
+    upsert?: Event_AttendeesUpsertWithWhereUniqueWithoutUser_attendeesInput | Event_AttendeesUpsertWithWhereUniqueWithoutUser_attendeesInput[]
+    createMany?: Event_AttendeesCreateManyUser_attendeesInputEnvelope
+    set?: Event_AttendeesWhereUniqueInput | Event_AttendeesWhereUniqueInput[]
+    disconnect?: Event_AttendeesWhereUniqueInput | Event_AttendeesWhereUniqueInput[]
+    delete?: Event_AttendeesWhereUniqueInput | Event_AttendeesWhereUniqueInput[]
+    connect?: Event_AttendeesWhereUniqueInput | Event_AttendeesWhereUniqueInput[]
+    update?: Event_AttendeesUpdateWithWhereUniqueWithoutUser_attendeesInput | Event_AttendeesUpdateWithWhereUniqueWithoutUser_attendeesInput[]
+    updateMany?: Event_AttendeesUpdateManyWithWhereWithoutUser_attendeesInput | Event_AttendeesUpdateManyWithWhereWithoutUser_attendeesInput[]
+    deleteMany?: Event_AttendeesScalarWhereInput | Event_AttendeesScalarWhereInput[]
   }
 
   export type Event_ReviewsUpdateManyWithoutReviews_userNestedInput = {
@@ -20159,18 +20352,14 @@ export namespace Prisma {
     deleteMany?: Event_ReviewsScalarWhereInput | Event_ReviewsScalarWhereInput[]
   }
 
-  export type Event_AttendeesUpdateManyWithoutUser_attendeesNestedInput = {
-    create?: XOR<Event_AttendeesCreateWithoutUser_attendeesInput, Event_AttendeesUncheckedCreateWithoutUser_attendeesInput> | Event_AttendeesCreateWithoutUser_attendeesInput[] | Event_AttendeesUncheckedCreateWithoutUser_attendeesInput[]
-    connectOrCreate?: Event_AttendeesCreateOrConnectWithoutUser_attendeesInput | Event_AttendeesCreateOrConnectWithoutUser_attendeesInput[]
-    upsert?: Event_AttendeesUpsertWithWhereUniqueWithoutUser_attendeesInput | Event_AttendeesUpsertWithWhereUniqueWithoutUser_attendeesInput[]
-    createMany?: Event_AttendeesCreateManyUser_attendeesInputEnvelope
-    set?: Event_AttendeesWhereUniqueInput | Event_AttendeesWhereUniqueInput[]
-    disconnect?: Event_AttendeesWhereUniqueInput | Event_AttendeesWhereUniqueInput[]
-    delete?: Event_AttendeesWhereUniqueInput | Event_AttendeesWhereUniqueInput[]
-    connect?: Event_AttendeesWhereUniqueInput | Event_AttendeesWhereUniqueInput[]
-    update?: Event_AttendeesUpdateWithWhereUniqueWithoutUser_attendeesInput | Event_AttendeesUpdateWithWhereUniqueWithoutUser_attendeesInput[]
-    updateMany?: Event_AttendeesUpdateManyWithWhereWithoutUser_attendeesInput | Event_AttendeesUpdateManyWithWhereWithoutUser_attendeesInput[]
-    deleteMany?: Event_AttendeesScalarWhereInput | Event_AttendeesScalarWhereInput[]
+  export type OrganizerUpdateOneWithoutUserNestedInput = {
+    create?: XOR<OrganizerCreateWithoutUserInput, OrganizerUncheckedCreateWithoutUserInput>
+    connectOrCreate?: OrganizerCreateOrConnectWithoutUserInput
+    upsert?: OrganizerUpsertWithoutUserInput
+    disconnect?: OrganizerWhereInput | boolean
+    delete?: OrganizerWhereInput | boolean
+    connect?: OrganizerWhereUniqueInput
+    update?: XOR<XOR<OrganizerUpdateToOneWithWhereWithoutUserInput, OrganizerUpdateWithoutUserInput>, OrganizerUncheckedUpdateWithoutUserInput>
   }
 
   export type Referral_CodeUpdateManyWithoutUser_referralNestedInput = {
@@ -20229,18 +20418,18 @@ export namespace Prisma {
     deleteMany?: VoucherScalarWhereInput | VoucherScalarWhereInput[]
   }
 
-  export type OrganizerUncheckedUpdateManyWithoutUserNestedInput = {
-    create?: XOR<OrganizerCreateWithoutUserInput, OrganizerUncheckedCreateWithoutUserInput> | OrganizerCreateWithoutUserInput[] | OrganizerUncheckedCreateWithoutUserInput[]
-    connectOrCreate?: OrganizerCreateOrConnectWithoutUserInput | OrganizerCreateOrConnectWithoutUserInput[]
-    upsert?: OrganizerUpsertWithWhereUniqueWithoutUserInput | OrganizerUpsertWithWhereUniqueWithoutUserInput[]
-    createMany?: OrganizerCreateManyUserInputEnvelope
-    set?: OrganizerWhereUniqueInput | OrganizerWhereUniqueInput[]
-    disconnect?: OrganizerWhereUniqueInput | OrganizerWhereUniqueInput[]
-    delete?: OrganizerWhereUniqueInput | OrganizerWhereUniqueInput[]
-    connect?: OrganizerWhereUniqueInput | OrganizerWhereUniqueInput[]
-    update?: OrganizerUpdateWithWhereUniqueWithoutUserInput | OrganizerUpdateWithWhereUniqueWithoutUserInput[]
-    updateMany?: OrganizerUpdateManyWithWhereWithoutUserInput | OrganizerUpdateManyWithWhereWithoutUserInput[]
-    deleteMany?: OrganizerScalarWhereInput | OrganizerScalarWhereInput[]
+  export type Event_AttendeesUncheckedUpdateManyWithoutUser_attendeesNestedInput = {
+    create?: XOR<Event_AttendeesCreateWithoutUser_attendeesInput, Event_AttendeesUncheckedCreateWithoutUser_attendeesInput> | Event_AttendeesCreateWithoutUser_attendeesInput[] | Event_AttendeesUncheckedCreateWithoutUser_attendeesInput[]
+    connectOrCreate?: Event_AttendeesCreateOrConnectWithoutUser_attendeesInput | Event_AttendeesCreateOrConnectWithoutUser_attendeesInput[]
+    upsert?: Event_AttendeesUpsertWithWhereUniqueWithoutUser_attendeesInput | Event_AttendeesUpsertWithWhereUniqueWithoutUser_attendeesInput[]
+    createMany?: Event_AttendeesCreateManyUser_attendeesInputEnvelope
+    set?: Event_AttendeesWhereUniqueInput | Event_AttendeesWhereUniqueInput[]
+    disconnect?: Event_AttendeesWhereUniqueInput | Event_AttendeesWhereUniqueInput[]
+    delete?: Event_AttendeesWhereUniqueInput | Event_AttendeesWhereUniqueInput[]
+    connect?: Event_AttendeesWhereUniqueInput | Event_AttendeesWhereUniqueInput[]
+    update?: Event_AttendeesUpdateWithWhereUniqueWithoutUser_attendeesInput | Event_AttendeesUpdateWithWhereUniqueWithoutUser_attendeesInput[]
+    updateMany?: Event_AttendeesUpdateManyWithWhereWithoutUser_attendeesInput | Event_AttendeesUpdateManyWithWhereWithoutUser_attendeesInput[]
+    deleteMany?: Event_AttendeesScalarWhereInput | Event_AttendeesScalarWhereInput[]
   }
 
   export type Event_ReviewsUncheckedUpdateManyWithoutReviews_userNestedInput = {
@@ -20257,18 +20446,14 @@ export namespace Prisma {
     deleteMany?: Event_ReviewsScalarWhereInput | Event_ReviewsScalarWhereInput[]
   }
 
-  export type Event_AttendeesUncheckedUpdateManyWithoutUser_attendeesNestedInput = {
-    create?: XOR<Event_AttendeesCreateWithoutUser_attendeesInput, Event_AttendeesUncheckedCreateWithoutUser_attendeesInput> | Event_AttendeesCreateWithoutUser_attendeesInput[] | Event_AttendeesUncheckedCreateWithoutUser_attendeesInput[]
-    connectOrCreate?: Event_AttendeesCreateOrConnectWithoutUser_attendeesInput | Event_AttendeesCreateOrConnectWithoutUser_attendeesInput[]
-    upsert?: Event_AttendeesUpsertWithWhereUniqueWithoutUser_attendeesInput | Event_AttendeesUpsertWithWhereUniqueWithoutUser_attendeesInput[]
-    createMany?: Event_AttendeesCreateManyUser_attendeesInputEnvelope
-    set?: Event_AttendeesWhereUniqueInput | Event_AttendeesWhereUniqueInput[]
-    disconnect?: Event_AttendeesWhereUniqueInput | Event_AttendeesWhereUniqueInput[]
-    delete?: Event_AttendeesWhereUniqueInput | Event_AttendeesWhereUniqueInput[]
-    connect?: Event_AttendeesWhereUniqueInput | Event_AttendeesWhereUniqueInput[]
-    update?: Event_AttendeesUpdateWithWhereUniqueWithoutUser_attendeesInput | Event_AttendeesUpdateWithWhereUniqueWithoutUser_attendeesInput[]
-    updateMany?: Event_AttendeesUpdateManyWithWhereWithoutUser_attendeesInput | Event_AttendeesUpdateManyWithWhereWithoutUser_attendeesInput[]
-    deleteMany?: Event_AttendeesScalarWhereInput | Event_AttendeesScalarWhereInput[]
+  export type OrganizerUncheckedUpdateOneWithoutUserNestedInput = {
+    create?: XOR<OrganizerCreateWithoutUserInput, OrganizerUncheckedCreateWithoutUserInput>
+    connectOrCreate?: OrganizerCreateOrConnectWithoutUserInput
+    upsert?: OrganizerUpsertWithoutUserInput
+    disconnect?: OrganizerWhereInput | boolean
+    delete?: OrganizerWhereInput | boolean
+    connect?: OrganizerWhereUniqueInput
+    update?: XOR<XOR<OrganizerUpdateToOneWithWhereWithoutUserInput, OrganizerUpdateWithoutUserInput>, OrganizerUncheckedUpdateWithoutUserInput>
   }
 
   export type Referral_CodeUncheckedUpdateManyWithoutUser_referralNestedInput = {
@@ -20327,10 +20512,11 @@ export namespace Prisma {
     deleteMany?: VoucherScalarWhereInput | VoucherScalarWhereInput[]
   }
 
-  export type UsersCreateNestedOneWithoutOrganizerInput = {
-    create?: XOR<UsersCreateWithoutOrganizerInput, UsersUncheckedCreateWithoutOrganizerInput>
-    connectOrCreate?: UsersCreateOrConnectWithoutOrganizerInput
-    connect?: UsersWhereUniqueInput
+  export type ArticlesCreateNestedManyWithoutOrganizerInput = {
+    create?: XOR<ArticlesCreateWithoutOrganizerInput, ArticlesUncheckedCreateWithoutOrganizerInput> | ArticlesCreateWithoutOrganizerInput[] | ArticlesUncheckedCreateWithoutOrganizerInput[]
+    connectOrCreate?: ArticlesCreateOrConnectWithoutOrganizerInput | ArticlesCreateOrConnectWithoutOrganizerInput[]
+    createMany?: ArticlesCreateManyOrganizerInputEnvelope
+    connect?: ArticlesWhereUniqueInput | ArticlesWhereUniqueInput[]
   }
 
   export type EventsCreateNestedManyWithoutOrganizerInput = {
@@ -20340,11 +20526,10 @@ export namespace Prisma {
     connect?: EventsWhereUniqueInput | EventsWhereUniqueInput[]
   }
 
-  export type VoucherCreateNestedManyWithoutVoucher_organizerInput = {
-    create?: XOR<VoucherCreateWithoutVoucher_organizerInput, VoucherUncheckedCreateWithoutVoucher_organizerInput> | VoucherCreateWithoutVoucher_organizerInput[] | VoucherUncheckedCreateWithoutVoucher_organizerInput[]
-    connectOrCreate?: VoucherCreateOrConnectWithoutVoucher_organizerInput | VoucherCreateOrConnectWithoutVoucher_organizerInput[]
-    createMany?: VoucherCreateManyVoucher_organizerInputEnvelope
-    connect?: VoucherWhereUniqueInput | VoucherWhereUniqueInput[]
+  export type UsersCreateNestedOneWithoutOrganizerInput = {
+    create?: XOR<UsersCreateWithoutOrganizerInput, UsersUncheckedCreateWithoutOrganizerInput>
+    connectOrCreate?: UsersCreateOrConnectWithoutOrganizerInput
+    connect?: UsersWhereUniqueInput
   }
 
   export type Transactions_detailCreateNestedManyWithoutDetail_organizerInput = {
@@ -20354,7 +20539,14 @@ export namespace Prisma {
     connect?: Transactions_detailWhereUniqueInput | Transactions_detailWhereUniqueInput[]
   }
 
-  export type ArticlesCreateNestedManyWithoutOrganizerInput = {
+  export type VoucherCreateNestedManyWithoutVoucher_organizerInput = {
+    create?: XOR<VoucherCreateWithoutVoucher_organizerInput, VoucherUncheckedCreateWithoutVoucher_organizerInput> | VoucherCreateWithoutVoucher_organizerInput[] | VoucherUncheckedCreateWithoutVoucher_organizerInput[]
+    connectOrCreate?: VoucherCreateOrConnectWithoutVoucher_organizerInput | VoucherCreateOrConnectWithoutVoucher_organizerInput[]
+    createMany?: VoucherCreateManyVoucher_organizerInputEnvelope
+    connect?: VoucherWhereUniqueInput | VoucherWhereUniqueInput[]
+  }
+
+  export type ArticlesUncheckedCreateNestedManyWithoutOrganizerInput = {
     create?: XOR<ArticlesCreateWithoutOrganizerInput, ArticlesUncheckedCreateWithoutOrganizerInput> | ArticlesCreateWithoutOrganizerInput[] | ArticlesUncheckedCreateWithoutOrganizerInput[]
     connectOrCreate?: ArticlesCreateOrConnectWithoutOrganizerInput | ArticlesCreateOrConnectWithoutOrganizerInput[]
     createMany?: ArticlesCreateManyOrganizerInputEnvelope
@@ -20368,13 +20560,6 @@ export namespace Prisma {
     connect?: EventsWhereUniqueInput | EventsWhereUniqueInput[]
   }
 
-  export type VoucherUncheckedCreateNestedManyWithoutVoucher_organizerInput = {
-    create?: XOR<VoucherCreateWithoutVoucher_organizerInput, VoucherUncheckedCreateWithoutVoucher_organizerInput> | VoucherCreateWithoutVoucher_organizerInput[] | VoucherUncheckedCreateWithoutVoucher_organizerInput[]
-    connectOrCreate?: VoucherCreateOrConnectWithoutVoucher_organizerInput | VoucherCreateOrConnectWithoutVoucher_organizerInput[]
-    createMany?: VoucherCreateManyVoucher_organizerInputEnvelope
-    connect?: VoucherWhereUniqueInput | VoucherWhereUniqueInput[]
-  }
-
   export type Transactions_detailUncheckedCreateNestedManyWithoutDetail_organizerInput = {
     create?: XOR<Transactions_detailCreateWithoutDetail_organizerInput, Transactions_detailUncheckedCreateWithoutDetail_organizerInput> | Transactions_detailCreateWithoutDetail_organizerInput[] | Transactions_detailUncheckedCreateWithoutDetail_organizerInput[]
     connectOrCreate?: Transactions_detailCreateOrConnectWithoutDetail_organizerInput | Transactions_detailCreateOrConnectWithoutDetail_organizerInput[]
@@ -20382,19 +20567,25 @@ export namespace Prisma {
     connect?: Transactions_detailWhereUniqueInput | Transactions_detailWhereUniqueInput[]
   }
 
-  export type ArticlesUncheckedCreateNestedManyWithoutOrganizerInput = {
-    create?: XOR<ArticlesCreateWithoutOrganizerInput, ArticlesUncheckedCreateWithoutOrganizerInput> | ArticlesCreateWithoutOrganizerInput[] | ArticlesUncheckedCreateWithoutOrganizerInput[]
-    connectOrCreate?: ArticlesCreateOrConnectWithoutOrganizerInput | ArticlesCreateOrConnectWithoutOrganizerInput[]
-    createMany?: ArticlesCreateManyOrganizerInputEnvelope
-    connect?: ArticlesWhereUniqueInput | ArticlesWhereUniqueInput[]
+  export type VoucherUncheckedCreateNestedManyWithoutVoucher_organizerInput = {
+    create?: XOR<VoucherCreateWithoutVoucher_organizerInput, VoucherUncheckedCreateWithoutVoucher_organizerInput> | VoucherCreateWithoutVoucher_organizerInput[] | VoucherUncheckedCreateWithoutVoucher_organizerInput[]
+    connectOrCreate?: VoucherCreateOrConnectWithoutVoucher_organizerInput | VoucherCreateOrConnectWithoutVoucher_organizerInput[]
+    createMany?: VoucherCreateManyVoucher_organizerInputEnvelope
+    connect?: VoucherWhereUniqueInput | VoucherWhereUniqueInput[]
   }
 
-  export type UsersUpdateOneRequiredWithoutOrganizerNestedInput = {
-    create?: XOR<UsersCreateWithoutOrganizerInput, UsersUncheckedCreateWithoutOrganizerInput>
-    connectOrCreate?: UsersCreateOrConnectWithoutOrganizerInput
-    upsert?: UsersUpsertWithoutOrganizerInput
-    connect?: UsersWhereUniqueInput
-    update?: XOR<XOR<UsersUpdateToOneWithWhereWithoutOrganizerInput, UsersUpdateWithoutOrganizerInput>, UsersUncheckedUpdateWithoutOrganizerInput>
+  export type ArticlesUpdateManyWithoutOrganizerNestedInput = {
+    create?: XOR<ArticlesCreateWithoutOrganizerInput, ArticlesUncheckedCreateWithoutOrganizerInput> | ArticlesCreateWithoutOrganizerInput[] | ArticlesUncheckedCreateWithoutOrganizerInput[]
+    connectOrCreate?: ArticlesCreateOrConnectWithoutOrganizerInput | ArticlesCreateOrConnectWithoutOrganizerInput[]
+    upsert?: ArticlesUpsertWithWhereUniqueWithoutOrganizerInput | ArticlesUpsertWithWhereUniqueWithoutOrganizerInput[]
+    createMany?: ArticlesCreateManyOrganizerInputEnvelope
+    set?: ArticlesWhereUniqueInput | ArticlesWhereUniqueInput[]
+    disconnect?: ArticlesWhereUniqueInput | ArticlesWhereUniqueInput[]
+    delete?: ArticlesWhereUniqueInput | ArticlesWhereUniqueInput[]
+    connect?: ArticlesWhereUniqueInput | ArticlesWhereUniqueInput[]
+    update?: ArticlesUpdateWithWhereUniqueWithoutOrganizerInput | ArticlesUpdateWithWhereUniqueWithoutOrganizerInput[]
+    updateMany?: ArticlesUpdateManyWithWhereWithoutOrganizerInput | ArticlesUpdateManyWithWhereWithoutOrganizerInput[]
+    deleteMany?: ArticlesScalarWhereInput | ArticlesScalarWhereInput[]
   }
 
   export type EventsUpdateManyWithoutOrganizerNestedInput = {
@@ -20411,18 +20602,12 @@ export namespace Prisma {
     deleteMany?: EventsScalarWhereInput | EventsScalarWhereInput[]
   }
 
-  export type VoucherUpdateManyWithoutVoucher_organizerNestedInput = {
-    create?: XOR<VoucherCreateWithoutVoucher_organizerInput, VoucherUncheckedCreateWithoutVoucher_organizerInput> | VoucherCreateWithoutVoucher_organizerInput[] | VoucherUncheckedCreateWithoutVoucher_organizerInput[]
-    connectOrCreate?: VoucherCreateOrConnectWithoutVoucher_organizerInput | VoucherCreateOrConnectWithoutVoucher_organizerInput[]
-    upsert?: VoucherUpsertWithWhereUniqueWithoutVoucher_organizerInput | VoucherUpsertWithWhereUniqueWithoutVoucher_organizerInput[]
-    createMany?: VoucherCreateManyVoucher_organizerInputEnvelope
-    set?: VoucherWhereUniqueInput | VoucherWhereUniqueInput[]
-    disconnect?: VoucherWhereUniqueInput | VoucherWhereUniqueInput[]
-    delete?: VoucherWhereUniqueInput | VoucherWhereUniqueInput[]
-    connect?: VoucherWhereUniqueInput | VoucherWhereUniqueInput[]
-    update?: VoucherUpdateWithWhereUniqueWithoutVoucher_organizerInput | VoucherUpdateWithWhereUniqueWithoutVoucher_organizerInput[]
-    updateMany?: VoucherUpdateManyWithWhereWithoutVoucher_organizerInput | VoucherUpdateManyWithWhereWithoutVoucher_organizerInput[]
-    deleteMany?: VoucherScalarWhereInput | VoucherScalarWhereInput[]
+  export type UsersUpdateOneRequiredWithoutOrganizerNestedInput = {
+    create?: XOR<UsersCreateWithoutOrganizerInput, UsersUncheckedCreateWithoutOrganizerInput>
+    connectOrCreate?: UsersCreateOrConnectWithoutOrganizerInput
+    upsert?: UsersUpsertWithoutOrganizerInput
+    connect?: UsersWhereUniqueInput
+    update?: XOR<XOR<UsersUpdateToOneWithWhereWithoutOrganizerInput, UsersUpdateWithoutOrganizerInput>, UsersUncheckedUpdateWithoutOrganizerInput>
   }
 
   export type Transactions_detailUpdateManyWithoutDetail_organizerNestedInput = {
@@ -20439,7 +20624,21 @@ export namespace Prisma {
     deleteMany?: Transactions_detailScalarWhereInput | Transactions_detailScalarWhereInput[]
   }
 
-  export type ArticlesUpdateManyWithoutOrganizerNestedInput = {
+  export type VoucherUpdateManyWithoutVoucher_organizerNestedInput = {
+    create?: XOR<VoucherCreateWithoutVoucher_organizerInput, VoucherUncheckedCreateWithoutVoucher_organizerInput> | VoucherCreateWithoutVoucher_organizerInput[] | VoucherUncheckedCreateWithoutVoucher_organizerInput[]
+    connectOrCreate?: VoucherCreateOrConnectWithoutVoucher_organizerInput | VoucherCreateOrConnectWithoutVoucher_organizerInput[]
+    upsert?: VoucherUpsertWithWhereUniqueWithoutVoucher_organizerInput | VoucherUpsertWithWhereUniqueWithoutVoucher_organizerInput[]
+    createMany?: VoucherCreateManyVoucher_organizerInputEnvelope
+    set?: VoucherWhereUniqueInput | VoucherWhereUniqueInput[]
+    disconnect?: VoucherWhereUniqueInput | VoucherWhereUniqueInput[]
+    delete?: VoucherWhereUniqueInput | VoucherWhereUniqueInput[]
+    connect?: VoucherWhereUniqueInput | VoucherWhereUniqueInput[]
+    update?: VoucherUpdateWithWhereUniqueWithoutVoucher_organizerInput | VoucherUpdateWithWhereUniqueWithoutVoucher_organizerInput[]
+    updateMany?: VoucherUpdateManyWithWhereWithoutVoucher_organizerInput | VoucherUpdateManyWithWhereWithoutVoucher_organizerInput[]
+    deleteMany?: VoucherScalarWhereInput | VoucherScalarWhereInput[]
+  }
+
+  export type ArticlesUncheckedUpdateManyWithoutOrganizerNestedInput = {
     create?: XOR<ArticlesCreateWithoutOrganizerInput, ArticlesUncheckedCreateWithoutOrganizerInput> | ArticlesCreateWithoutOrganizerInput[] | ArticlesUncheckedCreateWithoutOrganizerInput[]
     connectOrCreate?: ArticlesCreateOrConnectWithoutOrganizerInput | ArticlesCreateOrConnectWithoutOrganizerInput[]
     upsert?: ArticlesUpsertWithWhereUniqueWithoutOrganizerInput | ArticlesUpsertWithWhereUniqueWithoutOrganizerInput[]
@@ -20467,20 +20666,6 @@ export namespace Prisma {
     deleteMany?: EventsScalarWhereInput | EventsScalarWhereInput[]
   }
 
-  export type VoucherUncheckedUpdateManyWithoutVoucher_organizerNestedInput = {
-    create?: XOR<VoucherCreateWithoutVoucher_organizerInput, VoucherUncheckedCreateWithoutVoucher_organizerInput> | VoucherCreateWithoutVoucher_organizerInput[] | VoucherUncheckedCreateWithoutVoucher_organizerInput[]
-    connectOrCreate?: VoucherCreateOrConnectWithoutVoucher_organizerInput | VoucherCreateOrConnectWithoutVoucher_organizerInput[]
-    upsert?: VoucherUpsertWithWhereUniqueWithoutVoucher_organizerInput | VoucherUpsertWithWhereUniqueWithoutVoucher_organizerInput[]
-    createMany?: VoucherCreateManyVoucher_organizerInputEnvelope
-    set?: VoucherWhereUniqueInput | VoucherWhereUniqueInput[]
-    disconnect?: VoucherWhereUniqueInput | VoucherWhereUniqueInput[]
-    delete?: VoucherWhereUniqueInput | VoucherWhereUniqueInput[]
-    connect?: VoucherWhereUniqueInput | VoucherWhereUniqueInput[]
-    update?: VoucherUpdateWithWhereUniqueWithoutVoucher_organizerInput | VoucherUpdateWithWhereUniqueWithoutVoucher_organizerInput[]
-    updateMany?: VoucherUpdateManyWithWhereWithoutVoucher_organizerInput | VoucherUpdateManyWithWhereWithoutVoucher_organizerInput[]
-    deleteMany?: VoucherScalarWhereInput | VoucherScalarWhereInput[]
-  }
-
   export type Transactions_detailUncheckedUpdateManyWithoutDetail_organizerNestedInput = {
     create?: XOR<Transactions_detailCreateWithoutDetail_organizerInput, Transactions_detailUncheckedCreateWithoutDetail_organizerInput> | Transactions_detailCreateWithoutDetail_organizerInput[] | Transactions_detailUncheckedCreateWithoutDetail_organizerInput[]
     connectOrCreate?: Transactions_detailCreateOrConnectWithoutDetail_organizerInput | Transactions_detailCreateOrConnectWithoutDetail_organizerInput[]
@@ -20495,18 +20680,18 @@ export namespace Prisma {
     deleteMany?: Transactions_detailScalarWhereInput | Transactions_detailScalarWhereInput[]
   }
 
-  export type ArticlesUncheckedUpdateManyWithoutOrganizerNestedInput = {
-    create?: XOR<ArticlesCreateWithoutOrganizerInput, ArticlesUncheckedCreateWithoutOrganizerInput> | ArticlesCreateWithoutOrganizerInput[] | ArticlesUncheckedCreateWithoutOrganizerInput[]
-    connectOrCreate?: ArticlesCreateOrConnectWithoutOrganizerInput | ArticlesCreateOrConnectWithoutOrganizerInput[]
-    upsert?: ArticlesUpsertWithWhereUniqueWithoutOrganizerInput | ArticlesUpsertWithWhereUniqueWithoutOrganizerInput[]
-    createMany?: ArticlesCreateManyOrganizerInputEnvelope
-    set?: ArticlesWhereUniqueInput | ArticlesWhereUniqueInput[]
-    disconnect?: ArticlesWhereUniqueInput | ArticlesWhereUniqueInput[]
-    delete?: ArticlesWhereUniqueInput | ArticlesWhereUniqueInput[]
-    connect?: ArticlesWhereUniqueInput | ArticlesWhereUniqueInput[]
-    update?: ArticlesUpdateWithWhereUniqueWithoutOrganizerInput | ArticlesUpdateWithWhereUniqueWithoutOrganizerInput[]
-    updateMany?: ArticlesUpdateManyWithWhereWithoutOrganizerInput | ArticlesUpdateManyWithWhereWithoutOrganizerInput[]
-    deleteMany?: ArticlesScalarWhereInput | ArticlesScalarWhereInput[]
+  export type VoucherUncheckedUpdateManyWithoutVoucher_organizerNestedInput = {
+    create?: XOR<VoucherCreateWithoutVoucher_organizerInput, VoucherUncheckedCreateWithoutVoucher_organizerInput> | VoucherCreateWithoutVoucher_organizerInput[] | VoucherUncheckedCreateWithoutVoucher_organizerInput[]
+    connectOrCreate?: VoucherCreateOrConnectWithoutVoucher_organizerInput | VoucherCreateOrConnectWithoutVoucher_organizerInput[]
+    upsert?: VoucherUpsertWithWhereUniqueWithoutVoucher_organizerInput | VoucherUpsertWithWhereUniqueWithoutVoucher_organizerInput[]
+    createMany?: VoucherCreateManyVoucher_organizerInputEnvelope
+    set?: VoucherWhereUniqueInput | VoucherWhereUniqueInput[]
+    disconnect?: VoucherWhereUniqueInput | VoucherWhereUniqueInput[]
+    delete?: VoucherWhereUniqueInput | VoucherWhereUniqueInput[]
+    connect?: VoucherWhereUniqueInput | VoucherWhereUniqueInput[]
+    update?: VoucherUpdateWithWhereUniqueWithoutVoucher_organizerInput | VoucherUpdateWithWhereUniqueWithoutVoucher_organizerInput[]
+    updateMany?: VoucherUpdateManyWithWhereWithoutVoucher_organizerInput | VoucherUpdateManyWithWhereWithoutVoucher_organizerInput[]
+    deleteMany?: VoucherScalarWhereInput | VoucherScalarWhereInput[]
   }
 
   export type OrganizerCreateNestedOneWithoutOrganizer_articlesInput = {
@@ -20541,10 +20726,18 @@ export namespace Prisma {
     connect?: Event_LocationWhereUniqueInput
   }
 
-  export type Event_SeatCreateNestedOneWithoutEventInput = {
-    create?: XOR<Event_SeatCreateWithoutEventInput, Event_SeatUncheckedCreateWithoutEventInput>
-    connectOrCreate?: Event_SeatCreateOrConnectWithoutEventInput
-    connect?: Event_SeatWhereUniqueInput
+  export type TicketTypeCreateNestedManyWithoutEventInput = {
+    create?: XOR<TicketTypeCreateWithoutEventInput, TicketTypeUncheckedCreateWithoutEventInput> | TicketTypeCreateWithoutEventInput[] | TicketTypeUncheckedCreateWithoutEventInput[]
+    connectOrCreate?: TicketTypeCreateOrConnectWithoutEventInput | TicketTypeCreateOrConnectWithoutEventInput[]
+    createMany?: TicketTypeCreateManyEventInputEnvelope
+    connect?: TicketTypeWhereUniqueInput | TicketTypeWhereUniqueInput[]
+  }
+
+  export type VoucherCreateNestedManyWithoutVoucher_eventInput = {
+    create?: XOR<VoucherCreateWithoutVoucher_eventInput, VoucherUncheckedCreateWithoutVoucher_eventInput> | VoucherCreateWithoutVoucher_eventInput[] | VoucherUncheckedCreateWithoutVoucher_eventInput[]
+    connectOrCreate?: VoucherCreateOrConnectWithoutVoucher_eventInput | VoucherCreateOrConnectWithoutVoucher_eventInput[]
+    createMany?: VoucherCreateManyVoucher_eventInputEnvelope
+    connect?: VoucherWhereUniqueInput | VoucherWhereUniqueInput[]
   }
 
   export type Event_ReviewsCreateNestedManyWithoutReviews_eventInput = {
@@ -20568,10 +20761,18 @@ export namespace Prisma {
     connect?: Transactions_detailWhereUniqueInput | Transactions_detailWhereUniqueInput[]
   }
 
-  export type Event_SeatUncheckedCreateNestedOneWithoutEventInput = {
-    create?: XOR<Event_SeatCreateWithoutEventInput, Event_SeatUncheckedCreateWithoutEventInput>
-    connectOrCreate?: Event_SeatCreateOrConnectWithoutEventInput
-    connect?: Event_SeatWhereUniqueInput
+  export type TicketTypeUncheckedCreateNestedManyWithoutEventInput = {
+    create?: XOR<TicketTypeCreateWithoutEventInput, TicketTypeUncheckedCreateWithoutEventInput> | TicketTypeCreateWithoutEventInput[] | TicketTypeUncheckedCreateWithoutEventInput[]
+    connectOrCreate?: TicketTypeCreateOrConnectWithoutEventInput | TicketTypeCreateOrConnectWithoutEventInput[]
+    createMany?: TicketTypeCreateManyEventInputEnvelope
+    connect?: TicketTypeWhereUniqueInput | TicketTypeWhereUniqueInput[]
+  }
+
+  export type VoucherUncheckedCreateNestedManyWithoutVoucher_eventInput = {
+    create?: XOR<VoucherCreateWithoutVoucher_eventInput, VoucherUncheckedCreateWithoutVoucher_eventInput> | VoucherCreateWithoutVoucher_eventInput[] | VoucherUncheckedCreateWithoutVoucher_eventInput[]
+    connectOrCreate?: VoucherCreateOrConnectWithoutVoucher_eventInput | VoucherCreateOrConnectWithoutVoucher_eventInput[]
+    createMany?: VoucherCreateManyVoucher_eventInputEnvelope
+    connect?: VoucherWhereUniqueInput | VoucherWhereUniqueInput[]
   }
 
   export type Event_ReviewsUncheckedCreateNestedManyWithoutReviews_eventInput = {
@@ -20595,8 +20796,8 @@ export namespace Prisma {
     connect?: Transactions_detailWhereUniqueInput | Transactions_detailWhereUniqueInput[]
   }
 
-  export type IntFieldUpdateOperationsInput = {
-    set?: number
+  export type NullableIntFieldUpdateOperationsInput = {
+    set?: number | null
     increment?: number
     decrement?: number
     multiply?: number
@@ -20631,14 +20832,32 @@ export namespace Prisma {
     update?: XOR<XOR<Event_LocationUpdateToOneWithWhereWithoutEventInput, Event_LocationUpdateWithoutEventInput>, Event_LocationUncheckedUpdateWithoutEventInput>
   }
 
-  export type Event_SeatUpdateOneWithoutEventNestedInput = {
-    create?: XOR<Event_SeatCreateWithoutEventInput, Event_SeatUncheckedCreateWithoutEventInput>
-    connectOrCreate?: Event_SeatCreateOrConnectWithoutEventInput
-    upsert?: Event_SeatUpsertWithoutEventInput
-    disconnect?: Event_SeatWhereInput | boolean
-    delete?: Event_SeatWhereInput | boolean
-    connect?: Event_SeatWhereUniqueInput
-    update?: XOR<XOR<Event_SeatUpdateToOneWithWhereWithoutEventInput, Event_SeatUpdateWithoutEventInput>, Event_SeatUncheckedUpdateWithoutEventInput>
+  export type TicketTypeUpdateManyWithoutEventNestedInput = {
+    create?: XOR<TicketTypeCreateWithoutEventInput, TicketTypeUncheckedCreateWithoutEventInput> | TicketTypeCreateWithoutEventInput[] | TicketTypeUncheckedCreateWithoutEventInput[]
+    connectOrCreate?: TicketTypeCreateOrConnectWithoutEventInput | TicketTypeCreateOrConnectWithoutEventInput[]
+    upsert?: TicketTypeUpsertWithWhereUniqueWithoutEventInput | TicketTypeUpsertWithWhereUniqueWithoutEventInput[]
+    createMany?: TicketTypeCreateManyEventInputEnvelope
+    set?: TicketTypeWhereUniqueInput | TicketTypeWhereUniqueInput[]
+    disconnect?: TicketTypeWhereUniqueInput | TicketTypeWhereUniqueInput[]
+    delete?: TicketTypeWhereUniqueInput | TicketTypeWhereUniqueInput[]
+    connect?: TicketTypeWhereUniqueInput | TicketTypeWhereUniqueInput[]
+    update?: TicketTypeUpdateWithWhereUniqueWithoutEventInput | TicketTypeUpdateWithWhereUniqueWithoutEventInput[]
+    updateMany?: TicketTypeUpdateManyWithWhereWithoutEventInput | TicketTypeUpdateManyWithWhereWithoutEventInput[]
+    deleteMany?: TicketTypeScalarWhereInput | TicketTypeScalarWhereInput[]
+  }
+
+  export type VoucherUpdateManyWithoutVoucher_eventNestedInput = {
+    create?: XOR<VoucherCreateWithoutVoucher_eventInput, VoucherUncheckedCreateWithoutVoucher_eventInput> | VoucherCreateWithoutVoucher_eventInput[] | VoucherUncheckedCreateWithoutVoucher_eventInput[]
+    connectOrCreate?: VoucherCreateOrConnectWithoutVoucher_eventInput | VoucherCreateOrConnectWithoutVoucher_eventInput[]
+    upsert?: VoucherUpsertWithWhereUniqueWithoutVoucher_eventInput | VoucherUpsertWithWhereUniqueWithoutVoucher_eventInput[]
+    createMany?: VoucherCreateManyVoucher_eventInputEnvelope
+    set?: VoucherWhereUniqueInput | VoucherWhereUniqueInput[]
+    disconnect?: VoucherWhereUniqueInput | VoucherWhereUniqueInput[]
+    delete?: VoucherWhereUniqueInput | VoucherWhereUniqueInput[]
+    connect?: VoucherWhereUniqueInput | VoucherWhereUniqueInput[]
+    update?: VoucherUpdateWithWhereUniqueWithoutVoucher_eventInput | VoucherUpdateWithWhereUniqueWithoutVoucher_eventInput[]
+    updateMany?: VoucherUpdateManyWithWhereWithoutVoucher_eventInput | VoucherUpdateManyWithWhereWithoutVoucher_eventInput[]
+    deleteMany?: VoucherScalarWhereInput | VoucherScalarWhereInput[]
   }
 
   export type Event_ReviewsUpdateManyWithoutReviews_eventNestedInput = {
@@ -20683,14 +20902,32 @@ export namespace Prisma {
     deleteMany?: Transactions_detailScalarWhereInput | Transactions_detailScalarWhereInput[]
   }
 
-  export type Event_SeatUncheckedUpdateOneWithoutEventNestedInput = {
-    create?: XOR<Event_SeatCreateWithoutEventInput, Event_SeatUncheckedCreateWithoutEventInput>
-    connectOrCreate?: Event_SeatCreateOrConnectWithoutEventInput
-    upsert?: Event_SeatUpsertWithoutEventInput
-    disconnect?: Event_SeatWhereInput | boolean
-    delete?: Event_SeatWhereInput | boolean
-    connect?: Event_SeatWhereUniqueInput
-    update?: XOR<XOR<Event_SeatUpdateToOneWithWhereWithoutEventInput, Event_SeatUpdateWithoutEventInput>, Event_SeatUncheckedUpdateWithoutEventInput>
+  export type TicketTypeUncheckedUpdateManyWithoutEventNestedInput = {
+    create?: XOR<TicketTypeCreateWithoutEventInput, TicketTypeUncheckedCreateWithoutEventInput> | TicketTypeCreateWithoutEventInput[] | TicketTypeUncheckedCreateWithoutEventInput[]
+    connectOrCreate?: TicketTypeCreateOrConnectWithoutEventInput | TicketTypeCreateOrConnectWithoutEventInput[]
+    upsert?: TicketTypeUpsertWithWhereUniqueWithoutEventInput | TicketTypeUpsertWithWhereUniqueWithoutEventInput[]
+    createMany?: TicketTypeCreateManyEventInputEnvelope
+    set?: TicketTypeWhereUniqueInput | TicketTypeWhereUniqueInput[]
+    disconnect?: TicketTypeWhereUniqueInput | TicketTypeWhereUniqueInput[]
+    delete?: TicketTypeWhereUniqueInput | TicketTypeWhereUniqueInput[]
+    connect?: TicketTypeWhereUniqueInput | TicketTypeWhereUniqueInput[]
+    update?: TicketTypeUpdateWithWhereUniqueWithoutEventInput | TicketTypeUpdateWithWhereUniqueWithoutEventInput[]
+    updateMany?: TicketTypeUpdateManyWithWhereWithoutEventInput | TicketTypeUpdateManyWithWhereWithoutEventInput[]
+    deleteMany?: TicketTypeScalarWhereInput | TicketTypeScalarWhereInput[]
+  }
+
+  export type VoucherUncheckedUpdateManyWithoutVoucher_eventNestedInput = {
+    create?: XOR<VoucherCreateWithoutVoucher_eventInput, VoucherUncheckedCreateWithoutVoucher_eventInput> | VoucherCreateWithoutVoucher_eventInput[] | VoucherUncheckedCreateWithoutVoucher_eventInput[]
+    connectOrCreate?: VoucherCreateOrConnectWithoutVoucher_eventInput | VoucherCreateOrConnectWithoutVoucher_eventInput[]
+    upsert?: VoucherUpsertWithWhereUniqueWithoutVoucher_eventInput | VoucherUpsertWithWhereUniqueWithoutVoucher_eventInput[]
+    createMany?: VoucherCreateManyVoucher_eventInputEnvelope
+    set?: VoucherWhereUniqueInput | VoucherWhereUniqueInput[]
+    disconnect?: VoucherWhereUniqueInput | VoucherWhereUniqueInput[]
+    delete?: VoucherWhereUniqueInput | VoucherWhereUniqueInput[]
+    connect?: VoucherWhereUniqueInput | VoucherWhereUniqueInput[]
+    update?: VoucherUpdateWithWhereUniqueWithoutVoucher_eventInput | VoucherUpdateWithWhereUniqueWithoutVoucher_eventInput[]
+    updateMany?: VoucherUpdateManyWithWhereWithoutVoucher_eventInput | VoucherUpdateManyWithWhereWithoutVoucher_eventInput[]
+    deleteMany?: VoucherScalarWhereInput | VoucherScalarWhereInput[]
   }
 
   export type Event_ReviewsUncheckedUpdateManyWithoutReviews_eventNestedInput = {
@@ -20819,18 +21056,26 @@ export namespace Prisma {
     deleteMany?: EventsScalarWhereInput | EventsScalarWhereInput[]
   }
 
-  export type EventsCreateNestedOneWithoutSeat_eventInput = {
-    create?: XOR<EventsCreateWithoutSeat_eventInput, EventsUncheckedCreateWithoutSeat_eventInput>
-    connectOrCreate?: EventsCreateOrConnectWithoutSeat_eventInput
+  export type EventsCreateNestedOneWithoutTicketTypeInput = {
+    create?: XOR<EventsCreateWithoutTicketTypeInput, EventsUncheckedCreateWithoutTicketTypeInput>
+    connectOrCreate?: EventsCreateOrConnectWithoutTicketTypeInput
     connect?: EventsWhereUniqueInput
   }
 
-  export type EventsUpdateOneRequiredWithoutSeat_eventNestedInput = {
-    create?: XOR<EventsCreateWithoutSeat_eventInput, EventsUncheckedCreateWithoutSeat_eventInput>
-    connectOrCreate?: EventsCreateOrConnectWithoutSeat_eventInput
-    upsert?: EventsUpsertWithoutSeat_eventInput
+  export type IntFieldUpdateOperationsInput = {
+    set?: number
+    increment?: number
+    decrement?: number
+    multiply?: number
+    divide?: number
+  }
+
+  export type EventsUpdateOneRequiredWithoutTicketTypeNestedInput = {
+    create?: XOR<EventsCreateWithoutTicketTypeInput, EventsUncheckedCreateWithoutTicketTypeInput>
+    connectOrCreate?: EventsCreateOrConnectWithoutTicketTypeInput
+    upsert?: EventsUpsertWithoutTicketTypeInput
     connect?: EventsWhereUniqueInput
-    update?: XOR<XOR<EventsUpdateToOneWithWhereWithoutSeat_eventInput, EventsUpdateWithoutSeat_eventInput>, EventsUncheckedUpdateWithoutSeat_eventInput>
+    update?: XOR<XOR<EventsUpdateToOneWithWhereWithoutTicketTypeInput, EventsUpdateWithoutTicketTypeInput>, EventsUncheckedUpdateWithoutTicketTypeInput>
   }
 
   export type UsersCreateNestedOneWithoutReviews_userInput = {
@@ -20843,14 +21088,6 @@ export namespace Prisma {
     create?: XOR<EventsCreateWithoutReviews_eventInput, EventsUncheckedCreateWithoutReviews_eventInput>
     connectOrCreate?: EventsCreateOrConnectWithoutReviews_eventInput
     connect?: EventsWhereUniqueInput
-  }
-
-  export type NullableIntFieldUpdateOperationsInput = {
-    set?: number | null
-    increment?: number
-    decrement?: number
-    multiply?: number
-    divide?: number
   }
 
   export type UsersUpdateOneRequiredWithoutReviews_userNestedInput = {
@@ -20869,28 +21106,20 @@ export namespace Prisma {
     update?: XOR<XOR<EventsUpdateToOneWithWhereWithoutReviews_eventInput, EventsUpdateWithoutReviews_eventInput>, EventsUncheckedUpdateWithoutReviews_eventInput>
   }
 
-  export type UsersCreateNestedOneWithoutAttendees_userInput = {
-    create?: XOR<UsersCreateWithoutAttendees_userInput, UsersUncheckedCreateWithoutAttendees_userInput>
-    connectOrCreate?: UsersCreateOrConnectWithoutAttendees_userInput
-    connect?: UsersWhereUniqueInput
-  }
-
   export type EventsCreateNestedOneWithoutAttendees_eventInput = {
     create?: XOR<EventsCreateWithoutAttendees_eventInput, EventsUncheckedCreateWithoutAttendees_eventInput>
     connectOrCreate?: EventsCreateOrConnectWithoutAttendees_eventInput
     connect?: EventsWhereUniqueInput
   }
 
-  export type EnumStatusFieldUpdateOperationsInput = {
-    set?: $Enums.Status
-  }
-
-  export type UsersUpdateOneRequiredWithoutAttendees_userNestedInput = {
+  export type UsersCreateNestedOneWithoutAttendees_userInput = {
     create?: XOR<UsersCreateWithoutAttendees_userInput, UsersUncheckedCreateWithoutAttendees_userInput>
     connectOrCreate?: UsersCreateOrConnectWithoutAttendees_userInput
-    upsert?: UsersUpsertWithoutAttendees_userInput
     connect?: UsersWhereUniqueInput
-    update?: XOR<XOR<UsersUpdateToOneWithWhereWithoutAttendees_userInput, UsersUpdateWithoutAttendees_userInput>, UsersUncheckedUpdateWithoutAttendees_userInput>
+  }
+
+  export type EnumStatusFieldUpdateOperationsInput = {
+    set?: $Enums.Status
   }
 
   export type EventsUpdateOneRequiredWithoutAttendees_eventNestedInput = {
@@ -20899,6 +21128,14 @@ export namespace Prisma {
     upsert?: EventsUpsertWithoutAttendees_eventInput
     connect?: EventsWhereUniqueInput
     update?: XOR<XOR<EventsUpdateToOneWithWhereWithoutAttendees_eventInput, EventsUpdateWithoutAttendees_eventInput>, EventsUncheckedUpdateWithoutAttendees_eventInput>
+  }
+
+  export type UsersUpdateOneRequiredWithoutAttendees_userNestedInput = {
+    create?: XOR<UsersCreateWithoutAttendees_userInput, UsersUncheckedCreateWithoutAttendees_userInput>
+    connectOrCreate?: UsersCreateOrConnectWithoutAttendees_userInput
+    upsert?: UsersUpsertWithoutAttendees_userInput
+    connect?: UsersWhereUniqueInput
+    update?: XOR<XOR<UsersUpdateToOneWithWhereWithoutAttendees_userInput, UsersUpdateWithoutAttendees_userInput>, UsersUncheckedUpdateWithoutAttendees_userInput>
   }
 
   export type UsersCreateNestedOneWithoutReferral_userInput = {
@@ -20957,24 +21194,16 @@ export namespace Prisma {
     deleteMany?: Referral_UsageScalarWhereInput | Referral_UsageScalarWhereInput[]
   }
 
-  export type UsersCreateNestedOneWithoutUsageReferral_userInput = {
-    create?: XOR<UsersCreateWithoutUsageReferral_userInput, UsersUncheckedCreateWithoutUsageReferral_userInput>
-    connectOrCreate?: UsersCreateOrConnectWithoutUsageReferral_userInput
-    connect?: UsersWhereUniqueInput
-  }
-
   export type Referral_CodeCreateNestedOneWithoutUser_referralUsageInput = {
     create?: XOR<Referral_CodeCreateWithoutUser_referralUsageInput, Referral_CodeUncheckedCreateWithoutUser_referralUsageInput>
     connectOrCreate?: Referral_CodeCreateOrConnectWithoutUser_referralUsageInput
     connect?: Referral_CodeWhereUniqueInput
   }
 
-  export type UsersUpdateOneRequiredWithoutUsageReferral_userNestedInput = {
+  export type UsersCreateNestedOneWithoutUsageReferral_userInput = {
     create?: XOR<UsersCreateWithoutUsageReferral_userInput, UsersUncheckedCreateWithoutUsageReferral_userInput>
     connectOrCreate?: UsersCreateOrConnectWithoutUsageReferral_userInput
-    upsert?: UsersUpsertWithoutUsageReferral_userInput
     connect?: UsersWhereUniqueInput
-    update?: XOR<XOR<UsersUpdateToOneWithWhereWithoutUsageReferral_userInput, UsersUpdateWithoutUsageReferral_userInput>, UsersUncheckedUpdateWithoutUsageReferral_userInput>
   }
 
   export type Referral_CodeUpdateOneRequiredWithoutUser_referralUsageNestedInput = {
@@ -20983,6 +21212,14 @@ export namespace Prisma {
     upsert?: Referral_CodeUpsertWithoutUser_referralUsageInput
     connect?: Referral_CodeWhereUniqueInput
     update?: XOR<XOR<Referral_CodeUpdateToOneWithWhereWithoutUser_referralUsageInput, Referral_CodeUpdateWithoutUser_referralUsageInput>, Referral_CodeUncheckedUpdateWithoutUser_referralUsageInput>
+  }
+
+  export type UsersUpdateOneRequiredWithoutUsageReferral_userNestedInput = {
+    create?: XOR<UsersCreateWithoutUsageReferral_userInput, UsersUncheckedCreateWithoutUsageReferral_userInput>
+    connectOrCreate?: UsersCreateOrConnectWithoutUsageReferral_userInput
+    upsert?: UsersUpsertWithoutUsageReferral_userInput
+    connect?: UsersWhereUniqueInput
+    update?: XOR<XOR<UsersUpdateToOneWithWhereWithoutUsageReferral_userInput, UsersUpdateWithoutUsageReferral_userInput>, UsersUncheckedUpdateWithoutUsageReferral_userInput>
   }
 
   export type OrganizerCreateNestedOneWithoutOrganizer_voucherInput = {
@@ -20995,6 +21232,12 @@ export namespace Prisma {
     create?: XOR<UsersCreateWithoutUser_voucherInput, UsersUncheckedCreateWithoutUser_voucherInput>
     connectOrCreate?: UsersCreateOrConnectWithoutUser_voucherInput
     connect?: UsersWhereUniqueInput
+  }
+
+  export type EventsCreateNestedOneWithoutVoucher_eventInput = {
+    create?: XOR<EventsCreateWithoutVoucher_eventInput, EventsUncheckedCreateWithoutVoucher_eventInput>
+    connectOrCreate?: EventsCreateOrConnectWithoutVoucher_eventInput
+    connect?: EventsWhereUniqueInput
   }
 
   export type Transactions_detailCreateNestedManyWithoutTransaction_voucher_detailsInput = {
@@ -21031,6 +21274,16 @@ export namespace Prisma {
     update?: XOR<XOR<UsersUpdateToOneWithWhereWithoutUser_voucherInput, UsersUpdateWithoutUser_voucherInput>, UsersUncheckedUpdateWithoutUser_voucherInput>
   }
 
+  export type EventsUpdateOneWithoutVoucher_eventNestedInput = {
+    create?: XOR<EventsCreateWithoutVoucher_eventInput, EventsUncheckedCreateWithoutVoucher_eventInput>
+    connectOrCreate?: EventsCreateOrConnectWithoutVoucher_eventInput
+    upsert?: EventsUpsertWithoutVoucher_eventInput
+    disconnect?: EventsWhereInput | boolean
+    delete?: EventsWhereInput | boolean
+    connect?: EventsWhereUniqueInput
+    update?: XOR<XOR<EventsUpdateToOneWithWhereWithoutVoucher_eventInput, EventsUpdateWithoutVoucher_eventInput>, EventsUncheckedUpdateWithoutVoucher_eventInput>
+  }
+
   export type Transactions_detailUpdateManyWithoutTransaction_voucher_detailsNestedInput = {
     create?: XOR<Transactions_detailCreateWithoutTransaction_voucher_detailsInput, Transactions_detailUncheckedCreateWithoutTransaction_voucher_detailsInput> | Transactions_detailCreateWithoutTransaction_voucher_detailsInput[] | Transactions_detailUncheckedCreateWithoutTransaction_voucher_detailsInput[]
     connectOrCreate?: Transactions_detailCreateOrConnectWithoutTransaction_voucher_detailsInput | Transactions_detailCreateOrConnectWithoutTransaction_voucher_detailsInput[]
@@ -21059,12 +21312,6 @@ export namespace Prisma {
     deleteMany?: Transactions_detailScalarWhereInput | Transactions_detailScalarWhereInput[]
   }
 
-  export type UsersCreateNestedOneWithoutTransactionsInput = {
-    create?: XOR<UsersCreateWithoutTransactionsInput, UsersUncheckedCreateWithoutTransactionsInput>
-    connectOrCreate?: UsersCreateOrConnectWithoutTransactionsInput
-    connect?: UsersWhereUniqueInput
-  }
-
   export type EventsCreateNestedOneWithoutEvent_transactionDetailInput = {
     create?: XOR<EventsCreateWithoutEvent_transactionDetailInput, EventsUncheckedCreateWithoutEvent_transactionDetailInput>
     connectOrCreate?: EventsCreateOrConnectWithoutEvent_transactionDetailInput
@@ -21077,6 +21324,12 @@ export namespace Prisma {
     connect?: OrganizerWhereUniqueInput
   }
 
+  export type UsersCreateNestedOneWithoutTransactionsInput = {
+    create?: XOR<UsersCreateWithoutTransactionsInput, UsersUncheckedCreateWithoutTransactionsInput>
+    connectOrCreate?: UsersCreateOrConnectWithoutTransactionsInput
+    connect?: UsersWhereUniqueInput
+  }
+
   export type VoucherCreateNestedOneWithoutVoucher_transaction_detailsInput = {
     create?: XOR<VoucherCreateWithoutVoucher_transaction_detailsInput, VoucherUncheckedCreateWithoutVoucher_transaction_detailsInput>
     connectOrCreate?: VoucherCreateOrConnectWithoutVoucher_transaction_detailsInput
@@ -21085,14 +21338,6 @@ export namespace Prisma {
 
   export type EnumTransactionStatusFieldUpdateOperationsInput = {
     set?: $Enums.TransactionStatus
-  }
-
-  export type UsersUpdateOneRequiredWithoutTransactionsNestedInput = {
-    create?: XOR<UsersCreateWithoutTransactionsInput, UsersUncheckedCreateWithoutTransactionsInput>
-    connectOrCreate?: UsersCreateOrConnectWithoutTransactionsInput
-    upsert?: UsersUpsertWithoutTransactionsInput
-    connect?: UsersWhereUniqueInput
-    update?: XOR<XOR<UsersUpdateToOneWithWhereWithoutTransactionsInput, UsersUpdateWithoutTransactionsInput>, UsersUncheckedUpdateWithoutTransactionsInput>
   }
 
   export type EventsUpdateOneRequiredWithoutEvent_transactionDetailNestedInput = {
@@ -21109,6 +21354,14 @@ export namespace Prisma {
     upsert?: OrganizerUpsertWithoutOrganizer_transactionDetailsInput
     connect?: OrganizerWhereUniqueInput
     update?: XOR<XOR<OrganizerUpdateToOneWithWhereWithoutOrganizer_transactionDetailsInput, OrganizerUpdateWithoutOrganizer_transactionDetailsInput>, OrganizerUncheckedUpdateWithoutOrganizer_transactionDetailsInput>
+  }
+
+  export type UsersUpdateOneRequiredWithoutTransactionsNestedInput = {
+    create?: XOR<UsersCreateWithoutTransactionsInput, UsersUncheckedCreateWithoutTransactionsInput>
+    connectOrCreate?: UsersCreateOrConnectWithoutTransactionsInput
+    upsert?: UsersUpsertWithoutTransactionsInput
+    connect?: UsersWhereUniqueInput
+    update?: XOR<XOR<UsersUpdateToOneWithWhereWithoutTransactionsInput, UsersUpdateWithoutTransactionsInput>, UsersUncheckedUpdateWithoutTransactionsInput>
   }
 
   export type VoucherUpdateOneWithoutVoucher_transaction_detailsNestedInput = {
@@ -21254,47 +21507,6 @@ export namespace Prisma {
     not?: NestedDateTimeNullableFilter<$PrismaModel> | Date | string | null
   }
 
-  export type NestedIntWithAggregatesFilter<$PrismaModel = never> = {
-    equals?: number | IntFieldRefInput<$PrismaModel>
-    in?: number[] | ListIntFieldRefInput<$PrismaModel>
-    notIn?: number[] | ListIntFieldRefInput<$PrismaModel>
-    lt?: number | IntFieldRefInput<$PrismaModel>
-    lte?: number | IntFieldRefInput<$PrismaModel>
-    gt?: number | IntFieldRefInput<$PrismaModel>
-    gte?: number | IntFieldRefInput<$PrismaModel>
-    not?: NestedIntWithAggregatesFilter<$PrismaModel> | number
-    _count?: NestedIntFilter<$PrismaModel>
-    _avg?: NestedFloatFilter<$PrismaModel>
-    _sum?: NestedIntFilter<$PrismaModel>
-    _min?: NestedIntFilter<$PrismaModel>
-    _max?: NestedIntFilter<$PrismaModel>
-  }
-
-  export type NestedFloatFilter<$PrismaModel = never> = {
-    equals?: number | FloatFieldRefInput<$PrismaModel>
-    in?: number[] | ListFloatFieldRefInput<$PrismaModel>
-    notIn?: number[] | ListFloatFieldRefInput<$PrismaModel>
-    lt?: number | FloatFieldRefInput<$PrismaModel>
-    lte?: number | FloatFieldRefInput<$PrismaModel>
-    gt?: number | FloatFieldRefInput<$PrismaModel>
-    gte?: number | FloatFieldRefInput<$PrismaModel>
-    not?: NestedFloatFilter<$PrismaModel> | number
-  }
-
-  export type NestedDateTimeNullableWithAggregatesFilter<$PrismaModel = never> = {
-    equals?: Date | string | DateTimeFieldRefInput<$PrismaModel> | null
-    in?: Date[] | string[] | ListDateTimeFieldRefInput<$PrismaModel> | null
-    notIn?: Date[] | string[] | ListDateTimeFieldRefInput<$PrismaModel> | null
-    lt?: Date | string | DateTimeFieldRefInput<$PrismaModel>
-    lte?: Date | string | DateTimeFieldRefInput<$PrismaModel>
-    gt?: Date | string | DateTimeFieldRefInput<$PrismaModel>
-    gte?: Date | string | DateTimeFieldRefInput<$PrismaModel>
-    not?: NestedDateTimeNullableWithAggregatesFilter<$PrismaModel> | Date | string | null
-    _count?: NestedIntNullableFilter<$PrismaModel>
-    _min?: NestedDateTimeNullableFilter<$PrismaModel>
-    _max?: NestedDateTimeNullableFilter<$PrismaModel>
-  }
-
   export type NestedIntNullableWithAggregatesFilter<$PrismaModel = never> = {
     equals?: number | IntFieldRefInput<$PrismaModel> | null
     in?: number[] | ListIntFieldRefInput<$PrismaModel> | null
@@ -21320,6 +21532,47 @@ export namespace Prisma {
     gt?: number | FloatFieldRefInput<$PrismaModel>
     gte?: number | FloatFieldRefInput<$PrismaModel>
     not?: NestedFloatNullableFilter<$PrismaModel> | number | null
+  }
+
+  export type NestedDateTimeNullableWithAggregatesFilter<$PrismaModel = never> = {
+    equals?: Date | string | DateTimeFieldRefInput<$PrismaModel> | null
+    in?: Date[] | string[] | ListDateTimeFieldRefInput<$PrismaModel> | null
+    notIn?: Date[] | string[] | ListDateTimeFieldRefInput<$PrismaModel> | null
+    lt?: Date | string | DateTimeFieldRefInput<$PrismaModel>
+    lte?: Date | string | DateTimeFieldRefInput<$PrismaModel>
+    gt?: Date | string | DateTimeFieldRefInput<$PrismaModel>
+    gte?: Date | string | DateTimeFieldRefInput<$PrismaModel>
+    not?: NestedDateTimeNullableWithAggregatesFilter<$PrismaModel> | Date | string | null
+    _count?: NestedIntNullableFilter<$PrismaModel>
+    _min?: NestedDateTimeNullableFilter<$PrismaModel>
+    _max?: NestedDateTimeNullableFilter<$PrismaModel>
+  }
+
+  export type NestedIntWithAggregatesFilter<$PrismaModel = never> = {
+    equals?: number | IntFieldRefInput<$PrismaModel>
+    in?: number[] | ListIntFieldRefInput<$PrismaModel>
+    notIn?: number[] | ListIntFieldRefInput<$PrismaModel>
+    lt?: number | IntFieldRefInput<$PrismaModel>
+    lte?: number | IntFieldRefInput<$PrismaModel>
+    gt?: number | IntFieldRefInput<$PrismaModel>
+    gte?: number | IntFieldRefInput<$PrismaModel>
+    not?: NestedIntWithAggregatesFilter<$PrismaModel> | number
+    _count?: NestedIntFilter<$PrismaModel>
+    _avg?: NestedFloatFilter<$PrismaModel>
+    _sum?: NestedIntFilter<$PrismaModel>
+    _min?: NestedIntFilter<$PrismaModel>
+    _max?: NestedIntFilter<$PrismaModel>
+  }
+
+  export type NestedFloatFilter<$PrismaModel = never> = {
+    equals?: number | FloatFieldRefInput<$PrismaModel>
+    in?: number[] | ListFloatFieldRefInput<$PrismaModel>
+    notIn?: number[] | ListFloatFieldRefInput<$PrismaModel>
+    lt?: number | FloatFieldRefInput<$PrismaModel>
+    lte?: number | FloatFieldRefInput<$PrismaModel>
+    gt?: number | FloatFieldRefInput<$PrismaModel>
+    gte?: number | FloatFieldRefInput<$PrismaModel>
+    not?: NestedFloatFilter<$PrismaModel> | number
   }
 
   export type NestedEnumStatusFilter<$PrismaModel = never> = {
@@ -21356,31 +21609,25 @@ export namespace Prisma {
     _max?: NestedEnumTransactionStatusFilter<$PrismaModel>
   }
 
-  export type OrganizerCreateWithoutUserInput = {
+  export type Event_AttendeesCreateWithoutUser_attendeesInput = {
     id?: string
-    organizer_name?: string
-    event?: EventsCreateNestedManyWithoutOrganizerInput
-    organizer_voucher?: VoucherCreateNestedManyWithoutVoucher_organizerInput
-    organizer_transactionDetails?: Transactions_detailCreateNestedManyWithoutDetail_organizerInput
-    organizer_articles?: ArticlesCreateNestedManyWithoutOrganizerInput
+    status: $Enums.Status
+    user_event: EventsCreateNestedOneWithoutAttendees_eventInput
   }
 
-  export type OrganizerUncheckedCreateWithoutUserInput = {
+  export type Event_AttendeesUncheckedCreateWithoutUser_attendeesInput = {
     id?: string
-    organizer_name?: string
-    event?: EventsUncheckedCreateNestedManyWithoutOrganizerInput
-    organizer_voucher?: VoucherUncheckedCreateNestedManyWithoutVoucher_organizerInput
-    organizer_transactionDetails?: Transactions_detailUncheckedCreateNestedManyWithoutDetail_organizerInput
-    organizer_articles?: ArticlesUncheckedCreateNestedManyWithoutOrganizerInput
+    event_id: string
+    status: $Enums.Status
   }
 
-  export type OrganizerCreateOrConnectWithoutUserInput = {
-    where: OrganizerWhereUniqueInput
-    create: XOR<OrganizerCreateWithoutUserInput, OrganizerUncheckedCreateWithoutUserInput>
+  export type Event_AttendeesCreateOrConnectWithoutUser_attendeesInput = {
+    where: Event_AttendeesWhereUniqueInput
+    create: XOR<Event_AttendeesCreateWithoutUser_attendeesInput, Event_AttendeesUncheckedCreateWithoutUser_attendeesInput>
   }
 
-  export type OrganizerCreateManyUserInputEnvelope = {
-    data: OrganizerCreateManyUserInput | OrganizerCreateManyUserInput[]
+  export type Event_AttendeesCreateManyUser_attendeesInputEnvelope = {
+    data: Event_AttendeesCreateManyUser_attendeesInput | Event_AttendeesCreateManyUser_attendeesInput[]
     skipDuplicates?: boolean
   }
 
@@ -21410,26 +21657,27 @@ export namespace Prisma {
     skipDuplicates?: boolean
   }
 
-  export type Event_AttendeesCreateWithoutUser_attendeesInput = {
+  export type OrganizerCreateWithoutUserInput = {
     id?: string
-    status: $Enums.Status
-    user_event: EventsCreateNestedOneWithoutAttendees_eventInput
+    organizer_name?: string
+    organizer_articles?: ArticlesCreateNestedManyWithoutOrganizerInput
+    event?: EventsCreateNestedManyWithoutOrganizerInput
+    organizer_transactionDetails?: Transactions_detailCreateNestedManyWithoutDetail_organizerInput
+    organizer_voucher?: VoucherCreateNestedManyWithoutVoucher_organizerInput
   }
 
-  export type Event_AttendeesUncheckedCreateWithoutUser_attendeesInput = {
+  export type OrganizerUncheckedCreateWithoutUserInput = {
     id?: string
-    event_id: string
-    status: $Enums.Status
+    organizer_name?: string
+    organizer_articles?: ArticlesUncheckedCreateNestedManyWithoutOrganizerInput
+    event?: EventsUncheckedCreateNestedManyWithoutOrganizerInput
+    organizer_transactionDetails?: Transactions_detailUncheckedCreateNestedManyWithoutDetail_organizerInput
+    organizer_voucher?: VoucherUncheckedCreateNestedManyWithoutVoucher_organizerInput
   }
 
-  export type Event_AttendeesCreateOrConnectWithoutUser_attendeesInput = {
-    where: Event_AttendeesWhereUniqueInput
-    create: XOR<Event_AttendeesCreateWithoutUser_attendeesInput, Event_AttendeesUncheckedCreateWithoutUser_attendeesInput>
-  }
-
-  export type Event_AttendeesCreateManyUser_attendeesInputEnvelope = {
-    data: Event_AttendeesCreateManyUser_attendeesInput | Event_AttendeesCreateManyUser_attendeesInput[]
-    skipDuplicates?: boolean
+  export type OrganizerCreateOrConnectWithoutUserInput = {
+    where: OrganizerWhereUniqueInput
+    create: XOR<OrganizerCreateWithoutUserInput, OrganizerUncheckedCreateWithoutUserInput>
   }
 
   export type Referral_CodeCreateWithoutUser_referralInput = {
@@ -21485,12 +21733,12 @@ export namespace Prisma {
   export type Transactions_detailCreateWithoutUserInput = {
     id?: string
     quantity: number
-    amount?: number
-    proof?: string
     isConfirmed?: boolean
     transaction_status: $Enums.TransactionStatus
-    paid_at?: Date | string | null
+    amount?: number
     created_at?: Date | string
+    paid_at?: Date | string | null
+    proof?: string
     updated_at?: Date | string
     detail_event: EventsCreateNestedOneWithoutEvent_transactionDetailInput
     detail_organizer: OrganizerCreateNestedOneWithoutOrganizer_transactionDetailsInput
@@ -21502,14 +21750,14 @@ export namespace Prisma {
     event_id: string
     organizer_id: string
     quantity: number
-    voucher_id?: string | null
-    amount?: number
-    proof?: string
     isConfirmed?: boolean
     transaction_status: $Enums.TransactionStatus
-    paid_at?: Date | string | null
+    amount?: number
     created_at?: Date | string
+    paid_at?: Date | string | null
+    proof?: string
     updated_at?: Date | string
+    voucher_id?: string | null
   }
 
   export type Transactions_detailCreateOrConnectWithoutUserInput = {
@@ -21528,18 +21776,22 @@ export namespace Prisma {
     percentage?: number | null
     amount?: number | null
     created_at?: Date | string
+    start_date?: Date | string | null
     expired_at: Date | string
     voucher_organizer?: OrganizerCreateNestedOneWithoutOrganizer_voucherInput
+    voucher_event?: EventsCreateNestedOneWithoutVoucher_eventInput
     voucher_transaction_details?: Transactions_detailCreateNestedManyWithoutTransaction_voucher_detailsInput
   }
 
   export type VoucherUncheckedCreateWithoutVoucher_userInput = {
     id?: string
     organizer_id?: string | null
+    event_id?: string | null
     code: string
     percentage?: number | null
     amount?: number | null
     created_at?: Date | string
+    start_date?: Date | string | null
     expired_at: Date | string
     voucher_transaction_details?: Transactions_detailUncheckedCreateNestedManyWithoutTransaction_voucher_detailsInput
   }
@@ -21554,29 +21806,30 @@ export namespace Prisma {
     skipDuplicates?: boolean
   }
 
-  export type OrganizerUpsertWithWhereUniqueWithoutUserInput = {
-    where: OrganizerWhereUniqueInput
-    update: XOR<OrganizerUpdateWithoutUserInput, OrganizerUncheckedUpdateWithoutUserInput>
-    create: XOR<OrganizerCreateWithoutUserInput, OrganizerUncheckedCreateWithoutUserInput>
+  export type Event_AttendeesUpsertWithWhereUniqueWithoutUser_attendeesInput = {
+    where: Event_AttendeesWhereUniqueInput
+    update: XOR<Event_AttendeesUpdateWithoutUser_attendeesInput, Event_AttendeesUncheckedUpdateWithoutUser_attendeesInput>
+    create: XOR<Event_AttendeesCreateWithoutUser_attendeesInput, Event_AttendeesUncheckedCreateWithoutUser_attendeesInput>
   }
 
-  export type OrganizerUpdateWithWhereUniqueWithoutUserInput = {
-    where: OrganizerWhereUniqueInput
-    data: XOR<OrganizerUpdateWithoutUserInput, OrganizerUncheckedUpdateWithoutUserInput>
+  export type Event_AttendeesUpdateWithWhereUniqueWithoutUser_attendeesInput = {
+    where: Event_AttendeesWhereUniqueInput
+    data: XOR<Event_AttendeesUpdateWithoutUser_attendeesInput, Event_AttendeesUncheckedUpdateWithoutUser_attendeesInput>
   }
 
-  export type OrganizerUpdateManyWithWhereWithoutUserInput = {
-    where: OrganizerScalarWhereInput
-    data: XOR<OrganizerUpdateManyMutationInput, OrganizerUncheckedUpdateManyWithoutUserInput>
+  export type Event_AttendeesUpdateManyWithWhereWithoutUser_attendeesInput = {
+    where: Event_AttendeesScalarWhereInput
+    data: XOR<Event_AttendeesUpdateManyMutationInput, Event_AttendeesUncheckedUpdateManyWithoutUser_attendeesInput>
   }
 
-  export type OrganizerScalarWhereInput = {
-    AND?: OrganizerScalarWhereInput | OrganizerScalarWhereInput[]
-    OR?: OrganizerScalarWhereInput[]
-    NOT?: OrganizerScalarWhereInput | OrganizerScalarWhereInput[]
-    id?: StringFilter<"Organizer"> | string
-    user_id?: StringFilter<"Organizer"> | string
-    organizer_name?: StringFilter<"Organizer"> | string
+  export type Event_AttendeesScalarWhereInput = {
+    AND?: Event_AttendeesScalarWhereInput | Event_AttendeesScalarWhereInput[]
+    OR?: Event_AttendeesScalarWhereInput[]
+    NOT?: Event_AttendeesScalarWhereInput | Event_AttendeesScalarWhereInput[]
+    id?: StringFilter<"Event_Attendees"> | string
+    user_id?: StringFilter<"Event_Attendees"> | string
+    event_id?: StringFilter<"Event_Attendees"> | string
+    status?: EnumStatusFilter<"Event_Attendees"> | $Enums.Status
   }
 
   export type Event_ReviewsUpsertWithWhereUniqueWithoutReviews_userInput = {
@@ -21607,30 +21860,33 @@ export namespace Prisma {
     created_at?: DateTimeFilter<"Event_Reviews"> | Date | string
   }
 
-  export type Event_AttendeesUpsertWithWhereUniqueWithoutUser_attendeesInput = {
-    where: Event_AttendeesWhereUniqueInput
-    update: XOR<Event_AttendeesUpdateWithoutUser_attendeesInput, Event_AttendeesUncheckedUpdateWithoutUser_attendeesInput>
-    create: XOR<Event_AttendeesCreateWithoutUser_attendeesInput, Event_AttendeesUncheckedCreateWithoutUser_attendeesInput>
+  export type OrganizerUpsertWithoutUserInput = {
+    update: XOR<OrganizerUpdateWithoutUserInput, OrganizerUncheckedUpdateWithoutUserInput>
+    create: XOR<OrganizerCreateWithoutUserInput, OrganizerUncheckedCreateWithoutUserInput>
+    where?: OrganizerWhereInput
   }
 
-  export type Event_AttendeesUpdateWithWhereUniqueWithoutUser_attendeesInput = {
-    where: Event_AttendeesWhereUniqueInput
-    data: XOR<Event_AttendeesUpdateWithoutUser_attendeesInput, Event_AttendeesUncheckedUpdateWithoutUser_attendeesInput>
+  export type OrganizerUpdateToOneWithWhereWithoutUserInput = {
+    where?: OrganizerWhereInput
+    data: XOR<OrganizerUpdateWithoutUserInput, OrganizerUncheckedUpdateWithoutUserInput>
   }
 
-  export type Event_AttendeesUpdateManyWithWhereWithoutUser_attendeesInput = {
-    where: Event_AttendeesScalarWhereInput
-    data: XOR<Event_AttendeesUpdateManyMutationInput, Event_AttendeesUncheckedUpdateManyWithoutUser_attendeesInput>
+  export type OrganizerUpdateWithoutUserInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    organizer_name?: StringFieldUpdateOperationsInput | string
+    organizer_articles?: ArticlesUpdateManyWithoutOrganizerNestedInput
+    event?: EventsUpdateManyWithoutOrganizerNestedInput
+    organizer_transactionDetails?: Transactions_detailUpdateManyWithoutDetail_organizerNestedInput
+    organizer_voucher?: VoucherUpdateManyWithoutVoucher_organizerNestedInput
   }
 
-  export type Event_AttendeesScalarWhereInput = {
-    AND?: Event_AttendeesScalarWhereInput | Event_AttendeesScalarWhereInput[]
-    OR?: Event_AttendeesScalarWhereInput[]
-    NOT?: Event_AttendeesScalarWhereInput | Event_AttendeesScalarWhereInput[]
-    id?: StringFilter<"Event_Attendees"> | string
-    user_id?: StringFilter<"Event_Attendees"> | string
-    event_id?: StringFilter<"Event_Attendees"> | string
-    status?: EnumStatusFilter<"Event_Attendees"> | $Enums.Status
+  export type OrganizerUncheckedUpdateWithoutUserInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    organizer_name?: StringFieldUpdateOperationsInput | string
+    organizer_articles?: ArticlesUncheckedUpdateManyWithoutOrganizerNestedInput
+    event?: EventsUncheckedUpdateManyWithoutOrganizerNestedInput
+    organizer_transactionDetails?: Transactions_detailUncheckedUpdateManyWithoutDetail_organizerNestedInput
+    organizer_voucher?: VoucherUncheckedUpdateManyWithoutVoucher_organizerNestedInput
   }
 
   export type Referral_CodeUpsertWithWhereUniqueWithoutUser_referralInput = {
@@ -21712,14 +21968,14 @@ export namespace Prisma {
     event_id?: StringFilter<"Transactions_detail"> | string
     organizer_id?: StringFilter<"Transactions_detail"> | string
     quantity?: IntFilter<"Transactions_detail"> | number
-    voucher_id?: StringNullableFilter<"Transactions_detail"> | string | null
-    amount?: IntFilter<"Transactions_detail"> | number
-    proof?: StringFilter<"Transactions_detail"> | string
     isConfirmed?: BoolFilter<"Transactions_detail"> | boolean
     transaction_status?: EnumTransactionStatusFilter<"Transactions_detail"> | $Enums.TransactionStatus
-    paid_at?: DateTimeNullableFilter<"Transactions_detail"> | Date | string | null
+    amount?: IntFilter<"Transactions_detail"> | number
     created_at?: DateTimeFilter<"Transactions_detail"> | Date | string
+    paid_at?: DateTimeNullableFilter<"Transactions_detail"> | Date | string | null
+    proof?: StringFilter<"Transactions_detail"> | string
     updated_at?: DateTimeFilter<"Transactions_detail"> | Date | string
+    voucher_id?: StringNullableFilter<"Transactions_detail"> | string | null
   }
 
   export type VoucherUpsertWithWhereUniqueWithoutVoucher_userInput = {
@@ -21745,180 +22001,13 @@ export namespace Prisma {
     id?: StringFilter<"Voucher"> | string
     user_id?: StringNullableFilter<"Voucher"> | string | null
     organizer_id?: StringNullableFilter<"Voucher"> | string | null
+    event_id?: StringNullableFilter<"Voucher"> | string | null
     code?: StringFilter<"Voucher"> | string
     percentage?: IntNullableFilter<"Voucher"> | number | null
     amount?: IntNullableFilter<"Voucher"> | number | null
     created_at?: DateTimeFilter<"Voucher"> | Date | string
+    start_date?: DateTimeNullableFilter<"Voucher"> | Date | string | null
     expired_at?: DateTimeFilter<"Voucher"> | Date | string
-  }
-
-  export type UsersCreateWithoutOrganizerInput = {
-    id?: string
-    first_name: string
-    last_name: string
-    email: string
-    password: string
-    country: string
-    birthdate: Date | string
-    phone_number: string
-    avatar?: string | null
-    refferal_code?: string | null
-    referrer_code?: string | null
-    isVerified?: boolean
-    created_at?: Date | string
-    updated_at?: Date | string
-    reviews_user?: Event_ReviewsCreateNestedManyWithoutReviews_userInput
-    attendees_user?: Event_AttendeesCreateNestedManyWithoutUser_attendeesInput
-    referral_user?: Referral_CodeCreateNestedManyWithoutUser_referralInput
-    usageReferral_user?: Referral_UsageCreateNestedManyWithoutUser_referralUsageInput
-    transactions?: Transactions_detailCreateNestedManyWithoutUserInput
-    user_voucher?: VoucherCreateNestedManyWithoutVoucher_userInput
-  }
-
-  export type UsersUncheckedCreateWithoutOrganizerInput = {
-    id?: string
-    first_name: string
-    last_name: string
-    email: string
-    password: string
-    country: string
-    birthdate: Date | string
-    phone_number: string
-    avatar?: string | null
-    refferal_code?: string | null
-    referrer_code?: string | null
-    isVerified?: boolean
-    created_at?: Date | string
-    updated_at?: Date | string
-    reviews_user?: Event_ReviewsUncheckedCreateNestedManyWithoutReviews_userInput
-    attendees_user?: Event_AttendeesUncheckedCreateNestedManyWithoutUser_attendeesInput
-    referral_user?: Referral_CodeUncheckedCreateNestedManyWithoutUser_referralInput
-    usageReferral_user?: Referral_UsageUncheckedCreateNestedManyWithoutUser_referralUsageInput
-    transactions?: Transactions_detailUncheckedCreateNestedManyWithoutUserInput
-    user_voucher?: VoucherUncheckedCreateNestedManyWithoutVoucher_userInput
-  }
-
-  export type UsersCreateOrConnectWithoutOrganizerInput = {
-    where: UsersWhereUniqueInput
-    create: XOR<UsersCreateWithoutOrganizerInput, UsersUncheckedCreateWithoutOrganizerInput>
-  }
-
-  export type EventsCreateWithoutOrganizerInput = {
-    id?: string
-    name: string
-    description: string
-    image?: string | null
-    price: number
-    start_date: Date | string
-    end_date?: Date | string | null
-    created_at?: Date | string
-    updated_at?: Date | string
-    category_event: Event_CategoryCreateNestedOneWithoutEventInput
-    location_Event: Event_LocationCreateNestedOneWithoutEventInput
-    seat_event?: Event_SeatCreateNestedOneWithoutEventInput
-    reviews_event?: Event_ReviewsCreateNestedManyWithoutReviews_eventInput
-    attendees_event?: Event_AttendeesCreateNestedManyWithoutUser_eventInput
-    event_transactionDetail?: Transactions_detailCreateNestedManyWithoutDetail_eventInput
-  }
-
-  export type EventsUncheckedCreateWithoutOrganizerInput = {
-    id?: string
-    event_category_id: string
-    event_location_id: string
-    name: string
-    description: string
-    image?: string | null
-    price: number
-    start_date: Date | string
-    end_date?: Date | string | null
-    created_at?: Date | string
-    updated_at?: Date | string
-    seat_event?: Event_SeatUncheckedCreateNestedOneWithoutEventInput
-    reviews_event?: Event_ReviewsUncheckedCreateNestedManyWithoutReviews_eventInput
-    attendees_event?: Event_AttendeesUncheckedCreateNestedManyWithoutUser_eventInput
-    event_transactionDetail?: Transactions_detailUncheckedCreateNestedManyWithoutDetail_eventInput
-  }
-
-  export type EventsCreateOrConnectWithoutOrganizerInput = {
-    where: EventsWhereUniqueInput
-    create: XOR<EventsCreateWithoutOrganizerInput, EventsUncheckedCreateWithoutOrganizerInput>
-  }
-
-  export type EventsCreateManyOrganizerInputEnvelope = {
-    data: EventsCreateManyOrganizerInput | EventsCreateManyOrganizerInput[]
-    skipDuplicates?: boolean
-  }
-
-  export type VoucherCreateWithoutVoucher_organizerInput = {
-    id?: string
-    code: string
-    percentage?: number | null
-    amount?: number | null
-    created_at?: Date | string
-    expired_at: Date | string
-    voucher_user?: UsersCreateNestedOneWithoutUser_voucherInput
-    voucher_transaction_details?: Transactions_detailCreateNestedManyWithoutTransaction_voucher_detailsInput
-  }
-
-  export type VoucherUncheckedCreateWithoutVoucher_organizerInput = {
-    id?: string
-    user_id?: string | null
-    code: string
-    percentage?: number | null
-    amount?: number | null
-    created_at?: Date | string
-    expired_at: Date | string
-    voucher_transaction_details?: Transactions_detailUncheckedCreateNestedManyWithoutTransaction_voucher_detailsInput
-  }
-
-  export type VoucherCreateOrConnectWithoutVoucher_organizerInput = {
-    where: VoucherWhereUniqueInput
-    create: XOR<VoucherCreateWithoutVoucher_organizerInput, VoucherUncheckedCreateWithoutVoucher_organizerInput>
-  }
-
-  export type VoucherCreateManyVoucher_organizerInputEnvelope = {
-    data: VoucherCreateManyVoucher_organizerInput | VoucherCreateManyVoucher_organizerInput[]
-    skipDuplicates?: boolean
-  }
-
-  export type Transactions_detailCreateWithoutDetail_organizerInput = {
-    id?: string
-    quantity: number
-    amount?: number
-    proof?: string
-    isConfirmed?: boolean
-    transaction_status: $Enums.TransactionStatus
-    paid_at?: Date | string | null
-    created_at?: Date | string
-    updated_at?: Date | string
-    user: UsersCreateNestedOneWithoutTransactionsInput
-    detail_event: EventsCreateNestedOneWithoutEvent_transactionDetailInput
-    transaction_voucher_details?: VoucherCreateNestedOneWithoutVoucher_transaction_detailsInput
-  }
-
-  export type Transactions_detailUncheckedCreateWithoutDetail_organizerInput = {
-    id?: string
-    user_id: string
-    event_id: string
-    quantity: number
-    voucher_id?: string | null
-    amount?: number
-    proof?: string
-    isConfirmed?: boolean
-    transaction_status: $Enums.TransactionStatus
-    paid_at?: Date | string | null
-    created_at?: Date | string
-    updated_at?: Date | string
-  }
-
-  export type Transactions_detailCreateOrConnectWithoutDetail_organizerInput = {
-    where: Transactions_detailWhereUniqueInput
-    create: XOR<Transactions_detailCreateWithoutDetail_organizerInput, Transactions_detailUncheckedCreateWithoutDetail_organizerInput>
-  }
-
-  export type Transactions_detailCreateManyDetail_organizerInputEnvelope = {
-    data: Transactions_detailCreateManyDetail_organizerInput | Transactions_detailCreateManyDetail_organizerInput[]
-    skipDuplicates?: boolean
   }
 
   export type ArticlesCreateWithoutOrganizerInput = {
@@ -21943,61 +22032,205 @@ export namespace Prisma {
     skipDuplicates?: boolean
   }
 
-  export type UsersUpsertWithoutOrganizerInput = {
-    update: XOR<UsersUpdateWithoutOrganizerInput, UsersUncheckedUpdateWithoutOrganizerInput>
+  export type EventsCreateWithoutOrganizerInput = {
+    id?: string
+    name: string
+    description: string
+    image?: string | null
+    price?: number | null
+    start_date: Date | string
+    end_date?: Date | string | null
+    created_at?: Date | string
+    updated_at?: Date | string
+    category_event: Event_CategoryCreateNestedOneWithoutEventInput
+    location_Event: Event_LocationCreateNestedOneWithoutEventInput
+    ticketType?: TicketTypeCreateNestedManyWithoutEventInput
+    voucher_event?: VoucherCreateNestedManyWithoutVoucher_eventInput
+    reviews_event?: Event_ReviewsCreateNestedManyWithoutReviews_eventInput
+    attendees_event?: Event_AttendeesCreateNestedManyWithoutUser_eventInput
+    event_transactionDetail?: Transactions_detailCreateNestedManyWithoutDetail_eventInput
+  }
+
+  export type EventsUncheckedCreateWithoutOrganizerInput = {
+    id?: string
+    event_category_id: string
+    event_location_id: string
+    name: string
+    description: string
+    image?: string | null
+    price?: number | null
+    start_date: Date | string
+    end_date?: Date | string | null
+    created_at?: Date | string
+    updated_at?: Date | string
+    ticketType?: TicketTypeUncheckedCreateNestedManyWithoutEventInput
+    voucher_event?: VoucherUncheckedCreateNestedManyWithoutVoucher_eventInput
+    reviews_event?: Event_ReviewsUncheckedCreateNestedManyWithoutReviews_eventInput
+    attendees_event?: Event_AttendeesUncheckedCreateNestedManyWithoutUser_eventInput
+    event_transactionDetail?: Transactions_detailUncheckedCreateNestedManyWithoutDetail_eventInput
+  }
+
+  export type EventsCreateOrConnectWithoutOrganizerInput = {
+    where: EventsWhereUniqueInput
+    create: XOR<EventsCreateWithoutOrganizerInput, EventsUncheckedCreateWithoutOrganizerInput>
+  }
+
+  export type EventsCreateManyOrganizerInputEnvelope = {
+    data: EventsCreateManyOrganizerInput | EventsCreateManyOrganizerInput[]
+    skipDuplicates?: boolean
+  }
+
+  export type UsersCreateWithoutOrganizerInput = {
+    id?: string
+    first_name: string
+    last_name: string
+    email: string
+    password: string
+    country: string
+    birthdate: Date | string
+    phone_number: string
+    avatar?: string | null
+    isVerified?: boolean
+    created_at?: Date | string
+    updated_at?: Date | string
+    referrer_code?: string | null
+    refferal_code?: string | null
+    attendees_user?: Event_AttendeesCreateNestedManyWithoutUser_attendeesInput
+    reviews_user?: Event_ReviewsCreateNestedManyWithoutReviews_userInput
+    referral_user?: Referral_CodeCreateNestedManyWithoutUser_referralInput
+    usageReferral_user?: Referral_UsageCreateNestedManyWithoutUser_referralUsageInput
+    transactions?: Transactions_detailCreateNestedManyWithoutUserInput
+    user_voucher?: VoucherCreateNestedManyWithoutVoucher_userInput
+  }
+
+  export type UsersUncheckedCreateWithoutOrganizerInput = {
+    id?: string
+    first_name: string
+    last_name: string
+    email: string
+    password: string
+    country: string
+    birthdate: Date | string
+    phone_number: string
+    avatar?: string | null
+    isVerified?: boolean
+    created_at?: Date | string
+    updated_at?: Date | string
+    referrer_code?: string | null
+    refferal_code?: string | null
+    attendees_user?: Event_AttendeesUncheckedCreateNestedManyWithoutUser_attendeesInput
+    reviews_user?: Event_ReviewsUncheckedCreateNestedManyWithoutReviews_userInput
+    referral_user?: Referral_CodeUncheckedCreateNestedManyWithoutUser_referralInput
+    usageReferral_user?: Referral_UsageUncheckedCreateNestedManyWithoutUser_referralUsageInput
+    transactions?: Transactions_detailUncheckedCreateNestedManyWithoutUserInput
+    user_voucher?: VoucherUncheckedCreateNestedManyWithoutVoucher_userInput
+  }
+
+  export type UsersCreateOrConnectWithoutOrganizerInput = {
+    where: UsersWhereUniqueInput
     create: XOR<UsersCreateWithoutOrganizerInput, UsersUncheckedCreateWithoutOrganizerInput>
-    where?: UsersWhereInput
   }
 
-  export type UsersUpdateToOneWithWhereWithoutOrganizerInput = {
-    where?: UsersWhereInput
-    data: XOR<UsersUpdateWithoutOrganizerInput, UsersUncheckedUpdateWithoutOrganizerInput>
+  export type Transactions_detailCreateWithoutDetail_organizerInput = {
+    id?: string
+    quantity: number
+    isConfirmed?: boolean
+    transaction_status: $Enums.TransactionStatus
+    amount?: number
+    created_at?: Date | string
+    paid_at?: Date | string | null
+    proof?: string
+    updated_at?: Date | string
+    detail_event: EventsCreateNestedOneWithoutEvent_transactionDetailInput
+    user: UsersCreateNestedOneWithoutTransactionsInput
+    transaction_voucher_details?: VoucherCreateNestedOneWithoutVoucher_transaction_detailsInput
   }
 
-  export type UsersUpdateWithoutOrganizerInput = {
-    id?: StringFieldUpdateOperationsInput | string
-    first_name?: StringFieldUpdateOperationsInput | string
-    last_name?: StringFieldUpdateOperationsInput | string
-    email?: StringFieldUpdateOperationsInput | string
-    password?: StringFieldUpdateOperationsInput | string
-    country?: StringFieldUpdateOperationsInput | string
-    birthdate?: DateTimeFieldUpdateOperationsInput | Date | string
-    phone_number?: StringFieldUpdateOperationsInput | string
-    avatar?: NullableStringFieldUpdateOperationsInput | string | null
-    refferal_code?: NullableStringFieldUpdateOperationsInput | string | null
-    referrer_code?: NullableStringFieldUpdateOperationsInput | string | null
-    isVerified?: BoolFieldUpdateOperationsInput | boolean
-    created_at?: DateTimeFieldUpdateOperationsInput | Date | string
-    updated_at?: DateTimeFieldUpdateOperationsInput | Date | string
-    reviews_user?: Event_ReviewsUpdateManyWithoutReviews_userNestedInput
-    attendees_user?: Event_AttendeesUpdateManyWithoutUser_attendeesNestedInput
-    referral_user?: Referral_CodeUpdateManyWithoutUser_referralNestedInput
-    usageReferral_user?: Referral_UsageUpdateManyWithoutUser_referralUsageNestedInput
-    transactions?: Transactions_detailUpdateManyWithoutUserNestedInput
-    user_voucher?: VoucherUpdateManyWithoutVoucher_userNestedInput
+  export type Transactions_detailUncheckedCreateWithoutDetail_organizerInput = {
+    id?: string
+    user_id: string
+    event_id: string
+    quantity: number
+    isConfirmed?: boolean
+    transaction_status: $Enums.TransactionStatus
+    amount?: number
+    created_at?: Date | string
+    paid_at?: Date | string | null
+    proof?: string
+    updated_at?: Date | string
+    voucher_id?: string | null
   }
 
-  export type UsersUncheckedUpdateWithoutOrganizerInput = {
-    id?: StringFieldUpdateOperationsInput | string
-    first_name?: StringFieldUpdateOperationsInput | string
-    last_name?: StringFieldUpdateOperationsInput | string
-    email?: StringFieldUpdateOperationsInput | string
-    password?: StringFieldUpdateOperationsInput | string
-    country?: StringFieldUpdateOperationsInput | string
-    birthdate?: DateTimeFieldUpdateOperationsInput | Date | string
-    phone_number?: StringFieldUpdateOperationsInput | string
-    avatar?: NullableStringFieldUpdateOperationsInput | string | null
-    refferal_code?: NullableStringFieldUpdateOperationsInput | string | null
-    referrer_code?: NullableStringFieldUpdateOperationsInput | string | null
-    isVerified?: BoolFieldUpdateOperationsInput | boolean
-    created_at?: DateTimeFieldUpdateOperationsInput | Date | string
-    updated_at?: DateTimeFieldUpdateOperationsInput | Date | string
-    reviews_user?: Event_ReviewsUncheckedUpdateManyWithoutReviews_userNestedInput
-    attendees_user?: Event_AttendeesUncheckedUpdateManyWithoutUser_attendeesNestedInput
-    referral_user?: Referral_CodeUncheckedUpdateManyWithoutUser_referralNestedInput
-    usageReferral_user?: Referral_UsageUncheckedUpdateManyWithoutUser_referralUsageNestedInput
-    transactions?: Transactions_detailUncheckedUpdateManyWithoutUserNestedInput
-    user_voucher?: VoucherUncheckedUpdateManyWithoutVoucher_userNestedInput
+  export type Transactions_detailCreateOrConnectWithoutDetail_organizerInput = {
+    where: Transactions_detailWhereUniqueInput
+    create: XOR<Transactions_detailCreateWithoutDetail_organizerInput, Transactions_detailUncheckedCreateWithoutDetail_organizerInput>
+  }
+
+  export type Transactions_detailCreateManyDetail_organizerInputEnvelope = {
+    data: Transactions_detailCreateManyDetail_organizerInput | Transactions_detailCreateManyDetail_organizerInput[]
+    skipDuplicates?: boolean
+  }
+
+  export type VoucherCreateWithoutVoucher_organizerInput = {
+    id?: string
+    code: string
+    percentage?: number | null
+    amount?: number | null
+    created_at?: Date | string
+    start_date?: Date | string | null
+    expired_at: Date | string
+    voucher_user?: UsersCreateNestedOneWithoutUser_voucherInput
+    voucher_event?: EventsCreateNestedOneWithoutVoucher_eventInput
+    voucher_transaction_details?: Transactions_detailCreateNestedManyWithoutTransaction_voucher_detailsInput
+  }
+
+  export type VoucherUncheckedCreateWithoutVoucher_organizerInput = {
+    id?: string
+    user_id?: string | null
+    event_id?: string | null
+    code: string
+    percentage?: number | null
+    amount?: number | null
+    created_at?: Date | string
+    start_date?: Date | string | null
+    expired_at: Date | string
+    voucher_transaction_details?: Transactions_detailUncheckedCreateNestedManyWithoutTransaction_voucher_detailsInput
+  }
+
+  export type VoucherCreateOrConnectWithoutVoucher_organizerInput = {
+    where: VoucherWhereUniqueInput
+    create: XOR<VoucherCreateWithoutVoucher_organizerInput, VoucherUncheckedCreateWithoutVoucher_organizerInput>
+  }
+
+  export type VoucherCreateManyVoucher_organizerInputEnvelope = {
+    data: VoucherCreateManyVoucher_organizerInput | VoucherCreateManyVoucher_organizerInput[]
+    skipDuplicates?: boolean
+  }
+
+  export type ArticlesUpsertWithWhereUniqueWithoutOrganizerInput = {
+    where: ArticlesWhereUniqueInput
+    update: XOR<ArticlesUpdateWithoutOrganizerInput, ArticlesUncheckedUpdateWithoutOrganizerInput>
+    create: XOR<ArticlesCreateWithoutOrganizerInput, ArticlesUncheckedCreateWithoutOrganizerInput>
+  }
+
+  export type ArticlesUpdateWithWhereUniqueWithoutOrganizerInput = {
+    where: ArticlesWhereUniqueInput
+    data: XOR<ArticlesUpdateWithoutOrganizerInput, ArticlesUncheckedUpdateWithoutOrganizerInput>
+  }
+
+  export type ArticlesUpdateManyWithWhereWithoutOrganizerInput = {
+    where: ArticlesScalarWhereInput
+    data: XOR<ArticlesUpdateManyMutationInput, ArticlesUncheckedUpdateManyWithoutOrganizerInput>
+  }
+
+  export type ArticlesScalarWhereInput = {
+    AND?: ArticlesScalarWhereInput | ArticlesScalarWhereInput[]
+    OR?: ArticlesScalarWhereInput[]
+    NOT?: ArticlesScalarWhereInput | ArticlesScalarWhereInput[]
+    id?: StringFilter<"Articles"> | string
+    organizer_id?: StringFilter<"Articles"> | string
+    title?: StringFilter<"Articles"> | string
+    created_at?: DateTimeFilter<"Articles"> | Date | string
   }
 
   export type EventsUpsertWithWhereUniqueWithoutOrganizerInput = {
@@ -22027,27 +22260,68 @@ export namespace Prisma {
     name?: StringFilter<"Events"> | string
     description?: StringFilter<"Events"> | string
     image?: StringNullableFilter<"Events"> | string | null
-    price?: IntFilter<"Events"> | number
+    price?: IntNullableFilter<"Events"> | number | null
     start_date?: DateTimeFilter<"Events"> | Date | string
     end_date?: DateTimeNullableFilter<"Events"> | Date | string | null
     created_at?: DateTimeFilter<"Events"> | Date | string
     updated_at?: DateTimeFilter<"Events"> | Date | string
   }
 
-  export type VoucherUpsertWithWhereUniqueWithoutVoucher_organizerInput = {
-    where: VoucherWhereUniqueInput
-    update: XOR<VoucherUpdateWithoutVoucher_organizerInput, VoucherUncheckedUpdateWithoutVoucher_organizerInput>
-    create: XOR<VoucherCreateWithoutVoucher_organizerInput, VoucherUncheckedCreateWithoutVoucher_organizerInput>
+  export type UsersUpsertWithoutOrganizerInput = {
+    update: XOR<UsersUpdateWithoutOrganizerInput, UsersUncheckedUpdateWithoutOrganizerInput>
+    create: XOR<UsersCreateWithoutOrganizerInput, UsersUncheckedCreateWithoutOrganizerInput>
+    where?: UsersWhereInput
   }
 
-  export type VoucherUpdateWithWhereUniqueWithoutVoucher_organizerInput = {
-    where: VoucherWhereUniqueInput
-    data: XOR<VoucherUpdateWithoutVoucher_organizerInput, VoucherUncheckedUpdateWithoutVoucher_organizerInput>
+  export type UsersUpdateToOneWithWhereWithoutOrganizerInput = {
+    where?: UsersWhereInput
+    data: XOR<UsersUpdateWithoutOrganizerInput, UsersUncheckedUpdateWithoutOrganizerInput>
   }
 
-  export type VoucherUpdateManyWithWhereWithoutVoucher_organizerInput = {
-    where: VoucherScalarWhereInput
-    data: XOR<VoucherUpdateManyMutationInput, VoucherUncheckedUpdateManyWithoutVoucher_organizerInput>
+  export type UsersUpdateWithoutOrganizerInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    first_name?: StringFieldUpdateOperationsInput | string
+    last_name?: StringFieldUpdateOperationsInput | string
+    email?: StringFieldUpdateOperationsInput | string
+    password?: StringFieldUpdateOperationsInput | string
+    country?: StringFieldUpdateOperationsInput | string
+    birthdate?: DateTimeFieldUpdateOperationsInput | Date | string
+    phone_number?: StringFieldUpdateOperationsInput | string
+    avatar?: NullableStringFieldUpdateOperationsInput | string | null
+    isVerified?: BoolFieldUpdateOperationsInput | boolean
+    created_at?: DateTimeFieldUpdateOperationsInput | Date | string
+    updated_at?: DateTimeFieldUpdateOperationsInput | Date | string
+    referrer_code?: NullableStringFieldUpdateOperationsInput | string | null
+    refferal_code?: NullableStringFieldUpdateOperationsInput | string | null
+    attendees_user?: Event_AttendeesUpdateManyWithoutUser_attendeesNestedInput
+    reviews_user?: Event_ReviewsUpdateManyWithoutReviews_userNestedInput
+    referral_user?: Referral_CodeUpdateManyWithoutUser_referralNestedInput
+    usageReferral_user?: Referral_UsageUpdateManyWithoutUser_referralUsageNestedInput
+    transactions?: Transactions_detailUpdateManyWithoutUserNestedInput
+    user_voucher?: VoucherUpdateManyWithoutVoucher_userNestedInput
+  }
+
+  export type UsersUncheckedUpdateWithoutOrganizerInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    first_name?: StringFieldUpdateOperationsInput | string
+    last_name?: StringFieldUpdateOperationsInput | string
+    email?: StringFieldUpdateOperationsInput | string
+    password?: StringFieldUpdateOperationsInput | string
+    country?: StringFieldUpdateOperationsInput | string
+    birthdate?: DateTimeFieldUpdateOperationsInput | Date | string
+    phone_number?: StringFieldUpdateOperationsInput | string
+    avatar?: NullableStringFieldUpdateOperationsInput | string | null
+    isVerified?: BoolFieldUpdateOperationsInput | boolean
+    created_at?: DateTimeFieldUpdateOperationsInput | Date | string
+    updated_at?: DateTimeFieldUpdateOperationsInput | Date | string
+    referrer_code?: NullableStringFieldUpdateOperationsInput | string | null
+    refferal_code?: NullableStringFieldUpdateOperationsInput | string | null
+    attendees_user?: Event_AttendeesUncheckedUpdateManyWithoutUser_attendeesNestedInput
+    reviews_user?: Event_ReviewsUncheckedUpdateManyWithoutReviews_userNestedInput
+    referral_user?: Referral_CodeUncheckedUpdateManyWithoutUser_referralNestedInput
+    usageReferral_user?: Referral_UsageUncheckedUpdateManyWithoutUser_referralUsageNestedInput
+    transactions?: Transactions_detailUncheckedUpdateManyWithoutUserNestedInput
+    user_voucher?: VoucherUncheckedUpdateManyWithoutVoucher_userNestedInput
   }
 
   export type Transactions_detailUpsertWithWhereUniqueWithoutDetail_organizerInput = {
@@ -22066,39 +22340,29 @@ export namespace Prisma {
     data: XOR<Transactions_detailUpdateManyMutationInput, Transactions_detailUncheckedUpdateManyWithoutDetail_organizerInput>
   }
 
-  export type ArticlesUpsertWithWhereUniqueWithoutOrganizerInput = {
-    where: ArticlesWhereUniqueInput
-    update: XOR<ArticlesUpdateWithoutOrganizerInput, ArticlesUncheckedUpdateWithoutOrganizerInput>
-    create: XOR<ArticlesCreateWithoutOrganizerInput, ArticlesUncheckedCreateWithoutOrganizerInput>
+  export type VoucherUpsertWithWhereUniqueWithoutVoucher_organizerInput = {
+    where: VoucherWhereUniqueInput
+    update: XOR<VoucherUpdateWithoutVoucher_organizerInput, VoucherUncheckedUpdateWithoutVoucher_organizerInput>
+    create: XOR<VoucherCreateWithoutVoucher_organizerInput, VoucherUncheckedCreateWithoutVoucher_organizerInput>
   }
 
-  export type ArticlesUpdateWithWhereUniqueWithoutOrganizerInput = {
-    where: ArticlesWhereUniqueInput
-    data: XOR<ArticlesUpdateWithoutOrganizerInput, ArticlesUncheckedUpdateWithoutOrganizerInput>
+  export type VoucherUpdateWithWhereUniqueWithoutVoucher_organizerInput = {
+    where: VoucherWhereUniqueInput
+    data: XOR<VoucherUpdateWithoutVoucher_organizerInput, VoucherUncheckedUpdateWithoutVoucher_organizerInput>
   }
 
-  export type ArticlesUpdateManyWithWhereWithoutOrganizerInput = {
-    where: ArticlesScalarWhereInput
-    data: XOR<ArticlesUpdateManyMutationInput, ArticlesUncheckedUpdateManyWithoutOrganizerInput>
-  }
-
-  export type ArticlesScalarWhereInput = {
-    AND?: ArticlesScalarWhereInput | ArticlesScalarWhereInput[]
-    OR?: ArticlesScalarWhereInput[]
-    NOT?: ArticlesScalarWhereInput | ArticlesScalarWhereInput[]
-    id?: StringFilter<"Articles"> | string
-    organizer_id?: StringFilter<"Articles"> | string
-    title?: StringFilter<"Articles"> | string
-    created_at?: DateTimeFilter<"Articles"> | Date | string
+  export type VoucherUpdateManyWithWhereWithoutVoucher_organizerInput = {
+    where: VoucherScalarWhereInput
+    data: XOR<VoucherUpdateManyMutationInput, VoucherUncheckedUpdateManyWithoutVoucher_organizerInput>
   }
 
   export type OrganizerCreateWithoutOrganizer_articlesInput = {
     id?: string
     organizer_name?: string
-    user: UsersCreateNestedOneWithoutOrganizerInput
     event?: EventsCreateNestedManyWithoutOrganizerInput
-    organizer_voucher?: VoucherCreateNestedManyWithoutVoucher_organizerInput
+    user: UsersCreateNestedOneWithoutOrganizerInput
     organizer_transactionDetails?: Transactions_detailCreateNestedManyWithoutDetail_organizerInput
+    organizer_voucher?: VoucherCreateNestedManyWithoutVoucher_organizerInput
   }
 
   export type OrganizerUncheckedCreateWithoutOrganizer_articlesInput = {
@@ -22106,8 +22370,8 @@ export namespace Prisma {
     user_id: string
     organizer_name?: string
     event?: EventsUncheckedCreateNestedManyWithoutOrganizerInput
-    organizer_voucher?: VoucherUncheckedCreateNestedManyWithoutVoucher_organizerInput
     organizer_transactionDetails?: Transactions_detailUncheckedCreateNestedManyWithoutDetail_organizerInput
+    organizer_voucher?: VoucherUncheckedCreateNestedManyWithoutVoucher_organizerInput
   }
 
   export type OrganizerCreateOrConnectWithoutOrganizer_articlesInput = {
@@ -22129,10 +22393,10 @@ export namespace Prisma {
   export type OrganizerUpdateWithoutOrganizer_articlesInput = {
     id?: StringFieldUpdateOperationsInput | string
     organizer_name?: StringFieldUpdateOperationsInput | string
-    user?: UsersUpdateOneRequiredWithoutOrganizerNestedInput
     event?: EventsUpdateManyWithoutOrganizerNestedInput
-    organizer_voucher?: VoucherUpdateManyWithoutVoucher_organizerNestedInput
+    user?: UsersUpdateOneRequiredWithoutOrganizerNestedInput
     organizer_transactionDetails?: Transactions_detailUpdateManyWithoutDetail_organizerNestedInput
+    organizer_voucher?: VoucherUpdateManyWithoutVoucher_organizerNestedInput
   }
 
   export type OrganizerUncheckedUpdateWithoutOrganizer_articlesInput = {
@@ -22140,26 +22404,26 @@ export namespace Prisma {
     user_id?: StringFieldUpdateOperationsInput | string
     organizer_name?: StringFieldUpdateOperationsInput | string
     event?: EventsUncheckedUpdateManyWithoutOrganizerNestedInput
-    organizer_voucher?: VoucherUncheckedUpdateManyWithoutVoucher_organizerNestedInput
     organizer_transactionDetails?: Transactions_detailUncheckedUpdateManyWithoutDetail_organizerNestedInput
+    organizer_voucher?: VoucherUncheckedUpdateManyWithoutVoucher_organizerNestedInput
   }
 
   export type OrganizerCreateWithoutEventInput = {
     id?: string
     organizer_name?: string
-    user: UsersCreateNestedOneWithoutOrganizerInput
-    organizer_voucher?: VoucherCreateNestedManyWithoutVoucher_organizerInput
-    organizer_transactionDetails?: Transactions_detailCreateNestedManyWithoutDetail_organizerInput
     organizer_articles?: ArticlesCreateNestedManyWithoutOrganizerInput
+    user: UsersCreateNestedOneWithoutOrganizerInput
+    organizer_transactionDetails?: Transactions_detailCreateNestedManyWithoutDetail_organizerInput
+    organizer_voucher?: VoucherCreateNestedManyWithoutVoucher_organizerInput
   }
 
   export type OrganizerUncheckedCreateWithoutEventInput = {
     id?: string
     user_id: string
     organizer_name?: string
-    organizer_voucher?: VoucherUncheckedCreateNestedManyWithoutVoucher_organizerInput
-    organizer_transactionDetails?: Transactions_detailUncheckedCreateNestedManyWithoutDetail_organizerInput
     organizer_articles?: ArticlesUncheckedCreateNestedManyWithoutOrganizerInput
+    organizer_transactionDetails?: Transactions_detailUncheckedCreateNestedManyWithoutDetail_organizerInput
+    organizer_voucher?: VoucherUncheckedCreateNestedManyWithoutVoucher_organizerInput
   }
 
   export type OrganizerCreateOrConnectWithoutEventInput = {
@@ -22201,19 +22465,64 @@ export namespace Prisma {
     create: XOR<Event_LocationCreateWithoutEventInput, Event_LocationUncheckedCreateWithoutEventInput>
   }
 
-  export type Event_SeatCreateWithoutEventInput = {
+  export type TicketTypeCreateWithoutEventInput = {
     id?: string
-    total: number
+    name: string
+    price: number
+    quantity: number
   }
 
-  export type Event_SeatUncheckedCreateWithoutEventInput = {
+  export type TicketTypeUncheckedCreateWithoutEventInput = {
     id?: string
-    total: number
+    name: string
+    price: number
+    quantity: number
   }
 
-  export type Event_SeatCreateOrConnectWithoutEventInput = {
-    where: Event_SeatWhereUniqueInput
-    create: XOR<Event_SeatCreateWithoutEventInput, Event_SeatUncheckedCreateWithoutEventInput>
+  export type TicketTypeCreateOrConnectWithoutEventInput = {
+    where: TicketTypeWhereUniqueInput
+    create: XOR<TicketTypeCreateWithoutEventInput, TicketTypeUncheckedCreateWithoutEventInput>
+  }
+
+  export type TicketTypeCreateManyEventInputEnvelope = {
+    data: TicketTypeCreateManyEventInput | TicketTypeCreateManyEventInput[]
+    skipDuplicates?: boolean
+  }
+
+  export type VoucherCreateWithoutVoucher_eventInput = {
+    id?: string
+    code: string
+    percentage?: number | null
+    amount?: number | null
+    created_at?: Date | string
+    start_date?: Date | string | null
+    expired_at: Date | string
+    voucher_organizer?: OrganizerCreateNestedOneWithoutOrganizer_voucherInput
+    voucher_user?: UsersCreateNestedOneWithoutUser_voucherInput
+    voucher_transaction_details?: Transactions_detailCreateNestedManyWithoutTransaction_voucher_detailsInput
+  }
+
+  export type VoucherUncheckedCreateWithoutVoucher_eventInput = {
+    id?: string
+    user_id?: string | null
+    organizer_id?: string | null
+    code: string
+    percentage?: number | null
+    amount?: number | null
+    created_at?: Date | string
+    start_date?: Date | string | null
+    expired_at: Date | string
+    voucher_transaction_details?: Transactions_detailUncheckedCreateNestedManyWithoutTransaction_voucher_detailsInput
+  }
+
+  export type VoucherCreateOrConnectWithoutVoucher_eventInput = {
+    where: VoucherWhereUniqueInput
+    create: XOR<VoucherCreateWithoutVoucher_eventInput, VoucherUncheckedCreateWithoutVoucher_eventInput>
+  }
+
+  export type VoucherCreateManyVoucher_eventInputEnvelope = {
+    data: VoucherCreateManyVoucher_eventInput | VoucherCreateManyVoucher_eventInput[]
+    skipDuplicates?: boolean
   }
 
   export type Event_ReviewsCreateWithoutReviews_eventInput = {
@@ -22267,15 +22576,15 @@ export namespace Prisma {
   export type Transactions_detailCreateWithoutDetail_eventInput = {
     id?: string
     quantity: number
-    amount?: number
-    proof?: string
     isConfirmed?: boolean
     transaction_status: $Enums.TransactionStatus
-    paid_at?: Date | string | null
+    amount?: number
     created_at?: Date | string
+    paid_at?: Date | string | null
+    proof?: string
     updated_at?: Date | string
-    user: UsersCreateNestedOneWithoutTransactionsInput
     detail_organizer: OrganizerCreateNestedOneWithoutOrganizer_transactionDetailsInput
+    user: UsersCreateNestedOneWithoutTransactionsInput
     transaction_voucher_details?: VoucherCreateNestedOneWithoutVoucher_transaction_detailsInput
   }
 
@@ -22284,14 +22593,14 @@ export namespace Prisma {
     user_id: string
     organizer_id: string
     quantity: number
-    voucher_id?: string | null
-    amount?: number
-    proof?: string
     isConfirmed?: boolean
     transaction_status: $Enums.TransactionStatus
-    paid_at?: Date | string | null
+    amount?: number
     created_at?: Date | string
+    paid_at?: Date | string | null
+    proof?: string
     updated_at?: Date | string
+    voucher_id?: string | null
   }
 
   export type Transactions_detailCreateOrConnectWithoutDetail_eventInput = {
@@ -22318,19 +22627,19 @@ export namespace Prisma {
   export type OrganizerUpdateWithoutEventInput = {
     id?: StringFieldUpdateOperationsInput | string
     organizer_name?: StringFieldUpdateOperationsInput | string
-    user?: UsersUpdateOneRequiredWithoutOrganizerNestedInput
-    organizer_voucher?: VoucherUpdateManyWithoutVoucher_organizerNestedInput
-    organizer_transactionDetails?: Transactions_detailUpdateManyWithoutDetail_organizerNestedInput
     organizer_articles?: ArticlesUpdateManyWithoutOrganizerNestedInput
+    user?: UsersUpdateOneRequiredWithoutOrganizerNestedInput
+    organizer_transactionDetails?: Transactions_detailUpdateManyWithoutDetail_organizerNestedInput
+    organizer_voucher?: VoucherUpdateManyWithoutVoucher_organizerNestedInput
   }
 
   export type OrganizerUncheckedUpdateWithoutEventInput = {
     id?: StringFieldUpdateOperationsInput | string
     user_id?: StringFieldUpdateOperationsInput | string
     organizer_name?: StringFieldUpdateOperationsInput | string
-    organizer_voucher?: VoucherUncheckedUpdateManyWithoutVoucher_organizerNestedInput
-    organizer_transactionDetails?: Transactions_detailUncheckedUpdateManyWithoutDetail_organizerNestedInput
     organizer_articles?: ArticlesUncheckedUpdateManyWithoutOrganizerNestedInput
+    organizer_transactionDetails?: Transactions_detailUncheckedUpdateManyWithoutDetail_organizerNestedInput
+    organizer_voucher?: VoucherUncheckedUpdateManyWithoutVoucher_organizerNestedInput
   }
 
   export type Event_CategoryUpsertWithoutEventInput = {
@@ -22379,25 +22688,47 @@ export namespace Prisma {
     address?: StringFieldUpdateOperationsInput | string
   }
 
-  export type Event_SeatUpsertWithoutEventInput = {
-    update: XOR<Event_SeatUpdateWithoutEventInput, Event_SeatUncheckedUpdateWithoutEventInput>
-    create: XOR<Event_SeatCreateWithoutEventInput, Event_SeatUncheckedCreateWithoutEventInput>
-    where?: Event_SeatWhereInput
+  export type TicketTypeUpsertWithWhereUniqueWithoutEventInput = {
+    where: TicketTypeWhereUniqueInput
+    update: XOR<TicketTypeUpdateWithoutEventInput, TicketTypeUncheckedUpdateWithoutEventInput>
+    create: XOR<TicketTypeCreateWithoutEventInput, TicketTypeUncheckedCreateWithoutEventInput>
   }
 
-  export type Event_SeatUpdateToOneWithWhereWithoutEventInput = {
-    where?: Event_SeatWhereInput
-    data: XOR<Event_SeatUpdateWithoutEventInput, Event_SeatUncheckedUpdateWithoutEventInput>
+  export type TicketTypeUpdateWithWhereUniqueWithoutEventInput = {
+    where: TicketTypeWhereUniqueInput
+    data: XOR<TicketTypeUpdateWithoutEventInput, TicketTypeUncheckedUpdateWithoutEventInput>
   }
 
-  export type Event_SeatUpdateWithoutEventInput = {
-    id?: StringFieldUpdateOperationsInput | string
-    total?: IntFieldUpdateOperationsInput | number
+  export type TicketTypeUpdateManyWithWhereWithoutEventInput = {
+    where: TicketTypeScalarWhereInput
+    data: XOR<TicketTypeUpdateManyMutationInput, TicketTypeUncheckedUpdateManyWithoutEventInput>
   }
 
-  export type Event_SeatUncheckedUpdateWithoutEventInput = {
-    id?: StringFieldUpdateOperationsInput | string
-    total?: IntFieldUpdateOperationsInput | number
+  export type TicketTypeScalarWhereInput = {
+    AND?: TicketTypeScalarWhereInput | TicketTypeScalarWhereInput[]
+    OR?: TicketTypeScalarWhereInput[]
+    NOT?: TicketTypeScalarWhereInput | TicketTypeScalarWhereInput[]
+    id?: StringFilter<"TicketType"> | string
+    event_id?: StringFilter<"TicketType"> | string
+    name?: StringFilter<"TicketType"> | string
+    price?: IntFilter<"TicketType"> | number
+    quantity?: IntFilter<"TicketType"> | number
+  }
+
+  export type VoucherUpsertWithWhereUniqueWithoutVoucher_eventInput = {
+    where: VoucherWhereUniqueInput
+    update: XOR<VoucherUpdateWithoutVoucher_eventInput, VoucherUncheckedUpdateWithoutVoucher_eventInput>
+    create: XOR<VoucherCreateWithoutVoucher_eventInput, VoucherUncheckedCreateWithoutVoucher_eventInput>
+  }
+
+  export type VoucherUpdateWithWhereUniqueWithoutVoucher_eventInput = {
+    where: VoucherWhereUniqueInput
+    data: XOR<VoucherUpdateWithoutVoucher_eventInput, VoucherUncheckedUpdateWithoutVoucher_eventInput>
+  }
+
+  export type VoucherUpdateManyWithWhereWithoutVoucher_eventInput = {
+    where: VoucherScalarWhereInput
+    data: XOR<VoucherUpdateManyMutationInput, VoucherUncheckedUpdateManyWithoutVoucher_eventInput>
   }
 
   export type Event_ReviewsUpsertWithWhereUniqueWithoutReviews_eventInput = {
@@ -22453,14 +22784,15 @@ export namespace Prisma {
     name: string
     description: string
     image?: string | null
-    price: number
+    price?: number | null
     start_date: Date | string
     end_date?: Date | string | null
     created_at?: Date | string
     updated_at?: Date | string
     organizer: OrganizerCreateNestedOneWithoutEventInput
     location_Event: Event_LocationCreateNestedOneWithoutEventInput
-    seat_event?: Event_SeatCreateNestedOneWithoutEventInput
+    ticketType?: TicketTypeCreateNestedManyWithoutEventInput
+    voucher_event?: VoucherCreateNestedManyWithoutVoucher_eventInput
     reviews_event?: Event_ReviewsCreateNestedManyWithoutReviews_eventInput
     attendees_event?: Event_AttendeesCreateNestedManyWithoutUser_eventInput
     event_transactionDetail?: Transactions_detailCreateNestedManyWithoutDetail_eventInput
@@ -22473,12 +22805,13 @@ export namespace Prisma {
     name: string
     description: string
     image?: string | null
-    price: number
+    price?: number | null
     start_date: Date | string
     end_date?: Date | string | null
     created_at?: Date | string
     updated_at?: Date | string
-    seat_event?: Event_SeatUncheckedCreateNestedOneWithoutEventInput
+    ticketType?: TicketTypeUncheckedCreateNestedManyWithoutEventInput
+    voucher_event?: VoucherUncheckedCreateNestedManyWithoutVoucher_eventInput
     reviews_event?: Event_ReviewsUncheckedCreateNestedManyWithoutReviews_eventInput
     attendees_event?: Event_AttendeesUncheckedCreateNestedManyWithoutUser_eventInput
     event_transactionDetail?: Transactions_detailUncheckedCreateNestedManyWithoutDetail_eventInput
@@ -22515,14 +22848,15 @@ export namespace Prisma {
     name: string
     description: string
     image?: string | null
-    price: number
+    price?: number | null
     start_date: Date | string
     end_date?: Date | string | null
     created_at?: Date | string
     updated_at?: Date | string
     organizer: OrganizerCreateNestedOneWithoutEventInput
     category_event: Event_CategoryCreateNestedOneWithoutEventInput
-    seat_event?: Event_SeatCreateNestedOneWithoutEventInput
+    ticketType?: TicketTypeCreateNestedManyWithoutEventInput
+    voucher_event?: VoucherCreateNestedManyWithoutVoucher_eventInput
     reviews_event?: Event_ReviewsCreateNestedManyWithoutReviews_eventInput
     attendees_event?: Event_AttendeesCreateNestedManyWithoutUser_eventInput
     event_transactionDetail?: Transactions_detailCreateNestedManyWithoutDetail_eventInput
@@ -22535,12 +22869,13 @@ export namespace Prisma {
     name: string
     description: string
     image?: string | null
-    price: number
+    price?: number | null
     start_date: Date | string
     end_date?: Date | string | null
     created_at?: Date | string
     updated_at?: Date | string
-    seat_event?: Event_SeatUncheckedCreateNestedOneWithoutEventInput
+    ticketType?: TicketTypeUncheckedCreateNestedManyWithoutEventInput
+    voucher_event?: VoucherUncheckedCreateNestedManyWithoutVoucher_eventInput
     reviews_event?: Event_ReviewsUncheckedCreateNestedManyWithoutReviews_eventInput
     attendees_event?: Event_AttendeesUncheckedCreateNestedManyWithoutUser_eventInput
     event_transactionDetail?: Transactions_detailUncheckedCreateNestedManyWithoutDetail_eventInput
@@ -22572,12 +22907,12 @@ export namespace Prisma {
     data: XOR<EventsUpdateManyMutationInput, EventsUncheckedUpdateManyWithoutLocation_EventInput>
   }
 
-  export type EventsCreateWithoutSeat_eventInput = {
+  export type EventsCreateWithoutTicketTypeInput = {
     id?: string
     name: string
     description: string
     image?: string | null
-    price: number
+    price?: number | null
     start_date: Date | string
     end_date?: Date | string | null
     created_at?: Date | string
@@ -22585,12 +22920,13 @@ export namespace Prisma {
     organizer: OrganizerCreateNestedOneWithoutEventInput
     category_event: Event_CategoryCreateNestedOneWithoutEventInput
     location_Event: Event_LocationCreateNestedOneWithoutEventInput
+    voucher_event?: VoucherCreateNestedManyWithoutVoucher_eventInput
     reviews_event?: Event_ReviewsCreateNestedManyWithoutReviews_eventInput
     attendees_event?: Event_AttendeesCreateNestedManyWithoutUser_eventInput
     event_transactionDetail?: Transactions_detailCreateNestedManyWithoutDetail_eventInput
   }
 
-  export type EventsUncheckedCreateWithoutSeat_eventInput = {
+  export type EventsUncheckedCreateWithoutTicketTypeInput = {
     id?: string
     organizer_id: string
     event_category_id: string
@@ -22598,38 +22934,39 @@ export namespace Prisma {
     name: string
     description: string
     image?: string | null
-    price: number
+    price?: number | null
     start_date: Date | string
     end_date?: Date | string | null
     created_at?: Date | string
     updated_at?: Date | string
+    voucher_event?: VoucherUncheckedCreateNestedManyWithoutVoucher_eventInput
     reviews_event?: Event_ReviewsUncheckedCreateNestedManyWithoutReviews_eventInput
     attendees_event?: Event_AttendeesUncheckedCreateNestedManyWithoutUser_eventInput
     event_transactionDetail?: Transactions_detailUncheckedCreateNestedManyWithoutDetail_eventInput
   }
 
-  export type EventsCreateOrConnectWithoutSeat_eventInput = {
+  export type EventsCreateOrConnectWithoutTicketTypeInput = {
     where: EventsWhereUniqueInput
-    create: XOR<EventsCreateWithoutSeat_eventInput, EventsUncheckedCreateWithoutSeat_eventInput>
+    create: XOR<EventsCreateWithoutTicketTypeInput, EventsUncheckedCreateWithoutTicketTypeInput>
   }
 
-  export type EventsUpsertWithoutSeat_eventInput = {
-    update: XOR<EventsUpdateWithoutSeat_eventInput, EventsUncheckedUpdateWithoutSeat_eventInput>
-    create: XOR<EventsCreateWithoutSeat_eventInput, EventsUncheckedCreateWithoutSeat_eventInput>
+  export type EventsUpsertWithoutTicketTypeInput = {
+    update: XOR<EventsUpdateWithoutTicketTypeInput, EventsUncheckedUpdateWithoutTicketTypeInput>
+    create: XOR<EventsCreateWithoutTicketTypeInput, EventsUncheckedCreateWithoutTicketTypeInput>
     where?: EventsWhereInput
   }
 
-  export type EventsUpdateToOneWithWhereWithoutSeat_eventInput = {
+  export type EventsUpdateToOneWithWhereWithoutTicketTypeInput = {
     where?: EventsWhereInput
-    data: XOR<EventsUpdateWithoutSeat_eventInput, EventsUncheckedUpdateWithoutSeat_eventInput>
+    data: XOR<EventsUpdateWithoutTicketTypeInput, EventsUncheckedUpdateWithoutTicketTypeInput>
   }
 
-  export type EventsUpdateWithoutSeat_eventInput = {
+  export type EventsUpdateWithoutTicketTypeInput = {
     id?: StringFieldUpdateOperationsInput | string
     name?: StringFieldUpdateOperationsInput | string
     description?: StringFieldUpdateOperationsInput | string
     image?: NullableStringFieldUpdateOperationsInput | string | null
-    price?: IntFieldUpdateOperationsInput | number
+    price?: NullableIntFieldUpdateOperationsInput | number | null
     start_date?: DateTimeFieldUpdateOperationsInput | Date | string
     end_date?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     created_at?: DateTimeFieldUpdateOperationsInput | Date | string
@@ -22637,12 +22974,13 @@ export namespace Prisma {
     organizer?: OrganizerUpdateOneRequiredWithoutEventNestedInput
     category_event?: Event_CategoryUpdateOneRequiredWithoutEventNestedInput
     location_Event?: Event_LocationUpdateOneRequiredWithoutEventNestedInput
+    voucher_event?: VoucherUpdateManyWithoutVoucher_eventNestedInput
     reviews_event?: Event_ReviewsUpdateManyWithoutReviews_eventNestedInput
     attendees_event?: Event_AttendeesUpdateManyWithoutUser_eventNestedInput
     event_transactionDetail?: Transactions_detailUpdateManyWithoutDetail_eventNestedInput
   }
 
-  export type EventsUncheckedUpdateWithoutSeat_eventInput = {
+  export type EventsUncheckedUpdateWithoutTicketTypeInput = {
     id?: StringFieldUpdateOperationsInput | string
     organizer_id?: StringFieldUpdateOperationsInput | string
     event_category_id?: StringFieldUpdateOperationsInput | string
@@ -22650,11 +22988,12 @@ export namespace Prisma {
     name?: StringFieldUpdateOperationsInput | string
     description?: StringFieldUpdateOperationsInput | string
     image?: NullableStringFieldUpdateOperationsInput | string | null
-    price?: IntFieldUpdateOperationsInput | number
+    price?: NullableIntFieldUpdateOperationsInput | number | null
     start_date?: DateTimeFieldUpdateOperationsInput | Date | string
     end_date?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     created_at?: DateTimeFieldUpdateOperationsInput | Date | string
     updated_at?: DateTimeFieldUpdateOperationsInput | Date | string
+    voucher_event?: VoucherUncheckedUpdateManyWithoutVoucher_eventNestedInput
     reviews_event?: Event_ReviewsUncheckedUpdateManyWithoutReviews_eventNestedInput
     attendees_event?: Event_AttendeesUncheckedUpdateManyWithoutUser_eventNestedInput
     event_transactionDetail?: Transactions_detailUncheckedUpdateManyWithoutDetail_eventNestedInput
@@ -22670,13 +23009,13 @@ export namespace Prisma {
     birthdate: Date | string
     phone_number: string
     avatar?: string | null
-    refferal_code?: string | null
-    referrer_code?: string | null
     isVerified?: boolean
     created_at?: Date | string
     updated_at?: Date | string
-    organizer?: OrganizerCreateNestedManyWithoutUserInput
+    referrer_code?: string | null
+    refferal_code?: string | null
     attendees_user?: Event_AttendeesCreateNestedManyWithoutUser_attendeesInput
+    organizer?: OrganizerCreateNestedOneWithoutUserInput
     referral_user?: Referral_CodeCreateNestedManyWithoutUser_referralInput
     usageReferral_user?: Referral_UsageCreateNestedManyWithoutUser_referralUsageInput
     transactions?: Transactions_detailCreateNestedManyWithoutUserInput
@@ -22693,13 +23032,13 @@ export namespace Prisma {
     birthdate: Date | string
     phone_number: string
     avatar?: string | null
-    refferal_code?: string | null
-    referrer_code?: string | null
     isVerified?: boolean
     created_at?: Date | string
     updated_at?: Date | string
-    organizer?: OrganizerUncheckedCreateNestedManyWithoutUserInput
+    referrer_code?: string | null
+    refferal_code?: string | null
     attendees_user?: Event_AttendeesUncheckedCreateNestedManyWithoutUser_attendeesInput
+    organizer?: OrganizerUncheckedCreateNestedOneWithoutUserInput
     referral_user?: Referral_CodeUncheckedCreateNestedManyWithoutUser_referralInput
     usageReferral_user?: Referral_UsageUncheckedCreateNestedManyWithoutUser_referralUsageInput
     transactions?: Transactions_detailUncheckedCreateNestedManyWithoutUserInput
@@ -22716,7 +23055,7 @@ export namespace Prisma {
     name: string
     description: string
     image?: string | null
-    price: number
+    price?: number | null
     start_date: Date | string
     end_date?: Date | string | null
     created_at?: Date | string
@@ -22724,7 +23063,8 @@ export namespace Prisma {
     organizer: OrganizerCreateNestedOneWithoutEventInput
     category_event: Event_CategoryCreateNestedOneWithoutEventInput
     location_Event: Event_LocationCreateNestedOneWithoutEventInput
-    seat_event?: Event_SeatCreateNestedOneWithoutEventInput
+    ticketType?: TicketTypeCreateNestedManyWithoutEventInput
+    voucher_event?: VoucherCreateNestedManyWithoutVoucher_eventInput
     attendees_event?: Event_AttendeesCreateNestedManyWithoutUser_eventInput
     event_transactionDetail?: Transactions_detailCreateNestedManyWithoutDetail_eventInput
   }
@@ -22737,12 +23077,13 @@ export namespace Prisma {
     name: string
     description: string
     image?: string | null
-    price: number
+    price?: number | null
     start_date: Date | string
     end_date?: Date | string | null
     created_at?: Date | string
     updated_at?: Date | string
-    seat_event?: Event_SeatUncheckedCreateNestedOneWithoutEventInput
+    ticketType?: TicketTypeUncheckedCreateNestedManyWithoutEventInput
+    voucher_event?: VoucherUncheckedCreateNestedManyWithoutVoucher_eventInput
     attendees_event?: Event_AttendeesUncheckedCreateNestedManyWithoutUser_eventInput
     event_transactionDetail?: Transactions_detailUncheckedCreateNestedManyWithoutDetail_eventInput
   }
@@ -22773,13 +23114,13 @@ export namespace Prisma {
     birthdate?: DateTimeFieldUpdateOperationsInput | Date | string
     phone_number?: StringFieldUpdateOperationsInput | string
     avatar?: NullableStringFieldUpdateOperationsInput | string | null
-    refferal_code?: NullableStringFieldUpdateOperationsInput | string | null
-    referrer_code?: NullableStringFieldUpdateOperationsInput | string | null
     isVerified?: BoolFieldUpdateOperationsInput | boolean
     created_at?: DateTimeFieldUpdateOperationsInput | Date | string
     updated_at?: DateTimeFieldUpdateOperationsInput | Date | string
-    organizer?: OrganizerUpdateManyWithoutUserNestedInput
+    referrer_code?: NullableStringFieldUpdateOperationsInput | string | null
+    refferal_code?: NullableStringFieldUpdateOperationsInput | string | null
     attendees_user?: Event_AttendeesUpdateManyWithoutUser_attendeesNestedInput
+    organizer?: OrganizerUpdateOneWithoutUserNestedInput
     referral_user?: Referral_CodeUpdateManyWithoutUser_referralNestedInput
     usageReferral_user?: Referral_UsageUpdateManyWithoutUser_referralUsageNestedInput
     transactions?: Transactions_detailUpdateManyWithoutUserNestedInput
@@ -22796,13 +23137,13 @@ export namespace Prisma {
     birthdate?: DateTimeFieldUpdateOperationsInput | Date | string
     phone_number?: StringFieldUpdateOperationsInput | string
     avatar?: NullableStringFieldUpdateOperationsInput | string | null
-    refferal_code?: NullableStringFieldUpdateOperationsInput | string | null
-    referrer_code?: NullableStringFieldUpdateOperationsInput | string | null
     isVerified?: BoolFieldUpdateOperationsInput | boolean
     created_at?: DateTimeFieldUpdateOperationsInput | Date | string
     updated_at?: DateTimeFieldUpdateOperationsInput | Date | string
-    organizer?: OrganizerUncheckedUpdateManyWithoutUserNestedInput
+    referrer_code?: NullableStringFieldUpdateOperationsInput | string | null
+    refferal_code?: NullableStringFieldUpdateOperationsInput | string | null
     attendees_user?: Event_AttendeesUncheckedUpdateManyWithoutUser_attendeesNestedInput
+    organizer?: OrganizerUncheckedUpdateOneWithoutUserNestedInput
     referral_user?: Referral_CodeUncheckedUpdateManyWithoutUser_referralNestedInput
     usageReferral_user?: Referral_UsageUncheckedUpdateManyWithoutUser_referralUsageNestedInput
     transactions?: Transactions_detailUncheckedUpdateManyWithoutUserNestedInput
@@ -22825,7 +23166,7 @@ export namespace Prisma {
     name?: StringFieldUpdateOperationsInput | string
     description?: StringFieldUpdateOperationsInput | string
     image?: NullableStringFieldUpdateOperationsInput | string | null
-    price?: IntFieldUpdateOperationsInput | number
+    price?: NullableIntFieldUpdateOperationsInput | number | null
     start_date?: DateTimeFieldUpdateOperationsInput | Date | string
     end_date?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     created_at?: DateTimeFieldUpdateOperationsInput | Date | string
@@ -22833,7 +23174,8 @@ export namespace Prisma {
     organizer?: OrganizerUpdateOneRequiredWithoutEventNestedInput
     category_event?: Event_CategoryUpdateOneRequiredWithoutEventNestedInput
     location_Event?: Event_LocationUpdateOneRequiredWithoutEventNestedInput
-    seat_event?: Event_SeatUpdateOneWithoutEventNestedInput
+    ticketType?: TicketTypeUpdateManyWithoutEventNestedInput
+    voucher_event?: VoucherUpdateManyWithoutVoucher_eventNestedInput
     attendees_event?: Event_AttendeesUpdateManyWithoutUser_eventNestedInput
     event_transactionDetail?: Transactions_detailUpdateManyWithoutDetail_eventNestedInput
   }
@@ -22846,14 +23188,58 @@ export namespace Prisma {
     name?: StringFieldUpdateOperationsInput | string
     description?: StringFieldUpdateOperationsInput | string
     image?: NullableStringFieldUpdateOperationsInput | string | null
-    price?: IntFieldUpdateOperationsInput | number
+    price?: NullableIntFieldUpdateOperationsInput | number | null
     start_date?: DateTimeFieldUpdateOperationsInput | Date | string
     end_date?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     created_at?: DateTimeFieldUpdateOperationsInput | Date | string
     updated_at?: DateTimeFieldUpdateOperationsInput | Date | string
-    seat_event?: Event_SeatUncheckedUpdateOneWithoutEventNestedInput
+    ticketType?: TicketTypeUncheckedUpdateManyWithoutEventNestedInput
+    voucher_event?: VoucherUncheckedUpdateManyWithoutVoucher_eventNestedInput
     attendees_event?: Event_AttendeesUncheckedUpdateManyWithoutUser_eventNestedInput
     event_transactionDetail?: Transactions_detailUncheckedUpdateManyWithoutDetail_eventNestedInput
+  }
+
+  export type EventsCreateWithoutAttendees_eventInput = {
+    id?: string
+    name: string
+    description: string
+    image?: string | null
+    price?: number | null
+    start_date: Date | string
+    end_date?: Date | string | null
+    created_at?: Date | string
+    updated_at?: Date | string
+    organizer: OrganizerCreateNestedOneWithoutEventInput
+    category_event: Event_CategoryCreateNestedOneWithoutEventInput
+    location_Event: Event_LocationCreateNestedOneWithoutEventInput
+    ticketType?: TicketTypeCreateNestedManyWithoutEventInput
+    voucher_event?: VoucherCreateNestedManyWithoutVoucher_eventInput
+    reviews_event?: Event_ReviewsCreateNestedManyWithoutReviews_eventInput
+    event_transactionDetail?: Transactions_detailCreateNestedManyWithoutDetail_eventInput
+  }
+
+  export type EventsUncheckedCreateWithoutAttendees_eventInput = {
+    id?: string
+    organizer_id: string
+    event_category_id: string
+    event_location_id: string
+    name: string
+    description: string
+    image?: string | null
+    price?: number | null
+    start_date: Date | string
+    end_date?: Date | string | null
+    created_at?: Date | string
+    updated_at?: Date | string
+    ticketType?: TicketTypeUncheckedCreateNestedManyWithoutEventInput
+    voucher_event?: VoucherUncheckedCreateNestedManyWithoutVoucher_eventInput
+    reviews_event?: Event_ReviewsUncheckedCreateNestedManyWithoutReviews_eventInput
+    event_transactionDetail?: Transactions_detailUncheckedCreateNestedManyWithoutDetail_eventInput
+  }
+
+  export type EventsCreateOrConnectWithoutAttendees_eventInput = {
+    where: EventsWhereUniqueInput
+    create: XOR<EventsCreateWithoutAttendees_eventInput, EventsUncheckedCreateWithoutAttendees_eventInput>
   }
 
   export type UsersCreateWithoutAttendees_userInput = {
@@ -22866,13 +23252,13 @@ export namespace Prisma {
     birthdate: Date | string
     phone_number: string
     avatar?: string | null
-    refferal_code?: string | null
-    referrer_code?: string | null
     isVerified?: boolean
     created_at?: Date | string
     updated_at?: Date | string
-    organizer?: OrganizerCreateNestedManyWithoutUserInput
+    referrer_code?: string | null
+    refferal_code?: string | null
     reviews_user?: Event_ReviewsCreateNestedManyWithoutReviews_userInput
+    organizer?: OrganizerCreateNestedOneWithoutUserInput
     referral_user?: Referral_CodeCreateNestedManyWithoutUser_referralInput
     usageReferral_user?: Referral_UsageCreateNestedManyWithoutUser_referralUsageInput
     transactions?: Transactions_detailCreateNestedManyWithoutUserInput
@@ -22889,13 +23275,13 @@ export namespace Prisma {
     birthdate: Date | string
     phone_number: string
     avatar?: string | null
-    refferal_code?: string | null
-    referrer_code?: string | null
     isVerified?: boolean
     created_at?: Date | string
     updated_at?: Date | string
-    organizer?: OrganizerUncheckedCreateNestedManyWithoutUserInput
+    referrer_code?: string | null
+    refferal_code?: string | null
     reviews_user?: Event_ReviewsUncheckedCreateNestedManyWithoutReviews_userInput
+    organizer?: OrganizerUncheckedCreateNestedOneWithoutUserInput
     referral_user?: Referral_CodeUncheckedCreateNestedManyWithoutUser_referralInput
     usageReferral_user?: Referral_UsageUncheckedCreateNestedManyWithoutUser_referralUsageInput
     transactions?: Transactions_detailUncheckedCreateNestedManyWithoutUserInput
@@ -22907,45 +23293,53 @@ export namespace Prisma {
     create: XOR<UsersCreateWithoutAttendees_userInput, UsersUncheckedCreateWithoutAttendees_userInput>
   }
 
-  export type EventsCreateWithoutAttendees_eventInput = {
-    id?: string
-    name: string
-    description: string
-    image?: string | null
-    price: number
-    start_date: Date | string
-    end_date?: Date | string | null
-    created_at?: Date | string
-    updated_at?: Date | string
-    organizer: OrganizerCreateNestedOneWithoutEventInput
-    category_event: Event_CategoryCreateNestedOneWithoutEventInput
-    location_Event: Event_LocationCreateNestedOneWithoutEventInput
-    seat_event?: Event_SeatCreateNestedOneWithoutEventInput
-    reviews_event?: Event_ReviewsCreateNestedManyWithoutReviews_eventInput
-    event_transactionDetail?: Transactions_detailCreateNestedManyWithoutDetail_eventInput
-  }
-
-  export type EventsUncheckedCreateWithoutAttendees_eventInput = {
-    id?: string
-    organizer_id: string
-    event_category_id: string
-    event_location_id: string
-    name: string
-    description: string
-    image?: string | null
-    price: number
-    start_date: Date | string
-    end_date?: Date | string | null
-    created_at?: Date | string
-    updated_at?: Date | string
-    seat_event?: Event_SeatUncheckedCreateNestedOneWithoutEventInput
-    reviews_event?: Event_ReviewsUncheckedCreateNestedManyWithoutReviews_eventInput
-    event_transactionDetail?: Transactions_detailUncheckedCreateNestedManyWithoutDetail_eventInput
-  }
-
-  export type EventsCreateOrConnectWithoutAttendees_eventInput = {
-    where: EventsWhereUniqueInput
+  export type EventsUpsertWithoutAttendees_eventInput = {
+    update: XOR<EventsUpdateWithoutAttendees_eventInput, EventsUncheckedUpdateWithoutAttendees_eventInput>
     create: XOR<EventsCreateWithoutAttendees_eventInput, EventsUncheckedCreateWithoutAttendees_eventInput>
+    where?: EventsWhereInput
+  }
+
+  export type EventsUpdateToOneWithWhereWithoutAttendees_eventInput = {
+    where?: EventsWhereInput
+    data: XOR<EventsUpdateWithoutAttendees_eventInput, EventsUncheckedUpdateWithoutAttendees_eventInput>
+  }
+
+  export type EventsUpdateWithoutAttendees_eventInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    name?: StringFieldUpdateOperationsInput | string
+    description?: StringFieldUpdateOperationsInput | string
+    image?: NullableStringFieldUpdateOperationsInput | string | null
+    price?: NullableIntFieldUpdateOperationsInput | number | null
+    start_date?: DateTimeFieldUpdateOperationsInput | Date | string
+    end_date?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    created_at?: DateTimeFieldUpdateOperationsInput | Date | string
+    updated_at?: DateTimeFieldUpdateOperationsInput | Date | string
+    organizer?: OrganizerUpdateOneRequiredWithoutEventNestedInput
+    category_event?: Event_CategoryUpdateOneRequiredWithoutEventNestedInput
+    location_Event?: Event_LocationUpdateOneRequiredWithoutEventNestedInput
+    ticketType?: TicketTypeUpdateManyWithoutEventNestedInput
+    voucher_event?: VoucherUpdateManyWithoutVoucher_eventNestedInput
+    reviews_event?: Event_ReviewsUpdateManyWithoutReviews_eventNestedInput
+    event_transactionDetail?: Transactions_detailUpdateManyWithoutDetail_eventNestedInput
+  }
+
+  export type EventsUncheckedUpdateWithoutAttendees_eventInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    organizer_id?: StringFieldUpdateOperationsInput | string
+    event_category_id?: StringFieldUpdateOperationsInput | string
+    event_location_id?: StringFieldUpdateOperationsInput | string
+    name?: StringFieldUpdateOperationsInput | string
+    description?: StringFieldUpdateOperationsInput | string
+    image?: NullableStringFieldUpdateOperationsInput | string | null
+    price?: NullableIntFieldUpdateOperationsInput | number | null
+    start_date?: DateTimeFieldUpdateOperationsInput | Date | string
+    end_date?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    created_at?: DateTimeFieldUpdateOperationsInput | Date | string
+    updated_at?: DateTimeFieldUpdateOperationsInput | Date | string
+    ticketType?: TicketTypeUncheckedUpdateManyWithoutEventNestedInput
+    voucher_event?: VoucherUncheckedUpdateManyWithoutVoucher_eventNestedInput
+    reviews_event?: Event_ReviewsUncheckedUpdateManyWithoutReviews_eventNestedInput
+    event_transactionDetail?: Transactions_detailUncheckedUpdateManyWithoutDetail_eventNestedInput
   }
 
   export type UsersUpsertWithoutAttendees_userInput = {
@@ -22969,13 +23363,13 @@ export namespace Prisma {
     birthdate?: DateTimeFieldUpdateOperationsInput | Date | string
     phone_number?: StringFieldUpdateOperationsInput | string
     avatar?: NullableStringFieldUpdateOperationsInput | string | null
-    refferal_code?: NullableStringFieldUpdateOperationsInput | string | null
-    referrer_code?: NullableStringFieldUpdateOperationsInput | string | null
     isVerified?: BoolFieldUpdateOperationsInput | boolean
     created_at?: DateTimeFieldUpdateOperationsInput | Date | string
     updated_at?: DateTimeFieldUpdateOperationsInput | Date | string
-    organizer?: OrganizerUpdateManyWithoutUserNestedInput
+    referrer_code?: NullableStringFieldUpdateOperationsInput | string | null
+    refferal_code?: NullableStringFieldUpdateOperationsInput | string | null
     reviews_user?: Event_ReviewsUpdateManyWithoutReviews_userNestedInput
+    organizer?: OrganizerUpdateOneWithoutUserNestedInput
     referral_user?: Referral_CodeUpdateManyWithoutUser_referralNestedInput
     usageReferral_user?: Referral_UsageUpdateManyWithoutUser_referralUsageNestedInput
     transactions?: Transactions_detailUpdateManyWithoutUserNestedInput
@@ -22992,64 +23386,17 @@ export namespace Prisma {
     birthdate?: DateTimeFieldUpdateOperationsInput | Date | string
     phone_number?: StringFieldUpdateOperationsInput | string
     avatar?: NullableStringFieldUpdateOperationsInput | string | null
-    refferal_code?: NullableStringFieldUpdateOperationsInput | string | null
-    referrer_code?: NullableStringFieldUpdateOperationsInput | string | null
     isVerified?: BoolFieldUpdateOperationsInput | boolean
     created_at?: DateTimeFieldUpdateOperationsInput | Date | string
     updated_at?: DateTimeFieldUpdateOperationsInput | Date | string
-    organizer?: OrganizerUncheckedUpdateManyWithoutUserNestedInput
+    referrer_code?: NullableStringFieldUpdateOperationsInput | string | null
+    refferal_code?: NullableStringFieldUpdateOperationsInput | string | null
     reviews_user?: Event_ReviewsUncheckedUpdateManyWithoutReviews_userNestedInput
+    organizer?: OrganizerUncheckedUpdateOneWithoutUserNestedInput
     referral_user?: Referral_CodeUncheckedUpdateManyWithoutUser_referralNestedInput
     usageReferral_user?: Referral_UsageUncheckedUpdateManyWithoutUser_referralUsageNestedInput
     transactions?: Transactions_detailUncheckedUpdateManyWithoutUserNestedInput
     user_voucher?: VoucherUncheckedUpdateManyWithoutVoucher_userNestedInput
-  }
-
-  export type EventsUpsertWithoutAttendees_eventInput = {
-    update: XOR<EventsUpdateWithoutAttendees_eventInput, EventsUncheckedUpdateWithoutAttendees_eventInput>
-    create: XOR<EventsCreateWithoutAttendees_eventInput, EventsUncheckedCreateWithoutAttendees_eventInput>
-    where?: EventsWhereInput
-  }
-
-  export type EventsUpdateToOneWithWhereWithoutAttendees_eventInput = {
-    where?: EventsWhereInput
-    data: XOR<EventsUpdateWithoutAttendees_eventInput, EventsUncheckedUpdateWithoutAttendees_eventInput>
-  }
-
-  export type EventsUpdateWithoutAttendees_eventInput = {
-    id?: StringFieldUpdateOperationsInput | string
-    name?: StringFieldUpdateOperationsInput | string
-    description?: StringFieldUpdateOperationsInput | string
-    image?: NullableStringFieldUpdateOperationsInput | string | null
-    price?: IntFieldUpdateOperationsInput | number
-    start_date?: DateTimeFieldUpdateOperationsInput | Date | string
-    end_date?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
-    created_at?: DateTimeFieldUpdateOperationsInput | Date | string
-    updated_at?: DateTimeFieldUpdateOperationsInput | Date | string
-    organizer?: OrganizerUpdateOneRequiredWithoutEventNestedInput
-    category_event?: Event_CategoryUpdateOneRequiredWithoutEventNestedInput
-    location_Event?: Event_LocationUpdateOneRequiredWithoutEventNestedInput
-    seat_event?: Event_SeatUpdateOneWithoutEventNestedInput
-    reviews_event?: Event_ReviewsUpdateManyWithoutReviews_eventNestedInput
-    event_transactionDetail?: Transactions_detailUpdateManyWithoutDetail_eventNestedInput
-  }
-
-  export type EventsUncheckedUpdateWithoutAttendees_eventInput = {
-    id?: StringFieldUpdateOperationsInput | string
-    organizer_id?: StringFieldUpdateOperationsInput | string
-    event_category_id?: StringFieldUpdateOperationsInput | string
-    event_location_id?: StringFieldUpdateOperationsInput | string
-    name?: StringFieldUpdateOperationsInput | string
-    description?: StringFieldUpdateOperationsInput | string
-    image?: NullableStringFieldUpdateOperationsInput | string | null
-    price?: IntFieldUpdateOperationsInput | number
-    start_date?: DateTimeFieldUpdateOperationsInput | Date | string
-    end_date?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
-    created_at?: DateTimeFieldUpdateOperationsInput | Date | string
-    updated_at?: DateTimeFieldUpdateOperationsInput | Date | string
-    seat_event?: Event_SeatUncheckedUpdateOneWithoutEventNestedInput
-    reviews_event?: Event_ReviewsUncheckedUpdateManyWithoutReviews_eventNestedInput
-    event_transactionDetail?: Transactions_detailUncheckedUpdateManyWithoutDetail_eventNestedInput
   }
 
   export type UsersCreateWithoutReferral_userInput = {
@@ -23062,14 +23409,14 @@ export namespace Prisma {
     birthdate: Date | string
     phone_number: string
     avatar?: string | null
-    refferal_code?: string | null
-    referrer_code?: string | null
     isVerified?: boolean
     created_at?: Date | string
     updated_at?: Date | string
-    organizer?: OrganizerCreateNestedManyWithoutUserInput
-    reviews_user?: Event_ReviewsCreateNestedManyWithoutReviews_userInput
+    referrer_code?: string | null
+    refferal_code?: string | null
     attendees_user?: Event_AttendeesCreateNestedManyWithoutUser_attendeesInput
+    reviews_user?: Event_ReviewsCreateNestedManyWithoutReviews_userInput
+    organizer?: OrganizerCreateNestedOneWithoutUserInput
     usageReferral_user?: Referral_UsageCreateNestedManyWithoutUser_referralUsageInput
     transactions?: Transactions_detailCreateNestedManyWithoutUserInput
     user_voucher?: VoucherCreateNestedManyWithoutVoucher_userInput
@@ -23085,14 +23432,14 @@ export namespace Prisma {
     birthdate: Date | string
     phone_number: string
     avatar?: string | null
-    refferal_code?: string | null
-    referrer_code?: string | null
     isVerified?: boolean
     created_at?: Date | string
     updated_at?: Date | string
-    organizer?: OrganizerUncheckedCreateNestedManyWithoutUserInput
-    reviews_user?: Event_ReviewsUncheckedCreateNestedManyWithoutReviews_userInput
+    referrer_code?: string | null
+    refferal_code?: string | null
     attendees_user?: Event_AttendeesUncheckedCreateNestedManyWithoutUser_attendeesInput
+    reviews_user?: Event_ReviewsUncheckedCreateNestedManyWithoutReviews_userInput
+    organizer?: OrganizerUncheckedCreateNestedOneWithoutUserInput
     usageReferral_user?: Referral_UsageUncheckedCreateNestedManyWithoutUser_referralUsageInput
     transactions?: Transactions_detailUncheckedCreateNestedManyWithoutUserInput
     user_voucher?: VoucherUncheckedCreateNestedManyWithoutVoucher_userInput
@@ -23146,14 +23493,14 @@ export namespace Prisma {
     birthdate?: DateTimeFieldUpdateOperationsInput | Date | string
     phone_number?: StringFieldUpdateOperationsInput | string
     avatar?: NullableStringFieldUpdateOperationsInput | string | null
-    refferal_code?: NullableStringFieldUpdateOperationsInput | string | null
-    referrer_code?: NullableStringFieldUpdateOperationsInput | string | null
     isVerified?: BoolFieldUpdateOperationsInput | boolean
     created_at?: DateTimeFieldUpdateOperationsInput | Date | string
     updated_at?: DateTimeFieldUpdateOperationsInput | Date | string
-    organizer?: OrganizerUpdateManyWithoutUserNestedInput
-    reviews_user?: Event_ReviewsUpdateManyWithoutReviews_userNestedInput
+    referrer_code?: NullableStringFieldUpdateOperationsInput | string | null
+    refferal_code?: NullableStringFieldUpdateOperationsInput | string | null
     attendees_user?: Event_AttendeesUpdateManyWithoutUser_attendeesNestedInput
+    reviews_user?: Event_ReviewsUpdateManyWithoutReviews_userNestedInput
+    organizer?: OrganizerUpdateOneWithoutUserNestedInput
     usageReferral_user?: Referral_UsageUpdateManyWithoutUser_referralUsageNestedInput
     transactions?: Transactions_detailUpdateManyWithoutUserNestedInput
     user_voucher?: VoucherUpdateManyWithoutVoucher_userNestedInput
@@ -23169,14 +23516,14 @@ export namespace Prisma {
     birthdate?: DateTimeFieldUpdateOperationsInput | Date | string
     phone_number?: StringFieldUpdateOperationsInput | string
     avatar?: NullableStringFieldUpdateOperationsInput | string | null
-    refferal_code?: NullableStringFieldUpdateOperationsInput | string | null
-    referrer_code?: NullableStringFieldUpdateOperationsInput | string | null
     isVerified?: BoolFieldUpdateOperationsInput | boolean
     created_at?: DateTimeFieldUpdateOperationsInput | Date | string
     updated_at?: DateTimeFieldUpdateOperationsInput | Date | string
-    organizer?: OrganizerUncheckedUpdateManyWithoutUserNestedInput
-    reviews_user?: Event_ReviewsUncheckedUpdateManyWithoutReviews_userNestedInput
+    referrer_code?: NullableStringFieldUpdateOperationsInput | string | null
+    refferal_code?: NullableStringFieldUpdateOperationsInput | string | null
     attendees_user?: Event_AttendeesUncheckedUpdateManyWithoutUser_attendeesNestedInput
+    reviews_user?: Event_ReviewsUncheckedUpdateManyWithoutReviews_userNestedInput
+    organizer?: OrganizerUncheckedUpdateOneWithoutUserNestedInput
     usageReferral_user?: Referral_UsageUncheckedUpdateManyWithoutUser_referralUsageNestedInput
     transactions?: Transactions_detailUncheckedUpdateManyWithoutUserNestedInput
     user_voucher?: VoucherUncheckedUpdateManyWithoutVoucher_userNestedInput
@@ -23196,57 +23543,6 @@ export namespace Prisma {
   export type Referral_UsageUpdateManyWithWhereWithoutCode_referralUsageInput = {
     where: Referral_UsageScalarWhereInput
     data: XOR<Referral_UsageUpdateManyMutationInput, Referral_UsageUncheckedUpdateManyWithoutCode_referralUsageInput>
-  }
-
-  export type UsersCreateWithoutUsageReferral_userInput = {
-    id?: string
-    first_name: string
-    last_name: string
-    email: string
-    password: string
-    country: string
-    birthdate: Date | string
-    phone_number: string
-    avatar?: string | null
-    refferal_code?: string | null
-    referrer_code?: string | null
-    isVerified?: boolean
-    created_at?: Date | string
-    updated_at?: Date | string
-    organizer?: OrganizerCreateNestedManyWithoutUserInput
-    reviews_user?: Event_ReviewsCreateNestedManyWithoutReviews_userInput
-    attendees_user?: Event_AttendeesCreateNestedManyWithoutUser_attendeesInput
-    referral_user?: Referral_CodeCreateNestedManyWithoutUser_referralInput
-    transactions?: Transactions_detailCreateNestedManyWithoutUserInput
-    user_voucher?: VoucherCreateNestedManyWithoutVoucher_userInput
-  }
-
-  export type UsersUncheckedCreateWithoutUsageReferral_userInput = {
-    id?: string
-    first_name: string
-    last_name: string
-    email: string
-    password: string
-    country: string
-    birthdate: Date | string
-    phone_number: string
-    avatar?: string | null
-    refferal_code?: string | null
-    referrer_code?: string | null
-    isVerified?: boolean
-    created_at?: Date | string
-    updated_at?: Date | string
-    organizer?: OrganizerUncheckedCreateNestedManyWithoutUserInput
-    reviews_user?: Event_ReviewsUncheckedCreateNestedManyWithoutReviews_userInput
-    attendees_user?: Event_AttendeesUncheckedCreateNestedManyWithoutUser_attendeesInput
-    referral_user?: Referral_CodeUncheckedCreateNestedManyWithoutUser_referralInput
-    transactions?: Transactions_detailUncheckedCreateNestedManyWithoutUserInput
-    user_voucher?: VoucherUncheckedCreateNestedManyWithoutVoucher_userInput
-  }
-
-  export type UsersCreateOrConnectWithoutUsageReferral_userInput = {
-    where: UsersWhereUniqueInput
-    create: XOR<UsersCreateWithoutUsageReferral_userInput, UsersUncheckedCreateWithoutUsageReferral_userInput>
   }
 
   export type Referral_CodeCreateWithoutUser_referralUsageInput = {
@@ -23272,61 +23568,55 @@ export namespace Prisma {
     create: XOR<Referral_CodeCreateWithoutUser_referralUsageInput, Referral_CodeUncheckedCreateWithoutUser_referralUsageInput>
   }
 
-  export type UsersUpsertWithoutUsageReferral_userInput = {
-    update: XOR<UsersUpdateWithoutUsageReferral_userInput, UsersUncheckedUpdateWithoutUsageReferral_userInput>
+  export type UsersCreateWithoutUsageReferral_userInput = {
+    id?: string
+    first_name: string
+    last_name: string
+    email: string
+    password: string
+    country: string
+    birthdate: Date | string
+    phone_number: string
+    avatar?: string | null
+    isVerified?: boolean
+    created_at?: Date | string
+    updated_at?: Date | string
+    referrer_code?: string | null
+    refferal_code?: string | null
+    attendees_user?: Event_AttendeesCreateNestedManyWithoutUser_attendeesInput
+    reviews_user?: Event_ReviewsCreateNestedManyWithoutReviews_userInput
+    organizer?: OrganizerCreateNestedOneWithoutUserInput
+    referral_user?: Referral_CodeCreateNestedManyWithoutUser_referralInput
+    transactions?: Transactions_detailCreateNestedManyWithoutUserInput
+    user_voucher?: VoucherCreateNestedManyWithoutVoucher_userInput
+  }
+
+  export type UsersUncheckedCreateWithoutUsageReferral_userInput = {
+    id?: string
+    first_name: string
+    last_name: string
+    email: string
+    password: string
+    country: string
+    birthdate: Date | string
+    phone_number: string
+    avatar?: string | null
+    isVerified?: boolean
+    created_at?: Date | string
+    updated_at?: Date | string
+    referrer_code?: string | null
+    refferal_code?: string | null
+    attendees_user?: Event_AttendeesUncheckedCreateNestedManyWithoutUser_attendeesInput
+    reviews_user?: Event_ReviewsUncheckedCreateNestedManyWithoutReviews_userInput
+    organizer?: OrganizerUncheckedCreateNestedOneWithoutUserInput
+    referral_user?: Referral_CodeUncheckedCreateNestedManyWithoutUser_referralInput
+    transactions?: Transactions_detailUncheckedCreateNestedManyWithoutUserInput
+    user_voucher?: VoucherUncheckedCreateNestedManyWithoutVoucher_userInput
+  }
+
+  export type UsersCreateOrConnectWithoutUsageReferral_userInput = {
+    where: UsersWhereUniqueInput
     create: XOR<UsersCreateWithoutUsageReferral_userInput, UsersUncheckedCreateWithoutUsageReferral_userInput>
-    where?: UsersWhereInput
-  }
-
-  export type UsersUpdateToOneWithWhereWithoutUsageReferral_userInput = {
-    where?: UsersWhereInput
-    data: XOR<UsersUpdateWithoutUsageReferral_userInput, UsersUncheckedUpdateWithoutUsageReferral_userInput>
-  }
-
-  export type UsersUpdateWithoutUsageReferral_userInput = {
-    id?: StringFieldUpdateOperationsInput | string
-    first_name?: StringFieldUpdateOperationsInput | string
-    last_name?: StringFieldUpdateOperationsInput | string
-    email?: StringFieldUpdateOperationsInput | string
-    password?: StringFieldUpdateOperationsInput | string
-    country?: StringFieldUpdateOperationsInput | string
-    birthdate?: DateTimeFieldUpdateOperationsInput | Date | string
-    phone_number?: StringFieldUpdateOperationsInput | string
-    avatar?: NullableStringFieldUpdateOperationsInput | string | null
-    refferal_code?: NullableStringFieldUpdateOperationsInput | string | null
-    referrer_code?: NullableStringFieldUpdateOperationsInput | string | null
-    isVerified?: BoolFieldUpdateOperationsInput | boolean
-    created_at?: DateTimeFieldUpdateOperationsInput | Date | string
-    updated_at?: DateTimeFieldUpdateOperationsInput | Date | string
-    organizer?: OrganizerUpdateManyWithoutUserNestedInput
-    reviews_user?: Event_ReviewsUpdateManyWithoutReviews_userNestedInput
-    attendees_user?: Event_AttendeesUpdateManyWithoutUser_attendeesNestedInput
-    referral_user?: Referral_CodeUpdateManyWithoutUser_referralNestedInput
-    transactions?: Transactions_detailUpdateManyWithoutUserNestedInput
-    user_voucher?: VoucherUpdateManyWithoutVoucher_userNestedInput
-  }
-
-  export type UsersUncheckedUpdateWithoutUsageReferral_userInput = {
-    id?: StringFieldUpdateOperationsInput | string
-    first_name?: StringFieldUpdateOperationsInput | string
-    last_name?: StringFieldUpdateOperationsInput | string
-    email?: StringFieldUpdateOperationsInput | string
-    password?: StringFieldUpdateOperationsInput | string
-    country?: StringFieldUpdateOperationsInput | string
-    birthdate?: DateTimeFieldUpdateOperationsInput | Date | string
-    phone_number?: StringFieldUpdateOperationsInput | string
-    avatar?: NullableStringFieldUpdateOperationsInput | string | null
-    refferal_code?: NullableStringFieldUpdateOperationsInput | string | null
-    referrer_code?: NullableStringFieldUpdateOperationsInput | string | null
-    isVerified?: BoolFieldUpdateOperationsInput | boolean
-    created_at?: DateTimeFieldUpdateOperationsInput | Date | string
-    updated_at?: DateTimeFieldUpdateOperationsInput | Date | string
-    organizer?: OrganizerUncheckedUpdateManyWithoutUserNestedInput
-    reviews_user?: Event_ReviewsUncheckedUpdateManyWithoutReviews_userNestedInput
-    attendees_user?: Event_AttendeesUncheckedUpdateManyWithoutUser_attendeesNestedInput
-    referral_user?: Referral_CodeUncheckedUpdateManyWithoutUser_referralNestedInput
-    transactions?: Transactions_detailUncheckedUpdateManyWithoutUserNestedInput
-    user_voucher?: VoucherUncheckedUpdateManyWithoutVoucher_userNestedInput
   }
 
   export type Referral_CodeUpsertWithoutUser_referralUsageInput = {
@@ -23358,22 +23648,79 @@ export namespace Prisma {
     expired_at?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   }
 
+  export type UsersUpsertWithoutUsageReferral_userInput = {
+    update: XOR<UsersUpdateWithoutUsageReferral_userInput, UsersUncheckedUpdateWithoutUsageReferral_userInput>
+    create: XOR<UsersCreateWithoutUsageReferral_userInput, UsersUncheckedCreateWithoutUsageReferral_userInput>
+    where?: UsersWhereInput
+  }
+
+  export type UsersUpdateToOneWithWhereWithoutUsageReferral_userInput = {
+    where?: UsersWhereInput
+    data: XOR<UsersUpdateWithoutUsageReferral_userInput, UsersUncheckedUpdateWithoutUsageReferral_userInput>
+  }
+
+  export type UsersUpdateWithoutUsageReferral_userInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    first_name?: StringFieldUpdateOperationsInput | string
+    last_name?: StringFieldUpdateOperationsInput | string
+    email?: StringFieldUpdateOperationsInput | string
+    password?: StringFieldUpdateOperationsInput | string
+    country?: StringFieldUpdateOperationsInput | string
+    birthdate?: DateTimeFieldUpdateOperationsInput | Date | string
+    phone_number?: StringFieldUpdateOperationsInput | string
+    avatar?: NullableStringFieldUpdateOperationsInput | string | null
+    isVerified?: BoolFieldUpdateOperationsInput | boolean
+    created_at?: DateTimeFieldUpdateOperationsInput | Date | string
+    updated_at?: DateTimeFieldUpdateOperationsInput | Date | string
+    referrer_code?: NullableStringFieldUpdateOperationsInput | string | null
+    refferal_code?: NullableStringFieldUpdateOperationsInput | string | null
+    attendees_user?: Event_AttendeesUpdateManyWithoutUser_attendeesNestedInput
+    reviews_user?: Event_ReviewsUpdateManyWithoutReviews_userNestedInput
+    organizer?: OrganizerUpdateOneWithoutUserNestedInput
+    referral_user?: Referral_CodeUpdateManyWithoutUser_referralNestedInput
+    transactions?: Transactions_detailUpdateManyWithoutUserNestedInput
+    user_voucher?: VoucherUpdateManyWithoutVoucher_userNestedInput
+  }
+
+  export type UsersUncheckedUpdateWithoutUsageReferral_userInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    first_name?: StringFieldUpdateOperationsInput | string
+    last_name?: StringFieldUpdateOperationsInput | string
+    email?: StringFieldUpdateOperationsInput | string
+    password?: StringFieldUpdateOperationsInput | string
+    country?: StringFieldUpdateOperationsInput | string
+    birthdate?: DateTimeFieldUpdateOperationsInput | Date | string
+    phone_number?: StringFieldUpdateOperationsInput | string
+    avatar?: NullableStringFieldUpdateOperationsInput | string | null
+    isVerified?: BoolFieldUpdateOperationsInput | boolean
+    created_at?: DateTimeFieldUpdateOperationsInput | Date | string
+    updated_at?: DateTimeFieldUpdateOperationsInput | Date | string
+    referrer_code?: NullableStringFieldUpdateOperationsInput | string | null
+    refferal_code?: NullableStringFieldUpdateOperationsInput | string | null
+    attendees_user?: Event_AttendeesUncheckedUpdateManyWithoutUser_attendeesNestedInput
+    reviews_user?: Event_ReviewsUncheckedUpdateManyWithoutReviews_userNestedInput
+    organizer?: OrganizerUncheckedUpdateOneWithoutUserNestedInput
+    referral_user?: Referral_CodeUncheckedUpdateManyWithoutUser_referralNestedInput
+    transactions?: Transactions_detailUncheckedUpdateManyWithoutUserNestedInput
+    user_voucher?: VoucherUncheckedUpdateManyWithoutVoucher_userNestedInput
+  }
+
   export type OrganizerCreateWithoutOrganizer_voucherInput = {
     id?: string
     organizer_name?: string
-    user: UsersCreateNestedOneWithoutOrganizerInput
-    event?: EventsCreateNestedManyWithoutOrganizerInput
-    organizer_transactionDetails?: Transactions_detailCreateNestedManyWithoutDetail_organizerInput
     organizer_articles?: ArticlesCreateNestedManyWithoutOrganizerInput
+    event?: EventsCreateNestedManyWithoutOrganizerInput
+    user: UsersCreateNestedOneWithoutOrganizerInput
+    organizer_transactionDetails?: Transactions_detailCreateNestedManyWithoutDetail_organizerInput
   }
 
   export type OrganizerUncheckedCreateWithoutOrganizer_voucherInput = {
     id?: string
     user_id: string
     organizer_name?: string
+    organizer_articles?: ArticlesUncheckedCreateNestedManyWithoutOrganizerInput
     event?: EventsUncheckedCreateNestedManyWithoutOrganizerInput
     organizer_transactionDetails?: Transactions_detailUncheckedCreateNestedManyWithoutDetail_organizerInput
-    organizer_articles?: ArticlesUncheckedCreateNestedManyWithoutOrganizerInput
   }
 
   export type OrganizerCreateOrConnectWithoutOrganizer_voucherInput = {
@@ -23391,14 +23738,14 @@ export namespace Prisma {
     birthdate: Date | string
     phone_number: string
     avatar?: string | null
-    refferal_code?: string | null
-    referrer_code?: string | null
     isVerified?: boolean
     created_at?: Date | string
     updated_at?: Date | string
-    organizer?: OrganizerCreateNestedManyWithoutUserInput
-    reviews_user?: Event_ReviewsCreateNestedManyWithoutReviews_userInput
+    referrer_code?: string | null
+    refferal_code?: string | null
     attendees_user?: Event_AttendeesCreateNestedManyWithoutUser_attendeesInput
+    reviews_user?: Event_ReviewsCreateNestedManyWithoutReviews_userInput
+    organizer?: OrganizerCreateNestedOneWithoutUserInput
     referral_user?: Referral_CodeCreateNestedManyWithoutUser_referralInput
     usageReferral_user?: Referral_UsageCreateNestedManyWithoutUser_referralUsageInput
     transactions?: Transactions_detailCreateNestedManyWithoutUserInput
@@ -23414,14 +23761,14 @@ export namespace Prisma {
     birthdate: Date | string
     phone_number: string
     avatar?: string | null
-    refferal_code?: string | null
-    referrer_code?: string | null
     isVerified?: boolean
     created_at?: Date | string
     updated_at?: Date | string
-    organizer?: OrganizerUncheckedCreateNestedManyWithoutUserInput
-    reviews_user?: Event_ReviewsUncheckedCreateNestedManyWithoutReviews_userInput
+    referrer_code?: string | null
+    refferal_code?: string | null
     attendees_user?: Event_AttendeesUncheckedCreateNestedManyWithoutUser_attendeesInput
+    reviews_user?: Event_ReviewsUncheckedCreateNestedManyWithoutReviews_userInput
+    organizer?: OrganizerUncheckedCreateNestedOneWithoutUserInput
     referral_user?: Referral_CodeUncheckedCreateNestedManyWithoutUser_referralInput
     usageReferral_user?: Referral_UsageUncheckedCreateNestedManyWithoutUser_referralUsageInput
     transactions?: Transactions_detailUncheckedCreateNestedManyWithoutUserInput
@@ -23432,19 +23779,62 @@ export namespace Prisma {
     create: XOR<UsersCreateWithoutUser_voucherInput, UsersUncheckedCreateWithoutUser_voucherInput>
   }
 
+  export type EventsCreateWithoutVoucher_eventInput = {
+    id?: string
+    name: string
+    description: string
+    image?: string | null
+    price?: number | null
+    start_date: Date | string
+    end_date?: Date | string | null
+    created_at?: Date | string
+    updated_at?: Date | string
+    organizer: OrganizerCreateNestedOneWithoutEventInput
+    category_event: Event_CategoryCreateNestedOneWithoutEventInput
+    location_Event: Event_LocationCreateNestedOneWithoutEventInput
+    ticketType?: TicketTypeCreateNestedManyWithoutEventInput
+    reviews_event?: Event_ReviewsCreateNestedManyWithoutReviews_eventInput
+    attendees_event?: Event_AttendeesCreateNestedManyWithoutUser_eventInput
+    event_transactionDetail?: Transactions_detailCreateNestedManyWithoutDetail_eventInput
+  }
+
+  export type EventsUncheckedCreateWithoutVoucher_eventInput = {
+    id?: string
+    organizer_id: string
+    event_category_id: string
+    event_location_id: string
+    name: string
+    description: string
+    image?: string | null
+    price?: number | null
+    start_date: Date | string
+    end_date?: Date | string | null
+    created_at?: Date | string
+    updated_at?: Date | string
+    ticketType?: TicketTypeUncheckedCreateNestedManyWithoutEventInput
+    reviews_event?: Event_ReviewsUncheckedCreateNestedManyWithoutReviews_eventInput
+    attendees_event?: Event_AttendeesUncheckedCreateNestedManyWithoutUser_eventInput
+    event_transactionDetail?: Transactions_detailUncheckedCreateNestedManyWithoutDetail_eventInput
+  }
+
+  export type EventsCreateOrConnectWithoutVoucher_eventInput = {
+    where: EventsWhereUniqueInput
+    create: XOR<EventsCreateWithoutVoucher_eventInput, EventsUncheckedCreateWithoutVoucher_eventInput>
+  }
+
   export type Transactions_detailCreateWithoutTransaction_voucher_detailsInput = {
     id?: string
     quantity: number
-    amount?: number
-    proof?: string
     isConfirmed?: boolean
     transaction_status: $Enums.TransactionStatus
-    paid_at?: Date | string | null
+    amount?: number
     created_at?: Date | string
+    paid_at?: Date | string | null
+    proof?: string
     updated_at?: Date | string
-    user: UsersCreateNestedOneWithoutTransactionsInput
     detail_event: EventsCreateNestedOneWithoutEvent_transactionDetailInput
     detail_organizer: OrganizerCreateNestedOneWithoutOrganizer_transactionDetailsInput
+    user: UsersCreateNestedOneWithoutTransactionsInput
   }
 
   export type Transactions_detailUncheckedCreateWithoutTransaction_voucher_detailsInput = {
@@ -23453,12 +23843,12 @@ export namespace Prisma {
     event_id: string
     organizer_id: string
     quantity: number
-    amount?: number
-    proof?: string
     isConfirmed?: boolean
     transaction_status: $Enums.TransactionStatus
-    paid_at?: Date | string | null
+    amount?: number
     created_at?: Date | string
+    paid_at?: Date | string | null
+    proof?: string
     updated_at?: Date | string
   }
 
@@ -23486,19 +23876,19 @@ export namespace Prisma {
   export type OrganizerUpdateWithoutOrganizer_voucherInput = {
     id?: StringFieldUpdateOperationsInput | string
     organizer_name?: StringFieldUpdateOperationsInput | string
-    user?: UsersUpdateOneRequiredWithoutOrganizerNestedInput
-    event?: EventsUpdateManyWithoutOrganizerNestedInput
-    organizer_transactionDetails?: Transactions_detailUpdateManyWithoutDetail_organizerNestedInput
     organizer_articles?: ArticlesUpdateManyWithoutOrganizerNestedInput
+    event?: EventsUpdateManyWithoutOrganizerNestedInput
+    user?: UsersUpdateOneRequiredWithoutOrganizerNestedInput
+    organizer_transactionDetails?: Transactions_detailUpdateManyWithoutDetail_organizerNestedInput
   }
 
   export type OrganizerUncheckedUpdateWithoutOrganizer_voucherInput = {
     id?: StringFieldUpdateOperationsInput | string
     user_id?: StringFieldUpdateOperationsInput | string
     organizer_name?: StringFieldUpdateOperationsInput | string
+    organizer_articles?: ArticlesUncheckedUpdateManyWithoutOrganizerNestedInput
     event?: EventsUncheckedUpdateManyWithoutOrganizerNestedInput
     organizer_transactionDetails?: Transactions_detailUncheckedUpdateManyWithoutDetail_organizerNestedInput
-    organizer_articles?: ArticlesUncheckedUpdateManyWithoutOrganizerNestedInput
   }
 
   export type UsersUpsertWithoutUser_voucherInput = {
@@ -23522,14 +23912,14 @@ export namespace Prisma {
     birthdate?: DateTimeFieldUpdateOperationsInput | Date | string
     phone_number?: StringFieldUpdateOperationsInput | string
     avatar?: NullableStringFieldUpdateOperationsInput | string | null
-    refferal_code?: NullableStringFieldUpdateOperationsInput | string | null
-    referrer_code?: NullableStringFieldUpdateOperationsInput | string | null
     isVerified?: BoolFieldUpdateOperationsInput | boolean
     created_at?: DateTimeFieldUpdateOperationsInput | Date | string
     updated_at?: DateTimeFieldUpdateOperationsInput | Date | string
-    organizer?: OrganizerUpdateManyWithoutUserNestedInput
-    reviews_user?: Event_ReviewsUpdateManyWithoutReviews_userNestedInput
+    referrer_code?: NullableStringFieldUpdateOperationsInput | string | null
+    refferal_code?: NullableStringFieldUpdateOperationsInput | string | null
     attendees_user?: Event_AttendeesUpdateManyWithoutUser_attendeesNestedInput
+    reviews_user?: Event_ReviewsUpdateManyWithoutReviews_userNestedInput
+    organizer?: OrganizerUpdateOneWithoutUserNestedInput
     referral_user?: Referral_CodeUpdateManyWithoutUser_referralNestedInput
     usageReferral_user?: Referral_UsageUpdateManyWithoutUser_referralUsageNestedInput
     transactions?: Transactions_detailUpdateManyWithoutUserNestedInput
@@ -23545,17 +23935,66 @@ export namespace Prisma {
     birthdate?: DateTimeFieldUpdateOperationsInput | Date | string
     phone_number?: StringFieldUpdateOperationsInput | string
     avatar?: NullableStringFieldUpdateOperationsInput | string | null
-    refferal_code?: NullableStringFieldUpdateOperationsInput | string | null
-    referrer_code?: NullableStringFieldUpdateOperationsInput | string | null
     isVerified?: BoolFieldUpdateOperationsInput | boolean
     created_at?: DateTimeFieldUpdateOperationsInput | Date | string
     updated_at?: DateTimeFieldUpdateOperationsInput | Date | string
-    organizer?: OrganizerUncheckedUpdateManyWithoutUserNestedInput
-    reviews_user?: Event_ReviewsUncheckedUpdateManyWithoutReviews_userNestedInput
+    referrer_code?: NullableStringFieldUpdateOperationsInput | string | null
+    refferal_code?: NullableStringFieldUpdateOperationsInput | string | null
     attendees_user?: Event_AttendeesUncheckedUpdateManyWithoutUser_attendeesNestedInput
+    reviews_user?: Event_ReviewsUncheckedUpdateManyWithoutReviews_userNestedInput
+    organizer?: OrganizerUncheckedUpdateOneWithoutUserNestedInput
     referral_user?: Referral_CodeUncheckedUpdateManyWithoutUser_referralNestedInput
     usageReferral_user?: Referral_UsageUncheckedUpdateManyWithoutUser_referralUsageNestedInput
     transactions?: Transactions_detailUncheckedUpdateManyWithoutUserNestedInput
+  }
+
+  export type EventsUpsertWithoutVoucher_eventInput = {
+    update: XOR<EventsUpdateWithoutVoucher_eventInput, EventsUncheckedUpdateWithoutVoucher_eventInput>
+    create: XOR<EventsCreateWithoutVoucher_eventInput, EventsUncheckedCreateWithoutVoucher_eventInput>
+    where?: EventsWhereInput
+  }
+
+  export type EventsUpdateToOneWithWhereWithoutVoucher_eventInput = {
+    where?: EventsWhereInput
+    data: XOR<EventsUpdateWithoutVoucher_eventInput, EventsUncheckedUpdateWithoutVoucher_eventInput>
+  }
+
+  export type EventsUpdateWithoutVoucher_eventInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    name?: StringFieldUpdateOperationsInput | string
+    description?: StringFieldUpdateOperationsInput | string
+    image?: NullableStringFieldUpdateOperationsInput | string | null
+    price?: NullableIntFieldUpdateOperationsInput | number | null
+    start_date?: DateTimeFieldUpdateOperationsInput | Date | string
+    end_date?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    created_at?: DateTimeFieldUpdateOperationsInput | Date | string
+    updated_at?: DateTimeFieldUpdateOperationsInput | Date | string
+    organizer?: OrganizerUpdateOneRequiredWithoutEventNestedInput
+    category_event?: Event_CategoryUpdateOneRequiredWithoutEventNestedInput
+    location_Event?: Event_LocationUpdateOneRequiredWithoutEventNestedInput
+    ticketType?: TicketTypeUpdateManyWithoutEventNestedInput
+    reviews_event?: Event_ReviewsUpdateManyWithoutReviews_eventNestedInput
+    attendees_event?: Event_AttendeesUpdateManyWithoutUser_eventNestedInput
+    event_transactionDetail?: Transactions_detailUpdateManyWithoutDetail_eventNestedInput
+  }
+
+  export type EventsUncheckedUpdateWithoutVoucher_eventInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    organizer_id?: StringFieldUpdateOperationsInput | string
+    event_category_id?: StringFieldUpdateOperationsInput | string
+    event_location_id?: StringFieldUpdateOperationsInput | string
+    name?: StringFieldUpdateOperationsInput | string
+    description?: StringFieldUpdateOperationsInput | string
+    image?: NullableStringFieldUpdateOperationsInput | string | null
+    price?: NullableIntFieldUpdateOperationsInput | number | null
+    start_date?: DateTimeFieldUpdateOperationsInput | Date | string
+    end_date?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    created_at?: DateTimeFieldUpdateOperationsInput | Date | string
+    updated_at?: DateTimeFieldUpdateOperationsInput | Date | string
+    ticketType?: TicketTypeUncheckedUpdateManyWithoutEventNestedInput
+    reviews_event?: Event_ReviewsUncheckedUpdateManyWithoutReviews_eventNestedInput
+    attendees_event?: Event_AttendeesUncheckedUpdateManyWithoutUser_eventNestedInput
+    event_transactionDetail?: Transactions_detailUncheckedUpdateManyWithoutDetail_eventNestedInput
   }
 
   export type Transactions_detailUpsertWithWhereUniqueWithoutTransaction_voucher_detailsInput = {
@@ -23574,6 +24013,72 @@ export namespace Prisma {
     data: XOR<Transactions_detailUpdateManyMutationInput, Transactions_detailUncheckedUpdateManyWithoutTransaction_voucher_detailsInput>
   }
 
+  export type EventsCreateWithoutEvent_transactionDetailInput = {
+    id?: string
+    name: string
+    description: string
+    image?: string | null
+    price?: number | null
+    start_date: Date | string
+    end_date?: Date | string | null
+    created_at?: Date | string
+    updated_at?: Date | string
+    organizer: OrganizerCreateNestedOneWithoutEventInput
+    category_event: Event_CategoryCreateNestedOneWithoutEventInput
+    location_Event: Event_LocationCreateNestedOneWithoutEventInput
+    ticketType?: TicketTypeCreateNestedManyWithoutEventInput
+    voucher_event?: VoucherCreateNestedManyWithoutVoucher_eventInput
+    reviews_event?: Event_ReviewsCreateNestedManyWithoutReviews_eventInput
+    attendees_event?: Event_AttendeesCreateNestedManyWithoutUser_eventInput
+  }
+
+  export type EventsUncheckedCreateWithoutEvent_transactionDetailInput = {
+    id?: string
+    organizer_id: string
+    event_category_id: string
+    event_location_id: string
+    name: string
+    description: string
+    image?: string | null
+    price?: number | null
+    start_date: Date | string
+    end_date?: Date | string | null
+    created_at?: Date | string
+    updated_at?: Date | string
+    ticketType?: TicketTypeUncheckedCreateNestedManyWithoutEventInput
+    voucher_event?: VoucherUncheckedCreateNestedManyWithoutVoucher_eventInput
+    reviews_event?: Event_ReviewsUncheckedCreateNestedManyWithoutReviews_eventInput
+    attendees_event?: Event_AttendeesUncheckedCreateNestedManyWithoutUser_eventInput
+  }
+
+  export type EventsCreateOrConnectWithoutEvent_transactionDetailInput = {
+    where: EventsWhereUniqueInput
+    create: XOR<EventsCreateWithoutEvent_transactionDetailInput, EventsUncheckedCreateWithoutEvent_transactionDetailInput>
+  }
+
+  export type OrganizerCreateWithoutOrganizer_transactionDetailsInput = {
+    id?: string
+    organizer_name?: string
+    organizer_articles?: ArticlesCreateNestedManyWithoutOrganizerInput
+    event?: EventsCreateNestedManyWithoutOrganizerInput
+    user: UsersCreateNestedOneWithoutOrganizerInput
+    organizer_voucher?: VoucherCreateNestedManyWithoutVoucher_organizerInput
+  }
+
+  export type OrganizerUncheckedCreateWithoutOrganizer_transactionDetailsInput = {
+    id?: string
+    user_id: string
+    organizer_name?: string
+    organizer_articles?: ArticlesUncheckedCreateNestedManyWithoutOrganizerInput
+    event?: EventsUncheckedCreateNestedManyWithoutOrganizerInput
+    organizer_voucher?: VoucherUncheckedCreateNestedManyWithoutVoucher_organizerInput
+  }
+
+  export type OrganizerCreateOrConnectWithoutOrganizer_transactionDetailsInput = {
+    where: OrganizerWhereUniqueInput
+    create: XOR<OrganizerCreateWithoutOrganizer_transactionDetailsInput, OrganizerUncheckedCreateWithoutOrganizer_transactionDetailsInput>
+  }
+
   export type UsersCreateWithoutTransactionsInput = {
     id?: string
     first_name: string
@@ -23584,14 +24089,14 @@ export namespace Prisma {
     birthdate: Date | string
     phone_number: string
     avatar?: string | null
-    refferal_code?: string | null
-    referrer_code?: string | null
     isVerified?: boolean
     created_at?: Date | string
     updated_at?: Date | string
-    organizer?: OrganizerCreateNestedManyWithoutUserInput
-    reviews_user?: Event_ReviewsCreateNestedManyWithoutReviews_userInput
+    referrer_code?: string | null
+    refferal_code?: string | null
     attendees_user?: Event_AttendeesCreateNestedManyWithoutUser_attendeesInput
+    reviews_user?: Event_ReviewsCreateNestedManyWithoutReviews_userInput
+    organizer?: OrganizerCreateNestedOneWithoutUserInput
     referral_user?: Referral_CodeCreateNestedManyWithoutUser_referralInput
     usageReferral_user?: Referral_UsageCreateNestedManyWithoutUser_referralUsageInput
     user_voucher?: VoucherCreateNestedManyWithoutVoucher_userInput
@@ -23607,14 +24112,14 @@ export namespace Prisma {
     birthdate: Date | string
     phone_number: string
     avatar?: string | null
-    refferal_code?: string | null
-    referrer_code?: string | null
     isVerified?: boolean
     created_at?: Date | string
     updated_at?: Date | string
-    organizer?: OrganizerUncheckedCreateNestedManyWithoutUserInput
-    reviews_user?: Event_ReviewsUncheckedCreateNestedManyWithoutReviews_userInput
+    referrer_code?: string | null
+    refferal_code?: string | null
     attendees_user?: Event_AttendeesUncheckedCreateNestedManyWithoutUser_attendeesInput
+    reviews_user?: Event_ReviewsUncheckedCreateNestedManyWithoutReviews_userInput
+    organizer?: OrganizerUncheckedCreateNestedOneWithoutUserInput
     referral_user?: Referral_CodeUncheckedCreateNestedManyWithoutUser_referralInput
     usageReferral_user?: Referral_UsageUncheckedCreateNestedManyWithoutUser_referralUsageInput
     user_voucher?: VoucherUncheckedCreateNestedManyWithoutVoucher_userInput
@@ -23625,95 +24130,113 @@ export namespace Prisma {
     create: XOR<UsersCreateWithoutTransactionsInput, UsersUncheckedCreateWithoutTransactionsInput>
   }
 
-  export type EventsCreateWithoutEvent_transactionDetailInput = {
-    id?: string
-    name: string
-    description: string
-    image?: string | null
-    price: number
-    start_date: Date | string
-    end_date?: Date | string | null
-    created_at?: Date | string
-    updated_at?: Date | string
-    organizer: OrganizerCreateNestedOneWithoutEventInput
-    category_event: Event_CategoryCreateNestedOneWithoutEventInput
-    location_Event: Event_LocationCreateNestedOneWithoutEventInput
-    seat_event?: Event_SeatCreateNestedOneWithoutEventInput
-    reviews_event?: Event_ReviewsCreateNestedManyWithoutReviews_eventInput
-    attendees_event?: Event_AttendeesCreateNestedManyWithoutUser_eventInput
-  }
-
-  export type EventsUncheckedCreateWithoutEvent_transactionDetailInput = {
-    id?: string
-    organizer_id: string
-    event_category_id: string
-    event_location_id: string
-    name: string
-    description: string
-    image?: string | null
-    price: number
-    start_date: Date | string
-    end_date?: Date | string | null
-    created_at?: Date | string
-    updated_at?: Date | string
-    seat_event?: Event_SeatUncheckedCreateNestedOneWithoutEventInput
-    reviews_event?: Event_ReviewsUncheckedCreateNestedManyWithoutReviews_eventInput
-    attendees_event?: Event_AttendeesUncheckedCreateNestedManyWithoutUser_eventInput
-  }
-
-  export type EventsCreateOrConnectWithoutEvent_transactionDetailInput = {
-    where: EventsWhereUniqueInput
-    create: XOR<EventsCreateWithoutEvent_transactionDetailInput, EventsUncheckedCreateWithoutEvent_transactionDetailInput>
-  }
-
-  export type OrganizerCreateWithoutOrganizer_transactionDetailsInput = {
-    id?: string
-    organizer_name?: string
-    user: UsersCreateNestedOneWithoutOrganizerInput
-    event?: EventsCreateNestedManyWithoutOrganizerInput
-    organizer_voucher?: VoucherCreateNestedManyWithoutVoucher_organizerInput
-    organizer_articles?: ArticlesCreateNestedManyWithoutOrganizerInput
-  }
-
-  export type OrganizerUncheckedCreateWithoutOrganizer_transactionDetailsInput = {
-    id?: string
-    user_id: string
-    organizer_name?: string
-    event?: EventsUncheckedCreateNestedManyWithoutOrganizerInput
-    organizer_voucher?: VoucherUncheckedCreateNestedManyWithoutVoucher_organizerInput
-    organizer_articles?: ArticlesUncheckedCreateNestedManyWithoutOrganizerInput
-  }
-
-  export type OrganizerCreateOrConnectWithoutOrganizer_transactionDetailsInput = {
-    where: OrganizerWhereUniqueInput
-    create: XOR<OrganizerCreateWithoutOrganizer_transactionDetailsInput, OrganizerUncheckedCreateWithoutOrganizer_transactionDetailsInput>
-  }
-
   export type VoucherCreateWithoutVoucher_transaction_detailsInput = {
     id?: string
     code: string
     percentage?: number | null
     amount?: number | null
     created_at?: Date | string
+    start_date?: Date | string | null
     expired_at: Date | string
     voucher_organizer?: OrganizerCreateNestedOneWithoutOrganizer_voucherInput
     voucher_user?: UsersCreateNestedOneWithoutUser_voucherInput
+    voucher_event?: EventsCreateNestedOneWithoutVoucher_eventInput
   }
 
   export type VoucherUncheckedCreateWithoutVoucher_transaction_detailsInput = {
     id?: string
     user_id?: string | null
     organizer_id?: string | null
+    event_id?: string | null
     code: string
     percentage?: number | null
     amount?: number | null
     created_at?: Date | string
+    start_date?: Date | string | null
     expired_at: Date | string
   }
 
   export type VoucherCreateOrConnectWithoutVoucher_transaction_detailsInput = {
     where: VoucherWhereUniqueInput
     create: XOR<VoucherCreateWithoutVoucher_transaction_detailsInput, VoucherUncheckedCreateWithoutVoucher_transaction_detailsInput>
+  }
+
+  export type EventsUpsertWithoutEvent_transactionDetailInput = {
+    update: XOR<EventsUpdateWithoutEvent_transactionDetailInput, EventsUncheckedUpdateWithoutEvent_transactionDetailInput>
+    create: XOR<EventsCreateWithoutEvent_transactionDetailInput, EventsUncheckedCreateWithoutEvent_transactionDetailInput>
+    where?: EventsWhereInput
+  }
+
+  export type EventsUpdateToOneWithWhereWithoutEvent_transactionDetailInput = {
+    where?: EventsWhereInput
+    data: XOR<EventsUpdateWithoutEvent_transactionDetailInput, EventsUncheckedUpdateWithoutEvent_transactionDetailInput>
+  }
+
+  export type EventsUpdateWithoutEvent_transactionDetailInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    name?: StringFieldUpdateOperationsInput | string
+    description?: StringFieldUpdateOperationsInput | string
+    image?: NullableStringFieldUpdateOperationsInput | string | null
+    price?: NullableIntFieldUpdateOperationsInput | number | null
+    start_date?: DateTimeFieldUpdateOperationsInput | Date | string
+    end_date?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    created_at?: DateTimeFieldUpdateOperationsInput | Date | string
+    updated_at?: DateTimeFieldUpdateOperationsInput | Date | string
+    organizer?: OrganizerUpdateOneRequiredWithoutEventNestedInput
+    category_event?: Event_CategoryUpdateOneRequiredWithoutEventNestedInput
+    location_Event?: Event_LocationUpdateOneRequiredWithoutEventNestedInput
+    ticketType?: TicketTypeUpdateManyWithoutEventNestedInput
+    voucher_event?: VoucherUpdateManyWithoutVoucher_eventNestedInput
+    reviews_event?: Event_ReviewsUpdateManyWithoutReviews_eventNestedInput
+    attendees_event?: Event_AttendeesUpdateManyWithoutUser_eventNestedInput
+  }
+
+  export type EventsUncheckedUpdateWithoutEvent_transactionDetailInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    organizer_id?: StringFieldUpdateOperationsInput | string
+    event_category_id?: StringFieldUpdateOperationsInput | string
+    event_location_id?: StringFieldUpdateOperationsInput | string
+    name?: StringFieldUpdateOperationsInput | string
+    description?: StringFieldUpdateOperationsInput | string
+    image?: NullableStringFieldUpdateOperationsInput | string | null
+    price?: NullableIntFieldUpdateOperationsInput | number | null
+    start_date?: DateTimeFieldUpdateOperationsInput | Date | string
+    end_date?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    created_at?: DateTimeFieldUpdateOperationsInput | Date | string
+    updated_at?: DateTimeFieldUpdateOperationsInput | Date | string
+    ticketType?: TicketTypeUncheckedUpdateManyWithoutEventNestedInput
+    voucher_event?: VoucherUncheckedUpdateManyWithoutVoucher_eventNestedInput
+    reviews_event?: Event_ReviewsUncheckedUpdateManyWithoutReviews_eventNestedInput
+    attendees_event?: Event_AttendeesUncheckedUpdateManyWithoutUser_eventNestedInput
+  }
+
+  export type OrganizerUpsertWithoutOrganizer_transactionDetailsInput = {
+    update: XOR<OrganizerUpdateWithoutOrganizer_transactionDetailsInput, OrganizerUncheckedUpdateWithoutOrganizer_transactionDetailsInput>
+    create: XOR<OrganizerCreateWithoutOrganizer_transactionDetailsInput, OrganizerUncheckedCreateWithoutOrganizer_transactionDetailsInput>
+    where?: OrganizerWhereInput
+  }
+
+  export type OrganizerUpdateToOneWithWhereWithoutOrganizer_transactionDetailsInput = {
+    where?: OrganizerWhereInput
+    data: XOR<OrganizerUpdateWithoutOrganizer_transactionDetailsInput, OrganizerUncheckedUpdateWithoutOrganizer_transactionDetailsInput>
+  }
+
+  export type OrganizerUpdateWithoutOrganizer_transactionDetailsInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    organizer_name?: StringFieldUpdateOperationsInput | string
+    organizer_articles?: ArticlesUpdateManyWithoutOrganizerNestedInput
+    event?: EventsUpdateManyWithoutOrganizerNestedInput
+    user?: UsersUpdateOneRequiredWithoutOrganizerNestedInput
+    organizer_voucher?: VoucherUpdateManyWithoutVoucher_organizerNestedInput
+  }
+
+  export type OrganizerUncheckedUpdateWithoutOrganizer_transactionDetailsInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    user_id?: StringFieldUpdateOperationsInput | string
+    organizer_name?: StringFieldUpdateOperationsInput | string
+    organizer_articles?: ArticlesUncheckedUpdateManyWithoutOrganizerNestedInput
+    event?: EventsUncheckedUpdateManyWithoutOrganizerNestedInput
+    organizer_voucher?: VoucherUncheckedUpdateManyWithoutVoucher_organizerNestedInput
   }
 
   export type UsersUpsertWithoutTransactionsInput = {
@@ -23737,14 +24260,14 @@ export namespace Prisma {
     birthdate?: DateTimeFieldUpdateOperationsInput | Date | string
     phone_number?: StringFieldUpdateOperationsInput | string
     avatar?: NullableStringFieldUpdateOperationsInput | string | null
-    refferal_code?: NullableStringFieldUpdateOperationsInput | string | null
-    referrer_code?: NullableStringFieldUpdateOperationsInput | string | null
     isVerified?: BoolFieldUpdateOperationsInput | boolean
     created_at?: DateTimeFieldUpdateOperationsInput | Date | string
     updated_at?: DateTimeFieldUpdateOperationsInput | Date | string
-    organizer?: OrganizerUpdateManyWithoutUserNestedInput
-    reviews_user?: Event_ReviewsUpdateManyWithoutReviews_userNestedInput
+    referrer_code?: NullableStringFieldUpdateOperationsInput | string | null
+    refferal_code?: NullableStringFieldUpdateOperationsInput | string | null
     attendees_user?: Event_AttendeesUpdateManyWithoutUser_attendeesNestedInput
+    reviews_user?: Event_ReviewsUpdateManyWithoutReviews_userNestedInput
+    organizer?: OrganizerUpdateOneWithoutUserNestedInput
     referral_user?: Referral_CodeUpdateManyWithoutUser_referralNestedInput
     usageReferral_user?: Referral_UsageUpdateManyWithoutUser_referralUsageNestedInput
     user_voucher?: VoucherUpdateManyWithoutVoucher_userNestedInput
@@ -23760,93 +24283,17 @@ export namespace Prisma {
     birthdate?: DateTimeFieldUpdateOperationsInput | Date | string
     phone_number?: StringFieldUpdateOperationsInput | string
     avatar?: NullableStringFieldUpdateOperationsInput | string | null
-    refferal_code?: NullableStringFieldUpdateOperationsInput | string | null
-    referrer_code?: NullableStringFieldUpdateOperationsInput | string | null
     isVerified?: BoolFieldUpdateOperationsInput | boolean
     created_at?: DateTimeFieldUpdateOperationsInput | Date | string
     updated_at?: DateTimeFieldUpdateOperationsInput | Date | string
-    organizer?: OrganizerUncheckedUpdateManyWithoutUserNestedInput
-    reviews_user?: Event_ReviewsUncheckedUpdateManyWithoutReviews_userNestedInput
+    referrer_code?: NullableStringFieldUpdateOperationsInput | string | null
+    refferal_code?: NullableStringFieldUpdateOperationsInput | string | null
     attendees_user?: Event_AttendeesUncheckedUpdateManyWithoutUser_attendeesNestedInput
+    reviews_user?: Event_ReviewsUncheckedUpdateManyWithoutReviews_userNestedInput
+    organizer?: OrganizerUncheckedUpdateOneWithoutUserNestedInput
     referral_user?: Referral_CodeUncheckedUpdateManyWithoutUser_referralNestedInput
     usageReferral_user?: Referral_UsageUncheckedUpdateManyWithoutUser_referralUsageNestedInput
     user_voucher?: VoucherUncheckedUpdateManyWithoutVoucher_userNestedInput
-  }
-
-  export type EventsUpsertWithoutEvent_transactionDetailInput = {
-    update: XOR<EventsUpdateWithoutEvent_transactionDetailInput, EventsUncheckedUpdateWithoutEvent_transactionDetailInput>
-    create: XOR<EventsCreateWithoutEvent_transactionDetailInput, EventsUncheckedCreateWithoutEvent_transactionDetailInput>
-    where?: EventsWhereInput
-  }
-
-  export type EventsUpdateToOneWithWhereWithoutEvent_transactionDetailInput = {
-    where?: EventsWhereInput
-    data: XOR<EventsUpdateWithoutEvent_transactionDetailInput, EventsUncheckedUpdateWithoutEvent_transactionDetailInput>
-  }
-
-  export type EventsUpdateWithoutEvent_transactionDetailInput = {
-    id?: StringFieldUpdateOperationsInput | string
-    name?: StringFieldUpdateOperationsInput | string
-    description?: StringFieldUpdateOperationsInput | string
-    image?: NullableStringFieldUpdateOperationsInput | string | null
-    price?: IntFieldUpdateOperationsInput | number
-    start_date?: DateTimeFieldUpdateOperationsInput | Date | string
-    end_date?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
-    created_at?: DateTimeFieldUpdateOperationsInput | Date | string
-    updated_at?: DateTimeFieldUpdateOperationsInput | Date | string
-    organizer?: OrganizerUpdateOneRequiredWithoutEventNestedInput
-    category_event?: Event_CategoryUpdateOneRequiredWithoutEventNestedInput
-    location_Event?: Event_LocationUpdateOneRequiredWithoutEventNestedInput
-    seat_event?: Event_SeatUpdateOneWithoutEventNestedInput
-    reviews_event?: Event_ReviewsUpdateManyWithoutReviews_eventNestedInput
-    attendees_event?: Event_AttendeesUpdateManyWithoutUser_eventNestedInput
-  }
-
-  export type EventsUncheckedUpdateWithoutEvent_transactionDetailInput = {
-    id?: StringFieldUpdateOperationsInput | string
-    organizer_id?: StringFieldUpdateOperationsInput | string
-    event_category_id?: StringFieldUpdateOperationsInput | string
-    event_location_id?: StringFieldUpdateOperationsInput | string
-    name?: StringFieldUpdateOperationsInput | string
-    description?: StringFieldUpdateOperationsInput | string
-    image?: NullableStringFieldUpdateOperationsInput | string | null
-    price?: IntFieldUpdateOperationsInput | number
-    start_date?: DateTimeFieldUpdateOperationsInput | Date | string
-    end_date?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
-    created_at?: DateTimeFieldUpdateOperationsInput | Date | string
-    updated_at?: DateTimeFieldUpdateOperationsInput | Date | string
-    seat_event?: Event_SeatUncheckedUpdateOneWithoutEventNestedInput
-    reviews_event?: Event_ReviewsUncheckedUpdateManyWithoutReviews_eventNestedInput
-    attendees_event?: Event_AttendeesUncheckedUpdateManyWithoutUser_eventNestedInput
-  }
-
-  export type OrganizerUpsertWithoutOrganizer_transactionDetailsInput = {
-    update: XOR<OrganizerUpdateWithoutOrganizer_transactionDetailsInput, OrganizerUncheckedUpdateWithoutOrganizer_transactionDetailsInput>
-    create: XOR<OrganizerCreateWithoutOrganizer_transactionDetailsInput, OrganizerUncheckedCreateWithoutOrganizer_transactionDetailsInput>
-    where?: OrganizerWhereInput
-  }
-
-  export type OrganizerUpdateToOneWithWhereWithoutOrganizer_transactionDetailsInput = {
-    where?: OrganizerWhereInput
-    data: XOR<OrganizerUpdateWithoutOrganizer_transactionDetailsInput, OrganizerUncheckedUpdateWithoutOrganizer_transactionDetailsInput>
-  }
-
-  export type OrganizerUpdateWithoutOrganizer_transactionDetailsInput = {
-    id?: StringFieldUpdateOperationsInput | string
-    organizer_name?: StringFieldUpdateOperationsInput | string
-    user?: UsersUpdateOneRequiredWithoutOrganizerNestedInput
-    event?: EventsUpdateManyWithoutOrganizerNestedInput
-    organizer_voucher?: VoucherUpdateManyWithoutVoucher_organizerNestedInput
-    organizer_articles?: ArticlesUpdateManyWithoutOrganizerNestedInput
-  }
-
-  export type OrganizerUncheckedUpdateWithoutOrganizer_transactionDetailsInput = {
-    id?: StringFieldUpdateOperationsInput | string
-    user_id?: StringFieldUpdateOperationsInput | string
-    organizer_name?: StringFieldUpdateOperationsInput | string
-    event?: EventsUncheckedUpdateManyWithoutOrganizerNestedInput
-    organizer_voucher?: VoucherUncheckedUpdateManyWithoutVoucher_organizerNestedInput
-    organizer_articles?: ArticlesUncheckedUpdateManyWithoutOrganizerNestedInput
   }
 
   export type VoucherUpsertWithoutVoucher_transaction_detailsInput = {
@@ -23866,25 +24313,30 @@ export namespace Prisma {
     percentage?: NullableIntFieldUpdateOperationsInput | number | null
     amount?: NullableIntFieldUpdateOperationsInput | number | null
     created_at?: DateTimeFieldUpdateOperationsInput | Date | string
+    start_date?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     expired_at?: DateTimeFieldUpdateOperationsInput | Date | string
     voucher_organizer?: OrganizerUpdateOneWithoutOrganizer_voucherNestedInput
     voucher_user?: UsersUpdateOneWithoutUser_voucherNestedInput
+    voucher_event?: EventsUpdateOneWithoutVoucher_eventNestedInput
   }
 
   export type VoucherUncheckedUpdateWithoutVoucher_transaction_detailsInput = {
     id?: StringFieldUpdateOperationsInput | string
     user_id?: NullableStringFieldUpdateOperationsInput | string | null
     organizer_id?: NullableStringFieldUpdateOperationsInput | string | null
+    event_id?: NullableStringFieldUpdateOperationsInput | string | null
     code?: StringFieldUpdateOperationsInput | string
     percentage?: NullableIntFieldUpdateOperationsInput | number | null
     amount?: NullableIntFieldUpdateOperationsInput | number | null
     created_at?: DateTimeFieldUpdateOperationsInput | Date | string
+    start_date?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     expired_at?: DateTimeFieldUpdateOperationsInput | Date | string
   }
 
-  export type OrganizerCreateManyUserInput = {
+  export type Event_AttendeesCreateManyUser_attendeesInput = {
     id?: string
-    organizer_name?: string
+    event_id: string
+    status: $Enums.Status
   }
 
   export type Event_ReviewsCreateManyReviews_userInput = {
@@ -23893,12 +24345,6 @@ export namespace Prisma {
     review?: string | null
     rating?: number | null
     created_at?: Date | string
-  }
-
-  export type Event_AttendeesCreateManyUser_attendeesInput = {
-    id?: string
-    event_id: string
-    status: $Enums.Status
   }
 
   export type Referral_CodeCreateManyUser_referralInput = {
@@ -23920,47 +24366,44 @@ export namespace Prisma {
     event_id: string
     organizer_id: string
     quantity: number
-    voucher_id?: string | null
-    amount?: number
-    proof?: string
     isConfirmed?: boolean
     transaction_status: $Enums.TransactionStatus
-    paid_at?: Date | string | null
+    amount?: number
     created_at?: Date | string
+    paid_at?: Date | string | null
+    proof?: string
     updated_at?: Date | string
+    voucher_id?: string | null
   }
 
   export type VoucherCreateManyVoucher_userInput = {
     id?: string
     organizer_id?: string | null
+    event_id?: string | null
     code: string
     percentage?: number | null
     amount?: number | null
     created_at?: Date | string
+    start_date?: Date | string | null
     expired_at: Date | string
   }
 
-  export type OrganizerUpdateWithoutUserInput = {
+  export type Event_AttendeesUpdateWithoutUser_attendeesInput = {
     id?: StringFieldUpdateOperationsInput | string
-    organizer_name?: StringFieldUpdateOperationsInput | string
-    event?: EventsUpdateManyWithoutOrganizerNestedInput
-    organizer_voucher?: VoucherUpdateManyWithoutVoucher_organizerNestedInput
-    organizer_transactionDetails?: Transactions_detailUpdateManyWithoutDetail_organizerNestedInput
-    organizer_articles?: ArticlesUpdateManyWithoutOrganizerNestedInput
+    status?: EnumStatusFieldUpdateOperationsInput | $Enums.Status
+    user_event?: EventsUpdateOneRequiredWithoutAttendees_eventNestedInput
   }
 
-  export type OrganizerUncheckedUpdateWithoutUserInput = {
+  export type Event_AttendeesUncheckedUpdateWithoutUser_attendeesInput = {
     id?: StringFieldUpdateOperationsInput | string
-    organizer_name?: StringFieldUpdateOperationsInput | string
-    event?: EventsUncheckedUpdateManyWithoutOrganizerNestedInput
-    organizer_voucher?: VoucherUncheckedUpdateManyWithoutVoucher_organizerNestedInput
-    organizer_transactionDetails?: Transactions_detailUncheckedUpdateManyWithoutDetail_organizerNestedInput
-    organizer_articles?: ArticlesUncheckedUpdateManyWithoutOrganizerNestedInput
+    event_id?: StringFieldUpdateOperationsInput | string
+    status?: EnumStatusFieldUpdateOperationsInput | $Enums.Status
   }
 
-  export type OrganizerUncheckedUpdateManyWithoutUserInput = {
+  export type Event_AttendeesUncheckedUpdateManyWithoutUser_attendeesInput = {
     id?: StringFieldUpdateOperationsInput | string
-    organizer_name?: StringFieldUpdateOperationsInput | string
+    event_id?: StringFieldUpdateOperationsInput | string
+    status?: EnumStatusFieldUpdateOperationsInput | $Enums.Status
   }
 
   export type Event_ReviewsUpdateWithoutReviews_userInput = {
@@ -23985,24 +24428,6 @@ export namespace Prisma {
     review?: NullableStringFieldUpdateOperationsInput | string | null
     rating?: NullableIntFieldUpdateOperationsInput | number | null
     created_at?: DateTimeFieldUpdateOperationsInput | Date | string
-  }
-
-  export type Event_AttendeesUpdateWithoutUser_attendeesInput = {
-    id?: StringFieldUpdateOperationsInput | string
-    status?: EnumStatusFieldUpdateOperationsInput | $Enums.Status
-    user_event?: EventsUpdateOneRequiredWithoutAttendees_eventNestedInput
-  }
-
-  export type Event_AttendeesUncheckedUpdateWithoutUser_attendeesInput = {
-    id?: StringFieldUpdateOperationsInput | string
-    event_id?: StringFieldUpdateOperationsInput | string
-    status?: EnumStatusFieldUpdateOperationsInput | $Enums.Status
-  }
-
-  export type Event_AttendeesUncheckedUpdateManyWithoutUser_attendeesInput = {
-    id?: StringFieldUpdateOperationsInput | string
-    event_id?: StringFieldUpdateOperationsInput | string
-    status?: EnumStatusFieldUpdateOperationsInput | $Enums.Status
   }
 
   export type Referral_CodeUpdateWithoutUser_referralInput = {
@@ -24052,12 +24477,12 @@ export namespace Prisma {
   export type Transactions_detailUpdateWithoutUserInput = {
     id?: StringFieldUpdateOperationsInput | string
     quantity?: IntFieldUpdateOperationsInput | number
-    amount?: IntFieldUpdateOperationsInput | number
-    proof?: StringFieldUpdateOperationsInput | string
     isConfirmed?: BoolFieldUpdateOperationsInput | boolean
     transaction_status?: EnumTransactionStatusFieldUpdateOperationsInput | $Enums.TransactionStatus
-    paid_at?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    amount?: IntFieldUpdateOperationsInput | number
     created_at?: DateTimeFieldUpdateOperationsInput | Date | string
+    paid_at?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    proof?: StringFieldUpdateOperationsInput | string
     updated_at?: DateTimeFieldUpdateOperationsInput | Date | string
     detail_event?: EventsUpdateOneRequiredWithoutEvent_transactionDetailNestedInput
     detail_organizer?: OrganizerUpdateOneRequiredWithoutOrganizer_transactionDetailsNestedInput
@@ -24069,14 +24494,14 @@ export namespace Prisma {
     event_id?: StringFieldUpdateOperationsInput | string
     organizer_id?: StringFieldUpdateOperationsInput | string
     quantity?: IntFieldUpdateOperationsInput | number
-    voucher_id?: NullableStringFieldUpdateOperationsInput | string | null
-    amount?: IntFieldUpdateOperationsInput | number
-    proof?: StringFieldUpdateOperationsInput | string
     isConfirmed?: BoolFieldUpdateOperationsInput | boolean
     transaction_status?: EnumTransactionStatusFieldUpdateOperationsInput | $Enums.TransactionStatus
-    paid_at?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    amount?: IntFieldUpdateOperationsInput | number
     created_at?: DateTimeFieldUpdateOperationsInput | Date | string
+    paid_at?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    proof?: StringFieldUpdateOperationsInput | string
     updated_at?: DateTimeFieldUpdateOperationsInput | Date | string
+    voucher_id?: NullableStringFieldUpdateOperationsInput | string | null
   }
 
   export type Transactions_detailUncheckedUpdateManyWithoutUserInput = {
@@ -24084,14 +24509,14 @@ export namespace Prisma {
     event_id?: StringFieldUpdateOperationsInput | string
     organizer_id?: StringFieldUpdateOperationsInput | string
     quantity?: IntFieldUpdateOperationsInput | number
-    voucher_id?: NullableStringFieldUpdateOperationsInput | string | null
-    amount?: IntFieldUpdateOperationsInput | number
-    proof?: StringFieldUpdateOperationsInput | string
     isConfirmed?: BoolFieldUpdateOperationsInput | boolean
     transaction_status?: EnumTransactionStatusFieldUpdateOperationsInput | $Enums.TransactionStatus
-    paid_at?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    amount?: IntFieldUpdateOperationsInput | number
     created_at?: DateTimeFieldUpdateOperationsInput | Date | string
+    paid_at?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    proof?: StringFieldUpdateOperationsInput | string
     updated_at?: DateTimeFieldUpdateOperationsInput | Date | string
+    voucher_id?: NullableStringFieldUpdateOperationsInput | string | null
   }
 
   export type VoucherUpdateWithoutVoucher_userInput = {
@@ -24100,18 +24525,22 @@ export namespace Prisma {
     percentage?: NullableIntFieldUpdateOperationsInput | number | null
     amount?: NullableIntFieldUpdateOperationsInput | number | null
     created_at?: DateTimeFieldUpdateOperationsInput | Date | string
+    start_date?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     expired_at?: DateTimeFieldUpdateOperationsInput | Date | string
     voucher_organizer?: OrganizerUpdateOneWithoutOrganizer_voucherNestedInput
+    voucher_event?: EventsUpdateOneWithoutVoucher_eventNestedInput
     voucher_transaction_details?: Transactions_detailUpdateManyWithoutTransaction_voucher_detailsNestedInput
   }
 
   export type VoucherUncheckedUpdateWithoutVoucher_userInput = {
     id?: StringFieldUpdateOperationsInput | string
     organizer_id?: NullableStringFieldUpdateOperationsInput | string | null
+    event_id?: NullableStringFieldUpdateOperationsInput | string | null
     code?: StringFieldUpdateOperationsInput | string
     percentage?: NullableIntFieldUpdateOperationsInput | number | null
     amount?: NullableIntFieldUpdateOperationsInput | number | null
     created_at?: DateTimeFieldUpdateOperationsInput | Date | string
+    start_date?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     expired_at?: DateTimeFieldUpdateOperationsInput | Date | string
     voucher_transaction_details?: Transactions_detailUncheckedUpdateManyWithoutTransaction_voucher_detailsNestedInput
   }
@@ -24119,11 +24548,19 @@ export namespace Prisma {
   export type VoucherUncheckedUpdateManyWithoutVoucher_userInput = {
     id?: StringFieldUpdateOperationsInput | string
     organizer_id?: NullableStringFieldUpdateOperationsInput | string | null
+    event_id?: NullableStringFieldUpdateOperationsInput | string | null
     code?: StringFieldUpdateOperationsInput | string
     percentage?: NullableIntFieldUpdateOperationsInput | number | null
     amount?: NullableIntFieldUpdateOperationsInput | number | null
     created_at?: DateTimeFieldUpdateOperationsInput | Date | string
+    start_date?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     expired_at?: DateTimeFieldUpdateOperationsInput | Date | string
+  }
+
+  export type ArticlesCreateManyOrganizerInput = {
+    id?: string
+    title: string
+    created_at?: Date | string
   }
 
   export type EventsCreateManyOrganizerInput = {
@@ -24133,21 +24570,11 @@ export namespace Prisma {
     name: string
     description: string
     image?: string | null
-    price: number
+    price?: number | null
     start_date: Date | string
     end_date?: Date | string | null
     created_at?: Date | string
     updated_at?: Date | string
-  }
-
-  export type VoucherCreateManyVoucher_organizerInput = {
-    id?: string
-    user_id?: string | null
-    code: string
-    percentage?: number | null
-    amount?: number | null
-    created_at?: Date | string
-    expired_at: Date | string
   }
 
   export type Transactions_detailCreateManyDetail_organizerInput = {
@@ -24155,147 +24582,26 @@ export namespace Prisma {
     user_id: string
     event_id: string
     quantity: number
-    voucher_id?: string | null
-    amount?: number
-    proof?: string
     isConfirmed?: boolean
     transaction_status: $Enums.TransactionStatus
+    amount?: number
+    created_at?: Date | string
     paid_at?: Date | string | null
-    created_at?: Date | string
+    proof?: string
     updated_at?: Date | string
+    voucher_id?: string | null
   }
 
-  export type ArticlesCreateManyOrganizerInput = {
+  export type VoucherCreateManyVoucher_organizerInput = {
     id?: string
-    title: string
+    user_id?: string | null
+    event_id?: string | null
+    code: string
+    percentage?: number | null
+    amount?: number | null
     created_at?: Date | string
-  }
-
-  export type EventsUpdateWithoutOrganizerInput = {
-    id?: StringFieldUpdateOperationsInput | string
-    name?: StringFieldUpdateOperationsInput | string
-    description?: StringFieldUpdateOperationsInput | string
-    image?: NullableStringFieldUpdateOperationsInput | string | null
-    price?: IntFieldUpdateOperationsInput | number
-    start_date?: DateTimeFieldUpdateOperationsInput | Date | string
-    end_date?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
-    created_at?: DateTimeFieldUpdateOperationsInput | Date | string
-    updated_at?: DateTimeFieldUpdateOperationsInput | Date | string
-    category_event?: Event_CategoryUpdateOneRequiredWithoutEventNestedInput
-    location_Event?: Event_LocationUpdateOneRequiredWithoutEventNestedInput
-    seat_event?: Event_SeatUpdateOneWithoutEventNestedInput
-    reviews_event?: Event_ReviewsUpdateManyWithoutReviews_eventNestedInput
-    attendees_event?: Event_AttendeesUpdateManyWithoutUser_eventNestedInput
-    event_transactionDetail?: Transactions_detailUpdateManyWithoutDetail_eventNestedInput
-  }
-
-  export type EventsUncheckedUpdateWithoutOrganizerInput = {
-    id?: StringFieldUpdateOperationsInput | string
-    event_category_id?: StringFieldUpdateOperationsInput | string
-    event_location_id?: StringFieldUpdateOperationsInput | string
-    name?: StringFieldUpdateOperationsInput | string
-    description?: StringFieldUpdateOperationsInput | string
-    image?: NullableStringFieldUpdateOperationsInput | string | null
-    price?: IntFieldUpdateOperationsInput | number
-    start_date?: DateTimeFieldUpdateOperationsInput | Date | string
-    end_date?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
-    created_at?: DateTimeFieldUpdateOperationsInput | Date | string
-    updated_at?: DateTimeFieldUpdateOperationsInput | Date | string
-    seat_event?: Event_SeatUncheckedUpdateOneWithoutEventNestedInput
-    reviews_event?: Event_ReviewsUncheckedUpdateManyWithoutReviews_eventNestedInput
-    attendees_event?: Event_AttendeesUncheckedUpdateManyWithoutUser_eventNestedInput
-    event_transactionDetail?: Transactions_detailUncheckedUpdateManyWithoutDetail_eventNestedInput
-  }
-
-  export type EventsUncheckedUpdateManyWithoutOrganizerInput = {
-    id?: StringFieldUpdateOperationsInput | string
-    event_category_id?: StringFieldUpdateOperationsInput | string
-    event_location_id?: StringFieldUpdateOperationsInput | string
-    name?: StringFieldUpdateOperationsInput | string
-    description?: StringFieldUpdateOperationsInput | string
-    image?: NullableStringFieldUpdateOperationsInput | string | null
-    price?: IntFieldUpdateOperationsInput | number
-    start_date?: DateTimeFieldUpdateOperationsInput | Date | string
-    end_date?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
-    created_at?: DateTimeFieldUpdateOperationsInput | Date | string
-    updated_at?: DateTimeFieldUpdateOperationsInput | Date | string
-  }
-
-  export type VoucherUpdateWithoutVoucher_organizerInput = {
-    id?: StringFieldUpdateOperationsInput | string
-    code?: StringFieldUpdateOperationsInput | string
-    percentage?: NullableIntFieldUpdateOperationsInput | number | null
-    amount?: NullableIntFieldUpdateOperationsInput | number | null
-    created_at?: DateTimeFieldUpdateOperationsInput | Date | string
-    expired_at?: DateTimeFieldUpdateOperationsInput | Date | string
-    voucher_user?: UsersUpdateOneWithoutUser_voucherNestedInput
-    voucher_transaction_details?: Transactions_detailUpdateManyWithoutTransaction_voucher_detailsNestedInput
-  }
-
-  export type VoucherUncheckedUpdateWithoutVoucher_organizerInput = {
-    id?: StringFieldUpdateOperationsInput | string
-    user_id?: NullableStringFieldUpdateOperationsInput | string | null
-    code?: StringFieldUpdateOperationsInput | string
-    percentage?: NullableIntFieldUpdateOperationsInput | number | null
-    amount?: NullableIntFieldUpdateOperationsInput | number | null
-    created_at?: DateTimeFieldUpdateOperationsInput | Date | string
-    expired_at?: DateTimeFieldUpdateOperationsInput | Date | string
-    voucher_transaction_details?: Transactions_detailUncheckedUpdateManyWithoutTransaction_voucher_detailsNestedInput
-  }
-
-  export type VoucherUncheckedUpdateManyWithoutVoucher_organizerInput = {
-    id?: StringFieldUpdateOperationsInput | string
-    user_id?: NullableStringFieldUpdateOperationsInput | string | null
-    code?: StringFieldUpdateOperationsInput | string
-    percentage?: NullableIntFieldUpdateOperationsInput | number | null
-    amount?: NullableIntFieldUpdateOperationsInput | number | null
-    created_at?: DateTimeFieldUpdateOperationsInput | Date | string
-    expired_at?: DateTimeFieldUpdateOperationsInput | Date | string
-  }
-
-  export type Transactions_detailUpdateWithoutDetail_organizerInput = {
-    id?: StringFieldUpdateOperationsInput | string
-    quantity?: IntFieldUpdateOperationsInput | number
-    amount?: IntFieldUpdateOperationsInput | number
-    proof?: StringFieldUpdateOperationsInput | string
-    isConfirmed?: BoolFieldUpdateOperationsInput | boolean
-    transaction_status?: EnumTransactionStatusFieldUpdateOperationsInput | $Enums.TransactionStatus
-    paid_at?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
-    created_at?: DateTimeFieldUpdateOperationsInput | Date | string
-    updated_at?: DateTimeFieldUpdateOperationsInput | Date | string
-    user?: UsersUpdateOneRequiredWithoutTransactionsNestedInput
-    detail_event?: EventsUpdateOneRequiredWithoutEvent_transactionDetailNestedInput
-    transaction_voucher_details?: VoucherUpdateOneWithoutVoucher_transaction_detailsNestedInput
-  }
-
-  export type Transactions_detailUncheckedUpdateWithoutDetail_organizerInput = {
-    id?: StringFieldUpdateOperationsInput | string
-    user_id?: StringFieldUpdateOperationsInput | string
-    event_id?: StringFieldUpdateOperationsInput | string
-    quantity?: IntFieldUpdateOperationsInput | number
-    voucher_id?: NullableStringFieldUpdateOperationsInput | string | null
-    amount?: IntFieldUpdateOperationsInput | number
-    proof?: StringFieldUpdateOperationsInput | string
-    isConfirmed?: BoolFieldUpdateOperationsInput | boolean
-    transaction_status?: EnumTransactionStatusFieldUpdateOperationsInput | $Enums.TransactionStatus
-    paid_at?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
-    created_at?: DateTimeFieldUpdateOperationsInput | Date | string
-    updated_at?: DateTimeFieldUpdateOperationsInput | Date | string
-  }
-
-  export type Transactions_detailUncheckedUpdateManyWithoutDetail_organizerInput = {
-    id?: StringFieldUpdateOperationsInput | string
-    user_id?: StringFieldUpdateOperationsInput | string
-    event_id?: StringFieldUpdateOperationsInput | string
-    quantity?: IntFieldUpdateOperationsInput | number
-    voucher_id?: NullableStringFieldUpdateOperationsInput | string | null
-    amount?: IntFieldUpdateOperationsInput | number
-    proof?: StringFieldUpdateOperationsInput | string
-    isConfirmed?: BoolFieldUpdateOperationsInput | boolean
-    transaction_status?: EnumTransactionStatusFieldUpdateOperationsInput | $Enums.TransactionStatus
-    paid_at?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
-    created_at?: DateTimeFieldUpdateOperationsInput | Date | string
-    updated_at?: DateTimeFieldUpdateOperationsInput | Date | string
+    start_date?: Date | string | null
+    expired_at: Date | string
   }
 
   export type ArticlesUpdateWithoutOrganizerInput = {
@@ -24314,6 +24620,160 @@ export namespace Prisma {
     id?: StringFieldUpdateOperationsInput | string
     title?: StringFieldUpdateOperationsInput | string
     created_at?: DateTimeFieldUpdateOperationsInput | Date | string
+  }
+
+  export type EventsUpdateWithoutOrganizerInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    name?: StringFieldUpdateOperationsInput | string
+    description?: StringFieldUpdateOperationsInput | string
+    image?: NullableStringFieldUpdateOperationsInput | string | null
+    price?: NullableIntFieldUpdateOperationsInput | number | null
+    start_date?: DateTimeFieldUpdateOperationsInput | Date | string
+    end_date?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    created_at?: DateTimeFieldUpdateOperationsInput | Date | string
+    updated_at?: DateTimeFieldUpdateOperationsInput | Date | string
+    category_event?: Event_CategoryUpdateOneRequiredWithoutEventNestedInput
+    location_Event?: Event_LocationUpdateOneRequiredWithoutEventNestedInput
+    ticketType?: TicketTypeUpdateManyWithoutEventNestedInput
+    voucher_event?: VoucherUpdateManyWithoutVoucher_eventNestedInput
+    reviews_event?: Event_ReviewsUpdateManyWithoutReviews_eventNestedInput
+    attendees_event?: Event_AttendeesUpdateManyWithoutUser_eventNestedInput
+    event_transactionDetail?: Transactions_detailUpdateManyWithoutDetail_eventNestedInput
+  }
+
+  export type EventsUncheckedUpdateWithoutOrganizerInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    event_category_id?: StringFieldUpdateOperationsInput | string
+    event_location_id?: StringFieldUpdateOperationsInput | string
+    name?: StringFieldUpdateOperationsInput | string
+    description?: StringFieldUpdateOperationsInput | string
+    image?: NullableStringFieldUpdateOperationsInput | string | null
+    price?: NullableIntFieldUpdateOperationsInput | number | null
+    start_date?: DateTimeFieldUpdateOperationsInput | Date | string
+    end_date?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    created_at?: DateTimeFieldUpdateOperationsInput | Date | string
+    updated_at?: DateTimeFieldUpdateOperationsInput | Date | string
+    ticketType?: TicketTypeUncheckedUpdateManyWithoutEventNestedInput
+    voucher_event?: VoucherUncheckedUpdateManyWithoutVoucher_eventNestedInput
+    reviews_event?: Event_ReviewsUncheckedUpdateManyWithoutReviews_eventNestedInput
+    attendees_event?: Event_AttendeesUncheckedUpdateManyWithoutUser_eventNestedInput
+    event_transactionDetail?: Transactions_detailUncheckedUpdateManyWithoutDetail_eventNestedInput
+  }
+
+  export type EventsUncheckedUpdateManyWithoutOrganizerInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    event_category_id?: StringFieldUpdateOperationsInput | string
+    event_location_id?: StringFieldUpdateOperationsInput | string
+    name?: StringFieldUpdateOperationsInput | string
+    description?: StringFieldUpdateOperationsInput | string
+    image?: NullableStringFieldUpdateOperationsInput | string | null
+    price?: NullableIntFieldUpdateOperationsInput | number | null
+    start_date?: DateTimeFieldUpdateOperationsInput | Date | string
+    end_date?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    created_at?: DateTimeFieldUpdateOperationsInput | Date | string
+    updated_at?: DateTimeFieldUpdateOperationsInput | Date | string
+  }
+
+  export type Transactions_detailUpdateWithoutDetail_organizerInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    quantity?: IntFieldUpdateOperationsInput | number
+    isConfirmed?: BoolFieldUpdateOperationsInput | boolean
+    transaction_status?: EnumTransactionStatusFieldUpdateOperationsInput | $Enums.TransactionStatus
+    amount?: IntFieldUpdateOperationsInput | number
+    created_at?: DateTimeFieldUpdateOperationsInput | Date | string
+    paid_at?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    proof?: StringFieldUpdateOperationsInput | string
+    updated_at?: DateTimeFieldUpdateOperationsInput | Date | string
+    detail_event?: EventsUpdateOneRequiredWithoutEvent_transactionDetailNestedInput
+    user?: UsersUpdateOneRequiredWithoutTransactionsNestedInput
+    transaction_voucher_details?: VoucherUpdateOneWithoutVoucher_transaction_detailsNestedInput
+  }
+
+  export type Transactions_detailUncheckedUpdateWithoutDetail_organizerInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    user_id?: StringFieldUpdateOperationsInput | string
+    event_id?: StringFieldUpdateOperationsInput | string
+    quantity?: IntFieldUpdateOperationsInput | number
+    isConfirmed?: BoolFieldUpdateOperationsInput | boolean
+    transaction_status?: EnumTransactionStatusFieldUpdateOperationsInput | $Enums.TransactionStatus
+    amount?: IntFieldUpdateOperationsInput | number
+    created_at?: DateTimeFieldUpdateOperationsInput | Date | string
+    paid_at?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    proof?: StringFieldUpdateOperationsInput | string
+    updated_at?: DateTimeFieldUpdateOperationsInput | Date | string
+    voucher_id?: NullableStringFieldUpdateOperationsInput | string | null
+  }
+
+  export type Transactions_detailUncheckedUpdateManyWithoutDetail_organizerInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    user_id?: StringFieldUpdateOperationsInput | string
+    event_id?: StringFieldUpdateOperationsInput | string
+    quantity?: IntFieldUpdateOperationsInput | number
+    isConfirmed?: BoolFieldUpdateOperationsInput | boolean
+    transaction_status?: EnumTransactionStatusFieldUpdateOperationsInput | $Enums.TransactionStatus
+    amount?: IntFieldUpdateOperationsInput | number
+    created_at?: DateTimeFieldUpdateOperationsInput | Date | string
+    paid_at?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    proof?: StringFieldUpdateOperationsInput | string
+    updated_at?: DateTimeFieldUpdateOperationsInput | Date | string
+    voucher_id?: NullableStringFieldUpdateOperationsInput | string | null
+  }
+
+  export type VoucherUpdateWithoutVoucher_organizerInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    code?: StringFieldUpdateOperationsInput | string
+    percentage?: NullableIntFieldUpdateOperationsInput | number | null
+    amount?: NullableIntFieldUpdateOperationsInput | number | null
+    created_at?: DateTimeFieldUpdateOperationsInput | Date | string
+    start_date?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    expired_at?: DateTimeFieldUpdateOperationsInput | Date | string
+    voucher_user?: UsersUpdateOneWithoutUser_voucherNestedInput
+    voucher_event?: EventsUpdateOneWithoutVoucher_eventNestedInput
+    voucher_transaction_details?: Transactions_detailUpdateManyWithoutTransaction_voucher_detailsNestedInput
+  }
+
+  export type VoucherUncheckedUpdateWithoutVoucher_organizerInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    user_id?: NullableStringFieldUpdateOperationsInput | string | null
+    event_id?: NullableStringFieldUpdateOperationsInput | string | null
+    code?: StringFieldUpdateOperationsInput | string
+    percentage?: NullableIntFieldUpdateOperationsInput | number | null
+    amount?: NullableIntFieldUpdateOperationsInput | number | null
+    created_at?: DateTimeFieldUpdateOperationsInput | Date | string
+    start_date?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    expired_at?: DateTimeFieldUpdateOperationsInput | Date | string
+    voucher_transaction_details?: Transactions_detailUncheckedUpdateManyWithoutTransaction_voucher_detailsNestedInput
+  }
+
+  export type VoucherUncheckedUpdateManyWithoutVoucher_organizerInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    user_id?: NullableStringFieldUpdateOperationsInput | string | null
+    event_id?: NullableStringFieldUpdateOperationsInput | string | null
+    code?: StringFieldUpdateOperationsInput | string
+    percentage?: NullableIntFieldUpdateOperationsInput | number | null
+    amount?: NullableIntFieldUpdateOperationsInput | number | null
+    created_at?: DateTimeFieldUpdateOperationsInput | Date | string
+    start_date?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    expired_at?: DateTimeFieldUpdateOperationsInput | Date | string
+  }
+
+  export type TicketTypeCreateManyEventInput = {
+    id?: string
+    name: string
+    price: number
+    quantity: number
+  }
+
+  export type VoucherCreateManyVoucher_eventInput = {
+    id?: string
+    user_id?: string | null
+    organizer_id?: string | null
+    code: string
+    percentage?: number | null
+    amount?: number | null
+    created_at?: Date | string
+    start_date?: Date | string | null
+    expired_at: Date | string
   }
 
   export type Event_ReviewsCreateManyReviews_eventInput = {
@@ -24335,14 +24795,73 @@ export namespace Prisma {
     user_id: string
     organizer_id: string
     quantity: number
-    voucher_id?: string | null
-    amount?: number
-    proof?: string
     isConfirmed?: boolean
     transaction_status: $Enums.TransactionStatus
-    paid_at?: Date | string | null
+    amount?: number
     created_at?: Date | string
+    paid_at?: Date | string | null
+    proof?: string
     updated_at?: Date | string
+    voucher_id?: string | null
+  }
+
+  export type TicketTypeUpdateWithoutEventInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    name?: StringFieldUpdateOperationsInput | string
+    price?: IntFieldUpdateOperationsInput | number
+    quantity?: IntFieldUpdateOperationsInput | number
+  }
+
+  export type TicketTypeUncheckedUpdateWithoutEventInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    name?: StringFieldUpdateOperationsInput | string
+    price?: IntFieldUpdateOperationsInput | number
+    quantity?: IntFieldUpdateOperationsInput | number
+  }
+
+  export type TicketTypeUncheckedUpdateManyWithoutEventInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    name?: StringFieldUpdateOperationsInput | string
+    price?: IntFieldUpdateOperationsInput | number
+    quantity?: IntFieldUpdateOperationsInput | number
+  }
+
+  export type VoucherUpdateWithoutVoucher_eventInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    code?: StringFieldUpdateOperationsInput | string
+    percentage?: NullableIntFieldUpdateOperationsInput | number | null
+    amount?: NullableIntFieldUpdateOperationsInput | number | null
+    created_at?: DateTimeFieldUpdateOperationsInput | Date | string
+    start_date?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    expired_at?: DateTimeFieldUpdateOperationsInput | Date | string
+    voucher_organizer?: OrganizerUpdateOneWithoutOrganizer_voucherNestedInput
+    voucher_user?: UsersUpdateOneWithoutUser_voucherNestedInput
+    voucher_transaction_details?: Transactions_detailUpdateManyWithoutTransaction_voucher_detailsNestedInput
+  }
+
+  export type VoucherUncheckedUpdateWithoutVoucher_eventInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    user_id?: NullableStringFieldUpdateOperationsInput | string | null
+    organizer_id?: NullableStringFieldUpdateOperationsInput | string | null
+    code?: StringFieldUpdateOperationsInput | string
+    percentage?: NullableIntFieldUpdateOperationsInput | number | null
+    amount?: NullableIntFieldUpdateOperationsInput | number | null
+    created_at?: DateTimeFieldUpdateOperationsInput | Date | string
+    start_date?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    expired_at?: DateTimeFieldUpdateOperationsInput | Date | string
+    voucher_transaction_details?: Transactions_detailUncheckedUpdateManyWithoutTransaction_voucher_detailsNestedInput
+  }
+
+  export type VoucherUncheckedUpdateManyWithoutVoucher_eventInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    user_id?: NullableStringFieldUpdateOperationsInput | string | null
+    organizer_id?: NullableStringFieldUpdateOperationsInput | string | null
+    code?: StringFieldUpdateOperationsInput | string
+    percentage?: NullableIntFieldUpdateOperationsInput | number | null
+    amount?: NullableIntFieldUpdateOperationsInput | number | null
+    created_at?: DateTimeFieldUpdateOperationsInput | Date | string
+    start_date?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    expired_at?: DateTimeFieldUpdateOperationsInput | Date | string
   }
 
   export type Event_ReviewsUpdateWithoutReviews_eventInput = {
@@ -24390,15 +24909,15 @@ export namespace Prisma {
   export type Transactions_detailUpdateWithoutDetail_eventInput = {
     id?: StringFieldUpdateOperationsInput | string
     quantity?: IntFieldUpdateOperationsInput | number
-    amount?: IntFieldUpdateOperationsInput | number
-    proof?: StringFieldUpdateOperationsInput | string
     isConfirmed?: BoolFieldUpdateOperationsInput | boolean
     transaction_status?: EnumTransactionStatusFieldUpdateOperationsInput | $Enums.TransactionStatus
-    paid_at?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    amount?: IntFieldUpdateOperationsInput | number
     created_at?: DateTimeFieldUpdateOperationsInput | Date | string
+    paid_at?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    proof?: StringFieldUpdateOperationsInput | string
     updated_at?: DateTimeFieldUpdateOperationsInput | Date | string
-    user?: UsersUpdateOneRequiredWithoutTransactionsNestedInput
     detail_organizer?: OrganizerUpdateOneRequiredWithoutOrganizer_transactionDetailsNestedInput
+    user?: UsersUpdateOneRequiredWithoutTransactionsNestedInput
     transaction_voucher_details?: VoucherUpdateOneWithoutVoucher_transaction_detailsNestedInput
   }
 
@@ -24407,14 +24926,14 @@ export namespace Prisma {
     user_id?: StringFieldUpdateOperationsInput | string
     organizer_id?: StringFieldUpdateOperationsInput | string
     quantity?: IntFieldUpdateOperationsInput | number
-    voucher_id?: NullableStringFieldUpdateOperationsInput | string | null
-    amount?: IntFieldUpdateOperationsInput | number
-    proof?: StringFieldUpdateOperationsInput | string
     isConfirmed?: BoolFieldUpdateOperationsInput | boolean
     transaction_status?: EnumTransactionStatusFieldUpdateOperationsInput | $Enums.TransactionStatus
-    paid_at?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    amount?: IntFieldUpdateOperationsInput | number
     created_at?: DateTimeFieldUpdateOperationsInput | Date | string
+    paid_at?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    proof?: StringFieldUpdateOperationsInput | string
     updated_at?: DateTimeFieldUpdateOperationsInput | Date | string
+    voucher_id?: NullableStringFieldUpdateOperationsInput | string | null
   }
 
   export type Transactions_detailUncheckedUpdateManyWithoutDetail_eventInput = {
@@ -24422,14 +24941,14 @@ export namespace Prisma {
     user_id?: StringFieldUpdateOperationsInput | string
     organizer_id?: StringFieldUpdateOperationsInput | string
     quantity?: IntFieldUpdateOperationsInput | number
-    voucher_id?: NullableStringFieldUpdateOperationsInput | string | null
-    amount?: IntFieldUpdateOperationsInput | number
-    proof?: StringFieldUpdateOperationsInput | string
     isConfirmed?: BoolFieldUpdateOperationsInput | boolean
     transaction_status?: EnumTransactionStatusFieldUpdateOperationsInput | $Enums.TransactionStatus
-    paid_at?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    amount?: IntFieldUpdateOperationsInput | number
     created_at?: DateTimeFieldUpdateOperationsInput | Date | string
+    paid_at?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    proof?: StringFieldUpdateOperationsInput | string
     updated_at?: DateTimeFieldUpdateOperationsInput | Date | string
+    voucher_id?: NullableStringFieldUpdateOperationsInput | string | null
   }
 
   export type EventsCreateManyCategory_eventInput = {
@@ -24439,7 +24958,7 @@ export namespace Prisma {
     name: string
     description: string
     image?: string | null
-    price: number
+    price?: number | null
     start_date: Date | string
     end_date?: Date | string | null
     created_at?: Date | string
@@ -24451,14 +24970,15 @@ export namespace Prisma {
     name?: StringFieldUpdateOperationsInput | string
     description?: StringFieldUpdateOperationsInput | string
     image?: NullableStringFieldUpdateOperationsInput | string | null
-    price?: IntFieldUpdateOperationsInput | number
+    price?: NullableIntFieldUpdateOperationsInput | number | null
     start_date?: DateTimeFieldUpdateOperationsInput | Date | string
     end_date?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     created_at?: DateTimeFieldUpdateOperationsInput | Date | string
     updated_at?: DateTimeFieldUpdateOperationsInput | Date | string
     organizer?: OrganizerUpdateOneRequiredWithoutEventNestedInput
     location_Event?: Event_LocationUpdateOneRequiredWithoutEventNestedInput
-    seat_event?: Event_SeatUpdateOneWithoutEventNestedInput
+    ticketType?: TicketTypeUpdateManyWithoutEventNestedInput
+    voucher_event?: VoucherUpdateManyWithoutVoucher_eventNestedInput
     reviews_event?: Event_ReviewsUpdateManyWithoutReviews_eventNestedInput
     attendees_event?: Event_AttendeesUpdateManyWithoutUser_eventNestedInput
     event_transactionDetail?: Transactions_detailUpdateManyWithoutDetail_eventNestedInput
@@ -24471,12 +24991,13 @@ export namespace Prisma {
     name?: StringFieldUpdateOperationsInput | string
     description?: StringFieldUpdateOperationsInput | string
     image?: NullableStringFieldUpdateOperationsInput | string | null
-    price?: IntFieldUpdateOperationsInput | number
+    price?: NullableIntFieldUpdateOperationsInput | number | null
     start_date?: DateTimeFieldUpdateOperationsInput | Date | string
     end_date?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     created_at?: DateTimeFieldUpdateOperationsInput | Date | string
     updated_at?: DateTimeFieldUpdateOperationsInput | Date | string
-    seat_event?: Event_SeatUncheckedUpdateOneWithoutEventNestedInput
+    ticketType?: TicketTypeUncheckedUpdateManyWithoutEventNestedInput
+    voucher_event?: VoucherUncheckedUpdateManyWithoutVoucher_eventNestedInput
     reviews_event?: Event_ReviewsUncheckedUpdateManyWithoutReviews_eventNestedInput
     attendees_event?: Event_AttendeesUncheckedUpdateManyWithoutUser_eventNestedInput
     event_transactionDetail?: Transactions_detailUncheckedUpdateManyWithoutDetail_eventNestedInput
@@ -24489,7 +25010,7 @@ export namespace Prisma {
     name?: StringFieldUpdateOperationsInput | string
     description?: StringFieldUpdateOperationsInput | string
     image?: NullableStringFieldUpdateOperationsInput | string | null
-    price?: IntFieldUpdateOperationsInput | number
+    price?: NullableIntFieldUpdateOperationsInput | number | null
     start_date?: DateTimeFieldUpdateOperationsInput | Date | string
     end_date?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     created_at?: DateTimeFieldUpdateOperationsInput | Date | string
@@ -24503,7 +25024,7 @@ export namespace Prisma {
     name: string
     description: string
     image?: string | null
-    price: number
+    price?: number | null
     start_date: Date | string
     end_date?: Date | string | null
     created_at?: Date | string
@@ -24515,14 +25036,15 @@ export namespace Prisma {
     name?: StringFieldUpdateOperationsInput | string
     description?: StringFieldUpdateOperationsInput | string
     image?: NullableStringFieldUpdateOperationsInput | string | null
-    price?: IntFieldUpdateOperationsInput | number
+    price?: NullableIntFieldUpdateOperationsInput | number | null
     start_date?: DateTimeFieldUpdateOperationsInput | Date | string
     end_date?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     created_at?: DateTimeFieldUpdateOperationsInput | Date | string
     updated_at?: DateTimeFieldUpdateOperationsInput | Date | string
     organizer?: OrganizerUpdateOneRequiredWithoutEventNestedInput
     category_event?: Event_CategoryUpdateOneRequiredWithoutEventNestedInput
-    seat_event?: Event_SeatUpdateOneWithoutEventNestedInput
+    ticketType?: TicketTypeUpdateManyWithoutEventNestedInput
+    voucher_event?: VoucherUpdateManyWithoutVoucher_eventNestedInput
     reviews_event?: Event_ReviewsUpdateManyWithoutReviews_eventNestedInput
     attendees_event?: Event_AttendeesUpdateManyWithoutUser_eventNestedInput
     event_transactionDetail?: Transactions_detailUpdateManyWithoutDetail_eventNestedInput
@@ -24535,12 +25057,13 @@ export namespace Prisma {
     name?: StringFieldUpdateOperationsInput | string
     description?: StringFieldUpdateOperationsInput | string
     image?: NullableStringFieldUpdateOperationsInput | string | null
-    price?: IntFieldUpdateOperationsInput | number
+    price?: NullableIntFieldUpdateOperationsInput | number | null
     start_date?: DateTimeFieldUpdateOperationsInput | Date | string
     end_date?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     created_at?: DateTimeFieldUpdateOperationsInput | Date | string
     updated_at?: DateTimeFieldUpdateOperationsInput | Date | string
-    seat_event?: Event_SeatUncheckedUpdateOneWithoutEventNestedInput
+    ticketType?: TicketTypeUncheckedUpdateManyWithoutEventNestedInput
+    voucher_event?: VoucherUncheckedUpdateManyWithoutVoucher_eventNestedInput
     reviews_event?: Event_ReviewsUncheckedUpdateManyWithoutReviews_eventNestedInput
     attendees_event?: Event_AttendeesUncheckedUpdateManyWithoutUser_eventNestedInput
     event_transactionDetail?: Transactions_detailUncheckedUpdateManyWithoutDetail_eventNestedInput
@@ -24553,7 +25076,7 @@ export namespace Prisma {
     name?: StringFieldUpdateOperationsInput | string
     description?: StringFieldUpdateOperationsInput | string
     image?: NullableStringFieldUpdateOperationsInput | string | null
-    price?: IntFieldUpdateOperationsInput | number
+    price?: NullableIntFieldUpdateOperationsInput | number | null
     start_date?: DateTimeFieldUpdateOperationsInput | Date | string
     end_date?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     created_at?: DateTimeFieldUpdateOperationsInput | Date | string
@@ -24590,28 +25113,28 @@ export namespace Prisma {
     event_id: string
     organizer_id: string
     quantity: number
-    amount?: number
-    proof?: string
     isConfirmed?: boolean
     transaction_status: $Enums.TransactionStatus
-    paid_at?: Date | string | null
+    amount?: number
     created_at?: Date | string
+    paid_at?: Date | string | null
+    proof?: string
     updated_at?: Date | string
   }
 
   export type Transactions_detailUpdateWithoutTransaction_voucher_detailsInput = {
     id?: StringFieldUpdateOperationsInput | string
     quantity?: IntFieldUpdateOperationsInput | number
-    amount?: IntFieldUpdateOperationsInput | number
-    proof?: StringFieldUpdateOperationsInput | string
     isConfirmed?: BoolFieldUpdateOperationsInput | boolean
     transaction_status?: EnumTransactionStatusFieldUpdateOperationsInput | $Enums.TransactionStatus
-    paid_at?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    amount?: IntFieldUpdateOperationsInput | number
     created_at?: DateTimeFieldUpdateOperationsInput | Date | string
+    paid_at?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    proof?: StringFieldUpdateOperationsInput | string
     updated_at?: DateTimeFieldUpdateOperationsInput | Date | string
-    user?: UsersUpdateOneRequiredWithoutTransactionsNestedInput
     detail_event?: EventsUpdateOneRequiredWithoutEvent_transactionDetailNestedInput
     detail_organizer?: OrganizerUpdateOneRequiredWithoutOrganizer_transactionDetailsNestedInput
+    user?: UsersUpdateOneRequiredWithoutTransactionsNestedInput
   }
 
   export type Transactions_detailUncheckedUpdateWithoutTransaction_voucher_detailsInput = {
@@ -24620,12 +25143,12 @@ export namespace Prisma {
     event_id?: StringFieldUpdateOperationsInput | string
     organizer_id?: StringFieldUpdateOperationsInput | string
     quantity?: IntFieldUpdateOperationsInput | number
-    amount?: IntFieldUpdateOperationsInput | number
-    proof?: StringFieldUpdateOperationsInput | string
     isConfirmed?: BoolFieldUpdateOperationsInput | boolean
     transaction_status?: EnumTransactionStatusFieldUpdateOperationsInput | $Enums.TransactionStatus
-    paid_at?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    amount?: IntFieldUpdateOperationsInput | number
     created_at?: DateTimeFieldUpdateOperationsInput | Date | string
+    paid_at?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    proof?: StringFieldUpdateOperationsInput | string
     updated_at?: DateTimeFieldUpdateOperationsInput | Date | string
   }
 
@@ -24635,12 +25158,12 @@ export namespace Prisma {
     event_id?: StringFieldUpdateOperationsInput | string
     organizer_id?: StringFieldUpdateOperationsInput | string
     quantity?: IntFieldUpdateOperationsInput | number
-    amount?: IntFieldUpdateOperationsInput | number
-    proof?: StringFieldUpdateOperationsInput | string
     isConfirmed?: BoolFieldUpdateOperationsInput | boolean
     transaction_status?: EnumTransactionStatusFieldUpdateOperationsInput | $Enums.TransactionStatus
-    paid_at?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    amount?: IntFieldUpdateOperationsInput | number
     created_at?: DateTimeFieldUpdateOperationsInput | Date | string
+    paid_at?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    proof?: StringFieldUpdateOperationsInput | string
     updated_at?: DateTimeFieldUpdateOperationsInput | Date | string
   }
 

@@ -1,5 +1,7 @@
 import { Router } from "express";
 import EventController from "../controller/event.controller";
+import { verifyToken } from "../middlewares/verifyToken";
+import { uploaderMemory } from "../middlewares/uploader";
 
 class EventRouter {
   private route: Router;
@@ -12,15 +14,19 @@ class EventRouter {
   }
   // Initialize route
   private initializeRoutes(): void {
-
     // Eky - start
+    this.route.post(
+      "/",
+      verifyToken,
+      uploaderMemory().single("image"),
+      this.event.createEvent
+    );
+    this.route.get("/categories", this.event.getCategory);
+    this.route.get("/locations", this.event.getLocation);
     this.route.get("/", this.event.getAllEvents);
     this.route.get("/:id", this.event.getEvent);
     // Eky - end
     this.route.get("/:organizer_id", this.event.getEventsById);
-
-
-
   }
 
   public getRouter() {

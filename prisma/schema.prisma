@@ -53,24 +53,27 @@ model Articles {
 }
 
 model Events {
-  id                      String                @id @default(uuid())
-  organizer_id            String
-  event_category_id       String
-  event_location_id       String
-  name                    String
-  description             String
-  start_date              DateTime
-  end_date                DateTime?
-  image                   String?
-  created_at              DateTime              @default(now())
-  updated_at              DateTime              @updatedAt
-  price                   Int?
-  attendees_event         Event_Attendees[]
-  reviews_event           Event_Reviews[]
+  id                String    @id @default(uuid())
+  organizer_id      String
+  event_category_id String
+  event_location_id String
+  name              String
+  description       String
+  image             String?
+  price             Int?
+  start_date        DateTime
+  end_date          DateTime?
+  created_at        DateTime  @default(now())
+  updated_at        DateTime  @updatedAt
+
+  // relation
+  organizer               Organizer             @relation(fields: [organizer_id], references: [id], onDelete: Cascade)
   category_event          Event_Category        @relation(fields: [event_category_id], references: [id], onDelete: Cascade)
   location_Event          Event_Location        @relation(fields: [event_location_id], references: [id], onDelete: Cascade)
-  organizer               Organizer             @relation(fields: [organizer_id], references: [id], onDelete: Cascade)
-  TicketType              TicketType[]
+  ticketType              TicketType[]
+  voucher_event           Voucher[]
+  reviews_event           Event_Reviews[]
+  attendees_event         Event_Attendees[]
   event_transactionDetail Transactions_detail[]
 }
 
@@ -81,22 +84,34 @@ model Event_Category {
 }
 
 model Event_Location {
-  id       String   @id @default(uuid())
+  id       String @id @default(uuid())
   event_id String
   city     String
   address  String
-  event    Events[]
+
+  event Events[]
+}
+
+model TicketType {
+  id       String @id @default(uuid())
+  event_id String
+  name     String
+  price    Int
+  quantity Int
+
+  event Events @relation(fields: [event_id], references: [id], onDelete: Cascade)
 }
 
 model Event_Reviews {
-  id            String   @id @default(uuid())
-  user_id       String
-  events_id     String
-  review        String?
-  rating        Int?
-  created_at    DateTime @default(now())
-  reviews_event Events   @relation(fields: [events_id], references: [id], onDelete: Cascade)
-  reviews_user  Users    @relation(fields: [user_id], references: [id], onDelete: Cascade)
+  id         String   @id @default(uuid())
+  user_id    String
+  events_id  String
+  review     String?
+  rating     Int?
+  created_at DateTime @default(now())
+
+  reviews_user  Users  @relation(fields: [user_id], references: [id], onDelete: Cascade)
+  reviews_event Events @relation(fields: [events_id], references: [id], onDelete: Cascade)
 }
 
 model Event_Attendees {
@@ -129,18 +144,32 @@ model Referral_Usage {
 }
 
 model Voucher {
-  id                          String                @id @default(uuid())
-  user_id                     String?
-  organizer_id                String?
-  code                        String
-  amount                      Int?
-  expired_at                  DateTime
-  percentage                  Int?
-  created_at                  DateTime              @default(now())
-  voucher_transaction_details Transactions_detail[]
+  id           String    @id @default(uuid())
+  user_id      String?
+  organizer_id String?
+  event_id     String?
+  code         String
+  percentage   Int?
+  amount       Int?
+  created_at   DateTime  @default(now())
+  start_date   DateTime?
+  expired_at   DateTime
+
   voucher_organizer           Organizer?            @relation(fields: [organizer_id], references: [id], onDelete: Cascade)
   voucher_user                Users?                @relation(fields: [user_id], references: [id], onDelete: Cascade)
+  voucher_event               Events?               @relation(fields: [event_id], references: [id], onDelete: Cascade)
+  voucher_transaction_details Transactions_detail[]
 }
+
+// model Transactions {
+//   id String @id @default(uuid())
+//   voucher_id String? 
+//   amount Int
+//   proof  String
+
+//   transaction_details Transactions_detail[]
+
+// }
 
 model Transactions_detail {
   id                          String            @id @default(uuid())
@@ -160,15 +189,6 @@ model Transactions_detail {
   detail_organizer            Organizer         @relation(fields: [organizer_id], references: [id], onDelete: Cascade)
   user                        Users             @relation(fields: [user_id], references: [id], onDelete: Cascade)
   transaction_voucher_details Voucher?          @relation(fields: [voucher_id], references: [id], onDelete: Cascade)
-}
-
-model TicketType {
-  id       String @id
-  event_id String
-  name     String
-  price    Int
-  quantity Int
-  Events   Events @relation(fields: [event_id], references: [id], onDelete: Cascade)
 }
 
 enum Status {
