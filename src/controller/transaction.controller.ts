@@ -300,6 +300,147 @@ class TransactionController {
       next(error);
     }
   }
+
+  // Eky - start
+  public async createTransaction(
+    req: Request,
+    res: Response,
+    next: NextFunction
+  ) {
+    try {
+      console.log(req.body);
+
+      const userId = res.locals.decrypt.id;
+
+      const {
+        eventId,
+        tickets: ticketsToPurchase,
+        voucherCode,
+        referralCodeIds,
+      } = req.body;
+
+      const [event, ticketTypesFromDatabase, voucherFromDatabase] =
+        await Promise.all([
+          prisma.events.findUnique({ where: { id: eventId } }),
+          prisma.ticketType.findMany({
+            where: {
+              id: { in: ticketsToPurchase.map((t: any) => t.ticketTypeId) },
+              event_id: eventId,
+            },
+          }),
+          voucherCode
+            ? prisma.voucher.findFirst({
+                where: { code: voucherCode, event_id: eventId },
+              })
+            : null,
+        ]);
+
+      if (!event) {
+        throw new AppError("Event not found.", 404);
+      }
+      if (ticketTypesFromDatabase.length !== ticketsToPurchase.length) {
+        throw new AppError(
+          "One or more ticket types are invalid for this event.",
+          400
+        );
+      }
+
+      let subtotal = 0;
+      for (const ticket of ticketsToPurchase) {
+        const databaseTicket = ticketTypesFromDatabase.find(
+          (tick) => tick.id === ticket.ticketTypeId
+        );
+        if (!databaseTicket || ticket.quantity > databaseTicket.quantity) {
+          throw new AppError(
+            `Not enough stock for ticket: ${
+              databaseTicket?.name || "Unknown"
+            }.`,
+            400
+          );
+        }
+        subtotal += databaseTicket.price * ticket.quantity;
+      }
+
+      let finalAmount = subtotal;
+      let voucherDiscount = 0;
+      if (voucherCode && voucherFromDatabase) {
+        voucherDiscount =
+          (subtotal * (voucherFromDatabase.percentage || 0)) / 100;
+        finalAmount -= voucherDiscount;
+      }
+
+      let pointsDiscount = 0;
+      if (referralCodeIds && referralCodeIds.length > 0) {
+        const availableBonuses = await prisma.referral_Code.findMany({
+          where: { id: { in: referralCodeIds }, user_id: userId },
+        });
+
+        if (availableBonuses.length !== referralCodeIds.length) {
+          throw new AppError("Invalid or already used referral points.", 400);
+        }
+
+        pointsDiscount = availableBonuses.reduce(
+          (sum, bonus) => sum + (bonus.points || 0),
+          0
+        );
+
+        const actualPointsToSpend = Math.min(finalAmount, pointsDiscount);
+        finalAmount -= actualPointsToSpend;
+        pointsDiscount = actualPointsToSpend;
+      }
+
+      const newTransactionDetails = await prisma.$transaction(async (tx) => {
+        const createdDetails = [];
+        for (const ticket of ticketsToPurchase) {
+          const detail = await tx.transactions_detail.create({
+            data: {
+              user_id: userId,
+              event_id: eventId,
+              organizer_id: event.organizer_id,
+              ticketType_id: ticket.ticketTypeId,
+              quantity: ticket.quantity,
+              amount: finalAmount,
+              transaction_status: "PENDING",
+            },
+          });
+          createdDetails.push(detail);
+
+          await tx.ticketType.update({
+            where: { id: ticket.ticketTypeId },
+            data: { quantity: { decrement: ticket.quantity } },
+          });
+        }
+
+        if (pointsDiscount > 0) {
+          await tx.referral_Usage.createMany({
+            data: referralCodeIds.map((codeId: string) => ({
+              user_id: userId,
+              referral_code_id: codeId,
+              isUsed: false,
+            })),
+          });
+        }
+
+        if (voucherFromDatabase) {
+          await tx.voucher.update({
+            where: { id: voucherFromDatabase.id },
+            data: { isUsed: true },
+          });
+        }
+
+        return createdDetails;
+      });
+
+      res.status(201).json({
+        message: "Transaction success. Please proceed to payment.",
+
+        data: newTransactionDetails,
+      });
+    } catch (error) {
+      next(error);
+    }
+  }
+  // Eky - end
 }
 
 export default TransactionController;

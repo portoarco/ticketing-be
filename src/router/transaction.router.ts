@@ -32,6 +32,10 @@ class TransactionRouter {
       "/delete/:id",
       this.transactionController.deleteTransaction
     ); //arco
+
+    // Eky - start
+    this.route.post("/", this.transactionController.createTransaction);
+    // Eky - end
   }
   public getRouter(): Router {
     return this.route;
