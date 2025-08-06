@@ -86,7 +86,6 @@ class EventController {
               user: { select: { first_name: true, last_name: true } },
             },
           },
-
           category_event: true,
           location_Event: true,
           voucher_event: true,
@@ -289,6 +288,133 @@ class EventController {
       });
     } catch (error) {
       next(error);
+    }
+  }
+
+  public async getEventbyAttendance(
+    req: Request,
+    res: Response,
+    next: NextFunction
+  ) {
+    try {
+      const id = res.locals.decrypt.id;
+      const data = await prisma.users.findUnique({
+        where: { id },
+        include: {
+          organizer: {
+            include: {
+              event: {
+                select: {
+                  id: true,
+                  name: true,
+                  price: true,
+                  event_transactionDetail: true,
+                  location_Event: true,
+                  ticketType: {
+                    orderBy: {
+                      price: "asc",
+                    },
+                    select: {
+                      price: true,
+                      quantity: true,
+                    },
+                  },
+                  voucher_event: {
+                    select: {
+                      code: true,
+                    },
+                  },
+                  category_event: true,
+                  attendees_event: {
+                    select: {
+                      status: true,
+                      user_attendees: true,
+                    },
+                  },
+                  start_date: true,
+                  end_date: true,
+                },
+              },
+            },
+          },
+        },
+      });
+
+      const events = data?.organizer?.event || [];
+      const eventList = events.map((ev) => ({
+        id: ev.id,
+        name: ev.name,
+        // price: ev.ticketType.map((p) => p.price).filter(),
+        price: ev.ticketType[0].price,
+        // total_seat: ev.ticketType.map((s) => s.quantity),
+        total_seat: ev.ticketType[0].quantity,
+        booked_seat: ev.event_transactionDetail.reduce(
+          (total, tx) => total + tx.quantity,
+          0
+        ),
+        start_date: ev.start_date,
+        end_date: ev.end_date,
+        category: ev.category_event.name,
+        address: ev.location_Event.address,
+        city: ev.location_Event.city,
+        attendance_status: ev.attendees_event.map((s) => s.status),
+        confirmed_attendance_user_name: ev.attendees_event.map(
+          (u) => u.user_attendees.first_name + " " + u.user_attendees.last_name
+        ),
+        confirmed_attendance_user_invoice: ev.event_transactionDetail.map(
+          (iv) => iv.id
+        ),
+        confirmed_attendance_user_quantity: ev.event_transactionDetail.map(
+          (us) => us.quantity
+        ),
+        confirmed_attendance_length: ev.attendees_event.filter(
+          (attendee) => attendee.status === "CONFIRMED"
+        ).length,
+        promo_code: ev.voucher_event.map((voucher) => voucher.code),
+      }));
+      console.log(eventList);
+      res
+        .status(200)
+        .send({ success: true, message: "Data Found", data: eventList });
+    } catch (error) {
+      next(error);
+    }
+  }
+
+  public async updateSeatsQuantity(
+    req: Request,
+    res: Response,
+    next: NextFunction
+  ) {
+    try {
+      const eventId = req.params.id;
+      const newQuantity = req.body.quantity;
+      console.log(eventId);
+      console.log(newQuantity);
+
+      const updateSeatsQuantity = await prisma.ticketType.updateMany({
+        where: { event_id: eventId },
+        data: { quantity: newQuantity },
+      });
+
+      console.log(updateSeatsQuantity);
+
+      res.status(200).send({ success: true, data: updateSeatsQuantity });
+    } catch (error) {
+      next(error);
+    }
+  }
+
+  public async getAttendeesbyEventsId(
+    req: Request,
+    res: Response,
+    next: NextFunction
+  ) {
+    try {
+      const eventId = req.params.id;
+      console.log(eventId);
+    } catch (error) {
+      console.log(error);
     }
   }
 }

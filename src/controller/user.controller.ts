@@ -8,7 +8,7 @@ class UserController {
   public async getUser(req: Request, res: Response, next: NextFunction) {
     try {
       const id = res.locals.decrypt.id;
-      console.log("Checking res.locals.decrypt.id : ", id);
+      // console.log("Checking res.locals.decrypt.id : ", id);
 
       const user = await prisma.users.findUnique({
         where: { id },
@@ -29,7 +29,7 @@ class UserController {
         },
       });
 
-      console.log(user);
+      // console.log(user);
 
       if (!user) {
         throw new AppError("User Not Found", 404);
@@ -103,7 +103,7 @@ class UserController {
         });
       }
 
-      console.log(updateUser);
+      // console.log(updateUser);
 
       res
         .status(200)

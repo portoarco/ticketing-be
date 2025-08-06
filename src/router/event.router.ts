@@ -23,6 +23,10 @@ class EventRouter {
     );
     this.route.get("/categories", this.event.getCategory);
     this.route.get("/locations", this.event.getLocation);
+    this.route.get("/attendance", verifyToken, this.event.getEventbyAttendance); // arco
+    // this.route.get("/attendance", verifyToken, this.event.getEventbyAttendance); // arco
+    // this.route.get("/attendees/:id", verifyToken, this.event.); // arco
+    this.route.patch("/seats/:id", verifyToken, this.event.updateSeatsQuantity); // arco
     this.route.get("/", this.event.getAllEvents);
     this.route.get("/:id", this.event.getEvent);
     // Eky - end

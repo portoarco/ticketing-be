@@ -28,6 +28,10 @@ export const paymentConfirmationMail = (
       ? `<strong style="color:#28a745;">${status}</strong>`
       : `<strong>${status}</strong>`;
 
+  const eventDatesHTML = end_date
+    ? `<li><strong>Event Dates:</strong> ${start_date} to ${end_date}</li>`
+    : `<li><strong>Event Dates:</strong> ${start_date}</li>`;
+
   return `<!doctype html>
 <html lang="en">
   <head>
@@ -144,7 +148,7 @@ export const paymentConfirmationMail = (
                     <li><strong>Status:</strong> ${statusHTML}</li>
                     <li><strong>Amount:</strong> ${paymentAmount}</li>
                     <li><strong>Quantity:</strong> ${quantity} ticket(s)</li>
-                    <li><strong>Event Dates:</strong> ${start_date} to ${end_date}</li>
+                    ${eventDatesHTML}
                     <li><strong>Location:</strong> ${city}, ${address}</li>
                   </ul>
                   
