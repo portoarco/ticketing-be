@@ -99,7 +99,8 @@ model TicketType {
   price    Int
   quantity Int
 
-  event Events @relation(fields: [event_id], references: [id], onDelete: Cascade)
+  event              Events                @relation(fields: [event_id], references: [id], onDelete: Cascade)
+  transactionDetails Transactions_detail[]
 }
 
 model Event_Reviews {
@@ -139,6 +140,7 @@ model Referral_Usage {
   user_id            String
   referral_code_id   String
   used_at            DateTime      @default(now())
+  isUsed             Boolean       @default(false)
   code_referralUsage Referral_Code @relation(fields: [referral_code_id], references: [id], onDelete: Cascade)
   user_referralUsage Users         @relation(fields: [user_id], references: [id], onDelete: Cascade)
 }
@@ -150,6 +152,7 @@ model Voucher {
   event_id     String?
   code         String
   percentage   Int?
+  isUsed       Boolean   @default(false)
   amount       Int?
   created_at   DateTime  @default(now())
   start_date   DateTime?
@@ -176,6 +179,7 @@ model Transactions_detail {
   user_id                     String
   event_id                    String
   organizer_id                String
+  ticketType_id               String
   quantity                    Int
   isConfirmed                 Boolean           @default(false)
   transaction_status          TransactionStatus
@@ -189,6 +193,7 @@ model Transactions_detail {
   detail_organizer            Organizer         @relation(fields: [organizer_id], references: [id], onDelete: Cascade)
   user                        Users             @relation(fields: [user_id], references: [id], onDelete: Cascade)
   transaction_voucher_details Voucher?          @relation(fields: [voucher_id], references: [id], onDelete: Cascade)
+  ticketType                  TicketType        @relation(fields: [ticketType_id], references: [id], onDelete: Cascade)
 }
 
 enum Status {

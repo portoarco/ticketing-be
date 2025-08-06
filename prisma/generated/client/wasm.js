@@ -214,7 +214,8 @@ exports.Prisma.Referral_UsageScalarFieldEnum = {
   id: 'id',
   user_id: 'user_id',
   referral_code_id: 'referral_code_id',
-  used_at: 'used_at'
+  used_at: 'used_at',
+  isUsed: 'isUsed'
 };
 
 exports.Prisma.VoucherScalarFieldEnum = {
@@ -224,6 +225,7 @@ exports.Prisma.VoucherScalarFieldEnum = {
   event_id: 'event_id',
   code: 'code',
   percentage: 'percentage',
+  isUsed: 'isUsed',
   amount: 'amount',
   created_at: 'created_at',
   start_date: 'start_date',
@@ -235,6 +237,7 @@ exports.Prisma.Transactions_detailScalarFieldEnum = {
   user_id: 'user_id',
   event_id: 'event_id',
   organizer_id: 'organizer_id',
+  ticketType_id: 'ticketType_id',
   quantity: 'quantity',
   isConfirmed: 'isConfirmed',
   transaction_status: 'transaction_status',
