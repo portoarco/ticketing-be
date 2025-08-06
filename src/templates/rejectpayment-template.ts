@@ -28,6 +28,10 @@ export const paymentRejectedMail = (
       ? `<strong style="color:#d93025;">${status}</strong>`
       : `<strong>${status}</strong>`;
 
+  const eventDatesHTML = end_date
+    ? `<li><strong>Event Dates:</strong> ${start_date} to ${end_date}</li>`
+    : `<li><strong>Event Dates:</strong> ${start_date}</li>`;
+
   return `<!doctype html>
 <html lang="en">
   <head>
@@ -144,7 +148,7 @@ export const paymentRejectedMail = (
                     <li><strong>Status:</strong> ${statusHTML}</li>
                     <li><strong>Amount:</strong> ${paymentAmount}</li>
                     <li><strong>Quantity:</strong> ${quantity} ticket(s)</li>
-                    <li><strong>Event Dates:</strong> ${start_date} to ${end_date}</li>
+                    ${eventDatesHTML}
                     <li><strong>Location:</strong> ${city}, ${address}</li>
                   </ul>
                   <p>“Voucher and points have been returned to your account, and the money has been refunded to your bank account</p>
