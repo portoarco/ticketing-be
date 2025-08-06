@@ -3,6 +3,8 @@ import { prisma } from "../config/prisma";
 import { randomUUID } from "crypto";
 import { E } from "@faker-js/faker/dist/airline-CLphikKp";
 import AppError from "../errors/AppError";
+import { cloudinaryUpload } from "../config/cloudinary";
+import { tr } from "@faker-js/faker/.";
 
 // Eky - Start
 class EventController {
@@ -10,7 +12,7 @@ class EventController {
     try {
       const events = await prisma.events.findMany({
         orderBy: {
-          start_date: "desc",
+          start_date: "asc",
         },
         include: {
           organizer: {
@@ -21,6 +23,8 @@ class EventController {
 
           category_event: true,
           location_Event: true,
+          voucher_event: true,
+          ticketType: true,
         },
       });
 
@@ -85,12 +89,15 @@ class EventController {
 
           category_event: true,
           location_Event: true,
+          voucher_event: true,
+          ticketType: true,
         },
       });
 
       if (!event) {
         throw new AppError("Data not found", 404);
       }
+      console.log("getEvent : ", event);
 
       res.status(200).send({ success: true, data: event });
     } catch (error) {
@@ -185,6 +192,8 @@ class EventController {
 
   public async createEvent(req: Request, res: Response, next: NextFunction) {
     try {
+      console.log(req.body);
+
       const userId = res.locals.decrypt.id;
 
       const organizer = await prisma.organizer.findUnique({
@@ -202,14 +211,23 @@ class EventController {
         name,
         description,
         price,
-        // availableSeats,
+        tickets,
         start_date,
         end_date,
         event_category_name,
         city,
         address,
-        // image,
+        promotions,
       } = req.body;
+
+      let uploadedImageUrl: string;
+
+      const ticketsConverted = JSON.parse(tickets);
+      const promotionsConverted = JSON.parse(promotions);
+      if (req.file) {
+        const upload = await cloudinaryUpload(req.file);
+        uploadedImageUrl = upload.secure_url;
+      }
 
       const category = await prisma.event_Category.findUnique({
         where: { name: event_category_name },
@@ -219,35 +237,55 @@ class EventController {
         throw new AppError(`Category '${event_category_name}' not found.`, 404);
       }
 
-      const newLocation = await prisma.event_Location.create({
-        data: {
-          city,
-          address,
-          event_id: "",
-        },
+      const newEventWithDetails = await prisma.$transaction(async (tx) => {
+        const newLocation = await tx.event_Location.create({
+          data: { city, address, event_id: "" },
+        });
+
+        const newEvent = await tx.events.create({
+          data: {
+            name,
+            description,
+            image: uploadedImageUrl,
+            start_date: new Date(start_date),
+            end_date: end_date ? new Date(end_date) : null,
+            organizer_id: organizer.id,
+            event_category_id: category.id,
+            event_location_id: newLocation.id,
+            price: price ?? 0,
+          },
+        });
+
+        if (ticketsConverted && ticketsConverted.length > 0) {
+          const ticketsData = ticketsConverted.map((item: any) => ({
+            name: item.name,
+            price: item.price,
+            quantity: item.quantity,
+            event_id: newEvent.id,
+          }));
+          await tx.ticketType.createMany({ data: ticketsData });
+        }
+
+        if (promotionsConverted && promotionsConverted.length > 0) {
+          const promotionsData = promotionsConverted.map((item: any) => ({
+            code: item.code,
+            percentage: item.discountPercentage,
+            start_date: new Date(item.startDate),
+            expired_at: new Date(item.expiryDate),
+            event_id: newEvent.id,
+            organizer_id: organizer.id,
+          }));
+          await tx.voucher.createMany({ data: promotionsData });
+        }
+
+        return newEvent;
       });
 
-      const newEvent = await prisma.events.create({
-        data: {
-          name,
-          description,
-          price: Number(price),
-
-          start_date: new Date(start_date),
-          end_date: end_date ? new Date(end_date) : null,
-
-          organizer_id: organizer.id,
-          event_category_id: category.id,
-
-          event_location_id: newLocation.id,
-        },
-      });
-
-      console.log(newEvent);
+      console.log(newEventWithDetails);
 
       res.status(201).json({
         message: "Event created successfully",
-        data: newEvent,
+        data: newEventWithDetails,
       });
     } catch (error) {
       next(error);

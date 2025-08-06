@@ -71,6 +71,7 @@ model Events {
   category_event          Event_Category        @relation(fields: [event_category_id], references: [id], onDelete: Cascade)
   location_Event          Event_Location        @relation(fields: [event_location_id], references: [id], onDelete: Cascade)
   ticketType              TicketType[]
+  voucher_event           Voucher[]
   reviews_event           Event_Reviews[]
   attendees_event         Event_Attendees[]
   event_transactionDetail Transactions_detail[]
@@ -143,17 +144,20 @@ model Referral_Usage {
 }
 
 model Voucher {
-  id           String   @id @default(uuid())
+  id           String    @id @default(uuid())
   user_id      String?
   organizer_id String?
+  event_id     String?
   code         String
   percentage   Int?
   amount       Int?
-  created_at   DateTime @default(now())
+  created_at   DateTime  @default(now())
+  start_date   DateTime?
   expired_at   DateTime
 
   voucher_organizer           Organizer?            @relation(fields: [organizer_id], references: [id], onDelete: Cascade)
   voucher_user                Users?                @relation(fields: [user_id], references: [id], onDelete: Cascade)
+  voucher_event               Events?               @relation(fields: [event_id], references: [id], onDelete: Cascade)
   voucher_transaction_details Transactions_detail[]
 }
 

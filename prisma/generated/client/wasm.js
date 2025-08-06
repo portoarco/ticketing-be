@@ -130,11 +130,11 @@ exports.Prisma.UsersScalarFieldEnum = {
   birthdate: 'birthdate',
   phone_number: 'phone_number',
   avatar: 'avatar',
-  refferal_code: 'refferal_code',
-  referrer_code: 'referrer_code',
   isVerified: 'isVerified',
   created_at: 'created_at',
-  updated_at: 'updated_at'
+  updated_at: 'updated_at',
+  referrer_code: 'referrer_code',
+  refferal_code: 'refferal_code'
 };
 
 exports.Prisma.OrganizerScalarFieldEnum = {
@@ -221,10 +221,12 @@ exports.Prisma.VoucherScalarFieldEnum = {
   id: 'id',
   user_id: 'user_id',
   organizer_id: 'organizer_id',
+  event_id: 'event_id',
   code: 'code',
   percentage: 'percentage',
   amount: 'amount',
   created_at: 'created_at',
+  start_date: 'start_date',
   expired_at: 'expired_at'
 };
 
@@ -234,14 +236,14 @@ exports.Prisma.Transactions_detailScalarFieldEnum = {
   event_id: 'event_id',
   organizer_id: 'organizer_id',
   quantity: 'quantity',
-  voucher_id: 'voucher_id',
-  amount: 'amount',
-  proof: 'proof',
   isConfirmed: 'isConfirmed',
   transaction_status: 'transaction_status',
-  paid_at: 'paid_at',
+  amount: 'amount',
   created_at: 'created_at',
-  updated_at: 'updated_at'
+  paid_at: 'paid_at',
+  proof: 'proof',
+  updated_at: 'updated_at',
+  voucher_id: 'voucher_id'
 };
 
 exports.Prisma.SortOrder = {

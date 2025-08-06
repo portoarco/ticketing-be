@@ -282,12 +282,12 @@ async function seed() {
     for (let index = 0; index < 10; index++) {
       const selectedOrganizer = faker.helpers.arrayElement(organizers);
       const selectedLocation = faker.helpers.arrayElement(location);
-
+      const event_price = faker.number.int({ min: 100000, max: 400000 });
       // const selectedCategory = faker.helpers.arrayElement(createdCategoryPromises);
       const selectedEventTemplate = faker.helpers.arrayElement(eventTemplates);
       console.log(selectedEventTemplate);
       const categoryId = categoryMap.get(selectedEventTemplate.categoryName);
-      const event_name = selectedEventTemplate.name;
+      const event_name = selectedEventTemplate.name; // temp
       const event_description = selectedEventTemplate.description;
 
       const event_startDate = faker.date.between({
@@ -310,7 +310,7 @@ async function seed() {
           organizer_id: selectedOrganizer.id,
           name: event_name,
           description: event_description,
-
+          price: roundToSpecifiedDigit(event_price, 2), // temp
           start_date: event_startDate,
           end_date: event_endDate,
           image: event_image,
