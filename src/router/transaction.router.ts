@@ -17,14 +17,9 @@ class TransactionRouter {
 
     // Eky - start
     this.route.post("/", this.transactionController.createTransaction);
-    this.route.patch(
-      "/upload/:transactionId",
-      this.transactionController.uploadPaymentProof
-    );
-    this.route.get("/:id", this.transactionController.getTransactionById);
-    // Eky - end
 
     this.route.get("/detail", this.transactionController.getAllTransactions); //arco
+    this.route.get("/:id", this.transactionController.getTransactionById); // mas eky
     this.route.patch(
       "/confirm/:id",
       this.transactionController.confirmTransaction
@@ -41,6 +36,10 @@ class TransactionRouter {
       "/delete/:id",
       this.transactionController.deleteTransaction
     ); //arco
+    this.route.patch(
+      "/upload/:transactionId",
+      this.transactionController.uploadPaymentProof
+    ); // mas eky
   }
   public getRouter(): Router {
     return this.route;
