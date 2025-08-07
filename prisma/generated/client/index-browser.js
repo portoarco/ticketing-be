@@ -215,7 +215,8 @@ exports.Prisma.Referral_UsageScalarFieldEnum = {
   user_id: 'user_id',
   referral_code_id: 'referral_code_id',
   used_at: 'used_at',
-  isUsed: 'isUsed'
+  isUsed: 'isUsed',
+  transaction_detail_id: 'transaction_detail_id'
 };
 
 exports.Prisma.VoucherScalarFieldEnum = {
