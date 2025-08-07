@@ -274,7 +274,7 @@ const config = {
       "value": "prisma-client-js"
     },
     "output": {
-      "value": "C:\\Purwadhika Bootcamp\\Module 03 -Backend Development\\Miniproject\\ticketing-be\\prisma\\generated\\client",
+      "value": "D:\\LatihanPurwadhika\\MiniProject\\back-end\\prisma\\generated\\client",
       "fromEnvVar": null
     },
     "config": {
@@ -288,7 +288,7 @@ const config = {
       }
     ],
     "previewFeatures": [],
-    "sourceFilePath": "C:\\Purwadhika Bootcamp\\Module 03 -Backend Development\\Miniproject\\ticketing-be\\prisma\\schema.prisma",
+    "sourceFilePath": "D:\\LatihanPurwadhika\\MiniProject\\back-end\\prisma\\schema.prisma",
     "isCustomOutput": true
   },
   "relativeEnvPaths": {
@@ -302,6 +302,7 @@ const config = {
     "db"
   ],
   "activeProvider": "postgresql",
+  "postinstall": false,
   "inlineDatasources": {
     "db": {
       "url": {
