@@ -4,6 +4,7 @@ import AppError from "../errors/AppError";
 import { transport } from "../config/nodemailer";
 import paymentConfirmationMail from "../templates/confirmpayment-template";
 import paymentRejectedMail from "../templates/rejectpayment-template";
+import { cloudinaryUpload } from "../config/cloudinary";
 
 class TransactionController {
   public async getAllTransactions(
@@ -439,6 +440,97 @@ class TransactionController {
       next(error);
     }
   }
+
+  public async uploadPaymentProof(
+    req: Request,
+    res: Response,
+    next: NextFunction
+  ) {
+    try {
+      const { transactionId } = req.params;
+      const userId = res.locals.decrypt.id;
+      const { paymentProofUrl } = req.body;
+
+      // 1. Basic validation
+      if (!paymentProofUrl) {
+        throw new AppError("No payment proof URL was provided.", 400);
+      }
+
+      const transaction = await prisma.transactions_detail.findFirst({
+        where: { id: transactionId, user_id: userId },
+      });
+
+      if (!transaction) {
+        throw new AppError(
+          "Transaction not found or you are not authorized.",
+          404
+        );
+      }
+      if (transaction.transaction_status !== "PENDING") {
+        throw new AppError(
+          "This transaction is no longer awaiting payment.",
+          400
+        );
+      }
+
+      const updatedTransaction = await prisma.transactions_detail.update({
+        where: { id: transactionId },
+        data: {
+          proof: paymentProofUrl,
+          transaction_status: "PAID",
+          paid_at: new Date(),
+        },
+      });
+
+      res.status(200).json({
+        message: "Payment proof submitted successfully.",
+        data: updatedTransaction,
+      });
+    } catch (error) {
+      next(error);
+    }
+  }
+
+  public async getTransactionById(
+    req: Request,
+    res: Response,
+    next: NextFunction
+  ) {
+    try {
+      const { transactionId } = req.params;
+      const userId = res.locals.decrypt.id;
+
+      const transaction = await prisma.transactions_detail.findFirst({
+        where: {
+          id: transactionId,
+          user_id: userId,
+        },
+
+        include: {
+          detail_event: {
+            select: {
+              name: true,
+            },
+          },
+        },
+      });
+
+      if (!transaction) {
+        throw new AppError(
+          "Transaction not found or you are not authorized to view it.",
+          404
+        );
+      }
+
+      res.status(200).json({
+        message: "Transaction details fetched successfully.",
+        data: transaction,
+      });
+    } catch (error) {
+      next(error);
+    }
+  }
+
   // Eky - end
 }
 

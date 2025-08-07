@@ -136,13 +136,15 @@ model Referral_Code {
 }
 
 model Referral_Usage {
-  id                 String        @id @default(uuid())
-  user_id            String
-  referral_code_id   String
-  used_at            DateTime      @default(now())
-  isUsed             Boolean       @default(false)
-  code_referralUsage Referral_Code @relation(fields: [referral_code_id], references: [id], onDelete: Cascade)
-  user_referralUsage Users         @relation(fields: [user_id], references: [id], onDelete: Cascade)
+  id                    String               @id @default(uuid())
+  user_id               String
+  referral_code_id      String
+  used_at               DateTime             @default(now())
+  isUsed                Boolean              @default(false)
+  transaction_detail_id String?
+  code_referralUsage    Referral_Code        @relation(fields: [referral_code_id], references: [id], onDelete: Cascade)
+  user_referralUsage    Users                @relation(fields: [user_id], references: [id], onDelete: Cascade)
+  transaction_detail    Transactions_detail? @relation(fields: [transaction_detail_id], references: [id], onDelete: SetNull)
 }
 
 model Voucher {
@@ -194,6 +196,7 @@ model Transactions_detail {
   user                        Users             @relation(fields: [user_id], references: [id], onDelete: Cascade)
   transaction_voucher_details Voucher?          @relation(fields: [voucher_id], references: [id], onDelete: Cascade)
   ticketType                  TicketType        @relation(fields: [ticketType_id], references: [id], onDelete: Cascade)
+  referral_usages             Referral_Usage[]
 }
 
 enum Status {

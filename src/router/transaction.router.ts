@@ -15,6 +15,15 @@ class TransactionRouter {
   private initializeRoutes(): void {
     this.route.use(verifyToken); //arco
 
+    // Eky - start
+    this.route.post("/", this.transactionController.createTransaction);
+    this.route.patch(
+      "/upload/:transactionId",
+      this.transactionController.uploadPaymentProof
+    );
+    this.route.get("/:id", this.transactionController.getTransactionById);
+    // Eky - end
+
     this.route.get("/detail", this.transactionController.getAllTransactions); //arco
     this.route.patch(
       "/confirm/:id",
@@ -32,10 +41,6 @@ class TransactionRouter {
       "/delete/:id",
       this.transactionController.deleteTransaction
     ); //arco
-
-    // Eky - start
-    this.route.post("/", this.transactionController.createTransaction);
-    // Eky - end
   }
   public getRouter(): Router {
     return this.route;
