@@ -24,6 +24,7 @@ class AuthController {
           last_name: true,
           email: true,
           isVerified: true,
+          organizer: { select: { organizer_name: true } },
         },
       });
 

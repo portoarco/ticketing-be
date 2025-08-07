@@ -111,6 +111,8 @@ class TransactionController {
       console.log(confirmPayment);
       console.log(userTransactionData?.user.email);
 
+      if (!confirmPayment) throw new AppError("Transaction not found", 404);
+
       // convert date
       const startDateStr = userTransactionData?.detail_event.start_date
         ? new Date(
