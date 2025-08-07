@@ -71,6 +71,9 @@ class TransactionController {
       const id = req.params.id;
       console.log(id);
 
+      // check voucher id
+      const checkVoucherId = await prisma.voucher;
+
       const confirmPayment = await prisma.transactions_detail.update({
         where: { id },
         data: {
@@ -91,6 +94,7 @@ class TransactionController {
               first_name: true,
               last_name: true,
               email: true,
+              user_voucher: true,
             },
           },
           detail_event: {
