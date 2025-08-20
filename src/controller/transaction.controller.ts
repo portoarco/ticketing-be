@@ -538,6 +538,84 @@ class TransactionController {
     }
   }
 
+  // public async getTransactionStatistics(req: Request, res: Response) {
+  //   try {
+  //     const { mode, date } = req.query as { mode: string; date: string };
+
+  //     if (!mode || !date) {
+  //       return res.status(400).json({ message: "Missing mode or date" });
+  //     }
+
+  //     const parsedDate = new Date(date);
+  //     let startDate: Date;
+  //     let endDate: Date;
+
+  //     if (mode === "year") {
+  //       startDate = new Date(parsedDate.getFullYear(), 0, 1);
+  //       endDate = new Date(parsedDate.getFullYear() + 1, 0, 1);
+  //     } else if (mode === "month") {
+  //       startDate = new Date(
+  //         parsedDate.getFullYear(),
+  //         parsedDate.getMonth(),
+  //         1
+  //       );
+  //       endDate = new Date(
+  //         parsedDate.getFullYear(),
+  //         parsedDate.getMonth() + 1,
+  //         1
+  //       );
+  //     } else if (mode === "day") {
+  //       startDate = new Date(parsedDate);
+  //       endDate = new Date(parsedDate);
+  //       endDate.setDate(endDate.getDate() + 1);
+  //     } else {
+  //       return res.status(400).json({ message: "Invalid mode" });
+  //     }
+
+  //     // Fetch transactions within date range
+  //     const transactions = await prisma.transactions_detail.findMany({
+  //       where: {
+  //         created_at: {
+  //           gte: startDate,
+  //           lte: endDate,
+  //         },
+  //       },
+  //       include: {
+  //         ticketType: true,
+  //       },
+  //     });
+
+  //     // Grouping logic
+  //     const groupKey = (trx: any) => {
+  //       const d = new Date(trx.createdAt);
+  //       if (mode === "year")
+  //         return d.toLocaleString("default", { month: "short" }); // Jan, Feb
+  //       if (mode === "month") return d.getDate().toString().padStart(2, "0"); // 01, 02, ...
+  //       if (mode === "day")
+  //         return d.getHours().toString().padStart(2, "0") + ":00"; // 08:00
+  //       return "unknown";
+  //     };
+
+  //     const statsMap: Record<string, number> = {};
+
+  //     for (const trx of transactions) {
+  //       const key = groupKey(trx);
+  //       const total = trx.ticketType.price * trx.quantity;
+  //       statsMap[key] = (statsMap[key] || 0) + total;
+  //     }
+
+  //     const result = Object.entries(statsMap).map(([label, total]) => ({
+  //       label,
+  //       total,
+  //     }));
+
+  //     return res.status(200).json({ data: result });
+  //   } catch (err) {
+  //     console.error(err);
+  //     return res.status(500).json({ message: "Internal Server Error" });
+  //   }
+  // }
+
   // Eky - end
 }
 

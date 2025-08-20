@@ -20,6 +20,11 @@ class TransactionRouter {
 
     this.route.get("/detail", this.transactionController.getAllTransactions); //arco
     this.route.get("/:id", this.transactionController.getTransactionById); // mas eky
+    // this.route.get(
+    //   "/statistics",
+    //   this.transactionController.getTransactionStatistics
+    // ); // arco
+
     this.route.patch(
       "/confirm/:id",
       this.transactionController.confirmTransaction

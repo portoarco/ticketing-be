@@ -7,10 +7,13 @@
   "type": "commonjs",
   "main": "src/index.ts",
   "scripts": {
+    "build": "tsc && cp -rv public dist/public",
+    "start": "nodemon src/index.ts",
     "test": "echo \"Error: no test specified\" && exit 1",
     "clean": "ts-node scripts/clean-schema.ts",
     "dev": "nodemon src/index.ts",
-    "seed": "nodemon prisma/seed.ts"
+    "seed": "nodemon prisma/seed.ts",
+    "postinstall": "prisma generate"
   },
   "devDependencies": {
     "@types/bcrypt": "^6.0.0",
